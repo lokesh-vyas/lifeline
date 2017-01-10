@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Jd5-j4-YwG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="EAy-Bt-t3J">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -25,7 +25,7 @@
         <!--Login-->
         <scene sceneID="Bcy-13-Vrg">
             <objects>
-                <viewController storyboardIdentifier="loginViewController" id="Jd5-j4-YwG" customClass="loginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Jd5-j4-YwG" customClass="LoginView" customModule="lifeline" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="u6a-Xw-WwH"/>
                         <viewControllerLayoutGuide type="bottom" id="nNL-6x-XKy"/>
@@ -121,6 +121,9 @@
                                         <state key="normal" title="Login">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="customLoginAction:" destination="Jd5-j4-YwG" eventType="touchUpInside" id="v12-OQ-hah"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rlz-hB-U5x">
                                         <rect key="frame" x="238" y="82" width="127" height="66"/>
@@ -133,6 +136,9 @@
                                                 <state key="normal" image="facebook_btn_icon">
                                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="facebookLogin:" destination="Jd5-j4-YwG" eventType="touchUpInside" id="Xsh-BP-JZz"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SWV-dP-VYA">
                                                 <rect key="frame" x="67" y="1" width="55" height="60"/>
@@ -142,6 +148,9 @@
                                                 <state key="normal" image="Google_icon">
                                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="googleLogin:" destination="Jd5-j4-YwG" eventType="touchUpInside" id="rnu-lO-FID"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -163,6 +172,9 @@
                                                 <state key="normal" title="Sign Up">
                                                     <color key="titleColor" red="0.99087858200000001" green="0.53109681610000004" blue="0.10514447089999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="signUpAction:" destination="Jd5-j4-YwG" eventType="touchUpInside" id="Xe9-a3-Xfa"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="BoR-9G-nrH">
                                                 <rect key="frame" x="11" y="33" width="116" height="17"/>
@@ -173,6 +185,9 @@
                                                 <state key="normal" title="Forgot Password ?">
                                                     <color key="titleColor" red="0.99087858200000001" green="0.53109681610000004" blue="0.10514447089999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="forgotPasswordAction:" destination="Jd5-j4-YwG" eventType="touchUpInside" id="XOi-or-H1y"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login Using" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="Yuo-E0-7gU">
                                                 <rect key="frame" x="11" y="54" width="118" height="23"/>
@@ -246,10 +261,15 @@
                     </view>
                     <navigationItem key="navigationItem" title="Login" id="lgb-no-rP5"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="loginButton" destination="lbl-b5-MnS" id="eYa-D3-Fof"/>
+                        <outlet property="passwordTextField" destination="Uo8-OC-NtF" id="aDh-v6-n58"/>
+                        <outlet property="userNameTextField" destination="K5m-1q-60j" id="jKf-0F-rmF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Ab-9G-id4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-870" y="-220"/>
+            <point key="canvasLocation" x="68" y="-220.83958020989508"/>
         </scene>
         <!--LifeLine-->
         <scene sceneID="glH-aC-z1R">
@@ -423,7 +443,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vU6-1L-BPp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1198" y="-128"/>
+            <point key="canvasLocation" x="2136.8000000000002" y="-128.18590704647679"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="O08-2X-x0C">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EAy-Bt-t3J" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vDG-0H-GIB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Jd5-j4-YwG" kind="relationship" relationship="rootViewController" id="uqO-Zo-gGO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3c0-eS-QXR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-871.20000000000005" y="-220.83958020989508"/>
         </scene>
     </scenes>
     <resources>
