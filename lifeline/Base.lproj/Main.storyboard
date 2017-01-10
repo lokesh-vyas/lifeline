@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -19,61 +19,6 @@
         </array>
     </customFonts>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="lifeline" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FKD-NS-rht">
-                                <rect key="frame" x="87.5" y="318.5" width="200" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="wxj-wO-bm0"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kNZ-1j-GBu">
-                                <rect key="frame" x="87.5" y="396" width="200" height="30"/>
-                                <state key="normal" title="OK"/>
-                                <connections>
-                                    <action selector="btnOKTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fPC-VB-oOd"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQj-gI-hkt">
-                                <rect key="frame" x="87.5" y="141" width="200" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="FKD-NS-rht" firstAttribute="leading" secondItem="QQj-gI-hkt" secondAttribute="leading" id="Aor-I0-DB2"/>
-                            <constraint firstItem="FKD-NS-rht" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="AsZ-27-Tb3"/>
-                            <constraint firstItem="kNZ-1j-GBu" firstAttribute="top" secondItem="FKD-NS-rht" secondAttribute="bottom" constant="47.5" id="HRg-qQ-swj"/>
-                            <constraint firstItem="FKD-NS-rht" firstAttribute="trailing" secondItem="QQj-gI-hkt" secondAttribute="trailing" id="RML-4n-hZt"/>
-                            <constraint firstItem="kNZ-1j-GBu" firstAttribute="leading" secondItem="FKD-NS-rht" secondAttribute="leading" id="bbD-BR-T3W"/>
-                            <constraint firstItem="FKD-NS-rht" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fGg-LQ-v6d"/>
-                            <constraint firstItem="kNZ-1j-GBu" firstAttribute="trailing" secondItem="FKD-NS-rht" secondAttribute="trailing" id="jdG-9S-oHA"/>
-                            <constraint firstItem="FKD-NS-rht" firstAttribute="top" secondItem="QQj-gI-hkt" secondAttribute="bottom" constant="156.5" id="vR2-67-cWn"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="lblWelcome" destination="QQj-gI-hkt" id="suw-gx-leU"/>
-                        <outlet property="txtField" destination="FKD-NS-rht" id="zme-R0-ahP"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
         <!--Login-->
         <scene sceneID="Bcy-13-Vrg">
             <objects>
