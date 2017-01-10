@@ -2,13 +2,9 @@
 # platform :ios, '9.0'
 
 target 'lifeline' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
-  use_frameworks!
-
-  # Pods for lifeline
-
-  target 'lifelineTests' do
-    inherit! :search_paths
+    # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+    use_frameworks!
+    
     pod 'Google/SignIn'
     pod 'GoogleMaps'
     pod 'Alamofire'
@@ -18,13 +14,19 @@ target 'lifeline' do
     pod 'FacebookLogin'
     pod 'Firebase/Core'
     pod 'Firebase/Messaging'
+    pod 'APESuperHUD'
+    # Pods for lifeline
     
-    # Pods for testing
-  end
-
-  target 'lifelineUITests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
+    target 'lifelineTests' do
+        inherit! :search_paths
+        
+        
+        # Pods for testing
+    end
+    
+    target 'lifelineUITests' do
+        inherit! :search_paths
+        # Pods for testing
+    end
+    
 end
