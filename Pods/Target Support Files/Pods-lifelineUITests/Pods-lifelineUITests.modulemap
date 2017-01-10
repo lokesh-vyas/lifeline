@@ -1,0 +1,6 @@
+framework module Pods_lifelineUITests {
+  umbrella header "Pods-lifelineUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
