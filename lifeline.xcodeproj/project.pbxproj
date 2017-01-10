@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0E0BE3E6DE4AF783417CC873 /* Pods_lifelineTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A7713EA892985CA8991C0DE /* Pods_lifelineTests.framework */; };
 		66EA8D351E1F6B4300646797 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EA8D341E1F6B4300646797 /* AppDelegate.swift */; };
-		66EA8D371E1F6B4300646797 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EA8D361E1F6B4300646797 /* ViewController.swift */; };
 		66EA8D3A1E1F6B4300646797 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8D381E1F6B4300646797 /* Main.storyboard */; };
 		66EA8D3C1E1F6B4300646797 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8D3B1E1F6B4300646797 /* Assets.xcassets */; };
 		66EA8D3F1E1F6B4300646797 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8D3D1E1F6B4300646797 /* LaunchScreen.storyboard */; };
@@ -44,7 +43,6 @@
 		65CFD1F97B4EDC4D89096216 /* Pods-lifelineUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lifelineUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-lifelineUITests/Pods-lifelineUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		66EA8D311E1F6B4200646797 /* lifeline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lifeline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66EA8D341E1F6B4300646797 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		66EA8D361E1F6B4300646797 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		66EA8D391E1F6B4300646797 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		66EA8D3B1E1F6B4300646797 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		66EA8D3E1E1F6B4300646797 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -153,7 +151,6 @@
 		66EA8D641E1F6F8900646797 /* All ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				66EA8D361E1F6B4300646797 /* ViewController.swift */,
 			);
 			name = "All ViewController";
 			sourceTree = "<group>";
@@ -485,7 +482,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66EA8D371E1F6B4300646797 /* ViewController.swift in Sources */,
 				66EA8D351E1F6B4300646797 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
