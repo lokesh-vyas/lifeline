@@ -8,10 +8,13 @@
 
 import UIKit
 import FBSDKCoreKit
+import Google
+import GoogleSignIn
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
 
+class AppDelegate: UIResponder, UIApplicationDelegate {
+  
     var window: UIWindow?
 
 
@@ -19,6 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     {
         //MARK:Facebook
          FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
+        // Initialize sign-in
+        var configureError: NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+       
+        assert(configureError == nil, "Error configuring Google services: \(configureError)")
         
         // Override point for customization after application launch.
         return true
@@ -48,10 +57,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool
     {
-       // GIDSignIn.sharedInstance().handleURL(url,
-//                                             sourceApplication: sourceApplication,
-//                                             annotation: annotation)
+        GIDSignIn.sharedInstance().handle(url,
+                                             sourceApplication: sourceApplication,
+                                             annotation: annotation)
+        
         FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+        
         return true
     }
 

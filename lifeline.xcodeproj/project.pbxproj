@@ -19,7 +19,8 @@
 		66EA8DF51E24C9E200646797 /* FacebookCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66EA8DF31E24C9E200646797 /* FacebookCore.framework */; };
 		66EA8DF61E24C9E200646797 /* FacebookLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66EA8DF41E24C9E200646797 /* FacebookLogin.framework */; };
 		66EA8DF91E2510A300646797 /* HudBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EA8DF81E2510A300646797 /* HudBar.swift */; };
-		66EA8DFB1E2517C400646797 /* 180.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8DFA1E2517C400646797 /* 180.png */; };
+		66EA8DFB1E2517C400646797 /* LifeLine_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8DFA1E2517C400646797 /* LifeLine_icon.png */; };
+		66EA8DFD1E26611300646797 /* StringList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EA8DFC1E26611300646797 /* StringList.swift */; };
 		A9068F5979AA6D792A524992 /* Pods_lifeline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F70603F9C011A331ED033AE6 /* Pods_lifeline.framework */; };
 		B05FA975CF9454FEA9D2628C /* Pods_lifelineUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72C867B9743D7D3FEBBE575C /* Pods_lifelineUITests.framework */; };
 /* End PBXBuildFile section */
@@ -63,7 +64,8 @@
 		66EA8DF31E24C9E200646797 /* FacebookCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookCore.framework; path = "../../Library/Developer/Xcode/DerivedData/lifeline-fjutkuuffxtxjbazhfblsqentrnc/Build/Products/Debug-iphonesimulator/FacebookCore/FacebookCore.framework"; sourceTree = "<group>"; };
 		66EA8DF41E24C9E200646797 /* FacebookLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookLogin.framework; path = "../../Library/Developer/Xcode/DerivedData/lifeline-fjutkuuffxtxjbazhfblsqentrnc/Build/Products/Debug-iphonesimulator/FacebookLogin/FacebookLogin.framework"; sourceTree = "<group>"; };
 		66EA8DF81E2510A300646797 /* HudBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HudBar.swift; path = Helper/HudBar.swift; sourceTree = "<group>"; };
-		66EA8DFA1E2517C400646797 /* 180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 180.png; sourceTree = "<group>"; };
+		66EA8DFA1E2517C400646797 /* LifeLine_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LifeLine_icon.png; sourceTree = "<group>"; };
+		66EA8DFC1E26611300646797 /* StringList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringList.swift; path = Helper/StringList.swift; sourceTree = "<group>"; };
 		72C867B9743D7D3FEBBE575C /* Pods_lifelineUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lifelineUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D9BDF37B76916911FB2601D /* Pods-lifelineTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lifelineTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-lifelineTests/Pods-lifelineTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A1C04368EFB0041F5F1BF37B /* Pods-lifeline.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lifeline.debug.xcconfig"; path = "Pods/Target Support Files/Pods-lifeline/Pods-lifeline.debug.xcconfig"; sourceTree = "<group>"; };
@@ -172,7 +174,6 @@
 		66EA8D651E1F6FA800646797 /* StoryBoard */ = {
 			isa = PBXGroup;
 			children = (
-				66EA8DFA1E2517C400646797 /* 180.png */,
 				66EA8D381E1F6B4300646797 /* Main.storyboard */,
 				66EA8D3B1E1F6B4300646797 /* Assets.xcassets */,
 				66EA8D3D1E1F6B4300646797 /* LaunchScreen.storyboard */,
@@ -200,7 +201,9 @@
 		66EA8DF71E25104E00646797 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				66EA8DFA1E2517C400646797 /* LifeLine_icon.png */,
 				66EA8DF81E2510A300646797 /* HudBar.swift */,
+				66EA8DFC1E26611300646797 /* StringList.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -349,7 +352,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66EA8DFB1E2517C400646797 /* 180.png in Resources */,
+				66EA8DFB1E2517C400646797 /* LifeLine_icon.png in Resources */,
 				66EA8D3F1E1F6B4300646797 /* LaunchScreen.storyboard in Resources */,
 				66EA8D681E1F700200646797 /* GoogleService-Info.plist in Resources */,
 				66EA8D3C1E1F6B4300646797 /* Assets.xcassets in Resources */,
@@ -518,6 +521,7 @@
 			files = (
 				66EA8DF91E2510A300646797 /* HudBar.swift in Sources */,
 				66EA8DE61E24BDB700646797 /* LoginView.swift in Sources */,
+				66EA8DFD1E26611300646797 /* StringList.swift in Sources */,
 				66EA8D351E1F6B4300646797 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
