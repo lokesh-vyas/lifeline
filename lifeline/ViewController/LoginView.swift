@@ -15,21 +15,29 @@ import GoogleSignIn
 class LoginView: UIViewController
 {
     //MARK:- IBOutlet
-    @IBOutlet weak var userNameTextField: UITextField!
+    @IBOutlet weak var userNameTextField: FloatLabelTextField!
     @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var passwordTextField: FloatLabelTextField!
     
     //MARK:- ViewDidLoad
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.isHidden = true
+       
         // Do any additional setup after loading the view.
+    }
+    //MARK:- ViewWill Appear
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController?.navigationBar.isHidden = true
     }
     //MARK:- SignUpAction
     @IBAction func signUpAction(_ sender: Any)
     {
-        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SignUpView") as! SignUpView
+ 
+        navigationController?.pushViewController(vc,
+                                                 animated: true)
     }
     //MARK:- Forgot Password
     @IBAction func forgotPasswordAction(_ sender: Any)
@@ -38,6 +46,18 @@ class LoginView: UIViewController
     //MARK:- CustomLogin
     @IBAction func customLoginAction(_ sender: Any)
     {
+        if((userNameTextField.text?.characters.count)! <= 0)
+        {
+            self.view.makeToast("Please enter User ID", duration: 2.0, position: .bottom)
+        }
+        else if((passwordTextField.text?.characters.count)! <= 0)
+        {
+            self.view.makeToast("Please enter Password", duration: 2.0, position: .bottom)
+        }
+        else
+        {
+            //TODO:- Sevice Call
+        }
     }
     //MARK:- FB Login
     @IBAction func facebookLogin(_ sender: Any)
@@ -125,8 +145,7 @@ extension LoginView:GIDSignInUIDelegate,GIDSignInDelegate
         else
         {
             HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: StringList.LL_Welcome_Message.rawValue, view: self.view)
-            // Perform any operations on signed in user here.
-            // For client-side use only!'
+     
             UserDefaults.standard.set(user.userID, forKey: StringList.LifeLine_User_ID.rawValue)
             UserDefaults.standard.set(user.profile.name, forKey: StringList.LifeLine_User_Name.rawValue)
             UserDefaults.standard.set(user.profile.email, forKey: StringList.LifeLine_User_Email.rawValue)

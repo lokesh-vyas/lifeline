@@ -21,6 +21,29 @@
 		66EA8DF91E2510A300646797 /* HudBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EA8DF81E2510A300646797 /* HudBar.swift */; };
 		66EA8DFB1E2517C400646797 /* LifeLine_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8DFA1E2517C400646797 /* LifeLine_icon.png */; };
 		66EA8DFD1E26611300646797 /* StringList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EA8DFC1E26611300646797 /* StringList.swift */; };
+		66EA8E111E275A4000646797 /* calendar_clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8E011E275A4000646797 /* calendar_clock.png */; };
+		66EA8E121E275A4000646797 /* chat_bubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8E021E275A4000646797 /* chat_bubble.png */; };
+		66EA8E131E275A4000646797 /* contact.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8E031E275A4000646797 /* contact.png */; };
+		66EA8E141E275A4000646797 /* delete_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8E041E275A4000646797 /* delete_icon.png */; };
+		66EA8E151E275A4000646797 /* drop_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8E051E275A4000646797 /* drop_black.png */; };
+		66EA8E161E275A4000646797 /* drop_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8E061E275A4000646797 /* drop_red.png */; };
+		66EA8E171E275A4000646797 /* e-mail-envelope.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8E071E275A4000646797 /* e-mail-envelope.png */; };
+		66EA8E181E275A4000646797 /* error-sign.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8E081E275A4000646797 /* error-sign.png */; };
+		66EA8E191E275A4000646797 /* errorimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8E091E275A4000646797 /* errorimage.png */; };
+		66EA8E1A1E275A4000646797 /* message.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8E0A1E275A4000646797 /* message.png */; };
+		66EA8E1B1E275A4000646797 /* password_noti.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8E0B1E275A4000646797 /* password_noti.png */; };
+		66EA8E1C1E275A4000646797 /* person.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8E0C1E275A4000646797 /* person.png */; };
+		66EA8E1D1E275A4000646797 /* save.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8E0D1E275A4000646797 /* save.png */; };
+		66EA8E1E1E275A4000646797 /* user42.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8E0E1E275A4000646797 /* user42.png */; };
+		66EA8E1F1E275A4000646797 /* user_noti.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8E0F1E275A4000646797 /* user_noti.png */; };
+		66EA8E201E275A4000646797 /* watsapp_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8E101E275A4000646797 /* watsapp_logo.png */; };
+		66EA8E231E2760C400646797 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EA8E221E2760C400646797 /* SignUpView.swift */; };
+		66EA8E261E2772D300646797 /* FloatLabelTextField-2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EA8E251E2772D300646797 /* FloatLabelTextField-2.swift */; };
+		66EA8E281E277D0400646797 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EA8E271E277D0400646797 /* Util.swift */; };
+		66EA8E2C1E27947400646797 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EA8E2B1E27947400646797 /* NetworkManager.swift */; };
+		66EA8E2E1E27A36900646797 /* SignUpInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EA8E2D1E27A36900646797 /* SignUpInteractor.swift */; };
+		66EA8E341E27AF0900646797 /* SignUpApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EA8E331E27AF0900646797 /* SignUpApi.swift */; };
+		66EA8E361E27AF2600646797 /* APIBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EA8E351E27AF2600646797 /* APIBuilder.swift */; };
 		A9068F5979AA6D792A524992 /* Pods_lifeline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F70603F9C011A331ED033AE6 /* Pods_lifeline.framework */; };
 		B05FA975CF9454FEA9D2628C /* Pods_lifelineUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72C867B9743D7D3FEBBE575C /* Pods_lifelineUITests.framework */; };
 /* End PBXBuildFile section */
@@ -64,8 +87,31 @@
 		66EA8DF31E24C9E200646797 /* FacebookCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookCore.framework; path = "../../Library/Developer/Xcode/DerivedData/lifeline-fjutkuuffxtxjbazhfblsqentrnc/Build/Products/Debug-iphonesimulator/FacebookCore/FacebookCore.framework"; sourceTree = "<group>"; };
 		66EA8DF41E24C9E200646797 /* FacebookLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookLogin.framework; path = "../../Library/Developer/Xcode/DerivedData/lifeline-fjutkuuffxtxjbazhfblsqentrnc/Build/Products/Debug-iphonesimulator/FacebookLogin/FacebookLogin.framework"; sourceTree = "<group>"; };
 		66EA8DF81E2510A300646797 /* HudBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HudBar.swift; path = Helper/HudBar.swift; sourceTree = "<group>"; };
-		66EA8DFA1E2517C400646797 /* LifeLine_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LifeLine_icon.png; sourceTree = "<group>"; };
+		66EA8DFA1E2517C400646797 /* LifeLine_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LifeLine_icon.png; path = ../LifeLine_icon.png; sourceTree = "<group>"; };
 		66EA8DFC1E26611300646797 /* StringList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringList.swift; path = Helper/StringList.swift; sourceTree = "<group>"; };
+		66EA8E011E275A4000646797 /* calendar_clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar_clock.png; sourceTree = "<group>"; };
+		66EA8E021E275A4000646797 /* chat_bubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat_bubble.png; sourceTree = "<group>"; };
+		66EA8E031E275A4000646797 /* contact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contact.png; sourceTree = "<group>"; };
+		66EA8E041E275A4000646797 /* delete_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete_icon.png; sourceTree = "<group>"; };
+		66EA8E051E275A4000646797 /* drop_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drop_black.png; sourceTree = "<group>"; };
+		66EA8E061E275A4000646797 /* drop_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drop_red.png; sourceTree = "<group>"; };
+		66EA8E071E275A4000646797 /* e-mail-envelope.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "e-mail-envelope.png"; sourceTree = "<group>"; };
+		66EA8E081E275A4000646797 /* error-sign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "error-sign.png"; sourceTree = "<group>"; };
+		66EA8E091E275A4000646797 /* errorimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = errorimage.png; sourceTree = "<group>"; };
+		66EA8E0A1E275A4000646797 /* message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = message.png; sourceTree = "<group>"; };
+		66EA8E0B1E275A4000646797 /* password_noti.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = password_noti.png; sourceTree = "<group>"; };
+		66EA8E0C1E275A4000646797 /* person.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person.png; sourceTree = "<group>"; };
+		66EA8E0D1E275A4000646797 /* save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save.png; sourceTree = "<group>"; };
+		66EA8E0E1E275A4000646797 /* user42.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user42.png; sourceTree = "<group>"; };
+		66EA8E0F1E275A4000646797 /* user_noti.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_noti.png; sourceTree = "<group>"; };
+		66EA8E101E275A4000646797 /* watsapp_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = watsapp_logo.png; sourceTree = "<group>"; };
+		66EA8E221E2760C400646797 /* SignUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpView.swift; path = ViewController/SignUpView.swift; sourceTree = "<group>"; };
+		66EA8E251E2772D300646797 /* FloatLabelTextField-2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FloatLabelTextField-2.swift"; sourceTree = "<group>"; };
+		66EA8E271E277D0400646797 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Util.swift; path = Helper/Util.swift; sourceTree = "<group>"; };
+		66EA8E2B1E27947400646797 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = ViewModel/NetworkManager/NetworkManager.swift; sourceTree = "<group>"; };
+		66EA8E2D1E27A36900646797 /* SignUpInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpInteractor.swift; sourceTree = "<group>"; };
+		66EA8E331E27AF0900646797 /* SignUpApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpApi.swift; path = "ViewModel/NetworkManager/API's/SignUpApi.swift"; sourceTree = "<group>"; };
+		66EA8E351E27AF2600646797 /* APIBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIBuilder.swift; path = ViewModel/NetworkManager/APIBuilder.swift; sourceTree = "<group>"; };
 		72C867B9743D7D3FEBBE575C /* Pods_lifelineUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lifelineUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D9BDF37B76916911FB2601D /* Pods-lifelineTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lifelineTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-lifelineTests/Pods-lifelineTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A1C04368EFB0041F5F1BF37B /* Pods-lifeline.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lifeline.debug.xcconfig"; path = "Pods/Target Support Files/Pods-lifeline/Pods-lifeline.debug.xcconfig"; sourceTree = "<group>"; };
@@ -130,9 +176,11 @@
 			children = (
 				66EA8D621E1F6F5800646797 /* AppDelegate */,
 				66EA8D641E1F6F8900646797 /* All ViewController */,
+				66EA8E291E27942000646797 /* View Model */,
 				66EA8DF71E25104E00646797 /* Helper */,
 				66EA8D651E1F6FA800646797 /* StoryBoard */,
 				66EA8D661E1F6FBF00646797 /* PlistFiles */,
+				66EA8E241E27729C00646797 /* Supporting Files */,
 			);
 			path = lifeline;
 			sourceTree = "<group>";
@@ -166,6 +214,7 @@
 		66EA8D641E1F6F8900646797 /* All ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				66EA8E211E2760A000646797 /* Sign Up View */,
 				66EA8DE41E24BD3B00646797 /* LoginView  */,
 			);
 			name = "All ViewController";
@@ -201,11 +250,79 @@
 		66EA8DF71E25104E00646797 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				66EA8DFA1E2517C400646797 /* LifeLine_icon.png */,
 				66EA8DF81E2510A300646797 /* HudBar.swift */,
 				66EA8DFC1E26611300646797 /* StringList.swift */,
+				66EA8E271E277D0400646797 /* Util.swift */,
 			);
 			name = Helper;
+			sourceTree = "<group>";
+		};
+		66EA8E001E275A4000646797 /* Image For Support */ = {
+			isa = PBXGroup;
+			children = (
+				66EA8DFA1E2517C400646797 /* LifeLine_icon.png */,
+				66EA8E011E275A4000646797 /* calendar_clock.png */,
+				66EA8E021E275A4000646797 /* chat_bubble.png */,
+				66EA8E031E275A4000646797 /* contact.png */,
+				66EA8E041E275A4000646797 /* delete_icon.png */,
+				66EA8E051E275A4000646797 /* drop_black.png */,
+				66EA8E061E275A4000646797 /* drop_red.png */,
+				66EA8E071E275A4000646797 /* e-mail-envelope.png */,
+				66EA8E081E275A4000646797 /* error-sign.png */,
+				66EA8E091E275A4000646797 /* errorimage.png */,
+				66EA8E0A1E275A4000646797 /* message.png */,
+				66EA8E0B1E275A4000646797 /* password_noti.png */,
+				66EA8E0C1E275A4000646797 /* person.png */,
+				66EA8E0D1E275A4000646797 /* save.png */,
+				66EA8E0E1E275A4000646797 /* user42.png */,
+				66EA8E0F1E275A4000646797 /* user_noti.png */,
+				66EA8E101E275A4000646797 /* watsapp_logo.png */,
+			);
+			path = "Image For Support";
+			sourceTree = "<group>";
+		};
+		66EA8E211E2760A000646797 /* Sign Up View */ = {
+			isa = PBXGroup;
+			children = (
+				66EA8E221E2760C400646797 /* SignUpView.swift */,
+				66EA8E2D1E27A36900646797 /* SignUpInteractor.swift */,
+			);
+			name = "Sign Up View";
+			sourceTree = "<group>";
+		};
+		66EA8E241E27729C00646797 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				66EA8E251E2772D300646797 /* FloatLabelTextField-2.swift */,
+				66EA8E001E275A4000646797 /* Image For Support */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		66EA8E291E27942000646797 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				66EA8E2A1E27942800646797 /* Network Manager */,
+			);
+			name = "View Model";
+			sourceTree = "<group>";
+		};
+		66EA8E2A1E27942800646797 /* Network Manager */ = {
+			isa = PBXGroup;
+			children = (
+				66EA8E321E27AE6500646797 /* API's */,
+				66EA8E2B1E27947400646797 /* NetworkManager.swift */,
+				66EA8E351E27AF2600646797 /* APIBuilder.swift */,
+			);
+			name = "Network Manager";
+			sourceTree = "<group>";
+		};
+		66EA8E321E27AE6500646797 /* API's */ = {
+			isa = PBXGroup;
+			children = (
+				66EA8E331E27AF0900646797 /* SignUpApi.swift */,
+			);
+			name = "API's";
 			sourceTree = "<group>";
 		};
 		BEC2801EB999DAFA944018A1 /* Pods */ = {
@@ -352,11 +469,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66EA8E1B1E275A4000646797 /* password_noti.png in Resources */,
+				66EA8E111E275A4000646797 /* calendar_clock.png in Resources */,
+				66EA8E1D1E275A4000646797 /* save.png in Resources */,
+				66EA8E141E275A4000646797 /* delete_icon.png in Resources */,
 				66EA8DFB1E2517C400646797 /* LifeLine_icon.png in Resources */,
+				66EA8E131E275A4000646797 /* contact.png in Resources */,
+				66EA8E1E1E275A4000646797 /* user42.png in Resources */,
+				66EA8E181E275A4000646797 /* error-sign.png in Resources */,
 				66EA8D3F1E1F6B4300646797 /* LaunchScreen.storyboard in Resources */,
+				66EA8E191E275A4000646797 /* errorimage.png in Resources */,
+				66EA8E1C1E275A4000646797 /* person.png in Resources */,
+				66EA8E161E275A4000646797 /* drop_red.png in Resources */,
 				66EA8D681E1F700200646797 /* GoogleService-Info.plist in Resources */,
+				66EA8E121E275A4000646797 /* chat_bubble.png in Resources */,
 				66EA8D3C1E1F6B4300646797 /* Assets.xcassets in Resources */,
+				66EA8E151E275A4000646797 /* drop_black.png in Resources */,
+				66EA8E1F1E275A4000646797 /* user_noti.png in Resources */,
+				66EA8E171E275A4000646797 /* e-mail-envelope.png in Resources */,
 				66EA8D3A1E1F6B4300646797 /* Main.storyboard in Resources */,
+				66EA8E1A1E275A4000646797 /* message.png in Resources */,
+				66EA8E201E275A4000646797 /* watsapp_logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,8 +653,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				66EA8DF91E2510A300646797 /* HudBar.swift in Sources */,
+				66EA8E231E2760C400646797 /* SignUpView.swift in Sources */,
+				66EA8E261E2772D300646797 /* FloatLabelTextField-2.swift in Sources */,
 				66EA8DE61E24BDB700646797 /* LoginView.swift in Sources */,
+				66EA8E341E27AF0900646797 /* SignUpApi.swift in Sources */,
+				66EA8E2C1E27947400646797 /* NetworkManager.swift in Sources */,
+				66EA8E281E277D0400646797 /* Util.swift in Sources */,
 				66EA8DFD1E26611300646797 /* StringList.swift in Sources */,
+				66EA8E2E1E27A36900646797 /* SignUpInteractor.swift in Sources */,
+				66EA8E361E27AF2600646797 /* APIBuilder.swift in Sources */,
 				66EA8D351E1F6B4300646797 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -682,6 +822,7 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos/FBSDKLoginKit",
 				);
 				INFOPLIST_FILE = lifeline/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.isteer.lifeline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -702,6 +843,7 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos/FBSDKLoginKit",
 				);
 				INFOPLIST_FILE = lifeline/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.isteer.lifeline;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -26,14 +26,14 @@ class HudBar
     func showHudWithCustomImagesAndMessage(message:String,imageName:String,view:UIView)
     {
     
-        APESuperHUD.showOrUpdateHUD(icon: UIImage(named: imageName)!, message: message, duration: 3.0, presentingView: view, completion:
+        APESuperHUD.showOrUpdateHUD(icon: UIImage(named: imageName)!, message: message, duration: 1.5, presentingView: view, completion:
         { _ in
             
         })
     }
     func showHudWithLifeLineIconAndMessage(message:String,view:UIView)
     {
-        APESuperHUD.showOrUpdateHUD(icon: UIImage(named: "LifeLine_icon.png")!, message: message, duration: 3.0, presentingView: view, completion:
+        APESuperHUD.showOrUpdateHUD(icon: UIImage(named: "LifeLine_icon.png")!, message: message, duration: 1.5, presentingView: view, completion:
             { _ in
                 
         })
