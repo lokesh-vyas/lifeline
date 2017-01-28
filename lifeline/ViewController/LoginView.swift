@@ -104,6 +104,8 @@ class LoginView: UIViewController
     func goToProfileView()
     {
         HudBar.sharedInstance.hideHudFormView(view: self.view)
+        let reavalView = self.storyboard?.instantiateViewController(withIdentifier: "SWRevealViewController")
+          self.present(reavalView!, animated: true, completion: nil)
     }
     //MARK:- G+ Login
     @IBAction func googleLogin(_ sender: Any)
