@@ -28,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GGLContext.sharedInstance().configureWithError(&configureError)
        
         assert(configureError == nil, "Error configuring Google services: \(configureError)")
+        self.checkForViewControllers()
+        
         
         // Override point for customization after application launch.
         return true
@@ -64,6 +66,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
         
         return true
+    }
+    //MARK:- Check For View Controllers
+    func checkForViewControllers()
+    {
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        
+        if (UserDefaults.standard.value(forKey: StringList.LifeLine_User_ID.rawValue) != nil)
+        {
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "SWRevealViewController")
+            self.window?.rootViewController = initialViewController
+        }
+        else
+        {
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "LoginView")
+            let navigationController = UINavigationController.init(rootViewController: initialViewController)
+            
+            self.window?.rootViewController = navigationController
+        }
+        self.window?.makeKeyAndVisible()
     }
 
 
