@@ -20,3 +20,21 @@ extension String
         return result
     }
 }
+extension UINavigationController {
+    
+    func completelyTransparentBar()
+    {
+        navigationBar.setBackgroundImage(UIImage(), for:  .default)
+        navigationBar.shadowImage     = UIImage()
+        navigationBar.isTranslucent   = true
+        view.backgroundColor          = UIColor.black.withAlphaComponent(0.2)
+        navigationBar.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        
+        let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
+        if statusBar.responds(to: #selector(setter: UIView.backgroundColor))
+        {
+            statusBar.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+        }
+    }
+}

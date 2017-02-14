@@ -65,9 +65,33 @@ class RequestView: UIViewController
     {
         let SWRevealView = self.storyboard!.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
         self.navigationController?.present(SWRevealView, animated: true, completion: nil)
+        
     }
     //MARK:- btnSubmmitTapped
     @IBAction func btnSubmitTapped(_ sender: Any)
     {
     }
+}
+extension RequestView:UITextFieldDelegate
+{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    func textFieldDidBeginEditing(_ textField: UITextField)
+    {
+        if self.txtFieldHospitalBloodBankName == textField
+        {
+            let hospitalListView = self.storyboard!.instantiateViewController(withIdentifier: "HospitalListView") as! HospitalListView
+            let navController = UINavigationController(rootViewController: hospitalListView)
+            self.navigationController?.present(navController, animated: true, completion: nil)
+            
+            
+        }
+    }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
+    {
+       return true
+    }
+     
 }
