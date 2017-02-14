@@ -20,12 +20,18 @@ class ProfileView: UIViewController
     @IBOutlet weak var workAddressText: FloatLabelTextField!
     @IBOutlet weak var workPINText: FloatLabelTextField!
     @IBOutlet weak var workCityText: FloatLabelTextField!
+    @IBOutlet weak var profileScrollView: UIScrollView!
+    
+    //MARK:- viewWillAppear
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(true)
+        profileScrollView.contentSize = CGSize(width: self.view.frame.width, height: 1300)
+    }
     //MARK:- viewDidLoad
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
     }
     //MARK:- Back Button
     @IBAction func BackButton(_ sender: Any)

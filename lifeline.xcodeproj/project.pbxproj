@@ -189,6 +189,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		661274111E51D75E008FB81B /* Float Text Field */ = {
+			isa = PBXGroup;
+			children = (
+				66EA8E251E2772D300646797 /* FloatLabelTextField-2.swift */,
+			);
+			name = "Float Text Field";
+			sourceTree = "<group>";
+		};
 		663706C81E2FB08D00EC5EF3 /* SWRevalView */ = {
 			isa = PBXGroup;
 			children = (
@@ -432,8 +440,8 @@
 		66EA8E241E27729C00646797 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				661274111E51D75E008FB81B /* Float Text Field */,
 				66C5781B1E37799F00B235F4 /* Font */,
-				66EA8E251E2772D300646797 /* FloatLabelTextField-2.swift */,
 				66EA8E001E275A4000646797 /* Image For Support */,
 				663706C81E2FB08D00EC5EF3 /* SWRevalView */,
 			);
