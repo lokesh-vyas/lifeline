@@ -10,6 +10,7 @@ import UIKit
 import FBSDKCoreKit
 import Google
 import GoogleSignIn
+import GoogleMaps
 
 @UIApplicationMain
 
@@ -31,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.checkForViewControllers()
         
         
-        // Override point for customization after application launch.
+        GMSServices.provideAPIKey("!!!!!!")
         return true
     }
 
