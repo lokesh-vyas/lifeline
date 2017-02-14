@@ -1055,9 +1055,6 @@
                                                         <integer key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <outlet property="delegate" destination="Byb-JG-MpY" id="NpW-Uy-mA7"/>
-                                                </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Contact Person" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nch-d1-2WF" customClass="FloatLabelTextField" customModule="lifeline" customModuleProvider="target">
                                                 <rect key="frame" x="15" y="92" width="342" height="40"/>
@@ -1072,9 +1069,6 @@
                                                         <integer key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <outlet property="delegate" destination="Byb-JG-MpY" id="D5p-o6-jjr"/>
-                                                </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Contact Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jV1-E5-yHu" customClass="FloatLabelTextField" customModule="lifeline" customModuleProvider="target">
                                                 <rect key="frame" x="15" y="138" width="342" height="40"/>
@@ -1089,9 +1083,6 @@
                                                         <integer key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <outlet property="delegate" destination="Byb-JG-MpY" id="9qs-b0-D0J"/>
-                                                </connections>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.19579409249999999" colorSpace="calibratedRGB"/>
@@ -1155,6 +1146,9 @@
                                                             <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="btnWhatYouNeedTapped:" destination="yrd-hD-PsX" eventType="touchUpInside" id="gMX-6V-5In"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Bx-83-oKh">
                                                         <rect key="frame" x="183" y="1" width="165" height="40"/>
@@ -1163,6 +1157,9 @@
                                                             <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="btnWhenYouNeedTapped:" destination="yrd-hD-PsX" eventType="touchUpInside" id="Omi-Yb-jfv"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vzg-tf-OZl">
                                                         <rect key="frame" x="4" y="46" width="165" height="40"/>
@@ -1171,6 +1168,9 @@
                                                             <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="btnBloodGroupTapped:" destination="yrd-hD-PsX" eventType="touchUpInside" id="4GM-k0-V34"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wge-wf-c4a">
                                                         <rect key="frame" x="183" y="46" width="165" height="40"/>
@@ -1179,6 +1179,9 @@
                                                             <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="btnBloodUnitTapped:" destination="yrd-hD-PsX" eventType="touchUpInside" id="dsu-h6-nqz"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -1262,9 +1265,6 @@
                                                         <integer key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <outlet property="delegate" destination="Byb-JG-MpY" id="MSs-6N-hQM"/>
-                                                </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Doctor Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wG5-tu-clk" customClass="FloatLabelTextField" customModule="lifeline" customModuleProvider="target">
                                                 <rect key="frame" x="15" y="92" width="342" height="40"/>
@@ -1279,9 +1279,6 @@
                                                         <integer key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <outlet property="delegate" destination="Byb-JG-MpY" id="9zn-MU-11W"/>
-                                                </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Contact Number(Blood Bank/Hospital)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cwc-9E-9b3" customClass="FloatLabelTextField" customModule="lifeline" customModuleProvider="target">
                                                 <rect key="frame" x="15" y="138" width="342" height="40"/>
@@ -1296,9 +1293,6 @@
                                                         <integer key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <outlet property="delegate" destination="Byb-JG-MpY" id="Unq-5B-ucV"/>
-                                                </connections>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.19579409249999999" colorSpace="calibratedRGB"/>
@@ -1366,9 +1360,6 @@
                                                         <integer key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <outlet property="delegate" destination="Byb-JG-MpY" id="UOv-nd-Tnc"/>
-                                                </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Landmark" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y6Z-28-wV2" customClass="FloatLabelTextField" customModule="lifeline" customModuleProvider="target">
                                                 <rect key="frame" x="15" y="92" width="342" height="40"/>
@@ -1383,9 +1374,6 @@
                                                         <integer key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <outlet property="delegate" destination="Byb-JG-MpY" id="fcm-4H-dVX"/>
-                                                </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  City" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QIu-Tl-LdC" customClass="FloatLabelTextField" customModule="lifeline" customModuleProvider="target">
                                                 <rect key="frame" x="15" y="138" width="165" height="40"/>
@@ -1400,9 +1388,6 @@
                                                         <integer key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <outlet property="delegate" destination="Byb-JG-MpY" id="ecZ-cv-LMN"/>
-                                                </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQ3-L6-9qv">
                                                 <rect key="frame" x="311" y="46" width="46" height="40"/>
@@ -1411,6 +1396,9 @@
                                                     <constraint firstAttribute="height" constant="40" id="kdi-ru-Gpf"/>
                                                 </constraints>
                                                 <state key="normal" backgroundImage="Map_icon"/>
+                                                <connections>
+                                                    <action selector="btnGoogleMapTapped:" destination="yrd-hD-PsX" eventType="touchUpInside" id="f6T-Jd-vVa"/>
+                                                </connections>
                                             </button>
                                             <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  PIN Code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="237-ZS-f6d" customClass="FloatLabelTextField" customModule="lifeline" customModuleProvider="target">
                                                 <rect key="frame" x="192" y="138" width="165" height="40"/>
@@ -1425,9 +1413,6 @@
                                                         <integer key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <outlet property="delegate" destination="Byb-JG-MpY" id="Yzg-8M-dIo"/>
-                                                </connections>
                                             </textField>
                                         </subviews>
                                         <constraints>
@@ -1543,6 +1528,9 @@
                                                     <constraint firstAttribute="width" constant="49" id="5u2-t1-9kb"/>
                                                     <constraint firstAttribute="height" constant="31" id="lRL-d9-43b"/>
                                                 </constraints>
+                                                <connections>
+                                                    <action selector="switchShareTapped:" destination="yrd-hD-PsX" eventType="valueChanged" id="Ft8-iw-ZGg"/>
+                                                </connections>
                                             </switch>
                                         </subviews>
                                         <constraints>
@@ -1571,6 +1559,9 @@
                                                 <state key="normal" title="Submit" backgroundImage="Button_image">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="btnSubmitTapped:" destination="yrd-hD-PsX" eventType="touchUpInside" id="buz-tS-TCo"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -1625,13 +1616,31 @@
                         <barButtonItem key="leftBarButtonItem" image="Back_icon" id="IGI-rW-2Ub">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <action selector="BackButton:" destination="yrd-hD-PsX" id="wfX-5k-tl3"/>
+                                <action selector="btnBackTapped:" destination="yrd-hD-PsX" id="dB0-nr-5a0"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="1060"/>
+                    <connections>
+                        <outlet property="btnBloodGroup" destination="vzg-tf-OZl" id="90z-bR-GKF"/>
+                        <outlet property="btnBloodUnit" destination="wge-wf-c4a" id="FHU-X6-7C1"/>
+                        <outlet property="btnWhatYouNeed" destination="UM5-pu-tKE" id="mBw-lp-Kot"/>
+                        <outlet property="btnWhenYouNeed" destination="0Bx-83-oKh" id="TG3-Mn-Nar"/>
+                        <outlet property="imgSocialShare" destination="4yV-Ds-4xV" id="TqN-GW-0EM"/>
+                        <outlet property="txtFieldContactNumber" destination="jV1-E5-yHu" id="uwx-7A-xV0"/>
+                        <outlet property="txtFieldContactPerson" destination="Nch-d1-2WF" id="6ha-I6-0sN"/>
+                        <outlet property="txtFieldDoctorName" destination="wG5-tu-clk" id="wNI-VL-G7X"/>
+                        <outlet property="txtFieldHospitalBloodBankAddress" destination="WcT-Xy-gA4" id="TWE-CL-Wo6"/>
+                        <outlet property="txtFieldHospitalBloodBankAddressCity" destination="QIu-Tl-LdC" id="7Qu-OF-TAM"/>
+                        <outlet property="txtFieldHospitalBloodBankAddressLandMark" destination="Y6Z-28-wV2" id="Qno-gM-VMC"/>
+                        <outlet property="txtFieldHospitalBloodBankAddressPINCode" destination="237-ZS-f6d" id="cZ2-ve-Ovh"/>
+                        <outlet property="txtFieldHospitalBloodBankContactNumber" destination="cwc-9E-9b3" id="QvB-wG-Yqe"/>
+                        <outlet property="txtFieldHospitalBloodBankName" destination="KSd-oU-hqN" id="tVe-w4-LCq"/>
+                        <outlet property="txtFieldPatientName" destination="iUe-dH-BLt" id="SDE-lX-1ox"/>
+                        <outlet property="txtViewPersonalAppeal" destination="lf0-7I-pPL" id="8O6-mb-wbD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sbM-CU-DFI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
