@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.checkForViewControllers()
         
         
-        GMSServices.provideAPIKey("pura")
+        GMSServices.provideAPIKey("!!!!!!")
         return true
     }
 
