@@ -24,6 +24,7 @@ class SignUpView: UIViewController
     {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.completelyTransparentBar()
     }
     //MARK:- checkAvability
     @IBAction func checkAvability(_ sender: Any)

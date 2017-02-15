@@ -15,6 +15,7 @@ class FAQView: UIViewController,UIWebViewDelegate{
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        self.navigationController?.completelyTransparentBar()
         HudBar.sharedInstance.showHudWithMessage(message: "Please wait..", view: self.view)
         webView.loadRequest(NSURLRequest(url: NSURL(string: "www.google.com")! as URL) as URLRequest)
         // Do any additional setup after loading the view.

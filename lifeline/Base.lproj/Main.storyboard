@@ -1094,7 +1094,6 @@
                                                 </connections>
                                             </textField>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.19579409249999999" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="jV1-E5-yHu" secondAttribute="trailing" constant="18" id="4La-ob-qyS"/>
                                             <constraint firstAttribute="trailing" secondItem="Nch-d1-2WF" secondAttribute="trailing" constant="18" id="8e6-QT-6cN"/>
@@ -1218,6 +1217,7 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.19579409249999999" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="Who-jr-dXv" firstAttribute="leading" secondItem="yjc-pr-Aoj" secondAttribute="leading" constant="8" id="2GX-KP-t3s"/>
                                             <constraint firstItem="Who-jr-dXv" firstAttribute="top" secondItem="sWv-22-fDi" secondAttribute="bottom" constant="6" id="45o-JG-9Bu"/>
@@ -1313,7 +1313,6 @@
                                                 </connections>
                                             </textField>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.19579409249999999" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="cwc-9E-9b3" secondAttribute="bottom" constant="7" id="2h8-Sa-H0y"/>
                                             <constraint firstItem="KSd-oU-hqN" firstAttribute="top" secondItem="FYg-PM-k6H" secondAttribute="bottom" constant="9" id="3zV-ea-aFX"/>
@@ -1445,6 +1444,7 @@
                                                 </connections>
                                             </textField>
                                         </subviews>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.19579409249999999" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="237-ZS-f6d" secondAttribute="trailing" constant="18" id="2Fw-DD-Ufx"/>
                                             <constraint firstAttribute="trailing" secondItem="eAM-oi-dLi" secondAttribute="trailing" constant="7" id="4Zq-zk-GVR"/>
@@ -1524,7 +1524,6 @@
                                                 </connections>
                                             </textView>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.19579409249999999" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="ocU-FT-LRt" secondAttribute="trailing" constant="7" id="6o8-jb-6S5"/>
                                             <constraint firstAttribute="trailing" secondItem="lf0-7I-pPL" secondAttribute="trailing" constant="18" id="KZX-2k-YXi"/>
@@ -1566,6 +1565,7 @@
                                                 </connections>
                                             </switch>
                                         </subviews>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.19579409249999999" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="gii-AP-mNZ" firstAttribute="leading" secondItem="U5j-4n-tMz" secondAttribute="leading" constant="8" id="0Ck-YF-V2a"/>
                                             <constraint firstItem="4yV-Ds-4xV" firstAttribute="top" secondItem="U5j-4n-tMz" secondAttribute="top" constant="5" id="0Rx-Zh-fsU"/>
@@ -1797,7 +1797,6 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xzR-lU-lNy" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="OG2-W9-IDA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

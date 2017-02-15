@@ -13,7 +13,7 @@ class ChangePasswordView: UIViewController {
     //MARK:- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationController?.completelyTransparentBar()
         // Do any additional setup after loading the view.
     }
     //MARK:- Back Button

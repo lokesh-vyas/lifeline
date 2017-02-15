@@ -33,7 +33,7 @@ class RequestView: UIViewController
     //MARK:- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationController?.completelyTransparentBar()
         // Do any additional setup after loading the view.
     }
     //MARK:- btnWhatYouNeedTapped
@@ -85,13 +85,11 @@ extension RequestView:UITextFieldDelegate
             let hospitalListView = self.storyboard!.instantiateViewController(withIdentifier: "HospitalListView") as! HospitalListView
             let navController = UINavigationController(rootViewController: hospitalListView)
             self.navigationController?.present(navController, animated: true, completion: nil)
-            
-            
         }
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
     {
-       return true
+        return true
     }
-     
+    
 }

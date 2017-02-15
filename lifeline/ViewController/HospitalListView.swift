@@ -19,7 +19,6 @@ class HospitalListView: UIViewController {
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
         self.navigationController?.completelyTransparentBar()
         
         // Do any additional setup after loading the view.
