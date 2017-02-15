@@ -32,6 +32,7 @@ class ProfileView: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        self.navigationController?.completelyTransparentBar()
     }
     //MARK:- Back Button
     @IBAction func BackButton(_ sender: Any)
