@@ -22,4 +22,9 @@ class APIBuilder
         let api = CheckAvabilityApi(UserID: userID)
         return api
     }
+    //MARK:- Hospital List View API
+    func buildHospitalListView(searchString:String) -> HospitalListApi {
+        let api = HospitalListApi(SearchStr: searchString)
+        return api
+    }
 }

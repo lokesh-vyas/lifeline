@@ -57,4 +57,5 @@ public enum StringList: String
     case LifeLine_User_Email = "LifeLine_User_Email"
     case LifeLine_User_ID = "LifeLine_User_Unique_ID"
     case LL_Welcome_Message = "Welcome to LifeLine"
+    case LifeLine_HostName = "api.lifeline.services"
 }

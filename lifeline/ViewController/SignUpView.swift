@@ -32,15 +32,14 @@ class SignUpView: UIViewController
         view.endEditing(true)
         if (userIDTextField.text?.characters.count)! > 1
         {
-            SignUpInteractor.sharedInstance.delegate = self
-            SignUpInteractor.sharedInstance.signUPCallForServices(checkString: userIDTextField.text!, sucess:
+            SignUpInteractor.SharedInstance.delegate = self
+            SignUpInteractor.SharedInstance.signUPCallForServices(checkString: userIDTextField.text!, sucess:
                 {
                  _ in
                 }
             , filure:
                 {_ in
             })
-            
         }
         else
         {
@@ -159,7 +158,7 @@ extension SignUpView:UITextFieldDelegate
                 }
                 
             default:
-                print("Woof")
+                print("TODO")
             }
             
         }
