@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		0E0BE3E6DE4AF783417CC873 /* Pods_lifelineTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A7713EA892985CA8991C0DE /* Pods_lifelineTests.framework */; };
 		66316B801E53132500114055 /* HospitalListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66316B7F1E53132500114055 /* HospitalListView.swift */; };
+		66316B841E5572B800114055 /* HospitalListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66316B831E5572B800114055 /* HospitalListInteractor.swift */; };
+		66316B881E5575D700114055 /* HospitalListApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66316B871E5575D700114055 /* HospitalListApi.swift */; };
+		66316B8B1E557D4200114055 /* HospitalListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66316B8A1E557D4200114055 /* HospitalListCell.swift */; };
+		66316B8D1E557D8300114055 /* HospitalListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66316B8C1E557D8300114055 /* HospitalListCell.xib */; };
 		663706C71E2FB08400EC5EF3 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 663706C61E2FB08400EC5EF3 /* SWRevealViewController.m */; };
 		66C4E67D1E37258B00526C1D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C4E67C1E37258B00526C1D /* HomeView.swift */; };
 		66C4E67F1E3725A300526C1D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C4E67E1E3725A300526C1D /* ProfileView.swift */; };
@@ -91,6 +95,10 @@
 		1A7713EA892985CA8991C0DE /* Pods_lifelineTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lifelineTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65CFD1F97B4EDC4D89096216 /* Pods-lifelineUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lifelineUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-lifelineUITests/Pods-lifelineUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		66316B7F1E53132500114055 /* HospitalListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HospitalListView.swift; path = ViewController/HospitalListView.swift; sourceTree = "<group>"; };
+		66316B831E5572B800114055 /* HospitalListInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HospitalListInteractor.swift; sourceTree = "<group>"; };
+		66316B871E5575D700114055 /* HospitalListApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HospitalListApi.swift; path = "ViewModel/NetworkManager/API's/HospitalListApi.swift"; sourceTree = "<group>"; };
+		66316B8A1E557D4200114055 /* HospitalListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HospitalListCell.swift; path = Cell/HospitalListCell.swift; sourceTree = "<group>"; };
+		66316B8C1E557D8300114055 /* HospitalListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HospitalListCell.xib; path = Cell/HospitalListCell.xib; sourceTree = "<group>"; };
 		663706C41E2FB08400EC5EF3 /* lifeline-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "lifeline-Bridging-Header.h"; sourceTree = "<group>"; };
 		663706C51E2FB08400EC5EF3 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		663706C61E2FB08400EC5EF3 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
@@ -203,8 +211,26 @@
 			isa = PBXGroup;
 			children = (
 				66316B7F1E53132500114055 /* HospitalListView.swift */,
+				66316B831E5572B800114055 /* HospitalListInteractor.swift */,
 			);
 			name = "Hospital List View";
+			sourceTree = "<group>";
+		};
+		66316B811E54555E00114055 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				66316B891E557AE600114055 /* HospitalListCell */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		66316B891E557AE600114055 /* HospitalListCell */ = {
+			isa = PBXGroup;
+			children = (
+				66316B8A1E557D4200114055 /* HospitalListCell.swift */,
+				66316B8C1E557D8300114055 /* HospitalListCell.xib */,
+			);
+			name = HospitalListCell;
 			sourceTree = "<group>";
 		};
 		663706C81E2FB08D00EC5EF3 /* SWRevalView */ = {
@@ -325,6 +351,7 @@
 			children = (
 				66EA8D621E1F6F5800646797 /* AppDelegate */,
 				66EA8D641E1F6F8900646797 /* All ViewController */,
+				66316B811E54555E00114055 /* Cell */,
 				66EA8E291E27942000646797 /* View Model */,
 				66EA8DF71E25104E00646797 /* Helper */,
 				66EA8D651E1F6FA800646797 /* StoryBoard */,
@@ -481,6 +508,7 @@
 			isa = PBXGroup;
 			children = (
 				66EA8E331E27AF0900646797 /* SignUpApi.swift */,
+				66316B871E5575D700114055 /* HospitalListApi.swift */,
 			);
 			name = "API's";
 			sourceTree = "<group>";
@@ -635,6 +663,7 @@
 				66C5782A1E37799F00B235F4 /* segoeuisl.ttf in Resources */,
 				66EA8E111E275A4000646797 /* calendar_clock.png in Resources */,
 				66EA8E1D1E275A4000646797 /* save.png in Resources */,
+				66316B8D1E557D8300114055 /* HospitalListCell.xib in Resources */,
 				66C5782E1E37799F00B235F4 /* seguisbi.ttf in Resources */,
 				66EA8E141E275A4000646797 /* delete_icon.png in Resources */,
 				66C578271E37799F00B235F4 /* segoeuib.ttf in Resources */,
@@ -824,6 +853,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				66EA8DF91E2510A300646797 /* HudBar.swift in Sources */,
+				66316B8B1E557D4200114055 /* HospitalListCell.swift in Sources */,
 				66C4E68E1E37402B00526C1D /* RequestView.swift in Sources */,
 				66EA8E231E2760C400646797 /* SignUpView.swift in Sources */,
 				66C4E67D1E37258B00526C1D /* HomeView.swift in Sources */,
@@ -835,6 +865,8 @@
 				66EA8E2C1E27947400646797 /* NetworkManager.swift in Sources */,
 				66EA8E281E277D0400646797 /* Util.swift in Sources */,
 				66EA8DFD1E26611300646797 /* StringList.swift in Sources */,
+				66316B881E5575D700114055 /* HospitalListApi.swift in Sources */,
+				66316B841E5572B800114055 /* HospitalListInteractor.swift in Sources */,
 				66C4E6821E37273100526C1D /* RevalListView.swift in Sources */,
 				66C4E68B1E37400B00526C1D /* DonateView.swift in Sources */,
 				66EA8E2E1E27A36900646797 /* SignUpInteractor.swift in Sources */,

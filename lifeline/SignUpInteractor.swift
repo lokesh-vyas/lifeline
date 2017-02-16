@@ -17,18 +17,17 @@ protocol checkAvabilityProtocol
 
 class SignUpInteractor
 {
-    
-    static let sharedInstance : SignUpInteractor =
-        {
-            let instance = SignUpInteractor()
-            return instance
-    }()
+    class var SharedInstance : SignUpInteractor {
+        struct Shared {
+            static let Instance = SignUpInteractor()
+        }
+        return Shared.Instance
+    }
     var delegate:checkAvabilityProtocol?
     
     func signUPCallForServices(checkString:String,sucess:() -> Void ,filure:() -> Void)
     {
         let builder = APIBuilder.sharedInstance.buildSignUpApi(userID: checkString)
-        
         
         NetworkManager.sharedInstance.serviceCallForPOST(url: builder.URL, method: builder.method, parameters: builder.makeParams(),sucess:
             {

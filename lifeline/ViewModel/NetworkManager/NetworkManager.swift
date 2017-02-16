@@ -18,8 +18,8 @@ class NetworkManager
             return instance
     }()
     var sessionManager = Alamofire.SessionManager()
-        //SingleTon Object
-   
+    //SingleTon Object
+    
     //MARK:- Alamofire Implementation With Header
     init() {
         
@@ -29,26 +29,25 @@ class NetworkManager
     }
     func serviceCallForPOSTforHTTPS()
     {
-        let manager = NetworkReachabilityManager(host: "www.apple.com")
-        
+        let manager = NetworkReachabilityManager(host: "demo.frontman.isteer.com:8284")
         manager?.listener = { status in
             print("Network Status Changed: \(status)")
         }
-        
         manager?.startListening()
     }
     func serviceCallForPOST(url:String,method:String,parameters:Parameters,sucess:@escaping (JSON) -> Void,failure:@escaping () -> Void)
     {
+        print(parameters)
         let headers: HTTPHeaders = [
             "Content-Type": "application/json"
         ]
-        sessionManager.request(url, method: .post, parameters: parameters, headers:headers)
-       .responseJSON {
+        sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+            .responseJSON {
                 response in
-                                print(response.request!)
-                                print(response.response!) // URL response
-                                print(response.data!)     // server data
-                                print(response.result)
+                print(response.request!)
+                print(response.response!) // URL response
+                print(response.data!)     // server data
+                print(response.result)
                 
                 if response.result.isSuccess
                 {
@@ -60,10 +59,9 @@ class NetworkManager
                     failure()
                 }
         }
-
-    }
-    func serviceCallForGET(url:String,method:String,parameters:[String:String],sucess:(JSON) -> Void,failure:() -> Void)
-    {
         
+    }
+    func serviceCallForGET(url:String,method:String,sucess:(JSON) -> Void,failure:() -> Void)
+    {
     }
 }
