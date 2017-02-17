@@ -58,4 +58,5 @@ public enum StringList: String
     case LifeLine_User_ID = "LifeLine_User_Unique_ID"
     case LL_Welcome_Message = "Welcome to LifeLine"
     case LifeLine_HostName = "api.lifeline.services"
+    case LifeLine_Internet_Error_Message = "Unable to access service, Please try again leter."
 }

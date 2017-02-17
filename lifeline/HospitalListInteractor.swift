@@ -14,6 +14,20 @@ protocol HospitalListProtocol
     func SuccessHospitalListProtocol(jsonArray:JSON)
     func FailedHospitalListProtocol()
 }
+class HospitalListModel
+{
+    var CentreID:String? = nil
+    var HospitalName:String? = nil
+    var HospitalContactNumber:Int? = nil
+    var AddressLine:String? = nil
+    var City:String? = nil
+    var PINCode:String? = nil
+    var State:String? = nil
+    var Contry:String? = nil
+    var Landmark:String? = nil
+    var Latitude:String? = nil
+    var Longitude:String? = nil
+}
 class HospitalListInteractor
 {
     class var SharedInstance: HospitalListInteractor {

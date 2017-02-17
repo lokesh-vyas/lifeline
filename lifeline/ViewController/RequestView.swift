@@ -33,8 +33,23 @@ class RequestView: UIViewController
     //MARK:- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.textFieldPadding()
         self.navigationController?.completelyTransparentBar()
         // Do any additional setup after loading the view.
+    }
+    //MARK:- Text Field Padding
+    func textFieldPadding()
+    {
+        txtFieldPatientName.setLeftPaddingPoints(10.0)
+        txtFieldContactPerson.setLeftPaddingPoints(10.0)
+        txtFieldContactNumber.setLeftPaddingPoints(10.0)
+        txtFieldHospitalBloodBankName.setLeftPaddingPoints(10.0)
+        txtFieldDoctorName.setLeftPaddingPoints(10.0)
+        txtFieldHospitalBloodBankContactNumber.setLeftPaddingPoints(10.0)
+        txtFieldHospitalBloodBankAddress.setLeftPaddingPoints(10.0)
+        txtFieldHospitalBloodBankAddressLandMark.setLeftPaddingPoints(10.0)
+        txtFieldHospitalBloodBankAddressCity.setLeftPaddingPoints(10.0)
+        txtFieldHospitalBloodBankAddressPINCode.setLeftPaddingPoints(10.0)
     }
     //MARK:- btnWhatYouNeedTapped
     @IBAction func btnWhatYouNeedTapped(_ sender: Any)
@@ -83,6 +98,7 @@ extension RequestView:UITextFieldDelegate
         if self.txtFieldHospitalBloodBankName == textField
         {
             let hospitalListView = self.storyboard!.instantiateViewController(withIdentifier: "HospitalListView") as! HospitalListView
+            hospitalListView.delegate = self
             let navController = UINavigationController(rootViewController: hospitalListView)
             self.navigationController?.present(navController, animated: true, completion: nil)
         }
@@ -91,5 +107,25 @@ extension RequestView:UITextFieldDelegate
     {
         return true
     }
-    
+}
+//MARK:- HospitalListCompletDataProtocol
+extension RequestView:HospitalListCompletDataProtocol
+{
+    func SuccessHospitalListCompletData(ListData:HospitalListModel)
+    {
+        self.txtFieldHospitalBloodBankName.text = ListData.HospitalName
+        self.txtFieldHospitalBloodBankAddress.text = ListData.AddressLine
+        self.txtFieldHospitalBloodBankAddressCity.text = ListData.City
+        if ListData.HospitalContactNumber != nil
+        {
+            self.txtFieldHospitalBloodBankContactNumber.text = String(describing: ListData.HospitalContactNumber!)
+        }
+        else
+        {
+            self.txtFieldHospitalBloodBankContactNumber.text = ""
+        }
+        
+        self.txtFieldHospitalBloodBankAddressPINCode.text = ListData.PINCode
+        self.txtFieldHospitalBloodBankAddressLandMark.text = ListData.Landmark
+    }
 }
