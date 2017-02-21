@@ -17,14 +17,26 @@ class APIBuilder
     }()
     
     //MARK:- CHECKAVABILITY Api
-    func buildSignUpApi(userID:String) -> CheckAvabilityApi
+    func buildSignUpApi(emailID: String, Password: String, UserName: String) -> SignUpApi
     {
-        let api = CheckAvabilityApi(UserID: userID)
+        let api = SignUpApi(email: emailID, password: Password, userID: UserName)
         return api
     }
     //MARK:- Hospital List View API
     func buildHospitalListView(searchString:String) -> HospitalListApi {
         let api = HospitalListApi(SearchStr: searchString)
+        return api
+    }
+    //MARK:- buildCheck Avaibility
+    func buildCheckAvaibility(userID:String) -> CheckAvabilityApi
+    {
+        let api = CheckAvabilityApi(UserID: userID)
+        return api
+    }
+    //MARK:- buildCheck Avaibility
+    func buildForgetPasswordApi(userID:String) -> ForgetPasswordApi
+    {
+        let api = ForgetPasswordApi(UserID: userID)
         return api
     }
 }

@@ -41,6 +41,7 @@ class LoginView: UIViewController
     //MARK:- Forgot Password
     @IBAction func forgotPasswordAction(_ sender: Any)
     {
+        
     }
     //MARK:- CustomLogin
     @IBAction func customLoginAction(_ sender: Any)

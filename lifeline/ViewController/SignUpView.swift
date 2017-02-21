@@ -30,20 +30,14 @@ class SignUpView: UIViewController
     @IBAction func checkAvability(_ sender: Any)
     {
         view.endEditing(true)
-        if (userIDTextField.text?.characters.count)! > 1
+        if (userIDTextField.text?.characters.count)! > 3
         {
             SignUpInteractor.SharedInstance.delegate = self
-            SignUpInteractor.SharedInstance.signUPCallForServices(checkString: userIDTextField.text!, sucess:
-                {
-                 _ in
-                }
-            , filure:
-                {_ in
-            })
+            SignUpInteractor.SharedInstance.checkAvabilityCallForServices(checkString: userIDTextField.text!)
         }
         else
         {
-            self.view.makeToast("Minimum Two Characters Required", duration: 2.0, position: .bottom)
+            self.view.makeToast("User Id should be greater than three characters", duration: 3.0, position: .bottom)
         }
     }
     //MARK:- BackButtonAction
@@ -56,6 +50,11 @@ class SignUpView: UIViewController
     {
         view.endEditing(true)
         
+        if (userIDTextField.text?.characters.count)! < 3
+        {
+            self.view.makeToast("User Id should be greater than three characters", duration: 3.0, position: .bottom)
+            return
+        }
         if (userIDTextField.text?.characters.count)! < 1 || Email == nil || Password == nil || (emailTextField.text?.characters.count)! < 1 || (confirmTextField.text?.characters.count)! < 1 || (nameTextField.text?.characters.count)! < 1
         {
             self.view.makeToast("Please fill all fields", duration: 2.0, position: .bottom)
@@ -65,9 +64,9 @@ class SignUpView: UIViewController
                 if Password == true {
                     if passwordTextField.text == confirmTextField.text {
                         
-                        // self.view.makeToastActivity(.Center)
-                        UIApplication.shared.beginIgnoringInteractionEvents()
-                        //TODO:- Call Service
+                        HudBar.sharedInstance.showHudWithMessage(message: "Signin...", view: self.view)
+                        SignUpInteractor.SharedInstance.delegateSignUp = self
+                        SignUpInteractor.SharedInstance.signUPCallForServices(email: self.emailTextField.text!, password: self.passwordTextField.text!, userID: self.userIDTextField.text!)
                         
                     } else {
                         self.view.makeToast("Password mismatch", duration: 2.0, position: .bottom)
@@ -120,7 +119,13 @@ extension SignUpView:UITextFieldDelegate
             
             switch textField {
             case userIDTextField:
-                userIDTextField.removeErrorLine()
+                if typedString.characters.count > 3
+                {
+                    userIDTextField.removeErrorLine()
+                } else {
+                    userIDTextField.errorLine()
+                }
+                
                 
             case nameTextField:
                 nameTextField.removeErrorLine()
@@ -184,6 +189,35 @@ extension SignUpView : checkAvabilityProtocol
     }
     func checkAvailbaleFail()
     {
+        self.view.makeToast("Unable to access server, please try again later", duration: 3.0, position: .bottom)
+    }
+}
+extension SignUpView : successSignUpProtocol
+{
+    func successSignUp(success: Bool)
+    {
+        if success == true
+        {
+            HudBar.sharedInstance.hideHudFormView(view: self.view)
+            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "User Registered Successfully", view: self.view)
+            UserDefaults.standard.set(self.nameTextField.text, forKey: StringList.LifeLine_User_Name.rawValue)
+            UserDefaults.standard.set(self.emailTextField.text, forKey: StringList.LifeLine_User_Email.rawValue)
+            let deadlineTime = DispatchTime.now() + .seconds(2)
+            DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute:
+                {
+                    self.navigationController?.popViewController(animated: true)
+            })
+        }
+        else
+        {
+            HudBar.sharedInstance.hideHudFormView(view: self.view)
+            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "User id you entered is already in use please enter another user id", view: self.view)
+        }
+        
+    }
+    func failSignUp()
+    {
+        HudBar.sharedInstance.hideHudFormView(view: self.view)
         self.view.makeToast("Unable to access server, please try again later", duration: 2.0, position: .bottom)
     }
 }
