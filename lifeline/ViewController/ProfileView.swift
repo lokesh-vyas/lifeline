@@ -22,6 +22,9 @@ class ProfileView: UIViewController
     @IBOutlet weak var workCityText: FloatLabelTextField!
     @IBOutlet weak var profileScrollView: UIScrollView!
     
+    var DOBstring = String()
+
+    @IBOutlet var btnDOBOutlet: UIButton!
     //MARK:- viewWillAppear
     override func viewWillAppear(_ animated: Bool)
     {
@@ -46,6 +49,19 @@ class ProfileView: UIViewController
     }
     //MARK:- DateOfBirthAction
     @IBAction func DOBAction(_ sender: Any) {
+        
+        let viewCalendar: CalendarView = self.storyboard?.instantiateViewController(withIdentifier: "CalendarView") as! CalendarView
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        viewCalendar.delegate = self
+        viewCalendar.dateFormatter = dateFormatter
+        let headingString = "Confirm Your Date"
+        viewCalendar.calenderHeading = headingString
+        viewCalendar.calendar.maximumDate = Date() as Date
+        viewCalendar.modalPresentationStyle = .overCurrentContext
+        viewCalendar.view.backgroundColor =  UIColor.clear
+        viewCalendar.calendar.datePickerMode = UIDatePickerMode.date
+        self.present(viewCalendar, animated: true, completion: nil)
     }
     //MARK:- LastDonationDate
     @IBAction func lastDonationDate(_ sender: Any)
@@ -62,5 +78,20 @@ class ProfileView: UIViewController
     //MARK:- ProfileSubmitAction
     @IBAction func profileSubmitAction(_ sender: Any)
     {
+    }
+}
+extension ProfileView:ProtocolCalendar
+{
+    
+    func SuccessProtocolCalendar(valueSent: String)
+    {
+        self.DOBstring = valueSent
+        btnDOBOutlet.setTitle(self.DOBstring, for: .normal)
+        print("whenYouNeedString",self.DOBstring)
+    }
+    
+    func FailureProtocolCalendar(valueSent: String)
+    {
+        print("Try Again")
     }
 }
