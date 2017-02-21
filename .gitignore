@@ -56,7 +56,6 @@ fastlane/screenshots
 fastlane/test_output
 
 #General
-
 *.DS_Store
 .AppleDouble
 .LSOverride
@@ -78,4 +77,3 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
-Add Comment

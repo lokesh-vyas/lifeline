@@ -1,0 +1,1177 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0E0BE3E6DE4AF783417CC873 /* Pods_lifelineTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A7713EA892985CA8991C0DE /* Pods_lifelineTests.framework */; };
+		66316B801E53132500114055 /* HospitalListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66316B7F1E53132500114055 /* HospitalListView.swift */; };
+		66316B841E5572B800114055 /* HospitalListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66316B831E5572B800114055 /* HospitalListInteractor.swift */; };
+		66316B881E5575D700114055 /* HospitalListApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66316B871E5575D700114055 /* HospitalListApi.swift */; };
+		66316B8B1E557D4200114055 /* HospitalListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66316B8A1E557D4200114055 /* HospitalListCell.swift */; };
+		66316B8D1E557D8300114055 /* HospitalListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66316B8C1E557D8300114055 /* HospitalListCell.xib */; };
+		663706C71E2FB08400EC5EF3 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 663706C61E2FB08400EC5EF3 /* SWRevealViewController.m */; };
+		66C4E67D1E37258B00526C1D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C4E67C1E37258B00526C1D /* HomeView.swift */; };
+		66C4E67F1E3725A300526C1D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C4E67E1E3725A300526C1D /* ProfileView.swift */; };
+		66C4E6821E37273100526C1D /* RevalListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C4E6811E37273100526C1D /* RevalListView.swift */; };
+		66C4E6851E372AAA00526C1D /* FAQView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C4E6841E372AAA00526C1D /* FAQView.swift */; };
+		66C4E6881E372AD900526C1D /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C4E6871E372AD900526C1D /* ChangePasswordView.swift */; };
+		66C4E68B1E37400B00526C1D /* DonateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C4E68A1E37400B00526C1D /* DonateView.swift */; };
+		66C4E68E1E37402B00526C1D /* RequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C4E68D1E37402B00526C1D /* RequestView.swift */; };
+		66C4E6911E37404C00526C1D /* MyRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C4E6901E37404C00526C1D /* MyRequestView.swift */; };
+		66C578261E37799F00B235F4 /* segoeui.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 66C5781C1E37799F00B235F4 /* segoeui.ttf */; };
+		66C578271E37799F00B235F4 /* segoeuib.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 66C5781D1E37799F00B235F4 /* segoeuib.ttf */; };
+		66C578281E37799F00B235F4 /* segoeuii.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 66C5781E1E37799F00B235F4 /* segoeuii.ttf */; };
+		66C578291E37799F00B235F4 /* segoeuil.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 66C5781F1E37799F00B235F4 /* segoeuil.ttf */; };
+		66C5782A1E37799F00B235F4 /* segoeuisl.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 66C578201E37799F00B235F4 /* segoeuisl.ttf */; };
+		66C5782B1E37799F00B235F4 /* segoeuiz.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 66C578211E37799F00B235F4 /* segoeuiz.ttf */; };
+		66C5782C1E37799F00B235F4 /* seguili.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 66C578221E37799F00B235F4 /* seguili.ttf */; };
+		66C5782D1E37799F00B235F4 /* seguisb.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 66C578231E37799F00B235F4 /* seguisb.ttf */; };
+		66C5782E1E37799F00B235F4 /* seguisbi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 66C578241E37799F00B235F4 /* seguisbi.ttf */; };
+		66C5782F1E37799F00B235F4 /* seguisli.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 66C578251E37799F00B235F4 /* seguisli.ttf */; };
+		66EA8D351E1F6B4300646797 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EA8D341E1F6B4300646797 /* AppDelegate.swift */; };
+		66EA8D3A1E1F6B4300646797 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8D381E1F6B4300646797 /* Main.storyboard */; };
+		66EA8D3C1E1F6B4300646797 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8D3B1E1F6B4300646797 /* Assets.xcassets */; };
+		66EA8D3F1E1F6B4300646797 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8D3D1E1F6B4300646797 /* LaunchScreen.storyboard */; };
+		66EA8D4A1E1F6B4300646797 /* lifelineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EA8D491E1F6B4300646797 /* lifelineTests.swift */; };
+		66EA8D551E1F6B4300646797 /* lifelineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EA8D541E1F6B4300646797 /* lifelineUITests.swift */; };
+		66EA8D681E1F700200646797 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8D671E1F700200646797 /* GoogleService-Info.plist */; };
+		66EA8DE61E24BDB700646797 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EA8DE51E24BDB700646797 /* LoginView.swift */; };
+		66EA8DF51E24C9E200646797 /* FacebookCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66EA8DF31E24C9E200646797 /* FacebookCore.framework */; };
+		66EA8DF61E24C9E200646797 /* FacebookLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66EA8DF41E24C9E200646797 /* FacebookLogin.framework */; };
+		66EA8DF91E2510A300646797 /* HudBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EA8DF81E2510A300646797 /* HudBar.swift */; };
+		66EA8DFB1E2517C400646797 /* LifeLine_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8DFA1E2517C400646797 /* LifeLine_icon.png */; };
+		66EA8DFD1E26611300646797 /* StringList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EA8DFC1E26611300646797 /* StringList.swift */; };
+		66EA8E111E275A4000646797 /* calendar_clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8E011E275A4000646797 /* calendar_clock.png */; };
+		66EA8E121E275A4000646797 /* chat_bubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8E021E275A4000646797 /* chat_bubble.png */; };
+		66EA8E131E275A4000646797 /* contact.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8E031E275A4000646797 /* contact.png */; };
+		66EA8E141E275A4000646797 /* delete_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8E041E275A4000646797 /* delete_icon.png */; };
+		66EA8E151E275A4000646797 /* drop_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8E051E275A4000646797 /* drop_black.png */; };
+		66EA8E161E275A4000646797 /* drop_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8E061E275A4000646797 /* drop_red.png */; };
+		66EA8E171E275A4000646797 /* e-mail-envelope.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8E071E275A4000646797 /* e-mail-envelope.png */; };
+		66EA8E181E275A4000646797 /* error-sign.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8E081E275A4000646797 /* error-sign.png */; };
+		66EA8E191E275A4000646797 /* errorimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8E091E275A4000646797 /* errorimage.png */; };
+		66EA8E1A1E275A4000646797 /* message.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8E0A1E275A4000646797 /* message.png */; };
+		66EA8E1B1E275A4000646797 /* password_noti.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8E0B1E275A4000646797 /* password_noti.png */; };
+		66EA8E1C1E275A4000646797 /* person.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8E0C1E275A4000646797 /* person.png */; };
+		66EA8E1D1E275A4000646797 /* save.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8E0D1E275A4000646797 /* save.png */; };
+		66EA8E1E1E275A4000646797 /* user42.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8E0E1E275A4000646797 /* user42.png */; };
+		66EA8E1F1E275A4000646797 /* user_noti.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8E0F1E275A4000646797 /* user_noti.png */; };
+		66EA8E201E275A4000646797 /* watsapp_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8E101E275A4000646797 /* watsapp_logo.png */; };
+		66EA8E231E2760C400646797 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EA8E221E2760C400646797 /* SignUpView.swift */; };
+		66EA8E261E2772D300646797 /* FloatLabelTextField-2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EA8E251E2772D300646797 /* FloatLabelTextField-2.swift */; };
+		66EA8E281E277D0400646797 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EA8E271E277D0400646797 /* Util.swift */; };
+		66EA8E2C1E27947400646797 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EA8E2B1E27947400646797 /* NetworkManager.swift */; };
+		66EA8E2E1E27A36900646797 /* SignUpInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EA8E2D1E27A36900646797 /* SignUpInteractor.swift */; };
+		66EA8E341E27AF0900646797 /* SignUpApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EA8E331E27AF0900646797 /* SignUpApi.swift */; };
+		66EA8E361E27AF2600646797 /* APIBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EA8E351E27AF2600646797 /* APIBuilder.swift */; };
+		A9068F5979AA6D792A524992 /* Pods_lifeline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F70603F9C011A331ED033AE6 /* Pods_lifeline.framework */; };
+		B05FA975CF9454FEA9D2628C /* Pods_lifelineUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72C867B9743D7D3FEBBE575C /* Pods_lifelineUITests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		66EA8D461E1F6B4300646797 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66EA8D291E1F6B4200646797 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 66EA8D301E1F6B4200646797;
+			remoteInfo = lifeline;
+		};
+		66EA8D511E1F6B4300646797 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66EA8D291E1F6B4200646797 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 66EA8D301E1F6B4200646797;
+			remoteInfo = lifeline;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		07E6C19246F213CF70BD75C4 /* Pods-lifeline.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lifeline.release.xcconfig"; path = "Pods/Target Support Files/Pods-lifeline/Pods-lifeline.release.xcconfig"; sourceTree = "<group>"; };
+		19B74CD6720B8FE1E0D554ED /* Pods-lifelineUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lifelineUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-lifelineUITests/Pods-lifelineUITests.release.xcconfig"; sourceTree = "<group>"; };
+		1A7713EA892985CA8991C0DE /* Pods_lifelineTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lifelineTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		65CFD1F97B4EDC4D89096216 /* Pods-lifelineUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lifelineUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-lifelineUITests/Pods-lifelineUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		66316B7F1E53132500114055 /* HospitalListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HospitalListView.swift; path = ViewController/HospitalListView.swift; sourceTree = "<group>"; };
+		66316B831E5572B800114055 /* HospitalListInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HospitalListInteractor.swift; sourceTree = "<group>"; };
+		66316B871E5575D700114055 /* HospitalListApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HospitalListApi.swift; path = "ViewModel/NetworkManager/API's/HospitalListApi.swift"; sourceTree = "<group>"; };
+		66316B8A1E557D4200114055 /* HospitalListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HospitalListCell.swift; path = Cell/HospitalListCell.swift; sourceTree = "<group>"; };
+		66316B8C1E557D8300114055 /* HospitalListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HospitalListCell.xib; path = Cell/HospitalListCell.xib; sourceTree = "<group>"; };
+		663706C41E2FB08400EC5EF3 /* lifeline-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "lifeline-Bridging-Header.h"; sourceTree = "<group>"; };
+		663706C51E2FB08400EC5EF3 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		663706C61E2FB08400EC5EF3 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		66C4E67C1E37258B00526C1D /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeView.swift; path = ViewController/HomeView.swift; sourceTree = "<group>"; };
+		66C4E67E1E3725A300526C1D /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileView.swift; path = ViewController/ProfileView.swift; sourceTree = "<group>"; };
+		66C4E6811E37273100526C1D /* RevalListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RevalListView.swift; path = ViewController/RevalListView.swift; sourceTree = "<group>"; };
+		66C4E6841E372AAA00526C1D /* FAQView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FAQView.swift; path = ViewController/FAQView.swift; sourceTree = "<group>"; };
+		66C4E6871E372AD900526C1D /* ChangePasswordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangePasswordView.swift; path = ViewController/ChangePasswordView.swift; sourceTree = "<group>"; };
+		66C4E68A1E37400B00526C1D /* DonateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DonateView.swift; path = ViewController/DonateView.swift; sourceTree = "<group>"; };
+		66C4E68D1E37402B00526C1D /* RequestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestView.swift; path = ViewController/RequestView.swift; sourceTree = "<group>"; };
+		66C4E6901E37404C00526C1D /* MyRequestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyRequestView.swift; path = ViewController/MyRequestView.swift; sourceTree = "<group>"; };
+		66C5781C1E37799F00B235F4 /* segoeui.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = segoeui.ttf; sourceTree = "<group>"; };
+		66C5781D1E37799F00B235F4 /* segoeuib.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = segoeuib.ttf; sourceTree = "<group>"; };
+		66C5781E1E37799F00B235F4 /* segoeuii.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = segoeuii.ttf; sourceTree = "<group>"; };
+		66C5781F1E37799F00B235F4 /* segoeuil.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = segoeuil.ttf; sourceTree = "<group>"; };
+		66C578201E37799F00B235F4 /* segoeuisl.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = segoeuisl.ttf; sourceTree = "<group>"; };
+		66C578211E37799F00B235F4 /* segoeuiz.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = segoeuiz.ttf; sourceTree = "<group>"; };
+		66C578221E37799F00B235F4 /* seguili.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = seguili.ttf; sourceTree = "<group>"; };
+		66C578231E37799F00B235F4 /* seguisb.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = seguisb.ttf; sourceTree = "<group>"; };
+		66C578241E37799F00B235F4 /* seguisbi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = seguisbi.ttf; sourceTree = "<group>"; };
+		66C578251E37799F00B235F4 /* seguisli.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = seguisli.ttf; sourceTree = "<group>"; };
+		66EA8D311E1F6B4200646797 /* lifeline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lifeline.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		66EA8D341E1F6B4300646797 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		66EA8D391E1F6B4300646797 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		66EA8D3B1E1F6B4300646797 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		66EA8D3E1E1F6B4300646797 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		66EA8D401E1F6B4300646797 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		66EA8D451E1F6B4300646797 /* lifelineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = lifelineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		66EA8D491E1F6B4300646797 /* lifelineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lifelineTests.swift; sourceTree = "<group>"; };
+		66EA8D4B1E1F6B4300646797 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		66EA8D501E1F6B4300646797 /* lifelineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = lifelineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		66EA8D541E1F6B4300646797 /* lifelineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lifelineUITests.swift; sourceTree = "<group>"; };
+		66EA8D561E1F6B4300646797 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		66EA8D671E1F700200646797 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		66EA8DE51E24BDB700646797 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginView.swift; path = ViewController/LoginView.swift; sourceTree = "<group>"; };
+		66EA8DF31E24C9E200646797 /* FacebookCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookCore.framework; path = "../../Library/Developer/Xcode/DerivedData/lifeline-fjutkuuffxtxjbazhfblsqentrnc/Build/Products/Debug-iphonesimulator/FacebookCore/FacebookCore.framework"; sourceTree = "<group>"; };
+		66EA8DF41E24C9E200646797 /* FacebookLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookLogin.framework; path = "../../Library/Developer/Xcode/DerivedData/lifeline-fjutkuuffxtxjbazhfblsqentrnc/Build/Products/Debug-iphonesimulator/FacebookLogin/FacebookLogin.framework"; sourceTree = "<group>"; };
+		66EA8DF81E2510A300646797 /* HudBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HudBar.swift; path = Helper/HudBar.swift; sourceTree = "<group>"; };
+		66EA8DFA1E2517C400646797 /* LifeLine_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LifeLine_icon.png; path = ../LifeLine_icon.png; sourceTree = "<group>"; };
+		66EA8DFC1E26611300646797 /* StringList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringList.swift; path = Helper/StringList.swift; sourceTree = "<group>"; };
+		66EA8E011E275A4000646797 /* calendar_clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar_clock.png; sourceTree = "<group>"; };
+		66EA8E021E275A4000646797 /* chat_bubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat_bubble.png; sourceTree = "<group>"; };
+		66EA8E031E275A4000646797 /* contact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contact.png; sourceTree = "<group>"; };
+		66EA8E041E275A4000646797 /* delete_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete_icon.png; sourceTree = "<group>"; };
+		66EA8E051E275A4000646797 /* drop_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drop_black.png; sourceTree = "<group>"; };
+		66EA8E061E275A4000646797 /* drop_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drop_red.png; sourceTree = "<group>"; };
+		66EA8E071E275A4000646797 /* e-mail-envelope.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "e-mail-envelope.png"; sourceTree = "<group>"; };
+		66EA8E081E275A4000646797 /* error-sign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "error-sign.png"; sourceTree = "<group>"; };
+		66EA8E091E275A4000646797 /* errorimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = errorimage.png; sourceTree = "<group>"; };
+		66EA8E0A1E275A4000646797 /* message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = message.png; sourceTree = "<group>"; };
+		66EA8E0B1E275A4000646797 /* password_noti.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = password_noti.png; sourceTree = "<group>"; };
+		66EA8E0C1E275A4000646797 /* person.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person.png; sourceTree = "<group>"; };
+		66EA8E0D1E275A4000646797 /* save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save.png; sourceTree = "<group>"; };
+		66EA8E0E1E275A4000646797 /* user42.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user42.png; sourceTree = "<group>"; };
+		66EA8E0F1E275A4000646797 /* user_noti.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_noti.png; sourceTree = "<group>"; };
+		66EA8E101E275A4000646797 /* watsapp_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = watsapp_logo.png; sourceTree = "<group>"; };
+		66EA8E221E2760C400646797 /* SignUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpView.swift; path = ViewController/SignUpView.swift; sourceTree = "<group>"; };
+		66EA8E251E2772D300646797 /* FloatLabelTextField-2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FloatLabelTextField-2.swift"; sourceTree = "<group>"; };
+		66EA8E271E277D0400646797 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Util.swift; path = Helper/Util.swift; sourceTree = "<group>"; };
+		66EA8E2B1E27947400646797 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = ViewModel/NetworkManager/NetworkManager.swift; sourceTree = "<group>"; };
+		66EA8E2D1E27A36900646797 /* SignUpInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpInteractor.swift; sourceTree = "<group>"; };
+		66EA8E331E27AF0900646797 /* SignUpApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpApi.swift; path = "ViewModel/NetworkManager/API's/SignUpApi.swift"; sourceTree = "<group>"; };
+		66EA8E351E27AF2600646797 /* APIBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIBuilder.swift; path = ViewModel/NetworkManager/APIBuilder.swift; sourceTree = "<group>"; };
+		72C867B9743D7D3FEBBE575C /* Pods_lifelineUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lifelineUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D9BDF37B76916911FB2601D /* Pods-lifelineTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lifelineTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-lifelineTests/Pods-lifelineTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A1C04368EFB0041F5F1BF37B /* Pods-lifeline.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lifeline.debug.xcconfig"; path = "Pods/Target Support Files/Pods-lifeline/Pods-lifeline.debug.xcconfig"; sourceTree = "<group>"; };
+		C842625428E443FAA30A6CA1 /* Pods-lifelineTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lifelineTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-lifelineTests/Pods-lifelineTests.release.xcconfig"; sourceTree = "<group>"; };
+		F70603F9C011A331ED033AE6 /* Pods_lifeline.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lifeline.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		66EA8D2E1E1F6B4200646797 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66EA8DF51E24C9E200646797 /* FacebookCore.framework in Frameworks */,
+				66EA8DF61E24C9E200646797 /* FacebookLogin.framework in Frameworks */,
+				A9068F5979AA6D792A524992 /* Pods_lifeline.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66EA8D421E1F6B4300646797 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E0BE3E6DE4AF783417CC873 /* Pods_lifelineTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66EA8D4D1E1F6B4300646797 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B05FA975CF9454FEA9D2628C /* Pods_lifelineUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		661274111E51D75E008FB81B /* Float Text Field */ = {
+			isa = PBXGroup;
+			children = (
+				66EA8E251E2772D300646797 /* FloatLabelTextField-2.swift */,
+			);
+			name = "Float Text Field";
+			sourceTree = "<group>";
+		};
+		66316B7E1E53130000114055 /* Hospital List View */ = {
+			isa = PBXGroup;
+			children = (
+				66316B7F1E53132500114055 /* HospitalListView.swift */,
+				66316B831E5572B800114055 /* HospitalListInteractor.swift */,
+			);
+			name = "Hospital List View";
+			sourceTree = "<group>";
+		};
+		66316B811E54555E00114055 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				66316B891E557AE600114055 /* HospitalListCell */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		66316B891E557AE600114055 /* HospitalListCell */ = {
+			isa = PBXGroup;
+			children = (
+				66316B8A1E557D4200114055 /* HospitalListCell.swift */,
+				66316B8C1E557D8300114055 /* HospitalListCell.xib */,
+			);
+			name = HospitalListCell;
+			sourceTree = "<group>";
+		};
+		663706C81E2FB08D00EC5EF3 /* SWRevalView */ = {
+			isa = PBXGroup;
+			children = (
+				663706C51E2FB08400EC5EF3 /* SWRevealViewController.h */,
+				663706C61E2FB08400EC5EF3 /* SWRevealViewController.m */,
+				663706C41E2FB08400EC5EF3 /* lifeline-Bridging-Header.h */,
+			);
+			name = SWRevalView;
+			sourceTree = "<group>";
+		};
+		66C4E67A1E37251300526C1D /* ProfileView */ = {
+			isa = PBXGroup;
+			children = (
+				66C4E67E1E3725A300526C1D /* ProfileView.swift */,
+			);
+			name = ProfileView;
+			sourceTree = "<group>";
+		};
+		66C4E67B1E37252600526C1D /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				66C4E67C1E37258B00526C1D /* HomeView.swift */,
+			);
+			name = HomeView;
+			sourceTree = "<group>";
+		};
+		66C4E6801E37270B00526C1D /* RevalListView */ = {
+			isa = PBXGroup;
+			children = (
+				66C4E6811E37273100526C1D /* RevalListView.swift */,
+			);
+			name = RevalListView;
+			sourceTree = "<group>";
+		};
+		66C4E6831E372A9300526C1D /* FAQ */ = {
+			isa = PBXGroup;
+			children = (
+				66C4E6841E372AAA00526C1D /* FAQView.swift */,
+			);
+			name = FAQ;
+			sourceTree = "<group>";
+		};
+		66C4E6861E372AB900526C1D /* ChangePassword */ = {
+			isa = PBXGroup;
+			children = (
+				66C4E6871E372AD900526C1D /* ChangePasswordView.swift */,
+			);
+			name = ChangePassword;
+			sourceTree = "<group>";
+		};
+		66C4E6891E373FEF00526C1D /* DonateView */ = {
+			isa = PBXGroup;
+			children = (
+				66C4E68A1E37400B00526C1D /* DonateView.swift */,
+			);
+			name = DonateView;
+			sourceTree = "<group>";
+		};
+		66C4E68C1E37401100526C1D /* RequestView */ = {
+			isa = PBXGroup;
+			children = (
+				66C4E68D1E37402B00526C1D /* RequestView.swift */,
+			);
+			name = RequestView;
+			sourceTree = "<group>";
+		};
+		66C4E68F1E37403100526C1D /* MyRequestView */ = {
+			isa = PBXGroup;
+			children = (
+				66C4E6901E37404C00526C1D /* MyRequestView.swift */,
+			);
+			name = MyRequestView;
+			sourceTree = "<group>";
+		};
+		66C5781B1E37799F00B235F4 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				66C5781C1E37799F00B235F4 /* segoeui.ttf */,
+				66C5781D1E37799F00B235F4 /* segoeuib.ttf */,
+				66C5781E1E37799F00B235F4 /* segoeuii.ttf */,
+				66C5781F1E37799F00B235F4 /* segoeuil.ttf */,
+				66C578201E37799F00B235F4 /* segoeuisl.ttf */,
+				66C578211E37799F00B235F4 /* segoeuiz.ttf */,
+				66C578221E37799F00B235F4 /* seguili.ttf */,
+				66C578231E37799F00B235F4 /* seguisb.ttf */,
+				66C578241E37799F00B235F4 /* seguisbi.ttf */,
+				66C578251E37799F00B235F4 /* seguisli.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		66EA8D281E1F6B4200646797 = {
+			isa = PBXGroup;
+			children = (
+				66EA8D331E1F6B4300646797 /* lifeline */,
+				66EA8D481E1F6B4300646797 /* lifelineTests */,
+				66EA8D531E1F6B4300646797 /* lifelineUITests */,
+				66EA8D321E1F6B4200646797 /* Products */,
+				BEC2801EB999DAFA944018A1 /* Pods */,
+				CF5AA6FC6AA11633D791EC96 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		66EA8D321E1F6B4200646797 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				66EA8D311E1F6B4200646797 /* lifeline.app */,
+				66EA8D451E1F6B4300646797 /* lifelineTests.xctest */,
+				66EA8D501E1F6B4300646797 /* lifelineUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		66EA8D331E1F6B4300646797 /* lifeline */ = {
+			isa = PBXGroup;
+			children = (
+				66EA8D621E1F6F5800646797 /* AppDelegate */,
+				66EA8D641E1F6F8900646797 /* All ViewController */,
+				66316B811E54555E00114055 /* Cell */,
+				66EA8E291E27942000646797 /* View Model */,
+				66EA8DF71E25104E00646797 /* Helper */,
+				66EA8D651E1F6FA800646797 /* StoryBoard */,
+				66EA8D661E1F6FBF00646797 /* PlistFiles */,
+				66EA8E241E27729C00646797 /* Supporting Files */,
+			);
+			path = lifeline;
+			sourceTree = "<group>";
+		};
+		66EA8D481E1F6B4300646797 /* lifelineTests */ = {
+			isa = PBXGroup;
+			children = (
+				66EA8D491E1F6B4300646797 /* lifelineTests.swift */,
+				66EA8D4B1E1F6B4300646797 /* Info.plist */,
+			);
+			path = lifelineTests;
+			sourceTree = "<group>";
+		};
+		66EA8D531E1F6B4300646797 /* lifelineUITests */ = {
+			isa = PBXGroup;
+			children = (
+				66EA8D541E1F6B4300646797 /* lifelineUITests.swift */,
+				66EA8D561E1F6B4300646797 /* Info.plist */,
+			);
+			path = lifelineUITests;
+			sourceTree = "<group>";
+		};
+		66EA8D621E1F6F5800646797 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				66EA8D341E1F6B4300646797 /* AppDelegate.swift */,
+			);
+			name = AppDelegate;
+			sourceTree = "<group>";
+		};
+		66EA8D641E1F6F8900646797 /* All ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				66C4E67B1E37252600526C1D /* HomeView */,
+				66C4E6891E373FEF00526C1D /* DonateView */,
+				66C4E68C1E37401100526C1D /* RequestView */,
+				66C4E68F1E37403100526C1D /* MyRequestView */,
+				66C4E6861E372AB900526C1D /* ChangePassword */,
+				66C4E6831E372A9300526C1D /* FAQ */,
+				66C4E67A1E37251300526C1D /* ProfileView */,
+				66EA8E211E2760A000646797 /* Sign Up View */,
+				66C4E6801E37270B00526C1D /* RevalListView */,
+				66EA8DE41E24BD3B00646797 /* LoginView  */,
+				66316B7E1E53130000114055 /* Hospital List View */,
+			);
+			name = "All ViewController";
+			sourceTree = "<group>";
+		};
+		66EA8D651E1F6FA800646797 /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				66EA8D381E1F6B4300646797 /* Main.storyboard */,
+				66EA8D3B1E1F6B4300646797 /* Assets.xcassets */,
+				66EA8D3D1E1F6B4300646797 /* LaunchScreen.storyboard */,
+			);
+			name = StoryBoard;
+			sourceTree = "<group>";
+		};
+		66EA8D661E1F6FBF00646797 /* PlistFiles */ = {
+			isa = PBXGroup;
+			children = (
+				66EA8D671E1F700200646797 /* GoogleService-Info.plist */,
+				66EA8D401E1F6B4300646797 /* Info.plist */,
+			);
+			name = PlistFiles;
+			sourceTree = "<group>";
+		};
+		66EA8DE41E24BD3B00646797 /* LoginView  */ = {
+			isa = PBXGroup;
+			children = (
+				66EA8DE51E24BDB700646797 /* LoginView.swift */,
+			);
+			name = "LoginView ";
+			sourceTree = "<group>";
+		};
+		66EA8DF71E25104E00646797 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				66EA8DF81E2510A300646797 /* HudBar.swift */,
+				66EA8DFC1E26611300646797 /* StringList.swift */,
+				66EA8E271E277D0400646797 /* Util.swift */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
+		66EA8E001E275A4000646797 /* Image For Support */ = {
+			isa = PBXGroup;
+			children = (
+				66EA8DFA1E2517C400646797 /* LifeLine_icon.png */,
+				66EA8E011E275A4000646797 /* calendar_clock.png */,
+				66EA8E021E275A4000646797 /* chat_bubble.png */,
+				66EA8E031E275A4000646797 /* contact.png */,
+				66EA8E041E275A4000646797 /* delete_icon.png */,
+				66EA8E051E275A4000646797 /* drop_black.png */,
+				66EA8E061E275A4000646797 /* drop_red.png */,
+				66EA8E071E275A4000646797 /* e-mail-envelope.png */,
+				66EA8E081E275A4000646797 /* error-sign.png */,
+				66EA8E091E275A4000646797 /* errorimage.png */,
+				66EA8E0A1E275A4000646797 /* message.png */,
+				66EA8E0B1E275A4000646797 /* password_noti.png */,
+				66EA8E0C1E275A4000646797 /* person.png */,
+				66EA8E0D1E275A4000646797 /* save.png */,
+				66EA8E0E1E275A4000646797 /* user42.png */,
+				66EA8E0F1E275A4000646797 /* user_noti.png */,
+				66EA8E101E275A4000646797 /* watsapp_logo.png */,
+			);
+			path = "Image For Support";
+			sourceTree = "<group>";
+		};
+		66EA8E211E2760A000646797 /* Sign Up View */ = {
+			isa = PBXGroup;
+			children = (
+				66EA8E221E2760C400646797 /* SignUpView.swift */,
+				66EA8E2D1E27A36900646797 /* SignUpInteractor.swift */,
+			);
+			name = "Sign Up View";
+			sourceTree = "<group>";
+		};
+		66EA8E241E27729C00646797 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				661274111E51D75E008FB81B /* Float Text Field */,
+				66C5781B1E37799F00B235F4 /* Font */,
+				66EA8E001E275A4000646797 /* Image For Support */,
+				663706C81E2FB08D00EC5EF3 /* SWRevalView */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		66EA8E291E27942000646797 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				66EA8E2A1E27942800646797 /* Network Manager */,
+			);
+			name = "View Model";
+			sourceTree = "<group>";
+		};
+		66EA8E2A1E27942800646797 /* Network Manager */ = {
+			isa = PBXGroup;
+			children = (
+				66EA8E321E27AE6500646797 /* API's */,
+				66EA8E2B1E27947400646797 /* NetworkManager.swift */,
+				66EA8E351E27AF2600646797 /* APIBuilder.swift */,
+			);
+			name = "Network Manager";
+			sourceTree = "<group>";
+		};
+		66EA8E321E27AE6500646797 /* API's */ = {
+			isa = PBXGroup;
+			children = (
+				66EA8E331E27AF0900646797 /* SignUpApi.swift */,
+				66316B871E5575D700114055 /* HospitalListApi.swift */,
+			);
+			name = "API's";
+			sourceTree = "<group>";
+		};
+		BEC2801EB999DAFA944018A1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A1C04368EFB0041F5F1BF37B /* Pods-lifeline.debug.xcconfig */,
+				07E6C19246F213CF70BD75C4 /* Pods-lifeline.release.xcconfig */,
+				8D9BDF37B76916911FB2601D /* Pods-lifelineTests.debug.xcconfig */,
+				C842625428E443FAA30A6CA1 /* Pods-lifelineTests.release.xcconfig */,
+				65CFD1F97B4EDC4D89096216 /* Pods-lifelineUITests.debug.xcconfig */,
+				19B74CD6720B8FE1E0D554ED /* Pods-lifelineUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		CF5AA6FC6AA11633D791EC96 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				66EA8DF31E24C9E200646797 /* FacebookCore.framework */,
+				66EA8DF41E24C9E200646797 /* FacebookLogin.framework */,
+				F70603F9C011A331ED033AE6 /* Pods_lifeline.framework */,
+				1A7713EA892985CA8991C0DE /* Pods_lifelineTests.framework */,
+				72C867B9743D7D3FEBBE575C /* Pods_lifelineUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		66EA8D301E1F6B4200646797 /* lifeline */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 66EA8D591E1F6B4300646797 /* Build configuration list for PBXNativeTarget "lifeline" */;
+			buildPhases = (
+				9969C3B95CB28646138AC321 /* [CP] Check Pods Manifest.lock */,
+				66EA8D2D1E1F6B4200646797 /* Sources */,
+				66EA8D2E1E1F6B4200646797 /* Frameworks */,
+				66EA8D2F1E1F6B4200646797 /* Resources */,
+				2F448007EA5E0C50E26C9696 /* [CP] Embed Pods Frameworks */,
+				BAE5330AC3598A8A0F7CD6B2 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = lifeline;
+			productName = lifeline;
+			productReference = 66EA8D311E1F6B4200646797 /* lifeline.app */;
+			productType = "com.apple.product-type.application";
+		};
+		66EA8D441E1F6B4300646797 /* lifelineTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 66EA8D5C1E1F6B4300646797 /* Build configuration list for PBXNativeTarget "lifelineTests" */;
+			buildPhases = (
+				2F86FA18122190DE569E14B3 /* [CP] Check Pods Manifest.lock */,
+				66EA8D411E1F6B4300646797 /* Sources */,
+				66EA8D421E1F6B4300646797 /* Frameworks */,
+				66EA8D431E1F6B4300646797 /* Resources */,
+				36B16FC17ABE0919F461D547 /* [CP] Embed Pods Frameworks */,
+				4F93853DEA3783A09A70790E /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				66EA8D471E1F6B4300646797 /* PBXTargetDependency */,
+			);
+			name = lifelineTests;
+			productName = lifelineTests;
+			productReference = 66EA8D451E1F6B4300646797 /* lifelineTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		66EA8D4F1E1F6B4300646797 /* lifelineUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 66EA8D5F1E1F6B4300646797 /* Build configuration list for PBXNativeTarget "lifelineUITests" */;
+			buildPhases = (
+				9D20F5EAE907225BD5714693 /* [CP] Check Pods Manifest.lock */,
+				66EA8D4C1E1F6B4300646797 /* Sources */,
+				66EA8D4D1E1F6B4300646797 /* Frameworks */,
+				66EA8D4E1E1F6B4300646797 /* Resources */,
+				25C3DE5E9571AF309A8E431F /* [CP] Embed Pods Frameworks */,
+				10BC00D0FD74D6974C302223 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				66EA8D521E1F6B4300646797 /* PBXTargetDependency */,
+			);
+			name = lifelineUITests;
+			productName = lifelineUITests;
+			productReference = 66EA8D501E1F6B4300646797 /* lifelineUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		66EA8D291E1F6B4200646797 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = iSteer;
+				TargetAttributes = {
+					66EA8D301E1F6B4200646797 = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = FXZ4W6ZJ63;
+						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
+					};
+					66EA8D441E1F6B4300646797 = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = FXZ4W6ZJ63;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 66EA8D301E1F6B4200646797;
+					};
+					66EA8D4F1E1F6B4300646797 = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = FXZ4W6ZJ63;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 66EA8D301E1F6B4200646797;
+					};
+				};
+			};
+			buildConfigurationList = 66EA8D2C1E1F6B4200646797 /* Build configuration list for PBXProject "lifeline" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 66EA8D281E1F6B4200646797;
+			productRefGroup = 66EA8D321E1F6B4200646797 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				66EA8D301E1F6B4200646797 /* lifeline */,
+				66EA8D441E1F6B4300646797 /* lifelineTests */,
+				66EA8D4F1E1F6B4300646797 /* lifelineUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		66EA8D2F1E1F6B4200646797 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66EA8E1B1E275A4000646797 /* password_noti.png in Resources */,
+				66C5782C1E37799F00B235F4 /* seguili.ttf in Resources */,
+				66C5782A1E37799F00B235F4 /* segoeuisl.ttf in Resources */,
+				66EA8E111E275A4000646797 /* calendar_clock.png in Resources */,
+				66EA8E1D1E275A4000646797 /* save.png in Resources */,
+				66316B8D1E557D8300114055 /* HospitalListCell.xib in Resources */,
+				66C5782E1E37799F00B235F4 /* seguisbi.ttf in Resources */,
+				66EA8E141E275A4000646797 /* delete_icon.png in Resources */,
+				66C578271E37799F00B235F4 /* segoeuib.ttf in Resources */,
+				66EA8DFB1E2517C400646797 /* LifeLine_icon.png in Resources */,
+				66EA8E131E275A4000646797 /* contact.png in Resources */,
+				66EA8E1E1E275A4000646797 /* user42.png in Resources */,
+				66EA8E181E275A4000646797 /* error-sign.png in Resources */,
+				66EA8D3F1E1F6B4300646797 /* LaunchScreen.storyboard in Resources */,
+				66EA8E191E275A4000646797 /* errorimage.png in Resources */,
+				66C578261E37799F00B235F4 /* segoeui.ttf in Resources */,
+				66EA8E1C1E275A4000646797 /* person.png in Resources */,
+				66EA8E161E275A4000646797 /* drop_red.png in Resources */,
+				66EA8D681E1F700200646797 /* GoogleService-Info.plist in Resources */,
+				66EA8E121E275A4000646797 /* chat_bubble.png in Resources */,
+				66EA8D3C1E1F6B4300646797 /* Assets.xcassets in Resources */,
+				66C578291E37799F00B235F4 /* segoeuil.ttf in Resources */,
+				66EA8E151E275A4000646797 /* drop_black.png in Resources */,
+				66C5782D1E37799F00B235F4 /* seguisb.ttf in Resources */,
+				66C578281E37799F00B235F4 /* segoeuii.ttf in Resources */,
+				66EA8E1F1E275A4000646797 /* user_noti.png in Resources */,
+				66C5782F1E37799F00B235F4 /* seguisli.ttf in Resources */,
+				66EA8E171E275A4000646797 /* e-mail-envelope.png in Resources */,
+				66EA8D3A1E1F6B4300646797 /* Main.storyboard in Resources */,
+				66C5782B1E37799F00B235F4 /* segoeuiz.ttf in Resources */,
+				66EA8E1A1E275A4000646797 /* message.png in Resources */,
+				66EA8E201E275A4000646797 /* watsapp_logo.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66EA8D431E1F6B4300646797 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66EA8D4E1E1F6B4300646797 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		10BC00D0FD74D6974C302223 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-lifelineUITests/Pods-lifelineUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		25C3DE5E9571AF309A8E431F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-lifelineUITests/Pods-lifelineUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2F448007EA5E0C50E26C9696 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-lifeline/Pods-lifeline-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2F86FA18122190DE569E14B3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		36B16FC17ABE0919F461D547 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-lifelineTests/Pods-lifelineTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4F93853DEA3783A09A70790E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-lifelineTests/Pods-lifelineTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9969C3B95CB28646138AC321 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9D20F5EAE907225BD5714693 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BAE5330AC3598A8A0F7CD6B2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-lifeline/Pods-lifeline-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		66EA8D2D1E1F6B4200646797 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66EA8DF91E2510A300646797 /* HudBar.swift in Sources */,
+				66316B8B1E557D4200114055 /* HospitalListCell.swift in Sources */,
+				66C4E68E1E37402B00526C1D /* RequestView.swift in Sources */,
+				66EA8E231E2760C400646797 /* SignUpView.swift in Sources */,
+				66C4E67D1E37258B00526C1D /* HomeView.swift in Sources */,
+				66C4E6911E37404C00526C1D /* MyRequestView.swift in Sources */,
+				66C4E6881E372AD900526C1D /* ChangePasswordView.swift in Sources */,
+				66EA8E261E2772D300646797 /* FloatLabelTextField-2.swift in Sources */,
+				66EA8DE61E24BDB700646797 /* LoginView.swift in Sources */,
+				66EA8E341E27AF0900646797 /* SignUpApi.swift in Sources */,
+				66EA8E2C1E27947400646797 /* NetworkManager.swift in Sources */,
+				66EA8E281E277D0400646797 /* Util.swift in Sources */,
+				66EA8DFD1E26611300646797 /* StringList.swift in Sources */,
+				66316B881E5575D700114055 /* HospitalListApi.swift in Sources */,
+				66316B841E5572B800114055 /* HospitalListInteractor.swift in Sources */,
+				66C4E6821E37273100526C1D /* RevalListView.swift in Sources */,
+				66C4E68B1E37400B00526C1D /* DonateView.swift in Sources */,
+				66EA8E2E1E27A36900646797 /* SignUpInteractor.swift in Sources */,
+				66C4E6851E372AAA00526C1D /* FAQView.swift in Sources */,
+				66EA8E361E27AF2600646797 /* APIBuilder.swift in Sources */,
+				66316B801E53132500114055 /* HospitalListView.swift in Sources */,
+				66EA8D351E1F6B4300646797 /* AppDelegate.swift in Sources */,
+				66C4E67F1E3725A300526C1D /* ProfileView.swift in Sources */,
+				663706C71E2FB08400EC5EF3 /* SWRevealViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66EA8D411E1F6B4300646797 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66EA8D4A1E1F6B4300646797 /* lifelineTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66EA8D4C1E1F6B4300646797 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66EA8D551E1F6B4300646797 /* lifelineUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		66EA8D471E1F6B4300646797 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 66EA8D301E1F6B4200646797 /* lifeline */;
+			targetProxy = 66EA8D461E1F6B4300646797 /* PBXContainerItemProxy */;
+		};
+		66EA8D521E1F6B4300646797 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 66EA8D301E1F6B4200646797 /* lifeline */;
+			targetProxy = 66EA8D511E1F6B4300646797 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		66EA8D381E1F6B4300646797 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				66EA8D391E1F6B4300646797 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		66EA8D3D1E1F6B4300646797 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				66EA8D3E1E1F6B4300646797 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		66EA8D571E1F6B4300646797 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		66EA8D581E1F6B4300646797 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		66EA8D5A1E1F6B4300646797 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A1C04368EFB0041F5F1BF37B /* Pods-lifeline.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = FXZ4W6ZJ63;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/FBSDKCoreKit",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/FBSDKLoginKit",
+				);
+				INFOPLIST_FILE = lifeline/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.isteer.lifeline;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "lifeline/lifeline-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		66EA8D5B1E1F6B4300646797 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 07E6C19246F213CF70BD75C4 /* Pods-lifeline.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = FXZ4W6ZJ63;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/FBSDKCoreKit",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/FBSDKLoginKit",
+				);
+				INFOPLIST_FILE = lifeline/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.isteer.lifeline;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "lifeline/lifeline-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		66EA8D5D1E1F6B4300646797 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8D9BDF37B76916911FB2601D /* Pods-lifelineTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = FXZ4W6ZJ63;
+				INFOPLIST_FILE = lifelineTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.isteer.lifelineTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/lifeline.app/lifeline";
+			};
+			name = Debug;
+		};
+		66EA8D5E1E1F6B4300646797 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C842625428E443FAA30A6CA1 /* Pods-lifelineTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = FXZ4W6ZJ63;
+				INFOPLIST_FILE = lifelineTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.isteer.lifelineTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/lifeline.app/lifeline";
+			};
+			name = Release;
+		};
+		66EA8D601E1F6B4300646797 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65CFD1F97B4EDC4D89096216 /* Pods-lifelineUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = FXZ4W6ZJ63;
+				INFOPLIST_FILE = lifelineUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.isteer.lifelineUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = lifeline;
+			};
+			name = Debug;
+		};
+		66EA8D611E1F6B4300646797 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 19B74CD6720B8FE1E0D554ED /* Pods-lifelineUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = FXZ4W6ZJ63;
+				INFOPLIST_FILE = lifelineUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.isteer.lifelineUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = lifeline;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		66EA8D2C1E1F6B4200646797 /* Build configuration list for PBXProject "lifeline" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66EA8D571E1F6B4300646797 /* Debug */,
+				66EA8D581E1F6B4300646797 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		66EA8D591E1F6B4300646797 /* Build configuration list for PBXNativeTarget "lifeline" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66EA8D5A1E1F6B4300646797 /* Debug */,
+				66EA8D5B1E1F6B4300646797 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		66EA8D5C1E1F6B4300646797 /* Build configuration list for PBXNativeTarget "lifelineTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66EA8D5D1E1F6B4300646797 /* Debug */,
+				66EA8D5E1E1F6B4300646797 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		66EA8D5F1E1F6B4300646797 /* Build configuration list for PBXNativeTarget "lifelineUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66EA8D601E1F6B4300646797 /* Debug */,
+				66EA8D611E1F6B4300646797 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 66EA8D291E1F6B4200646797 /* Project object */;
+}
