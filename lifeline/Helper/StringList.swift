@@ -11,25 +11,28 @@ import Foundation
 //MARK:- URL LIST
 public enum URLList:String
 {
-    //case ACCESS      =               "http://api.lifeline.services/services/AccessV1.1"
-    //case BLOOD_REQUEST_SEARCH  =     "http://api.lifeline.services/services/BloodRequestSearchV1.1"
-    //case CONFIRM_DONATE      =       "http://api.lifeline.services/services/ConfirmDonateV1.1"
-    //case GET_REQUEST_DETAILS   =     "http://api.lifeline.services/services/GetRequestDetailsV1.1"
-    //case BLOOD_REQUIREMENT     =     "http://api.lifeline.services/services/BloodRequirementV1.1"
-    //case GET_COLLECTION_CENTRE_LIST = "http://api.lifeline.services/services/GetCollectionCentersListV1.1"
-    //case PROFILE_REGISTRATION   =    "http://api.lifeline.services/services/ProfileRegistrationV1.1"
-    //case MY_REQUESTS           =     "http://api.lifeline.services/services/MyRequestsV1.1"
-    //case REQUEST_STATUS_UPDATE  =     "http://api.lifeline.services/services/RequestStatusUpdateV1.1"
-    //case  Device_Token_Reg     =     "http://api.lifeline.services/services/DeviceDetailsV1.1"
-    //case LIFELINE_Get_Profile = "http://api.lifeline.services/services/GetProfileV1.1"
-    //
-    //case LIFELINE_Custom_Sign_Up = "https://api.lifeline.services/services/CustomSignUpV1.1"
-    //case LIFELINE_Change_Password =  "https://api.lifeline.services/services/ChangePasswordV1.1"
-    //case LIFELINE_UserIDAvilableityCheck = "https://api.lifeline.services/services/UserIDAvilableityCheckV1.1"
-    //case LIFELINE_ForgetPassword = "https://api.lifeline.services/services/ForgetPasswordV1.1"
-    //case LIFELINE_CustomLogin = "https://api.lifeline.services/services/CustomLoginV1.1"
-    //case GET_CAMPAGIN_DETAILS   =    "http://api.lifeline.services/services/GetCampaignDetailsV1.1"
+    //MARK:- Production URL's
+//    case ACCESS      =               "http://api.lifeline.services/services/AccessV1.1"
+//    case BLOOD_REQUEST_SEARCH  =     "http://api.lifeline.services/services/BloodRequestSearchV1.1"
+//    case CONFIRM_DONATE      =       "http://api.lifeline.services/services/ConfirmDonateV1.1"
+//    case GET_REQUEST_DETAILS   =     "http://api.lifeline.services/services/GetRequestDetailsV1.1"
+//    case BLOOD_REQUIREMENT     =     "http://api.lifeline.services/services/BloodRequirementV1.1"
+//    case GET_COLLECTION_CENTRE_LIST = "http://api.lifeline.services/services/GetCollectionCentersListV1.1"
+//    case PROFILE_REGISTRATION   =    "http://api.lifeline.services/services/ProfileRegistrationV1.1"
+//    case MY_REQUESTS           =     "http://api.lifeline.services/services/MyRequestsV1.1"
+//    case REQUEST_STATUS_UPDATE  =     "http://api.lifeline.services/services/RequestStatusUpdateV1.1"
+//    case  Device_Token_Reg     =     "http://api.lifeline.services/services/DeviceDetailsV1.1"
+//    case LIFELINE_Get_Profile = "http://api.lifeline.services/services/GetProfileV1.1"
+//    
+//    case LIFELINE_Custom_Sign_Up = "https://api.lifeline.services/services/CustomSignUpV1.1"
+//    case LIFELINE_Change_Password =  "https://api.lifeline.services/services/ChangePasswordV1.1"
+//    case LIFELINE_UserIDAvilableityCheck = "https://api.lifeline.services/services/UserIDAvilableityCheckV1.1"
+//    case LIFELINE_ForgetPassword = "https://api.lifeline.services/services/ForgetPasswordV1.1"
+//    case LIFELINE_CustomLogin = "https://api.lifeline.services/services/CustomLoginV1.1"
+//    case GET_CAMPAGIN_DETAILS   =    "http://api.lifeline.services/services/GetCampaignDetailsV1.1"
     
+     //MARK:- Development URL's
+
     case ACCESS                     = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.Access"
     case BLOOD_REQUEST_SEARCH       = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.BloodRequestSearch"
     case CONFIRM_DONATE             = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.ConfirmDonate"
