@@ -11,15 +11,7 @@ import UIKit
 class ProfileView: UIViewController
 {
     //MARK:- IBOutlet
-    @IBOutlet weak var nameTextField: FloatLabelTextField!
-    @IBOutlet weak var emailTextField: FloatLabelTextField!
-    @IBOutlet weak var contactNumberText: FloatLabelTextField!
-    @IBOutlet weak var homeAddressText: FloatLabelTextField!
-    @IBOutlet weak var homePINText: FloatLabelTextField!
-    @IBOutlet weak var homeCityText: FloatLabelTextField!
-    @IBOutlet weak var workAddressText: FloatLabelTextField!
-    @IBOutlet weak var workPINText: FloatLabelTextField!
-    @IBOutlet weak var workCityText: FloatLabelTextField!
+    
     @IBOutlet weak var profileScrollView: UIScrollView!
     
     var DOBstring = String()

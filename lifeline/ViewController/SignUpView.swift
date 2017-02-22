@@ -213,7 +213,6 @@ extension SignUpView : successSignUpProtocol
             HudBar.sharedInstance.hideHudFormView(view: self.view)
             HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "User id you entered is already in use please enter another user id", view: self.view)
         }
-        
     }
     func failSignUp()
     {

@@ -14,6 +14,7 @@
 		66316B8B1E557D4200114055 /* HospitalListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66316B8A1E557D4200114055 /* HospitalListCell.swift */; };
 		66316B8D1E557D8300114055 /* HospitalListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66316B8C1E557D8300114055 /* HospitalListCell.xib */; };
 		663706C71E2FB08400EC5EF3 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 663706C61E2FB08400EC5EF3 /* SWRevealViewController.m */; };
+		665111B41E5D9D8600A6AFAA /* ProfileViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665111B31E5D9D8600A6AFAA /* ProfileViewInteractor.swift */; };
 		66C4E67D1E37258B00526C1D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C4E67C1E37258B00526C1D /* HomeView.swift */; };
 		66C4E67F1E3725A300526C1D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C4E67E1E3725A300526C1D /* ProfileView.swift */; };
 		66C4E6821E37273100526C1D /* RevalListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C4E6811E37273100526C1D /* RevalListView.swift */; };
@@ -113,6 +114,7 @@
 		663706C41E2FB08400EC5EF3 /* lifeline-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "lifeline-Bridging-Header.h"; sourceTree = "<group>"; };
 		663706C51E2FB08400EC5EF3 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		663706C61E2FB08400EC5EF3 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		665111B31E5D9D8600A6AFAA /* ProfileViewInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewInteractor.swift; sourceTree = "<group>"; };
 		66C4E67C1E37258B00526C1D /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeView.swift; path = ViewController/HomeView.swift; sourceTree = "<group>"; };
 		66C4E67E1E3725A300526C1D /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileView.swift; path = ViewController/ProfileView.swift; sourceTree = "<group>"; };
 		66C4E6811E37273100526C1D /* RevalListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RevalListView.swift; path = ViewController/RevalListView.swift; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				66C4E67E1E3725A300526C1D /* ProfileView.swift */,
+				665111B31E5D9D8600A6AFAA /* ProfileViewInteractor.swift */,
 			);
 			name = ProfileView;
 			sourceTree = "<group>";
@@ -922,6 +925,7 @@
 				66EA8E2E1E27A36900646797 /* SignUpInteractor.swift in Sources */,
 				66C4E6851E372AAA00526C1D /* FAQView.swift in Sources */,
 				66EA8E361E27AF2600646797 /* APIBuilder.swift in Sources */,
+				665111B41E5D9D8600A6AFAA /* ProfileViewInteractor.swift in Sources */,
 				66316B801E53132500114055 /* HospitalListView.swift in Sources */,
 				66EA8D351E1F6B4300646797 /* AppDelegate.swift in Sources */,
 				EDE9AE941E5C35CE0031BCB0 /* BloodInfoView.swift in Sources */,

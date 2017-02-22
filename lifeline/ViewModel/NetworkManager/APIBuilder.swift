@@ -15,8 +15,8 @@ class APIBuilder
             let instance = APIBuilder()
             return instance
     }()
-    
-    //MARK:- CHECKAVABILITY Api
+
+    //MARK:- buildSignUpApi
     func buildSignUpApi(emailID: String, Password: String, UserName: String) -> SignUpApi
     {
         let api = SignUpApi(email: emailID, password: Password, userID: UserName)
@@ -37,6 +37,12 @@ class APIBuilder
     func buildForgetPasswordApi(userID:String) -> ForgetPasswordApi
     {
         let api = ForgetPasswordApi(UserID: userID)
+        return api
+    }
+    //MARK:- buildLoginApi
+    func buildLoginApi(Password: String, UserName: String) -> CustomLoginApi
+    {
+        let api = CustomLoginApi(userID: UserName, password: Password)
         return api
     }
 }

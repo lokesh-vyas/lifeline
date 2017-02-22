@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="EAy-Bt-t3J">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="EAy-Bt-t3J">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -57,7 +57,7 @@
                                                     </imageView>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Login" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K5m-1q-60j" customClass="FloatLabelTextField" customModule="lifeline" customModuleProvider="target">
                                                         <rect key="frame" x="55" y="1" width="157" height="38"/>
-                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                     </textField>
@@ -85,7 +85,7 @@
                                                     </imageView>
                                                     <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uo8-OC-NtF" customClass="FloatLabelTextField" customModule="lifeline" customModuleProvider="target">
                                                         <rect key="frame" x="55" y="1" width="157" height="38"/>
-                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                     </textField>
@@ -2138,7 +2138,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EAy-Bt-t3J" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="vDG-0H-GIB">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="vDG-0H-GIB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2156,7 +2156,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xzR-lU-lNy" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="OG2-W9-IDA">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="OG2-W9-IDA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2175,7 +2175,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5uU-Yw-cvt" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="CYN-TS-jfv">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="CYN-TS-jfv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2194,7 +2194,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="W96-jF-MdL" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="oCS-T6-nyV">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="oCS-T6-nyV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2794,16 +2794,7 @@
                     <size key="freeformSize" width="375" height="740"/>
                     <connections>
                         <outlet property="btnDOBOutlet" destination="goq-ur-qEv" id="igY-wM-ll1"/>
-                        <outlet property="contactNumberText" destination="KjB-od-Qw9" id="P1g-U7-1jj"/>
-                        <outlet property="emailTextField" destination="Cll-De-sAw" id="8TV-rR-n54"/>
-                        <outlet property="homeAddressText" destination="2nl-QR-EZ3" id="7Y4-Fn-QlK"/>
-                        <outlet property="homeCityText" destination="JOk-4K-2zk" id="ZKx-wy-EML"/>
-                        <outlet property="homePINText" destination="5d1-LB-2PY" id="Fm3-GA-MWV"/>
-                        <outlet property="nameTextField" destination="die-8M-tBC" id="laE-bD-1sU"/>
                         <outlet property="profileScrollView" destination="Zvh-yg-3QY" id="LQO-2o-Si7"/>
-                        <outlet property="workAddressText" destination="tQk-hY-1dr" id="XK9-eA-S4v"/>
-                        <outlet property="workCityText" destination="4Xt-Rg-XDY" id="Dor-8v-aYk"/>
-                        <outlet property="workPINText" destination="vFb-As-yO0" id="cmE-nQ-lkv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="07c-zk-T9X" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2816,7 +2807,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VXc-D5-0vM" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="HU0-rI-4ye">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="HU0-rI-4ye">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2835,7 +2826,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="l1b-SO-lU6" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="Ale-Vf-WZM">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="Ale-Vf-WZM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
