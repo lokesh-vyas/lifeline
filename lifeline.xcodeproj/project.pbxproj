@@ -70,6 +70,17 @@
 		66EA8E361E27AF2600646797 /* APIBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EA8E351E27AF2600646797 /* APIBuilder.swift */; };
 		A9068F5979AA6D792A524992 /* Pods_lifeline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F70603F9C011A331ED033AE6 /* Pods_lifeline.framework */; };
 		B05FA975CF9454FEA9D2628C /* Pods_lifelineUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72C867B9743D7D3FEBBE575C /* Pods_lifelineUITests.framework */; };
+		EDE9AE941E5C35CE0031BCB0 /* BloodInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE9AE931E5C35CE0031BCB0 /* BloodInfoView.swift */; };
+		EDE9AE981E5C3D110031BCB0 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE9AE971E5C3D110031BCB0 /* CalendarView.swift */; };
+		EDE9AE9A1E5C46440031BCB0 /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE9AE991E5C46440031BCB0 /* ShareView.swift */; };
+		EDE9AEA11E5C47D10031BCB0 /* chat.png in Resources */ = {isa = PBXBuildFile; fileRef = EDE9AE9B1E5C47D10031BCB0 /* chat.png */; };
+		EDE9AEA21E5C47D10031BCB0 /* cross.png in Resources */ = {isa = PBXBuildFile; fileRef = EDE9AE9C1E5C47D10031BCB0 /* cross.png */; };
+		EDE9AEA31E5C47D10031BCB0 /* facebbok.png in Resources */ = {isa = PBXBuildFile; fileRef = EDE9AE9D1E5C47D10031BCB0 /* facebbok.png */; };
+		EDE9AEA41E5C47D10031BCB0 /* mail.png in Resources */ = {isa = PBXBuildFile; fileRef = EDE9AE9E1E5C47D10031BCB0 /* mail.png */; };
+		EDE9AEA51E5C47D10031BCB0 /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = EDE9AE9F1E5C47D10031BCB0 /* twitter.png */; };
+		EDE9AEA61E5C47D10031BCB0 /* watsapp.png in Resources */ = {isa = PBXBuildFile; fileRef = EDE9AEA01E5C47D10031BCB0 /* watsapp.png */; };
+		EDE9AEA81E5C4AB30031BCB0 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE9AEA71E5C4AB30031BCB0 /* Social.framework */; };
+		EDE9AEAA1E5C4AD30031BCB0 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE9AEA91E5C4AD30031BCB0 /* MessageUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -166,6 +177,17 @@
 		8D9BDF37B76916911FB2601D /* Pods-lifelineTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lifelineTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-lifelineTests/Pods-lifelineTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A1C04368EFB0041F5F1BF37B /* Pods-lifeline.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lifeline.debug.xcconfig"; path = "Pods/Target Support Files/Pods-lifeline/Pods-lifeline.debug.xcconfig"; sourceTree = "<group>"; };
 		C842625428E443FAA30A6CA1 /* Pods-lifelineTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lifelineTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-lifelineTests/Pods-lifelineTests.release.xcconfig"; sourceTree = "<group>"; };
+		EDE9AE931E5C35CE0031BCB0 /* BloodInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BloodInfoView.swift; path = ../BloodInfoView.swift; sourceTree = "<group>"; };
+		EDE9AE971E5C3D110031BCB0 /* CalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarView.swift; path = ../CalendarView.swift; sourceTree = "<group>"; };
+		EDE9AE991E5C46440031BCB0 /* ShareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShareView.swift; path = ../ShareView.swift; sourceTree = "<group>"; };
+		EDE9AE9B1E5C47D10031BCB0 /* chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = chat.png; path = ../chat.png; sourceTree = "<group>"; };
+		EDE9AE9C1E5C47D10031BCB0 /* cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cross.png; path = ../cross.png; sourceTree = "<group>"; };
+		EDE9AE9D1E5C47D10031BCB0 /* facebbok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = facebbok.png; path = ../facebbok.png; sourceTree = "<group>"; };
+		EDE9AE9E1E5C47D10031BCB0 /* mail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mail.png; path = ../mail.png; sourceTree = "<group>"; };
+		EDE9AE9F1E5C47D10031BCB0 /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = twitter.png; path = ../twitter.png; sourceTree = "<group>"; };
+		EDE9AEA01E5C47D10031BCB0 /* watsapp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = watsapp.png; path = ../watsapp.png; sourceTree = "<group>"; };
+		EDE9AEA71E5C4AB30031BCB0 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		EDE9AEA91E5C4AD30031BCB0 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		F70603F9C011A331ED033AE6 /* Pods_lifeline.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lifeline.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -174,6 +196,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDE9AEAA1E5C4AD30031BCB0 /* MessageUI.framework in Frameworks */,
+				EDE9AEA81E5C4AB30031BCB0 /* Social.framework in Frameworks */,
 				66EA8DF51E24C9E200646797 /* FacebookCore.framework in Frameworks */,
 				66EA8DF61E24C9E200646797 /* FacebookLogin.framework in Frameworks */,
 				A9068F5979AA6D792A524992 /* Pods_lifeline.framework in Frameworks */,
@@ -393,6 +417,7 @@
 				66C4E67B1E37252600526C1D /* HomeView */,
 				66C4E6891E373FEF00526C1D /* DonateView */,
 				66C4E68C1E37401100526C1D /* RequestView */,
+				EDE9AEAB1E5C76640031BCB0 /* ShareView */,
 				66C4E68F1E37403100526C1D /* MyRequestView */,
 				66C4E6861E372AB900526C1D /* ChangePassword */,
 				66C4E6831E372A9300526C1D /* FAQ */,
@@ -435,6 +460,8 @@
 		66EA8DF71E25104E00646797 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				EDE9AE971E5C3D110031BCB0 /* CalendarView.swift */,
+				EDE9AE931E5C35CE0031BCB0 /* BloodInfoView.swift */,
 				66EA8DF81E2510A300646797 /* HudBar.swift */,
 				66EA8DFC1E26611300646797 /* StringList.swift */,
 				66EA8E271E277D0400646797 /* Util.swift */,
@@ -462,6 +489,12 @@
 				66EA8E0E1E275A4000646797 /* user42.png */,
 				66EA8E0F1E275A4000646797 /* user_noti.png */,
 				66EA8E101E275A4000646797 /* watsapp_logo.png */,
+				EDE9AE9B1E5C47D10031BCB0 /* chat.png */,
+				EDE9AE9C1E5C47D10031BCB0 /* cross.png */,
+				EDE9AE9D1E5C47D10031BCB0 /* facebbok.png */,
+				EDE9AE9E1E5C47D10031BCB0 /* mail.png */,
+				EDE9AE9F1E5C47D10031BCB0 /* twitter.png */,
+				EDE9AEA01E5C47D10031BCB0 /* watsapp.png */,
 			);
 			path = "Image For Support";
 			sourceTree = "<group>";
@@ -529,6 +562,8 @@
 		CF5AA6FC6AA11633D791EC96 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EDE9AEA91E5C4AD30031BCB0 /* MessageUI.framework */,
+				EDE9AEA71E5C4AB30031BCB0 /* Social.framework */,
 				66EA8DF31E24C9E200646797 /* FacebookCore.framework */,
 				66EA8DF41E24C9E200646797 /* FacebookLogin.framework */,
 				F70603F9C011A331ED033AE6 /* Pods_lifeline.framework */,
@@ -536,6 +571,14 @@
 				72C867B9743D7D3FEBBE575C /* Pods_lifelineUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EDE9AEAB1E5C76640031BCB0 /* ShareView */ = {
+			isa = PBXGroup;
+			children = (
+				EDE9AE991E5C46440031BCB0 /* ShareView.swift */,
+			);
+			name = ShareView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -660,24 +703,29 @@
 			files = (
 				66EA8E1B1E275A4000646797 /* password_noti.png in Resources */,
 				66C5782C1E37799F00B235F4 /* seguili.ttf in Resources */,
+				EDE9AEA41E5C47D10031BCB0 /* mail.png in Resources */,
 				66C5782A1E37799F00B235F4 /* segoeuisl.ttf in Resources */,
 				66EA8E111E275A4000646797 /* calendar_clock.png in Resources */,
 				66EA8E1D1E275A4000646797 /* save.png in Resources */,
 				66316B8D1E557D8300114055 /* HospitalListCell.xib in Resources */,
 				66C5782E1E37799F00B235F4 /* seguisbi.ttf in Resources */,
 				66EA8E141E275A4000646797 /* delete_icon.png in Resources */,
+				EDE9AEA21E5C47D10031BCB0 /* cross.png in Resources */,
 				66C578271E37799F00B235F4 /* segoeuib.ttf in Resources */,
 				66EA8DFB1E2517C400646797 /* LifeLine_icon.png in Resources */,
 				66EA8E131E275A4000646797 /* contact.png in Resources */,
 				66EA8E1E1E275A4000646797 /* user42.png in Resources */,
 				66EA8E181E275A4000646797 /* error-sign.png in Resources */,
 				66EA8D3F1E1F6B4300646797 /* LaunchScreen.storyboard in Resources */,
+				EDE9AEA11E5C47D10031BCB0 /* chat.png in Resources */,
 				66EA8E191E275A4000646797 /* errorimage.png in Resources */,
 				66C578261E37799F00B235F4 /* segoeui.ttf in Resources */,
 				66EA8E1C1E275A4000646797 /* person.png in Resources */,
 				66EA8E161E275A4000646797 /* drop_red.png in Resources */,
+				EDE9AEA51E5C47D10031BCB0 /* twitter.png in Resources */,
 				66EA8D681E1F700200646797 /* GoogleService-Info.plist in Resources */,
 				66EA8E121E275A4000646797 /* chat_bubble.png in Resources */,
+				EDE9AEA31E5C47D10031BCB0 /* facebbok.png in Resources */,
 				66EA8D3C1E1F6B4300646797 /* Assets.xcassets in Resources */,
 				66C578291E37799F00B235F4 /* segoeuil.ttf in Resources */,
 				66EA8E151E275A4000646797 /* drop_black.png in Resources */,
@@ -687,6 +735,7 @@
 				66C5782F1E37799F00B235F4 /* seguisli.ttf in Resources */,
 				66EA8E171E275A4000646797 /* e-mail-envelope.png in Resources */,
 				66EA8D3A1E1F6B4300646797 /* Main.storyboard in Resources */,
+				EDE9AEA61E5C47D10031BCB0 /* watsapp.png in Resources */,
 				66C5782B1E37799F00B235F4 /* segoeuiz.ttf in Resources */,
 				66EA8E1A1E275A4000646797 /* message.png in Resources */,
 				66EA8E201E275A4000646797 /* watsapp_logo.png in Resources */,
@@ -858,6 +907,7 @@
 				66EA8E231E2760C400646797 /* SignUpView.swift in Sources */,
 				66C4E67D1E37258B00526C1D /* HomeView.swift in Sources */,
 				66C4E6911E37404C00526C1D /* MyRequestView.swift in Sources */,
+				EDE9AE981E5C3D110031BCB0 /* CalendarView.swift in Sources */,
 				66C4E6881E372AD900526C1D /* ChangePasswordView.swift in Sources */,
 				66EA8E261E2772D300646797 /* FloatLabelTextField-2.swift in Sources */,
 				66EA8DE61E24BDB700646797 /* LoginView.swift in Sources */,
@@ -874,6 +924,8 @@
 				66EA8E361E27AF2600646797 /* APIBuilder.swift in Sources */,
 				66316B801E53132500114055 /* HospitalListView.swift in Sources */,
 				66EA8D351E1F6B4300646797 /* AppDelegate.swift in Sources */,
+				EDE9AE941E5C35CE0031BCB0 /* BloodInfoView.swift in Sources */,
+				EDE9AE9A1E5C46440031BCB0 /* ShareView.swift in Sources */,
 				66C4E67F1E3725A300526C1D /* ProfileView.swift in Sources */,
 				663706C71E2FB08400EC5EF3 /* SWRevealViewController.m in Sources */,
 			);

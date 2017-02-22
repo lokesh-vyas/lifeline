@@ -8,6 +8,13 @@
 
 import UIKit
 
+protocol ProtocolBloodInfo
+{
+    func SuccessProtocolBloodInfo(valueSent: String)
+    func FailureProtocolBloodInfo(valueSent: String)
+}
+
+
 class RequestView: UIViewController
 {
     //MARK:- IBOutlet
@@ -29,6 +36,16 @@ class RequestView: UIViewController
     @IBOutlet weak var btnWhatYouNeed: UIButton!
     
     @IBOutlet weak var imgSocialShare: UIImageView!
+    
+    //MARK:- String
+    var buttonupdate = String()
+    var checkdatafromprevious:String?
+    var whenYouNeedString:String?
+    //MARK:- Arrays
+    let bloodGroupArray = ["O+","O-","A+","A-","B+","B-","AB+","AB-"]
+    let bloodUnitArray = ["1","2","3","4","5","6","7","8","9","10"]
+    let whatneedArray = ["Blood","Platelets","Plasma"]
+
     
     //MARK:- viewDidLoad
     override func viewDidLoad() {
@@ -54,18 +71,57 @@ class RequestView: UIViewController
     //MARK:- btnWhatYouNeedTapped
     @IBAction func btnWhatYouNeedTapped(_ sender: Any)
     {
+        let viewBloodInfo: BloodInfoView = self.storyboard?.instantiateViewController(withIdentifier: "BloodInfoView") as! BloodInfoView
+        viewBloodInfo.delegate = self
+        viewBloodInfo.pickerArray = self.whatneedArray
+        self.buttonupdate = "Need"
+        viewBloodInfo.bloodInfoString = "Select what you need"
+        viewBloodInfo.modalPresentationStyle = .overCurrentContext
+        viewBloodInfo.view.backgroundColor =  UIColor.clear
+        self.present(viewBloodInfo, animated: true, completion: nil)
+
     }
     //MARK:- btnWhenYouNeedTapped
     @IBAction func btnWhenYouNeedTapped(_ sender: Any)
     {
+        let viewCalendar: CalendarView = self.storyboard?.instantiateViewController(withIdentifier: "CalendarView") as! CalendarView
+        viewCalendar.delegate = self
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        viewCalendar.dateFormatter = dateFormatter
+        let headingString = "Confirm Your Date"
+        viewCalendar.calenderHeading = headingString
+        viewCalendar.calendar.minimumDate = Date() as Date
+        viewCalendar.calendar.datePickerMode = UIDatePickerMode.date
+        viewCalendar.modalPresentationStyle = .overCurrentContext
+        viewCalendar.view.backgroundColor =  UIColor.black.withAlphaComponent(0.5)
+
+        self.present(viewCalendar, animated: true, completion: nil)
     }
     //MARK:- btnBloodGroupTapped
     @IBAction func btnBloodGroupTapped(_ sender: Any)
     {
+        let viewBloodInfo: BloodInfoView = self.storyboard?.instantiateViewController(withIdentifier: "BloodInfoView") as! BloodInfoView
+        viewBloodInfo.delegate = self
+        self.buttonupdate = "BloodGroup"
+        viewBloodInfo.pickerArray = self.bloodGroupArray
+        viewBloodInfo.bloodInfoString = "Select your blood group"
+        viewBloodInfo.modalPresentationStyle = .overCurrentContext
+        viewBloodInfo.view.backgroundColor =  UIColor.black.withAlphaComponent(0.5)
+        self.present(viewBloodInfo, animated: true, completion: nil)
+
     }
     //MARK:- btnBloodUnitTapped
     @IBAction func btnBloodUnitTapped(_ sender: Any)
     {
+        let viewBloodInfo: BloodInfoView = self.storyboard?.instantiateViewController(withIdentifier: "BloodInfoView") as! BloodInfoView
+        viewBloodInfo.delegate = self
+        self.buttonupdate = "Units"
+        viewBloodInfo.pickerArray = self.bloodUnitArray
+        viewBloodInfo.bloodInfoString = "Select number of units"
+        viewBloodInfo.modalPresentationStyle = .overCurrentContext
+        viewBloodInfo.view.backgroundColor =  UIColor.black.withAlphaComponent(0.5)
+        self.present(viewBloodInfo, animated: true, completion: nil)
     }
     //MARK:- GoogleMap IBAction
     @IBAction func btnGoogleMapTapped(_ sender: Any)
@@ -129,3 +185,45 @@ extension RequestView:HospitalListCompletDataProtocol
         self.txtFieldHospitalBloodBankAddressLandMark.text = ListData.Landmark
     }
 }
+extension RequestView:ProtocolBloodInfo
+{
+    func SuccessProtocolBloodInfo(valueSent: String)
+    {
+        self.checkdatafromprevious = valueSent
+        if self.buttonupdate == "Need"
+        {
+            btnWhatYouNeed.titleLabel?.text = self.checkdatafromprevious
+        }
+        else if self.buttonupdate == "BloodGroup"
+        {
+            btnBloodGroup.titleLabel?.text = self.checkdatafromprevious
+        }
+        else
+        {
+            btnBloodUnit.titleLabel?.text = self.checkdatafromprevious
+        }
+    }
+    
+    func FailureProtocolBloodInfo(valueSent: String)
+    {
+        self.checkdatafromprevious = valueSent
+    }
+    
+}
+extension RequestView:ProtocolCalendar
+{
+    
+    func SuccessProtocolCalendar(valueSent: String)
+    {
+        self.whenYouNeedString = valueSent
+        btnWhenYouNeed.titleLabel?.text = self.whenYouNeedString
+        print("whenYouNeedString",self.whenYouNeedString!)
+    }
+    
+    func FailureProtocolCalendar(valueSent: String)
+    {
+        print("Try Again")
+    }
+}
+
+
