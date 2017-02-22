@@ -9,33 +9,28 @@
 import Foundation
 import Alamofire
 
+//MARK:- SignUP Api
 class SignUpApi {
     
-    var userName = ""
-    var email = ""
+    var userId = ""
+    var Email = ""
     var password = ""
     
-    var URL = URLList.LIFELINE_UserIDAvilableityCheck.rawValue
+    var URL = URLList.LIFELINE_Custom_Sign_Up.rawValue
     var method = "POST"
   
-    init(email:String, password:String ,userName:String) {
-        self.email = email
+    init(email:String, password:String ,userID:String) {
+        self.Email = email
         self.password = password
-        self.userName = userName
+        self.userId = userID
     }
-    
-    func makeParams() -> [String:String]
+    func makeParams() -> Parameters
     {
-       var params = [String:String]()
-        params["email"] = self.email
-        params["password"] = self.password
-        params["username"] = self.userName
-        params["avatar"] = "img/avatar/undefined.png"
-        
-        return params
-        
+        let parameters:Parameters = ["UserIDAvilableityCheckRequest":["UserIDAvilableityCheckRequestDetails":[["UserID":self.userId],["Password":self.password],["Email":self.Email]]]]
+        return parameters
     }
 }
+//MARK:- Check Avability
 class CheckAvabilityApi {
    
     var UserID = ""
@@ -52,3 +47,20 @@ class CheckAvabilityApi {
        return parameters 
     }
 }
+//MARK:- Forget Password
+class ForgetPasswordApi {
+    
+    var UserID = ""
+    var URL = URLList.LIFELINE_ForgetPassword.rawValue
+    var method = "POST"
+    init(UserID:String) {
+        self.UserID = UserID
+        
+    }
+    func makeParams() -> Parameters
+    {
+        let parameters:Parameters = ["ForgetPasswordRequest":["ForgetPasswordRequestDetails":["UserID":self.UserID]]]
+        return parameters
+    }
+}
+

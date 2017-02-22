@@ -29,7 +29,7 @@ class NetworkManager
     }
     func serviceCallForPOSTforHTTPS()
     {
-        let manager = NetworkReachabilityManager(host: "demo.frontman.isteer.com:8284")
+        let manager = NetworkReachabilityManager(host: "api.lifeline.services")
         manager?.listener = { status in
             print("Network Status Changed: \(status)")
         }
