@@ -58,7 +58,14 @@ class NetworkManager
                 if response.result.isSuccess
                 {
                     let resJson = JSON(response.result.value!)
-                    sucess(resJson)
+                    if !resJson.isEmpty
+                    {
+                        sucess(resJson)
+                    }
+                    else
+                    {
+                        failure()
+                    }
                 }
                 if response.result.isFailure
                 {

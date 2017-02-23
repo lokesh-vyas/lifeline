@@ -63,4 +63,22 @@ class ForgetPasswordApi {
         return parameters
     }
 }
-
+//MARK:- CustomLoginApi
+class CustomLoginApi {
+    
+    var userId = ""
+    var password = ""
+    
+    var URL = URLList.LIFELINE_CustomLogin.rawValue
+    var method = "POST"
+    
+    init(userID:String,password:String) {
+        self.password = password
+        self.userId = userID
+    }
+    func makeParams() -> Parameters
+    {
+        let parameters:Parameters = ["CustomLoginRequest":["CustomLoginRequestDetails":[["UserID":self.userId],["Password":self.password]]]]
+        return parameters
+    }
+}
