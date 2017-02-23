@@ -17,5 +17,4 @@ class ProfileViewInteractor
         }
         return Shared.instance
     }
-
 }

@@ -11,7 +11,10 @@ import UIKit
 class HomeView: UIViewController {
     //MARK:- IBOutlet
     @IBOutlet weak var revalMenuButton: UIBarButtonItem!
-    
+    //MARK:- viewWillAppear
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+    }
     //MARK:- viewDidLoad
     override func viewDidLoad()
     {
