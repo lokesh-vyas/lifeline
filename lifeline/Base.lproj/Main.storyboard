@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="EAy-Bt-t3J">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="EAy-Bt-t3J">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -1178,14 +1178,14 @@
                         <viewControllerLayoutGuide type="bottom" id="62d-RR-buy"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="g2L-Ca-Rvh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="1060"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1067"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Inner_bg" translatesAutoresizingMaskIntoConstraints="NO" id="mOT-Vr-bJd">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="1060"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="1067"/>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rpA-Rw-gpK">
-                                <rect key="frame" x="0.0" y="64" width="375" height="996"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="1003"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WXj-vV-98M">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="185"/>
@@ -1718,7 +1718,7 @@
                                         <rect key="frame" x="0.0" y="868" width="375" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Post Request on Social Media" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gii-AP-mNZ">
-                                                <rect key="frame" x="8" y="5" width="240" height="40"/>
+                                                <rect key="frame" x="8" y="5" width="227" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="7nK-y5-6af"/>
                                                 </constraints>
@@ -1726,13 +1726,6 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="facebook_btn_icon" translatesAutoresizingMaskIntoConstraints="NO" id="4yV-Ds-4xV">
-                                                <rect key="frame" x="258" y="5" width="40" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="40" id="JVf-mS-S7T"/>
-                                                    <constraint firstAttribute="height" constant="40" id="SXK-ux-AnQ"/>
-                                                </constraints>
-                                            </imageView>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fQk-5e-jfp">
                                                 <rect key="frame" x="306" y="10" width="51" height="31"/>
                                                 <constraints>
@@ -1743,20 +1736,29 @@
                                                     <action selector="switchShareTapped:" destination="yrd-hD-PsX" eventType="valueChanged" id="Ft8-iw-ZGg"/>
                                                 </connections>
                                             </switch>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7P1-Aa-lGz">
+                                                <rect key="frame" x="258" y="5" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="Oib-xi-CZo"/>
+                                                </constraints>
+                                                <state key="normal" backgroundImage="facebook_btn_icon"/>
+                                                <connections>
+                                                    <action selector="btnFaceBookTapped:" destination="yrd-hD-PsX" eventType="touchUpInside" id="ri6-XO-0zr"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.19579409249999999" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="gii-AP-mNZ" firstAttribute="leading" secondItem="U5j-4n-tMz" secondAttribute="leading" constant="8" id="0Ck-YF-V2a"/>
-                                            <constraint firstItem="4yV-Ds-4xV" firstAttribute="top" secondItem="U5j-4n-tMz" secondAttribute="top" constant="5" id="0Rx-Zh-fsU"/>
-                                            <constraint firstItem="fQk-5e-jfp" firstAttribute="leading" secondItem="4yV-Ds-4xV" secondAttribute="trailing" constant="8" id="11A-q5-AqA"/>
                                             <constraint firstAttribute="bottom" secondItem="fQk-5e-jfp" secondAttribute="bottom" constant="9" id="3Ir-1b-KXQ"/>
                                             <constraint firstAttribute="bottom" secondItem="gii-AP-mNZ" secondAttribute="bottom" constant="5" id="8b0-ij-AbS"/>
+                                            <constraint firstAttribute="bottom" secondItem="7P1-Aa-lGz" secondAttribute="bottom" constant="5" id="Owm-Jx-jIH"/>
                                             <constraint firstAttribute="trailing" secondItem="fQk-5e-jfp" secondAttribute="trailing" constant="20" id="RzO-s1-W9j"/>
                                             <constraint firstItem="fQk-5e-jfp" firstAttribute="top" secondItem="U5j-4n-tMz" secondAttribute="top" constant="10" id="SDx-gp-DxX"/>
-                                            <constraint firstItem="4yV-Ds-4xV" firstAttribute="leading" secondItem="gii-AP-mNZ" secondAttribute="trailing" constant="10" id="hRo-Vt-ifn"/>
                                             <constraint firstItem="gii-AP-mNZ" firstAttribute="top" secondItem="U5j-4n-tMz" secondAttribute="top" constant="5" id="lwt-8t-DMh"/>
+                                            <constraint firstItem="7P1-Aa-lGz" firstAttribute="top" secondItem="U5j-4n-tMz" secondAttribute="top" constant="5" id="p1L-wi-Mfo"/>
+                                            <constraint firstItem="fQk-5e-jfp" firstAttribute="leading" secondItem="7P1-Aa-lGz" secondAttribute="trailing" constant="8" symbolic="YES" id="tfD-xq-gp8"/>
                                             <constraint firstAttribute="height" constant="50" id="xiL-2c-q63"/>
-                                            <constraint firstAttribute="bottom" secondItem="4yV-Ds-4xV" secondAttribute="bottom" constant="5" id="zhz-kV-gSw"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E6u-on-aDB">
@@ -1834,13 +1836,14 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="1060"/>
+                    <size key="freeformSize" width="375" height="1067"/>
                     <connections>
                         <outlet property="btnBloodGroup" destination="vzg-tf-OZl" id="90z-bR-GKF"/>
                         <outlet property="btnBloodUnit" destination="wge-wf-c4a" id="FHU-X6-7C1"/>
                         <outlet property="btnWhatYouNeed" destination="UM5-pu-tKE" id="mBw-lp-Kot"/>
                         <outlet property="btnWhenYouNeed" destination="0Bx-83-oKh" id="TG3-Mn-Nar"/>
-                        <outlet property="imgSocialShare" destination="4yV-Ds-4xV" id="TqN-GW-0EM"/>
+                        <outlet property="scrollViewRequest" destination="rpA-Rw-gpK" id="8Np-Xj-Dgu"/>
+                        <outlet property="switchForAppeal" destination="fQk-5e-jfp" id="rsS-Cj-Ne5"/>
                         <outlet property="txtFieldContactNumber" destination="jV1-E5-yHu" id="uwx-7A-xV0"/>
                         <outlet property="txtFieldContactPerson" destination="Nch-d1-2WF" id="6ha-I6-0sN"/>
                         <outlet property="txtFieldDoctorName" destination="wG5-tu-clk" id="wNI-VL-G7X"/>
@@ -1933,6 +1936,8 @@
                             <constraint firstItem="Pma-OL-tF3" firstAttribute="top" secondItem="Ait-px-SfD" secondAttribute="bottom" constant="216" id="mLT-Cx-voJ"/>
                         </constraints>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
                     <connections>
                         <outlet property="labelHeading" destination="MG3-Zh-ePs" id="aAr-8f-hoX"/>
                         <outlet property="pickerViewBloodInfo" destination="vZg-uK-O7e" id="TI3-sD-TNL"/>
@@ -1976,13 +1981,13 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cth-tV-mjf">
-                                        <rect key="frame" x="31" y="14" width="281" height="15"/>
+                                        <rect key="frame" x="31" y="14" width="281" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="kUh-lc-0NY">
-                                        <rect key="frame" x="0.0" y="46" width="343" height="178"/>
+                                        <rect key="frame" x="0.0" y="47" width="343" height="178"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="178" id="qXO-7r-C2P"/>
@@ -2143,7 +2148,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EAy-Bt-t3J" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="vDG-0H-GIB">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="vDG-0H-GIB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2161,7 +2166,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xzR-lU-lNy" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="OG2-W9-IDA">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="OG2-W9-IDA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

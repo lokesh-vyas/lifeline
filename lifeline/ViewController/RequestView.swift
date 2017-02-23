@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Social
 protocol ProtocolBloodInfo
 {
     func SuccessProtocolBloodInfo(valueSent: String)
@@ -15,7 +15,7 @@ protocol ProtocolBloodInfo
 }
 
 
-class RequestView: UIViewController
+class RequestView: UIViewController,UITextViewDelegate
 {
     //MARK:- IBOutlet
     @IBOutlet weak var txtFieldPatientName: FloatLabelTextField!
@@ -30,6 +30,8 @@ class RequestView: UIViewController
     @IBOutlet weak var txtFieldHospitalBloodBankAddressPINCode: FloatLabelTextField!
     @IBOutlet weak var txtViewPersonalAppeal: UITextView!
     
+   
+    @IBOutlet var switchForAppeal: UISwitch!
     @IBOutlet weak var btnBloodUnit: UIButton!
     @IBOutlet weak var btnBloodGroup: UIButton!
     @IBOutlet weak var btnWhenYouNeed: UIButton!
@@ -47,12 +49,54 @@ class RequestView: UIViewController
     let whatneedArray = ["Blood","Platelets","Plasma"]
 
     
+    @IBOutlet var scrollViewRequest: UIScrollView!
     //MARK:- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        txtFieldPatientName.delegate = self
+        txtFieldContactPerson.delegate = self
+        txtFieldContactNumber.delegate = self
+        txtFieldHospitalBloodBankName.delegate = self
+        txtFieldDoctorName.delegate = self
+        txtFieldHospitalBloodBankContactNumber.delegate = self
+        txtFieldHospitalBloodBankAddressCity.delegate = self
+        txtFieldHospitalBloodBankAddressLandMark.delegate = self
+        txtFieldHospitalBloodBankAddressCity.delegate = self
+        txtFieldHospitalBloodBankAddressPINCode.delegate = self
         self.textFieldPadding()
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(RequestView.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(RequestView.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(RequestView.dismissKeyboard))
+        view.addGestureRecognizer(tap)
         self.navigationController?.completelyTransparentBar()
-        // Do any additional setup after loading the view.
+        self.txtViewPersonalAppeal.delegate = self
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += keyboardSize.height
+            }
+        }
+    }
+    
+    func dismissKeyboard()
+    {
+        view.endEditing(true)
     }
     //MARK:- Text Field Padding
     func textFieldPadding()
@@ -67,6 +111,41 @@ class RequestView: UIViewController
         txtFieldHospitalBloodBankAddressLandMark.setLeftPaddingPoints(10.0)
         txtFieldHospitalBloodBankAddressCity.setLeftPaddingPoints(10.0)
         txtFieldHospitalBloodBankAddressPINCode.setLeftPaddingPoints(10.0)
+    }
+    //MARK:- btnFaceBookTapped
+    @IBAction func btnFaceBookTapped(_ sender: Any) {
+        
+        if(SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook))
+            
+        {
+            let SocialMedia :SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+            
+            SocialMedia.completionHandler =
+                {
+                    result -> Void in
+                    
+                    let getResult = result as SLComposeViewControllerResult;
+                    switch(getResult.rawValue) {
+                    case SLComposeViewControllerResult.cancelled.rawValue: self.view.makeToast("Cancelled")
+                    case SLComposeViewControllerResult.done.rawValue: self.view.makeToast("Your post has been posted successfully")
+                    default: print("Error!")
+                    }
+                    self.dismiss(animated: true, completion: nil)
+            }
+//            SocialMedia.add(NSURL(string:"https://www.google.com/") as URL!)
+            SocialMedia.setInitialText("Hello, Facebook!")
+
+            present(SocialMedia, animated: true, completion: nil)
+        }
+        else
+            
+        {
+            
+            let alert = UIAlertController(title: "Facebook App not installed.", message: "Your device has no Facebook installed.", preferredStyle: UIAlertControllerStyle.alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     //MARK:- btnWhatYouNeedTapped
     @IBAction func btnWhatYouNeedTapped(_ sender: Any)
@@ -130,6 +209,16 @@ class RequestView: UIViewController
     //MARK:- SwitchShareAction
     @IBAction func switchShareTapped(_ sender: Any)
     {
+        if switchForAppeal.isOn {
+            print("Switch is off")
+            txtViewPersonalAppeal.isEditable = false
+            txtViewPersonalAppeal.text = ""
+            switchForAppeal.setOn(false, animated:true)
+        } else {
+            print("The Switch is On")
+            txtViewPersonalAppeal.isEditable = true
+            switchForAppeal.setOn(true, animated:true)
+        }
     }
     //MARK:- btnBackTapped
     @IBAction func btnBackTapped(_ sender: Any)
@@ -141,6 +230,16 @@ class RequestView: UIViewController
     //MARK:- btnSubmmitTapped
     @IBAction func btnSubmitTapped(_ sender: Any)
     {
+        view.endEditing(true)
+        
+        if txtFieldPatientName.text == "" || txtFieldContactNumber.text == "" || txtFieldContactNumber.text == "" || (btnWhatYouNeed.titleLabel?.text)! == "" || (btnBloodUnit.titleLabel?.text)! == "" || (btnWhenYouNeed.titleLabel?.text)! == "" || (btnBloodGroup.titleLabel?.text)! == "" || txtFieldHospitalBloodBankName.text == "" || txtFieldHospitalBloodBankContactNumber.text == "" || txtFieldHospitalBloodBankAddressPINCode.text == "" || txtFieldHospitalBloodBankAddress.text == "" || txtFieldHospitalBloodBankAddressCity.text == "" || txtFieldHospitalBloodBankAddressLandMark.text == ""
+        {
+            self.view.makeToast("Please fill all the fields", duration: 2.0, position: .bottom)
+        }
+        else{
+            print("Print submit")
+        }
+        
     }
 }
 extension RequestView:UITextFieldDelegate
@@ -157,13 +256,54 @@ extension RequestView:UITextFieldDelegate
             hospitalListView.delegate = self
             let navController = UINavigationController(rootViewController: hospitalListView)
             self.navigationController?.present(navController, animated: true, completion: nil)
+            
         }
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
     {
-        return true
+
+        let newString = NSString(string: textField.text!).replacingCharacters(in: range, with: string)
+        if newString.characters.count > 0
+        {
+            switch textField
+            {
+            case txtFieldContactNumber:
+                if newString.characters.count < 4 || newString.characters.count > 13
+                {
+                    self.txtFieldContactNumber.errorLine()
+                }
+                else{
+                    self.txtFieldContactNumber.removeErrorLine()
+                }
+            case txtFieldHospitalBloodBankContactNumber :
+                if newString.characters.count < 4 || newString.characters.count > 13
+                {
+                    self.txtFieldHospitalBloodBankContactNumber.errorLine()
+                }
+                else{
+                    self.txtFieldHospitalBloodBankContactNumber.removeErrorLine()
+                }
+            case txtFieldHospitalBloodBankAddressPINCode:
+                if newString.characters.count < 6 || newString.characters.count > 13
+                {
+                    txtFieldHospitalBloodBankAddressPINCode.errorLine()
+                    
+                }
+                else{
+                    txtFieldHospitalBloodBankAddressPINCode.removeErrorLine()
+                }
+            default:
+                print("Done")
+            }
+        }
+        return true;
     }
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return true;
+    }
+
 }
+
 //MARK:- HospitalListCompletDataProtocol
 extension RequestView:HospitalListCompletDataProtocol
 {
@@ -184,6 +324,7 @@ extension RequestView:HospitalListCompletDataProtocol
         self.txtFieldHospitalBloodBankAddressPINCode.text = ListData.PINCode
         self.txtFieldHospitalBloodBankAddressLandMark.text = ListData.Landmark
     }
+
 }
 extension RequestView:ProtocolBloodInfo
 {
