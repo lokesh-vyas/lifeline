@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Social
 protocol ProtocolBloodInfo
 {
     func SuccessProtocolBloodInfo(valueSent: String)
@@ -15,7 +15,7 @@ protocol ProtocolBloodInfo
 }
 
 
-class RequestView: UIViewController
+class RequestView: UIViewController,UITextViewDelegate
 {
     //MARK:- IBOutlet
     @IBOutlet weak var txtFieldPatientName: FloatLabelTextField!
@@ -30,6 +30,7 @@ class RequestView: UIViewController
     @IBOutlet weak var txtFieldHospitalBloodBankAddressPINCode: FloatLabelTextField!
     @IBOutlet weak var txtViewPersonalAppeal: UITextView!
     
+   
     @IBOutlet var switchForAppeal: UISwitch!
     @IBOutlet weak var btnBloodUnit: UIButton!
     @IBOutlet weak var btnBloodGroup: UIButton!
@@ -64,18 +65,35 @@ class RequestView: UIViewController
         txtFieldHospitalBloodBankAddressPINCode.delegate = self
         self.textFieldPadding()
         
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(RequestView.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(RequestView.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+
+        
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(
             target: self,
             action: #selector(RequestView.dismissKeyboard))
-        let size = CGSize(width: 20, height: 20)
-
-        scrollViewRequest.contentSize = size
-
         view.addGestureRecognizer(tap)
         self.navigationController?.completelyTransparentBar()
-
-        // Do any additional setup after loading the view.
+        self.txtViewPersonalAppeal.delegate = self
     }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += keyboardSize.height
+            }
+        }
+    }
+    
     func dismissKeyboard()
     {
         view.endEditing(true)
@@ -93,6 +111,41 @@ class RequestView: UIViewController
         txtFieldHospitalBloodBankAddressLandMark.setLeftPaddingPoints(10.0)
         txtFieldHospitalBloodBankAddressCity.setLeftPaddingPoints(10.0)
         txtFieldHospitalBloodBankAddressPINCode.setLeftPaddingPoints(10.0)
+    }
+    //MARK:- btnFaceBookTapped
+    @IBAction func btnFaceBookTapped(_ sender: Any) {
+        
+        if(SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook))
+            
+        {
+            let SocialMedia :SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+            
+            SocialMedia.completionHandler =
+                {
+                    result -> Void in
+                    
+                    let getResult = result as SLComposeViewControllerResult;
+                    switch(getResult.rawValue) {
+                    case SLComposeViewControllerResult.cancelled.rawValue: self.view.makeToast("Cancelled")
+                    case SLComposeViewControllerResult.done.rawValue: self.view.makeToast("Your post has been posted successfully")
+                    default: print("Error!")
+                    }
+                    self.dismiss(animated: true, completion: nil)
+            }
+//            SocialMedia.add(NSURL(string:"https://www.google.com/") as URL!)
+            SocialMedia.setInitialText("Hello, Facebook!")
+
+            present(SocialMedia, animated: true, completion: nil)
+        }
+        else
+            
+        {
+            
+            let alert = UIAlertController(title: "Facebook App not installed.", message: "Your device has no Facebook installed.", preferredStyle: UIAlertControllerStyle.alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     //MARK:- btnWhatYouNeedTapped
     @IBAction func btnWhatYouNeedTapped(_ sender: Any)
