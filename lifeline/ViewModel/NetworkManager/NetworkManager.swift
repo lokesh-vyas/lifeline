@@ -37,17 +37,23 @@ class NetworkManager
     }
     func serviceCallForPOST(url:String,method:String,parameters:Parameters,sucess:@escaping (JSON) -> Void,failure:@escaping () -> Void)
     {
-        print(parameters)
+//        print(parameters)
         let headers: HTTPHeaders = [
             "Content-Type": "application/json"
         ]
         sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
             .responseJSON {
                 response in
-                print(response.request!)
-                print(response.response!) // URL response
-                print(response.data!)     // server data
-                print(response.result)
+//                print(response.request!)
+                
+                if let temp = response.response {
+//                    print(response.response!)
+                    print("Getting response from Servdr !!", temp)
+                } else {
+                    print("Couldn't get Response from Server !!")
+                }
+//                print(response.data!)     // server data
+//                print(response.result)
                 
                 if response.result.isSuccess
                 {

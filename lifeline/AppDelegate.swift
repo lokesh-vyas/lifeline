@@ -11,6 +11,8 @@ import FBSDKCoreKit
 import Google
 import GoogleSignIn
 import GoogleMaps
+import GooglePlaces
+import GooglePlacePicker
 
 @UIApplicationMain
 
@@ -31,8 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         assert(configureError == nil, "Error configuring Google services: \(configureError)")
         self.checkForViewControllers()
         
+        GMSServices.provideAPIKey("AIzaSyANI0kErKaaeku5vY_pNlGCG7a6LUIhlq8")
+        GMSPlacesClient.provideAPIKey("AIzaSyANI0kErKaaeku5vY_pNlGCG7a6LUIhlq8")
         
-        GMSServices.provideAPIKey("!!!!!!")
         return true
     }
 
