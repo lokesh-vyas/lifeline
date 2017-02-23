@@ -78,20 +78,21 @@ class RequestView: UIViewController,UITextViewDelegate
         self.txtViewPersonalAppeal.delegate = self
     }
     
-    func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0{
-                self.view.frame.origin.y -= keyboardSize.height
-            }
-        }
+    func keyboardWillShow(notification:NSNotification){
+        
+        var userInfo = notification.userInfo!
+        var keyboardFrame:CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+        
+        var contentInset:UIEdgeInsets = self.scrollViewRequest.contentInset
+        contentInset.bottom = keyboardFrame.size.height
+        self.scrollViewRequest.contentInset = contentInset
     }
     
-    func keyboardWillHide(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y != 0{
-                self.view.frame.origin.y += keyboardSize.height
-            }
-        }
+    func keyboardWillHide(notification:NSNotification){
+        
+        let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+        self.scrollViewRequest.contentInset = contentInset
     }
     
     func dismissKeyboard()
@@ -116,14 +117,11 @@ class RequestView: UIViewController,UITextViewDelegate
     @IBAction func btnFaceBookTapped(_ sender: Any) {
         
         if(SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook))
-            
         {
             let SocialMedia :SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
-            
             SocialMedia.completionHandler =
                 {
                     result -> Void in
-                    
                     let getResult = result as SLComposeViewControllerResult;
                     switch(getResult.rawValue) {
                     case SLComposeViewControllerResult.cancelled.rawValue: self.view.makeToast("Cancelled")
@@ -132,17 +130,12 @@ class RequestView: UIViewController,UITextViewDelegate
                     }
                     self.dismiss(animated: true, completion: nil)
             }
-//            SocialMedia.add(NSURL(string:"https://www.google.com/") as URL!)
             SocialMedia.setInitialText("Hello, Facebook!")
-
             present(SocialMedia, animated: true, completion: nil)
         }
         else
-            
         {
-            
             let alert = UIAlertController(title: "Facebook App not installed.", message: "Your device has no Facebook installed.", preferredStyle: UIAlertControllerStyle.alert)
-            
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
@@ -158,7 +151,6 @@ class RequestView: UIViewController,UITextViewDelegate
         viewBloodInfo.modalPresentationStyle = .overCurrentContext
         viewBloodInfo.view.backgroundColor =  UIColor.clear
         self.present(viewBloodInfo, animated: true, completion: nil)
-
     }
     //MARK:- btnWhenYouNeedTapped
     @IBAction func btnWhenYouNeedTapped(_ sender: Any)
@@ -287,7 +279,6 @@ extension RequestView:UITextFieldDelegate
                 if newString.characters.count < 6 || newString.characters.count > 13
                 {
                     txtFieldHospitalBloodBankAddressPINCode.errorLine()
-                    
                 }
                 else{
                     txtFieldHospitalBloodBankAddressPINCode.removeErrorLine()
