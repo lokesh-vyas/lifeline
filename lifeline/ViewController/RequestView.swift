@@ -30,6 +30,7 @@ class RequestView: UIViewController
     @IBOutlet weak var txtFieldHospitalBloodBankAddressPINCode: FloatLabelTextField!
     @IBOutlet weak var txtViewPersonalAppeal: UITextView!
     
+    @IBOutlet var switchForAppeal: UISwitch!
     @IBOutlet weak var btnBloodUnit: UIButton!
     @IBOutlet weak var btnBloodGroup: UIButton!
     @IBOutlet weak var btnWhenYouNeed: UIButton!
@@ -47,12 +48,37 @@ class RequestView: UIViewController
     let whatneedArray = ["Blood","Platelets","Plasma"]
 
     
+    @IBOutlet var scrollViewRequest: UIScrollView!
     //MARK:- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        txtFieldPatientName.delegate = self
+        txtFieldContactPerson.delegate = self
+        txtFieldContactNumber.delegate = self
+        txtFieldHospitalBloodBankName.delegate = self
+        txtFieldDoctorName.delegate = self
+        txtFieldHospitalBloodBankContactNumber.delegate = self
+        txtFieldHospitalBloodBankAddressCity.delegate = self
+        txtFieldHospitalBloodBankAddressLandMark.delegate = self
+        txtFieldHospitalBloodBankAddressCity.delegate = self
+        txtFieldHospitalBloodBankAddressPINCode.delegate = self
         self.textFieldPadding()
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(RequestView.dismissKeyboard))
+        let size = CGSize(width: 20, height: 20)
+
+        scrollViewRequest.contentSize = size
+
+        view.addGestureRecognizer(tap)
         self.navigationController?.completelyTransparentBar()
+
         // Do any additional setup after loading the view.
+    }
+    func dismissKeyboard()
+    {
+        view.endEditing(true)
     }
     //MARK:- Text Field Padding
     func textFieldPadding()
@@ -130,6 +156,16 @@ class RequestView: UIViewController
     //MARK:- SwitchShareAction
     @IBAction func switchShareTapped(_ sender: Any)
     {
+        if switchForAppeal.isOn {
+            print("Switch is off")
+            txtViewPersonalAppeal.isEditable = false
+            txtViewPersonalAppeal.text = ""
+            switchForAppeal.setOn(false, animated:true)
+        } else {
+            print("The Switch is On")
+            txtViewPersonalAppeal.isEditable = true
+            switchForAppeal.setOn(true, animated:true)
+        }
     }
     //MARK:- btnBackTapped
     @IBAction func btnBackTapped(_ sender: Any)
@@ -141,6 +177,16 @@ class RequestView: UIViewController
     //MARK:- btnSubmmitTapped
     @IBAction func btnSubmitTapped(_ sender: Any)
     {
+        view.endEditing(true)
+        
+        if txtFieldPatientName.text == "" || txtFieldContactNumber.text == "" || txtFieldContactNumber.text == "" || (btnWhatYouNeed.titleLabel?.text)! == "" || (btnBloodUnit.titleLabel?.text)! == "" || (btnWhenYouNeed.titleLabel?.text)! == "" || (btnBloodGroup.titleLabel?.text)! == "" || txtFieldHospitalBloodBankName.text == "" || txtFieldHospitalBloodBankContactNumber.text == "" || txtFieldHospitalBloodBankAddressPINCode.text == "" || txtFieldHospitalBloodBankAddress.text == "" || txtFieldHospitalBloodBankAddressCity.text == "" || txtFieldHospitalBloodBankAddressLandMark.text == ""
+        {
+            self.view.makeToast("Please fill all the fields", duration: 2.0, position: .bottom)
+        }
+        else{
+            print("Print submit")
+        }
+        
     }
 }
 extension RequestView:UITextFieldDelegate
@@ -157,13 +203,54 @@ extension RequestView:UITextFieldDelegate
             hospitalListView.delegate = self
             let navController = UINavigationController(rootViewController: hospitalListView)
             self.navigationController?.present(navController, animated: true, completion: nil)
+            
         }
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
     {
-        return true
+
+        let newString = NSString(string: textField.text!).replacingCharacters(in: range, with: string)
+        if newString.characters.count > 0
+        {
+            switch textField
+            {
+            case txtFieldContactNumber:
+                if newString.characters.count < 4 || newString.characters.count > 13
+                {
+                    self.txtFieldContactNumber.errorLine()
+                }
+                else{
+                    self.txtFieldContactNumber.removeErrorLine()
+                }
+            case txtFieldHospitalBloodBankContactNumber :
+                if newString.characters.count < 4 || newString.characters.count > 13
+                {
+                    self.txtFieldHospitalBloodBankContactNumber.errorLine()
+                }
+                else{
+                    self.txtFieldHospitalBloodBankContactNumber.removeErrorLine()
+                }
+            case txtFieldHospitalBloodBankAddressPINCode:
+                if newString.characters.count < 6 || newString.characters.count > 13
+                {
+                    txtFieldHospitalBloodBankAddressPINCode.errorLine()
+                    
+                }
+                else{
+                    txtFieldHospitalBloodBankAddressPINCode.removeErrorLine()
+                }
+            default:
+                print("Done")
+            }
+        }
+        return true;
     }
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return true;
+    }
+
 }
+
 //MARK:- HospitalListCompletDataProtocol
 extension RequestView:HospitalListCompletDataProtocol
 {
@@ -184,6 +271,7 @@ extension RequestView:HospitalListCompletDataProtocol
         self.txtFieldHospitalBloodBankAddressPINCode.text = ListData.PINCode
         self.txtFieldHospitalBloodBankAddressLandMark.text = ListData.Landmark
     }
+
 }
 extension RequestView:ProtocolBloodInfo
 {

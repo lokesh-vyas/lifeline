@@ -43,7 +43,6 @@ class CalendarView: UIViewController {
         delegate?.SuccessProtocolCalendar(valueSent: self.dateString)
         delegate?.FailureProtocolCalendar(valueSent: "Fail")
         self.dismiss(animated: true, completion: nil)
-
     }
     @IBAction func btnCancelTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)

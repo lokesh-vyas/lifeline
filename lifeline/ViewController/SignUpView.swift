@@ -95,7 +95,6 @@ extension SignUpView:UITextFieldDelegate
                 
             case nameTextField:
                 nameTextField.errorLine()
-                
             case passwordTextField:
                 passwordTextField.errorLine()
             case emailTextField:
@@ -107,6 +106,7 @@ extension SignUpView:UITextFieldDelegate
             }
         }
     }
+    
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         return true;
     }
