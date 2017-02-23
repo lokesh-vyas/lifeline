@@ -7,6 +7,8 @@ target 'lifeline' do
     
     pod 'Google/SignIn'
     pod 'GoogleMaps'
+    pod 'GooglePlaces'
+    pod 'GooglePlacePicker'
     pod 'Alamofire'
     pod 'Toast-Swift'
     pod 'SwiftyJSON'
