@@ -83,6 +83,7 @@
 		EDE9AEA61E5C47D10031BCB0 /* watsapp.png in Resources */ = {isa = PBXBuildFile; fileRef = EDE9AEA01E5C47D10031BCB0 /* watsapp.png */; };
 		EDE9AEA81E5C4AB30031BCB0 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE9AEA71E5C4AB30031BCB0 /* Social.framework */; };
 		EDE9AEAA1E5C4AD30031BCB0 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE9AEA91E5C4AD30031BCB0 /* MessageUI.framework */; };
+		EDE9AEAD1E5DC2B40031BCB0 /* RequestApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE9AEAC1E5DC2B40031BCB0 /* RequestApi.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -192,6 +193,7 @@
 		EDE9AEA01E5C47D10031BCB0 /* watsapp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = watsapp.png; path = ../watsapp.png; sourceTree = "<group>"; };
 		EDE9AEA71E5C4AB30031BCB0 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		EDE9AEA91E5C4AD30031BCB0 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		EDE9AEAC1E5DC2B40031BCB0 /* RequestApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestApi.swift; sourceTree = "<group>"; };
 		F70603F9C011A331ED033AE6 /* Pods_lifeline.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lifeline.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -546,6 +548,7 @@
 		66EA8E321E27AE6500646797 /* API's */ = {
 			isa = PBXGroup;
 			children = (
+				EDE9AEAC1E5DC2B40031BCB0 /* RequestApi.swift */,
 				66EA8E331E27AF0900646797 /* SignUpApi.swift */,
 				66316B871E5575D700114055 /* HospitalListApi.swift */,
 			);
@@ -921,6 +924,7 @@
 				66EA8E2C1E27947400646797 /* NetworkManager.swift in Sources */,
 				66EA8E281E277D0400646797 /* Util.swift in Sources */,
 				66EA8DFD1E26611300646797 /* StringList.swift in Sources */,
+				EDE9AEAD1E5DC2B40031BCB0 /* RequestApi.swift in Sources */,
 				66316B881E5575D700114055 /* HospitalListApi.swift in Sources */,
 				66316B841E5572B800114055 /* HospitalListInteractor.swift in Sources */,
 				66C4E6821E37273100526C1D /* RevalListView.swift in Sources */,
