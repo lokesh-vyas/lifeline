@@ -10,8 +10,6 @@ import UIKit
 
 class DonateView: UIViewController
 {
-    
-
     //MARK:- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()

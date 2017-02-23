@@ -41,14 +41,23 @@ class LoginView: UIViewController
     //MARK:- Forgot Password
     @IBAction func forgotPasswordAction(_ sender: Any)
     {
-        
+        self.view.endEditing(true)
+        if (userNameTextField.text?.characters.count)! < 1
+        {
+            self.view.makeToast("Please enter UserID", duration: 3.0, position: .bottom)
+            return
+        }
+         let trimmedString = self.userNameTextField.text?.trimmingCharacters(in: .whitespaces)
+        SignUpInteractor.SharedInstance.delegateForgetPassword = self
+        SignUpInteractor.SharedInstance.checkForgetPassword(checkString:trimmedString!)
     }
     //MARK:- CustomLogin
     @IBAction func customLoginAction(_ sender: Any)
     {
+        self.view.endEditing(true)
         if((userNameTextField.text?.characters.count)! <= 0)
         {
-            self.view.makeToast("Please enter User ID", duration: 2.0, position: .bottom)
+            self.view.makeToast("Please enter UserID", duration: 2.0, position: .bottom)
         }
         else if((passwordTextField.text?.characters.count)! <= 0)
         {
@@ -56,7 +65,10 @@ class LoginView: UIViewController
         }
         else
         {
-            //TODO:- Sevice Call
+            HudBar.sharedInstance.showHudWithMessage(message: "Login...", view: self.view)
+            let trimmedString = self.userNameTextField.text?.trimmingCharacters(in: .whitespaces)
+            SignUpInteractor.SharedInstance.delegateLogin = self
+            SignUpInteractor.SharedInstance.checkCustomLogin(UserID: trimmedString!, Password: self.passwordTextField.text!)
         }
     }
     //MARK:- FB Login
@@ -101,6 +113,7 @@ class LoginView: UIViewController
             connection.start()
         }
     }
+    //MARK:- Go To ProfileView
     func goToProfileView()
     {
         HudBar.sharedInstance.hideHudFormView(view: self.view)
@@ -157,5 +170,49 @@ extension LoginView:GIDSignInUIDelegate,GIDSignInDelegate
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
               withError error: Error!) {
+    }
+}
+extension LoginView:checkForgetPasswordProtocol
+{
+    func successForgetPassword(success: Bool)
+    {
+        if success
+        {
+            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "You will shortly recive mail in your registered Email id with the new password", view: self.view)
+        }
+        else
+        {
+            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Type your UserID Correctly", view: self.view)
+        }
+    }
+    func failSignUp()
+    {
+        self.view.makeToast("Unable to access server, please try again later", duration: 3.0, position: .bottom)
+    }
+}
+extension LoginView : customLoginProtocol
+{
+    func successCustomLogin(success: Bool)
+    {
+        if success == true
+        {
+            HudBar.sharedInstance.hideHudFormView(view: self.view)
+            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "User Login Successfully", view: self.view)
+            let deadlineTime = DispatchTime.now() + .seconds(2)
+            DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute:
+            {
+                 self.goToProfileView()
+            })
+        }
+        else
+        {
+            HudBar.sharedInstance.hideHudFormView(view: self.view)
+            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Please Check your UserID And Password and try again", view: self.view)
+        }
+    }
+    func failCustomLogin()
+    {
+        HudBar.sharedInstance.hideHudFormView(view: self.view)
+        self.view.makeToast("Unable to access server, please try again later", duration: 2.0, position: .bottom)
     }
 }
