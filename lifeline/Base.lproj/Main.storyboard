@@ -1735,28 +1735,24 @@
                                                     <action selector="switchShareTapped:" destination="yrd-hD-PsX" eventType="valueChanged" id="Ft8-iw-ZGg"/>
                                                 </connections>
                                             </switch>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7P1-Aa-lGz">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="facebook_btn_icon" translatesAutoresizingMaskIntoConstraints="NO" id="X0e-wT-tAg">
                                                 <rect key="frame" x="258" y="5" width="40" height="40"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="40" id="Oib-xi-CZo"/>
+                                                    <constraint firstAttribute="width" constant="40" id="ypz-8J-KjQ"/>
                                                 </constraints>
-                                                <state key="normal" backgroundImage="facebook_btn_icon"/>
-                                                <connections>
-                                                    <action selector="btnFaceBookTapped:" destination="yrd-hD-PsX" eventType="touchUpInside" id="ri6-XO-0zr"/>
-                                                </connections>
-                                            </button>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.19579409249999999" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="gii-AP-mNZ" firstAttribute="leading" secondItem="U5j-4n-tMz" secondAttribute="leading" constant="8" id="0Ck-YF-V2a"/>
                                             <constraint firstAttribute="bottom" secondItem="fQk-5e-jfp" secondAttribute="bottom" constant="9" id="3Ir-1b-KXQ"/>
+                                            <constraint firstItem="fQk-5e-jfp" firstAttribute="leading" secondItem="X0e-wT-tAg" secondAttribute="trailing" constant="8" id="4JU-rI-eYr"/>
                                             <constraint firstAttribute="bottom" secondItem="gii-AP-mNZ" secondAttribute="bottom" constant="5" id="8b0-ij-AbS"/>
-                                            <constraint firstAttribute="bottom" secondItem="7P1-Aa-lGz" secondAttribute="bottom" constant="5" id="Owm-Jx-jIH"/>
+                                            <constraint firstItem="X0e-wT-tAg" firstAttribute="bottom" secondItem="gii-AP-mNZ" secondAttribute="bottom" id="Ggf-yu-OLV"/>
                                             <constraint firstAttribute="trailing" secondItem="fQk-5e-jfp" secondAttribute="trailing" constant="20" id="RzO-s1-W9j"/>
                                             <constraint firstItem="fQk-5e-jfp" firstAttribute="top" secondItem="U5j-4n-tMz" secondAttribute="top" constant="10" id="SDx-gp-DxX"/>
+                                            <constraint firstItem="X0e-wT-tAg" firstAttribute="top" secondItem="gii-AP-mNZ" secondAttribute="top" id="YRN-jc-6rQ"/>
                                             <constraint firstItem="gii-AP-mNZ" firstAttribute="top" secondItem="U5j-4n-tMz" secondAttribute="top" constant="5" id="lwt-8t-DMh"/>
-                                            <constraint firstItem="7P1-Aa-lGz" firstAttribute="top" secondItem="U5j-4n-tMz" secondAttribute="top" constant="5" id="p1L-wi-Mfo"/>
-                                            <constraint firstItem="fQk-5e-jfp" firstAttribute="leading" secondItem="7P1-Aa-lGz" secondAttribute="trailing" constant="8" symbolic="YES" id="tfD-xq-gp8"/>
                                             <constraint firstAttribute="height" constant="50" id="xiL-2c-q63"/>
                                         </constraints>
                                     </view>

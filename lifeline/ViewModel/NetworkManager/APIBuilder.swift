@@ -46,4 +46,15 @@ class APIBuilder
         return api
     }
     
-   }
+    //MARK:- buildRequestBloodAPI
+    func buildBloodRequestApi(LoginID:String, BloodGroup:String, WhatYouNedd:String,WhenYouNedd:String, Units:String, PatientName:String , ContactPerson:String, ContactNumber:String, DoctorName: String, DoctorContact: String, DoctorEmailID: String,centerID:String, CenterName: String, CenterContactNumber: String, CenterAddress: String, City:String, State:String, Landmark: String, Latitude: String, Longitude:String,Pincode: String, country:String, PersonalAppeal: String, SharedInSocialMedia: String) -> RequestApi
+    {
+        let requestApi = RequestApi(LoginId: LoginID, bloodgroup: BloodGroup, whatyouneed: WhatYouNedd, whenyouneed: WhenYouNedd, Units: Units, patientname: PatientName, contactperson: ContactPerson, contactnumber: ContactNumber, doctorname: DoctorName, doctorcontactnumber: DoctorContact, doctoremailID: DoctorEmailID,centerID:centerID,centername: CenterName, centercontactnumber: CenterContactNumber, centeraddress: CenterAddress, City: City, State: State, Landmark: Landmark, Latitude: Latitude, Longitude: Longitude, Pincode: Pincode, Country: country, personalappeal: PersonalAppeal, Sharedinsocialmedia: SharedInSocialMedia)
+    
+        return requestApi
+}
+
+}
+
+
+    
