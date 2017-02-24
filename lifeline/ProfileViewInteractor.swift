@@ -8,6 +8,24 @@
 
 import Foundation
 
+//MARK:- ProfileView Model
+class ProfileViewModel
+{
+    class var SharedInstance : ProfileViewModel
+    {
+        struct Shared {
+            static let instance = ProfileViewModel()
+        }
+        return Shared.instance
+    }
+    
+    var isEmail:Bool?
+    var isContactNumber:Bool?
+    var isHomePin:Bool?
+    var isWorkPin:Bool?
+    var DOBstring:String?
+}
+//MARK:- ProfileView Interactor
 class ProfileViewInteractor
 {
     class var SharedInstance : ProfileViewInteractor

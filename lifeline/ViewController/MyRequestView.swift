@@ -14,6 +14,7 @@ class MyRequestView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.completelyTransparentBar()
+        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         // Do any additional setup after loading the view.
     }
     //MARK:- BackButton
@@ -22,5 +23,4 @@ class MyRequestView: UIViewController {
         let SWRevealView = self.storyboard!.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
         self.navigationController?.present(SWRevealView, animated: true, completion: nil)
     }
-
 }

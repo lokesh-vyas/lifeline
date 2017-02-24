@@ -8,12 +8,6 @@
 
 import UIKit
 import Social
-protocol ProtocolBloodInfo
-{
-    func SuccessProtocolBloodInfo(valueSent: String)
-    func FailureProtocolBloodInfo(valueSent: String)
-}
-
 
 class RequestView: UIViewController,UITextViewDelegate
 {
@@ -41,7 +35,6 @@ class RequestView: UIViewController,UITextViewDelegate
     
     //MARK:- String
     var buttonupdate = String()
-    var checkdatafromprevious:String?
     var whenYouNeedString:String?
     //MARK:- Arrays
     let bloodGroupArray = ["O+","O-","A+","A-","B+","B-","AB+","AB-"]
@@ -321,24 +314,23 @@ extension RequestView:ProtocolBloodInfo
 {
     func SuccessProtocolBloodInfo(valueSent: String)
     {
-        self.checkdatafromprevious = valueSent
         if self.buttonupdate == "Need"
         {
-            btnWhatYouNeed.titleLabel?.text = self.checkdatafromprevious
+            btnWhatYouNeed.titleLabel?.text = valueSent
         }
         else if self.buttonupdate == "BloodGroup"
         {
-            btnBloodGroup.titleLabel?.text = self.checkdatafromprevious
+            btnBloodGroup.titleLabel?.text = valueSent
         }
         else
         {
-            btnBloodUnit.titleLabel?.text = self.checkdatafromprevious
+            btnBloodUnit.titleLabel?.text = valueSent
         }
     }
     
     func FailureProtocolBloodInfo(valueSent: String)
     {
-        self.checkdatafromprevious = valueSent
+       
     }
     
 }
