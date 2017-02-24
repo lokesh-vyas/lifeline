@@ -43,6 +43,7 @@ class RequestView: UIViewController,UITextViewDelegate
     var buttonupdate = String()
     var checkdatafromprevious:String?
     var whenYouNeedString:String?
+    var datetostring = String()
     //MARK:- Arrays
     let bloodGroupArray = ["O+","O-","A+","A-","B+","B-","AB+","AB-"]
     let bloodUnitArray = ["1","2","3","4","5","6","7","8","9","10"]
@@ -53,21 +54,12 @@ class RequestView: UIViewController,UITextViewDelegate
     //MARK:- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        txtFieldPatientName.delegate = self
-        txtFieldContactPerson.delegate = self
-        txtFieldContactNumber.delegate = self
-        txtFieldHospitalBloodBankName.delegate = self
-        txtFieldDoctorName.delegate = self
-        txtFieldHospitalBloodBankContactNumber.delegate = self
-        txtFieldHospitalBloodBankAddressCity.delegate = self
-        txtFieldHospitalBloodBankAddressLandMark.delegate = self
-        txtFieldHospitalBloodBankAddressCity.delegate = self
-        txtFieldHospitalBloodBankAddressPINCode.delegate = self
         self.textFieldPadding()
-        
-        
         NotificationCenter.default.addObserver(self, selector: #selector(RequestView.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(RequestView.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+
+        //MARK - Reval View Button
+        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
 
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(
@@ -94,11 +86,18 @@ class RequestView: UIViewController,UITextViewDelegate
         let contentInset:UIEdgeInsets = UIEdgeInsets.zero
         self.scrollViewRequest.contentInset = contentInset
     }
-    
-    func dismissKeyboard()
+        func dismissKeyboard()
     {
         view.endEditing(true)
     }
+    
+    func dateForServer()
+    {
+        let date = UIDatePicker()
+        date.dateForServer(date: datetostring)
+        
+    }
+    
     //MARK:- Text Field Padding
     func textFieldPadding()
     {
@@ -161,11 +160,11 @@ class RequestView: UIViewController,UITextViewDelegate
         dateFormatter.dateFormat = "dd/MM/yyyy"
         viewCalendar.dateFormatter = dateFormatter
         let headingString = "Confirm Your Date"
+        viewCalendar.modalPresentationStyle = .overCurrentContext
+        viewCalendar.view.backgroundColor =  UIColor.clear
         viewCalendar.calenderHeading = headingString
         viewCalendar.calendar.minimumDate = Date() as Date
         viewCalendar.calendar.datePickerMode = UIDatePickerMode.date
-        viewCalendar.modalPresentationStyle = .overCurrentContext
-        viewCalendar.view.backgroundColor =  UIColor.black.withAlphaComponent(0.5)
 
         self.present(viewCalendar, animated: true, completion: nil)
     }
@@ -178,7 +177,8 @@ class RequestView: UIViewController,UITextViewDelegate
         viewBloodInfo.pickerArray = self.bloodGroupArray
         viewBloodInfo.bloodInfoString = "Select your blood group"
         viewBloodInfo.modalPresentationStyle = .overCurrentContext
-        viewBloodInfo.view.backgroundColor =  UIColor.black.withAlphaComponent(0.5)
+        viewBloodInfo.view.backgroundColor =  UIColor.clear
+        viewBloodInfo.modalPresentationStyle = .overCurrentContext
         self.present(viewBloodInfo, animated: true, completion: nil)
 
     }
@@ -191,12 +191,14 @@ class RequestView: UIViewController,UITextViewDelegate
         viewBloodInfo.pickerArray = self.bloodUnitArray
         viewBloodInfo.bloodInfoString = "Select number of units"
         viewBloodInfo.modalPresentationStyle = .overCurrentContext
-        viewBloodInfo.view.backgroundColor =  UIColor.black.withAlphaComponent(0.5)
+        viewBloodInfo.view.backgroundColor =  UIColor.clear
+        viewBloodInfo.modalPresentationStyle = .overCurrentContext
         self.present(viewBloodInfo, animated: true, completion: nil)
     }
     //MARK:- GoogleMap IBAction
     @IBAction func btnGoogleMapTapped(_ sender: Any)
     {
+        
     }
     //MARK:- SwitchShareAction
     @IBAction func switchShareTapped(_ sender: Any)
@@ -204,7 +206,6 @@ class RequestView: UIViewController,UITextViewDelegate
         if switchForAppeal.isOn {
             print("Switch is off")
             txtViewPersonalAppeal.isEditable = false
-            txtViewPersonalAppeal.text = ""
             switchForAppeal.setOn(false, animated:true)
         } else {
             print("The Switch is On")
@@ -223,17 +224,66 @@ class RequestView: UIViewController,UITextViewDelegate
     @IBAction func btnSubmitTapped(_ sender: Any)
     {
         view.endEditing(true)
-        
-        if txtFieldPatientName.text == "" || txtFieldContactNumber.text == "" || txtFieldContactNumber.text == "" || (btnWhatYouNeed.titleLabel?.text)! == "" || (btnBloodUnit.titleLabel?.text)! == "" || (btnWhenYouNeed.titleLabel?.text)! == "" || (btnBloodGroup.titleLabel?.text)! == "" || txtFieldHospitalBloodBankName.text == "" || txtFieldHospitalBloodBankContactNumber.text == "" || txtFieldHospitalBloodBankAddressPINCode.text == "" || txtFieldHospitalBloodBankAddress.text == "" || txtFieldHospitalBloodBankAddressCity.text == "" || txtFieldHospitalBloodBankAddressLandMark.text == ""
+        if txtFieldPatientName.text == "" || txtFieldContactNumber.text == "" || txtFieldContactNumber.text == "" || (btnWhatYouNeed.titleLabel?.text)! == "" || (btnBloodUnit.titleLabel?.text)! == "" || (btnWhenYouNeed.titleLabel?.text)! == "" || (btnBloodGroup.titleLabel?.text)! == "" || txtFieldHospitalBloodBankName.text == "" || txtFieldHospitalBloodBankContactNumber.text == "" || txtFieldHospitalBloodBankAddressPINCode.text == "" || txtFieldHospitalBloodBankAddress.text == "" || txtFieldHospitalBloodBankAddressCity.text == "" || txtFieldHospitalBloodBankAddressLandMark.text == "" || txtViewPersonalAppeal.text == ""
         {
             self.view.makeToast("Please fill all the fields", duration: 2.0, position: .bottom)
         }
         else{
-            print("Print submit")
+            
+           self.dateForServer()
+            HudBar.sharedInstance.showHudWithMessage(message: "Submiting...", view: self.view)
+            RequestInterator.SharedInstance.delegateRequestBlood = self
+            RequestInterator.SharedInstance.requesBlood(LoginId: "114177301473189791455",
+                                                        bloodgroup: (btnBloodGroup.titleLabel?.text)!,
+                                                        whatyouneed: (btnWhatYouNeed.titleLabel?.text!)!,
+                                                        whenyouneed: datetostring,
+                                                        Units: (btnBloodUnit.titleLabel?.text!)!,
+                                                        patientname: txtFieldPatientName.text!,
+                                                        contactperson: txtFieldContactPerson.text!,
+                                                        contactnumber: txtFieldContactNumber.text!,
+                                                        doctorname:txtFieldDoctorName.text!,
+                                                        doctorcontactnumber:"9999999999",
+                                                        doctoremailID: "",
+                                                        centerID:"2",
+                                                        centername: "Apolo",
+                                                    centercontactnumber:txtFieldHospitalBloodBankContactNumber.text!,
+                                                        centeraddress: txtFieldHospitalBloodBankAddress.text!,
+                                                        City: txtFieldHospitalBloodBankAddressCity.text!,
+                                                        State: "",
+                                                        Landmark: txtFieldHospitalBloodBankAddressLandMark.text!,Latitude: "12.2222222",
+                                                        Longitude: "23.3333333",
+                                                        Pincode: txtFieldHospitalBloodBankAddressPINCode.text!,
+                                                        Country: "",
+                                                        personalappeal: txtViewPersonalAppeal.text,
+                                                        Sharedinsocialmedia:"0")
         }
-        
     }
 }
+
+extension RequestView:ProtocolRequestView
+{
+    
+    func succesfullyBloodRequest(success:Bool)
+    {
+        if success == true
+        {
+            HudBar.sharedInstance.hideHudFormView(view: self.view)
+            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Your BloodRequest Submitted Successfully", view: self.view)
+            self.navigationController?.popViewController(animated: true)
+        }
+        else
+        {
+            
+        }
+    }
+    
+    func failedBloodRequest()
+    {
+        HudBar.sharedInstance.hideHudFormView(view: self.view)
+        self.view.makeToast("Unable to access server, please try again later", duration: 2.0, position: .bottom)
+    }
+}
+
 extension RequestView:UITextFieldDelegate
 {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -253,7 +303,6 @@ extension RequestView:UITextFieldDelegate
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
     {
-
         let newString = NSString(string: textField.text!).replacingCharacters(in: range, with: string)
         if newString.characters.count > 0
         {
@@ -289,6 +338,7 @@ extension RequestView:UITextFieldDelegate
         }
         return true;
     }
+    
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         return true;
     }
@@ -311,11 +361,9 @@ extension RequestView:HospitalListCompletDataProtocol
         {
             self.txtFieldHospitalBloodBankContactNumber.text = ""
         }
-        
         self.txtFieldHospitalBloodBankAddressPINCode.text = ListData.PINCode
         self.txtFieldHospitalBloodBankAddressLandMark.text = ListData.Landmark
     }
-
 }
 extension RequestView:ProtocolBloodInfo
 {
@@ -344,14 +392,12 @@ extension RequestView:ProtocolBloodInfo
 }
 extension RequestView:ProtocolCalendar
 {
-    
     func SuccessProtocolCalendar(valueSent: String)
     {
         self.whenYouNeedString = valueSent
         btnWhenYouNeed.titleLabel?.text = self.whenYouNeedString
         print("whenYouNeedString",self.whenYouNeedString!)
     }
-    
     func FailureProtocolCalendar(valueSent: String)
     {
         print("Try Again")

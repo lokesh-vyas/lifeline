@@ -51,3 +51,16 @@ extension UITextField {
         self.rightViewMode = .always
     }
 }
+
+extension UIDatePicker
+{
+   @discardableResult func dateForServer(date:String) -> String
+    {
+        let dateFormatter = DateFormatter()
+        let strtodate = dateFormatter.date(from: date)!
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let dateToStr = dateFormatter.string(from: strtodate)
+        return dateToStr
+    }
+ 
+}
