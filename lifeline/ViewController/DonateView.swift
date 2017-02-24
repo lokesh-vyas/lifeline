@@ -32,7 +32,11 @@ class DonateView: UIViewController {
     var rCoordinates : CLLocationCoordinate2D?
     var dataArray : JSON!
     
-    @IBOutlet weak var segmentController: UISegmentedControl!
+    var warningView = UIView()
+    var warningLabel = UILabel()
+    let warningImage = UIImageView()
+    var lastEventDate : Date? = nil
+    
     //MARK:- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +63,9 @@ class DonateView: UIViewController {
         mapView?.isBuildingsEnabled = true
         mapView?.settings.compassButton = true
         mapView?.settings.indoorPicker = true
+        
+        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+
     }
     
     //MARK:- viewWillAppear
@@ -174,24 +181,7 @@ class DonateView: UIViewController {
         }
         mapView?.delegate = self
     }
-    //TODO:-
-    @IBAction func segmentTapped(_ sender: Any) {
-        
-        if segmentController.selectedSegmentIndex == 0 {
-            
-            print("Hospital is selected..")
-            mapView?.mapType = .normal
-            
-        } else if segmentController.selectedSegmentIndex == 1 {
-            print("Individual is selected..")
-            mapView?.mapType = .hybrid
-            
-        } else if segmentController.selectedSegmentIndex == 2 {
-            print("Campaign is selected..")
-            mapView?.mapType = .satellite
-            
-        }
-    }
+    
     
 }
 
@@ -223,6 +213,17 @@ extension DonateView : GMSMapViewDelegate {
     {
         print("didChange")
         
+        if lastEventDate != nil {
+            let latestTime = Date()
+            let didChangeInterval = latestTime.timeIntervalSince(lastEventDate!)
+            
+                if didChangeInterval < 0.5 {
+                return
+                }
+            }
+        
+        
+        lastEventDate = Date()
         let visibleRegion = mapView.projection.visibleRegion()
         let mapBounds = GMSCoordinateBounds.init(region: visibleRegion)
         let NorthWest = CLLocationCoordinate2DMake(mapBounds.northEast.latitude, mapBounds.southWest.longitude)
@@ -242,6 +243,14 @@ extension DonateView : GMSMapViewDelegate {
     
     public func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         print("didTapAt")
+        
+        
+    }
+    
+    public func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        
+        lastEventDate = Date()
+        return true
     }
 }
 
@@ -272,8 +281,6 @@ extension DonateView: GMSAutocompleteViewControllerDelegate {
     func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
-    
-    
     
 }
 
@@ -310,21 +317,157 @@ extension DonateView : DonateViewProtocol {
         
         if jsonArray["BloodRequestSearchResponse"] == JSON.null || jsonArray["BloodRequestSearchResponse"]["BloodRequestSearchResponseDetails"]["StatusCode"] == 1 {
             print("No Requirements in your location")
-            
-            let popVC = self.storyboard?.instantiateViewController(withIdentifier: "PopUp") as! PopUp
-            popVC.view.backgroundColor = UIColor.clear
-            self.definesPresentationContext = true
-            popVC.modalPresentationStyle = .overCurrentContext
-
-            self.present(popVC, animated: true, completion: nil)
+            //warningView
+            warningView.backgroundColor = UIColor.white
+            warningView.translatesAutoresizingMaskIntoConstraints = false
+            warningView.layer.cornerRadius = 27.5
             
            
-           
+            //warningLabel
+            warningLabel.text = "No Requirements in your location"
+//            warningLabel.textAlignment = .center
+            warningLabel.numberOfLines = 2
+            warningLabel.translatesAutoresizingMaskIntoConstraints = false
             
-          
+            // warningImage
+            warningImage.image = UIImage(named: "error-sign.png")
+            warningImage.translatesAutoresizingMaskIntoConstraints = false
+            
+            self.warningView.addSubview(warningLabel)
+            self.warningView.addSubview(warningImage)
+            self.mapView?.addSubview(warningView)
+            self.view = self.mapView
+            
+            //AutoLayout Constraint
+            //-//warning View Height
+            let warningViewHeightConstraint = NSLayoutConstraint(
+                item: warningView,
+                attribute: NSLayoutAttribute.height,
+                relatedBy: NSLayoutRelation.equal,
+                toItem: nil,
+                attribute: NSLayoutAttribute.notAnAttribute,
+                multiplier: 1,
+                constant: 55)
+            
+            //warning ViewLeading
+             let warningViewLeadingConstraints = NSLayoutConstraint(
+                item: warningView,
+                attribute: NSLayoutAttribute.leading,
+                relatedBy: NSLayoutRelation.equal,
+                toItem: view,
+                attribute: NSLayoutAttribute.leading,
+                multiplier: 1,
+                constant: 10)
+            
+            //warning View Trailing
+             let warningViewTrailingConstraints = NSLayoutConstraint(
+                item: warningView,
+                attribute: NSLayoutAttribute.trailing,
+                relatedBy: NSLayoutRelation.equal,
+                toItem: view,
+                attribute: NSLayoutAttribute.trailing,
+                multiplier: 1,
+                constant: -75)
+            
+            //warning View Bottom
+             let warningViewBottomConstraints = NSLayoutConstraint(
+                item: warningView,
+                attribute: NSLayoutAttribute.bottom,
+                relatedBy: NSLayoutRelation.equal,
+                toItem: view,
+                attribute: NSLayoutAttribute.bottom,
+                multiplier: 1,
+                constant: -10)
+            
+            //-//warning Label Leading
+            let warningLabelLeadingConstraints = NSLayoutConstraint(
+                item: warningLabel,
+                attribute: NSLayoutAttribute.leading,
+                relatedBy: NSLayoutRelation.equal,
+                toItem: warningView,
+                attribute: NSLayoutAttribute.leading,
+                multiplier: 1,
+                constant: 55)
+            
+            //warning Label Trailing
+            let warningLabelTrailingConstraints = NSLayoutConstraint(
+                item: warningLabel,
+                attribute: NSLayoutAttribute.trailing,
+                relatedBy: NSLayoutRelation.equal,
+                toItem: warningView,
+                attribute: NSLayoutAttribute.trailing,
+                multiplier: 1,
+                constant: -10)
+            
+            //Label Vertical constraint
+            let warningLabelVerticalConstraint = NSLayoutConstraint(
+                item: warningLabel,
+                attribute: NSLayoutAttribute.centerY,
+                relatedBy: NSLayoutRelation.equal,
+                toItem: warningView,
+                attribute: NSLayoutAttribute.centerY,
+                multiplier: 1,
+                constant: 0)
+            
+            //-//warning Image Leading
+            let warningImageLeadingConstraints = NSLayoutConstraint(
+                item: warningImage,
+                attribute: NSLayoutAttribute.leading,
+                relatedBy: NSLayoutRelation.equal,
+                toItem: warningView,
+                attribute: NSLayoutAttribute.leading,
+                multiplier: 1,
+                constant: 5)
+            
+            //warning Image Top
+            let warningImageTopConstraints = NSLayoutConstraint(
+                item: warningImage,
+                attribute: NSLayoutAttribute.top,
+                relatedBy: NSLayoutRelation.equal,
+                toItem: warningView,
+                attribute: NSLayoutAttribute.top,
+                multiplier: 1,
+                constant: 5)
+            
+            //warning Image Bottom
+            let warningImageBottomConstraints = NSLayoutConstraint(
+                item: warningImage,
+                attribute: NSLayoutAttribute.bottom,
+                relatedBy: NSLayoutRelation.equal,
+                toItem: warningView,
+                attribute: NSLayoutAttribute.bottom,
+                multiplier: 1,
+                constant: -5)
+            
+            //warning Image width
+            let warningImageWidthConstraint = NSLayoutConstraint(
+                item: warningImage,
+                attribute: NSLayoutAttribute.width,
+                relatedBy: NSLayoutRelation.equal,
+                toItem: nil,
+                attribute: NSLayoutAttribute.notAnAttribute,
+                multiplier: 1,
+                constant: 45)
+            
+            view.addConstraint(warningViewHeightConstraint)
+            view.addConstraint(warningViewLeadingConstraints)
+            view.addConstraint(warningViewTrailingConstraints)
+            view.addConstraint(warningViewBottomConstraints)
+            
+            view.addConstraint(warningLabelLeadingConstraints)
+            view.addConstraint(warningLabelTrailingConstraints)
+            view.addConstraint(warningLabelVerticalConstraint)
+            
+            view.addConstraint(warningImageLeadingConstraints)
+            view.addConstraint(warningImageTopConstraints)
+            view.addConstraint(warningImageBottomConstraints)
+            view.addConstraint(warningImageWidthConstraint)
             
         } else {
+            
+            warningView.removeFromSuperview()
             self.bloodDonatingMarkers(responseData: jsonArray)
+            
         }
     }
     func failedDonateSources() {
