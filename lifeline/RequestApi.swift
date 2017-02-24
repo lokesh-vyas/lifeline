@@ -9,6 +9,9 @@
 import Foundation
 import Alamofire
 
+
+class RequestApi
+{
 var patientName = ""
 var contactPerson = ""
 var contactNumber = ""
@@ -23,3 +26,8 @@ var hospitalAddress = ""
 var landMark = ""
 var city = ""
 var pinCode = ""
+
+
+    
+ 
+}
