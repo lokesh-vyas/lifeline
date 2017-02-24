@@ -21,7 +21,7 @@ class ProfileView: UIViewController
     override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(true)
-        profileScrollView.contentSize = CGSize(width: self.view.frame.width, height: 1300)
+        profileScrollView.contentSize.height = 850
     }
     //MARK:- viewDidLoad
     override func viewDidLoad()
