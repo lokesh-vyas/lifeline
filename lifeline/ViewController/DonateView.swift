@@ -32,6 +32,7 @@ class DonateView: UIViewController {
     var rCoordinates : CLLocationCoordinate2D?
     var dataArray : JSON!
     
+    @IBOutlet weak var segmentController: UISegmentedControl!
     //MARK:- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -173,6 +174,25 @@ class DonateView: UIViewController {
         }
         mapView?.delegate = self
     }
+    //TODO:-
+    @IBAction func segmentTapped(_ sender: Any) {
+        
+        if segmentController.selectedSegmentIndex == 0 {
+            
+            print("Hospital is selected..")
+            mapView?.mapType = .normal
+            
+        } else if segmentController.selectedSegmentIndex == 1 {
+            print("Individual is selected..")
+            mapView?.mapType = .hybrid
+            
+        } else if segmentController.selectedSegmentIndex == 2 {
+            print("Campaign is selected..")
+            mapView?.mapType = .satellite
+            
+        }
+    }
+    
 }
 
 extension DonateView : CLLocationManagerDelegate {
@@ -253,6 +273,8 @@ extension DonateView: GMSAutocompleteViewControllerDelegate {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
     
+    
+    
 }
 
 extension DonateView : GMSAutocompleteResultsViewControllerDelegate {
@@ -289,10 +311,17 @@ extension DonateView : DonateViewProtocol {
         if jsonArray["BloodRequestSearchResponse"] == JSON.null || jsonArray["BloodRequestSearchResponse"]["BloodRequestSearchResponseDetails"]["StatusCode"] == 1 {
             print("No Requirements in your location")
             
-            let alertController = UIAlertController(title: title, message: "message", preferredStyle: .alert)
-            let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-            alertController.addAction(OKAction)
-            self.present(alertController, animated: true, completion: nil)
+            let popVC = self.storyboard?.instantiateViewController(withIdentifier: "PopUp") as! PopUp
+            popVC.view.backgroundColor = UIColor.clear
+            self.definesPresentationContext = true
+            popVC.modalPresentationStyle = .overCurrentContext
+
+            self.present(popVC, animated: true, completion: nil)
+            
+           
+           
+            
+          
             
         } else {
             self.bloodDonatingMarkers(responseData: jsonArray)
@@ -300,7 +329,7 @@ extension DonateView : DonateViewProtocol {
     }
     func failedDonateSources() {
         print("Failed to get Donate resources !!")
-    }
+            }
 }
 
 
