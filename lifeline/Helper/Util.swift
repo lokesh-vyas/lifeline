@@ -30,7 +30,7 @@ extension UINavigationController {
         view.backgroundColor          = UIColor.black.withAlphaComponent(0.2)
         navigationBar.backgroundColor = UIColor.black.withAlphaComponent(0.2)
         navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
-     
+        
         let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
         if statusBar.responds(to: #selector(setter: UIView.backgroundColor))
         {

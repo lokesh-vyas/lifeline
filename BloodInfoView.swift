@@ -8,6 +8,12 @@
 
 import UIKit
 
+protocol ProtocolBloodInfo
+{
+    func SuccessProtocolBloodInfo(valueSent: String)
+    func FailureProtocolBloodInfo(valueSent: String)
+}
+
 class BloodInfoView: UIViewController {
 
     var delegate:ProtocolBloodInfo?
@@ -23,13 +29,6 @@ class BloodInfoView: UIViewController {
         labelHeading.text = bloodInfoString
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
     @IBAction func btnDoneTapped(_ sender: Any) {
         let row = pickerViewBloodInfo.selectedRow(inComponent: 0);
         print("value %d", row)
@@ -45,16 +44,6 @@ class BloodInfoView: UIViewController {
         
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 extension BloodInfoView : UIPickerViewDataSource,UIPickerViewDelegate
 {
