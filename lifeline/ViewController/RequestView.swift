@@ -37,6 +37,7 @@ class RequestView: UIViewController,UITextViewDelegate
     var buttonupdate = String()
     var whenYouNeedString:String?
     var datetostring = String()
+    
     //MARK:- Arrays
     let bloodGroupArray = ["O+","O-","A+","A-","B+","B-","AB+","AB-"]
     let bloodUnitArray = ["1","2","3","4","5","6","7","8","9","10"]
@@ -83,14 +84,6 @@ class RequestView: UIViewController,UITextViewDelegate
     {
         view.endEditing(true)
     }
-    
-    func dateForServer()
-    {
-        let date = UIDatePicker()
-        date.dateForServer(date: datetostring)
-        
-    }
-    
     //MARK:- Text Field Padding
     func textFieldPadding()
     {
@@ -104,6 +97,7 @@ class RequestView: UIViewController,UITextViewDelegate
         txtFieldHospitalBloodBankAddressLandMark.setLeftPaddingPoints(10.0)
         txtFieldHospitalBloodBankAddressCity.setLeftPaddingPoints(10.0)
         txtFieldHospitalBloodBankAddressPINCode.setLeftPaddingPoints(10.0)
+        
     }
     //MARK:- btnFaceBookTapped
     @IBAction func btnFaceBookTapped(_ sender: Any) {
@@ -222,14 +216,12 @@ class RequestView: UIViewController,UITextViewDelegate
             self.view.makeToast("Please fill all the fields", duration: 2.0, position: .bottom)
         }
         else{
-            
-           self.dateForServer()
             HudBar.sharedInstance.showHudWithMessage(message: "Submiting...", view: self.view)
             RequestInterator.SharedInstance.delegateRequestBlood = self
             RequestInterator.SharedInstance.requesBlood(LoginId: "114177301473189791455",
                                                         bloodgroup: (btnBloodGroup.titleLabel?.text)!,
                                                         whatyouneed: (btnWhatYouNeed.titleLabel?.text!)!,
-                                                        whenyouneed: datetostring,
+                                                        whenyouneed: "2016-02-16",
                                                         Units: (btnBloodUnit.titleLabel?.text!)!,
                                                         patientname: txtFieldPatientName.text!,
                                                         contactperson: txtFieldContactPerson.text!,
@@ -266,7 +258,8 @@ extension RequestView:ProtocolRequestView
         }
         else
         {
-            
+            HudBar.sharedInstance.hideHudFormView(view: self.view)
+            self.view.makeToast("Unable to access server, please try again later", duration: 2.0, position: .bottom)
         }
     }
     
@@ -395,5 +388,6 @@ extension RequestView:ProtocolCalendar
         print("Try Again")
     }
 }
+
 
 
