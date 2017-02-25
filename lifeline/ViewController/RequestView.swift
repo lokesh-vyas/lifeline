@@ -8,6 +8,7 @@
 
 import UIKit
 import Social
+import Toast_Swift
 
 class RequestView: UIViewController,UITextViewDelegate
 {
@@ -218,29 +219,8 @@ class RequestView: UIViewController,UITextViewDelegate
         else{
             HudBar.sharedInstance.showHudWithMessage(message: "Submiting...", view: self.view)
             RequestInterator.SharedInstance.delegateRequestBlood = self
-            RequestInterator.SharedInstance.requesBlood(LoginId: "114177301473189791455",
-                                                        bloodgroup: (btnBloodGroup.titleLabel?.text)!,
-                                                        whatyouneed: (btnWhatYouNeed.titleLabel?.text!)!,
-                                                        whenyouneed: "2016-02-16",
-                                                        Units: (btnBloodUnit.titleLabel?.text!)!,
-                                                        patientname: txtFieldPatientName.text!,
-                                                        contactperson: txtFieldContactPerson.text!,
-                                                        contactnumber: txtFieldContactNumber.text!,
-                                                        doctorname:txtFieldDoctorName.text!,
-                                                        doctorcontactnumber:"9999999999",
-                                                        doctoremailID: "",
-                                                        centerID:"2",
-                                                        centername: "Apolo",
-                                                    centercontactnumber:txtFieldHospitalBloodBankContactNumber.text!,
-                                                        centeraddress: txtFieldHospitalBloodBankAddress.text!,
-                                                        City: txtFieldHospitalBloodBankAddressCity.text!,
-                                                        State: "",
-                                                        Landmark: txtFieldHospitalBloodBankAddressLandMark.text!,Latitude: "12.2222222",
-                                                        Longitude: "23.3333333",
-                                                        Pincode: txtFieldHospitalBloodBankAddressPINCode.text!,
-                                                        Country: "",
-                                                        personalappeal: txtViewPersonalAppeal.text,
-                                                        Sharedinsocialmedia:"0")
+            RequestInterator.SharedInstance.requesBlood(LoginId: "114177301473189791455",bloodgroup: (btnBloodGroup.titleLabel?.text)!,whatyouneed: (btnWhatYouNeed.titleLabel?.text!)!,whenyouneed: "2016-02-16",Units: (btnBloodUnit.titleLabel?.text!)!,patientname: txtFieldPatientName.text!,contactperson: txtFieldContactPerson.text!,contactnumber: txtFieldContactNumber.text!,doctorname:txtFieldDoctorName.text!,doctorcontactnumber:"9999999999",doctoremailID: "",centerID:"2",centername: "Apolo",centercontactnumber:txtFieldHospitalBloodBankContactNumber.text!,centeraddress: txtFieldHospitalBloodBankAddress.text!,City: txtFieldHospitalBloodBankAddressCity.text!,State: "",
+                Landmark: txtFieldHospitalBloodBankAddressLandMark.text!,Latitude: "12.2222222",Longitude: "23.3333333",Pincode: txtFieldHospitalBloodBankAddressPINCode.text!,Country: "",personalappeal: txtViewPersonalAppeal.text,Sharedinsocialmedia:"0")
         }
     }
 }
@@ -254,6 +234,37 @@ extension RequestView:ProtocolRequestView
         {
             HudBar.sharedInstance.hideHudFormView(view: self.view)
             HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Your BloodRequest Submitted Successfully", view: self.view)
+            if switchForAppeal.isOn
+            {
+                    if(SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook))
+                        
+                {
+                    let SocialMedia :SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+                            
+                            SocialMedia.completionHandler =
+                                {
+                                    result -> Void in
+                                    
+                                    let getResult = result as SLComposeViewControllerResult;
+                                    switch(getResult.rawValue) {
+                                    case SLComposeViewControllerResult.cancelled.rawValue: self.view.makeToast("Cancelled")
+                                    case SLComposeViewControllerResult.done.rawValue: self.view.makeToast("Your post has been posted successfully")
+                                    default: print("Error!")
+                                    }
+                                    self.dismiss(animated: true, completion: nil)
+                            }
+                        SocialMedia.setInitialText(txtViewPersonalAppeal.text)
+                    }
+                    else
+                        
+                    {
+                        
+                        let alert = UIAlertController(title: "Facebook App not installed.", message: "Your device has no Facebook installed.", preferredStyle: UIAlertControllerStyle.alert)
+                        
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                }
             self.navigationController?.popViewController(animated: true)
         }
         else
