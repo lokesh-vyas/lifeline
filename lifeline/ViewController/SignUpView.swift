@@ -174,6 +174,7 @@ extension SignUpView:UITextFieldDelegate
         return true;
     }
 }
+ //MARK:- checkAvabilityProtocol
 extension SignUpView : checkAvabilityProtocol
 {
     func checkAvailbaleSucess(success: Bool)
@@ -192,6 +193,7 @@ extension SignUpView : checkAvabilityProtocol
         self.view.makeToast("Unable to access server, please try again later", duration: 3.0, position: .bottom)
     }
 }
+//MARK:- successSignUpProtocol
 extension SignUpView : successSignUpProtocol
 {
     func successSignUp(success: Bool)

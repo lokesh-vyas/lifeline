@@ -93,7 +93,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         self.window?.makeKeyAndVisible()
     }
-
-
 }
-

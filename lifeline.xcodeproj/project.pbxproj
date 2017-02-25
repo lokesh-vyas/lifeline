@@ -85,6 +85,7 @@
 		EDE9AEA81E5C4AB30031BCB0 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE9AEA71E5C4AB30031BCB0 /* Social.framework */; };
 		EDE9AEAA1E5C4AD30031BCB0 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE9AEA91E5C4AD30031BCB0 /* MessageUI.framework */; };
 		EDE9AEAD1E5DC2B40031BCB0 /* RequestApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE9AEAC1E5DC2B40031BCB0 /* RequestApi.swift */; };
+		EDE9AEAF1E5FECCC0031BCB0 /* RequestViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE9AEAE1E5FECCC0031BCB0 /* RequestViewInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -196,6 +197,7 @@
 		EDE9AEA71E5C4AB30031BCB0 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		EDE9AEA91E5C4AD30031BCB0 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		EDE9AEAC1E5DC2B40031BCB0 /* RequestApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestApi.swift; sourceTree = "<group>"; };
+		EDE9AEAE1E5FECCC0031BCB0 /* RequestViewInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestViewInteractor.swift; sourceTree = "<group>"; };
 		F70603F9C011A331ED033AE6 /* Pods_lifeline.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lifeline.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -330,6 +332,7 @@
 			isa = PBXGroup;
 			children = (
 				66C4E68D1E37402B00526C1D /* RequestView.swift */,
+				EDE9AEAE1E5FECCC0031BCB0 /* RequestViewInteractor.swift */,
 			);
 			name = RequestView;
 			sourceTree = "<group>";
@@ -916,6 +919,7 @@
 				66EA8DF91E2510A300646797 /* HudBar.swift in Sources */,
 				66316B8B1E557D4200114055 /* HospitalListCell.swift in Sources */,
 				66C4E68E1E37402B00526C1D /* RequestView.swift in Sources */,
+				EDE9AEAF1E5FECCC0031BCB0 /* RequestViewInteractor.swift in Sources */,
 				66EA8E231E2760C400646797 /* SignUpView.swift in Sources */,
 				66C4E67D1E37258B00526C1D /* HomeView.swift in Sources */,
 				66C4E6911E37404C00526C1D /* MyRequestView.swift in Sources */,

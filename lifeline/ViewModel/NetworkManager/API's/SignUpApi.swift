@@ -64,8 +64,8 @@ class ForgetPasswordApi {
     }
 }
 //MARK:- CustomLoginApi
-class CustomLoginApi {
-    
+class CustomLoginApi
+{
     var userId = ""
     var password = ""
     

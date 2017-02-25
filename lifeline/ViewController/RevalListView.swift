@@ -15,8 +15,7 @@ class RevalListView: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        self.navigationController?.completelyTransparentBar()
-         menuArray = ["myProfile","FAQ","changePassword","share"]
+        menuArray = ["myProfile","FAQ","changePassword","share"]
         // Do any additional setup after loading the view.
     }
 }

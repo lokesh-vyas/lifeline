@@ -30,7 +30,7 @@ extension UINavigationController {
         view.backgroundColor          = UIColor.black.withAlphaComponent(0.2)
         navigationBar.backgroundColor = UIColor.black.withAlphaComponent(0.2)
         navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
-     
+        
         let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
         if statusBar.responds(to: #selector(setter: UIView.backgroundColor))
         {
@@ -50,4 +50,17 @@ extension UITextField {
         self.rightView = paddingView
         self.rightViewMode = .always
     }
+}
+
+extension UIDatePicker
+{
+   @discardableResult func dateForServer(date:String) -> String
+    {
+        let dateFormatter = DateFormatter()
+        let strtodate = dateFormatter.date(from: date)!
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let dateToStr = dateFormatter.string(from: strtodate)
+        return dateToStr
+    }
+ 
 }

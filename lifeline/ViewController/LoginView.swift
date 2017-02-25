@@ -29,6 +29,11 @@ class LoginView: UIViewController
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.navigationBar.isHidden = true
+        let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
+        if statusBar.responds(to: #selector(setter: UIView.backgroundColor))
+        {
+            statusBar.backgroundColor = UIColor.clear
+        }
     }
     //MARK:- SignUpAction
     @IBAction func signUpAction(_ sender: Any)
