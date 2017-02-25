@@ -44,6 +44,7 @@ class RequestView: UIViewController,UITextViewDelegate
     var checkdatafromprevious:String?
     var whenYouNeedString:String?
     var datetostring = String()
+    
     //MARK:- Arrays
     let bloodGroupArray = ["O+","O-","A+","A-","B+","B-","AB+","AB-"]
     let bloodUnitArray = ["1","2","3","4","5","6","7","8","9","10"]
@@ -229,6 +230,7 @@ class RequestView: UIViewController,UITextViewDelegate
             self.view.makeToast("Please fill all the fields", duration: 2.0, position: .bottom)
         }
         else{
+            self.datetostring = (btnWhenYouNeed.titleLabel?.text)!
             
            self.dateForServer()
             HudBar.sharedInstance.showHudWithMessage(message: "Submiting...", view: self.view)

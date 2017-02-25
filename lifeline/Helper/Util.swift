@@ -56,10 +56,13 @@ extension UIDatePicker
 {
    @discardableResult func dateForServer(date:String) -> String
     {
+        let requestview = RequestView()
+        let datefromrequest = requestview.btnWhenYouNeed.titleLabel?.text
         let dateFormatter = DateFormatter()
-        let strtodate = dateFormatter.date(from: date)!
+        let strtodate = dateFormatter.date(from: datefromrequest!)!
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let dateToStr = dateFormatter.string(from: strtodate)
+        print("Date",dateToStr)
         return dateToStr
     }
  
