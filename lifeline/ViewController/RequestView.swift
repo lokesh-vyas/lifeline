@@ -260,6 +260,7 @@ extension RequestView:ProtocolRequestView
         {
             HudBar.sharedInstance.hideHudFormView(view: self.view)
             self.view.makeToast("Unable to access server, please try again later", duration: 2.0, position: .bottom)
+
         }
     }
     
