@@ -17,6 +17,9 @@
 		66316B8D1E557D8300114055 /* HospitalListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66316B8C1E557D8300114055 /* HospitalListCell.xib */; };
 		663706C71E2FB08400EC5EF3 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 663706C61E2FB08400EC5EF3 /* SWRevealViewController.m */; };
 		665111B41E5D9D8600A6AFAA /* ProfileViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665111B31E5D9D8600A6AFAA /* ProfileViewInteractor.swift */; };
+		665111B71E61824500A6AFAA /* MyRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665111B61E61824500A6AFAA /* MyRequestCell.swift */; };
+		665111B91E61826D00A6AFAA /* MyRequestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 665111B81E61826D00A6AFAA /* MyRequestCell.xib */; };
+		665111BC1E61B69D00A6AFAA /* MyRequestClose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665111BB1E61B69D00A6AFAA /* MyRequestClose.swift */; };
 		66C4E67D1E37258B00526C1D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C4E67C1E37258B00526C1D /* HomeView.swift */; };
 		66C4E67F1E3725A300526C1D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C4E67E1E3725A300526C1D /* ProfileView.swift */; };
 		66C4E6821E37273100526C1D /* RevalListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C4E6811E37273100526C1D /* RevalListView.swift */; };
@@ -121,6 +124,9 @@
 		663706C51E2FB08400EC5EF3 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		663706C61E2FB08400EC5EF3 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		665111B31E5D9D8600A6AFAA /* ProfileViewInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewInteractor.swift; sourceTree = "<group>"; };
+		665111B61E61824500A6AFAA /* MyRequestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyRequestCell.swift; path = Cell/MyRequestCell.swift; sourceTree = "<group>"; };
+		665111B81E61826D00A6AFAA /* MyRequestCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyRequestCell.xib; path = Cell/MyRequestCell.xib; sourceTree = "<group>"; };
+		665111BB1E61B69D00A6AFAA /* MyRequestClose.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyRequestClose.swift; path = ViewController/MyRequestClose.swift; sourceTree = "<group>"; };
 		66C4E67C1E37258B00526C1D /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeView.swift; path = ViewController/HomeView.swift; sourceTree = "<group>"; };
 		66C4E67E1E3725A300526C1D /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileView.swift; path = ViewController/ProfileView.swift; sourceTree = "<group>"; };
 		66C4E6811E37273100526C1D /* RevalListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RevalListView.swift; path = ViewController/RevalListView.swift; sourceTree = "<group>"; };
@@ -253,6 +259,7 @@
 		66316B811E54555E00114055 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				665111B51E6181F300A6AFAA /* MyRequestCell */,
 				66316B891E557AE600114055 /* HospitalListCell */,
 			);
 			name = Cell;
@@ -275,6 +282,23 @@
 				663706C41E2FB08400EC5EF3 /* lifeline-Bridging-Header.h */,
 			);
 			name = SWRevalView;
+			sourceTree = "<group>";
+		};
+		665111B51E6181F300A6AFAA /* MyRequestCell */ = {
+			isa = PBXGroup;
+			children = (
+				665111B61E61824500A6AFAA /* MyRequestCell.swift */,
+				665111B81E61826D00A6AFAA /* MyRequestCell.xib */,
+			);
+			name = MyRequestCell;
+			sourceTree = "<group>";
+		};
+		665111BA1E61B67200A6AFAA /* MyRequestClose */ = {
+			isa = PBXGroup;
+			children = (
+				665111BB1E61B69D00A6AFAA /* MyRequestClose.swift */,
+			);
+			name = MyRequestClose;
 			sourceTree = "<group>";
 		};
 		66C4E67A1E37251300526C1D /* ProfileView */ = {
@@ -341,6 +365,7 @@
 			isa = PBXGroup;
 			children = (
 				66C4E6901E37404C00526C1D /* MyRequestView.swift */,
+				665111BA1E61B67200A6AFAA /* MyRequestClose */,
 			);
 			name = MyRequestView;
 			sourceTree = "<group>";
@@ -720,6 +745,7 @@
 				66C5782C1E37799F00B235F4 /* seguili.ttf in Resources */,
 				EDE9AEA41E5C47D10031BCB0 /* mail.png in Resources */,
 				66C5782A1E37799F00B235F4 /* segoeuisl.ttf in Resources */,
+				665111B91E61826D00A6AFAA /* MyRequestCell.xib in Resources */,
 				66EA8E111E275A4000646797 /* calendar_clock.png in Resources */,
 				66EA8E1D1E275A4000646797 /* save.png in Resources */,
 				66316B8D1E557D8300114055 /* HospitalListCell.xib in Resources */,
@@ -927,6 +953,8 @@
 				66C4E6881E372AD900526C1D /* ChangePasswordView.swift in Sources */,
 				66EA8E261E2772D300646797 /* FloatLabelTextField-2.swift in Sources */,
 				66EA8DE61E24BDB700646797 /* LoginView.swift in Sources */,
+				665111B71E61824500A6AFAA /* MyRequestCell.swift in Sources */,
+				665111BC1E61B69D00A6AFAA /* MyRequestClose.swift in Sources */,
 				66EA8E341E27AF0900646797 /* SignUpApi.swift in Sources */,
 				66EA8E2C1E27947400646797 /* NetworkManager.swift in Sources */,
 				66EA8E281E277D0400646797 /* Util.swift in Sources */,
