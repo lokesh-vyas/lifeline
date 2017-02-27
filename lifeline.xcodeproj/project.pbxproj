@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		0E0BE3E6DE4AF783417CC873 /* Pods_lifelineTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A7713EA892985CA8991C0DE /* Pods_lifelineTests.framework */; };
 		18324D381E5D6E030043B204 /* DonateInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18324D371E5D6E030043B204 /* DonateInteractor.swift */; };
-		185D2CA41E5F118E0094EA4C /* PopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185D2CA31E5F118E0094EA4C /* PopUp.swift */; };
+		18C6883B1E62ECBB0026453C /* MarkerIndividualDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C6883A1E62ECBB0026453C /* MarkerIndividualDetails.swift */; };
+		18C6883D1E62ECDB0026453C /* MarkerNotIndividualDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C6883C1E62ECDB0026453C /* MarkerNotIndividualDetails.swift */; };
 		66316B801E53132500114055 /* HospitalListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66316B7F1E53132500114055 /* HospitalListView.swift */; };
 		66316B841E5572B800114055 /* HospitalListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66316B831E5572B800114055 /* HospitalListInteractor.swift */; };
 		66316B881E5575D700114055 /* HospitalListApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66316B871E5575D700114055 /* HospitalListApi.swift */; };
@@ -112,7 +113,8 @@
 /* Begin PBXFileReference section */
 		07E6C19246F213CF70BD75C4 /* Pods-lifeline.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lifeline.release.xcconfig"; path = "Pods/Target Support Files/Pods-lifeline/Pods-lifeline.release.xcconfig"; sourceTree = "<group>"; };
 		18324D371E5D6E030043B204 /* DonateInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonateInteractor.swift; sourceTree = "<group>"; };
-		185D2CA31E5F118E0094EA4C /* PopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUp.swift; sourceTree = "<group>"; };
+		18C6883A1E62ECBB0026453C /* MarkerIndividualDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerIndividualDetails.swift; sourceTree = "<group>"; };
+		18C6883C1E62ECDB0026453C /* MarkerNotIndividualDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerNotIndividualDetails.swift; sourceTree = "<group>"; };
 		19B74CD6720B8FE1E0D554ED /* Pods-lifelineUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lifelineUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-lifelineUITests/Pods-lifelineUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1A7713EA892985CA8991C0DE /* Pods_lifelineTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lifelineTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65CFD1F97B4EDC4D89096216 /* Pods-lifelineUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lifelineUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-lifelineUITests/Pods-lifelineUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -349,7 +351,8 @@
 			children = (
 				66C4E68A1E37400B00526C1D /* DonateView.swift */,
 				18324D371E5D6E030043B204 /* DonateInteractor.swift */,
-				185D2CA31E5F118E0094EA4C /* PopUp.swift */,
+				18C6883A1E62ECBB0026453C /* MarkerIndividualDetails.swift */,
+				18C6883C1E62ECDB0026453C /* MarkerNotIndividualDetails.swift */,
 			);
 			name = DonateView;
 			sourceTree = "<group>";
@@ -959,6 +962,7 @@
 				EDE9AEAF1E5FECCC0031BCB0 /* RequestViewInteractor.swift in Sources */,
 				66EA8E231E2760C400646797 /* SignUpView.swift in Sources */,
 				66C4E67D1E37258B00526C1D /* HomeView.swift in Sources */,
+				18C6883D1E62ECDB0026453C /* MarkerNotIndividualDetails.swift in Sources */,
 				66C4E6911E37404C00526C1D /* MyRequestView.swift in Sources */,
 				EDE9AE981E5C3D110031BCB0 /* CalendarView.swift in Sources */,
 				66C4E6881E372AD900526C1D /* ChangePasswordView.swift in Sources */,
@@ -970,6 +974,7 @@
 				66EA8E2C1E27947400646797 /* NetworkManager.swift in Sources */,
 				66EA8E281E277D0400646797 /* Util.swift in Sources */,
 				66EA8DFD1E26611300646797 /* StringList.swift in Sources */,
+				18C6883B1E62ECBB0026453C /* MarkerIndividualDetails.swift in Sources */,
 				EDE9AEAD1E5DC2B40031BCB0 /* RequestApi.swift in Sources */,
 				66316B881E5575D700114055 /* HospitalListApi.swift in Sources */,
 				66316B841E5572B800114055 /* HospitalListInteractor.swift in Sources */,
@@ -977,7 +982,6 @@
 				66C4E68B1E37400B00526C1D /* DonateView.swift in Sources */,
 				66EA8E2E1E27A36900646797 /* SignUpInteractor.swift in Sources */,
 				66C4E6851E372AAA00526C1D /* FAQView.swift in Sources */,
-				185D2CA41E5F118E0094EA4C /* PopUp.swift in Sources */,
 				66EA8E361E27AF2600646797 /* APIBuilder.swift in Sources */,
 				665111B41E5D9D8600A6AFAA /* ProfileViewInteractor.swift in Sources */,
 				66316B801E53132500114055 /* HospitalListView.swift in Sources */,
