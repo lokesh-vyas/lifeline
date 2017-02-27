@@ -16,8 +16,6 @@ class MyRequestClose: UIViewController {
         super.viewDidLoad()
             // Do any additional setup after loading the view.
     }
- 
-
 }
 extension MyRequestClose:UIGestureRecognizerDelegate
 {
@@ -26,8 +24,7 @@ extension MyRequestClose:UIGestureRecognizerDelegate
         {
             return false
         }
-        let SWRevealView = self.storyboard!.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
-        self.navigationController?.present(SWRevealView, animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
         return true
     }
    
