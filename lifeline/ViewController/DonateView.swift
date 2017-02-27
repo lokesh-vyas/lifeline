@@ -36,7 +36,7 @@ class DonateView: UIViewController {
     var labelWarning = UILabel()
     let imageWarning = UIImageView()
     var lastEventDate : Date? = nil
-    var popvc : UIViewController!
+    
     
     //MARK:- viewDidLoad
     override func viewDidLoad() {
@@ -127,6 +127,7 @@ class DonateView: UIViewController {
         
         if ((dataArray as? JSON)?.dictionary) != nil {
             dataArray = JSON.init(arrayLiteral: dataArray)
+            
         }
         
         for (i, _) in dataArray.enumerated() {
@@ -134,6 +135,7 @@ class DonateView: UIViewController {
             if dataArray[i]["TypeOfOrg"] == 1 {
                 if dataArray[i]["IndividualDetails"] == JSON.null {
                     
+//                    print("Hosp",dataArray)
                     self.rLatitude = dataArray[i]["Latitude"].doubleValue
                     self.rLongitude = dataArray[i]["Longitude"].doubleValue
                     self.rLocation = CLLocation.init(latitude:
@@ -145,13 +147,12 @@ class DonateView: UIViewController {
                     myMarker1.snippet = dataArray[i]["Name"].stringValue
                     myMarker1.icon = UIImage(named: "Hospital_icon")!
                     myMarker1.map = self.mapView
-                    
-                    print("MyMarker1.snippet",dataArray[i]["Name"].stringValue)
                     self.view = self.mapView
 
                     
                 } else {
                     
+//                    print("Indi",dataArray)
                     self.rLatitude = dataArray[i]["Latitude"].doubleValue
                     self.rLongitude = dataArray[i]["Longitude"].doubleValue
                     self.rLocation = CLLocation.init(latitude: CLLocationDegrees(self.rLatitude!), longitude: CLLocationDegrees(self.rLongitude!))
@@ -161,8 +162,6 @@ class DonateView: UIViewController {
                     myMarker2.userData = dataArray[i]
                     myMarker2.snippet = dataArray[i]["Name"].stringValue
                     myMarker2.icon = UIImage(named: "Individual_icon")!
-                    
-                    print("MyMarker2.snippet",dataArray[i]["Name"].stringValue)
                     myMarker2.map = self.mapView
                     self.view = self.mapView
                     
@@ -172,6 +171,7 @@ class DonateView: UIViewController {
             
                 
                 print("CASE 2: $CAMP")
+                print("Camp",dataArray)
                 rLatitude = dataArray[i]["Latitude"].doubleValue
                 rLongitude = dataArray[i]["Longitude"].doubleValue
                 rLocation = CLLocation.init(latitude: CLLocationDegrees(rLatitude!), longitude: CLLocationDegrees(rLongitude!))
@@ -182,7 +182,6 @@ class DonateView: UIViewController {
                 myMarker3.icon = UIImage(named: "Camp_icon")!
                 print("Camp_icon came ?")
                 myMarker3.snippet = dataArray[i]["Name"].stringValue
-                print("MyMarker3.snippet",dataArray[i]["Name"].stringValue)
                 myMarker3.map = mapView
                 view = mapView
             }
@@ -250,20 +249,20 @@ extension DonateView : GMSMapViewDelegate {
         print("idleAt")
     }
     
-    public func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-        print("didTapAt")
-        self.navigationController?.popViewController(animated: true)
-    }
-    
     public func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         
         lastEventDate = Date()
-        popvc = self.storyboard?.instantiateViewController(withIdentifier: "PopUp") as! PopUp
-        popvc.modalPresentationStyle = .overCurrentContext
-        popvc.view.backgroundColor = UIColor.clear
-//        popvc.markerInfo = ["pppp","kkk"]
-        self.present(popvc, animated: true, completion: nil)
+        var userDict = [String:Any]()
+        var jsonDict = JSON.init(dictionaryLiteral: ("Index", marker.userData!))
+        jsonDict = jsonDict["Index"]
+        userDict["Name"] = String(describing: jsonDict["Name"])
+        userDict["WorkingHours"] = String(describing: jsonDict["WorkingHours"])
+        let markerDetails = self.storyboard?.instantiateViewController(withIdentifier: "MarkerNotIndividualDetails") as! MarkerNotIndividualDetails
         
+        markerDetails.markerDict = userDict
+        markerDetails.modalPresentationStyle = .overCurrentContext
+        markerDetails.view.backgroundColor = UIColor.clear
+        present(markerDetails, animated: true, completion: nil)
         return false //marker event is still handled by delegate
     }
 }
@@ -335,7 +334,6 @@ extension DonateView : DonateViewProtocol {
             viewWarning.backgroundColor = UIColor.white
             viewWarning.translatesAutoresizingMaskIntoConstraints = false
             viewWarning.layer.cornerRadius = 27.5
-            
            
             //labelWarning
             labelWarning.text = "No Requirements in your location"
