@@ -257,7 +257,12 @@ extension DonateView : GMSMapViewDelegate {
         jsonDict = jsonDict["Index"]
         userDict["Name"] = String(describing: jsonDict["Name"])
         userDict["WorkingHours"] = String(describing: jsonDict["WorkingHours"])
-        let markerDetails = self.storyboard?.instantiateViewController(withIdentifier: "MarkerNotIndividualDetails") as! MarkerNotIndividualDetails
+        
+        if jsonDict["TypeOfOrg"] == 2 { // i.e individual
+            let markerDetails = self.storyboard?.instantiateViewController(withIdentifier: "MarkerIndividualDetails") as! MarkerIndividualDetails
+        } else { // i.e Hospital or Campaign
+            let markerDetails = self.storyboard?.instantiateViewController(withIdentifier: "MarkerNotIndividualDetails") as! MarkerNotIndividualDetails
+        }
         
         markerDetails.markerDict = userDict
         markerDetails.modalPresentationStyle = .overCurrentContext
