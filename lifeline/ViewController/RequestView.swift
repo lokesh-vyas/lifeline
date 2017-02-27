@@ -186,7 +186,10 @@ class RequestView: UIViewController,UITextViewDelegate
     //MARK:- GoogleMap IBAction
     @IBAction func btnGoogleMapTapped(_ sender: Any)
     {
+      let hospitalInMap = self.storyboard?.instantiateViewController(withIdentifier: "ShowHospitalInMapView") as! ShowHospitalInMapView!
+        hospitalInMap?.addresstring = txtFieldHospitalBloodBankAddress.text! + txtFieldHospitalBloodBankAddressCity.text!
         
+      self.navigationController?.pushViewController(hospitalInMap!, animated: true)
     }
     //MARK:- SwitchShareAction
     @IBAction func switchShareTapped(_ sender: Any)

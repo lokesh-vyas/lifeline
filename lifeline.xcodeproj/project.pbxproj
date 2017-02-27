@@ -254,7 +254,6 @@
 			children = (
 				66316B7F1E53132500114055 /* HospitalListView.swift */,
 				66316B831E5572B800114055 /* HospitalListInteractor.swift */,
-				ED11189E1E61983F003EA467 /* ShowHospitalInMapView.swift */,
 			);
 			name = "Hospital List View";
 			sourceTree = "<group>";
@@ -459,6 +458,7 @@
 				66C4E67B1E37252600526C1D /* HomeView */,
 				66C4E6891E373FEF00526C1D /* DonateView */,
 				66C4E68C1E37401100526C1D /* RequestView */,
+				ED1118A21E63ED94003EA467 /* ShowHospital */,
 				EDE9AEAB1E5C76640031BCB0 /* ShareView */,
 				66C4E68F1E37403100526C1D /* MyRequestView */,
 				66C4E6861E372AB900526C1D /* ChangePassword */,
@@ -614,6 +614,14 @@
 				72C867B9743D7D3FEBBE575C /* Pods_lifelineUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ED1118A21E63ED94003EA467 /* ShowHospital */ = {
+			isa = PBXGroup;
+			children = (
+				ED11189E1E61983F003EA467 /* ShowHospitalInMapView.swift */,
+			);
+			name = ShowHospital;
 			sourceTree = "<group>";
 		};
 		EDE9AEAB1E5C76640031BCB0 /* ShareView */ = {
