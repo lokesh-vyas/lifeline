@@ -30,10 +30,6 @@ class RequestInterator
     func requesBlood(LoginId: String, bloodgroup : String, whatyouneed: String, whenyouneed: String, Units: String, patientname:String, contactperson: String, contactnumber: String, doctorname: String, doctorcontactnumber:String, doctoremailID:String,centerID:String,centername:String,centercontactnumber:String,centeraddress:String,City:String,State:String,Landmark:String,Latitude:String,Longitude:String,Pincode:String,Country:String,personalappeal:String,Sharedinsocialmedia:String)
     {
         
-            
-//            let builder = APIBuilder.sharedInstance.requestBloodAPI(patientName: patientname, contactperson: contactperson, contactnumber: contactnumber, whatyouneed: whatyouneed, whenyouneed: whenyouneed, bloodgroup: bloodgroup, units: units, hospitalbloodbankname: hospitalbloodbankname, doctorname: doctorname, contactnumberhospitalbloodbankname: contactnumberhospitalbloodbankname, hospitaladdress: hospitaladdress, landmark: landmark, city: city, pinCode: pinCode, appeal: appeal)
-        
-        
     let builder = APIBuilder.sharedInstance.buildBloodRequestApi(LoginID: LoginId, BloodGroup: bloodgroup, WhatYouNedd: whatyouneed, WhenYouNedd: whenyouneed, Units: Units, PatientName: patientname, ContactPerson: contactnumber, ContactNumber: contactnumber, DoctorName: doctorname, DoctorContact: doctorcontactnumber, DoctorEmailID: doctoremailID,centerID:centerID , CenterName: centername, CenterContactNumber: centercontactnumber, CenterAddress: centeraddress, City: City, State: State, Landmark: Landmark, Latitude: Latitude, Longitude: Longitude, Pincode: Pincode, country: Country, PersonalAppeal: personalappeal, SharedInSocialMedia: Sharedinsocialmedia)
         
         
@@ -41,7 +37,7 @@ class RequestInterator
                 {
                     (JSONResponse) -> Void in
                     print(JSONResponse)
-                    if(JSONResponse["BloodRequirementRequest"]["BloodRequirementDetails"]["StatusCode"].int == 0)
+                    if(JSONResponse["BloodRequirementResponse"]["ResponseDetails"]["StatusCode"].int == 0)
                     {
                         self.delegateRequestBlood?.succesfullyBloodRequest(success: true)
                     }else

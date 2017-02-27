@@ -8,6 +8,7 @@
 
 import UIKit
 import Social
+import Toast_Swift
 
 class RequestView: UIViewController,UITextViewDelegate
 {
@@ -37,6 +38,7 @@ class RequestView: UIViewController,UITextViewDelegate
     var buttonupdate = String()
     var whenYouNeedString:String?
     var datetostring = String()
+    
     //MARK:- Arrays
     let bloodGroupArray = ["O+","O-","A+","A-","B+","B-","AB+","AB-"]
     let bloodUnitArray = ["1","2","3","4","5","6","7","8","9","10"]
@@ -83,14 +85,6 @@ class RequestView: UIViewController,UITextViewDelegate
     {
         view.endEditing(true)
     }
-    
-    func dateForServer()
-    {
-        let date = UIDatePicker()
-        date.dateForServer(date: datetostring)
-        
-    }
-    
     //MARK:- Text Field Padding
     func textFieldPadding()
     {
@@ -104,6 +98,7 @@ class RequestView: UIViewController,UITextViewDelegate
         txtFieldHospitalBloodBankAddressLandMark.setLeftPaddingPoints(10.0)
         txtFieldHospitalBloodBankAddressCity.setLeftPaddingPoints(10.0)
         txtFieldHospitalBloodBankAddressPINCode.setLeftPaddingPoints(10.0)
+        
     }
     //MARK:- btnFaceBookTapped
     @IBAction func btnFaceBookTapped(_ sender: Any) {
@@ -191,7 +186,10 @@ class RequestView: UIViewController,UITextViewDelegate
     //MARK:- GoogleMap IBAction
     @IBAction func btnGoogleMapTapped(_ sender: Any)
     {
+      let hospitalInMap = self.storyboard?.instantiateViewController(withIdentifier: "ShowHospitalInMapView") as! ShowHospitalInMapView!
+        hospitalInMap?.addresstring = txtFieldHospitalBloodBankAddress.text! + txtFieldHospitalBloodBankAddressCity.text!
         
+      self.navigationController?.pushViewController(hospitalInMap!, animated: true)
     }
     //MARK:- SwitchShareAction
     @IBAction func switchShareTapped(_ sender: Any)
@@ -222,33 +220,10 @@ class RequestView: UIViewController,UITextViewDelegate
             self.view.makeToast("Please fill all the fields", duration: 2.0, position: .bottom)
         }
         else{
-            
-           self.dateForServer()
             HudBar.sharedInstance.showHudWithMessage(message: "Submiting...", view: self.view)
             RequestInterator.SharedInstance.delegateRequestBlood = self
-            RequestInterator.SharedInstance.requesBlood(LoginId: "114177301473189791455",
-                                                        bloodgroup: (btnBloodGroup.titleLabel?.text)!,
-                                                        whatyouneed: (btnWhatYouNeed.titleLabel?.text!)!,
-                                                        whenyouneed: datetostring,
-                                                        Units: (btnBloodUnit.titleLabel?.text!)!,
-                                                        patientname: txtFieldPatientName.text!,
-                                                        contactperson: txtFieldContactPerson.text!,
-                                                        contactnumber: txtFieldContactNumber.text!,
-                                                        doctorname:txtFieldDoctorName.text!,
-                                                        doctorcontactnumber:"9999999999",
-                                                        doctoremailID: "",
-                                                        centerID:"2",
-                                                        centername: "Apolo",
-                                                    centercontactnumber:txtFieldHospitalBloodBankContactNumber.text!,
-                                                        centeraddress: txtFieldHospitalBloodBankAddress.text!,
-                                                        City: txtFieldHospitalBloodBankAddressCity.text!,
-                                                        State: "",
-                                                        Landmark: txtFieldHospitalBloodBankAddressLandMark.text!,Latitude: "12.2222222",
-                                                        Longitude: "23.3333333",
-                                                        Pincode: txtFieldHospitalBloodBankAddressPINCode.text!,
-                                                        Country: "",
-                                                        personalappeal: txtViewPersonalAppeal.text,
-                                                        Sharedinsocialmedia:"0")
+            RequestInterator.SharedInstance.requesBlood(LoginId: "114177301473189791455",bloodgroup: (btnBloodGroup.titleLabel?.text)!,whatyouneed: (btnWhatYouNeed.titleLabel?.text!)!,whenyouneed: "2016-02-16",Units: (btnBloodUnit.titleLabel?.text!)!,patientname: txtFieldPatientName.text!,contactperson: txtFieldContactPerson.text!,contactnumber: txtFieldContactNumber.text!,doctorname:txtFieldDoctorName.text!,doctorcontactnumber:"9999999999",doctoremailID: "",centerID:"2",centername: "Apolo",centercontactnumber:txtFieldHospitalBloodBankContactNumber.text!,centeraddress: txtFieldHospitalBloodBankAddress.text!,City: txtFieldHospitalBloodBankAddressCity.text!,State: "",
+                Landmark: txtFieldHospitalBloodBankAddressLandMark.text!,Latitude: "12.2222222",Longitude: "23.3333333",Pincode: txtFieldHospitalBloodBankAddressPINCode.text!,Country: "",personalappeal: txtViewPersonalAppeal.text,Sharedinsocialmedia:"0")
         }
     }
 }
@@ -262,11 +237,43 @@ extension RequestView:ProtocolRequestView
         {
             HudBar.sharedInstance.hideHudFormView(view: self.view)
             HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Your BloodRequest Submitted Successfully", view: self.view)
+            if switchForAppeal.isOn
+            {
+                    if(SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook))
+                        
+                {
+                    let SocialMedia :SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+                            
+                            SocialMedia.completionHandler =
+                                {
+                                    result -> Void in
+                                    
+                                    let getResult = result as SLComposeViewControllerResult;
+                                    switch(getResult.rawValue) {
+                                    case SLComposeViewControllerResult.cancelled.rawValue: self.view.makeToast("Cancelled")
+                                    case SLComposeViewControllerResult.done.rawValue: self.view.makeToast("Your post has been posted successfully")
+                                    default: print("Error!")
+                                    }
+                                    self.dismiss(animated: true, completion: nil)
+                            }
+                        SocialMedia.setInitialText(txtViewPersonalAppeal.text)
+                    }
+                    else
+                        
+                    {
+                        
+                        let alert = UIAlertController(title: "Facebook App not installed.", message: "Your device has no Facebook installed.", preferredStyle: UIAlertControllerStyle.alert)
+                        
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                }
             self.navigationController?.popViewController(animated: true)
         }
         else
         {
-            
+            HudBar.sharedInstance.hideHudFormView(view: self.view)
+            self.view.makeToast("Unable to access server, please try again later", duration: 2.0, position: .bottom)
         }
     }
     
@@ -395,5 +402,6 @@ extension RequestView:ProtocolCalendar
         print("Try Again")
     }
 }
+
 
 

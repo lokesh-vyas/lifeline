@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 //MARK:- Valid Mail ID
@@ -51,16 +52,34 @@ extension UITextField {
         self.rightViewMode = .always
     }
 }
-
-extension UIDatePicker
-{
-   @discardableResult func dateForServer(date:String) -> String
-    {
-        let dateFormatter = DateFormatter()
-        let strtodate = dateFormatter.date(from: date)!
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let dateToStr = dateFormatter.string(from: strtodate)
-        return dateToStr
+extension UIView {
+    
+    @IBInspectable var cornerRadius: CGFloat {
+        get {
+            return layer.cornerRadius
+        }
+        set {
+            layer.cornerRadius = newValue
+            layer.masksToBounds = newValue > 0
+        }
     }
- 
+    
+    @IBInspectable var borderWidth: CGFloat {
+        get {
+            return layer.borderWidth
+        }
+        set {
+            layer.borderWidth = newValue
+        }
+    }
+    
+    @IBInspectable var borderColor: UIColor? {
+        get {
+            return UIColor(cgColor: layer.borderColor!)
+        }
+        set {
+            layer.borderColor = newValue?.cgColor
+        }
+    }
+    
 }
