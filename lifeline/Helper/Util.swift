@@ -9,6 +9,37 @@
 import Foundation
 import UIKit
 
+class Util
+{
+    static let SharedInstance : Util = {
+        let instance = Util()
+        return instance
+    }()
+    func dateChangeForServer(dateString:String) -> String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-ddThh:mm:sss+zzzz"
+        dateFormatter.locale = Locale.init(identifier: "en_GB")
+        
+        let dateObj = dateFormatter.date(from: dateString)
+        
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        print("Dateobj: \(dateFormatter.string(from: dateObj!))")
+        return dateFormatter.string(from: dateObj!)
+    }
+    func dateChangeForInternal(dateString:String) -> String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        dateFormatter.locale = Locale.init(identifier: "en_GB")
+        
+        let dateObj = dateFormatter.date(from: dateString)
+        
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        print("Dateobj: \(dateFormatter.string(from: dateObj!))")
+        return dateFormatter.string(from: dateObj!)
+    }
+}
 
 //MARK:- Valid Mail ID
 extension String
@@ -21,6 +52,7 @@ extension String
         return result
     }
 }
+
 extension UINavigationController {
     
     func completelyTransparentBar()
@@ -52,6 +84,7 @@ extension UITextField {
         self.rightViewMode = .always
     }
 }
+
 extension UIView {
     
     @IBInspectable var cornerRadius: CGFloat {

@@ -27,5 +27,4 @@ extension MyRequestClose:UIGestureRecognizerDelegate
         self.dismiss(animated: true, completion: nil)
         return true
     }
-   
 }

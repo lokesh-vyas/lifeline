@@ -20,6 +20,9 @@
 		665111B71E61824500A6AFAA /* MyRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665111B61E61824500A6AFAA /* MyRequestCell.swift */; };
 		665111B91E61826D00A6AFAA /* MyRequestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 665111B81E61826D00A6AFAA /* MyRequestCell.xib */; };
 		665111BC1E61B69D00A6AFAA /* MyRequestClose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665111BB1E61B69D00A6AFAA /* MyRequestClose.swift */; };
+		665111BF1E63F55800A6AFAA /* MyDonorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665111BE1E63F55800A6AFAA /* MyDonorView.swift */; };
+		665111C11E63F9D700A6AFAA /* MyRequestInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665111C01E63F9D700A6AFAA /* MyRequestInteractor.swift */; };
+		665111C31E6407F600A6AFAA /* MyRequestApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665111C21E6407F600A6AFAA /* MyRequestApi.swift */; };
 		66C4E67D1E37258B00526C1D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C4E67C1E37258B00526C1D /* HomeView.swift */; };
 		66C4E67F1E3725A300526C1D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C4E67E1E3725A300526C1D /* ProfileView.swift */; };
 		66C4E6821E37273100526C1D /* RevalListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C4E6811E37273100526C1D /* RevalListView.swift */; };
@@ -127,6 +130,9 @@
 		665111B61E61824500A6AFAA /* MyRequestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyRequestCell.swift; path = Cell/MyRequestCell.swift; sourceTree = "<group>"; };
 		665111B81E61826D00A6AFAA /* MyRequestCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyRequestCell.xib; path = Cell/MyRequestCell.xib; sourceTree = "<group>"; };
 		665111BB1E61B69D00A6AFAA /* MyRequestClose.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyRequestClose.swift; path = ViewController/MyRequestClose.swift; sourceTree = "<group>"; };
+		665111BE1E63F55800A6AFAA /* MyDonorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyDonorView.swift; path = ViewController/MyDonorView.swift; sourceTree = "<group>"; };
+		665111C01E63F9D700A6AFAA /* MyRequestInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyRequestInteractor.swift; path = ViewModel/MyRequestInteractor.swift; sourceTree = "<group>"; };
+		665111C21E6407F600A6AFAA /* MyRequestApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRequestApi.swift; sourceTree = "<group>"; };
 		66C4E67C1E37258B00526C1D /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeView.swift; path = ViewController/HomeView.swift; sourceTree = "<group>"; };
 		66C4E67E1E3725A300526C1D /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileView.swift; path = ViewController/ProfileView.swift; sourceTree = "<group>"; };
 		66C4E6811E37273100526C1D /* RevalListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RevalListView.swift; path = ViewController/RevalListView.swift; sourceTree = "<group>"; };
@@ -301,6 +307,14 @@
 			name = MyRequestClose;
 			sourceTree = "<group>";
 		};
+		665111BD1E63F52100A6AFAA /* MyDonorView */ = {
+			isa = PBXGroup;
+			children = (
+				665111BE1E63F55800A6AFAA /* MyDonorView.swift */,
+			);
+			name = MyDonorView;
+			sourceTree = "<group>";
+		};
 		66C4E67A1E37251300526C1D /* ProfileView */ = {
 			isa = PBXGroup;
 			children = (
@@ -365,7 +379,9 @@
 			isa = PBXGroup;
 			children = (
 				66C4E6901E37404C00526C1D /* MyRequestView.swift */,
+				665111C01E63F9D700A6AFAA /* MyRequestInteractor.swift */,
 				665111BA1E61B67200A6AFAA /* MyRequestClose */,
+				665111BD1E63F52100A6AFAA /* MyDonorView */,
 			);
 			name = MyRequestView;
 			sourceTree = "<group>";
@@ -582,6 +598,7 @@
 				EDE9AEAC1E5DC2B40031BCB0 /* RequestApi.swift */,
 				66EA8E331E27AF0900646797 /* SignUpApi.swift */,
 				66316B871E5575D700114055 /* HospitalListApi.swift */,
+				665111C21E6407F600A6AFAA /* MyRequestApi.swift */,
 			);
 			name = "API's";
 			sourceTree = "<group>";
@@ -944,9 +961,12 @@
 			files = (
 				66EA8DF91E2510A300646797 /* HudBar.swift in Sources */,
 				66316B8B1E557D4200114055 /* HospitalListCell.swift in Sources */,
+				665111C11E63F9D700A6AFAA /* MyRequestInteractor.swift in Sources */,
 				66C4E68E1E37402B00526C1D /* RequestView.swift in Sources */,
 				EDE9AEAF1E5FECCC0031BCB0 /* RequestViewInteractor.swift in Sources */,
+				665111C31E6407F600A6AFAA /* MyRequestApi.swift in Sources */,
 				66EA8E231E2760C400646797 /* SignUpView.swift in Sources */,
+				665111BF1E63F55800A6AFAA /* MyDonorView.swift in Sources */,
 				66C4E67D1E37258B00526C1D /* HomeView.swift in Sources */,
 				66C4E6911E37404C00526C1D /* MyRequestView.swift in Sources */,
 				EDE9AE981E5C3D110031BCB0 /* CalendarView.swift in Sources */,
