@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 
 class MyRequestView: UIViewController {
-
+    
     @IBOutlet weak var lblInternetIssue: UILabel!
     @IBOutlet weak var tableRequestView: UITableView!
     var MyRequestArray = Array<JSON>()
@@ -43,17 +43,23 @@ class MyRequestView: UIViewController {
 extension MyRequestView:UITableViewDelegate,UITableViewDataSource
 {
     //MARK: btnCloseTapped
-    func btnCloseTapped()
+    func btnCloseTapped(sender:UIButton)
     {
-        let requestView = self.storyboard?.instantiateViewController(withIdentifier: "MyRequestClose")
-        requestView?.modalPresentationStyle = .overCurrentContext
-        requestView?.modalTransitionStyle = .flipHorizontal
-        requestView?.view.backgroundColor = UIColor.clear
-       self.present(requestView!, animated: true, completion: nil)
+        let buttonRow = sender.tag
+        let myRequestDetail = MyRequestArray[buttonRow]
+        let requestViewClose:MyRequestClose = self.storyboard?.instantiateViewController(withIdentifier: "MyRequestClose") as! MyRequestClose
+        requestViewClose.closeRequestID = String(myRequestDetail["RequestID"].int!)
+        requestViewClose.modalPresentationStyle = .overCurrentContext
+        requestViewClose.modalTransitionStyle = .flipHorizontal
+        requestViewClose.view.backgroundColor = UIColor.clear
+        self.present(requestViewClose, animated: true, completion: nil)
     }
-     //MARK: btnDonorViewTapped
-    func btnDonorViewTapped()
+    //MARK: btnDonorViewTapped
+    func btnDonorViewTapped(sender:UIButton)
     {
+        let buttonRow = sender.tag
+        let myRequestDetail = MyRequestArray[buttonRow]
+        
         let requestView = self.storyboard?.instantiateViewController(withIdentifier: "MyRequestClose")
         requestView?.modalPresentationStyle = .overCurrentContext
         requestView?.modalTransitionStyle = .flipHorizontal
@@ -78,11 +84,23 @@ extension MyRequestView:UITableViewDelegate,UITableViewDataSource
             cell = nib[0] as? MyRequestCell
         }
         let myRequestDetail = MyRequestArray[indexPath.row]
+        
+        if myRequestDetail["Status"].string == "Close"
+        {
+            cell?.viewColorForStatus.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#35ce11")
+        }
+        else
+        {
+            cell?.viewColorForStatus.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#ffa800")
+        }
+        
         cell?.lblPatientName.text = myRequestDetail["PatientName"].string
         cell?.lblBloodGroup.text = myRequestDetail["BloodGroup"].string
         cell?.lblRequestDate.text = Util.SharedInstance.dateChangeForInternal(dateString: myRequestDetail["RequestedOn"].string!)
-        cell?.btnCloseRequest.addTarget(self, action: #selector(MyRequestView.btnCloseTapped), for: .touchUpInside)
-        cell?.btnViewDonars.addTarget(self, action: #selector(MyRequestView.btnDonorViewTapped), for: .touchUpInside)
+        
+        cell?.btnCloseRequest.tag = indexPath.row
+        cell?.btnCloseRequest.addTarget(self, action: #selector(MyRequestView.btnCloseTapped(sender:)), for: .touchUpInside)
+        cell?.btnViewDonars.addTarget(self, action: #selector(MyRequestView.btnDonorViewTapped(sender:)), for: .touchUpInside)
         
         return cell!
     }
