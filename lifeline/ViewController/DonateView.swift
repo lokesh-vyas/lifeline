@@ -32,10 +32,11 @@ class DonateView: UIViewController {
     var rCoordinates : CLLocationCoordinate2D?
     var dataArray : JSON!
     
-    var warningView = UIView()
-    var warningLabel = UILabel()
-    let warningImage = UIImageView()
+    var viewWarning = UIView()
+    var labelWarning = UILabel()
+    let imageWarning = UIImageView()
     var lastEventDate : Date? = nil
+    
     
     //MARK:- viewDidLoad
     override func viewDidLoad() {
@@ -126,6 +127,7 @@ class DonateView: UIViewController {
         
         if ((dataArray as? JSON)?.dictionary) != nil {
             dataArray = JSON.init(arrayLiteral: dataArray)
+            
         }
         
         for (i, _) in dataArray.enumerated() {
@@ -133,6 +135,7 @@ class DonateView: UIViewController {
             if dataArray[i]["TypeOfOrg"] == 1 {
                 if dataArray[i]["IndividualDetails"] == JSON.null {
                     
+//                    print("Hosp",dataArray)
                     self.rLatitude = dataArray[i]["Latitude"].doubleValue
                     self.rLongitude = dataArray[i]["Longitude"].doubleValue
                     self.rLocation = CLLocation.init(latitude:
@@ -140,22 +143,25 @@ class DonateView: UIViewController {
                     self.rCoordinates = self.rLocation?.coordinate
                     let myMarker1 = GMSMarker()
                     myMarker1.position = self.rCoordinates!
+                    myMarker1.userData = dataArray[i]
+                    myMarker1.snippet = dataArray[i]["Name"].stringValue
                     myMarker1.icon = UIImage(named: "Hospital_icon")!
                     myMarker1.map = self.mapView
-                    myMarker1.snippet = dataArray[i]["Name"].stringValue
                     self.view = self.mapView
 
                     
                 } else {
                     
+//                    print("Indi",dataArray)
                     self.rLatitude = dataArray[i]["Latitude"].doubleValue
                     self.rLongitude = dataArray[i]["Longitude"].doubleValue
                     self.rLocation = CLLocation.init(latitude: CLLocationDegrees(self.rLatitude!), longitude: CLLocationDegrees(self.rLongitude!))
                     self.rCoordinates = self.rLocation?.coordinate
                     let myMarker2 = GMSMarker()
                     myMarker2.position = self.rCoordinates!
-                    myMarker2.icon = UIImage(named: "Individual_icon")!
+                    myMarker2.userData = dataArray[i]
                     myMarker2.snippet = dataArray[i]["Name"].stringValue
+                    myMarker2.icon = UIImage(named: "Individual_icon")!
                     myMarker2.map = self.mapView
                     self.view = self.mapView
                     
@@ -165,6 +171,7 @@ class DonateView: UIViewController {
             
                 
                 print("CASE 2: $CAMP")
+                print("Camp",dataArray)
                 rLatitude = dataArray[i]["Latitude"].doubleValue
                 rLongitude = dataArray[i]["Longitude"].doubleValue
                 rLocation = CLLocation.init(latitude: CLLocationDegrees(rLatitude!), longitude: CLLocationDegrees(rLongitude!))
@@ -205,6 +212,7 @@ extension DonateView : CLLocationManagerDelegate {
 
 extension DonateView : GMSMapViewDelegate {
     
+    
     public func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
         print("willMove")
     }
@@ -241,16 +249,21 @@ extension DonateView : GMSMapViewDelegate {
         print("idleAt")
     }
     
-    public func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-        print("didTapAt")
-        
-        
-    }
-    
     public func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         
         lastEventDate = Date()
-        return true
+        var userDict = [String:Any]()
+        var jsonDict = JSON.init(dictionaryLiteral: ("Index", marker.userData!))
+        jsonDict = jsonDict["Index"]
+        userDict["Name"] = String(describing: jsonDict["Name"])
+        userDict["WorkingHours"] = String(describing: jsonDict["WorkingHours"])
+        let markerDetails = self.storyboard?.instantiateViewController(withIdentifier: "MarkerNotIndividualDetails") as! MarkerNotIndividualDetails
+        
+        markerDetails.markerDict = userDict
+        markerDetails.modalPresentationStyle = .overCurrentContext
+        markerDetails.view.backgroundColor = UIColor.clear
+        present(markerDetails, animated: true, completion: nil)
+        return false //marker event is still handled by delegate
     }
 }
 
@@ -317,31 +330,30 @@ extension DonateView : DonateViewProtocol {
         
         if jsonArray["BloodRequestSearchResponse"] == JSON.null || jsonArray["BloodRequestSearchResponse"]["BloodRequestSearchResponseDetails"]["StatusCode"] == 1 {
             print("No Requirements in your location")
-            //warningView
-            warningView.backgroundColor = UIColor.white
-            warningView.translatesAutoresizingMaskIntoConstraints = false
-            warningView.layer.cornerRadius = 27.5
-            
+            //viewWarning
+            viewWarning.backgroundColor = UIColor.white
+            viewWarning.translatesAutoresizingMaskIntoConstraints = false
+            viewWarning.layer.cornerRadius = 27.5
            
-            //warningLabel
-            warningLabel.text = "No Requirements in your location"
-//            warningLabel.textAlignment = .center
-            warningLabel.numberOfLines = 2
-            warningLabel.translatesAutoresizingMaskIntoConstraints = false
+            //labelWarning
+            labelWarning.text = "No Requirements in your location"
+//            labelWarning.textAlignment = .center
+            labelWarning.numberOfLines = 2
+            labelWarning.translatesAutoresizingMaskIntoConstraints = false
             
-            // warningImage
-            warningImage.image = UIImage(named: "error-sign.png")
-            warningImage.translatesAutoresizingMaskIntoConstraints = false
+            // imageWarning
+            imageWarning.image = UIImage(named: "error-sign.png")
+            imageWarning.translatesAutoresizingMaskIntoConstraints = false
             
-            self.warningView.addSubview(warningLabel)
-            self.warningView.addSubview(warningImage)
-            self.mapView?.addSubview(warningView)
+            self.viewWarning.addSubview(labelWarning)
+            self.viewWarning.addSubview(imageWarning)
+            self.mapView?.addSubview(viewWarning)
             self.view = self.mapView
             
             //AutoLayout Constraint
             //-//warning View Height
-            let warningViewHeightConstraint = NSLayoutConstraint(
-                item: warningView,
+            let viewWarningHeightConstraint = NSLayoutConstraint(
+                item: viewWarning,
                 attribute: NSLayoutAttribute.height,
                 relatedBy: NSLayoutRelation.equal,
                 toItem: nil,
@@ -350,8 +362,8 @@ extension DonateView : DonateViewProtocol {
                 constant: 55)
             
             //warning ViewLeading
-             let warningViewLeadingConstraints = NSLayoutConstraint(
-                item: warningView,
+             let viewWarningLeadingConstraints = NSLayoutConstraint(
+                item: viewWarning,
                 attribute: NSLayoutAttribute.leading,
                 relatedBy: NSLayoutRelation.equal,
                 toItem: view,
@@ -360,8 +372,8 @@ extension DonateView : DonateViewProtocol {
                 constant: 10)
             
             //warning View Trailing
-             let warningViewTrailingConstraints = NSLayoutConstraint(
-                item: warningView,
+             let viewWarningTrailingConstraints = NSLayoutConstraint(
+                item: viewWarning,
                 attribute: NSLayoutAttribute.trailing,
                 relatedBy: NSLayoutRelation.equal,
                 toItem: view,
@@ -370,8 +382,8 @@ extension DonateView : DonateViewProtocol {
                 constant: -75)
             
             //warning View Bottom
-             let warningViewBottomConstraints = NSLayoutConstraint(
-                item: warningView,
+             let viewWarningBottomConstraints = NSLayoutConstraint(
+                item: viewWarning,
                 attribute: NSLayoutAttribute.bottom,
                 relatedBy: NSLayoutRelation.equal,
                 toItem: view,
@@ -380,68 +392,68 @@ extension DonateView : DonateViewProtocol {
                 constant: -10)
             
             //-//warning Label Leading
-            let warningLabelLeadingConstraints = NSLayoutConstraint(
-                item: warningLabel,
+            let labelWarningLeadingConstraints = NSLayoutConstraint(
+                item: labelWarning,
                 attribute: NSLayoutAttribute.leading,
                 relatedBy: NSLayoutRelation.equal,
-                toItem: warningView,
+                toItem: viewWarning,
                 attribute: NSLayoutAttribute.leading,
                 multiplier: 1,
                 constant: 55)
             
             //warning Label Trailing
-            let warningLabelTrailingConstraints = NSLayoutConstraint(
-                item: warningLabel,
+            let labelWarningTrailingConstraints = NSLayoutConstraint(
+                item: labelWarning,
                 attribute: NSLayoutAttribute.trailing,
                 relatedBy: NSLayoutRelation.equal,
-                toItem: warningView,
+                toItem: viewWarning,
                 attribute: NSLayoutAttribute.trailing,
                 multiplier: 1,
                 constant: -10)
             
             //Label Vertical constraint
-            let warningLabelVerticalConstraint = NSLayoutConstraint(
-                item: warningLabel,
+            let labelWarningVerticalConstraint = NSLayoutConstraint(
+                item: labelWarning,
                 attribute: NSLayoutAttribute.centerY,
                 relatedBy: NSLayoutRelation.equal,
-                toItem: warningView,
+                toItem: viewWarning,
                 attribute: NSLayoutAttribute.centerY,
                 multiplier: 1,
                 constant: 0)
             
             //-//warning Image Leading
-            let warningImageLeadingConstraints = NSLayoutConstraint(
-                item: warningImage,
+            let imageWarningLeadingConstraints = NSLayoutConstraint(
+                item: imageWarning,
                 attribute: NSLayoutAttribute.leading,
                 relatedBy: NSLayoutRelation.equal,
-                toItem: warningView,
+                toItem: viewWarning,
                 attribute: NSLayoutAttribute.leading,
                 multiplier: 1,
                 constant: 5)
             
             //warning Image Top
-            let warningImageTopConstraints = NSLayoutConstraint(
-                item: warningImage,
+            let imageWarningTopConstraints = NSLayoutConstraint(
+                item: imageWarning,
                 attribute: NSLayoutAttribute.top,
                 relatedBy: NSLayoutRelation.equal,
-                toItem: warningView,
+                toItem: viewWarning,
                 attribute: NSLayoutAttribute.top,
                 multiplier: 1,
                 constant: 5)
             
             //warning Image Bottom
-            let warningImageBottomConstraints = NSLayoutConstraint(
-                item: warningImage,
+            let imageWarningBottomConstraints = NSLayoutConstraint(
+                item: imageWarning,
                 attribute: NSLayoutAttribute.bottom,
                 relatedBy: NSLayoutRelation.equal,
-                toItem: warningView,
+                toItem: viewWarning,
                 attribute: NSLayoutAttribute.bottom,
                 multiplier: 1,
                 constant: -5)
             
             //warning Image width
-            let warningImageWidthConstraint = NSLayoutConstraint(
-                item: warningImage,
+            let imageWarningWidthConstraint = NSLayoutConstraint(
+                item: imageWarning,
                 attribute: NSLayoutAttribute.width,
                 relatedBy: NSLayoutRelation.equal,
                 toItem: nil,
@@ -449,23 +461,23 @@ extension DonateView : DonateViewProtocol {
                 multiplier: 1,
                 constant: 45)
             
-            view.addConstraint(warningViewHeightConstraint)
-            view.addConstraint(warningViewLeadingConstraints)
-            view.addConstraint(warningViewTrailingConstraints)
-            view.addConstraint(warningViewBottomConstraints)
+            view.addConstraint(viewWarningHeightConstraint)
+            view.addConstraint(viewWarningLeadingConstraints)
+            view.addConstraint(viewWarningTrailingConstraints)
+            view.addConstraint(viewWarningBottomConstraints)
             
-            view.addConstraint(warningLabelLeadingConstraints)
-            view.addConstraint(warningLabelTrailingConstraints)
-            view.addConstraint(warningLabelVerticalConstraint)
+            view.addConstraint(labelWarningLeadingConstraints)
+            view.addConstraint(labelWarningTrailingConstraints)
+            view.addConstraint(labelWarningVerticalConstraint)
             
-            view.addConstraint(warningImageLeadingConstraints)
-            view.addConstraint(warningImageTopConstraints)
-            view.addConstraint(warningImageBottomConstraints)
-            view.addConstraint(warningImageWidthConstraint)
+            view.addConstraint(imageWarningLeadingConstraints)
+            view.addConstraint(imageWarningTopConstraints)
+            view.addConstraint(imageWarningBottomConstraints)
+            view.addConstraint(imageWarningWidthConstraint)
             
         } else {
             
-            warningView.removeFromSuperview()
+            viewWarning.removeFromSuperview()
             self.bloodDonatingMarkers(responseData: jsonArray)
             
         }
