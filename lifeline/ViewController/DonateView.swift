@@ -64,7 +64,6 @@ class DonateView: UIViewController {
         mapView?.isBuildingsEnabled = true
         mapView?.settings.compassButton = true
         mapView?.settings.indoorPicker = true
-        
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
 
     }
@@ -113,7 +112,14 @@ class DonateView: UIViewController {
     //MARK:- Fetch Blood Request To Donate
     func fetchBloodRequestToDonate() {
         
-        let customer : Dictionary = ["BloodRequestSearchRequest":["SearchDetails":["LoginID":"114177301473189791455","minLat":"\(SouthLatitude!)","maxLat":"\(NorthLatitude!)","minLon":"\(WestLongitude!)","maxLon":"\(EastLongitude!)"]]]
+        let customer : Dictionary = ["BloodRequestSearchRequest":
+                                                ["SearchDetails":
+                                                        ["LoginID":"114177301473189791455",
+                                                         "minLat":"\(SouthLatitude!)",
+                                                         "maxLat":"\(NorthLatitude!)",
+                                                         "minLon":"\(WestLongitude!)",
+                                                         "maxLon":"\(EastLongitude!)"
+                                                    ]]]
         
         let str = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.BloodRequestSearch"
         DonateInteractor.sharedInstance.findingDonateSources(urlString: str, params: customer)
@@ -170,8 +176,8 @@ class DonateView: UIViewController {
             } else if dataArray[i]["TypeOfOrg"] == 2 {
             
                 
-                print("CASE 2: $CAMP")
-                print("Camp",dataArray)
+//                print("CASE 2: $CAMP")
+//                print("Camp",dataArray)
                 rLatitude = dataArray[i]["Latitude"].doubleValue
                 rLongitude = dataArray[i]["Longitude"].doubleValue
                 rLocation = CLLocation.init(latitude: CLLocationDegrees(rLatitude!), longitude: CLLocationDegrees(rLongitude!))
@@ -180,7 +186,7 @@ class DonateView: UIViewController {
                 myMarker3.position = rCoordinates!
                 myMarker3.userData = dataArray[i]
                 myMarker3.icon = UIImage(named: "Camp_icon")!
-                print("Camp_icon came ?")
+//                print("Camp_icon came ?")
                 myMarker3.snippet = dataArray[i]["Name"].stringValue
                 myMarker3.map = mapView
                 view = mapView
@@ -255,14 +261,75 @@ extension DonateView : GMSMapViewDelegate {
         var userDict = [String:Any]()
         var jsonDict = JSON.init(dictionaryLiteral: ("Index", marker.userData!))
         jsonDict = jsonDict["Index"]
+//        print("*******\(jsonDict)********")
         userDict["Name"] = String(describing: jsonDict["Name"])
         userDict["WorkingHours"] = String(describing: jsonDict["WorkingHours"])
-        let markerDetails = self.storyboard?.instantiateViewController(withIdentifier: "MarkerNotIndividualDetails") as! MarkerNotIndividualDetails
+        userDict["IOLoginID"] = String(describing: jsonDict["IOLoginID"])
+        userDict["IndividualDetails"] = String(describing: jsonDict["IndividualDetails"]["Individuals"][0]["CTypeOfOrg"])
+        MarkerData.SharedInstance.IndividualsArray = []
+        if jsonDict["IndividualDetails"]["Individuals"][0] != JSON.null { // it is an Array
+            var IuserDict = [String : Any]()
+            for (index, _) in jsonDict["IndividualDetails"]["Individuals"].enumerated() {
+
+                IuserDict["CEmail"] = String(describing: jsonDict["IndividualDetails"]["Individuals"][index]["CEmail"])
+                IuserDict["CContactNumber"] = String(describing: jsonDict["IndividualDetails"]["Individuals"][index]["CContactNumber"])
+                IuserDict["CID"] = String(describing: jsonDict["IndividualDetails"]["Individuals"][index]["CID"])
+                IuserDict["UserName"] = String(describing: jsonDict["IndividualDetails"]["Individuals"][index]["UserName"])
+                IuserDict["CTypeOfOrg"] = String(describing: jsonDict["IndividualDetails"]["Individuals"][index]["CTypeOfOrg"])
+                IuserDict["CName"] = String(describing: jsonDict["IndividualDetails"]["Individuals"][index]["CName"])
+                MarkerData.SharedInstance.IndividualsArray.append(IuserDict)
+                
+            }
+            
+        } else { // It is a Dictionary
+    
+            var IuserDict = [String : Any]()
+            IuserDict["CEmail"] = String(describing: jsonDict["IndividualDetails"]["Individuals"]["CEmail"])
+            IuserDict["CContactNumber"] = String(describing: jsonDict["IndividualDetails"]["Individuals"]["CContactNumber"])
+            IuserDict["CID"] = String(describing: jsonDict["IndividualDetails"]["Individuals"]["CID"])
+            IuserDict["UserName"] = String(describing: jsonDict["IndividualDetails"]["Individuals"]["UserName"])
+            IuserDict["CTypeOfOrg"] = String(describing: jsonDict["IndividualDetails"]["Individuals"]["CTypeOfOrg"])
+            IuserDict["CName"] = String(describing: jsonDict["IndividualDetails"]["Individuals"]["CName"])
+            MarkerData.SharedInstance.IndividualsArray.append(IuserDict)
+            
+        }
+    
+        userDict["Email"] = String(describing: jsonDict["Email"])
+        userDict["Country"] = String(describing: jsonDict["Country"])
+        userDict["IOBloodgroup"] = String(describing: jsonDict["IOBloodgroup"])
+        userDict["State"] = String(describing: jsonDict["State"])
+        userDict["PINCode"] = String(describing: jsonDict["PINCode"])
+        userDict["AddressLine"] = String(describing: jsonDict["AddressLine"])
+        userDict["LandMark"] = String(describing: jsonDict["LandMark"])
+        userDict["ContactNumber"] = String(describing: jsonDict["ContactNumber"])
+        userDict["ID"] = String(describing: jsonDict["ID"])
+        userDict["City"] = String(describing: jsonDict["City"])
+        userDict["AddressId"] = String(describing: jsonDict["AddressId"])
+        userDict["TypeOfOrg"] = String(describing: jsonDict["TypeOfOrg"])
+        userDict["FromDate"] = String(describing: jsonDict["FromDate"])
+        userDict["ToDate"] = String(describing: jsonDict["ToDate"])
         
-        markerDetails.markerDict = userDict
-        markerDetails.modalPresentationStyle = .overCurrentContext
-        markerDetails.view.backgroundColor = UIColor.clear
-        present(markerDetails, animated: true, completion: nil)
+        if jsonDict["TypeOfOrg"] == 1 && jsonDict["IndividualDetails"] != JSON.null { // Individual Marker Details
+            
+            let markerDetails = self.storyboard?.instantiateViewController(withIdentifier: "MarkerIndividualDetails") as! MarkerIndividualDetails
+          //  let nav = UINavigationController(rootViewController: markerDetails)
+            MarkerData.SharedInstance.markerData = userDict
+            markerDetails.modalPresentationStyle = .overCurrentContext
+            markerDetails.view.backgroundColor = UIColor.clear
+            self.navigationController?.present(markerDetails, animated: true, completion: nil)
+            
+            
+        } else if (jsonDict["TypeOfOrg"] == 1 && jsonDict["IndividualDetails"] == JSON.null) || jsonDict["TypeOfOrg"] == 2 {
+            // Hospital or Campaign details
+            let markerDetails = self.storyboard?.instantiateViewController(withIdentifier: "MarkerNotIndividualDetails") as! MarkerNotIndividualDetails
+          //  let nav = UINavigationController(rootViewController: markerDetails)
+            MarkerData.SharedInstance.markerData = userDict
+            markerDetails.modalPresentationStyle = .overCurrentContext
+            markerDetails.view.backgroundColor = UIColor.clear
+            self.navigationController?.present(markerDetails, animated: true, completion: nil)
+            
+            
+        }
         return false //marker event is still handled by delegate
     }
 }

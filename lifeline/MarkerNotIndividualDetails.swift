@@ -14,27 +14,64 @@ class MarkerNotIndividualDetails: UIViewController {
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblTiming: UILabel!
     @IBOutlet weak var viewMarkerDetails: UIView!
+    @IBOutlet weak var lblToDate: UILabel!
+    @IBOutlet weak var lblFromDate: UILabel!
+    @IBOutlet weak var FromDate: UILabel!
+    @IBOutlet weak var ToDate: UILabel!
     
     var markerDict = [String:Any]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        markerDict = MarkerData.SharedInstance.markerData
         lblName.text = markerDict["Name"] as! String?
         lblTiming.text = markerDict["WorkingHours"] as! String?
+        
+        
+        if (markerDict["TypeOfOrg"] as! String?  == "2") { // i.e. Campaign
+            
+            //FIXME:- camp color #0dd670
+            FromDate.isHidden = false
+            ToDate.isHidden = false
+            lblFromDate.isHidden = false
+            lblToDate.isHidden = false
+            
+            lblFromDate.text = MarkerData.SharedInstance.markerData["FromDate"] as! String?
+            lblToDate.text = MarkerData.SharedInstance.markerData["ToDate"] as! String?
+            
+        } else {
+            
+            //FIXME:- Ho color #b6800b
+            FromDate.isHidden = true
+            ToDate.isHidden = true
+            lblFromDate.isHidden = true
+            lblToDate.isHidden = true
+            
+            
+        }
     }
 
     @IBAction func btnDonateTapped(_ sender: Any) {
         
+        let cnfDonate = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmDonate") as! ConfirmDonate
+        let navigationControllerStack = UINavigationController(rootViewController: cnfDonate)
+        self.present(navigationControllerStack, animated: true, completion: nil)
+       // self.navigationController?.pushViewController(navigationControllerStack, animated: true)
+
+
     }
+    
     
 }
 
 extension MarkerNotIndividualDetails : UIGestureRecognizerDelegate {
+    
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        
         if (touch.view?.isDescendant(of: viewMarkerDetails))! {
             return true
         }
+        
         dismiss(animated: true, completion: nil)
         return false
     }

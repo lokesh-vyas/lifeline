@@ -13,16 +13,28 @@ class MarkerIndividualDetails: UIViewController {
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblTiming: UILabel!
     @IBOutlet weak var viewMarkerDetails: UIView!
+    var markerDict = [String : Any]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        markerDict = MarkerData.SharedInstance.markerData
+        lblName.text = markerDict["Name"] as! String?
+        
+        lblTiming.text = markerDict["WorkingHours"] as! String?
     }
     @IBAction func btnDonateTapped(_ sender: Any) {
+        let cnfDonate = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmDonate") as! ConfirmDonate
+        let navigationControllerStack = UINavigationController(rootViewController: cnfDonate)
+        self.present(navigationControllerStack, animated: true, completion: nil)
+        
     }
 
     @IBAction func btnToViewTapped(_ sender: Any) {
+//        let requestedTable = self.storyboard?.instantiateViewController(withIdentifier: "RequestedByIndividuals") as! RequestedByIndividuals
+//        self.present(requestedTable, animated: true, completion: nil)
+
+        
     }
    
 }
