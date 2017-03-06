@@ -116,6 +116,4 @@ extension ShareView : MFMailComposeViewControllerDelegate,MFMessageComposeViewCo
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         self.dismiss(animated: true, completion: nil)
     }
-    
-    
 }

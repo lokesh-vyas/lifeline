@@ -28,12 +28,18 @@ class APIBuilder
         return api
     }
     //MARK:- buildCheck Avaibility
+    func buildGetProfileData(userID:String) -> GetProfileData
+    {
+        let api = GetProfileData(UserID: userID)
+        return api
+    }
+    //MARK:- buildCheck Avaibility
     func buildCheckAvaibility(userID:String) -> CheckAvabilityApi
     {
         let api = CheckAvabilityApi(UserID: userID)
         return api
     }
-    //MARK:- buildCheck Avaibility
+    //MARK:- buildCheck Forget Password
     func buildForgetPasswordApi(userID:String) -> ForgetPasswordApi
     {
         let api = ForgetPasswordApi(UserID: userID)
@@ -43,6 +49,12 @@ class APIBuilder
     func buildLoginApi(Password: String, UserName: String) -> CustomLoginApi
     {
         let api = CustomLoginApi(userID: UserName, password: Password)
+        return api
+    }
+    //MARK:- buildCheck Avaibility
+    func buildMyRequestDeatils(LoginID:String) -> MyRequestApi
+    {
+        let api = MyRequestApi(LoginID: LoginID)
         return api
     }
     

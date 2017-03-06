@@ -9,7 +9,7 @@
 import UIKit
 protocol ProtocolCalendar
 {
-    func SuccessProtocolCalendar(valueSent: String)
+    func SuccessProtocolCalendar(valueSent: String,CheckString:String)
     func FailureProtocolCalendar(valueSent: String)
 }
 
@@ -20,34 +20,26 @@ class CalendarView: UIViewController {
     
     var delegate:ProtocolCalendar?
     var dateFormatter = DateFormatter()
-    var dateString = String()
     var calendar = UIDatePicker()
     var calenderHeading = String()
 
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
+        labelHeading.text = calenderHeading
         pickerSelectDate.maximumDate = calendar.maximumDate
         pickerSelectDate.minimumDate = calendar.minimumDate
         pickerSelectDate.datePickerMode = calendar.datePickerMode
         pickerSelectDate.backgroundColor = UIColor.white
-        labelHeading.text = calenderHeading
-        print("labelheading",labelHeading.text!)
-
         // Do any additional setup after loading the view.
     }
-
-    @IBAction func btnDoneTapped(_ sender: Any) {
-        let strDate = dateFormatter.string(from: pickerSelectDate.date)
-        dateString = strDate
-        print("string",dateString)
-        delegate?.SuccessProtocolCalendar(valueSent: self.dateString)
-        delegate?.FailureProtocolCalendar(valueSent: "Fail")
+   //MARK:- btnSelectTapped
+    @IBAction func btnSelectTapped(_ sender: Any) {
+        delegate?.SuccessProtocolCalendar(valueSent: dateFormatter.string(from: pickerSelectDate.date),CheckString: calenderHeading)
         self.dismiss(animated: true, completion: nil)
     }
+    //MARK:- btnCancelTapped
     @IBAction func btnCancelTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
-
     }
-
-
 }

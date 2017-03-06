@@ -74,7 +74,4 @@ class NetworkManager
         }
         
     }
-    func serviceCallForGET(url:String,method:String,sucess:(JSON) -> Void,failure:() -> Void)
-    {
-    }
 }

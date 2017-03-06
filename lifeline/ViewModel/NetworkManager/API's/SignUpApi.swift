@@ -82,3 +82,19 @@ class CustomLoginApi
         return parameters
     }
 }
+//MARK:- Gat Profile List
+class GetProfileData {
+    
+    var UserID = ""
+    var URL = URLList.LIFELINE_Get_Profile.rawValue
+    var method = "POST"
+    init(UserID:String) {
+        self.UserID = UserID
+        
+    }
+    func makeParams() -> Parameters
+    {
+        let parameters:Parameters = ["GetProfileRequest":["GetProfileRequestDetails":[["LoginId":self.UserID],["LoginName":""]]]]
+        return parameters
+    }
+}

@@ -29,6 +29,7 @@ class BloodInfoView: UIViewController {
         labelHeading.text = bloodInfoString
         // Do any additional setup after loading the view.
     }
+    //MARK:- btnDoneTapped
     @IBAction func btnDoneTapped(_ sender: Any) {
         let row = pickerViewBloodInfo.selectedRow(inComponent: 0);
         print("value %d", row)
@@ -36,14 +37,11 @@ class BloodInfoView: UIViewController {
         delegate?.SuccessProtocolBloodInfo(valueSent: self.pickercheck)
         delegate?.FailureProtocolBloodInfo(valueSent: "Fail")
         self.dismiss(animated: true, completion: nil)
-
     }
-    
+//MARK:- btnCancelTapped
     @IBAction func btnCancelTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
-        
-    }
-    
+        }
 }
 extension BloodInfoView : UIPickerViewDataSource,UIPickerViewDelegate
 {
