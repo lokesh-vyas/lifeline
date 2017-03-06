@@ -23,12 +23,27 @@ class ProfileView: UIViewController
     @IBOutlet weak var txtWorkAddressPINCode: FloatLabelTextField!
     @IBOutlet weak var profileScrollView: UIScrollView!
     @IBOutlet var btnDOBOutlet: UIButton!
+    @IBOutlet weak var btnBloodGroup: UIButton!
+    @IBOutlet weak var btnLastDonationDate: UIButton!
+    
+    let bloodGroupArray = ["O+","O-","A+","A-","B+","B-","AB+","AB-"]
     
     //MARK:- viewWillAppear
     override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(true)
         self.textFieldPadding()
+        let data = UserDefaults.standard.object(forKey: "ProfileData")
+        if data != nil {
+            let profileData:ProfileData = NSKeyedUnarchiver.unarchiveObject(with: data as! Data) as! ProfileData
+            self.showDataOnView(profileData: profileData)
+        }
+        else
+        {
+            HudBar.sharedInstance.showHudWithMessage(message: "Please Wait...", view: self.view)
+            ProfileViewInteractor.SharedInstance.delegate = self
+            ProfileViewInteractor.SharedInstance.checkGetProfileData(LoginID: "734258020038958")
+        }
     }
     //MARK:- viewDidLoad
     override func viewDidLoad()
@@ -40,6 +55,54 @@ class ProfileView: UIViewController
     }
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+    //MARK:- Show Data On view
+    func showDataOnView(profileData:ProfileData)
+    {
+        self.txtName.text! = profileData.Name
+        self.txtEmailID.text! = profileData.EmailId
+        self.txtContactNumber.text! = profileData.ContactNumber
+        self.txtAge.text! = profileData.Age
+        
+        if profileData.DateofBirth != ""
+        {
+           ProfileViewModel.SharedInstance.DOBstring = profileData.DateofBirth
+           btnDOBOutlet.setTitle(profileData.DateofBirth, for: .normal)
+        }
+        if profileData.BloodGroup != ""
+        {
+            ProfileViewModel.SharedInstance.BloodGroup = profileData.BloodGroup
+            btnBloodGroup.setTitle(profileData.BloodGroup, for: .normal)
+        }
+        if profileData.LastDonatedOn != ""
+        {
+            ProfileViewModel.SharedInstance.LastDonationStrin = profileData.LastDonatedOn
+            btnLastDonationDate.setTitle(profileData.LastDonatedOn, for: .normal)
+        }
+        if profileData.HomeAddressCity != ""
+        {
+            self.txtHomeAddressCity.text! = profileData.HomeAddressCity
+        }
+        if profileData.HomeAddressPINCode != ""
+        {
+            self.txtHomeAddressPINCode.text! = profileData.HomeAddressPINCode
+        }
+        if profileData.HomeAddressLine != ""
+        {
+            self.txtHomeAddressLine.text! = profileData.HomeAddressLine
+        }
+        if profileData.WorkAddressLine != ""
+        {
+            self.txtWorkAddressLine.text! = profileData.WorkAddressLine
+        }
+        if profileData.WorkAddressCity != ""
+        {
+            self.txtWorkAddressCity.text! = profileData.WorkAddressCity
+        }
+        if profileData.WorkAddressPINCode != ""
+        {
+            self.txtWorkAddressPINCode.text! = profileData.WorkAddressPINCode
+        }
     }
     //MARK:- Text Field Padding
     func textFieldPadding()
@@ -79,26 +142,48 @@ class ProfileView: UIViewController
     //MARK:- BloodGroupAction
     @IBAction func BloodGroupAction(_ sender: Any)
     {
+        self.view.endEditing(true)
+        let viewBloodInfo: BloodInfoView = self.storyboard?.instantiateViewController(withIdentifier: "BloodInfoView") as! BloodInfoView
+        viewBloodInfo.delegate = self
+        viewBloodInfo.pickerArray = self.bloodGroupArray
+        viewBloodInfo.bloodInfoString = "Select your blood group"
+        viewBloodInfo.modalPresentationStyle = .overCurrentContext
+        viewBloodInfo.view.backgroundColor =  UIColor.clear
+        viewBloodInfo.modalTransitionStyle = .coverVertical
+        self.present(viewBloodInfo, animated: true, completion: nil)
     }
     //MARK:- DateOfBirthAction
     @IBAction func DOBAction(_ sender: Any) {
-        
+        self.view.endEditing(true)
         let viewCalendar: CalendarView = self.storyboard?.instantiateViewController(withIdentifier: "CalendarView") as! CalendarView
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
         viewCalendar.delegate = self
         viewCalendar.dateFormatter = dateFormatter
-        let headingString = "Confirm Your Date"
-        viewCalendar.calenderHeading = headingString
+        viewCalendar.calenderHeading = "Date of Birth"
         viewCalendar.calendar.maximumDate = Date() as Date
         viewCalendar.calendar.datePickerMode = UIDatePickerMode.date
         viewCalendar.modalPresentationStyle = .overCurrentContext
+        viewCalendar.modalTransitionStyle = .coverVertical
         viewCalendar.view.backgroundColor =  UIColor.clear
         self.present(viewCalendar, animated: true, completion: nil)
     }
     //MARK:- LastDonationDate
     @IBAction func lastDonationDate(_ sender: Any)
     {
+        self.view.endEditing(true)
+        let viewCalendar: CalendarView = self.storyboard?.instantiateViewController(withIdentifier: "CalendarView") as! CalendarView
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        viewCalendar.delegate = self
+        viewCalendar.dateFormatter = dateFormatter
+        viewCalendar.calenderHeading = "Last Donation Date"
+        viewCalendar.calendar.maximumDate = Date() as Date
+        viewCalendar.calendar.datePickerMode = UIDatePickerMode.date
+        viewCalendar.modalPresentationStyle = .overCurrentContext
+        viewCalendar.modalTransitionStyle = .coverVertical
+        viewCalendar.view.backgroundColor =  UIColor.clear
+        self.present(viewCalendar, animated: true, completion: nil)
     }
     //MARK:- HomeGoogleMapAction
     @IBAction func homeGoogleMapAction(_ sender: Any)
@@ -120,6 +205,21 @@ class ProfileView: UIViewController
         if ProfileViewModel.SharedInstance.isContactNumber == false
         {
             self.view.makeToast("Invalid Contact Number", duration: 2.0, position: .bottom)
+            return
+        }
+        if ProfileViewModel.SharedInstance.DOBstring == nil
+        {
+            self.view.makeToast("Please select DOB", duration: 2.0, position: .bottom)
+            return
+        }
+        if ProfileViewModel.SharedInstance.BloodGroup == nil
+        {
+            self.view.makeToast("Please select Blood Group", duration: 2.0, position: .bottom)
+            return
+        }
+        if ProfileViewModel.SharedInstance.LastDonationStrin == nil
+        {
+            self.view.makeToast("Please select Last Donation Date", duration: 2.0, position: .bottom)
             return
         }
         if (txtHomeAddressPINCode.text?.characters.count)! > 1
@@ -144,6 +244,36 @@ class ProfileView: UIViewController
             
         }else{
             //TODO:-
+           
+            if self.txtHomeAddressCity.text?.characters.count == 0
+            {
+                self.txtHomeAddressCity.text! = ""
+            }
+            if self.txtHomeAddressLine.text?.characters.count == 0
+            {
+                self.txtHomeAddressLine.text! = ""
+            }
+            if self.txtHomeAddressPINCode.text?.characters.count == 0
+            {
+                self.txtHomeAddressPINCode.text! = ""
+            }
+            if self.txtWorkAddressCity.text?.characters.count == 0
+            {
+                self.txtWorkAddressCity.text! = ""
+            }
+            if self.txtWorkAddressLine.text?.characters.count == 0
+            {
+                self.txtWorkAddressLine.text! = ""
+            }
+            if self.txtWorkAddressPINCode.text?.characters.count == 0
+            {
+                self.txtWorkAddressPINCode.text! = ""
+            }
+            let profileData = ProfileData(Name: self.txtName.text!, EmailID: self.txtEmailID.text!, ContactNumber: self.txtContactNumber.text!, DateOfBirth: ProfileViewModel.SharedInstance.DOBstring!, Age: self.txtAge.text!, BloodGroup: ProfileViewModel.SharedInstance.BloodGroup!, LastDonationDate: ProfileViewModel.SharedInstance.LastDonationStrin!, HomeAddressLine: self.txtHomeAddressLine.text!, HomeAddressCity: self.txtHomeAddressCity.text!, HomeAddressPINCode: self.txtHomeAddressPINCode.text!, HomeAddressLatitude: "0", HomeAddressLongitude: "0", WorkAddressLine: self.txtWorkAddressLine.text!, WorkAddressCity: self.txtWorkAddressCity.text!, WorkAddressPINCode: self.txtWorkAddressPINCode.text!, WorkAddressLatitude: "0", WorkAddressLongitude: "0")
+            
+            let data = NSKeyedArchiver.archivedData(withRootObject: profileData)
+            UserDefaults.standard.set(data, forKey: "ProfileData")
+            
         }
     }
 }
@@ -201,32 +331,32 @@ extension ProfileView:UITextFieldDelegate
                 if typedString.characters.count < 4 || typedString.characters.count > 13
                 {
                     txtContactNumber.errorLine()
-                    ProfileViewModel.SharedInstance.isContactNumber = true
+                    ProfileViewModel.SharedInstance.isContactNumber = false
                 }
                 else{
                     txtContactNumber.removeErrorLine()
-                    ProfileViewModel.SharedInstance.isContactNumber = false
+                    ProfileViewModel.SharedInstance.isContactNumber = true
                 }
             case txtHomeAddressPINCode:
                 if typedString.characters.count < 4 || typedString.characters.count > 13
                 {
-                    txtHomeAddressPINCode.removeErrorLine()
-                    ProfileViewModel.SharedInstance.isHomePin = true
-                }
-                else{
                     txtHomeAddressPINCode.errorLine()
                     ProfileViewModel.SharedInstance.isHomePin = false
                 }
+                else{
+                    txtHomeAddressPINCode.removeErrorLine()
+                    ProfileViewModel.SharedInstance.isHomePin = true
+                   }
             case txtWorkAddressPINCode:
                 
                 if typedString.characters.count < 4 || typedString.characters.count > 13
                 {
-                    txtWorkAddressPINCode.removeErrorLine()
-                    ProfileViewModel.SharedInstance.isWorkPin = true
-                } else {
                     txtWorkAddressPINCode.errorLine()
                     ProfileViewModel.SharedInstance.isWorkPin = false
-                }
+                } else {
+                    txtWorkAddressPINCode.removeErrorLine()
+                    ProfileViewModel.SharedInstance.isWorkPin = true
+                 }
                 
             default:
                 print("TODO")
@@ -245,14 +375,54 @@ extension ProfileView:UITextFieldDelegate
 extension ProfileView:ProtocolCalendar
 {
     
-    func SuccessProtocolCalendar(valueSent: String)
+    func SuccessProtocolCalendar(valueSent: String,CheckString:String)
     {
-        ProfileViewModel.SharedInstance.DOBstring = valueSent
-        btnDOBOutlet.setTitle(ProfileViewModel.SharedInstance.DOBstring, for: .normal)
+        if CheckString == "Date of Birth"
+        {
+            ProfileViewModel.SharedInstance.DOBstring = valueSent
+            btnDOBOutlet.setTitle(valueSent, for: .normal)
+        }
+        else if CheckString == "Last Donation Date"
+        {
+            ProfileViewModel.SharedInstance.LastDonationStrin = valueSent
+            btnLastDonationDate.setTitle(valueSent, for: .normal)
+        }
     }
     
     func FailureProtocolCalendar(valueSent: String)
     {
         print("Try Again")
+    }
+}
+//MARK:- ProtocolBloodInfo
+extension ProfileView:ProtocolBloodInfo
+{
+    func SuccessProtocolBloodInfo(valueSent: String)
+    {
+        ProfileViewModel.SharedInstance.BloodGroup = valueSent
+        btnBloodGroup.setTitle(valueSent, for: .normal)
+    }
+    func FailureProtocolBloodInfo(valueSent: String)
+    {
+    }
+}
+//MARK:- ProtocolBloodInfo
+extension ProfileView:ProtocolGetProfile
+{
+    func succesfullyGetProfile(success: Bool)
+    {
+        HudBar.sharedInstance.hideHudFormView(view: self.view)
+        if success == true
+        {
+            let data = UserDefaults.standard.object(forKey: "ProfileData")
+            if data != nil {
+                let profileData:ProfileData = NSKeyedUnarchiver.unarchiveObject(with: data as! Data) as! ProfileData
+                self.showDataOnView(profileData: profileData)
+            }
+        }
+    }
+    func failedGetProfile()
+    {
+        HudBar.sharedInstance.hideHudFormView(view: self.view)
     }
 }

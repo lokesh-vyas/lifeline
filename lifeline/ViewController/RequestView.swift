@@ -46,44 +46,41 @@ class RequestView: UIViewController,UITextViewDelegate
 
     
     @IBOutlet var scrollViewRequest: UIScrollView!
+    //MARK:- viewWillAppear
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(true)
+        self.textFieldPadding()
+    }
     //MARK:- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.textFieldPadding()
         NotificationCenter.default.addObserver(self, selector: #selector(RequestView.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(RequestView.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
 
         //MARK - Reval View Button
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
 
-        
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(
-            target: self,
-            action: #selector(RequestView.dismissKeyboard))
-        view.addGestureRecognizer(tap)
         self.navigationController?.completelyTransparentBar()
         self.txtViewPersonalAppeal.delegate = self
     }
     
-    func keyboardWillShow(notification:NSNotification){
-        
-        var userInfo = notification.userInfo!
-        var keyboardFrame:CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
-        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
-        
-        var contentInset:UIEdgeInsets = self.scrollViewRequest.contentInset
-        contentInset.bottom = keyboardFrame.size.height
-        self.scrollViewRequest.contentInset = contentInset
+    //MARK:- Keyboard Appear/Diappear
+    func keyboardWillShow(notification:NSNotification)
+    {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            var contentInset:UIEdgeInsets = self.scrollViewRequest.contentInset
+            contentInset.bottom = keyboardSize.size.height
+            self.scrollViewRequest.contentInset = contentInset
+        }
     }
-    
     func keyboardWillHide(notification:NSNotification){
         
         let contentInset:UIEdgeInsets = UIEdgeInsets.zero
         self.scrollViewRequest.contentInset = contentInset
     }
-        func dismissKeyboard()
-    {
-        view.endEditing(true)
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     //MARK:- Text Field Padding
     func textFieldPadding()
@@ -147,13 +144,12 @@ class RequestView: UIViewController,UITextViewDelegate
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
         viewCalendar.dateFormatter = dateFormatter
-        let headingString = "Confirm Your Date"
-        viewCalendar.modalPresentationStyle = .overCurrentContext
-        viewCalendar.view.backgroundColor =  UIColor.clear
-        viewCalendar.calenderHeading = headingString
+        
+        viewCalendar.calenderHeading = "Confirm Your Date"
         viewCalendar.calendar.minimumDate = Date() as Date
         viewCalendar.calendar.datePickerMode = UIDatePickerMode.date
-
+        viewCalendar.modalPresentationStyle = .overCurrentContext
+        viewCalendar.view.backgroundColor =  UIColor.clear
         self.present(viewCalendar, animated: true, completion: nil)
     }
     //MARK:- btnBloodGroupTapped
@@ -166,9 +162,7 @@ class RequestView: UIViewController,UITextViewDelegate
         viewBloodInfo.bloodInfoString = "Select your blood group"
         viewBloodInfo.modalPresentationStyle = .overCurrentContext
         viewBloodInfo.view.backgroundColor =  UIColor.clear
-        viewBloodInfo.modalPresentationStyle = .overCurrentContext
         self.present(viewBloodInfo, animated: true, completion: nil)
-
     }
     //MARK:- btnBloodUnitTapped
     @IBAction func btnBloodUnitTapped(_ sender: Any)
@@ -180,7 +174,6 @@ class RequestView: UIViewController,UITextViewDelegate
         viewBloodInfo.bloodInfoString = "Select number of units"
         viewBloodInfo.modalPresentationStyle = .overCurrentContext
         viewBloodInfo.view.backgroundColor =  UIColor.clear
-        viewBloodInfo.modalPresentationStyle = .overCurrentContext
         self.present(viewBloodInfo, animated: true, completion: nil)
     }
     //MARK:- GoogleMap IBAction
@@ -209,7 +202,6 @@ class RequestView: UIViewController,UITextViewDelegate
     {
         let SWRevealView = self.storyboard!.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
         self.navigationController?.present(SWRevealView, animated: true, completion: nil)
-        
     }
     //MARK:- btnSubmmitTapped
     @IBAction func btnSubmitTapped(_ sender: Any)
@@ -338,13 +330,10 @@ extension RequestView:UITextFieldDelegate
         }
         return true;
     }
-    
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         return true;
     }
-
 }
-
 //MARK:- HospitalListCompletDataProtocol
 extension RequestView:HospitalListCompletDataProtocol
 {
@@ -371,15 +360,15 @@ extension RequestView:ProtocolBloodInfo
     {
         if self.buttonupdate == "Need"
         {
-            btnWhatYouNeed.titleLabel?.text = valueSent
+            btnWhatYouNeed.setTitle(valueSent, for: .normal)
         }
         else if self.buttonupdate == "BloodGroup"
         {
-            btnBloodGroup.titleLabel?.text = valueSent
+            btnBloodGroup.setTitle(valueSent, for: .normal)
         }
         else
         {
-            btnBloodUnit.titleLabel?.text = valueSent
+            btnBloodUnit.setTitle(valueSent, for: .normal)
         }
     }
     
@@ -391,17 +380,13 @@ extension RequestView:ProtocolBloodInfo
 }
 extension RequestView:ProtocolCalendar
 {
-    func SuccessProtocolCalendar(valueSent: String)
+    func SuccessProtocolCalendar(valueSent: String, CheckString: String)
     {
-        self.whenYouNeedString = valueSent
-        btnWhenYouNeed.titleLabel?.text = self.whenYouNeedString
-        print("whenYouNeedString",self.whenYouNeedString!)
+        btnWhenYouNeed.setTitle(valueSent, for: .normal)
     }
+
     func FailureProtocolCalendar(valueSent: String)
     {
         print("Try Again")
     }
 }
-
-
-

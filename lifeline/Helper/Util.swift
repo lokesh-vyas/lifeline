@@ -15,30 +15,51 @@ class Util
         let instance = Util()
         return instance
     }()
+    //MARK:- Current Date For Server
+    func currentDateChangeForServer() -> String
+    {
+        let date = NSDate()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0) as TimeZone!
+        return dateFormatter.string(from: date as Date)
+    }
+    //MARK:- Date Change For Sever
     func dateChangeForServer(dateString:String) -> String
     {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-ddThh:mm:sss+zzzz"
-        dateFormatter.locale = Locale.init(identifier: "en_GB")
-        
+  
         let dateObj = dateFormatter.date(from: dateString)
         
         dateFormatter.dateFormat = "dd/MM/yyyy"
-        print("Dateobj: \(dateFormatter.string(from: dateObj!))")
         return dateFormatter.string(from: dateObj!)
     }
+    //MARK:- date Chenge for DateofBirth for Profile
+    func dateChangeForGetProfileDOB(dateString:String) -> String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd+HH:mm"
+        let date = dateFormatter.date(from: dateString)
+        
+        dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0) as TimeZone!
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        let stringFromDate = dateFormatter.string(from: date!)
+        return stringFromDate
+    }
+    //MARK:- date Chenge for server
     func dateChangeForInternal(dateString:String) -> String
     {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
-        dateFormatter.locale = Locale.init(identifier: "en_GB")
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let date = dateFormatter.date(from: dateString)
         
-        let dateObj = dateFormatter.date(from: dateString)
-        
+        dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0) as TimeZone!
         dateFormatter.dateFormat = "dd/MM/yyyy"
-        print("Dateobj: \(dateFormatter.string(from: dateObj!))")
-        return dateFormatter.string(from: dateObj!)
+        let stringFromDate = dateFormatter.string(from: date!)
+        return stringFromDate
     }
+    //MARK:- Color Chenge From Hex String
     func hexStringToUIColor (hex:String) -> UIColor {
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         
@@ -73,7 +94,7 @@ extension String
         return result
     }
 }
-
+//MARK:- Navigtion bar transperent
 extension UINavigationController {
     
     func completelyTransparentBar()
@@ -92,6 +113,7 @@ extension UINavigationController {
         }
     }
 }
+//MARK:- Padding of textfield
 extension UITextField {
     func setLeftPaddingPoints(_ amount:CGFloat)
     {
@@ -105,7 +127,7 @@ extension UITextField {
         self.rightViewMode = .always
     }
 }
-
+//MARK:- Corner Radius for View
 extension UIView {
     
     @IBInspectable var cornerRadius: CGFloat {

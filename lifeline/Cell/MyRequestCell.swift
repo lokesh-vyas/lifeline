@@ -16,6 +16,7 @@ class MyRequestCell: UITableViewCell {
     @IBOutlet weak var btnCloseRequest: UIButton!
     @IBOutlet weak var btnViewDonars: UIButton!
     @IBOutlet weak var viewColorForStatus: UIView!
+    @IBOutlet weak var viewCloseButtonRequest: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
