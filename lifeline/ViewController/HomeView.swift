@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class HomeView: UIViewController {
     //MARK:- IBOutlet
@@ -22,6 +23,11 @@ class HomeView: UIViewController {
         self.navigationController?.completelyTransparentBar()
        //MARK - Reval View Button
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        
+        if let refreshedToken = FIRInstanceID.instanceID().token()
+        {
+            print("InstanceID token: \(refreshedToken)")
+        }
         
         if self.revealViewController() != nil {
             revalMenuButton.target = self.revealViewController()
