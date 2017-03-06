@@ -66,8 +66,8 @@ class ProfileView: UIViewController
         
         if profileData.DateofBirth != ""
         {
-           ProfileViewModel.SharedInstance.DOBstring = profileData.DateofBirth
-           btnDOBOutlet.setTitle(profileData.DateofBirth, for: .normal)
+            ProfileViewModel.SharedInstance.DOBstring = profileData.DateofBirth
+            btnDOBOutlet.setTitle(profileData.DateofBirth, for: .normal)
         }
         if profileData.BloodGroup != ""
         {
@@ -244,7 +244,7 @@ class ProfileView: UIViewController
             
         }else{
             //TODO:-
-           
+            
             if self.txtHomeAddressCity.text?.characters.count == 0
             {
                 self.txtHomeAddressCity.text! = ""
@@ -269,12 +269,90 @@ class ProfileView: UIViewController
             {
                 self.txtWorkAddressPINCode.text! = ""
             }
+            
             let profileData = ProfileData(Name: self.txtName.text!, EmailID: self.txtEmailID.text!, ContactNumber: self.txtContactNumber.text!, DateOfBirth: ProfileViewModel.SharedInstance.DOBstring!, Age: self.txtAge.text!, BloodGroup: ProfileViewModel.SharedInstance.BloodGroup!, LastDonationDate: ProfileViewModel.SharedInstance.LastDonationStrin!, HomeAddressLine: self.txtHomeAddressLine.text!, HomeAddressCity: self.txtHomeAddressCity.text!, HomeAddressPINCode: self.txtHomeAddressPINCode.text!, HomeAddressLatitude: "0", HomeAddressLongitude: "0", WorkAddressLine: self.txtWorkAddressLine.text!, WorkAddressCity: self.txtWorkAddressCity.text!, WorkAddressPINCode: self.txtWorkAddressPINCode.text!, WorkAddressLatitude: "0", WorkAddressLongitude: "0")
             
             let data = NSKeyedArchiver.archivedData(withRootObject: profileData)
             UserDefaults.standard.set(data, forKey: "ProfileData")
             
+            if ((self.txtHomeAddressCity.text?.characters.count != 0)||(self.txtHomeAddressPINCode.text?.characters.count != 0)||(self.txtHomeAddressLine.text?.characters.count != 0))
+            {
+                if ((self.txtWorkAddressLine.text?.characters.count != 0)||(self.txtWorkAddressPINCode.text?.characters.count != 0)||(self.txtWorkAddressCity.text?.characters.count != 0))
+                {
+                    //MARK:   With Home/Work Adress
+                    self.serverBodyForProfileData(index: 4)
+                }else
+                {
+                    //MARK: With Home Adress
+                    self.serverBodyForProfileData(index: 3)
+                }
+            }else if ((self.txtWorkAddressLine.text?.characters.count != 0)||(self.txtWorkAddressPINCode.text?.characters.count != 0)||(self.txtWorkAddressCity.text?.characters.count != 0))
+            {
+                //MARK:   With Work Address
+                self.serverBodyForProfileData(index: 2)
+            }else{
+                self.serverBodyForProfileData(index: 1)
+            }
         }
+    }
+    func serverBodyForProfileData(index:Int)
+    {
+        var myNewDictArray = [Dictionary<String, String>]()
+        switch index {
+        case 1:
+            //MARK: Without Home/Work Adress
+            self.serverCallForProfileRegistration(myAddressDetail: myNewDictArray)
+        case 2:
+            myNewDictArray.append(["AddressType":"Work","AddressLine":self.txtWorkAddressLine.text!,"City": self.txtWorkAddressCity.text!,
+                                   "LandMark": "",
+                                   "State": "",
+                                   "Country": "",
+                                   "ZipCode": self.txtWorkAddressPINCode.text!,
+                                   "Latitude": "22.22112211",
+                                   "Longitude": "33.33223322"])
+            self.serverCallForProfileRegistration(myAddressDetail: myNewDictArray)
+        //MARK:   With Work Address
+        case 3:
+            myNewDictArray.append(["AddressType":"Home","AddressLine":self.txtHomeAddressLine.text!,"City": self.txtHomeAddressCity.text!,
+                                   "LandMark": "",
+                                   "State": "",
+                                   "Country": "",
+                                   "ZipCode": self.txtHomeAddressPINCode.text!,
+                                   "Latitude": "22.22112211",
+                                   "Longitude": "33.33223322"])
+            self.serverCallForProfileRegistration(myAddressDetail: myNewDictArray)
+        //MARK: With Home Adress
+        case 4:
+            //MARK:   With Home/Work Adress
+            myNewDictArray.append(["AddressType":"Home","AddressLine":self.txtHomeAddressLine.text!,"City": self.txtHomeAddressCity.text!,
+                                   "LandMark": "",
+                                   "State": "",
+                                   "Country": "",
+                                   "ZipCode": self.txtHomeAddressPINCode.text!,
+                                   "Latitude": "22.22112211",
+                                   "Longitude": "33.33223322"])
+            myNewDictArray.append(["AddressType":"Work","AddressLine":self.txtWorkAddressLine.text!,"City": self.txtWorkAddressCity.text!,
+                                   "LandMark": "",
+                                   "State": "",
+                                   "Country": "",
+                                   "ZipCode": self.txtWorkAddressPINCode.text!,
+                                   "Latitude": "22.22112211",
+                                   "Longitude": "33.33223322"])
+            self.serverCallForProfileRegistration(myAddressDetail: myNewDictArray)
+        default:
+            self.serverCallForProfileRegistration(myAddressDetail: myNewDictArray)
+        }
+    }
+    func serverCallForProfileRegistration(myAddressDetail:Any)
+    {
+        //fixme:- LoginID
+        let LoginID:String = "734258020038958"
+        let AuthProvider:String = "Custom"
+        let customer : Dictionary = ["ProfileRegistrationRequest":["ProfileDetails":["LoginId":LoginID,"Name":self.txtName.text!,"DateofBirth":Util.SharedInstance.dateChangeForServerForProfile(dateString: ProfileViewModel.SharedInstance.DOBstring!),"Age":self.txtAge.text!,"ContactNumber": self.txtContactNumber.text!, "BloodGroup": ProfileViewModel.SharedInstance.BloodGroup!,"EmailId": self.txtEmailID.text!,"AuthProvider": AuthProvider,"LastDonationDate": Util.SharedInstance.dateChangeForServerForProfile(dateString: ProfileViewModel.SharedInstance.LastDonationStrin!),"AddressDetails": myAddressDetail]]]
+        
+        HudBar.sharedInstance.showHudWithMessage(message: "Please wait..", view: self.view)
+        ProfileViewInteractor.SharedInstance.delegateProfile = self
+        ProfileViewInteractor.SharedInstance.MyProfileRegistration(params: customer)
     }
 }
 //MARK:- TextViewDelegate
@@ -346,7 +424,7 @@ extension ProfileView:UITextFieldDelegate
                 else{
                     txtHomeAddressPINCode.removeErrorLine()
                     ProfileViewModel.SharedInstance.isHomePin = true
-                   }
+                }
             case txtWorkAddressPINCode:
                 
                 if typedString.characters.count < 4 || typedString.characters.count > 13
@@ -356,12 +434,11 @@ extension ProfileView:UITextFieldDelegate
                 } else {
                     txtWorkAddressPINCode.removeErrorLine()
                     ProfileViewModel.SharedInstance.isWorkPin = true
-                 }
+                }
                 
             default:
                 print("TODO")
             }
-            
         }
         return true;
     }
@@ -422,6 +499,31 @@ extension ProfileView:ProtocolGetProfile
         }
     }
     func failedGetProfile()
+    {
+        HudBar.sharedInstance.hideHudFormView(view: self.view)
+    }
+}
+//MARK:- ProtocolBloodInfo
+extension ProfileView:ProtocolRegisterProfile
+{
+    func succesfullyRegisterProfile(success: Bool)
+    {
+        if success == true
+        {
+            HudBar.sharedInstance.hideHudFormView(view: self.view)
+            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Your Profile has been Updated", view: self.view)
+            let deadlineTime = DispatchTime.now() + .seconds(2)
+            DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute:
+                {
+                    let SWRevealView = self.storyboard!.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
+                    self.navigationController?.present(SWRevealView, animated: true, completion: nil)
+            })
+        }else{
+            HudBar.sharedInstance.hideHudFormView(view: self.view)
+            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Failed to Update", view: self.view)
+        }
+    }
+    func failedRegisterProfile()
     {
         HudBar.sharedInstance.hideHudFormView(view: self.view)
     }
