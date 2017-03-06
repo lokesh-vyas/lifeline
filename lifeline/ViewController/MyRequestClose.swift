@@ -122,7 +122,6 @@ class MyRequestClose: UIViewController {
             for (i, _) in myRequestArray.enumerated()
             {
                 let donorID = myRequestArray[i]["DonationId"].string
-                
                 myNewDictArray.append(["DonationId":donorID!,"HasDonated":"","DonatedOn":Util.SharedInstance.currentDateChangeForServer(),"ThankYouNote":self.txtThankNote.text!
                     ])
             }

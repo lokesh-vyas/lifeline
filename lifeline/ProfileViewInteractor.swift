@@ -8,10 +8,16 @@
 
 import Foundation
 import SwiftyJSON
+
 //MARK:- ProtocolGetProfile
 protocol ProtocolGetProfile {
     func succesfullyGetProfile(success: Bool)
     func failedGetProfile()
+}
+//MARK:- ProtocolRegisterProfile
+protocol ProtocolRegisterProfile {
+    func succesfullyRegisterProfile(success: Bool)
+    func failedRegisterProfile()
 }
 //MARK:- ProfileView Model
 class ProfileViewModel
@@ -44,6 +50,7 @@ class ProfileViewInteractor
         return Shared.instance
     }
     var delegate:ProtocolGetProfile?
+    var delegateProfile:ProtocolRegisterProfile?
     //MARK:- checkGetProfileData
     func checkGetProfileData(LoginID:String)
     {
@@ -58,13 +65,62 @@ class ProfileViewInteractor
                 }
                 else
                 {
-                   self.delegate?.succesfullyGetProfile(success: false)
+                    self.delegate?.succesfullyGetProfile(success: false)
                 }
         }, failure:
             { _ in
                 self.delegate?.failedGetProfile()
         })
     }
+    //MARK:- MyProfileRegistration
+    func MyProfileRegistration(params:Dictionary<String,Any>)
+    {
+        let urlString = URLList.PROFILE_REGISTRATION.rawValue
+        
+        NetworkManager.sharedInstance.serviceCallForPOST(url: urlString,
+                                                         method: "POST",
+                                                         parameters: params,
+                                                         sucess: {
+                                                            (JSONResponse) -> Void in
+                                                            print(JSONResponse)
+                                                            if (JSONResponse["DeviceDetailsResponse"]["DeviceDetails"]["StatusCode"].int == 0)
+                                                            {
+                                                                self.delegateProfile?.succesfullyRegisterProfile(success: true)
+                                                            }else
+                                                            {
+                                                                self.delegateProfile?.succesfullyRegisterProfile(success: false)
+                                                            }
+        },
+                                                         failure: { _ in
+                                                            self.delegateProfile?.failedRegisterProfile()
+        }
+        )
+    }
+    //MARK:- DeviceRegistration
+    func MyDeviceRegistration(params:Dictionary<String,Any>)
+    {
+        let urlString = URLList.Device_Token_Reg.rawValue
+        
+        NetworkManager.sharedInstance.serviceCallForPOST(url: urlString,
+                                                         method: "POST",
+                                                         parameters: params,
+                                                         sucess: {
+                                                            (JSONResponse) -> Void in
+                                                            print(JSONResponse)
+                                                            if (JSONResponse["ProfileRegistrationResponse"]["ProfileDetails"]["StatusCode"].int == 0)
+                                                            {
+                                                                self.delegateProfile?.succesfullyRegisterProfile(success: true)
+                                                            }else
+                                                            {
+                                                                self.delegateProfile?.succesfullyRegisterProfile(success: false)
+                                                            }
+        },
+                                                         failure: { _ in
+                                                            self.delegateProfile?.failedRegisterProfile()
+        }
+        )
+    }
+    //MARK:- server Data in profile
     func serverDataInProfileData(JSONResponse:JSON)
     {
         let jsonDict = JSONResponse["GetProfileResponse"]["GetProfileResponseDetails"]
@@ -101,7 +157,7 @@ class ProfileViewInteractor
         }
         else
         {
-             contactNumber = String(describing: jsonDict["ContactNumber"])
+            contactNumber = String(describing: jsonDict["ContactNumber"])
         }
         if jsonDict["AddressIDHome"] != 0
         {
@@ -117,7 +173,7 @@ class ProfileViewInteractor
             
             if AddressHome["AddressLine"].string != nil
             {
-              HomeAdressLine = AddressHome["AddressLine"].string!
+                HomeAdressLine = AddressHome["AddressLine"].string!
             }
             else
             {
