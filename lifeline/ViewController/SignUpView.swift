@@ -12,7 +12,8 @@ import Toast_Swift
 class SignUpView: UIViewController
 {
     //MARK:- IBOutlet
-    @IBOutlet weak var userIDTextField: FloatLabelTextField!
+    
+    @IBOutlet weak var signUpScroll: UIScrollView!
     @IBOutlet weak var nameTextField: FloatLabelTextField!
     @IBOutlet weak var emailTextField: FloatLabelTextField!
     @IBOutlet weak var passwordTextField: FloatLabelTextField!
@@ -25,20 +26,40 @@ class SignUpView: UIViewController
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.completelyTransparentBar()
+        NotificationCenter.default.addObserver(self, selector: #selector(SignUpView.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SignUpView.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    //MARK:- keyboard Appear / DisAppear
+    func keyboardWillShow(notification: NSNotification) {
+        
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            var contentInset:UIEdgeInsets = self.signUpScroll.contentInset
+            contentInset.bottom = keyboardSize.size.height - 150
+            self.signUpScroll.contentInset = contentInset
+        }
+    }
+    func keyboardWillHide(notification: NSNotification) {
+        if ((notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue) != nil {
+            let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+            self.signUpScroll.contentInset = contentInset
+        }
+    }
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     //MARK:- checkAvability
     @IBAction func checkAvability(_ sender: Any)
     {
-        view.endEditing(true)
-        if (userIDTextField.text?.characters.count)! > 3
-        {
-            SignUpInteractor.SharedInstance.delegate = self
-            SignUpInteractor.SharedInstance.checkAvabilityCallForServices(checkString: userIDTextField.text!)
-        }
-        else
-        {
-            self.view.makeToast("User Id should be greater than three characters", duration: 3.0, position: .bottom)
-        }
+       // view.endEditing(true)
+//        if (userIDTextField.text?.characters.count)! > 3
+//        {
+//            SignUpInteractor.SharedInstance.delegate = self
+//            SignUpInteractor.SharedInstance.checkAvabilityCallForServices(checkString: userIDTextField.text!)
+//        }
+//        else
+//        {
+//            self.view.makeToast("User Id should be greater than three characters", duration: 3.0, position: .bottom)
+//        }
     }
     //MARK:- BackButtonAction
     @IBAction func BackButtonAction(_ sender: Any)
@@ -46,40 +67,29 @@ class SignUpView: UIViewController
         self.navigationController?.popViewController(animated: true)
     }
     //MARK:- signUpAction
-    @IBAction func signUpAction(_ sender: Any)
-    {
+    @IBAction func signUpAction(_ sender: Any) {
         view.endEditing(true)
-        
-        if (userIDTextField.text?.characters.count)! < 3
-        {
-            self.view.makeToast("User Id should be greater than three characters", duration: 3.0, position: .bottom)
-            return
-        }
-        if (userIDTextField.text?.characters.count)! < 1 || Email == nil || Password == nil || (emailTextField.text?.characters.count)! < 1 || (confirmTextField.text?.characters.count)! < 1 || (nameTextField.text?.characters.count)! < 1
-        {
-            self.view.makeToast("Please fill all fields", duration: 2.0, position: .bottom)
+        if (Email == nil || Password == nil || (emailTextField.text?.characters.count)! < 1 || (confirmTextField.text?.characters.count)! < 1 || (nameTextField.text?.characters.count)! < 1)
+            {
+                self.view.makeToast("Please fill all fields", duration: 2.0, position: .bottom)
+                
+            }else if (Email == true) {
+            if Password == true {
+            if passwordTextField.text == confirmTextField.text {
             
-        } else if (userIDTextField.text?.characters.count)! > 1 {
-            if Email == true {
-                if Password == true {
-                    if passwordTextField.text == confirmTextField.text {
-                        
-                        HudBar.sharedInstance.showHudWithMessage(message: "Signin...", view: self.view)
-                        SignUpInteractor.SharedInstance.delegateSignUp = self
-                        SignUpInteractor.SharedInstance.signUPCallForServices(email: self.emailTextField.text!, password: self.passwordTextField.text!, userID: self.userIDTextField.text!)
-                        
-                    } else {
-                        self.view.makeToast("Password mismatch", duration: 2.0, position: .bottom)
-                    }
-                    
-                } else {
-                    self.view.makeToast("Password must be greater than 6 Digits", duration: 2.0, position: .bottom)
-                }
+            HudBar.sharedInstance.showHudWithMessage(message: "Signin...", view: self.view)
+            SignUpInteractor.SharedInstance.delegateSignUp = self
+            SignUpInteractor.SharedInstance.signUPCallForServices(email: self.emailTextField.text!, password: self.passwordTextField.text!, userID: self.emailTextField.text!)
+            
             } else {
-                self.view.makeToast("Invalid Email ID", duration: 2.0, position: .bottom)
+            self.view.makeToast("Password mismatch", duration: 2.0, position: .bottom)
             }
-        } else {
-            self.view.makeToast("Minimum Two Characters Required", duration: 2.0, position: .bottom)
+            
+            } else {
+            self.view.makeToast("Password must be greater than 6 Digits", duration: 2.0, position: .bottom)
+            }
+            } else {
+            self.view.makeToast("Invalid Email ID", duration: 2.0, position: .bottom)
         }
     }
 }
@@ -90,9 +100,6 @@ extension SignUpView:UITextFieldDelegate
         
         if textField.text?.characters.count == 0 {
             switch textField {
-            case userIDTextField:
-                userIDTextField.errorLine()
-                
             case nameTextField:
                 nameTextField.errorLine()
             case passwordTextField:
@@ -118,14 +125,6 @@ extension SignUpView:UITextFieldDelegate
         if typedString.characters.count > 0 {
             
             switch textField {
-            case userIDTextField:
-                if typedString.characters.count > 3
-                {
-                    userIDTextField.removeErrorLine()
-                } else {
-                    userIDTextField.errorLine()
-                }
-                
                 
             case nameTextField:
                 nameTextField.removeErrorLine()
@@ -174,7 +173,7 @@ extension SignUpView:UITextFieldDelegate
         return true;
     }
 }
- //MARK:- checkAvabilityProtocol
+//MARK:- checkAvabilityProtocol
 extension SignUpView : checkAvabilityProtocol
 {
     func checkAvailbaleSucess(success: Bool)
@@ -212,6 +211,8 @@ extension SignUpView : successSignUpProtocol
         }
         else
         {
+            self.emailTextField.errorLine()
+            Email = false
             HudBar.sharedInstance.hideHudFormView(view: self.view)
             HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "User id you entered is already in use please enter another user id", view: self.view)
         }

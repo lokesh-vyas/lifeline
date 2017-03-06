@@ -9,6 +9,79 @@
 import Foundation
 import UIKit
 
+class Util
+{
+    static let SharedInstance : Util = {
+        let instance = Util()
+        return instance
+    }()
+    //MARK:- Current Date For Server
+    func currentDateChangeForServer() -> String
+    {
+        let date = NSDate()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0) as TimeZone!
+        return dateFormatter.string(from: date as Date)
+    }
+    //MARK:- Date Change For Sever
+    func dateChangeForServer(dateString:String) -> String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-ddThh:mm:sss+zzzz"
+  
+        let dateObj = dateFormatter.date(from: dateString)
+        
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        return dateFormatter.string(from: dateObj!)
+    }
+    //MARK:- date Chenge for DateofBirth for Profile
+    func dateChangeForGetProfileDOB(dateString:String) -> String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd+HH:mm"
+        let date = dateFormatter.date(from: dateString)
+        
+        dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0) as TimeZone!
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        let stringFromDate = dateFormatter.string(from: date!)
+        return stringFromDate
+    }
+    //MARK:- date Chenge for server
+    func dateChangeForInternal(dateString:String) -> String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let date = dateFormatter.date(from: dateString)
+        
+        dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0) as TimeZone!
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        let stringFromDate = dateFormatter.string(from: date!)
+        return stringFromDate
+    }
+    //MARK:- Color Chenge From Hex String
+    func hexStringToUIColor (hex:String) -> UIColor {
+        var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+        
+        if (cString.hasPrefix("#")) {
+            cString.remove(at: cString.startIndex)
+        }
+        
+        if ((cString.characters.count) != 6) {
+            return UIColor.gray
+        }
+        
+        var rgbValue:UInt32 = 0
+        Scanner(string: cString).scanHexInt32(&rgbValue)
+        
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
+    }
+}
 
 //MARK:- Valid Mail ID
 extension String
@@ -21,6 +94,7 @@ extension String
         return result
     }
 }
+//MARK:- Navigtion bar transperent
 extension UINavigationController {
     
     func completelyTransparentBar()
@@ -39,6 +113,7 @@ extension UINavigationController {
         }
     }
 }
+//MARK:- Padding of textfield
 extension UITextField {
     func setLeftPaddingPoints(_ amount:CGFloat)
     {
@@ -52,6 +127,7 @@ extension UITextField {
         self.rightViewMode = .always
     }
 }
+//MARK:- Corner Radius for View
 extension UIView {
     
     @IBInspectable var cornerRadius: CGFloat {
@@ -81,5 +157,5 @@ extension UIView {
             layer.borderColor = newValue?.cgColor
         }
     }
-    
 }
+

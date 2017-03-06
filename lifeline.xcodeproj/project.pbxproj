@@ -29,6 +29,11 @@
 		665111B71E61824500A6AFAA /* MyRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665111B61E61824500A6AFAA /* MyRequestCell.swift */; };
 		665111B91E61826D00A6AFAA /* MyRequestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 665111B81E61826D00A6AFAA /* MyRequestCell.xib */; };
 		665111BC1E61B69D00A6AFAA /* MyRequestClose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665111BB1E61B69D00A6AFAA /* MyRequestClose.swift */; };
+		665111BF1E63F55800A6AFAA /* MyDonorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665111BE1E63F55800A6AFAA /* MyDonorView.swift */; };
+		665111C11E63F9D700A6AFAA /* MyRequestInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665111C01E63F9D700A6AFAA /* MyRequestInteractor.swift */; };
+		665111C31E6407F600A6AFAA /* MyRequestApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665111C21E6407F600A6AFAA /* MyRequestApi.swift */; };
+		665111C81E66E3FF00A6AFAA /* MyDonorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 665111C71E66E3FF00A6AFAA /* MyDonorCell.xib */; };
+		665111CA1E66E42600A6AFAA /* MyDonorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665111C91E66E42600A6AFAA /* MyDonorCell.swift */; };
 		66C4E67D1E37258B00526C1D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C4E67C1E37258B00526C1D /* HomeView.swift */; };
 		66C4E67F1E3725A300526C1D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C4E67E1E3725A300526C1D /* ProfileView.swift */; };
 		66C4E6821E37273100526C1D /* RevalListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C4E6811E37273100526C1D /* RevalListView.swift */; };
@@ -47,6 +52,7 @@
 		66C5782D1E37799F00B235F4 /* seguisb.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 66C578231E37799F00B235F4 /* seguisb.ttf */; };
 		66C5782E1E37799F00B235F4 /* seguisbi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 66C578241E37799F00B235F4 /* seguisbi.ttf */; };
 		66C5782F1E37799F00B235F4 /* seguisli.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 66C578251E37799F00B235F4 /* seguisli.ttf */; };
+		66DBAF0D1E6AA8D500AC4A7F /* ProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DBAF0C1E6AA8D500AC4A7F /* ProfileData.swift */; };
 		66EA8D351E1F6B4300646797 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EA8D341E1F6B4300646797 /* AppDelegate.swift */; };
 		66EA8D3A1E1F6B4300646797 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8D381E1F6B4300646797 /* Main.storyboard */; };
 		66EA8D3C1E1F6B4300646797 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8D3B1E1F6B4300646797 /* Assets.xcassets */; };
@@ -146,6 +152,11 @@
 		665111B61E61824500A6AFAA /* MyRequestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyRequestCell.swift; path = Cell/MyRequestCell.swift; sourceTree = "<group>"; };
 		665111B81E61826D00A6AFAA /* MyRequestCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyRequestCell.xib; path = Cell/MyRequestCell.xib; sourceTree = "<group>"; };
 		665111BB1E61B69D00A6AFAA /* MyRequestClose.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyRequestClose.swift; path = ViewController/MyRequestClose.swift; sourceTree = "<group>"; };
+		665111BE1E63F55800A6AFAA /* MyDonorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyDonorView.swift; path = ViewController/MyDonorView.swift; sourceTree = "<group>"; };
+		665111C01E63F9D700A6AFAA /* MyRequestInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyRequestInteractor.swift; path = ViewModel/MyRequestInteractor.swift; sourceTree = "<group>"; };
+		665111C21E6407F600A6AFAA /* MyRequestApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRequestApi.swift; sourceTree = "<group>"; };
+		665111C71E66E3FF00A6AFAA /* MyDonorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyDonorCell.xib; path = Cell/MyDonorCell.xib; sourceTree = "<group>"; };
+		665111C91E66E42600A6AFAA /* MyDonorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyDonorCell.swift; path = Cell/MyDonorCell.swift; sourceTree = "<group>"; };
 		66C4E67C1E37258B00526C1D /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeView.swift; path = ViewController/HomeView.swift; sourceTree = "<group>"; };
 		66C4E67E1E3725A300526C1D /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileView.swift; path = ViewController/ProfileView.swift; sourceTree = "<group>"; };
 		66C4E6811E37273100526C1D /* RevalListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RevalListView.swift; path = ViewController/RevalListView.swift; sourceTree = "<group>"; };
@@ -164,6 +175,7 @@
 		66C578231E37799F00B235F4 /* seguisb.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = seguisb.ttf; sourceTree = "<group>"; };
 		66C578241E37799F00B235F4 /* seguisbi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = seguisbi.ttf; sourceTree = "<group>"; };
 		66C578251E37799F00B235F4 /* seguisli.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = seguisli.ttf; sourceTree = "<group>"; };
+		66DBAF0C1E6AA8D500AC4A7F /* ProfileData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileData.swift; sourceTree = "<group>"; };
 		66EA8D311E1F6B4200646797 /* lifeline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lifeline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66EA8D341E1F6B4300646797 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		66EA8D391E1F6B4300646797 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -279,6 +291,7 @@
 		66316B811E54555E00114055 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				665111C41E66E36100A6AFAA /* MyDonorCell */,
 				665111B51E6181F300A6AFAA /* MyRequestCell */,
 				66316B891E557AE600114055 /* HospitalListCell */,
 			);
@@ -321,11 +334,29 @@
 			name = MyRequestClose;
 			sourceTree = "<group>";
 		};
+		665111BD1E63F52100A6AFAA /* MyDonorView */ = {
+			isa = PBXGroup;
+			children = (
+				665111BE1E63F55800A6AFAA /* MyDonorView.swift */,
+			);
+			name = MyDonorView;
+			sourceTree = "<group>";
+		};
+		665111C41E66E36100A6AFAA /* MyDonorCell */ = {
+			isa = PBXGroup;
+			children = (
+				665111C91E66E42600A6AFAA /* MyDonorCell.swift */,
+				665111C71E66E3FF00A6AFAA /* MyDonorCell.xib */,
+			);
+			name = MyDonorCell;
+			sourceTree = "<group>";
+		};
 		66C4E67A1E37251300526C1D /* ProfileView */ = {
 			isa = PBXGroup;
 			children = (
 				66C4E67E1E3725A300526C1D /* ProfileView.swift */,
 				665111B31E5D9D8600A6AFAA /* ProfileViewInteractor.swift */,
+				66DBAF0C1E6AA8D500AC4A7F /* ProfileData.swift */,
 			);
 			name = ProfileView;
 			sourceTree = "<group>";
@@ -393,7 +424,9 @@
 			isa = PBXGroup;
 			children = (
 				66C4E6901E37404C00526C1D /* MyRequestView.swift */,
+				665111C01E63F9D700A6AFAA /* MyRequestInteractor.swift */,
 				665111BA1E61B67200A6AFAA /* MyRequestClose */,
+				665111BD1E63F52100A6AFAA /* MyDonorView */,
 			);
 			name = MyRequestView;
 			sourceTree = "<group>";
@@ -612,6 +645,7 @@
 				EDE9AEAC1E5DC2B40031BCB0 /* RequestApi.swift */,
 				66EA8E331E27AF0900646797 /* SignUpApi.swift */,
 				66316B871E5575D700114055 /* HospitalListApi.swift */,
+				665111C21E6407F600A6AFAA /* MyRequestApi.swift */,
 			);
 			name = "API's";
 			sourceTree = "<group>";
@@ -787,6 +821,7 @@
 				66EA8E111E275A4000646797 /* calendar_clock.png in Resources */,
 				66EA8E1D1E275A4000646797 /* save.png in Resources */,
 				66316B8D1E557D8300114055 /* HospitalListCell.xib in Resources */,
+				665111C81E66E3FF00A6AFAA /* MyDonorCell.xib in Resources */,
 				66C5782E1E37799F00B235F4 /* seguisbi.ttf in Resources */,
 				66EA8E141E275A4000646797 /* delete_icon.png in Resources */,
 				EDE9AEA21E5C47D10031BCB0 /* cross.png in Resources */,
@@ -983,13 +1018,17 @@
 				1841C6B31E696990006F14B2 /* ConfirmDonateInteractor.swift in Sources */,
 				66EA8DF91E2510A300646797 /* HudBar.swift in Sources */,
 				66316B8B1E557D4200114055 /* HospitalListCell.swift in Sources */,
+				665111C11E63F9D700A6AFAA /* MyRequestInteractor.swift in Sources */,
 				66C4E68E1E37402B00526C1D /* RequestView.swift in Sources */,
 				EDE9AEAF1E5FECCC0031BCB0 /* RequestViewInteractor.swift in Sources */,
+				665111C31E6407F600A6AFAA /* MyRequestApi.swift in Sources */,
 				66EA8E231E2760C400646797 /* SignUpView.swift in Sources */,
+				665111BF1E63F55800A6AFAA /* MyDonorView.swift in Sources */,
 				66C4E67D1E37258B00526C1D /* HomeView.swift in Sources */,
 				18C6883D1E62ECDB0026453C /* MarkerNotIndividualDetails.swift in Sources */,
 				66C4E6911E37404C00526C1D /* MyRequestView.swift in Sources */,
 				EDE9AE981E5C3D110031BCB0 /* CalendarView.swift in Sources */,
+				665111CA1E66E42600A6AFAA /* MyDonorCell.swift in Sources */,
 				66C4E6881E372AD900526C1D /* ChangePasswordView.swift in Sources */,
 				66EA8E261E2772D300646797 /* FloatLabelTextField-2.swift in Sources */,
 				66EA8DE61E24BDB700646797 /* LoginView.swift in Sources */,
@@ -1018,6 +1057,7 @@
 				665111B41E5D9D8600A6AFAA /* ProfileViewInteractor.swift in Sources */,
 				66316B801E53132500114055 /* HospitalListView.swift in Sources */,
 				66EA8D351E1F6B4300646797 /* AppDelegate.swift in Sources */,
+				66DBAF0D1E6AA8D500AC4A7F /* ProfileData.swift in Sources */,
 				18324D381E5D6E030043B204 /* DonateInteractor.swift in Sources */,
 				EDE9AE941E5C35CE0031BCB0 /* BloodInfoView.swift in Sources */,
 				EDE9AE9A1E5C46440031BCB0 /* ShareView.swift in Sources */,

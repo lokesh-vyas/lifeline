@@ -143,9 +143,10 @@
                 <outlet property="lblBloodGroup" destination="Tyb-Mb-Ptc" id="D7T-6R-Syf"/>
                 <outlet property="lblPatientName" destination="8ST-DM-3bM" id="8oe-z4-JWP"/>
                 <outlet property="lblRequestDate" destination="fgK-cA-LZv" id="aOw-84-xui"/>
+                <outlet property="viewCloseButtonRequest" destination="buy-lQ-a15" id="buC-qx-GlA"/>
                 <outlet property="viewColorForStatus" destination="XUq-WC-Zou" id="lRO-WW-b9a"/>
             </connections>
-            <point key="canvasLocation" x="68" y="257"/>
+            <point key="canvasLocation" x="212" y="225"/>
         </tableViewCell>
     </objects>
     <resources>
