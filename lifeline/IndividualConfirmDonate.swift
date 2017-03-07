@@ -20,37 +20,31 @@ class IndividualConfirmDonate: UIViewController {
     @IBOutlet weak var lblDoctorName: UILabel!
     @IBOutlet weak var lblAddress: UILabel!
     @IBOutlet weak var lblPersonalAppeal: UILabel!
-    var requiredDetails = [String : Any]()
+//    var requiredDetails = [String : Any]()
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.lblWhoRequested.text = (MarkerData.SharedInstance.oneRequestOfDonate["CName"] as! String?)?.substring(to: 24)
-        self.lblWhenRequired.text = (MarkerData.SharedInstance.oneRequestOfDonate["CName"] as! String?)?.substring(from: 27)
-        self.lblNoOfUnits.text = self.lblWhoRequested.text?.substring(with: 5..<7)
-        self.lblContactPerson.text = MarkerData.SharedInstance.oneRequestOfDonate["UserName"] as! String?
-        self.lblContactNumber.text = MarkerData.SharedInstance.oneRequestOfDonate["CContactNumber"] as! String?
-        
-        IndividualConfirmDonateInteractor.sharedInstance.delegate = self
-        let reqUrl = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.GetRequestDetails"
-        let reqDetailsBody = ["GetRequestDetailsRequest": [
-                                            "RequestDetails": [
-                                                    "RequestID": "1"
-                                                        ]]]
-        IndividualConfirmDonateInteractor.sharedInstance.getRequestDetails(urlString: reqUrl, params: reqDetailsBody)
-        
+        self.IndividualConfirmDonateProperties()
     }
 
     
     @IBAction func btnBackTapped(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+//        self.navigationController?.popViewController(animated: true)
+        let SWRevealView = self.storyboard!.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
+        self.present(SWRevealView, animated: true, completion: nil)
+        
     }
 
     @IBAction func btnHomeTapped(_ sender: Any) {
-        self.navigationController?.popToRootViewController(animated: true)
+//        self.navigationController?.popToRootViewController(animated: true)
+        let SWRevealView = self.storyboard!.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
+        self.present(SWRevealView, animated: true, completion: nil)
+        
     }
     
     @IBAction func btnConfirmDonateTapped(_ sender: Any) {
         let strV = "http://demo.frontman.isteer.com:8284/services/GetVolunteerList"
+        //FIXME:- LoginID
         let volunteerBody = ["GetVolunteerListRequest": [
                                         "RequestDetails": [
                                                     "LoginID":"114177301473189791455",
@@ -64,11 +58,33 @@ class IndividualConfirmDonate: UIViewController {
         present(alertConfirm, animated: true, completion: nil)
         
     }
+    
+    func IndividualConfirmDonateProperties() {
+        
+        
+        //FIXME:- use WS response
+        self.lblWhoRequested.text = (MarkerData.SharedInstance.oneRequestOfDonate["CName"] as! String?)?.substring(to: 24)
+        self.lblWhenRequired.text = (MarkerData.SharedInstance.oneRequestOfDonate["CName"] as! String?)?.substring(from: 27)
+        self.lblNoOfUnits.text = self.lblWhoRequested.text?.substring(with: 5..<7)
+        self.lblContactPerson.text = MarkerData.SharedInstance.oneRequestOfDonate["UserName"] as! String?
+        self.lblContactNumber.text = MarkerData.SharedInstance.oneRequestOfDonate["CContactNumber"] as! String?
+        
+        IndividualConfirmDonateInteractor.sharedInstance.delegate = self
+        let reqUrl = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.GetRequestDetails"
+        //FIXME:- RequestID
+        let reqDetailsBody = ["GetRequestDetailsRequest": [
+                                            "RequestDetails": [
+                                                    "RequestID": "\(MarkerData.SharedInstance.oneRequestOfDonate["CID"]!)"
+                                                        ]]]
+        IndividualConfirmDonateInteractor.sharedInstance.getRequestDetails(urlString: reqUrl, params: reqDetailsBody)
+        
+    }
    }
 
 extension IndividualConfirmDonate : IndividualRequestDetailsProtocol {
     
     func didSuccessGetRequestDetails(jsonArray: JSON) {
+        //TODO:- use data
         print("<<<<<didSuccess-GetRequestDetails>>>>>", jsonArray)
     }
     func didFailGetRequestDetails() {
@@ -79,6 +95,7 @@ extension IndividualConfirmDonate : IndividualRequestDetailsProtocol {
 extension IndividualConfirmDonate : getVolunteerProtocol {
     
     func didSuccessGetVolunteerDetails(jsonArray: JSON) {
+        //TODO:- true false
         print("<<<<<didSuccess-GetVolunteerDetails>>>>>", jsonArray)
     }
     
