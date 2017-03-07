@@ -402,9 +402,9 @@
 				18C6883A1E62ECBB0026453C /* MarkerIndividualDetails.swift */,
 				1830CE881E6567CE005BBC19 /* ConfirmDonate.swift */,
 				1841C6B21E696990006F14B2 /* ConfirmDonateInteractor.swift */,
+				1830CE8E1E6569ED005BBC19 /* RequestedByIndividuals.swift */,
 				1830CE8C1E6568BC005BBC19 /* IndividualConfirmDonate.swift */,
 				1841C6B41E698B39006F14B2 /* IndividualConfirmDonateInteractor.swift */,
-				1830CE8E1E6569ED005BBC19 /* RequestedByIndividuals.swift */,
 				1830CE8A1E6567FE005BBC19 /* AlertConfirmDonate.swift */,
 				183A1D9C1E66DCBF0048DC65 /* AlertConfirmDonateInteractor.swift */,
 			);

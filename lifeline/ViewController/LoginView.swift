@@ -39,9 +39,7 @@ class LoginView: UIViewController
     @IBAction func signUpAction(_ sender: Any)
     {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "SignUpView") as! SignUpView
- 
-        navigationController?.pushViewController(vc,
-                                                 animated: true)
+        navigationController?.pushViewController(vc, animated: true)
     }
     //MARK:- Forgot Password
     @IBAction func forgotPasswordAction(_ sender: Any)
