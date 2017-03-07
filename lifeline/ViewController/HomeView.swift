@@ -23,13 +23,15 @@ class HomeView: UIViewController {
         self.navigationController?.completelyTransparentBar()
        //MARK - Reval View Button
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        
-        if let refreshedToken = FIRInstanceID.instanceID().token()
+        let deviceRegister = UserDefaults.standard.bool(forKey: "DeviceRegister")
+        if deviceRegister == false
         {
-            self.DeviceRegistrationForServer(DeviceToken: refreshedToken)
-            print("InstanceID token: \(refreshedToken)")
+            if let refreshedToken = FIRInstanceID.instanceID().token()
+            {
+                self.DeviceRegistrationForServer(DeviceToken: refreshedToken)
+                print("InstanceID token: \(refreshedToken)")
+            }
         }
-        
         if self.revealViewController() != nil {
             revalMenuButton.target = self.revealViewController()
             revalMenuButton.action = #selector(SWRevealViewController.revealToggle(_:))
@@ -75,15 +77,18 @@ extension HomeView:ProtocolRegisterProfile
     {
         if success == true
         {
+            UserDefaults.standard.set(true, forKey: "DeviceRegister")
             HudBar.sharedInstance.hideHudFormView(view: self.view)
             HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Device Register successfully", view: self.view)
         }else{
+             UserDefaults.standard.set(false, forKey: "DeviceRegister")
             HudBar.sharedInstance.hideHudFormView(view: self.view)
             HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Failed to Update", view: self.view)
         }
     }
     func failedRegisterProfile()
     {
+        UserDefaults.standard.set(false, forKey: "DeviceRegister")
         HudBar.sharedInstance.hideHudFormView(view: self.view)
     }
 }
