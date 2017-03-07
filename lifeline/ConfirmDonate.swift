@@ -26,66 +26,27 @@ class ConfirmDonate: UIViewController {
     @IBOutlet weak var lblCampDescription: UILabel!
     @IBOutlet weak var HospitalName: UILabel!
     
-    var DonateDetails = [String:Any]()
+//    var MarkerData.SharedInstance.markerData = [String:Any]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.completelyTransparentBar()
-        
         ConfirmDonateInteractor.sharedInstance.delegate = self
         ConfirmDonateInteractor.sharedInstance.delegateV = self
-        //FIXME: Instance Dictionary can be removed
-        DonateDetails = MarkerData.SharedInstance.markerData
-        lblName.text = DonateDetails["Name"] as! String?
-        lblWorkingHours.text = DonateDetails["WorkingHours"] as! String?
-        lblContactNumber.text = DonateDetails["ContactNumber"] as! String?
-        lblEmailID.text = DonateDetails["Email"] as! String?
-        lblFromDate.text = DonateDetails["FromDate"] as! String?
-        lblToDate.text = DonateDetails["ToDonate"] as! String?
-        lblAddress.text = DonateDetails["AddressLine"] as! String?
         
-        
-        if DonateDetails["TypeOfOrg"] as! String? == "2" { // this is camp
-            
-            let urlGetCampDetails = "http://demo.frontman.isteer.com:8284/services/LifeLine.GetCampaignDetails"
-            let bodyGetCampDetails = ["CampaignDetailsRequest" : [
-                                                    "RequestDetails" : [
-                                                        "LoginID": "114177301473189791455",
-                                                        "CampaignID": DonateDetails["ID"] as! String?
-                                                    ]]]
-            //MARK:- GET COMPAIGN DETAILS
-            ConfirmDonateInteractor.sharedInstance.getCompaignDetails(urlString: urlGetCampDetails, params: bodyGetCampDetails)
-
-            HospitalName.text = "Contact Name"
-            Email.isHidden = false
-            lblEmailID.isHidden = false
-            FromDate.isHidden = false
-            lblFromDate.isHidden = false
-            ToDate.isHidden = false
-            lblToDate.isHidden = false
-            VolunteerDetails.isHidden = false
-            lblCampDescription.isHidden = false
-            btnConfirmDonate.setTitle("Volunteer", for: .normal)
-            
-            } else {
-            
-            HospitalName.text = "Hospital Name"
-            Email.isHidden = true
-            lblEmailID.isHidden = true
-            FromDate.isHidden = true
-            lblFromDate.isHidden = true
-            ToDate.isHidden = true
-            lblToDate.isHidden = true
-            VolunteerDetails.isHidden = true
-            lblCampDescription.isHidden = true
-            }
+        //MARK:- Invokes to add properties on controller
+        self.confirmDonateProperties()
+    
     }
     
     @IBAction func btnBackTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     @IBAction func btnHomeTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+//        dismiss(animated: true, completion: nil)
+        let SWRevealView = self.storyboard!.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
+        self.present(SWRevealView, animated: true, completion: nil)
+        
     }
     
 
@@ -95,20 +56,21 @@ class ConfirmDonate: UIViewController {
         var whichID = String()
         var idValue = String()
         
-        if DonateDetails["TypeOfOrg"] as! String? == "1" {
-            if DonateDetails["IndividualDetails"] as! String != "null" { // Individual
+        if MarkerData.SharedInstance.markerData["TypeOfOrg"] as! String? == "1" {
+            if MarkerData.SharedInstance.markerData["IndividualDetails"] as! String != "null" { // Individual
                 whichID = "RequestID"
-                idValue = (DonateDetails["ID"] as! String?)!
+                idValue = (MarkerData.SharedInstance.markerData["ID"] as! String?)!
             } else { // Hospital
                 whichID = "CenterID"
-                idValue = (DonateDetails["ID"] as! String?)!
+                idValue = (MarkerData.SharedInstance.markerData["ID"] as! String?)!
             }
             
-        } else if DonateDetails["TypeOfOrg"] as! String? == "2" { // Camp
+        } else if MarkerData.SharedInstance.markerData["TypeOfOrg"] as! String? == "2" { // Camp
             whichID = "CampaignID"
-            idValue = (DonateDetails["ID"] as! String?)!
+            idValue = (MarkerData.SharedInstance.markerData["ID"] as! String?)!
         }
         let strV = "http://demo.frontman.isteer.com:8284/services/GetVolunteerList"
+        //FIXME:- LoginID
         let volDict = [
             "GetVolunteerListRequest": [
                 "RequestDetails": [
@@ -124,12 +86,64 @@ class ConfirmDonate: UIViewController {
         //
         present(alertConfirm, animated: true, completion: nil)
     }
+    
+    func confirmDonateProperties() {
+        
+        lblName.text = MarkerData.SharedInstance.markerData["Name"] as! String?
+        lblWorkingHours.text = MarkerData.SharedInstance.markerData["WorkingHours"] as! String?
+        lblContactNumber.text = MarkerData.SharedInstance.markerData["ContactNumber"] as! String?
+        lblEmailID.text = MarkerData.SharedInstance.markerData["Email"] as! String?
+        lblFromDate.text = MarkerData.SharedInstance.markerData["FromDate"] as! String?
+        lblToDate.text = MarkerData.SharedInstance.markerData["ToDonate"] as! String?
+        lblAddress.text = MarkerData.SharedInstance.markerData["AddressLine"] as! String?
+        
+        if MarkerData.SharedInstance.markerData["TypeOfOrg"] as! String? == "2" { // this is camp
+            
+            let urlGetCampDetails = "http://demo.frontman.isteer.com:8284/services/LifeLine.GetCampaignDetails"
+            //FIXME:- LoginID
+            let bodyGetCampDetails = ["CampaignDetailsRequest" : [
+                "RequestDetails" : [
+                    "LoginID": "114177301473189791455",
+                    "CampaignID": MarkerData.SharedInstance.markerData["ID"] as! String?
+                ]]]
+            //MARK:- GET COMPAIGN DETAILS
+            ConfirmDonateInteractor.sharedInstance.getCompaignDetails(urlString: urlGetCampDetails, params: bodyGetCampDetails)
+            
+            HospitalName.text = "Contact Name"
+            Email.isHidden = false
+            lblEmailID.isHidden = false
+            FromDate.isHidden = false
+            lblFromDate.isHidden = false
+            ToDate.isHidden = false
+            lblToDate.isHidden = false
+            VolunteerDetails.isHidden = false
+            lblCampDescription.isHidden = false
+            btnConfirmDonate.setTitle("Volunteer", for: .normal)
+            
+        } else {
+            
+            HospitalName.text = "Hospital Name"
+            Email.isHidden = true
+            lblEmailID.isHidden = true
+            FromDate.isHidden = true
+            lblFromDate.isHidden = true
+            ToDate.isHidden = true
+            lblToDate.isHidden = true
+            VolunteerDetails.isHidden = true
+            lblCampDescription.isHidden = true
+        }
+    }
  }
 
 extension ConfirmDonate : ConfirmDonateProtocol {
     
     func didSuccessGetCompaignDetails(jsonArray: JSON) {
+        
         print("*****didSuccess-GetCompaignDetails******", jsonArray)
+        self.lblToDate.text = String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["ToDate"])
+        self.lblCampDescription.text = String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["AdditionalInfo"])
+        
+        
     }
     func didFailGetCompaignDetails() {
         print("*****didFail-GetCompaignDetails******")
@@ -139,6 +153,7 @@ extension ConfirmDonate : ConfirmDonateProtocol {
 
 extension ConfirmDonate : getVolunteerProtocol {
     func didSuccessGetVolunteerDetails(jsonArray: JSON) {
+        //TODO:- true= comment & preferred date false= no vol
         print("*****didSuccessGetVolunteerDetails******", jsonArray)
     }
     func didFailGetVolunteerDetails() {

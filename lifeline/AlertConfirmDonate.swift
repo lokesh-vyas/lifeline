@@ -23,12 +23,27 @@ class AlertConfirmDonate: UIViewController {
     @IBAction func btnPreferredDateTapped(_ sender: Any) {
         
         print("DatePicker Should come")
+        let preferredDateAlert: CalendarView = self.storyboard?.instantiateViewController(withIdentifier: "CalendarView") as! CalendarView
+        preferredDateAlert.delegate = self
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        preferredDateAlert.dateFormatter = dateFormatter
+        
+        preferredDateAlert.calenderHeading = "Confirm Your Date"
+        preferredDateAlert.calendar.minimumDate = Date() as Date
+        preferredDateAlert.calendar.datePickerMode = UIDatePickerMode.date
+        preferredDateAlert.modalPresentationStyle = .overCurrentContext
+        preferredDateAlert.view.backgroundColor =  UIColor.clear
+        self.present(preferredDateAlert, animated: true, completion: nil)
+
+        
         
     }
     
     @IBAction func btnDonateTapped(_ sender: Any) {
         print("  WS must be called")
         let url = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.ConfirmDonate"
+        //FIXME:- the request Body
         let collectedParameters = ["ConfirmDonateRequest":
                                         ["ConfirmDonateDetails":
                                             ["LoginID": "114177301473189791455",
@@ -63,13 +78,19 @@ extension AlertConfirmDonate : AlertConfirmDonateProtocol {
         
         let SWRevealView = self.storyboard!.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
         self.present(SWRevealView, animated: true, completion: nil)
-    //    self.navigationController?.present(SWRevealView, animated: true, completion: nil)
-//        let reachHome = self.storyboard!.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
-//        let nav = UINavigationController(rootViewController: reachHome)
-//        self.navigationController?.present(nav, animated: true, completion: nil)
         
         }
     func failedConfirmDonate() {
         print("****FAILED****")
+    }
+}
+
+extension AlertConfirmDonate : ProtocolCalendar {
+    
+    func SuccessProtocolCalendar(valueSent: String, CheckString: String) {
+        print("valueSent :\(valueSent) && CheckString :\(CheckString)")
+    }
+    func FailureProtocolCalendar(valueSent: String) {
+        print("CALENDER is FAILED")
     }
 }

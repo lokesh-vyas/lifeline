@@ -31,7 +31,6 @@ class DonateView: UIViewController {
     var rLocation : CLLocation?
     var rCoordinates : CLLocationCoordinate2D?
     var dataArray : JSON!
-    
     var viewWarning = UIView()
     var labelWarning = UILabel()
     let imageWarning = UIImageView()
@@ -112,6 +111,7 @@ class DonateView: UIViewController {
     //MARK:- Fetch Blood Request To Donate
     func fetchBloodRequestToDonate() {
         
+        //FIXME:- LoginID
         let customer : Dictionary = ["BloodRequestSearchRequest":
                                                 ["SearchDetails":
                                                         ["LoginID":"114177301473189791455",
@@ -261,7 +261,7 @@ extension DonateView : GMSMapViewDelegate {
         var userDict = [String:Any]()
         var jsonDict = JSON.init(dictionaryLiteral: ("Index", marker.userData!))
         jsonDict = jsonDict["Index"]
-//        print("*******\(jsonDict)********")
+        print("*******\(jsonDict)********")
         userDict["Name"] = String(describing: jsonDict["Name"])
         userDict["WorkingHours"] = String(describing: jsonDict["WorkingHours"])
         userDict["IOLoginID"] = String(describing: jsonDict["IOLoginID"])

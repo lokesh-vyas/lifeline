@@ -31,7 +31,7 @@ class CalendarView: UIViewController {
         pickerSelectDate.minimumDate = calendar.minimumDate
         pickerSelectDate.datePickerMode = calendar.datePickerMode
         pickerSelectDate.backgroundColor = UIColor.white
-        // Do any additional setup after loading the view.
+        
     }
    //MARK:- btnSelectTapped
     @IBAction func btnSelectTapped(_ sender: Any) {

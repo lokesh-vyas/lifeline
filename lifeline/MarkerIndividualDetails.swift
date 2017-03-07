@@ -18,6 +18,7 @@ class MarkerIndividualDetails: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //FIXME:- markerDict ?
         markerDict = MarkerData.SharedInstance.markerData
         lblName.text = markerDict["Name"] as! String?
         
@@ -31,8 +32,10 @@ class MarkerIndividualDetails: UIViewController {
     }
 
     @IBAction func btnToViewTapped(_ sender: Any) {
+        //FIXME:- NavBAr ?
 //        let requestedTable = self.storyboard?.instantiateViewController(withIdentifier: "RequestedByIndividuals") as! RequestedByIndividuals
 //        self.present(requestedTable, animated: true, completion: nil)
+        
 
         
     }
