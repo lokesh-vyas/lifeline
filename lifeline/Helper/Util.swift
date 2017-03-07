@@ -15,6 +15,17 @@ class Util
         let instance = Util()
         return instance
     }()
+    //MARK:- Date Change Profile For Sever
+    func dateChangeForServerForProfile(dateString:String) -> String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        
+        let dateObj = dateFormatter.date(from: dateString)
+        
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.string(from: dateObj!)
+    }
     //MARK:- Current Date For Server
     func currentDateChangeForServer() -> String
     {

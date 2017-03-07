@@ -26,6 +26,7 @@ class HomeView: UIViewController {
         
         if let refreshedToken = FIRInstanceID.instanceID().token()
         {
+            self.DeviceRegistrationForServer(DeviceToken: refreshedToken)
             print("InstanceID token: \(refreshedToken)")
         }
         
@@ -34,6 +35,17 @@ class HomeView: UIViewController {
             revalMenuButton.action = #selector(SWRevealViewController.revealToggle(_:))
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+    }
+    //MARK:- Device Registration
+    func DeviceRegistrationForServer(DeviceToken:String)
+    {
+        let LoginID:String = "734258020038958"
+        let customer : Dictionary = ["DeviceDetailsRequest":["DeviceDetails":["LoginID":LoginID,"DeviceToken":DeviceToken,"OSType":"IOS"]]]
+        
+        HudBar.sharedInstance.showHudWithMessage(message: "Please wait..", view: self.view)
+        ProfileViewInteractor.SharedInstance.delegateProfile = self
+        ProfileViewInteractor.SharedInstance.MyDeviceRegistration(params: customer)
+
     }
 //MARK:- DonateAction
     @IBAction func DonateAction(_ sender: Any)
@@ -54,5 +66,24 @@ class HomeView: UIViewController {
     {
         let requestView = self.storyboard?.instantiateViewController(withIdentifier: "MyRequestView")
         self.navigationController?.pushViewController(requestView!, animated: true)
+    }
+}
+//MARK:- ProtocolBloodInfo
+extension HomeView:ProtocolRegisterProfile
+{
+    func succesfullyRegisterProfile(success: Bool)
+    {
+        if success == true
+        {
+            HudBar.sharedInstance.hideHudFormView(view: self.view)
+            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Device Register successfully", view: self.view)
+        }else{
+            HudBar.sharedInstance.hideHudFormView(view: self.view)
+            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Failed to Update", view: self.view)
+        }
+    }
+    func failedRegisterProfile()
+    {
+        HudBar.sharedInstance.hideHudFormView(view: self.view)
     }
 }
