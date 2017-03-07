@@ -12,7 +12,7 @@ class RequestedByIndividuals: UIViewController {
 
     @IBOutlet weak var tblView: UITableView!
     var requestDetailsArray = [String]()
-    var tagg : Int? = nil
+//    var tagg : Int? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +27,10 @@ class RequestedByIndividuals: UIViewController {
     
     @IBAction func btnHomeTapped(_ sender: Any) {
         
-        dismiss(animated: true, completion: nil)
+//        dismiss(animated: true, completion: nil)
+        let SWRevealView = self.storyboard!.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
+        self.present(SWRevealView, animated: true, completion: nil)
+        
     }
 }
 

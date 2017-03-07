@@ -9,8 +9,12 @@
 import UIKit
 
 
+
 class MarkerNotIndividualDetails: UIViewController {
 
+    @IBOutlet weak var lblHead: UILabel!
+    
+    @IBOutlet weak var btnDonate: UIButton!
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblTiming: UILabel!
     @IBOutlet weak var viewMarkerDetails: UIView!
@@ -23,6 +27,8 @@ class MarkerNotIndividualDetails: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //FIXME:- markerDict ?
         markerDict = MarkerData.SharedInstance.markerData
         lblName.text = markerDict["Name"] as! String?
         lblTiming.text = markerDict["WorkingHours"] as! String?
@@ -35,18 +41,24 @@ class MarkerNotIndividualDetails: UIViewController {
             ToDate.isHidden = false
             lblFromDate.isHidden = false
             lblToDate.isHidden = false
-            
             lblFromDate.text = MarkerData.SharedInstance.markerData["FromDate"] as! String?
             lblToDate.text = MarkerData.SharedInstance.markerData["ToDate"] as! String?
             
+            lblHead.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#0dd670")
+            btnDonate.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#0dd670")
+            viewMarkerDetails.layer.borderColor = Util.SharedInstance.hexStringToUIColor(hex: "#0dd670").cgColor
+
         } else {
             
             //FIXME:- Ho color #b6800b
+            lblHead.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#b6800b")
+            btnDonate.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#b6800b")
+            viewMarkerDetails.layer.borderColor = Util.SharedInstance.hexStringToUIColor(hex: "#b6800b").cgColor
+            
             FromDate.isHidden = true
             ToDate.isHidden = true
             lblFromDate.isHidden = true
             lblToDate.isHidden = true
-            
             
         }
     }
