@@ -37,6 +37,7 @@ class HomeView: UIViewController {
             revalMenuButton.action = #selector(SWRevealViewController.revealToggle(_:))
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+        NotificationCenter.default.addObserver(self, selector: #selector(HomeView.shareAppURLTapped), name: NSNotification.Name(rawValue: "ShareApplicationURL"), object: nil)
     }
     //MARK:- Device Registration
     func DeviceRegistrationForServer(DeviceToken:String)
@@ -68,6 +69,25 @@ class HomeView: UIViewController {
     {
         let requestView = self.storyboard?.instantiateViewController(withIdentifier: "MyRequestView")
         self.navigationController?.pushViewController(requestView!, animated: true)
+    }
+    //MARK:- Share Application URL With Activity
+    func shareAppURLTapped()
+    {
+        let textToShare = "LifeLine is a social application dedicated to connecting blood banks,donors and recipients."
+        let textToIOS = "iOS:- https://goo.gl/XJl5a7"
+        let textToAndroid = "Android:- https://goo.gl/PUorhE"
+        
+        if let myWebsite = NSURL(string: "") {
+            let objectsToShare = [textToShare,textToIOS,textToAndroid, myWebsite] as [Any]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            
+            //New Excluded Activities Code
+            activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+            //
+            
+           // activityVC.popoverPresentationController?.sourceView = send
+            self.present(activityVC, animated: true, completion: nil)
+        }
     }
 }
 //MARK:- ProtocolBloodInfo

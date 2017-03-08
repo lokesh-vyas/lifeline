@@ -83,7 +83,7 @@ class ProfileViewInteractor
                                                          sucess: {
                                                             (JSONResponse) -> Void in
                                                             print(JSONResponse)
-                                                            if (JSONResponse["DeviceDetailsResponse"]["DeviceDetails"]["StatusCode"].int == 0)
+                                                            if (JSONResponse["ProfileRegistrationResponse"]["ProfileDetails"]["StatusCode"].int == 0)
                                                             {
                                                                 self.delegateProfile?.succesfullyRegisterProfile(success: true)
                                                             }else
@@ -107,7 +107,7 @@ class ProfileViewInteractor
                                                          sucess: {
                                                             (JSONResponse) -> Void in
                                                             print(JSONResponse)
-                                                            if (JSONResponse["ProfileRegistrationResponse"]["ProfileDetails"]["StatusCode"].int == 0)
+                                                            if (JSONResponse["DeviceDetailsResponse"]["DeviceDetails"]["StatusCode"].int == 0)
                                                             {
                                                                 self.delegateProfile?.succesfullyRegisterProfile(success: true)
                                                             }else

@@ -15,7 +15,7 @@ class RevalListView: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        menuArray = ["myProfile","FAQ","changePassword","share"]
+        menuArray = ["myProfile","changePassword","share","FAQ"]
         // Do any additional setup after loading the view.
     }
 }
@@ -29,4 +29,10 @@ extension RevalListView:UITableViewDelegate,UITableViewDataSource
             let cell:UITableViewCell = (self.menuTableView.dequeueReusableCell(withIdentifier: cellString )! as UITableViewCell)
             return cell
         }
+     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 2
+        {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ShareApplicationURL"), object: nil)
+        }
+    }
 }
