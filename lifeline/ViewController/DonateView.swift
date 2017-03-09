@@ -44,15 +44,14 @@ class DonateView: UIViewController {
         CLLocationManager.locationServicesEnabled()
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
-        
         if CLLocationManager.locationServicesEnabled() == true {
             locationManager.delegate = self
             locationManager.startUpdatingLocation()
         }
         if locationManager.location?.coordinate.latitude != nil {
-            camera = GMSCameraPosition.camera(withLatitude: (locationManager.location?.coordinate.latitude)!, longitude:(locationManager.location?.coordinate.longitude)!, zoom:13.0)
+            camera = GMSCameraPosition.camera(withLatitude: (locationManager.location?.coordinate.latitude)!, longitude:(locationManager.location?.coordinate.longitude)!, zoom:15.0)
         } else {
-            camera = GMSCameraPosition.camera(withLatitude: 12.9716, longitude:77.5946, zoom :13.0)
+            camera = GMSCameraPosition.camera(withLatitude: 12.9716, longitude:77.5946, zoom :15.0)
         }
         mapView = GMSMapView.map(withFrame: .zero, camera:camera!)
         placesClient = GMSPlacesClient.shared()
@@ -60,11 +59,13 @@ class DonateView: UIViewController {
         mapView?.isMyLocationEnabled = true
         mapView?.delegate = self
         view = mapView
+        
         mapView?.isBuildingsEnabled = true
         mapView?.settings.compassButton = true
         mapView?.settings.indoorPicker = true
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-
+        
+        
     }
     
     //MARK:- viewWillAppear
@@ -79,7 +80,6 @@ class DonateView: UIViewController {
         searchController?.hidesNavigationBarDuringPresentation = false
         DonateInteractor.sharedInstance.delegate = self
         
-
     }
     
     //MARK:- backButton
@@ -103,7 +103,7 @@ class DonateView: UIViewController {
         marker.icon = UIImage(named: "Current_icon")
         marker.map = mapView
         marker.snippet = "You searched this Location"
-        camera = GMSCameraPosition.camera(withLatitude: (coordinates?.latitude)!, longitude: (coordinates?.longitude)!, zoom: 16.0)
+        camera = GMSCameraPosition.camera(withLatitude: (coordinates?.latitude)!, longitude: (coordinates?.longitude)!, zoom: 18.0)
         mapView?.camera = camera!
         view = mapView
         self.bloodDonatingMarkers(responseData: dataArray)
@@ -114,13 +114,13 @@ class DonateView: UIViewController {
         
         //FIXME:- LoginID
         let customer : Dictionary = ["BloodRequestSearchRequest":
-                                                ["SearchDetails":
-                                                        ["LoginID":"114177301473189791455",
-                                                         "minLat":"\(SouthLatitude!)",
-                                                         "maxLat":"\(NorthLatitude!)",
-                                                         "minLon":"\(WestLongitude!)",
-                                                         "maxLon":"\(EastLongitude!)"
-                                                    ]]]
+            ["SearchDetails":
+                ["LoginID":"114177301473189791455",
+                 "minLat":"\(SouthLatitude!)",
+                    "maxLat":"\(NorthLatitude!)",
+                    "minLon":"\(WestLongitude!)",
+                    "maxLon":"\(EastLongitude!)"
+                ]]]
         
         let str = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.BloodRequestSearch"
         DonateInteractor.sharedInstance.findingDonateSources(urlString: str, params: customer)
@@ -142,7 +142,7 @@ class DonateView: UIViewController {
             if dataArray[i]["TypeOfOrg"] == 1 {
                 if dataArray[i]["IndividualDetails"] == JSON.null {
                     
-//                    print("Hosp",dataArray)
+                    //                    print("Hosp",dataArray)
                     self.rLatitude = dataArray[i]["Latitude"].doubleValue
                     self.rLongitude = dataArray[i]["Longitude"].doubleValue
                     self.rLocation = CLLocation.init(latitude:
@@ -151,15 +151,15 @@ class DonateView: UIViewController {
                     let myMarker1 = GMSMarker()
                     myMarker1.position = self.rCoordinates!
                     myMarker1.userData = dataArray[i]
-//                    myMarker1.snippet = dataArray[i]["Name"].stringValue
+                    //                    myMarker1.snippet = dataArray[i]["Name"].stringValue
                     myMarker1.icon = UIImage(named: "Hospital_icon")!
                     myMarker1.map = self.mapView
                     self.view = self.mapView
-
+                    
                     
                 } else {
                     
-//                    print("Indi",dataArray)
+                    //                    print("Indi",dataArray)
                     self.rLatitude = dataArray[i]["Latitude"].doubleValue
                     self.rLongitude = dataArray[i]["Longitude"].doubleValue
                     self.rLocation = CLLocation.init(latitude: CLLocationDegrees(self.rLatitude!), longitude: CLLocationDegrees(self.rLongitude!))
@@ -167,7 +167,7 @@ class DonateView: UIViewController {
                     let myMarker2 = GMSMarker()
                     myMarker2.position = self.rCoordinates!
                     myMarker2.userData = dataArray[i]
-//                    myMarker2.snippet = dataArray[i]["Name"].stringValue
+                    //                    myMarker2.snippet = dataArray[i]["Name"].stringValue
                     myMarker2.icon = UIImage(named: "Individual_icon")!
                     myMarker2.map = self.mapView
                     self.view = self.mapView
@@ -175,10 +175,10 @@ class DonateView: UIViewController {
                 }
                 
             } else if dataArray[i]["TypeOfOrg"] == 2 {
-            
                 
-//                print("CASE 2: $CAMP")
-//                print("Camp",dataArray)
+                
+                //                print("CASE 2: $CAMP")
+                //                print("Camp",dataArray)
                 rLatitude = dataArray[i]["Latitude"].doubleValue
                 rLongitude = dataArray[i]["Longitude"].doubleValue
                 rLocation = CLLocation.init(latitude: CLLocationDegrees(rLatitude!), longitude: CLLocationDegrees(rLongitude!))
@@ -187,8 +187,8 @@ class DonateView: UIViewController {
                 myMarker3.position = rCoordinates!
                 myMarker3.userData = dataArray[i]
                 myMarker3.icon = UIImage(named: "Camp_icon")!
-//                print("Camp_icon came ?")
-//                myMarker3.snippet = dataArray[i]["Name"].stringValue
+                //                print("Camp_icon came ?")
+                //                myMarker3.snippet = dataArray[i]["Name"].stringValue
                 myMarker3.map = mapView
                 view = mapView
             }
@@ -219,18 +219,26 @@ extension DonateView : CLLocationManagerDelegate {
 
 extension DonateView : GMSMapViewDelegate {
     
+    public func mapViewDidStartTileRendering(_ mapView: GMSMapView) {
+//        HudBar.sharedInstance.showHudWithMessage(message: "Loading...", view: self.mapView!)
+    }
+    public func mapViewDidFinishTileRendering(_ mapView: GMSMapView) {
+//        HudBar.sharedInstance.hideHudFormView(view: self.mapView!)
+    }
+
+    
     public func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition)
     {
         print("didChange")
-//        HudBar.sharedInstance.showHudWithMessage(message: "Loading...", view: self.view)
+        
         if lastEventDate != nil {
             let latestTime = Date()
             let didChangeInterval = latestTime.timeIntervalSince(lastEventDate!)
             
-                if didChangeInterval < 0.5 {
+            if didChangeInterval < 0.5 {
                 return
-                }
             }
+        }
         
         
         lastEventDate = Date()
@@ -267,7 +275,7 @@ extension DonateView : GMSMapViewDelegate {
         if jsonDict["IndividualDetails"]["Individuals"][0] != JSON.null { // it is an Array
             var IuserDict = [String : Any]()
             for (index, _) in jsonDict["IndividualDetails"]["Individuals"].enumerated() {
-
+                
                 IuserDict["CEmail"] = String(describing: jsonDict["IndividualDetails"]["Individuals"][index]["CEmail"])
                 IuserDict["CContactNumber"] = String(describing: jsonDict["IndividualDetails"]["Individuals"][index]["CContactNumber"])
                 IuserDict["CID"] = String(describing: jsonDict["IndividualDetails"]["Individuals"][index]["CID"])
@@ -279,7 +287,7 @@ extension DonateView : GMSMapViewDelegate {
             }
             
         } else { // It is a Dictionary
-    
+            
             var IuserDict = [String : Any]()
             IuserDict["CEmail"] = String(describing: jsonDict["IndividualDetails"]["Individuals"]["CEmail"])
             IuserDict["CContactNumber"] = String(describing: jsonDict["IndividualDetails"]["Individuals"]["CContactNumber"])
@@ -290,7 +298,7 @@ extension DonateView : GMSMapViewDelegate {
             MarkerData.SharedInstance.IndividualsArray.append(IuserDict)
             
         }
-    
+        
         userDict["Email"] = String(describing: jsonDict["Email"])
         userDict["Country"] = String(describing: jsonDict["Country"])
         userDict["IOBloodgroup"] = String(describing: jsonDict["IOBloodgroup"])
@@ -309,7 +317,7 @@ extension DonateView : GMSMapViewDelegate {
         if jsonDict["TypeOfOrg"] == 1 && jsonDict["IndividualDetails"] != JSON.null { // Individual Marker Details
             
             let markerDetails = self.storyboard?.instantiateViewController(withIdentifier: "MarkerIndividualDetails") as! MarkerIndividualDetails
-          //  let nav = UINavigationController(rootViewController: markerDetails)
+            //  let nav = UINavigationController(rootViewController: markerDetails)
             MarkerData.SharedInstance.markerData = userDict
             markerDetails.modalPresentationStyle = .overCurrentContext
             markerDetails.view.backgroundColor = UIColor.clear
@@ -319,7 +327,7 @@ extension DonateView : GMSMapViewDelegate {
         } else if (jsonDict["TypeOfOrg"] == 1 && jsonDict["IndividualDetails"] == JSON.null) || jsonDict["TypeOfOrg"] == 2 {
             // Hospital or Campaign details
             let markerDetails = self.storyboard?.instantiateViewController(withIdentifier: "MarkerNotIndividualDetails") as! MarkerNotIndividualDetails
-          //  let nav = UINavigationController(rootViewController: markerDetails)
+            //  let nav = UINavigationController(rootViewController: markerDetails)
             MarkerData.SharedInstance.markerData = userDict
             markerDetails.modalPresentationStyle = .overCurrentContext
             markerDetails.view.backgroundColor = UIColor.clear
@@ -392,16 +400,17 @@ extension DonateView : GMSAutocompleteResultsViewControllerDelegate {
 extension DonateView : DonateViewProtocol {
     func successDonateSources(jsonArray: JSON) {
         
+        
         if jsonArray["BloodRequestSearchResponse"] == JSON.null || jsonArray["BloodRequestSearchResponse"]["BloodRequestSearchResponseDetails"]["StatusCode"] == 1 {
             print("No Requirements in your location")
             //viewWarning
             viewWarning.backgroundColor = UIColor.white
             viewWarning.translatesAutoresizingMaskIntoConstraints = false
             viewWarning.layer.cornerRadius = 27.5
-           
+            
             //labelWarning
             labelWarning.text = "No Requirements in your location"
-//            labelWarning.textAlignment = .center
+            //            labelWarning.textAlignment = .center
             labelWarning.numberOfLines = 2
             labelWarning.translatesAutoresizingMaskIntoConstraints = false
             
@@ -426,7 +435,7 @@ extension DonateView : DonateViewProtocol {
                 constant: 55)
             
             //warning ViewLeading
-             let viewWarningLeadingConstraints = NSLayoutConstraint(
+            let viewWarningLeadingConstraints = NSLayoutConstraint(
                 item: viewWarning,
                 attribute: NSLayoutAttribute.leading,
                 relatedBy: NSLayoutRelation.equal,
@@ -436,7 +445,7 @@ extension DonateView : DonateViewProtocol {
                 constant: 10)
             
             //warning View Trailing
-             let viewWarningTrailingConstraints = NSLayoutConstraint(
+            let viewWarningTrailingConstraints = NSLayoutConstraint(
                 item: viewWarning,
                 attribute: NSLayoutAttribute.trailing,
                 relatedBy: NSLayoutRelation.equal,
@@ -446,7 +455,7 @@ extension DonateView : DonateViewProtocol {
                 constant: -75)
             
             //warning View Bottom
-             let viewWarningBottomConstraints = NSLayoutConstraint(
+            let viewWarningBottomConstraints = NSLayoutConstraint(
                 item: viewWarning,
                 attribute: NSLayoutAttribute.bottom,
                 relatedBy: NSLayoutRelation.equal,
@@ -542,13 +551,15 @@ extension DonateView : DonateViewProtocol {
         } else {
             
             viewWarning.removeFromSuperview()
+            
             self.bloodDonatingMarkers(responseData: jsonArray)
             
         }
     }
     func failedDonateSources() {
         print("Failed to get Donate resources !!")
-            }
+        HudBar.sharedInstance.showHudWithMessage(message: "No Internet Connection", view: self.view)
+    }
 }
 
 

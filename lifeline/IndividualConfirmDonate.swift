@@ -65,13 +65,6 @@ class IndividualConfirmDonate: UIViewController {
         
         
         //FIXME:- use WS response
-        self.lblWhoRequested.text = (MarkerData.SharedInstance.oneRequestOfDonate["CName"] as! String?)?.substring(to: 24)
-        self.lblWhenRequired.text = (MarkerData.SharedInstance.oneRequestOfDonate["CName"] as! String?)?.substring(from: 27)
-        self.lblNoOfUnits.text = self.lblWhoRequested.text?.substring(with: 5..<7)
-        self.lblContactPerson.text = MarkerData.SharedInstance.oneRequestOfDonate["UserName"] as! String?
-        self.lblContactNumber.text = MarkerData.SharedInstance.oneRequestOfDonate["CContactNumber"] as! String?
-        
-        
         let reqUrl = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.GetRequestDetails"
         //FIXME:- RequestID
         let reqDetailsBody = ["GetRequestDetailsRequest": [
@@ -108,6 +101,17 @@ extension IndividualConfirmDonate : getVolunteerProtocol {
     func didSuccessGetVolunteerDetails(jsonArray: JSON) {
         //TODO:- true false
         print("<<<<<didSuccess-GetVolunteerDetails>>>>>", jsonArray)
+        if jsonArray["GetVolunteerListsReponse"]["ResponseDetails"]["StatusCode"] == 1 {
+            
+            MarkerData.SharedInstance.PreferredDateTime = nil
+            MarkerData.SharedInstance.CommentLines = nil
+            
+        }else{
+            MarkerData.SharedInstance.PreferredDateTime = String(describing: jsonArray["GetVolunteerListsReponse"]["ResponseDetails"]["PreferredDateTime"])
+            MarkerData.SharedInstance.CommentLines = String(describing: jsonArray["GetVolunteerListsReponse"]["ResponseDetails"]["Comment"])
+            
+        }
+        
     }
     
     func didFailGetVolunteerDetails() {
@@ -117,24 +121,3 @@ extension IndividualConfirmDonate : getVolunteerProtocol {
 
 
 
-extension String {
-    func index(from: Int) -> Index {
-        return self.index(startIndex, offsetBy: from)
-    }
-    
-    func substring(from: Int) -> String {
-        let fromIndex = index(from: from)
-        return substring(from: fromIndex)
-    }
-    
-    func substring(to: Int) -> String {
-        let toIndex = index(from: to)
-        return substring(to: toIndex)
-    }
-    
-    func substring(with r: Range<Int>) -> String {
-        let startIndex = index(from: r.lowerBound)
-        let endIndex = index(from: r.upperBound)
-        return substring(with: startIndex..<endIndex)
-    }
-}

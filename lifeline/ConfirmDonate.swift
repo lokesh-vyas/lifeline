@@ -55,7 +55,7 @@ class ConfirmDonate: UIViewController {
         //TODO: where I am coming from H/C/I
         var whichID = String()
         var idValue = String()
-        
+        MarkerData.SharedInstance.oneRequestOfDonate["CID"] = nil
         if MarkerData.SharedInstance.markerData["TypeOfOrg"] as! String? == "1" {
             if MarkerData.SharedInstance.markerData["IndividualDetails"] as! String != "null" { // Individual
                 whichID = "RequestID"
@@ -155,6 +155,16 @@ extension ConfirmDonate : getVolunteerProtocol {
     func didSuccessGetVolunteerDetails(jsonArray: JSON) {
         //TODO:- true= comment & preferred date false= no vol
         print("*****didSuccessGetVolunteerDetails******", jsonArray)
+        if jsonArray["GetVolunteerListsReponse"]["ResponseDetails"]["StatusCode"] == 1 {
+            
+            MarkerData.SharedInstance.PreferredDateTime = nil
+            MarkerData.SharedInstance.CommentLines = nil
+            
+        }else{
+            MarkerData.SharedInstance.PreferredDateTime = String(describing: jsonArray["GetVolunteerListsReponse"]["ResponseDetails"]["PreferredDateTime"])
+            MarkerData.SharedInstance.CommentLines = String(describing: jsonArray["GetVolunteerListsReponse"]["ResponseDetails"]["Comment"])
+            
+        }
     }
     func didFailGetVolunteerDetails() {
         print("*****didFail-GetVolunteerDetails******")
