@@ -355,7 +355,7 @@ class ProfileView: UIViewController
     {
         let LoginID:String
             = UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!
-
+        
         let AuthProvider:String = "Custom"
         let customer : Dictionary = ["ProfileRegistrationRequest":["ProfileDetails":["LoginId":LoginID,"Name":self.txtName.text!,"DateofBirth":Util.SharedInstance.dateChangeForServerForProfile(dateString: ProfileViewModel.SharedInstance.DOBstring!),"Age":self.txtAge.text!,"ContactNumber": self.txtContactNumber.text!, "BloodGroup": ProfileViewModel.SharedInstance.BloodGroup!,"EmailId": self.txtEmailID.text!,"AuthProvider": AuthProvider,"LastDonationDate": Util.SharedInstance.dateChangeForServerForProfile(dateString: ProfileViewModel.SharedInstance.LastDonationStrin!),"AddressDetails": myAddressDetail]]]
         
@@ -506,9 +506,16 @@ extension ProfileView:ProtocolGetProfile
                 self.showDataOnView(profileData: profileData)
             }
         }
+        else
+        {
+            self.txtName.text = UserDefaults.standard.string(forKey: StringList.LifeLine_User_Name.rawValue)
+            self.txtEmailID.text = UserDefaults.standard.string(forKey: StringList.LifeLine_User_Email.rawValue)
+        }
     }
     func failedGetProfile()
     {
+        self.txtName.text = UserDefaults.standard.string(forKey: StringList.LifeLine_User_Name.rawValue)
+        self.txtEmailID.text = UserDefaults.standard.string(forKey: StringList.LifeLine_User_Email.rawValue)
         HudBar.sharedInstance.hideHudFormView(view: self.view)
     }
 }

@@ -17,7 +17,7 @@ class FAQView: UIViewController,UIWebViewDelegate{
         super.viewDidLoad()
         self.navigationController?.completelyTransparentBar()
         HudBar.sharedInstance.showHudWithMessage(message: "Please wait..", view: self.view)
-        webView.loadRequest(NSURLRequest(url: NSURL(string: "www.google.com")! as URL) as URLRequest)
+        webView.loadRequest(NSURLRequest(url: NSURL(string: "http://www.lifeline.services/faq")! as URL) as URLRequest)
         // Do any additional setup after loading the view.
     }
     //MARK:- Back Button
