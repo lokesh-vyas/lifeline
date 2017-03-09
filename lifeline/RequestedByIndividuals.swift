@@ -17,6 +17,7 @@ class RequestedByIndividuals: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tblView.rowHeight = 100
+        tblView.headerView(forSection: 1)
         
     }
     
@@ -46,7 +47,6 @@ extension RequestedByIndividuals : UITableViewDataSource {
         cell.lblUserName.text = MarkerData.SharedInstance.IndividualsArray[indexPath.row]["UserName"] as! String?
         cell.lblNeedDescription.text = MarkerData.SharedInstance.IndividualsArray[indexPath.row]["CName"] as! String?
         cell.lblContactNumber.text = MarkerData.SharedInstance.IndividualsArray[indexPath.row]["CContactNumber"] as! String?
-        
         cell.btnDonate.tag = indexPath.row
         cell.btnDonate.addTarget(self, action: #selector(RequestedByIndividuals.doTry(sender:)), for: .touchUpInside)
         return cell
@@ -69,6 +69,11 @@ extension RequestedByIndividuals : UITableViewDelegate {
 //        present(IndConfirmDonate, animated: true, completion: nil)
         
     }
+    
+    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return -44
+    }
+
 }
 
 

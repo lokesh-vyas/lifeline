@@ -79,6 +79,7 @@ class DonateView: UIViewController {
         searchController?.hidesNavigationBarDuringPresentation = false
         DonateInteractor.sharedInstance.delegate = self
         
+
     }
     
     //MARK:- backButton
@@ -150,7 +151,7 @@ class DonateView: UIViewController {
                     let myMarker1 = GMSMarker()
                     myMarker1.position = self.rCoordinates!
                     myMarker1.userData = dataArray[i]
-                    myMarker1.snippet = dataArray[i]["Name"].stringValue
+//                    myMarker1.snippet = dataArray[i]["Name"].stringValue
                     myMarker1.icon = UIImage(named: "Hospital_icon")!
                     myMarker1.map = self.mapView
                     self.view = self.mapView
@@ -166,7 +167,7 @@ class DonateView: UIViewController {
                     let myMarker2 = GMSMarker()
                     myMarker2.position = self.rCoordinates!
                     myMarker2.userData = dataArray[i]
-                    myMarker2.snippet = dataArray[i]["Name"].stringValue
+//                    myMarker2.snippet = dataArray[i]["Name"].stringValue
                     myMarker2.icon = UIImage(named: "Individual_icon")!
                     myMarker2.map = self.mapView
                     self.view = self.mapView
@@ -187,7 +188,7 @@ class DonateView: UIViewController {
                 myMarker3.userData = dataArray[i]
                 myMarker3.icon = UIImage(named: "Camp_icon")!
 //                print("Camp_icon came ?")
-                myMarker3.snippet = dataArray[i]["Name"].stringValue
+//                myMarker3.snippet = dataArray[i]["Name"].stringValue
                 myMarker3.map = mapView
                 view = mapView
             }
@@ -218,15 +219,10 @@ extension DonateView : CLLocationManagerDelegate {
 
 extension DonateView : GMSMapViewDelegate {
     
-    
-    public func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
-        print("willMove")
-    }
-    
     public func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition)
     {
         print("didChange")
-        
+//        HudBar.sharedInstance.showHudWithMessage(message: "Loading...", view: self.view)
         if lastEventDate != nil {
             let latestTime = Date()
             let didChangeInterval = latestTime.timeIntervalSince(lastEventDate!)
@@ -253,6 +249,7 @@ extension DonateView : GMSMapViewDelegate {
     
     public func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         print("idleAt")
+//        HudBar.sharedInstance.hideHudFormView(view: self.view)
     }
     
     public func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {

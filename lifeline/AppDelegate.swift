@@ -159,8 +159,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if (UserDefaults.standard.value(forKey: StringList.LifeLine_User_ID.rawValue) != nil)
         {
-            let initialViewController = storyboard.instantiateViewController(withIdentifier: "SWRevealViewController")
-            self.window?.rootViewController = initialViewController
+            let profileSuccess = UserDefaults.standard.bool(forKey: "SuccessProfileRegistration")
+            if profileSuccess == false
+            {
+                let initialViewController = storyboard.instantiateViewController(withIdentifier: "ProfileView") 
+                let navigationController = UINavigationController.init(rootViewController: initialViewController)
+                
+                self.window?.rootViewController = navigationController
+            }
+            else
+            {
+               let initialViewController = storyboard.instantiateViewController(withIdentifier: "SWRevealViewController")
+               self.window?.rootViewController = initialViewController
+            }
         }
         else
         {

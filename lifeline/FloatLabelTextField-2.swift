@@ -200,8 +200,12 @@ import UIKit
     func errorLine () {
         bottomBorder.backgroundColor = UIColor.red.cgColor
     }
+    func removeLoginErrorLine()
+    {
+        bottomBorder.backgroundColor = UIColor.gray.cgColor
+    }
     
-    func removeErrorLine ()
+    func removeErrorLine()
     {
         bottomBorder.backgroundColor = UIColor.clear.cgColor
     }

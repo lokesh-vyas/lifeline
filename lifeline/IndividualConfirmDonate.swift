@@ -23,6 +23,8 @@ class IndividualConfirmDonate: UIViewController {
 //    var requiredDetails = [String : Any]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        IndividualConfirmDonateInteractor.sharedInstance.delegate = self
+        ConfirmDonateInteractor.sharedInstance.delegateV = self
         
         self.IndividualConfirmDonateProperties()
     }
@@ -48,7 +50,7 @@ class IndividualConfirmDonate: UIViewController {
         let volunteerBody = ["GetVolunteerListRequest": [
                                         "RequestDetails": [
                                                     "LoginID":"114177301473189791455",
-                                                    "RequestID":"\(MarkerData.SharedInstance.markerData["ID"])"
+                                                    "RequestID":"\(MarkerData.SharedInstance.oneRequestOfDonate["CID"]!)"
                                                     ]]]
         
         ConfirmDonateInteractor.sharedInstance.getVolunteerDetails(urlString: strV, params: volunteerBody)
@@ -69,7 +71,7 @@ class IndividualConfirmDonate: UIViewController {
         self.lblContactPerson.text = MarkerData.SharedInstance.oneRequestOfDonate["UserName"] as! String?
         self.lblContactNumber.text = MarkerData.SharedInstance.oneRequestOfDonate["CContactNumber"] as! String?
         
-        IndividualConfirmDonateInteractor.sharedInstance.delegate = self
+        
         let reqUrl = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.GetRequestDetails"
         //FIXME:- RequestID
         let reqDetailsBody = ["GetRequestDetailsRequest": [
@@ -86,6 +88,15 @@ extension IndividualConfirmDonate : IndividualRequestDetailsProtocol {
     func didSuccessGetRequestDetails(jsonArray: JSON) {
         //TODO:- use data
         print("<<<<<didSuccess-GetRequestDetails>>>>>", jsonArray)
+        self.lblWhoRequested.text = "\(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["WhatNeeded"])) requirement for \(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["BloodGroup"]))"
+        self.lblWhenRequired.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["WhenNeeded"])
+        self.lblNoOfUnits.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["NumUnits"])
+        self.lblDoctorName.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["DoctorName"])
+        self.lblPatientName.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["PatientName"])
+        self.lblContactPerson.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["ContactPerson"])
+        self.lblContactNumber.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["ContactNumber"])
+        self.lblAddress.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["AddressLine"])
+        self.lblPersonalAppeal.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["PersonalAppeal"])
     }
     func didFailGetRequestDetails() {
         print("<<didFail-GetRequestDetails>>")

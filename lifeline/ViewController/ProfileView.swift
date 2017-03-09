@@ -33,6 +33,12 @@ class ProfileView: UIViewController
     {
         super.viewWillAppear(true)
         self.textFieldPadding()
+        
+        let profileSuccess = UserDefaults.standard.bool(forKey: "SuccessProfileRegistration")
+        if profileSuccess == false
+        {
+            self.navigationItem.leftBarButtonItem = nil
+        }
         let data = UserDefaults.standard.object(forKey: "ProfileData")
         if data != nil {
             let profileData:ProfileData = NSKeyedUnarchiver.unarchiveObject(with: data as! Data) as! ProfileData
@@ -40,9 +46,10 @@ class ProfileView: UIViewController
         }
         else
         {
+            let LoginId:String = UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!
             HudBar.sharedInstance.showHudWithMessage(message: "Please Wait...", view: self.view)
             ProfileViewInteractor.SharedInstance.delegate = self
-            ProfileViewInteractor.SharedInstance.checkGetProfileData(LoginID: "734258020038958")
+            ProfileViewInteractor.SharedInstance.checkGetProfileData(LoginID: LoginId)
         }
     }
     //MARK:- viewDidLoad
@@ -59,6 +66,7 @@ class ProfileView: UIViewController
     //MARK:- Show Data On view
     func showDataOnView(profileData:ProfileData)
     {
+        UserDefaults.standard.set(true, forKey: "SuccessProfileRegistration")
         self.txtName.text! = profileData.Name
         self.txtEmailID.text! = profileData.EmailId
         self.txtContactNumber.text! = profileData.ContactNumber
@@ -345,8 +353,9 @@ class ProfileView: UIViewController
     }
     func serverCallForProfileRegistration(myAddressDetail:Any)
     {
-        //fixme:- LoginID
-        let LoginID:String = "734258020038958"
+        let LoginID:String
+            = UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!
+
         let AuthProvider:String = "Custom"
         let customer : Dictionary = ["ProfileRegistrationRequest":["ProfileDetails":["LoginId":LoginID,"Name":self.txtName.text!,"DateofBirth":Util.SharedInstance.dateChangeForServerForProfile(dateString: ProfileViewModel.SharedInstance.DOBstring!),"Age":self.txtAge.text!,"ContactNumber": self.txtContactNumber.text!, "BloodGroup": ProfileViewModel.SharedInstance.BloodGroup!,"EmailId": self.txtEmailID.text!,"AuthProvider": AuthProvider,"LastDonationDate": Util.SharedInstance.dateChangeForServerForProfile(dateString: ProfileViewModel.SharedInstance.LastDonationStrin!),"AddressDetails": myAddressDetail]]]
         
@@ -510,6 +519,7 @@ extension ProfileView:ProtocolRegisterProfile
     {
         if success == true
         {
+            UserDefaults.standard.set(true, forKey: "SuccessProfileRegistration")
             HudBar.sharedInstance.hideHudFormView(view: self.view)
             HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Your Profile has been Updated", view: self.view)
             let deadlineTime = DispatchTime.now() + .seconds(2)
@@ -519,6 +529,7 @@ extension ProfileView:ProtocolRegisterProfile
                     self.navigationController?.present(SWRevealView, animated: true, completion: nil)
             })
         }else{
+            
             HudBar.sharedInstance.hideHudFormView(view: self.view)
             HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Failed to Update", view: self.view)
         }

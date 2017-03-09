@@ -42,7 +42,7 @@ class HomeView: UIViewController {
     //MARK:- Device Registration
     func DeviceRegistrationForServer(DeviceToken:String)
     {
-        let LoginID:String = "734258020038958"
+        let LoginID:String = UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!
         let customer : Dictionary = ["DeviceDetailsRequest":["DeviceDetails":["LoginID":LoginID,"DeviceToken":DeviceToken,"OSType":"IOS"]]]
         
         HudBar.sharedInstance.showHudWithMessage(message: "Please wait..", view: self.view)
@@ -83,9 +83,6 @@ class HomeView: UIViewController {
             
             //New Excluded Activities Code
             activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
-            //
-            
-           // activityVC.popoverPresentationController?.sourceView = send
             self.present(activityVC, animated: true, completion: nil)
         }
     }
