@@ -57,6 +57,7 @@
 		66C5782F1E37799F00B235F4 /* seguisli.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 66C578251E37799F00B235F4 /* seguisli.ttf */; };
 		66DBAF0D1E6AA8D500AC4A7F /* ProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DBAF0C1E6AA8D500AC4A7F /* ProfileData.swift */; };
 		66DE4EBD1E71394900145346 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66DBAF1D1E6E967C00AC4A7F /* UserNotifications.framework */; };
+		66DE4EC11E71683000145346 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DE4EC01E71683000145346 /* NotificationView.swift */; };
 		66EA8D351E1F6B4300646797 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EA8D341E1F6B4300646797 /* AppDelegate.swift */; };
 		66EA8D3A1E1F6B4300646797 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8D381E1F6B4300646797 /* Main.storyboard */; };
 		66EA8D3C1E1F6B4300646797 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8D3B1E1F6B4300646797 /* Assets.xcassets */; };
@@ -185,6 +186,7 @@
 		66DBAF1C1E6E8C0B00AC4A7F /* lifeline.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = lifeline.entitlements; sourceTree = "<group>"; };
 		66DBAF1D1E6E967C00AC4A7F /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		66DBAF1E1E6E967C00AC4A7F /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
+		66DE4EC01E71683000145346 /* NotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationView.swift; path = ViewController/NotificationView.swift; sourceTree = "<group>"; };
 		66EA8D311E1F6B4200646797 /* lifeline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lifeline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66EA8D341E1F6B4300646797 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		66EA8D391E1F6B4300646797 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -457,6 +459,14 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		66DE4EBF1E71680E00145346 /* NotificationView */ = {
+			isa = PBXGroup;
+			children = (
+				66DE4EC01E71683000145346 /* NotificationView.swift */,
+			);
+			name = NotificationView;
+			sourceTree = "<group>";
+		};
 		66EA8D281E1F6B4200646797 = {
 			isa = PBXGroup;
 			children = (
@@ -524,6 +534,7 @@
 		66EA8D641E1F6F8900646797 /* All ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				66DE4EBF1E71680E00145346 /* NotificationView */,
 				66C4E67B1E37252600526C1D /* HomeView */,
 				66C4E6891E373FEF00526C1D /* DonateView */,
 				66C4E68C1E37401100526C1D /* RequestView */,
@@ -1045,6 +1056,7 @@
 				665111CA1E66E42600A6AFAA /* MyDonorCell.swift in Sources */,
 				66C4E6881E372AD900526C1D /* ChangePasswordView.swift in Sources */,
 				66EA8E261E2772D300646797 /* FloatLabelTextField-2.swift in Sources */,
+				66DE4EC11E71683000145346 /* NotificationView.swift in Sources */,
 				66EA8DE61E24BDB700646797 /* LoginView.swift in Sources */,
 				665111B71E61824500A6AFAA /* MyRequestCell.swift in Sources */,
 				665111BC1E61B69D00A6AFAA /* MyRequestClose.swift in Sources */,
@@ -1239,7 +1251,7 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos/FBSDKLoginKit",
 				);
 				INFOPLIST_FILE = lifeline/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.isteer.lifeline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1265,7 +1277,7 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos/FBSDKLoginKit",
 				);
 				INFOPLIST_FILE = lifeline/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.isteer.lifeline;
 				PRODUCT_NAME = "$(TARGET_NAME)";

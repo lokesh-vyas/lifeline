@@ -33,25 +33,25 @@ public enum URLList:String
 //    http://api.lifeline.services/services/GetVolunteerListV1.1
     
      //MARK:- Development URL's
-
-    case ACCESS                     = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.Access"
-    case BLOOD_REQUEST_SEARCH       = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.BloodRequestSearch"
-    case CONFIRM_DONATE             = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.ConfirmDonate"
-    case GET_REQUEST_DETAILS        = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.GetRequestDetails"
-    case GET_CAMPAGIN_DETAILS       = "http://demo.frontman.isteer.com:8284/services/LifeLine.GetCampaignDetails"
-    case BLOOD_REQUIREMENT          = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.BloodRequirement"
-    case GET_COLLECTION_CENTRE_LIST = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.GetCollectionCentersList"
-    case PROFILE_REGISTRATION       = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.ProfileRegistration"
-    case MY_REQUESTS                = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.MyRequests"
-    case REQUEST_STATUS_UPDATE      = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.RequestStatusUpdate"
-    case  Device_Token_Reg          = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.DeviceDetails"
+//https://lifelineadmin-test.apigee.net/lifeline-dev/DEV-LifeLine.GetInventory
+    case ACCESS                     = "https://lifelineadmin-test.apigee.net/lifeline-dev/DEV-LifeLine.Access"
+    case BLOOD_REQUEST_SEARCH       = "https://lifelineadmin-test.apigee.net/lifeline-dev/DEV-LifeLine.BloodRequestSearch"
+    case CONFIRM_DONATE             = "https://lifelineadmin-test.apigee.net/lifeline-dev/DEV-LifeLine.ConfirmDonate"
+    case GET_REQUEST_DETAILS        = "https://lifelineadmin-test.apigee.net/lifeline-dev/DEV-LifeLine.GetRequestDetails"
+    case GET_CAMPAGIN_DETAILS       = "https://lifelineadmin-test.apigee.net/lifeline-dev/DEV-LifeLine.GetCampaignDetails"
+    case BLOOD_REQUIREMENT          = "https://lifelineadmin-test.apigee.net/lifeline-dev/DEV-LifeLine.BloodRequirement"
+    case GET_COLLECTION_CENTRE_LIST = "https://lifelineadmin-test.apigee.net/lifeline-dev/DEV-LifeLine.GetCollectionCentersList"
+    case PROFILE_REGISTRATION       = "https://lifelineadmin-test.apigee.net/lifeline-dev/DEV-LifeLine.ProfileRegistration"
+    case MY_REQUESTS                = "https://lifelineadmin-test.apigee.net/lifeline-dev/DEV-LifeLine.MyRequests"
+    case REQUEST_STATUS_UPDATE      = "https://lifelineadmin-test.apigee.net/lifeline-dev/DEV-LifeLine.RequestStatusUpdate"
+    case  Device_Token_Reg          = "https://lifelineadmin-test.apigee.net/lifeline-dev/DEV-LifeLine.DeviceDetails"
     
-    case LIFELINE_Custom_Sign_Up    = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.CustomSignUp"
-    case LIFELINE_Change_Password   = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.ChangePassword"
-    case LIFELINE_UserIDAvilableityCheck   = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.UserIDAvilableityCheck"
-    case LIFELINE_ForgetPassword  = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.ForgetPassword"
-    case LIFELINE_CustomLogin  = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.CustomLogin"
-    case LIFELINE_Get_Profile   = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.GetProfile"
+    case LIFELINE_Custom_Sign_Up    = "https://lifelineadmin-test.apigee.net/lifeline-dev/DEV-LifeLine.CustomSignUp"
+    case LIFELINE_Change_Password   = "https://lifelineadmin-test.apigee.net/lifeline-dev/DEV-LifeLine.ChangePassword"
+    case LIFELINE_UserIDAvilableityCheck   = "https://lifelineadmin-test.apigee.net/lifeline-dev/DEV-LifeLine.UserIDAvilableityCheck"
+    case LIFELINE_ForgetPassword  = "https://lifelineadmin-test.apigee.net/lifeline-dev/DEV-LifeLine.ForgetPassword"
+    case LIFELINE_CustomLogin  = "https://lifelineadmin-test.apigee.net/lifeline-dev/DEV-LifeLine.CustomLogin"
+    case LIFELINE_Get_Profile   = "https://lifelineadmin-test.apigee.net/lifeline-dev/DEV-LifeLine.GetProfile"
 //    http://demo.frontman.isteer.com:8284/services/GetVolunteerList
 }
 //MARK:- STRING LIST

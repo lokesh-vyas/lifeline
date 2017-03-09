@@ -69,8 +69,8 @@ extension MyRequestView:UITableViewDelegate,UITableViewDataSource
         let buttonRow = sender.tag
         let myRequestDetail = MyRequestArray[buttonRow]
         let donorView:MyDonorView = self.storyboard?.instantiateViewController(withIdentifier: "MyDonorView") as! MyDonorView
-         donorView.MyRequestCloseJSON = myRequestDetail
-         donorView.MyStringForCheck = "MyRequest"
+        donorView.MyRequestCloseJSON = myRequestDetail
+        donorView.MyStringForCheck = "MyRequest"
         self.navigationController?.pushViewController(donorView, animated: true)
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
@@ -113,7 +113,7 @@ extension MyRequestView:UITableViewDelegate,UITableViewDataSource
         cell?.btnCloseRequest.addTarget(self, action: #selector(MyRequestView.btnCloseTapped(sender:)), for: .touchUpInside)
         cell?.btnViewDonars.tag = indexPath.row
         cell?.btnViewDonars.addTarget(self, action: #selector(MyRequestView.btnDonorViewTapped(sender:)), for: .touchUpInside)
-     
+        
         
         return cell!
     }
@@ -121,16 +121,28 @@ extension MyRequestView:UITableViewDelegate,UITableViewDataSource
 //MARK:- MyRequestProtocol
 extension MyRequestView:MyRequestProtocol
 {
-    func SuccessMyRequest(JSONResponse: JSON)
+    func SuccessMyRequest(JSONResponse: JSON,Sucess:Bool)
     {
         HudBar.sharedInstance.hideHudFormView(view: self.view)
-        var dataArray = JSONResponse["MyRequestsResponse"]["ResponseDetails"]
-        if (dataArray.dictionary) != nil
+        if Sucess == true
         {
-            dataArray = JSON.init(arrayLiteral: dataArray)
+            self.tableRequestView.isHidden = false
+            self.lblInternetIssue.isHidden = true
+            var dataArray = JSONResponse["MyRequestsResponse"]["ResponseDetails"]
+            if (dataArray.dictionary) != nil
+            {
+                dataArray = JSON.init(arrayLiteral: dataArray)
+            }
+            MyRequestArray = dataArray.array!
+            self.tableRequestView.reloadData()
         }
-        MyRequestArray = dataArray.array!
-        self.tableRequestView.reloadData()
+        else
+        {
+            self.tableRequestView.isHidden = true
+            self.lblInternetIssue.isHidden = false
+            self.lblInternetIssue.text = "No Request with your ID"
+        }
+        
     }
     func FailMyRequest()
     {
