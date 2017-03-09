@@ -56,8 +56,7 @@
 		66C5782E1E37799F00B235F4 /* seguisbi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 66C578241E37799F00B235F4 /* seguisbi.ttf */; };
 		66C5782F1E37799F00B235F4 /* seguisli.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 66C578251E37799F00B235F4 /* seguisli.ttf */; };
 		66DBAF0D1E6AA8D500AC4A7F /* ProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DBAF0C1E6AA8D500AC4A7F /* ProfileData.swift */; };
-		66DBAF1F1E6E967C00AC4A7F /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66DBAF1D1E6E967C00AC4A7F /* UserNotifications.framework */; };
-		66DBAF201E6E967C00AC4A7F /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66DBAF1E1E6E967C00AC4A7F /* UserNotificationsUI.framework */; };
+		66DE4EBD1E71394900145346 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66DBAF1D1E6E967C00AC4A7F /* UserNotifications.framework */; };
 		66EA8D351E1F6B4300646797 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EA8D341E1F6B4300646797 /* AppDelegate.swift */; };
 		66EA8D3A1E1F6B4300646797 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8D381E1F6B4300646797 /* Main.storyboard */; };
 		66EA8D3C1E1F6B4300646797 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8D3B1E1F6B4300646797 /* Assets.xcassets */; };
@@ -253,8 +252,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66DBAF1F1E6E967C00AC4A7F /* UserNotifications.framework in Frameworks */,
-				66DBAF201E6E967C00AC4A7F /* UserNotificationsUI.framework in Frameworks */,
+				66DE4EBD1E71394900145346 /* UserNotifications.framework in Frameworks */,
 				EDE9AEAA1E5C4AD30031BCB0 /* MessageUI.framework in Frameworks */,
 				EDE9AEA81E5C4AB30031BCB0 /* Social.framework in Frameworks */,
 				66EA8DF51E24C9E200646797 /* FacebookCore.framework in Frameworks */,
