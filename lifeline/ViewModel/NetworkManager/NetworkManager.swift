@@ -45,35 +45,28 @@ class NetworkManager
         sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
             .responseJSON {
                 response in
-                print("----------\(response.request)----------")
+                print("----------\(response.request!)----------")
                 
                 if let temp = response.response {
-//                    print(response.response!)
                     print("Getting response from Servdr !!", temp)
-                    
                 } else {
-                    print("Couldn't get Response from Server !!")
-                    
-                }
-                
-                
-//                print(response.data!)     // server data
-//                print(response.result)
-                
-                if response.result.isSuccess
-                {
-                    let resJson = JSON(response.result.value!)
-                    if !resJson.isEmpty
-                    {
-                        sucess(resJson)
+                    if let test = response.result.error as? AFError {
+                        
                     }
-                    else
-                    {
+                    print("Couldn't get Response from Server !!")
+                    failure()
+                }
+//                print(response.data!)
+//                print(response.result)
+                if response.result.isSuccess {
+                    let resJson = JSON(response.result.value!)
+                    if !resJson.isEmpty {
+                        sucess(resJson)
+                    } else {
                         failure()
                     }
                 }
-                if response.result.isFailure
-                {
+                if response.result.isFailure {
                     failure()
                 }
         }

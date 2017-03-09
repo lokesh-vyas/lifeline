@@ -54,7 +54,7 @@ class AlertConfirmDonate: UIViewController {
                                         ["ConfirmDonateDetails":
                                             ["LoginID": "114177301473189791455",
                                              "PrefferedDateTime": preferredDateTime!,
-                                                "ID": IDtoBeSent,
+                                             "ID": IDtoBeSent,
                                              "TypeOfOrg":"\(MarkerData.SharedInstance.markerData["TypeOfOrg"]!)",
                                              "Comment": CommentText
                                             ]]]
@@ -105,7 +105,13 @@ extension AlertConfirmDonate : ProtocolCalendar {
     
     func SuccessProtocolCalendar(valueSent: String, CheckString: String) {
         print("valueSent :\(valueSent) && CheckString :\(CheckString)")
-        self.btnPreferredDateTime.setTitle(valueSent, for: .normal)
+        
+        if MarkerData.SharedInstance.PreferredDateTime != nil {
+            self.btnPreferredDateTime.setTitle(MarkerData.SharedInstance.PreferredDateTime, for: .normal)
+        } else {
+            self.btnPreferredDateTime.setTitle(valueSent, for: .normal)
+        }
+        
         let dateForCamp = Util.SharedInstance.preferredDateToCamp()
         preferredDateTime = (MarkerData.SharedInstance.PreferredDateTime != nil) ? (MarkerData.SharedInstance.PreferredDateTime!) : dateForCamp
     }

@@ -534,19 +534,12 @@ extension DonateView : DonateViewProtocol {
                 multiplier: 1,
                 constant: 45)
             
-            view.addConstraint(viewWarningHeightConstraint)
-            view.addConstraint(viewWarningLeadingConstraints)
-            view.addConstraint(viewWarningTrailingConstraints)
-            view.addConstraint(viewWarningBottomConstraints)
-            
-            view.addConstraint(labelWarningLeadingConstraints)
-            view.addConstraint(labelWarningTrailingConstraints)
-            view.addConstraint(labelWarningVerticalConstraint)
-            
-            view.addConstraint(imageWarningLeadingConstraints)
-            view.addConstraint(imageWarningTopConstraints)
-            view.addConstraint(imageWarningBottomConstraints)
-            view.addConstraint(imageWarningWidthConstraint)
+            //subView
+            view.addConstraints([viewWarningHeightConstraint, viewWarningLeadingConstraints, viewWarningTrailingConstraints, viewWarningBottomConstraints])
+            //Label
+            view.addConstraints([labelWarningLeadingConstraints, labelWarningTrailingConstraints, labelWarningVerticalConstraint])
+            //image warning
+            view.addConstraints([imageWarningLeadingConstraints, imageWarningTopConstraints, imageWarningBottomConstraints, imageWarningWidthConstraint])
             
         } else {
             
