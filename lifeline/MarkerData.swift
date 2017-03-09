@@ -13,7 +13,9 @@ class MarkerData {
     var markerData = [String : Any]()
     var IndividualsArray = [Dictionary<String, Any>]()
     var oneRequestOfDonate  = [String : Any]()
-    
+    var PreferredDateTime : String?
+    var CommentLines : String?
+    var fromIndividual : Bool?
     class var SharedInstance : MarkerData {
         struct shared {
             static let instance = MarkerData()
