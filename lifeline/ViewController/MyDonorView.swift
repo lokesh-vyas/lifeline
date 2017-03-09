@@ -32,10 +32,12 @@ class MyDonorView: UIViewController {
         }
         else
         {
+            let LoginID:String
+                = UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!
             self.navigationItem.leftBarButtonItem = nil
             HudBar.sharedInstance.showHudWithMessage(message: "Loading..", view: self.view)
             MyRequestInteractor.SharedInstance.delegate = self
-            MyRequestInteractor.SharedInstance.MyRequestServiceCall(loginID: "734258020038958")
+            MyRequestInteractor.SharedInstance.MyRequestServiceCall(loginID: LoginID)
         }
     }
     //MARK:- FetchDataFromDonarDetail

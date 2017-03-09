@@ -25,6 +25,9 @@
 		66316B8B1E557D4200114055 /* HospitalListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66316B8A1E557D4200114055 /* HospitalListCell.swift */; };
 		66316B8D1E557D8300114055 /* HospitalListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66316B8C1E557D8300114055 /* HospitalListCell.xib */; };
 		663706C71E2FB08400EC5EF3 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 663706C61E2FB08400EC5EF3 /* SWRevealViewController.m */; };
+		663D6FEE1E7003B900EB2CD8 /* HOME_SCREEN_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 663D6FEB1E7003B900EB2CD8 /* HOME_SCREEN_03.png */; };
+		663D6FEF1E7003B900EB2CD8 /* HOME_SCREEN_F.png in Resources */ = {isa = PBXBuildFile; fileRef = 663D6FEC1E7003B900EB2CD8 /* HOME_SCREEN_F.png */; };
+		663D6FF01E7003B900EB2CD8 /* HOME_SCREEN_G.png in Resources */ = {isa = PBXBuildFile; fileRef = 663D6FED1E7003B900EB2CD8 /* HOME_SCREEN_G.png */; };
 		665111B41E5D9D8600A6AFAA /* ProfileViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665111B31E5D9D8600A6AFAA /* ProfileViewInteractor.swift */; };
 		665111B71E61824500A6AFAA /* MyRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665111B61E61824500A6AFAA /* MyRequestCell.swift */; };
 		665111B91E61826D00A6AFAA /* MyRequestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 665111B81E61826D00A6AFAA /* MyRequestCell.xib */; };
@@ -53,6 +56,8 @@
 		66C5782E1E37799F00B235F4 /* seguisbi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 66C578241E37799F00B235F4 /* seguisbi.ttf */; };
 		66C5782F1E37799F00B235F4 /* seguisli.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 66C578251E37799F00B235F4 /* seguisli.ttf */; };
 		66DBAF0D1E6AA8D500AC4A7F /* ProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DBAF0C1E6AA8D500AC4A7F /* ProfileData.swift */; };
+		66DBAF1F1E6E967C00AC4A7F /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66DBAF1D1E6E967C00AC4A7F /* UserNotifications.framework */; };
+		66DBAF201E6E967C00AC4A7F /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66DBAF1E1E6E967C00AC4A7F /* UserNotificationsUI.framework */; };
 		66EA8D351E1F6B4300646797 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EA8D341E1F6B4300646797 /* AppDelegate.swift */; };
 		66EA8D3A1E1F6B4300646797 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8D381E1F6B4300646797 /* Main.storyboard */; };
 		66EA8D3C1E1F6B4300646797 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66EA8D3B1E1F6B4300646797 /* Assets.xcassets */; };
@@ -94,7 +99,6 @@
 		ED11189F1E61983F003EA467 /* ShowHospitalInMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED11189E1E61983F003EA467 /* ShowHospitalInMapView.swift */; };
 		EDE9AE941E5C35CE0031BCB0 /* BloodInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE9AE931E5C35CE0031BCB0 /* BloodInfoView.swift */; };
 		EDE9AE981E5C3D110031BCB0 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE9AE971E5C3D110031BCB0 /* CalendarView.swift */; };
-		EDE9AE9A1E5C46440031BCB0 /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE9AE991E5C46440031BCB0 /* ShareView.swift */; };
 		EDE9AEA11E5C47D10031BCB0 /* chat.png in Resources */ = {isa = PBXBuildFile; fileRef = EDE9AE9B1E5C47D10031BCB0 /* chat.png */; };
 		EDE9AEA21E5C47D10031BCB0 /* cross.png in Resources */ = {isa = PBXBuildFile; fileRef = EDE9AE9C1E5C47D10031BCB0 /* cross.png */; };
 		EDE9AEA31E5C47D10031BCB0 /* facebbok.png in Resources */ = {isa = PBXBuildFile; fileRef = EDE9AE9D1E5C47D10031BCB0 /* facebbok.png */; };
@@ -148,6 +152,9 @@
 		663706C41E2FB08400EC5EF3 /* lifeline-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "lifeline-Bridging-Header.h"; sourceTree = "<group>"; };
 		663706C51E2FB08400EC5EF3 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		663706C61E2FB08400EC5EF3 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		663D6FEB1E7003B900EB2CD8 /* HOME_SCREEN_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HOME_SCREEN_03.png; sourceTree = "<group>"; };
+		663D6FEC1E7003B900EB2CD8 /* HOME_SCREEN_F.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HOME_SCREEN_F.png; sourceTree = "<group>"; };
+		663D6FED1E7003B900EB2CD8 /* HOME_SCREEN_G.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HOME_SCREEN_G.png; sourceTree = "<group>"; };
 		665111B31E5D9D8600A6AFAA /* ProfileViewInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewInteractor.swift; sourceTree = "<group>"; };
 		665111B61E61824500A6AFAA /* MyRequestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyRequestCell.swift; path = Cell/MyRequestCell.swift; sourceTree = "<group>"; };
 		665111B81E61826D00A6AFAA /* MyRequestCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyRequestCell.xib; path = Cell/MyRequestCell.xib; sourceTree = "<group>"; };
@@ -176,6 +183,9 @@
 		66C578241E37799F00B235F4 /* seguisbi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = seguisbi.ttf; sourceTree = "<group>"; };
 		66C578251E37799F00B235F4 /* seguisli.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = seguisli.ttf; sourceTree = "<group>"; };
 		66DBAF0C1E6AA8D500AC4A7F /* ProfileData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileData.swift; sourceTree = "<group>"; };
+		66DBAF1C1E6E8C0B00AC4A7F /* lifeline.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = lifeline.entitlements; sourceTree = "<group>"; };
+		66DBAF1D1E6E967C00AC4A7F /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		66DBAF1E1E6E967C00AC4A7F /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
 		66EA8D311E1F6B4200646797 /* lifeline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lifeline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66EA8D341E1F6B4300646797 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		66EA8D391E1F6B4300646797 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -225,7 +235,6 @@
 		ED11189E1E61983F003EA467 /* ShowHospitalInMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShowHospitalInMapView.swift; path = ../ShowHospitalInMapView.swift; sourceTree = "<group>"; };
 		EDE9AE931E5C35CE0031BCB0 /* BloodInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BloodInfoView.swift; path = ../BloodInfoView.swift; sourceTree = "<group>"; };
 		EDE9AE971E5C3D110031BCB0 /* CalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarView.swift; path = ../CalendarView.swift; sourceTree = "<group>"; };
-		EDE9AE991E5C46440031BCB0 /* ShareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShareView.swift; path = ../ShareView.swift; sourceTree = "<group>"; };
 		EDE9AE9B1E5C47D10031BCB0 /* chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = chat.png; path = ../chat.png; sourceTree = "<group>"; };
 		EDE9AE9C1E5C47D10031BCB0 /* cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cross.png; path = ../cross.png; sourceTree = "<group>"; };
 		EDE9AE9D1E5C47D10031BCB0 /* facebbok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = facebbok.png; path = ../facebbok.png; sourceTree = "<group>"; };
@@ -244,6 +253,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66DBAF1F1E6E967C00AC4A7F /* UserNotifications.framework in Frameworks */,
+				66DBAF201E6E967C00AC4A7F /* UserNotificationsUI.framework in Frameworks */,
 				EDE9AEAA1E5C4AD30031BCB0 /* MessageUI.framework in Frameworks */,
 				EDE9AEA81E5C4AB30031BCB0 /* Social.framework in Frameworks */,
 				66EA8DF51E24C9E200646797 /* FacebookCore.framework in Frameworks */,
@@ -473,6 +484,7 @@
 		66EA8D331E1F6B4300646797 /* lifeline */ = {
 			isa = PBXGroup;
 			children = (
+				66DBAF1C1E6E8C0B00AC4A7F /* lifeline.entitlements */,
 				66EA8D621E1F6F5800646797 /* AppDelegate */,
 				66EA8D641E1F6F8900646797 /* All ViewController */,
 				66316B811E54555E00114055 /* Cell */,
@@ -518,7 +530,6 @@
 				66C4E6891E373FEF00526C1D /* DonateView */,
 				66C4E68C1E37401100526C1D /* RequestView */,
 				ED1118A21E63ED94003EA467 /* ShowHospital */,
-				EDE9AEAB1E5C76640031BCB0 /* ShareView */,
 				66C4E68F1E37403100526C1D /* MyRequestView */,
 				66C4E6861E372AB900526C1D /* ChangePassword */,
 				66C4E6831E372A9300526C1D /* FAQ */,
@@ -574,6 +585,9 @@
 		66EA8E001E275A4000646797 /* Image For Support */ = {
 			isa = PBXGroup;
 			children = (
+				663D6FEB1E7003B900EB2CD8 /* HOME_SCREEN_03.png */,
+				663D6FEC1E7003B900EB2CD8 /* HOME_SCREEN_F.png */,
+				663D6FED1E7003B900EB2CD8 /* HOME_SCREEN_G.png */,
 				66EA8DFA1E2517C400646797 /* LifeLine_icon.png */,
 				66EA8E011E275A4000646797 /* calendar_clock.png */,
 				66EA8E021E275A4000646797 /* chat_bubble.png */,
@@ -666,6 +680,8 @@
 		CF5AA6FC6AA11633D791EC96 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				66DBAF1D1E6E967C00AC4A7F /* UserNotifications.framework */,
+				66DBAF1E1E6E967C00AC4A7F /* UserNotificationsUI.framework */,
 				EDE9AEA91E5C4AD30031BCB0 /* MessageUI.framework */,
 				EDE9AEA71E5C4AB30031BCB0 /* Social.framework */,
 				66EA8DF31E24C9E200646797 /* FacebookCore.framework */,
@@ -683,14 +699,6 @@
 				ED11189E1E61983F003EA467 /* ShowHospitalInMapView.swift */,
 			);
 			name = ShowHospital;
-			sourceTree = "<group>";
-		};
-		EDE9AEAB1E5C76640031BCB0 /* ShareView */ = {
-			isa = PBXGroup;
-			children = (
-				EDE9AE991E5C46440031BCB0 /* ShareView.swift */,
-			);
-			name = ShareView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -773,6 +781,11 @@
 						DevelopmentTeam = FXZ4W6ZJ63;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					66EA8D441E1F6B4300646797 = {
 						CreatedOnToolsVersion = 8.2;
@@ -816,6 +829,7 @@
 				66EA8E1B1E275A4000646797 /* password_noti.png in Resources */,
 				66C5782C1E37799F00B235F4 /* seguili.ttf in Resources */,
 				EDE9AEA41E5C47D10031BCB0 /* mail.png in Resources */,
+				663D6FEF1E7003B900EB2CD8 /* HOME_SCREEN_F.png in Resources */,
 				66C5782A1E37799F00B235F4 /* segoeuisl.ttf in Resources */,
 				665111B91E61826D00A6AFAA /* MyRequestCell.xib in Resources */,
 				66EA8E111E275A4000646797 /* calendar_clock.png in Resources */,
@@ -827,6 +841,7 @@
 				EDE9AEA21E5C47D10031BCB0 /* cross.png in Resources */,
 				66C578271E37799F00B235F4 /* segoeuib.ttf in Resources */,
 				66EA8DFB1E2517C400646797 /* LifeLine_icon.png in Resources */,
+				663D6FEE1E7003B900EB2CD8 /* HOME_SCREEN_03.png in Resources */,
 				66EA8E131E275A4000646797 /* contact.png in Resources */,
 				66EA8E1E1E275A4000646797 /* user42.png in Resources */,
 				66EA8E181E275A4000646797 /* error-sign.png in Resources */,
@@ -848,6 +863,7 @@
 				66EA8E1F1E275A4000646797 /* user_noti.png in Resources */,
 				66C5782F1E37799F00B235F4 /* seguisli.ttf in Resources */,
 				66EA8E171E275A4000646797 /* e-mail-envelope.png in Resources */,
+				663D6FF01E7003B900EB2CD8 /* HOME_SCREEN_G.png in Resources */,
 				66EA8D3A1E1F6B4300646797 /* Main.storyboard in Resources */,
 				EDE9AEA61E5C47D10031BCB0 /* watsapp.png in Resources */,
 				66C5782B1E37799F00B235F4 /* segoeuiz.ttf in Resources */,
@@ -1060,7 +1076,6 @@
 				66DBAF0D1E6AA8D500AC4A7F /* ProfileData.swift in Sources */,
 				18324D381E5D6E030043B204 /* DonateInteractor.swift in Sources */,
 				EDE9AE941E5C35CE0031BCB0 /* BloodInfoView.swift in Sources */,
-				EDE9AE9A1E5C46440031BCB0 /* ShareView.swift in Sources */,
 				66C4E67F1E3725A300526C1D /* ProfileView.swift in Sources */,
 				ED11189F1E61983F003EA467 /* ShowHospitalInMapView.swift in Sources */,
 				663706C71E2FB08400EC5EF3 /* SWRevealViewController.m in Sources */,
@@ -1217,6 +1232,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = lifeline/lifeline.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = FXZ4W6ZJ63;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1241,6 +1258,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = lifeline/lifeline.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = FXZ4W6ZJ63;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
