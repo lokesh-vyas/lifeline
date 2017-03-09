@@ -70,6 +70,16 @@ class Util
         let stringFromDate = dateFormatter.string(from: date!)
         return stringFromDate
     }
+    
+    //MARK:-  Date For Camp
+    func preferredDateToCamp() -> String
+    {
+        let date = NSDate()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        return dateFormatter.string(from: date as Date)
+    }
+
     //MARK:- Color Chenge From Hex String
     func hexStringToUIColor (hex:String) -> UIColor {
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()

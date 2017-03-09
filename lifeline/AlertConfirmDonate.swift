@@ -32,7 +32,7 @@ class AlertConfirmDonate: UIViewController {
         preferredDateAlert.dateFormatter = dateFormatter
         preferredDateAlert.calenderHeading = "Confirm Your Date"
         preferredDateAlert.calendar.minimumDate = Date() as Date
-        preferredDateAlert.calendar.datePickerMode = UIDatePickerMode.date
+        preferredDateAlert.calendar.datePickerMode = UIDatePickerMode.dateAndTime
         preferredDateAlert.modalPresentationStyle = .overCurrentContext
         preferredDateAlert.view.backgroundColor =  UIColor.clear
         self.present(preferredDateAlert, animated: true, completion: nil)
@@ -44,17 +44,19 @@ class AlertConfirmDonate: UIViewController {
     @IBAction func btnDonateTapped(_ sender: Any) {
         print("  WS must be called")
         
-        if preferredDateTime != nil {
+        if MarkerData.SharedInstance.PreferredDateTime != "null" || preferredDateTime != nil {
         HudBar.sharedInstance.showHudWithMessage(message: "Submitting...", view: self.view)
         let url = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.ConfirmDonate"
         //FIXME:- the request Body
+            let IDtoBeSent = (MarkerData.SharedInstance.oneRequestOfDonate["CID"] != nil) ? (MarkerData.SharedInstance.oneRequestOfDonate["CID"])! : (MarkerData.SharedInstance.markerData["ID"]!)
+            let CommentText = (MarkerData.SharedInstance.CommentLines != nil) ? MarkerData.SharedInstance.CommentLines! : self.txtViewComment.text!
         let collectedParameters = ["ConfirmDonateRequest":
                                         ["ConfirmDonateDetails":
                                             ["LoginID": "114177301473189791455",
-                                             "PrefferedDateTime": "\(preferredDateTime)",
-                                             "ID": "\(MarkerData.SharedInstance.oneRequestOfDonate["CID"]!)",
+                                             "PrefferedDateTime": preferredDateTime!,
+                                                "ID": IDtoBeSent,
                                              "TypeOfOrg":"\(MarkerData.SharedInstance.markerData["TypeOfOrg"]!)",
-                                             "Comment": "\(self.txtViewComment.text)"
+                                             "Comment": CommentText
                                             ]]]
         
         AlertConfirmDonateInteractor.sharedInstance.confirmsDonate(urlString: url, params: collectedParameters)
@@ -85,8 +87,7 @@ extension AlertConfirmDonate : AlertConfirmDonateProtocol {
     func successConfirmDonate(jsonArray: JSON) {
         print("****SUCCESS****", jsonArray)
         self.view.makeToast("Requested Details Submited Sucessfully")
-        
-        let when = DispatchTime.now() + .seconds(4)
+        let when = DispatchTime.now() + .seconds(2)
         DispatchQueue.main.asyncAfter(deadline: when, execute: {
         let SWRevealView = self.storyboard!.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
         self.present(SWRevealView, animated: true, completion: nil)
@@ -105,7 +106,8 @@ extension AlertConfirmDonate : ProtocolCalendar {
     func SuccessProtocolCalendar(valueSent: String, CheckString: String) {
         print("valueSent :\(valueSent) && CheckString :\(CheckString)")
         self.btnPreferredDateTime.setTitle(valueSent, for: .normal)
-        preferredDateTime = valueSent
+        let dateForCamp = Util.SharedInstance.preferredDateToCamp()
+        preferredDateTime = (MarkerData.SharedInstance.PreferredDateTime != nil) ? (MarkerData.SharedInstance.PreferredDateTime!) : dateForCamp
     }
     func FailureProtocolCalendar(valueSent: String) {
         print("CALENDER is FAILED")
