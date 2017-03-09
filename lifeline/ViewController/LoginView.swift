@@ -18,16 +18,19 @@ class LoginView: UIViewController
     @IBOutlet weak var userNameTextField: FloatLabelTextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var passwordTextField: FloatLabelTextField!
-    
+    var Email : Bool?
     //MARK:- ViewDidLoad
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view.
     }
     //MARK:- ViewWill Appear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        userNameTextField.removeLoginErrorLine()
+        passwordTextField.removeLoginErrorLine()
         self.navigationController?.navigationBar.isHidden = true
         let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
         if statusBar.responds(to: #selector(setter: UIView.backgroundColor))
@@ -36,31 +39,31 @@ class LoginView: UIViewController
         }
     }
     //MARK:- SignUpAction
-    @IBAction func signUpAction(_ sender: Any)
-    {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SignUpView") as! SignUpView
-        navigationController?.pushViewController(vc, animated: true)
+    @IBAction func btnSignUpTapped(_ sender: Any) {
+        let viewController:SignUpView = self.storyboard?.instantiateViewController(withIdentifier: "SignUpView") as! SignUpView
+        
+        viewController.modalPresentationStyle =  .overCurrentContext
+        viewController.modalTransitionStyle = .crossDissolve
+        self.present(viewController, animated: true, completion: nil)
     }
     //MARK:- Forgot Password
-    @IBAction func forgotPasswordAction(_ sender: Any)
-    {
+    @IBAction func btnForgotPasswordTapped(_ sender: Any) {
         self.view.endEditing(true)
         if (userNameTextField.text?.characters.count)! < 1
         {
             self.view.makeToast("Please enter UserID", duration: 3.0, position: .bottom)
             return
         }
-         let trimmedString = self.userNameTextField.text?.trimmingCharacters(in: .whitespaces)
+        let trimmedString = self.userNameTextField.text?.trimmingCharacters(in: .whitespaces)
         SignUpInteractor.SharedInstance.delegateForgetPassword = self
         SignUpInteractor.SharedInstance.checkForgetPassword(checkString:trimmedString!)
     }
     //MARK:- CustomLogin
-    @IBAction func customLoginAction(_ sender: Any)
-    {
+    @IBAction func btnCustomSignIn(_ sender: Any) {
         self.view.endEditing(true)
         if((userNameTextField.text?.characters.count)! <= 0)
         {
-            self.view.makeToast("Please enter UserID", duration: 2.0, position: .bottom)
+            self.view.makeToast("Please enter Email Address", duration: 2.0, position: .bottom)
         }
         else if((passwordTextField.text?.characters.count)! <= 0)
         {
@@ -73,10 +76,10 @@ class LoginView: UIViewController
             SignUpInteractor.SharedInstance.delegateLogin = self
             SignUpInteractor.SharedInstance.checkCustomLogin(UserID: trimmedString!, Password: self.passwordTextField.text!)
         }
+
     }
     //MARK:- FB Login
-    @IBAction func facebookLogin(_ sender: Any)
-    {
+    @IBAction func btnFacrbookTapped(_ sender: Any) {
         HudBar.sharedInstance.showHudWithMessage(message: "Logging", view: self.view)
         let loginManager = LoginManager()
         loginManager.logIn([.publicProfile], viewController: self)
@@ -93,6 +96,7 @@ class LoginView: UIViewController
             }
         }
     }
+   
     func getFBUserData()
     {
         if AccessToken.current != nil
@@ -120,12 +124,12 @@ class LoginView: UIViewController
     func goToProfileView()
     {
         HudBar.sharedInstance.hideHudFormView(view: self.view)
-        let reavalView = self.storyboard?.instantiateViewController(withIdentifier: "SWRevealViewController")
-          self.present(reavalView!, animated: true, completion: nil)
+        let profileView = self.storyboard?.instantiateViewController(withIdentifier: "ProfileView")
+        let navigationBAR = UINavigationController(rootViewController: profileView!)
+        self.navigationController?.present(navigationBAR, animated: true, completion: nil)
     }
     //MARK:- G+ Login
-    @IBAction func googleLogin(_ sender: Any)
-    {
+    @IBAction func btnGoogleLoginTapped(_ sender: Any) {
         HudBar.sharedInstance.showHudWithMessage(message: "Logging", view: self.view)
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
@@ -134,6 +138,7 @@ class LoginView: UIViewController
         GIDSignIn.sharedInstance().scopes = ["https://www.googleapis.com/auth/plus.login","https://www.googleapis.com/auth/userinfo.email","https://www.googleapis.com/auth/userinfo.profile"]
         GIDSignIn.sharedInstance().signIn()
     }
+ 
 }
 extension LoginView:GIDSignInUIDelegate,GIDSignInDelegate
 {
@@ -217,5 +222,52 @@ extension LoginView : customLoginProtocol
     {
         HudBar.sharedInstance.hideHudFormView(view: self.view)
         self.view.makeToast("Unable to access server, please try again later", duration: 2.0, position: .bottom)
+    }
+}
+//MARK:- TextFieldDelegate
+extension LoginView:UITextFieldDelegate
+{
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        if textField.text?.characters.count == 0 {
+            switch textField {
+            case userNameTextField:
+                userNameTextField.errorLine()
+            default:
+                print("E-Default case")
+            }
+        }
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return true;
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
+    {
+        let str = textField.text! as NSString
+        let typedString = str.replacingCharacters(in: range, with: string)
+        if typedString.characters.count > 0 {
+            
+            switch textField {
+           
+            case userNameTextField:
+                if typedString.isValidEmail(){
+                    userNameTextField.removeLoginErrorLine()
+                    Email = true
+                    
+                } else {
+                    userNameTextField.errorLine()
+                    Email = false
+                }
+            default:
+                print("TODO")
+            }
+        }
+        return true;
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder();
+        return true;
     }
 }

@@ -23,23 +23,26 @@ class HomeView: UIViewController {
         self.navigationController?.completelyTransparentBar()
        //MARK - Reval View Button
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        
-        if let refreshedToken = FIRInstanceID.instanceID().token()
+        let deviceRegister = UserDefaults.standard.bool(forKey: "DeviceRegister")
+        if deviceRegister == false
         {
-            self.DeviceRegistrationForServer(DeviceToken: refreshedToken)
-            print("InstanceID token: \(refreshedToken)")
+            if let refreshedToken = FIRInstanceID.instanceID().token()
+            {
+                self.DeviceRegistrationForServer(DeviceToken: refreshedToken)
+                print("InstanceID token: \(refreshedToken)")
+            }
         }
-        
         if self.revealViewController() != nil {
             revalMenuButton.target = self.revealViewController()
             revalMenuButton.action = #selector(SWRevealViewController.revealToggle(_:))
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+        NotificationCenter.default.addObserver(self, selector: #selector(HomeView.shareAppURLTapped), name: NSNotification.Name(rawValue: "ShareApplicationURL"), object: nil)
     }
     //MARK:- Device Registration
     func DeviceRegistrationForServer(DeviceToken:String)
     {
-        let LoginID:String = "734258020038958"
+        let LoginID:String = UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!
         let customer : Dictionary = ["DeviceDetailsRequest":["DeviceDetails":["LoginID":LoginID,"DeviceToken":DeviceToken,"OSType":"IOS"]]]
         
         HudBar.sharedInstance.showHudWithMessage(message: "Please wait..", view: self.view)
@@ -67,6 +70,22 @@ class HomeView: UIViewController {
         let requestView = self.storyboard?.instantiateViewController(withIdentifier: "MyRequestView")
         self.navigationController?.pushViewController(requestView!, animated: true)
     }
+    //MARK:- Share Application URL With Activity
+    func shareAppURLTapped()
+    {
+        let textToShare = "LifeLine is a social application dedicated to connecting blood banks,donors and recipients."
+        let textToIOS = "iOS:- https://goo.gl/XJl5a7"
+        let textToAndroid = "Android:- https://goo.gl/PUorhE"
+        
+        if let myWebsite = NSURL(string: "") {
+            let objectsToShare = [textToShare,textToIOS,textToAndroid, myWebsite] as [Any]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            
+            //New Excluded Activities Code
+            activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+            self.present(activityVC, animated: true, completion: nil)
+        }
+    }
 }
 //MARK:- ProtocolBloodInfo
 extension HomeView:ProtocolRegisterProfile
@@ -75,15 +94,18 @@ extension HomeView:ProtocolRegisterProfile
     {
         if success == true
         {
+            UserDefaults.standard.set(true, forKey: "DeviceRegister")
             HudBar.sharedInstance.hideHudFormView(view: self.view)
             HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Device Register successfully", view: self.view)
         }else{
+             UserDefaults.standard.set(false, forKey: "DeviceRegister")
             HudBar.sharedInstance.hideHudFormView(view: self.view)
             HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Failed to Update", view: self.view)
         }
     }
     func failedRegisterProfile()
     {
+        UserDefaults.standard.set(false, forKey: "DeviceRegister")
         HudBar.sharedInstance.hideHudFormView(view: self.view)
     }
 }

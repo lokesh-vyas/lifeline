@@ -15,18 +15,20 @@ class SignUpApi {
     var userId = ""
     var Email = ""
     var password = ""
+    var Name = ""
     
     var URL = URLList.LIFELINE_Custom_Sign_Up.rawValue
     var method = "POST"
   
-    init(email:String, password:String ,userID:String) {
+    init(email:String, password:String ,userID:String,name:String) {
         self.Email = email
         self.password = password
         self.userId = userID
+        self.Name = name
     }
     func makeParams() -> Parameters
     {
-        let parameters:Parameters = ["UserIDAvilableityCheckRequest":["UserIDAvilableityCheckRequestDetails":[["UserID":self.userId],["Password":self.password],["Email":self.Email]]]]
+        let parameters:Parameters = ["UserIDAvilableityCheckRequest":["UserIDAvilableityCheckRequestDetails":[["Name":self.Name],["UserID":self.userId],["Password":self.password],["Email":self.Email]]]]
         return parameters
     }
 }

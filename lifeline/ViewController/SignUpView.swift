@@ -24,7 +24,11 @@ class SignUpView: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.isHidden = false
+        nameTextField.removeLoginErrorLine()
+        passwordTextField.removeLoginErrorLine()
+        emailTextField.removeLoginErrorLine()
+        confirmTextField.removeLoginErrorLine()
+        self.navigationController?.navigationBar.isHidden = true
         self.navigationController?.completelyTransparentBar()
         NotificationCenter.default.addObserver(self, selector: #selector(SignUpView.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(SignUpView.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -50,47 +54,55 @@ class SignUpView: UIViewController
     //MARK:- checkAvability
     @IBAction func checkAvability(_ sender: Any)
     {
-       // view.endEditing(true)
-//        if (userIDTextField.text?.characters.count)! > 3
-//        {
-//            SignUpInteractor.SharedInstance.delegate = self
-//            SignUpInteractor.SharedInstance.checkAvabilityCallForServices(checkString: userIDTextField.text!)
-//        }
-//        else
-//        {
-//            self.view.makeToast("User Id should be greater than three characters", duration: 3.0, position: .bottom)
-//        }
+        // view.endEditing(true)
+        //        if (userIDTextField.text?.characters.count)! > 3
+        //        {
+        //            SignUpInteractor.SharedInstance.delegate = self
+        //            SignUpInteractor.SharedInstance.checkAvabilityCallForServices(checkString: userIDTextField.text!)
+        //        }
+        //        else
+        //        {
+        //            self.view.makeToast("User Id should be greater than three characters", duration: 3.0, position: .bottom)
+        //        }
     }
     //MARK:- BackButtonAction
-    @IBAction func BackButtonAction(_ sender: Any)
-    {
-        self.navigationController?.popViewController(animated: true)
-    }
+    
     //MARK:- signUpAction
-    @IBAction func signUpAction(_ sender: Any) {
+    @IBAction func btnSignUpTapped(_ sender: Any) {
+        
         view.endEditing(true)
         if (Email == nil || Password == nil || (emailTextField.text?.characters.count)! < 1 || (confirmTextField.text?.characters.count)! < 1 || (nameTextField.text?.characters.count)! < 1)
-            {
-                self.view.makeToast("Please fill all fields", duration: 2.0, position: .bottom)
-                
-            }else if (Email == true) {
+        {
+            self.view.makeToast("Please fill all fields", duration: 2.0, position: .bottom)
+            
+        }else if (Email == true) {
             if Password == true {
-            if passwordTextField.text == confirmTextField.text {
-            
-            HudBar.sharedInstance.showHudWithMessage(message: "Signin...", view: self.view)
-            SignUpInteractor.SharedInstance.delegateSignUp = self
-            SignUpInteractor.SharedInstance.signUPCallForServices(email: self.emailTextField.text!, password: self.passwordTextField.text!, userID: self.emailTextField.text!)
-            
+                if passwordTextField.text == confirmTextField.text {
+                    
+                    HudBar.sharedInstance.showHudWithMessage(message: "Signin...", view: self.view)
+                    SignUpInteractor.SharedInstance.delegateSignUp = self
+                    SignUpInteractor.SharedInstance.signUPCallForServices(email: self.emailTextField.text!, password: self.passwordTextField.text!, userID: self.emailTextField.text!,Name:self.nameTextField.text!)
+                    
+                } else {
+                    self.view.makeToast("Password mismatch", duration: 2.0, position: .bottom)
+                }
+                
             } else {
-            self.view.makeToast("Password mismatch", duration: 2.0, position: .bottom)
+                self.view.makeToast("Password must be greater than 6 Digits", duration: 2.0, position: .bottom)
             }
-            
-            } else {
-            self.view.makeToast("Password must be greater than 6 Digits", duration: 2.0, position: .bottom)
-            }
-            } else {
+        } else {
             self.view.makeToast("Invalid Email ID", duration: 2.0, position: .bottom)
         }
+        
+    }
+    @IBAction func btnSignInTapped(_ sender: Any)
+    {
+        let viewController:LoginView = self.storyboard?.instantiateViewController(withIdentifier: "LoginView") as! LoginView
+        
+        viewController.modalPresentationStyle =  .overCurrentContext
+        viewController.modalTransitionStyle = .crossDissolve
+        self.present(viewController, animated: true, completion: nil)
+        
     }
 }
 //MARK:- TextFieldDelegate
@@ -127,11 +139,11 @@ extension SignUpView:UITextFieldDelegate
             switch textField {
                 
             case nameTextField:
-                nameTextField.removeErrorLine()
+                nameTextField.removeLoginErrorLine()
                 
             case emailTextField:
                 if typedString.isValidEmail(){
-                    emailTextField.removeErrorLine()
+                    emailTextField.removeLoginErrorLine()
                     Email = true
                     
                 } else {
@@ -142,7 +154,7 @@ extension SignUpView:UITextFieldDelegate
                 
                 if typedString.characters.count >= 6
                 {
-                    passwordTextField.removeErrorLine()
+                    passwordTextField.removeLoginErrorLine()
                     Password = true
                 } else {
                     passwordTextField.errorLine()
@@ -154,7 +166,7 @@ extension SignUpView:UITextFieldDelegate
                 
                 if typedString.characters.count >= 6
                 {
-                    confirmTextField.removeErrorLine()
+                    confirmTextField.removeLoginErrorLine()
                     Password = true
                 } else {
                     confirmTextField.errorLine()
@@ -199,15 +211,12 @@ extension SignUpView : successSignUpProtocol
     {
         if success == true
         {
-            HudBar.sharedInstance.hideHudFormView(view: self.view)
-            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "User Registered Successfully", view: self.view)
             UserDefaults.standard.set(self.nameTextField.text, forKey: StringList.LifeLine_User_Name.rawValue)
             UserDefaults.standard.set(self.emailTextField.text, forKey: StringList.LifeLine_User_Email.rawValue)
-            let deadlineTime = DispatchTime.now() + .seconds(2)
-            DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute:
-                {
-                    self.navigationController?.popViewController(animated: true)
-            })
+            
+            let trimmedString = self.emailTextField.text?.trimmingCharacters(in: .whitespaces)
+            SignUpInteractor.SharedInstance.delegateLogin = self
+            SignUpInteractor.SharedInstance.checkCustomLogin(UserID: trimmedString!, Password: self.passwordTextField.text!)
         }
         else
         {
@@ -223,3 +232,32 @@ extension SignUpView : successSignUpProtocol
         self.view.makeToast("Unable to access server, please try again later", duration: 2.0, position: .bottom)
     }
 }
+extension SignUpView : customLoginProtocol
+{
+    func successCustomLogin(success: Bool)
+    {
+        if success == true
+        {
+            HudBar.sharedInstance.hideHudFormView(view: self.view)
+            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "User Login Successfully", view: self.view)
+            
+            HudBar.sharedInstance.hideHudFormView(view: self.view)
+            let profileView = self.storyboard?.instantiateViewController(withIdentifier: "ProfileView")
+            let navigationBAR = UINavigationController(rootViewController: profileView!)
+            self.navigationController?.present(navigationBAR, animated: true, completion: nil)
+          
+            
+        }
+        else
+        {
+            HudBar.sharedInstance.hideHudFormView(view: self.view)
+            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Please Check your UserID And Password and try again", view: self.view)
+        }
+    }
+    func failCustomLogin()
+    {
+        HudBar.sharedInstance.hideHudFormView(view: self.view)
+        self.view.makeToast("Unable to access server, please try again later", duration: 2.0, position: .bottom)
+    }
+}
+

@@ -212,9 +212,11 @@ class RequestView: UIViewController,UITextViewDelegate
             self.view.makeToast("Please fill all the fields", duration: 2.0, position: .bottom)
         }
         else{
+            let LoginID:String
+                = UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!
             HudBar.sharedInstance.showHudWithMessage(message: "Submiting...", view: self.view)
             RequestInterator.SharedInstance.delegateRequestBlood = self
-            RequestInterator.SharedInstance.requesBlood(LoginId: "114177301473189791455",bloodgroup: (btnBloodGroup.titleLabel?.text)!,whatyouneed: (btnWhatYouNeed.titleLabel?.text!)!,whenyouneed: "2016-02-16",Units: (btnBloodUnit.titleLabel?.text!)!,patientname: txtFieldPatientName.text!,contactperson: txtFieldContactPerson.text!,contactnumber: txtFieldContactNumber.text!,doctorname:txtFieldDoctorName.text!,doctorcontactnumber:"9999999999",doctoremailID: "",centerID:"2",centername: "Apolo",centercontactnumber:txtFieldHospitalBloodBankContactNumber.text!,centeraddress: txtFieldHospitalBloodBankAddress.text!,City: txtFieldHospitalBloodBankAddressCity.text!,State: "",
+            RequestInterator.SharedInstance.requesBlood(LoginId: LoginID,bloodgroup: (btnBloodGroup.titleLabel?.text)!,whatyouneed: (btnWhatYouNeed.titleLabel?.text!)!,whenyouneed: "2016-02-16",Units: (btnBloodUnit.titleLabel?.text!)!,patientname: txtFieldPatientName.text!,contactperson: txtFieldContactPerson.text!,contactnumber: txtFieldContactNumber.text!,doctorname:txtFieldDoctorName.text!,doctorcontactnumber:"9999999999",doctoremailID: "",centerID:"2",centername: "Apolo",centercontactnumber:txtFieldHospitalBloodBankContactNumber.text!,centeraddress: txtFieldHospitalBloodBankAddress.text!,City: txtFieldHospitalBloodBankAddressCity.text!,State: "",
                 Landmark: txtFieldHospitalBloodBankAddressLandMark.text!,Latitude: "12.2222222",Longitude: "23.3333333",Pincode: txtFieldHospitalBloodBankAddressPINCode.text!,Country: "",personalappeal: txtViewPersonalAppeal.text,Sharedinsocialmedia:"0")
         }
     }

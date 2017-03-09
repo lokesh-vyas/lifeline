@@ -47,10 +47,9 @@ class SignUpInteractor
     var delegateForgetPassword:checkForgetPasswordProtocol?
     var delegateLogin:customLoginProtocol?
     //MARK:- signUPCallForServices
-    func signUPCallForServices(email:String, password:String ,userID:String)
+    func signUPCallForServices(email:String, password:String ,userID:String,Name:String)
     {
-        let builder = APIBuilder.sharedInstance.buildSignUpApi(emailID:email, Password:password ,UserName:userID)
-        
+        let builder = APIBuilder.sharedInstance.buildSignUpApi(emailID: email, Password: password, UserName: userID,Name:Name)
         NetworkManager.sharedInstance.serviceCallForPOST(url: builder.URL, method: builder.method, parameters: builder.makeParams(),sucess:
             {
                 (JSONResponse) -> Void in

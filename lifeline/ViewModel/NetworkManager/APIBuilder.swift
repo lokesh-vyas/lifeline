@@ -17,9 +17,10 @@ class APIBuilder
     }()
 
     //MARK:- buildSignUpApi
-    func buildSignUpApi(emailID: String, Password: String, UserName: String) -> SignUpApi
+    func buildSignUpApi(emailID: String, Password: String,UserName: String,Name:String) -> SignUpApi
     {
-        let api = SignUpApi(email: emailID, password: Password, userID: UserName)
+        let api = SignUpApi(email: emailID, password: Password, userID: UserName, name: Name)
+        
         return api
     }
     //MARK:- Hospital List View API
