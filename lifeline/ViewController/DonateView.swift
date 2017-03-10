@@ -311,8 +311,20 @@ extension DonateView : GMSMapViewDelegate {
         userDict["City"] = String(describing: jsonDict["City"])
         userDict["AddressId"] = String(describing: jsonDict["AddressId"])
         userDict["TypeOfOrg"] = String(describing: jsonDict["TypeOfOrg"])
-        userDict["FromDate"] = String(describing: jsonDict["FromDate"])
-        userDict["ToDate"] = String(describing: jsonDict["ToDate"])
+        
+        if String(describing: jsonDict["FromDate"]).characters.count > 10 {
+            let trimDate = String(describing: jsonDict["FromDate"]).substring(to: 10)
+            userDict["FromDate"] = trimDate
+        } else {
+            userDict["FromDate"] = String(describing: jsonDict["FromDate"])
+        }
+        
+        if String(describing: jsonDict["ToDate"]).characters.count > 10 {
+            let trimDate = String(describing: jsonDict["ToDate"]).substring(to: 10)
+            userDict["ToDate"] = trimDate
+        } else {
+            userDict["ToDate"] = String(describing: jsonDict["ToDate"])
+        }
         
         if jsonDict["TypeOfOrg"] == 1 && jsonDict["IndividualDetails"] != JSON.null { // Individual Marker Details
             
@@ -555,6 +567,24 @@ extension DonateView : DonateViewProtocol {
     }
 }
 
+extension String {
+    func index(from: Int) -> Index {
+        return self.index(startIndex, offsetBy: from)
+    }
+    func substring(from: Int) -> String {
+        let fromIndex = index(from: from)
+        return substring(from: fromIndex)
+    }
+    func substring(to: Int) -> String {
+        let toIndex = index(from: to)
+        return substring(to: toIndex)
+    }
+    func substring(with r: Range<Int>) -> String {
+        let startIndex = index(from: r.lowerBound)
+        let endIndex = index(from: r.upperBound)
+        return substring(with: startIndex..<endIndex)
+    }
+}
 
 
 

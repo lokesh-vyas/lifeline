@@ -33,25 +33,22 @@ class ConfirmDonate: UIViewController {
         super.viewDidLoad()
         nav.completelyTransparentBar()
 //        navigationController?.navigationBar.barTintColor = UIColor.black.withAlphaComponent(0.2)
-//        navigationController?.navigationBar.backgroundColor = UIColor.red
+//        navigationController?.view.backgroundColor = UIColor.clear
+      
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for:  .default)
+        navigationController?.navigationBar.shadowImage     = UIImage()
+        navigationController?.navigationBar.isTranslucent   = true
+        view.backgroundColor          = UIColor.black.withAlphaComponent(0.2)
+        navigationController?.navigationBar.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+        navigationController?.navigationBar.barTintColor = UIColor.red.withAlphaComponent(0.2)
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         
-//        self.nav.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-//        self.nav.navigationBar.shadowImage = UIImage()
-//        self.nav.navigationBar.isTranslucent = true
-//        self.nav.view.backgroundColor = UIColor.clear
-//        let navigationBar = UINavigationBar()
-//        navigationBar.setBackgroundImage(UIImage(), for:  .default)
-//        navigationBar.shadowImage     = UIImage()
-//        navigationBar.isTranslucent   = true
-//        view.backgroundColor          = UIColor.black.withAlphaComponent(0.2)
-//        navigationBar.backgroundColor = UIColor.black.withAlphaComponent(0.2)
-//        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
-//        
-//        let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
-//        if statusBar.responds(to: #selector(setter: UIView.backgroundColor))
-//        {
-//            statusBar.backgroundColor = UIColor.black.withAlphaComponent(0.2)
-//        }
+        let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
+        if statusBar.responds(to: #selector(setter: UIView.backgroundColor))
+        {
+            statusBar.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+        }
         
         ConfirmDonateInteractor.sharedInstance.delegate = self
         ConfirmDonateInteractor.sharedInstance.delegateV = self
@@ -116,7 +113,7 @@ class ConfirmDonate: UIViewController {
         lblContactNumber.text = MarkerData.SharedInstance.markerData["ContactNumber"] as! String?
         lblEmailID.text = MarkerData.SharedInstance.markerData["Email"] as! String?
         lblFromDate.text = MarkerData.SharedInstance.markerData["FromDate"] as! String?
-        lblToDate.text = MarkerData.SharedInstance.markerData["ToDonate"] as! String?
+        lblToDate.text = MarkerData.SharedInstance.markerData["ToDate"] as! String?
         lblAddress.text = MarkerData.SharedInstance.markerData["AddressLine"] as! String?
         
         if MarkerData.SharedInstance.markerData["TypeOfOrg"] as! String? == "2" { // this is camp
@@ -162,7 +159,7 @@ extension ConfirmDonate : ConfirmDonateProtocol {
     func didSuccessGetCompaignDetails(jsonArray: JSON) {
         
         print("*****didSuccess-GetCompaignDetails******", jsonArray)
-        self.lblToDate.text = String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["ToDate"])
+        self.lblToDate.text = String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["ToDate"]).characters.count > 10 ?  String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["ToDate"]).substring(to: 10):String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["ToDate"])
         self.lblCampDescription.text = String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["AdditionalInfo"])
         
         

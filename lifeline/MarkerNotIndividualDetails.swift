@@ -87,3 +87,4 @@ extension MarkerNotIndividualDetails : UIGestureRecognizerDelegate {
         return false
     }
 }
+

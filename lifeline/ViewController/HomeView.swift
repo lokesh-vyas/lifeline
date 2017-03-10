@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SwiftyJSON
 
 class HomeView: UIViewController {
     //MARK:- IBOutlet
@@ -38,7 +39,10 @@ class HomeView: UIViewController {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         NotificationCenter.default.addObserver(self, selector: #selector(HomeView.shareAppURLTapped), name: NSNotification.Name(rawValue: "ShareApplicationURL"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(HomeView.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
     }
+    
     //MARK:- Device Registration
     func DeviceRegistrationForServer(DeviceToken:String)
     {
@@ -69,6 +73,18 @@ class HomeView: UIViewController {
     {
         let requestView = self.storyboard?.instantiateViewController(withIdentifier: "MyRequestView")
         self.navigationController?.pushViewController(requestView!, animated: true)
+    }
+    //MARK:- Share Application URL With Activity
+    func PushNotificationView(_ notification: NSNotification)
+    {
+        let dict = notification.object as! Dictionary<String, Any>
+       
+        let notificationView:NotificationView = self.storyboard?.instantiateViewController(withIdentifier: "NotificationView") as! NotificationView
+        notificationView.UserJSON = dict
+        notificationView.modalPresentationStyle = .overCurrentContext
+        notificationView.modalTransitionStyle = .coverVertical
+        notificationView.view.backgroundColor = UIColor.clear
+        self.present(notificationView, animated: true, completion: nil)
     }
     //MARK:- Share Application URL With Activity
     func shareAppURLTapped()

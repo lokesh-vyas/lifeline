@@ -12,7 +12,7 @@ import SwiftyJSON
 //MARK:- MyRequestProtocol
 protocol MyRequestProtocol
 {
-    func SuccessMyRequest(JSONResponse: JSON)
+    func SuccessMyRequest(JSONResponse: JSON,Sucess:Bool)
     func FailMyRequest()
 }
 //MARK:- MyRequestInteractor
@@ -32,7 +32,14 @@ class MyRequestInteractor
         NetworkManager.sharedInstance.serviceCallForPOST(url: builder.URL, method: builder.method, parameters: builder.makeParams(),sucess:
             {
                 (JSONResponse) -> Void in
-                self.delegate?.SuccessMyRequest(JSONResponse: JSONResponse)
+                if(JSONResponse["MyRequestsResponse"]["MyRequestsResponseDetails"]["StatusCode"].int == 1)
+                {
+                    self.delegate?.SuccessMyRequest(JSONResponse: JSONResponse,Sucess:false)
+                }
+                else
+                {
+                    self.delegate?.SuccessMyRequest(JSONResponse: JSONResponse,Sucess:true)
+                }
         }, failure:
             { _ in
                 self.delegate?.FailMyRequest()
@@ -49,7 +56,7 @@ class MyRequestInteractor
                                                          sucess: {
                                                             (JSONResponse) -> Void in
                                                             print(JSONResponse)
-                                                            self.delegate?.SuccessMyRequest(JSONResponse: JSONResponse)
+                                                            self.delegate?.SuccessMyRequest(JSONResponse: JSONResponse,Sucess:true)
         },
                                                          failure: { _ in
                                                             self.delegate?.FailMyRequest()

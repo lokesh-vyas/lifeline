@@ -40,7 +40,7 @@ class NetworkManager
         print("----------\(parameters)-------")
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
-            "apikey": "nDJ5nsA9TyxmBEGdlkqNiNUwYLHdLQgh"
+            "apikey": "ALDZ5abmAnppumwtjIdMBQU1SqHgL12G"
         ]
         sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
             .responseJSON {

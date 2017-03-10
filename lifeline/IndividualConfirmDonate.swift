@@ -23,7 +23,22 @@ class IndividualConfirmDonate: UIViewController {
 //    var requiredDetails = [String : Any]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.completelyTransparentBar()
+        
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for:  .default)
+        navigationController?.navigationBar.shadowImage     = UIImage()
+        navigationController?.navigationBar.isTranslucent   = true
+        view.backgroundColor          = UIColor.black.withAlphaComponent(0.2)
+        navigationController?.navigationBar.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+        navigationController?.navigationBar.barTintColor = UIColor.red.withAlphaComponent(0.2)
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        
+        let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
+        if statusBar.responds(to: #selector(setter: UIView.backgroundColor))
+        {
+            statusBar.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+        }
+
         IndividualConfirmDonateInteractor.sharedInstance.delegate = self
         ConfirmDonateInteractor.sharedInstance.delegateV = self
         

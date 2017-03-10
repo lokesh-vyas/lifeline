@@ -21,6 +21,8 @@ class AlertConfirmDonate: UIViewController {
     var preferredDateTime : String?
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //FIXME:- preferred date
         AlertConfirmDonateInteractor.sharedInstance.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(RequestView.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(RequestView.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -137,12 +139,14 @@ extension AlertConfirmDonate : ProtocolCalendar {
         print("valueSent :\(valueSent) && CheckString :\(CheckString)")
         
         if MarkerData.SharedInstance.PreferredDateTime != nil {
-            self.btnPreferredDateTime.setTitle(MarkerData.SharedInstance.PreferredDateTime, for: .normal)
+            
+            let lastSentDate = Util.SharedInstance.dateChangeForUser(dateString: MarkerData.SharedInstance.PreferredDateTime!)
+            self.btnPreferredDateTime.setTitle(lastSentDate, for: .normal)
         } else {
             self.btnPreferredDateTime.setTitle(valueSent, for: .normal)
         }
         
-        let dateForCamp = Util.SharedInstance.preferredDateToCamp()
+        let dateForCamp = Util.SharedInstance.preferredDateToCamp(selectedDate: valueSent)
         preferredDateTime = (MarkerData.SharedInstance.PreferredDateTime != nil) ? (MarkerData.SharedInstance.PreferredDateTime!) : dateForCamp
     }
     func FailureProtocolCalendar(valueSent: String) {
