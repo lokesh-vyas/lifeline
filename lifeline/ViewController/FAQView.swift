@@ -18,6 +18,7 @@ class FAQView: UIViewController,UIWebViewDelegate{
         self.navigationController?.completelyTransparentBar()
         HudBar.sharedInstance.showHudWithMessage(message: "Please wait..", view: self.view)
         webView.loadRequest(NSURLRequest(url: NSURL(string: "http://www.lifeline.services/faq")! as URL) as URLRequest)
+        NotificationCenter.default.addObserver(self, selector: #selector(FAQView.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
         // Do any additional setup after loading the view.
     }
     //MARK:- Back Button
@@ -34,5 +35,17 @@ class FAQView: UIViewController,UIWebViewDelegate{
     func webView(_ webView: UIWebView, didFailLoadWithError error: Error)
     {
          HudBar.sharedInstance.hideHudFormView(view: self.view)
+    }
+    //MARK:- Share Application URL With Activity
+    func PushNotificationView(_ notification: NSNotification)
+    {
+        let dict = notification.object as! Dictionary<String, Any>
+        
+        let notificationView:NotificationView = self.storyboard?.instantiateViewController(withIdentifier: "NotificationView") as! NotificationView
+        notificationView.UserJSON = dict
+        notificationView.modalPresentationStyle = .overCurrentContext
+        notificationView.modalTransitionStyle = .coverVertical
+        notificationView.view.backgroundColor = UIColor.clear
+        self.present(notificationView, animated: true, completion: nil)
     }
 }

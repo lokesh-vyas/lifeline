@@ -24,6 +24,7 @@ class MyDonorView: UIViewController {
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(HomeView.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
         tableViewDonor.contentInset = UIEdgeInsetsMake(-35, 0.0, -20, 0.0)
         if MyStringForCheck == "MyRequest"
         {

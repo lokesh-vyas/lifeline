@@ -14,10 +14,28 @@ protocol ProtocolRequestView {
     func succesfullyBloodRequest(success: Bool)
     func failedBloodRequest()
 }
+//MARK:- ProfileView Model
+class RequestViewModel
+{
+    static let SharedInstance : RequestViewModel = {
+        let instance = RequestViewModel()
+        return instance
+    }()
+    
+    var isContactNumber:Bool?
+    var isHospitalContactNumber:Bool?
+    var isPin:Bool?
 
+    var WhatYouNeed:String? = nil
+    var WhenYouNeed:String? = nil
+    var BloodGroup:String? = nil
+    var BloodUnit:String? = nil
+    var Latitude:String?
+    var Longitude:String?
+    var CentreID:String = ""
+}
 class RequestInterator
 {
-    
     class var SharedInstance : RequestInterator {
         struct Shared {
             static let Instance = RequestInterator()
@@ -50,5 +68,4 @@ class RequestInterator
             })
             
         }
-    }
-
+}

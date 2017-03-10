@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -1365,7 +1364,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Working Hours" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V56-8r-YCu">
-                                <rect key="frame" x="26" y="197" width="114" height="23"/>
+                                <rect key="frame" x="26" y="197" width="113.5" height="23"/>
                                 <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1411,7 +1410,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gop-6F-5D2">
-                                <rect key="frame" x="26" y="230" width="62" height="23"/>
+                                <rect key="frame" x="26" y="230" width="61.5" height="23"/>
                                 <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1423,7 +1422,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VF5-aL-b92">
-                                <rect key="frame" x="26" y="263" width="79" height="23"/>
+                                <rect key="frame" x="26" y="263" width="78.5" height="23"/>
                                 <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1441,7 +1440,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Campaign Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OR7-mt-Ovx">
-                                <rect key="frame" x="105" y="434" width="166" height="23"/>
+                                <rect key="frame" x="104.5" y="434" width="166" height="23"/>
                                 <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -2792,28 +2791,26 @@
                                                     <action selector="switchShareTapped:" destination="yrd-hD-PsX" eventType="valueChanged" id="Ft8-iw-ZGg"/>
                                                 </connections>
                                             </switch>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7P1-Aa-lGz">
-                                                <rect key="frame" x="258" y="5" width="40" height="40"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="facebook_btn_icon" translatesAutoresizingMaskIntoConstraints="NO" id="tbb-RE-D7e">
+                                                <rect key="frame" x="249" y="0.0" width="50" height="50"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="40" id="Oib-xi-CZo"/>
+                                                    <constraint firstAttribute="width" constant="50" id="EIw-be-6Aq"/>
+                                                    <constraint firstAttribute="height" constant="50" id="yz8-Q1-MvT"/>
                                                 </constraints>
-                                                <state key="normal" backgroundImage="facebook_btn_icon"/>
-                                                <connections>
-                                                    <action selector="btnFaceBookTapped:" destination="yrd-hD-PsX" eventType="touchUpInside" id="ri6-XO-0zr"/>
-                                                </connections>
-                                            </button>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.19579409249999999" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="gii-AP-mNZ" firstAttribute="leading" secondItem="U5j-4n-tMz" secondAttribute="leading" constant="8" id="0Ck-YF-V2a"/>
                                             <constraint firstAttribute="bottom" secondItem="fQk-5e-jfp" secondAttribute="bottom" constant="9" id="3Ir-1b-KXQ"/>
                                             <constraint firstAttribute="bottom" secondItem="gii-AP-mNZ" secondAttribute="bottom" constant="5" id="8b0-ij-AbS"/>
-                                            <constraint firstAttribute="bottom" secondItem="7P1-Aa-lGz" secondAttribute="bottom" constant="5" id="Owm-Jx-jIH"/>
                                             <constraint firstAttribute="trailing" secondItem="fQk-5e-jfp" secondAttribute="trailing" constant="20" id="RzO-s1-W9j"/>
                                             <constraint firstItem="fQk-5e-jfp" firstAttribute="top" secondItem="U5j-4n-tMz" secondAttribute="top" constant="10" id="SDx-gp-DxX"/>
+                                            <constraint firstItem="tbb-RE-D7e" firstAttribute="top" secondItem="U5j-4n-tMz" secondAttribute="top" id="U0M-BZ-nfD"/>
+                                            <constraint firstAttribute="bottom" secondItem="tbb-RE-D7e" secondAttribute="bottom" id="fVf-s6-sGx"/>
+                                            <constraint firstItem="tbb-RE-D7e" firstAttribute="leading" secondItem="gii-AP-mNZ" secondAttribute="trailing" constant="14" id="hxD-uH-0b2"/>
+                                            <constraint firstItem="fQk-5e-jfp" firstAttribute="leading" secondItem="tbb-RE-D7e" secondAttribute="trailing" constant="7" id="iUz-sR-kNT"/>
                                             <constraint firstItem="gii-AP-mNZ" firstAttribute="top" secondItem="U5j-4n-tMz" secondAttribute="top" constant="5" id="lwt-8t-DMh"/>
-                                            <constraint firstItem="7P1-Aa-lGz" firstAttribute="top" secondItem="U5j-4n-tMz" secondAttribute="top" constant="5" id="p1L-wi-Mfo"/>
-                                            <constraint firstItem="fQk-5e-jfp" firstAttribute="leading" secondItem="7P1-Aa-lGz" secondAttribute="trailing" constant="8" symbolic="YES" id="tfD-xq-gp8"/>
                                             <constraint firstAttribute="height" constant="50" id="xiL-2c-q63"/>
                                         </constraints>
                                     </view>
@@ -2898,6 +2895,7 @@
                         <outlet property="btnBloodUnit" destination="wge-wf-c4a" id="FHU-X6-7C1"/>
                         <outlet property="btnWhatYouNeed" destination="UM5-pu-tKE" id="mBw-lp-Kot"/>
                         <outlet property="btnWhenYouNeed" destination="0Bx-83-oKh" id="TG3-Mn-Nar"/>
+                        <outlet property="imgSocialShare" destination="tbb-RE-D7e" id="DKl-gc-mt6"/>
                         <outlet property="scrollViewRequest" destination="rpA-Rw-gpK" id="8Np-Xj-Dgu"/>
                         <outlet property="switchForAppeal" destination="fQk-5e-jfp" id="rsS-Cj-Ne5"/>
                         <outlet property="txtFieldContactNumber" destination="jV1-E5-yHu" id="uwx-7A-xV0"/>
@@ -2915,7 +2913,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sbM-CU-DFI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3556" y="1192"/>
+            <point key="canvasLocation" x="3556" y="1191.4542728635683"/>
         </scene>
         <!--Show Hospital In Map View-->
         <scene sceneID="pAa-ok-yDx">
