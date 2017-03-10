@@ -33,8 +33,10 @@ class MarkerIndividualDetails: UIViewController {
 
     @IBAction func btnToViewTapped(_ sender: Any) {
         //FIXME:- NavBAr ?
-//        let requestedTable = self.storyboard?.instantiateViewController(withIdentifier: "RequestedByIndividuals") as! RequestedByIndividuals
-//        self.present(requestedTable, animated: true, completion: nil)
+        let requestedTable = self.storyboard?.instantiateViewController(withIdentifier: "RequestedByIndividuals") as! RequestedByIndividuals
+        let navBar = UINavigationController.init(rootViewController:requestedTable)
+        navBar.completelyTransparentBar()
+        self.present(navBar, animated: true, completion: nil)
         
 
         

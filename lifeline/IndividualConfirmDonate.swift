@@ -23,6 +23,22 @@ class IndividualConfirmDonate: UIViewController {
 //    var requiredDetails = [String : Any]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for:  .default)
+        navigationController?.navigationBar.shadowImage     = UIImage()
+        navigationController?.navigationBar.isTranslucent   = true
+        view.backgroundColor          = UIColor.black.withAlphaComponent(0.2)
+        navigationController?.navigationBar.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+        navigationController?.navigationBar.barTintColor = UIColor.red.withAlphaComponent(0.2)
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        
+        let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
+        if statusBar.responds(to: #selector(setter: UIView.backgroundColor))
+        {
+            statusBar.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+        }
+
         IndividualConfirmDonateInteractor.sharedInstance.delegate = self
         ConfirmDonateInteractor.sharedInstance.delegateV = self
         
@@ -32,8 +48,7 @@ class IndividualConfirmDonate: UIViewController {
     
     @IBAction func btnBackTapped(_ sender: Any) {
 //        self.navigationController?.popViewController(animated: true)
-        let SWRevealView = self.storyboard!.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
-        self.present(SWRevealView, animated: true, completion: nil)
+            dismiss(animated: true, completion: nil)
         
     }
 
@@ -93,6 +108,7 @@ extension IndividualConfirmDonate : IndividualRequestDetailsProtocol {
     }
     func didFailGetRequestDetails() {
         print("<<didFail-GetRequestDetails>>")
+        HudBar.sharedInstance.showHudWithMessage(message: "No Internet Connection", view: self.view)
     }
 }
 
@@ -116,6 +132,7 @@ extension IndividualConfirmDonate : getVolunteerProtocol {
     
     func didFailGetVolunteerDetails() {
         print("<<didFail-GetVolunteerDetails>>")
+        HudBar.sharedInstance.showHudWithMessage(message: "No Internet Connection", view: self.view)
     }
 }
 

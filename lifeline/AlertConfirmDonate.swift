@@ -15,12 +15,44 @@ class AlertConfirmDonate: UIViewController {
     @IBOutlet weak var txtViewComment: UITextView!
     @IBOutlet weak var subViewAlert: UIView!
     @IBOutlet weak var btnPreferredDateTime: UIButton!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var alertBoxTopConstraint : NSLayoutConstraint?
+    
     var preferredDateTime : String?
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //FIXME:- preferred date
         AlertConfirmDonateInteractor.sharedInstance.delegate = self
- 
+        NotificationCenter.default.addObserver(self, selector: #selector(RequestView.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(RequestView.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+       
     }
+    
+    //MARK:- Keyboard Appear/Diappear
+    func keyboardWillShow(notification:NSNotification)
+    {
+        UIView.animate(withDuration: Double(0.5), animations: {
+            self.alertBoxTopConstraint?.constant = -60
+            self.view.layoutIfNeeded()
+        })
+    }
+    func keyboardWillHide(notification:NSNotification){
+        
+        UIView.animate(withDuration: Double(0.5), animations: {
+            self.alertBoxTopConstraint?.constant = 0
+            self.view.layoutIfNeeded()
+        })
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    
+
+    
 
     @IBAction func btnPreferredDateTapped(_ sender: Any) {
         
@@ -44,7 +76,7 @@ class AlertConfirmDonate: UIViewController {
     @IBAction func btnDonateTapped(_ sender: Any) {
         print("  WS must be called")
         
-        if MarkerData.SharedInstance.PreferredDateTime != "null" || preferredDateTime != nil {
+        if preferredDateTime != nil {
         HudBar.sharedInstance.showHudWithMessage(message: "Submitting...", view: self.view)
         let url = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.ConfirmDonate"
         //FIXME:- the request Body
@@ -54,7 +86,7 @@ class AlertConfirmDonate: UIViewController {
                                         ["ConfirmDonateDetails":
                                             ["LoginID": "114177301473189791455",
                                              "PrefferedDateTime": preferredDateTime!,
-                                                "ID": IDtoBeSent,
+                                             "ID": IDtoBeSent,
                                              "TypeOfOrg":"\(MarkerData.SharedInstance.markerData["TypeOfOrg"]!)",
                                              "Comment": CommentText
                                             ]]]
@@ -105,8 +137,16 @@ extension AlertConfirmDonate : ProtocolCalendar {
     
     func SuccessProtocolCalendar(valueSent: String, CheckString: String) {
         print("valueSent :\(valueSent) && CheckString :\(CheckString)")
-        self.btnPreferredDateTime.setTitle(valueSent, for: .normal)
-        let dateForCamp = Util.SharedInstance.preferredDateToCamp()
+        
+        if MarkerData.SharedInstance.PreferredDateTime != nil {
+            
+            let lastSentDate = Util.SharedInstance.dateChangeForUser(dateString: MarkerData.SharedInstance.PreferredDateTime!)
+            self.btnPreferredDateTime.setTitle(lastSentDate, for: .normal)
+        } else {
+            self.btnPreferredDateTime.setTitle(valueSent, for: .normal)
+        }
+        
+        let dateForCamp = Util.SharedInstance.preferredDateToCamp(selectedDate: valueSent)
         preferredDateTime = (MarkerData.SharedInstance.PreferredDateTime != nil) ? (MarkerData.SharedInstance.PreferredDateTime!) : dateForCamp
     }
     func FailureProtocolCalendar(valueSent: String) {

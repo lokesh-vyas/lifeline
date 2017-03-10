@@ -72,12 +72,31 @@ class Util
     }
     
     //MARK:-  Date For Camp
-    func preferredDateToCamp() -> String
+    func preferredDateToCamp(selectedDate : String) -> String
     {
-        let date = NSDate()
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
-        return dateFormatter.string(from: date as Date)
+        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
+        let date = dateFormatter.date(from: selectedDate)
+        
+
+        //        dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0) as TimeZone!
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.timeZone = NSTimeZone(name: "IST") as TimeZone!
+        let stringFromDate = dateFormatter.string(from: date!)
+        return stringFromDate
+    }
+    
+    //MARK:- date selected by user
+    func dateChangeForUser(dateString:String) -> String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZ" //2017-03-10T03:41:45.000+00:00
+        dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0) as TimeZone!
+        let dateObj = dateFormatter.date(from: dateString)
+        
+        dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0) as TimeZone!
+        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
+        return dateFormatter.string(from: dateObj!)
     }
 
     //MARK:- Color Chenge From Hex String

@@ -16,8 +16,11 @@ class RequestedByIndividuals: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.completelyTransparentBar()
         tblView.rowHeight = 100
-        tblView.headerView(forSection: 1)
+        tblView.backgroundColor = UIColor.clear
+        self.tblView.contentInset = UIEdgeInsetsMake(-35, 0, -20, 0);
+
         
     }
     
@@ -49,6 +52,7 @@ extension RequestedByIndividuals : UITableViewDataSource {
         cell.lblContactNumber.text = MarkerData.SharedInstance.IndividualsArray[indexPath.row]["CContactNumber"] as! String?
         cell.btnDonate.tag = indexPath.row
         cell.btnDonate.addTarget(self, action: #selector(RequestedByIndividuals.doTry(sender:)), for: .touchUpInside)
+        cell.backgroundColor = UIColor.lightGray
         return cell
     }
     func doTry(sender : UIButton) {
@@ -70,9 +74,6 @@ extension RequestedByIndividuals : UITableViewDelegate {
         
     }
     
-    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return -44
-    }
 
 }
 
