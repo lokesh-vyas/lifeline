@@ -125,8 +125,8 @@ class LoginView: UIViewController
     {
         HudBar.sharedInstance.hideHudFormView(view: self.view)
         let profileView = self.storyboard?.instantiateViewController(withIdentifier: "ProfileView")
-        let navigationBAR = UINavigationController(rootViewController: profileView!)
-        self.navigationController?.present(navigationBAR, animated: true, completion: nil)
+        let navigationController = UINavigationController.init(rootViewController: profileView!)
+        self.present(navigationController, animated: true, completion: nil)
     }
     //MARK:- G+ Login
     @IBAction func btnGoogleLoginTapped(_ sender: Any) {

@@ -25,12 +25,34 @@ class ConfirmDonate: UIViewController {
     @IBOutlet weak var VolunteerDetails: UILabel!
     @IBOutlet weak var lblCampDescription: UILabel!
     @IBOutlet weak var HospitalName: UILabel!
+    let nav = UINavigationController()
     
 //    var MarkerData.SharedInstance.markerData = [String:Any]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.completelyTransparentBar()
+        nav.completelyTransparentBar()
+//        navigationController?.navigationBar.barTintColor = UIColor.black.withAlphaComponent(0.2)
+//        navigationController?.navigationBar.backgroundColor = UIColor.red
+        
+//        self.nav.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+//        self.nav.navigationBar.shadowImage = UIImage()
+//        self.nav.navigationBar.isTranslucent = true
+//        self.nav.view.backgroundColor = UIColor.clear
+//        let navigationBar = UINavigationBar()
+//        navigationBar.setBackgroundImage(UIImage(), for:  .default)
+//        navigationBar.shadowImage     = UIImage()
+//        navigationBar.isTranslucent   = true
+//        view.backgroundColor          = UIColor.black.withAlphaComponent(0.2)
+//        navigationBar.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+//        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+//        
+//        let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
+//        if statusBar.responds(to: #selector(setter: UIView.backgroundColor))
+//        {
+//            statusBar.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+//        }
+        
         ConfirmDonateInteractor.sharedInstance.delegate = self
         ConfirmDonateInteractor.sharedInstance.delegateV = self
         
@@ -147,6 +169,7 @@ extension ConfirmDonate : ConfirmDonateProtocol {
     }
     func didFailGetCompaignDetails() {
         print("*****didFail-GetCompaignDetails******")
+        HudBar.sharedInstance.showHudWithMessage(message: "No Internet Connection", view: self.view)
     }
     
 }
@@ -168,5 +191,6 @@ extension ConfirmDonate : getVolunteerProtocol {
     }
     func didFailGetVolunteerDetails() {
         print("*****didFail-GetVolunteerDetails******")
+        HudBar.sharedInstance.showHudWithMessage(message: "No Internet Connection", view: self.view)
     }
 }

@@ -242,11 +242,10 @@ extension SignUpView : customLoginProtocol
             HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "User Login Successfully", view: self.view)
             
             HudBar.sharedInstance.hideHudFormView(view: self.view)
-            let profileView = self.storyboard?.instantiateViewController(withIdentifier: "ProfileView")
-            let navigationBAR = UINavigationController(rootViewController: profileView!)
-            self.navigationController?.present(navigationBAR, animated: true, completion: nil)
-          
             
+            let profileView = self.storyboard?.instantiateViewController(withIdentifier: "ProfileView")
+            let navigationController = UINavigationController.init(rootViewController: profileView!)
+            self.present(navigationController, animated: true, completion: nil)
         }
         else
         {

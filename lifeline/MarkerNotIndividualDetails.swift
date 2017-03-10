@@ -13,7 +13,6 @@ import UIKit
 class MarkerNotIndividualDetails: UIViewController {
 
     @IBOutlet weak var lblHead: UILabel!
-    
     @IBOutlet weak var btnDonate: UIButton!
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblTiming: UILabel!

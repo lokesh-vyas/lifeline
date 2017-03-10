@@ -13,6 +13,7 @@ import GoogleSignIn
 import GoogleMaps
 import GooglePlaces
 import GooglePlacePicker
+import SwiftyJSON
 
 //Notification
 import UserNotifications
@@ -189,7 +190,9 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
     // Receive displayed notifications for iOS 10 devices.
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 willPresent notification: UNNotification,
-                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
+    {
+        
         let userInfo = notification.request.content.userInfo
         // Print message ID.
         if let messageID = userInfo[gcmMessageIDKey]
@@ -199,7 +202,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         
         // Print full message.
         print(userInfo)
-       // print(JSON(userInfo))
+        print(JSON(userInfo))
         
         // Change this to your preferred presentation option
         completionHandler([])
@@ -216,6 +219,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         
         // Print full message.
         print(userInfo)
+     
         
         completionHandler()
     }

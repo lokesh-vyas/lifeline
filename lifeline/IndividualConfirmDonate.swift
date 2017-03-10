@@ -23,6 +23,7 @@ class IndividualConfirmDonate: UIViewController {
 //    var requiredDetails = [String : Any]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.completelyTransparentBar()
         IndividualConfirmDonateInteractor.sharedInstance.delegate = self
         ConfirmDonateInteractor.sharedInstance.delegateV = self
         
@@ -32,8 +33,7 @@ class IndividualConfirmDonate: UIViewController {
     
     @IBAction func btnBackTapped(_ sender: Any) {
 //        self.navigationController?.popViewController(animated: true)
-        let SWRevealView = self.storyboard!.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
-        self.present(SWRevealView, animated: true, completion: nil)
+            dismiss(animated: true, completion: nil)
         
     }
 
@@ -93,6 +93,7 @@ extension IndividualConfirmDonate : IndividualRequestDetailsProtocol {
     }
     func didFailGetRequestDetails() {
         print("<<didFail-GetRequestDetails>>")
+        HudBar.sharedInstance.showHudWithMessage(message: "No Internet Connection", view: self.view)
     }
 }
 
@@ -116,6 +117,7 @@ extension IndividualConfirmDonate : getVolunteerProtocol {
     
     func didFailGetVolunteerDetails() {
         print("<<didFail-GetVolunteerDetails>>")
+        HudBar.sharedInstance.showHudWithMessage(message: "No Internet Connection", view: self.view)
     }
 }
 
