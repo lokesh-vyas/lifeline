@@ -10,7 +10,7 @@ import UIKit
 
 protocol ProtocolBloodInfo
 {
-    func SuccessProtocolBloodInfo(valueSent: String)
+    func SuccessProtocolBloodInfo(valueSent: String,CheckString:String)
     func FailureProtocolBloodInfo(valueSent: String)
 }
 
@@ -32,10 +32,8 @@ class BloodInfoView: UIViewController {
     //MARK:- btnDoneTapped
     @IBAction func btnDoneTapped(_ sender: Any) {
         let row = pickerViewBloodInfo.selectedRow(inComponent: 0);
-        print("value %d", row)
         pickerView(pickerViewBloodInfo, didSelectRow: row, inComponent: 0)
-        delegate?.SuccessProtocolBloodInfo(valueSent: self.pickercheck)
-        delegate?.FailureProtocolBloodInfo(valueSent: "Fail")
+        delegate?.SuccessProtocolBloodInfo(valueSent: self.pickercheck,CheckString:bloodInfoString)
         self.dismiss(animated: true, completion: nil)
     }
 //MARK:- btnCancelTapped
@@ -60,7 +58,6 @@ extension BloodInfoView : UIPickerViewDataSource,UIPickerViewDelegate
     //MARK:- Delegate
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
         
-        print("pickercheck row",row)
         pickercheck = self.pickerArray[row]
         
     }

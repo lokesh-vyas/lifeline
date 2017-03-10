@@ -28,9 +28,14 @@ class NotificationView: UIViewController {
         self.lblTitleText.text = UserJSON["Title"] as? String
         self.lblMessageText.text = UserJSON["Message"] as? String
     }
-    @IBAction func btnCancelTapped(_ sender: Any) {
+    @IBAction func btnCancelTapped(_ sender: Any)
+    {
         self.dismiss(animated: true, completion: nil)
     }
-    @IBAction func btnViewTapped(_ sender: Any) {
+    @IBAction func btnViewTapped(_ sender: Any)
+    {
+        if (UserJSON["Type"] as? String == "1")
+        {
+        }
     }
 }

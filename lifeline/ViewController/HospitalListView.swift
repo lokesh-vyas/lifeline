@@ -77,6 +77,10 @@ extension HospitalListView:UITableViewDelegate,UITableViewDataSource
             var nib:Array = Bundle.main.loadNibNamed("HospitalListCell", owner: self, options: nil)!
             cell = nib[0] as? HospitalListCell
         }
+        if searchFilterArray.count < 1
+        {
+            return cell!
+        }
         let hopitalSearchDict = searchFilterArray[indexPath.row]
         cell?.lblHospitalName.text = hopitalSearchDict["Name"].string
         cell?.lblCityName.text = hopitalSearchDict["AddressLine"].string
@@ -93,16 +97,38 @@ extension HospitalListView:UITableViewDelegate,UITableViewDataSource
     {
         let hospitalSearchDict = searchFilterArray[indexPath.row]
         let hospitalModel:HospitalListModel = HospitalListModel()
-        hospitalModel.CentreID = hospitalSearchDict["CenterID"].string
+        
+        if  hospitalSearchDict["CenterID"].string != nil
+        {
+            hospitalModel.CentreID = hospitalSearchDict["CenterID"].string!
+        }
+        else
+        {
+            let centreID = hospitalSearchDict["CenterID"].int!
+            hospitalModel.CentreID = String(centreID)
+        }
+        
         hospitalModel.AddressLine = hospitalSearchDict["AddressLine"].string
         hospitalModel.City = hospitalSearchDict["City"].string
         hospitalModel.HospitalName = hospitalSearchDict["Name"].string
         hospitalModel.PINCode = hospitalSearchDict["PINCode"].string
+        
         hospitalModel.HospitalContactNumber = hospitalSearchDict["ContactNumber"].int
         hospitalModel.Landmark = hospitalSearchDict["LandMark"].string
-        hospitalModel.Latitude = hospitalSearchDict["Latitude"].string
-        hospitalModel.Longitude = hospitalSearchDict["Longitude"].string
-        
+        if hospitalSearchDict["Latitude"].string != nil
+        {
+            hospitalModel.Latitude = hospitalSearchDict["Latitude"].string
+        }else
+        {
+            hospitalModel.Latitude = String(describing: hospitalSearchDict["Latitude"].doubleValue)
+        }
+        if  hospitalSearchDict["Longitude"].string != nil {
+            hospitalModel.Longitude = hospitalSearchDict["Longitude"].string
+        }
+        else
+        {
+            hospitalModel.Longitude = String(describing: hospitalSearchDict["Longitude"].doubleValue)
+        }
         delegate?.SuccessHospitalListCompletData(ListData: hospitalModel)
         self.dismiss(animated: true, completion: nil)
     }

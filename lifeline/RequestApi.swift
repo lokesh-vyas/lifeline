@@ -12,7 +12,7 @@ import Alamofire
 
 class RequestApi
 {
-    var LoginId = "114177301473189791455"
+    var LoginId = ""
     var bloodGroup = ""
     var whatYouNeed = ""
     var whenYouNeed = ""
@@ -72,7 +72,7 @@ class RequestApi
     
     func makeParams() -> Parameters
     {
-        let parameters:Parameters = ["BloodRequirementRequest":["BloodRequirementDetails":[["LoginID":self.LoginId],["BloodGroup": self.bloodGroup],["DonationType":self.whatYouNeed],["WhenNeeded":self.whenYouNeed],["NumUnits":self.units],["PatientName":self.patientName],["ContactPerson":self.contactPerson],["ContactNumber":self.contactNumber],["DoctorName":self.doctorName],["DoctorContact":self.DoctorContact],["DoctorEmailID":self.DoctorEmailID],["CenterID":self.hospitalbloodbankID],["CollectionCentreName":hospitalbloodbankname],["CenterContactNo":self.contactNumberHospitalbloodbankname],["AddressLine":self.hospitalAddress],["City":self.city],["State":self.state],["LandMark":self.landMark],["Latitude":self.latitude],["Longitude":self.longitude],["PINCode":self.pinCode],["Country":self.country],["PersonalAppeal":self.PersonalAppeal],["SharedInSocialMedia":self.SharedInSocialMedia]]]]
+        let parameters:Parameters = ["BloodRequirementRequest":["BloodRequirementDetails":["LoginID":self.LoginId,"BloodGroup": self.bloodGroup,"DonationType":self.whatYouNeed,"WhenNeeded":self.whenYouNeed,"NumUnits":self.units,"PatientName":self.patientName,"ContactPerson":self.contactPerson,"ContactNumber":self.contactNumber,"DoctorName":self.doctorName,"DoctorContact":self.DoctorContact,"DoctorEmailID":self.DoctorEmailID,"CenterID":self.hospitalbloodbankID,"CollectionCentreName":hospitalbloodbankname,"CenterContactNo":self.contactNumberHospitalbloodbankname,"AddressLine":self.hospitalAddress,"City":self.city,"State":self.state,"LandMark":self.landMark,"Latitude":self.latitude,"Longitude":self.longitude,"PINCode":self.pinCode,"Country":self.country,"PersonalAppeal":self.PersonalAppeal,"SharedInSocialMedia":self.SharedInSocialMedia]]]
         
         return parameters
     }
