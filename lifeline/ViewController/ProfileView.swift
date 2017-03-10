@@ -58,11 +58,25 @@ class ProfileView: UIViewController
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(ProfileView.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ProfileView.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ProfileView.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
         self.navigationController?.completelyTransparentBar()
     }
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
+    //MARK:- Share Application URL With Activity
+    func PushNotificationView(_ notification: NSNotification)
+    {
+        let dict = notification.object as! Dictionary<String, Any>
+        
+        let notificationView:NotificationView = self.storyboard?.instantiateViewController(withIdentifier: "NotificationView") as! NotificationView
+        notificationView.UserJSON = dict
+        notificationView.modalPresentationStyle = .overCurrentContext
+        notificationView.modalTransitionStyle = .coverVertical
+        notificationView.view.backgroundColor = UIColor.clear
+        self.present(notificationView, animated: true, completion: nil)
+    }
+   
     //MARK:- Show Data On view
     func showDataOnView(profileData:ProfileData)
     {
@@ -205,6 +219,7 @@ class ProfileView: UIViewController
     @IBAction func profileSubmitAction(_ sender: Any)
     {
         self.view.endEditing(true)
+        
         if ProfileViewModel.SharedInstance.isEmail == false
         {
             self.view.makeToast("Invalid Email", duration: 2.0, position: .bottom)
@@ -215,19 +230,10 @@ class ProfileView: UIViewController
             self.view.makeToast("Invalid Contact Number", duration: 2.0, position: .bottom)
             return
         }
-        if ProfileViewModel.SharedInstance.DOBstring == nil
-        {
-            self.view.makeToast("Please select DOB", duration: 2.0, position: .bottom)
-            return
-        }
+       
         if ProfileViewModel.SharedInstance.BloodGroup == nil
         {
             self.view.makeToast("Please select Blood Group", duration: 2.0, position: .bottom)
-            return
-        }
-        if ProfileViewModel.SharedInstance.LastDonationStrin == nil
-        {
-            self.view.makeToast("Please select Last Donation Date", duration: 2.0, position: .bottom)
             return
         }
         if (txtHomeAddressPINCode.text?.characters.count)! > 1
@@ -276,6 +282,14 @@ class ProfileView: UIViewController
             if self.txtWorkAddressPINCode.text?.characters.count == 0
             {
                 self.txtWorkAddressPINCode.text! = ""
+            }
+            if ProfileViewModel.SharedInstance.LastDonationStrin == nil
+            {
+               ProfileViewModel.SharedInstance.LastDonationStrin = ""
+            }
+            if ProfileViewModel.SharedInstance.DOBstring == nil
+            {
+               ProfileViewModel.SharedInstance.DOBstring = ""
             }
             
             let profileData = ProfileData(Name: self.txtName.text!, EmailID: self.txtEmailID.text!, ContactNumber: self.txtContactNumber.text!, DateOfBirth: ProfileViewModel.SharedInstance.DOBstring!, Age: self.txtAge.text!, BloodGroup: ProfileViewModel.SharedInstance.BloodGroup!, LastDonationDate: ProfileViewModel.SharedInstance.LastDonationStrin!, HomeAddressLine: self.txtHomeAddressLine.text!, HomeAddressCity: self.txtHomeAddressCity.text!, HomeAddressPINCode: self.txtHomeAddressPINCode.text!, HomeAddressLatitude: "0", HomeAddressLongitude: "0", WorkAddressLine: self.txtWorkAddressLine.text!, WorkAddressCity: self.txtWorkAddressCity.text!, WorkAddressPINCode: self.txtWorkAddressPINCode.text!, WorkAddressLatitude: "0", WorkAddressLongitude: "0")
@@ -355,9 +369,29 @@ class ProfileView: UIViewController
     {
         let LoginID:String
             = UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!
+        let DateofBirth:String
+        let LastDontaionDate:String
+        
+        if ProfileViewModel.SharedInstance.LastDonationStrin == ""
+        {
+            LastDontaionDate = ""
+        }
+        else
+        {
+            LastDontaionDate =  Util.SharedInstance.dateChangeForServerForProfile(dateString: ProfileViewModel.SharedInstance.LastDonationStrin!)
+        }
+        if ProfileViewModel.SharedInstance.DOBstring == ""
+        {
+            DateofBirth = ""
+        }else
+        {
+           DateofBirth =  Util.SharedInstance.dateChangeForServerForProfile(dateString: ProfileViewModel.SharedInstance.DOBstring!)
+        }
+        print(DateofBirth)
+        print(LastDontaionDate)
         
         let AuthProvider:String = "Custom"
-        let customer : Dictionary = ["ProfileRegistrationRequest":["ProfileDetails":["LoginId":LoginID,"Name":self.txtName.text!,"DateofBirth":Util.SharedInstance.dateChangeForServerForProfile(dateString: ProfileViewModel.SharedInstance.DOBstring!),"Age":self.txtAge.text!,"ContactNumber": self.txtContactNumber.text!, "BloodGroup": ProfileViewModel.SharedInstance.BloodGroup!,"EmailId": self.txtEmailID.text!,"AuthProvider": AuthProvider,"LastDonationDate": Util.SharedInstance.dateChangeForServerForProfile(dateString: ProfileViewModel.SharedInstance.LastDonationStrin!),"AddressDetails": myAddressDetail]]]
+        let customer : Dictionary = ["ProfileRegistrationRequest":["ProfileDetails":["LoginId":LoginID,"Name":self.txtName.text!,"DateofBirth":DateofBirth,"Age":self.txtAge.text!,"ContactNumber": self.txtContactNumber.text!, "BloodGroup": ProfileViewModel.SharedInstance.BloodGroup!,"EmailId": self.txtEmailID.text!,"AuthProvider": AuthProvider,"LastDonationDate": LastDontaionDate,"AddressDetails": myAddressDetail]]]
         
         HudBar.sharedInstance.showHudWithMessage(message: "Please wait..", view: self.view)
         ProfileViewInteractor.SharedInstance.delegateProfile = self
@@ -483,7 +517,7 @@ extension ProfileView:ProtocolCalendar
 //MARK:- ProtocolBloodInfo
 extension ProfileView:ProtocolBloodInfo
 {
-    func SuccessProtocolBloodInfo(valueSent: String)
+    func SuccessProtocolBloodInfo(valueSent: String,CheckString:String)
     {
         ProfileViewModel.SharedInstance.BloodGroup = valueSent
         btnBloodGroup.setTitle(valueSent, for: .normal)

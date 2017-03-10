@@ -14,6 +14,7 @@ class ChangePasswordView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.completelyTransparentBar()
+        NotificationCenter.default.addObserver(self, selector: #selector(ChangePasswordView.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
         // Do any additional setup after loading the view.
     }
     //MARK:- Back Button
@@ -21,6 +22,18 @@ class ChangePasswordView: UIViewController {
     {
         let SWRevealView = self.storyboard!.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
         self.navigationController?.present(SWRevealView, animated: true, completion: nil)
+    }
+    //MARK:- Share Application URL With Activity
+    func PushNotificationView(_ notification: NSNotification)
+    {
+        let dict = notification.object as! Dictionary<String, Any>
+        
+        let notificationView:NotificationView = self.storyboard?.instantiateViewController(withIdentifier: "NotificationView") as! NotificationView
+        notificationView.UserJSON = dict
+        notificationView.modalPresentationStyle = .overCurrentContext
+        notificationView.modalTransitionStyle = .coverVertical
+        notificationView.view.backgroundColor = UIColor.clear
+        self.present(notificationView, animated: true, completion: nil)
     }
 
 
