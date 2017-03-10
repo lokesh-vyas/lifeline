@@ -27,6 +27,7 @@ class HospitalListView: UIViewController
     {
         super.viewDidLoad()
         self.searchTableView.isHidden = true
+        self.searchTableView.rowHeight = UITableViewAutomaticDimension
         self.lblListNotAvailable.isHidden = true
         searchBarText.becomeFirstResponder()
         searchTableView.contentInset = UIEdgeInsetsMake(-35, 0.0, +195, 0.0)
@@ -80,6 +81,13 @@ extension HospitalListView:UITableViewDelegate,UITableViewDataSource
         cell?.lblHospitalName.text = hopitalSearchDict["Name"].string
         cell?.lblCityName.text = hopitalSearchDict["AddressLine"].string
         return cell!
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return UITableViewAutomaticDimension
+    }
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {

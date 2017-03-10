@@ -147,7 +147,9 @@ extension MyRequestClose:UIGestureRecognizerDelegate
 //MARK:- MyRequestProtocol
 extension MyRequestClose:MyRequestProtocol
 {
-    func SuccessMyRequest(JSONResponse: JSON)
+   
+
+    func SuccessMyRequest(JSONResponse: JSON, Sucess: Bool)
     {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "MyRequestServiceCallUpdate"), object: nil)
         HudBar.sharedInstance.hideHudFormView(view: self.view)

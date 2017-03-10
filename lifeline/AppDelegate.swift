@@ -15,6 +15,7 @@ import GooglePlaces
 import GooglePlacePicker
 import SwiftyJSON
 
+
 //Notification
 import UserNotifications
 import Firebase
@@ -82,10 +83,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
         }
+        let userINFO = JSON(userInfo)
         
-        // Print full message.
-        print(userInfo)
+        let type:String
+        if userINFO["gcm.notification.Type"].string != nil
+        {
+            type = userINFO["gcm.notification.Type"].string!
+        }
+        else
+        {
+            type = String(describing: userINFO["gcm.notification.Type"].int)
+        }
         
+        let myDict = ["Title": userINFO["aps"]["alert"]["title"].string, "Message":userINFO["aps"]["alert"]["body"].string,"Type":type,"ID":""]
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PushNotification"), object:myDict)
+        
+       
         completionHandler(UIBackgroundFetchResult.newData)
     }
     func tokenRefreshNotification(_ notification: Notification) {
@@ -192,20 +205,15 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
     {
-        
-        let userInfo = notification.request.content.userInfo
-        // Print message ID.
-        if let messageID = userInfo[gcmMessageIDKey]
-        {
-            print("Message ID: \(messageID)")
-        }
-        
-        // Print full message.
-        print(userInfo)
-        print(JSON(userInfo))
-        
-        // Change this to your preferred presentation option
-        completionHandler([])
+//        self.window = UIWindow(frame: UIScreen.main.bounds)
+//        let userInfo = notification.request.content.userInfo
+//        // Print message ID.
+//        if let messageID = userInfo[gcmMessageIDKey]
+//        {
+//            print("Message ID: \(messageID)")
+//        }
+//        // Change this to your preferred presentation option
+//        completionHandler([])
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter,
@@ -216,11 +224,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
         }
-        
-        // Print full message.
-        print(userInfo)
-     
-        
+  
         completionHandler()
     }
 }

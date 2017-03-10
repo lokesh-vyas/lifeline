@@ -257,7 +257,9 @@ extension MyDonorView:UITableViewDelegate,UITableViewDataSource
 //MARK:- MyRequestProtocol
 extension MyDonorView:MyRequestProtocol
 {
-    func SuccessMyRequest(JSONResponse: JSON)
+    
+
+    func SuccessMyRequest(JSONResponse: JSON, Sucess: Bool)
     {
         HudBar.sharedInstance.hideHudFormView(view: self.view)
         var dataArray = JSONResponse["MyRequestsResponse"]["ResponseDetails"]
