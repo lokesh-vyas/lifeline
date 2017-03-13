@@ -25,36 +25,25 @@ class ConfirmDonate: UIViewController {
     @IBOutlet weak var VolunteerDetails: UILabel!
     @IBOutlet weak var lblCampDescription: UILabel!
     @IBOutlet weak var HospitalName: UILabel!
-    let nav = UINavigationController()
+    var ID = String()
     
 //    var MarkerData.SharedInstance.markerData = [String:Any]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        nav.completelyTransparentBar()
-//        navigationController?.navigationBar.barTintColor = UIColor.black.withAlphaComponent(0.2)
-//        navigationController?.view.backgroundColor = UIColor.clear
-      
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for:  .default)
-        navigationController?.navigationBar.shadowImage     = UIImage()
-        navigationController?.navigationBar.isTranslucent   = true
-        view.backgroundColor          = UIColor.black.withAlphaComponent(0.2)
-        navigationController?.navigationBar.backgroundColor = UIColor.black.withAlphaComponent(0.2)
-        navigationController?.navigationBar.barTintColor = UIColor.red.withAlphaComponent(0.2)
-        navigationController?.navigationBar.isTranslucent = true
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
-        
-        let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
-        if statusBar.responds(to: #selector(setter: UIView.backgroundColor))
-        {
-            statusBar.backgroundColor = UIColor.black.withAlphaComponent(0.2)
-        }
-        
+        self.navigationController?.completelyTransparentBar()
         ConfirmDonateInteractor.sharedInstance.delegate = self
-        ConfirmDonateInteractor.sharedInstance.delegateV = self
         
         //MARK:- Invokes to add properties on controller
         self.confirmDonateProperties()
+        
+        //MARK:- Either coming from APN or Back
+        if MarkerData.SharedInstance.isNotIndividualAPN == false || MarkerData.SharedInstance.isIndividualAPN == false {
+            //local
+            ID = (MarkerData.SharedInstance.markerData["ID"] as! String?)!
+        } else {
+            //Through APN
+        }
     
     }
     
@@ -75,35 +64,40 @@ class ConfirmDonate: UIViewController {
         var whichID = String()
         var idValue = String()
         MarkerData.SharedInstance.oneRequestOfDonate["CID"] = nil
+        
         if MarkerData.SharedInstance.markerData["TypeOfOrg"] as! String? == "1" {
             if MarkerData.SharedInstance.markerData["IndividualDetails"] as! String != "null" { // Individual
                 whichID = "RequestID"
-                idValue = (MarkerData.SharedInstance.markerData["ID"] as! String?)!
             } else { // Hospital
                 whichID = "CenterID"
-                idValue = (MarkerData.SharedInstance.markerData["ID"] as! String?)!
             }
             
         } else if MarkerData.SharedInstance.markerData["TypeOfOrg"] as! String? == "2" { // Camp
             whichID = "CampaignID"
-            idValue = (MarkerData.SharedInstance.markerData["ID"] as! String?)!
+            
         }
-        let strV = "http://demo.frontman.isteer.com:8284/services/GetVolunteerList"
+        idValue = ID
+//        let strV = "http://demo.frontman.isteer.com:8284/services/GetVolunteerList"
         //FIXME:- LoginID
-        let volDict = [
-            "GetVolunteerListRequest": [
-                "RequestDetails": [
-                    "LoginID":"114177301473189791455",
-                    "\(whichID)":"\(idValue)"         //"RequestID":"","CenterID":""
-                    
-                ]]]
-
-        ConfirmDonateInteractor.sharedInstance.getVolunteerDetails(urlString: strV, params: volDict)
-        let alertConfirm = self.storyboard?.instantiateViewController(withIdentifier: "AlertConfirmDonate") as! AlertConfirmDonate
-        alertConfirm.modalPresentationStyle = .overCurrentContext
-        alertConfirm.view.backgroundColor = UIColor.clear
-        //
-        present(alertConfirm, animated: true, completion: nil)
+        let volDict = ["GetVolunteerListRequest": [
+                                        "RequestDetails": [
+                                        "LoginID" : "\(UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!)",
+                                        "\(whichID)":"\(idValue)"
+                    ]]]
+        
+        ConfirmDonateInteractor.sharedInstance.delegateV = self
+        ConfirmDonateInteractor.sharedInstance.getVolunteerDetails(urlString: URLList.LIFELINE_Get_VolunteerList.rawValue, params: volDict)
+        
+        //MARK:- Below Age 18
+        let data = UserDefaults.standard.object(forKey: "ProfileData")
+        if data != nil {
+            let profileData = NSKeyedUnarchiver.unarchiveObject(with: data as! Data) as! ProfileData
+            if Int(profileData.Age)! < 18 {
+                    let alert = UIAlertController(title: "Warning", message: "You're under Age", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    present(alert, animated: true, completion: nil)
+                }
+        }
     }
     
     func confirmDonateProperties() {
@@ -118,16 +112,16 @@ class ConfirmDonate: UIViewController {
         
         if MarkerData.SharedInstance.markerData["TypeOfOrg"] as! String? == "2" { // this is camp
             
-            let urlGetCampDetails = "http://demo.frontman.isteer.com:8284/services/LifeLine.GetCampaignDetails"
+//            let urlGetCampDetails = "http://demo.frontman.isteer.com:8284/services/LifeLine.GetCampaignDetails"
             //FIXME:- LoginID
             let bodyGetCampDetails = ["CampaignDetailsRequest" : [
-                "RequestDetails" : [
-                    "LoginID": "114177301473189791455",
-                    "CampaignID": MarkerData.SharedInstance.markerData["ID"] as! String?
-                ]]]
-            //MARK:- GET COMPAIGN DETAILS
-            ConfirmDonateInteractor.sharedInstance.getCompaignDetails(urlString: urlGetCampDetails, params: bodyGetCampDetails)
+                                                    "RequestDetails" : [
+                                                            "LoginID": "\(UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!)",
+                                                            "CampaignID": ID
+                                            ]]]
             
+            //MARK:- GET COMPAIGN DETAILS
+            ConfirmDonateInteractor.sharedInstance.getCompaignDetails(urlString: URLList.GET_CAMPAGIN_DETAILS.rawValue, params: bodyGetCampDetails)
             HospitalName.text = "Contact Name"
             Email.isHidden = false
             lblEmailID.isHidden = false
@@ -163,10 +157,11 @@ extension ConfirmDonate : ConfirmDonateProtocol {
         self.lblCampDescription.text = String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["AdditionalInfo"])
         
         
+        
     }
     func didFailGetCompaignDetails() {
         print("*****didFail-GetCompaignDetails******")
-        HudBar.sharedInstance.showHudWithMessage(message: "No Internet Connection", view: self.view)
+//        HudBar.sharedInstance.showHudWithMessage(message: "No Internet Connection", view: self.view)
     }
     
 }
@@ -180,14 +175,20 @@ extension ConfirmDonate : getVolunteerProtocol {
             MarkerData.SharedInstance.PreferredDateTime = nil
             MarkerData.SharedInstance.CommentLines = nil
             
-        }else{
-            MarkerData.SharedInstance.PreferredDateTime = String(describing: jsonArray["GetVolunteerListsReponse"]["ResponseDetails"]["PreferredDateTime"])
+        } else {
+            let tempStr = String(describing: jsonArray["GetVolunteerListsReponse"]["ResponseDetails"]["PreferredDateTime"])
+            MarkerData.SharedInstance.PreferredDateTime = Util.SharedInstance.dateChangeForUser(dateString: tempStr)
             MarkerData.SharedInstance.CommentLines = String(describing: jsonArray["GetVolunteerListsReponse"]["ResponseDetails"]["Comment"])
             
         }
+        
+        let alertConfirm = self.storyboard?.instantiateViewController(withIdentifier: "AlertConfirmDonate") as! AlertConfirmDonate
+        alertConfirm.modalPresentationStyle = .overCurrentContext
+        alertConfirm.view.backgroundColor = UIColor.clear
+        present(alertConfirm, animated: true, completion: nil)
     }
     func didFailGetVolunteerDetails() {
         print("*****didFail-GetVolunteerDetails******")
-        HudBar.sharedInstance.showHudWithMessage(message: "No Internet Connection", view: self.view)
+//        HudBar.sharedInstance.showHudWithMessage(message: "No Internet Connection", view: self.view)
     }
 }

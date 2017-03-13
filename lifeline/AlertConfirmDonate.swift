@@ -19,6 +19,8 @@ class AlertConfirmDonate: UIViewController {
     @IBOutlet weak var alertBoxTopConstraint : NSLayoutConstraint?
     
     var preferredDateTime : String?
+    var lastSentDate : String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,9 +28,12 @@ class AlertConfirmDonate: UIViewController {
         AlertConfirmDonateInteractor.sharedInstance.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(RequestView.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(RequestView.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        
-       
-    }
+        if MarkerData.SharedInstance.CommentLines != nil && MarkerData.SharedInstance.PreferredDateTime != nil {
+            
+            self.btnPreferredDateTime.setTitle(MarkerData.SharedInstance.PreferredDateTime, for: .normal)
+            self.txtViewComment.text = MarkerData.SharedInstance.CommentLines
+        }
+   }
     
     //MARK:- Keyboard Appear/Diappear
     func keyboardWillShow(notification:NSNotification)
@@ -84,7 +89,7 @@ class AlertConfirmDonate: UIViewController {
             let CommentText = (MarkerData.SharedInstance.CommentLines != nil) ? MarkerData.SharedInstance.CommentLines! : self.txtViewComment.text!
         let collectedParameters = ["ConfirmDonateRequest":
                                         ["ConfirmDonateDetails":
-                                            ["LoginID": "114177301473189791455",
+                                            ["LoginID": UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!,
                                              "PrefferedDateTime": preferredDateTime!,
                                              "ID": IDtoBeSent,
                                              "TypeOfOrg":"\(MarkerData.SharedInstance.markerData["TypeOfOrg"]!)",
@@ -137,17 +142,16 @@ extension AlertConfirmDonate : ProtocolCalendar {
     
     func SuccessProtocolCalendar(valueSent: String, CheckString: String) {
         print("valueSent :\(valueSent) && CheckString :\(CheckString)")
+        btnPreferredDateTime.setTitle(valueSent, for: .normal) //15/03/2017 03:14
         
-        if MarkerData.SharedInstance.PreferredDateTime != nil {
-            
-            let lastSentDate = Util.SharedInstance.dateChangeForUser(dateString: MarkerData.SharedInstance.PreferredDateTime!)
-            self.btnPreferredDateTime.setTitle(lastSentDate, for: .normal)
-        } else {
-            self.btnPreferredDateTime.setTitle(valueSent, for: .normal)
-        }
+        let dateForCamp = Util.SharedInstance.preferredDateToCamp(selectedDate: valueSent) //yyyy-MM-dd HH:mm:ss
         
-        let dateForCamp = Util.SharedInstance.preferredDateToCamp(selectedDate: valueSent)
-        preferredDateTime = (MarkerData.SharedInstance.PreferredDateTime != nil) ? (MarkerData.SharedInstance.PreferredDateTime!) : dateForCamp
+        //To send in the body //FIXME:- not changed
+        preferredDateTime = (MarkerData.SharedInstance.PreferredDateTime != nil) ? Util.SharedInstance.preferredDateToCamp(selectedDate: MarkerData.SharedInstance.PreferredDateTime!) : dateForCamp
+        
+        MarkerData.SharedInstance.CommentLines = txtViewComment.text
+        MarkerData.SharedInstance.PreferredDateTime = valueSent
+        
     }
     func FailureProtocolCalendar(valueSent: String) {
         print("CALENDER is FAILED")
