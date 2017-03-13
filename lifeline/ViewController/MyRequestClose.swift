@@ -147,31 +147,17 @@ extension MyRequestClose:UIGestureRecognizerDelegate
 //MARK:- MyRequestProtocol
 extension MyRequestClose:MyRequestProtocol
 {
-   
-
     func SuccessMyRequest(JSONResponse: JSON, Sucess: Bool)
     {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "MyRequestServiceCallUpdate"), object: nil)
         HudBar.sharedInstance.hideHudFormView(view: self.view)
         HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Your Request has been closed", view: self.view)
-        if StringForCheckView == "MyRequest"
-        {
-            let deadlineTime = DispatchTime.now() + .seconds(2)
-            DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute:
-                {
-                    self.dismiss(animated: true, completion: nil)
-            })
-        }
-        else
-        {
-            let deadlineTime = DispatchTime.now() + .seconds(2)
-            DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute:
-                {
-                    let SWRevealView = self.storyboard!.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
-                    self.navigationController?.present(SWRevealView, animated: true, completion: nil)
-            })
-        }
-        
+        let deadlineTime = DispatchTime.now() + .seconds(2)
+        DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute:
+            {
+                let SWRevealView = self.storyboard!.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
+                self.navigationController?.present(SWRevealView, animated: true, completion: nil)
+        })
     }
     func FailMyRequest()
     {

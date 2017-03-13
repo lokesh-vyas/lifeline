@@ -58,17 +58,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // Fallback on earlier versions
         }
         
-
-        
-        if #available(iOS 10.0, *)
-        {
+       // [START register_for_notifications]
+        if #available(iOS 10.0, *) {
+            // For iOS 10 display notification (sent via APNS)
+            UNUserNotificationCenter.current().delegate = self
+            
             let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
             UNUserNotificationCenter.current().requestAuthorization(
                 options: authOptions,
                 completionHandler: {_, _ in })
             
-            // For iOS 10 display notification (sent via APNS)
-            UNUserNotificationCenter.current().delegate = self
             // For iOS 10 data message (sent via FCM)
             FIRMessaging.messaging().remoteMessageDelegate = self
             
@@ -80,18 +79,55 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         application.registerForRemoteNotifications()
         
+        // [END register_for_notifications]
         FIRApp.configure()
-        // Add observer for InstanceID token refresh callback.
-//        NotificationCenter.default.addObserver(self,
-//                                               selector: #selector(self.tokenRefreshNotification),
-//                                               name: .firInstanceIDTokenRefresh,
-//                                               object: nil)
-        
         return true
+    }
+    // [START receive_message]
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
+        // If you are receiving a notification message while your app is in the background,
+        // this callback will not be fired till the user taps on the notification launching the application.
+        // TODO: Handle data of notification
+        // Print message ID.
+        if let messageID = userInfo[gcmMessageIDKey] {
+            print("Message ID: \(messageID)")
+        }
+        
+        let userINFO = JSON(userInfo)
+        print(userINFO)
+        let type:String
+        let ID:String
+        if userINFO["gcm.notification.Type"].string != nil
+        {
+            type = userINFO["gcm.notification.Type"].string!
+        }
+        else
+        {
+            type = String(describing: userINFO["gcm.notification.Type"].int)
+        }
+        if userINFO["gcm.notification.RequestID"].string != nil
+        {
+            ID = userINFO["gcm.notification.RequestID"].string!
+        }
+        else
+        {
+            ID = String(describing: userINFO["gcm.notification.RequestID"].int)
+        }
+        
+        let myDict = ["Title": userINFO["aps"]["alert"]["title"].string, "Message":userINFO["aps"]["alert"]["body"].string,"Type":type,"ID":ID]
+        let deadlineTime = DispatchTime.now() + .milliseconds(100)
+        DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute:
+            {
+               NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PushNotification"), object:myDict)
+        })
+        
+        // Print full message.
+        print(userInfo)
     }
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
       
+        
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
         }
@@ -117,8 +153,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         let myDict = ["Title": userINFO["aps"]["alert"]["title"].string, "Message":userINFO["aps"]["alert"]["body"].string,"Type":type,"ID":ID]
-        
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PushNotification"), object:myDict)
+        let deadlineTime = DispatchTime.now() + .milliseconds(100)
+        DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute:
+        {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PushNotification"), object:myDict)
+        })
         completionHandler(UIBackgroundFetchResult.newData)
     }
     func tokenRefreshNotification(_ notification: Notification) {
@@ -170,6 +209,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
           FBSDKAppEvents.activateApp()
+        
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
 
@@ -221,10 +261,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate : UNUserNotificationCenterDelegate {
     
     func userNotificationCenter(_ center: UNUserNotificationCenter,  willPresent notification: UNNotification, withCompletionHandler   completionHandler: @escaping (_ options:   UNNotificationPresentationOptions) -> Void) {
-        print("Handle push from foreground")
         // custom code to handle push while app is in the foreground
         let userINFO = JSON(notification.request.content.userInfo)
-        print(userINFO)
         let type:String
         let ID:String
         if userINFO["gcm.notification.Type"].string != nil
@@ -246,14 +284,17 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         
         let myDict = ["Title": userINFO["aps"]["alert"]["title"].string, "Message":userINFO["aps"]["alert"]["body"].string,"Type":type,"ID":ID]
         
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PushNotification"), object:myDict)
-
+        let deadlineTime = DispatchTime.now() + .milliseconds(100)
+        DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute:
+            {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PushNotification"), object:myDict)
+        })
+   completionHandler([])
+        
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        print("Handle push from background or closed")
         let userINFO = JSON(response.notification.request.content.userInfo)
-        print(userINFO)
         let type:String
         let ID:String
         if userINFO["gcm.notification.Type"].string != nil
@@ -275,10 +316,13 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         
         let myDict = ["Title": userINFO["aps"]["alert"]["title"].string, "Message":userINFO["aps"]["alert"]["body"].string,"Type":type,"ID":ID]
         
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PushNotification"), object:myDict)
-
-        // if you set a member variable in didReceiveRemoteNotification, you  will know if this is from closed or background
-        print("\(response.notification.request.content.userInfo)")
+        let deadlineTime = DispatchTime.now() + .milliseconds(100)
+        DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute:
+            {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PushNotification"), object:myDict)
+        })
+        completionHandler()
+    
     }
 }
 // [END ios_10_message_handling]

@@ -24,7 +24,8 @@ class MyDonorView: UIViewController {
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(HomeView.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MyDonorView.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
+        self.navigationController?.completelyTransparentBar()
         tableViewDonor.contentInset = UIEdgeInsetsMake(-35, 0.0, -20, 0.0)
         if MyStringForCheck == "MyRequest"
         {
@@ -41,13 +42,24 @@ class MyDonorView: UIViewController {
             MyRequestInteractor.SharedInstance.MyRequestServiceCall(loginID: LoginID)
         }
     }
+    //MARK:- Share Application URL With Activity
+    func PushNotificationView(_ notification: NSNotification)
+    {
+        let dict = notification.object as! Dictionary<String, Any>
+        
+        let notificationView:NotificationView = self.storyboard?.instantiateViewController(withIdentifier: "NotificationView") as! NotificationView
+        notificationView.UserJSON = dict
+        notificationView.modalPresentationStyle = .overCurrentContext
+        notificationView.modalTransitionStyle = .coverVertical
+        notificationView.view.backgroundColor = UIColor.clear
+        self.present(notificationView, animated: true, completion: nil)
+    }
     //MARK:- FetchDataFromDonarDetail
     func FetchDataFromDonorDetail(JSONResponse:JSON)
     {
-        print(MyRequestCloseJSON)
-        if (MyRequestCloseJSON["DonorsDetails"].dictionary != nil)
+        if (JSONResponse["DonorsDetails"].dictionary != nil)
         {
-            var myRequestArray = MyRequestCloseJSON["DonorsDetails"]["DonorDetails"]
+            var myRequestArray = JSONResponse["DonorsDetails"]["DonorDetails"]
             if (myRequestArray.dictionary) != nil
             {
                 myRequestArray = JSON.init(arrayLiteral: myRequestArray)
@@ -64,13 +76,16 @@ class MyDonorView: UIViewController {
     //MARK:- FetchDataFromDonarDetail
     func FetchRequestIDfromService(JSONResponse:JSON)
     {
-        let NotificationRequestID = Int(MyRequestIDFromPush)
+        let NotificationRequestID:Int = Int(MyRequestIDFromPush)!
         for (i, _) in JSONResponse.enumerated()
         {
-            let requestID = JSONResponse[i]["RequestID"].string
-            if Int(requestID!) == NotificationRequestID
+            let requestID:Int = Int(JSONResponse[i]["RequestID"].int!)
+            print(requestID)
+            print(NotificationRequestID)
+            if requestID == NotificationRequestID
             {
                 self.FetchDataFromDonorDetail(JSONResponse: JSONResponse[i])
+                MyRequestCloseJSON = JSONResponse[i]
                 break
             }
         }
@@ -156,6 +171,7 @@ extension MyDonorView:UITableViewDelegate,UITableViewDataSource
         cell?.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "ffffff")
         
         let myDonorDetail = MyDonorDetailJSON[indexPath.row]
+       
         cell?.lblDonorName.text = myDonorDetail["Name"].string
         if myDonorDetail["ContactNumber"].int != nil
         {
@@ -201,6 +217,7 @@ extension MyDonorView:UITableViewDelegate,UITableViewDataSource
                     cell?.lblDonorTime.text = Util.SharedInstance.dateChangeForInternal(dateString: myDonorDetail["PreferredDateTime"].string!)
                 }
             }
+            
         }
             //MARK: ClOSE
         else if(MyRequestCloseJSON["Status"].string == "Close")
@@ -258,8 +275,6 @@ extension MyDonorView:UITableViewDelegate,UITableViewDataSource
 //MARK:- MyRequestProtocol
 extension MyDonorView:MyRequestProtocol
 {
-    
-
     func SuccessMyRequest(JSONResponse: JSON, Sucess: Bool)
     {
         HudBar.sharedInstance.hideHudFormView(view: self.view)
