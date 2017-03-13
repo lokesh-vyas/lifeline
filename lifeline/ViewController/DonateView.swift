@@ -42,8 +42,10 @@ class DonateView: UIViewController {
         super.viewDidLoad()
         
         CLLocationManager.locationServicesEnabled()
+        
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
+        
         if CLLocationManager.locationServicesEnabled() == true {
             locationManager.delegate = self
             locationManager.startUpdatingLocation()
@@ -60,6 +62,9 @@ class DonateView: UIViewController {
         mapView?.delegate = self
         view = mapView
         
+//        if status == CLAuthorizationStatus.AuthorizedWhenInUse {
+//            viewMap.myLocationEnabled = true
+//        }
         mapView?.isBuildingsEnabled = true
         mapView?.settings.compassButton = true
         mapView?.settings.indoorPicker = true
@@ -106,24 +111,21 @@ class DonateView: UIViewController {
         camera = GMSCameraPosition.camera(withLatitude: (coordinates?.latitude)!, longitude: (coordinates?.longitude)!, zoom: 18.0)
         mapView?.camera = camera!
         view = mapView
-        self.bloodDonatingMarkers(responseData: dataArray)
     }
     
     //MARK:- Fetch Blood Request To Donate
     func fetchBloodRequestToDonate() {
         
         //FIXME:- LoginID
-        let customer : Dictionary = ["BloodRequestSearchRequest":
+        let reqBody : Dictionary = ["BloodRequestSearchRequest":
             ["SearchDetails":
-                ["LoginID":"114177301473189791455",
-                 "minLat":"\(SouthLatitude!)",
-                    "maxLat":"\(NorthLatitude!)",
-                    "minLon":"\(WestLongitude!)",
-                    "maxLon":"\(EastLongitude!)"
+                ["LoginID" : "\(UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!)",
+                    "minLat" : "\(SouthLatitude!)",
+                    "maxLat" : "\(NorthLatitude!)",
+                    "minLon" : "\(WestLongitude!)",
+                    "maxLon" : "\(EastLongitude!)"
                 ]]]
-        
-        let str = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.BloodRequestSearch"
-        DonateInteractor.sharedInstance.findingDonateSources(urlString: str, params: customer)
+        DonateInteractor.sharedInstance.findingDonateSources(urlString: URLList.BLOOD_REQUEST_SEARCH.rawValue, params: reqBody)
         
     }
     
@@ -201,7 +203,7 @@ class DonateView: UIViewController {
 
 extension DonateView : CLLocationManagerDelegate {
     
-    public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         print("MyLatitude :\((manager.location?.coordinate.latitude)!) and MyLongitude : \((manager.location?.coordinate.longitude)!)")
         
@@ -556,14 +558,13 @@ extension DonateView : DonateViewProtocol {
         } else {
             
             viewWarning.removeFromSuperview()
-            
             self.bloodDonatingMarkers(responseData: jsonArray)
             
         }
     }
     func failedDonateSources() {
         print("Failed to get Donate resources !!")
-        HudBar.sharedInstance.showHudWithMessage(message: "No Internet Connection", view: self.view)
+//        HudBar.sharedInstance.showHudWithMessage(message: "No Internet Connection", view: self.view)
     }
 }
 

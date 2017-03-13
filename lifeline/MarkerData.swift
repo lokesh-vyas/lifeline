@@ -15,7 +15,9 @@ class MarkerData {
     var oneRequestOfDonate  = [String : Any]()
     var PreferredDateTime : String?
     var CommentLines : String?
-    var fromIndividual : Bool?
+    var isIndividualAPN : Bool?
+    var isNotIndividualAPN : Bool?
+    
     class var SharedInstance : MarkerData {
         struct shared {
             static let instance = MarkerData()

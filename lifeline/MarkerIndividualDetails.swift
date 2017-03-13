@@ -13,21 +13,23 @@ class MarkerIndividualDetails: UIViewController {
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblTiming: UILabel!
     @IBOutlet weak var viewMarkerDetails: UIView!
-    var markerDict = [String : Any]()
+//    var markerDict = [String : Any]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //FIXME:- markerDict ?
-        markerDict = MarkerData.SharedInstance.markerData
-        lblName.text = markerDict["Name"] as! String?
+//        markerDict = MarkerData.SharedInstance.markerData
+        lblName.text = MarkerData.SharedInstance.markerData["Name"] as! String?
         
-        lblTiming.text = markerDict["WorkingHours"] as! String?
+        lblTiming.text = MarkerData.SharedInstance.markerData["WorkingHours"] as! String?
     }
     @IBAction func btnDonateTapped(_ sender: Any) {
         let cnfDonate = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmDonate") as! ConfirmDonate
         let navigationControllerStack = UINavigationController(rootViewController: cnfDonate)
         self.present(navigationControllerStack, animated: true, completion: nil)
+        
+        MarkerData.SharedInstance.isIndividualAPN = false
         
     }
 
@@ -35,10 +37,9 @@ class MarkerIndividualDetails: UIViewController {
         //FIXME:- NavBAr ?
         let requestedTable = self.storyboard?.instantiateViewController(withIdentifier: "RequestedByIndividuals") as! RequestedByIndividuals
         let navBar = UINavigationController.init(rootViewController:requestedTable)
-        navBar.completelyTransparentBar()
         self.present(navBar, animated: true, completion: nil)
         
-
+        MarkerData.SharedInstance.isIndividualAPN = false
         
     }
    

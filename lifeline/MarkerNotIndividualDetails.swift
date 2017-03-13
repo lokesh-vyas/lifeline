@@ -22,18 +22,18 @@ class MarkerNotIndividualDetails: UIViewController {
     @IBOutlet weak var FromDate: UILabel!
     @IBOutlet weak var ToDate: UILabel!
     
-    var markerDict = [String:Any]()
+//    var markerDict = [String:Any]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //FIXME:- markerDict ?
-        markerDict = MarkerData.SharedInstance.markerData
-        lblName.text = markerDict["Name"] as! String?
-        lblTiming.text = markerDict["WorkingHours"] as! String?
+//        markerDict = 
+        lblName.text = MarkerData.SharedInstance.markerData["Name"] as! String?
+        lblTiming.text = MarkerData.SharedInstance.markerData["WorkingHours"] as! String?
         
         
-        if (markerDict["TypeOfOrg"] as! String?  == "2") { // i.e. Campaign
+        if (MarkerData.SharedInstance.markerData["TypeOfOrg"] as! String?  == "2") { // i.e. Campaign
             
             //FIXME:- camp color #0dd670
             FromDate.isHidden = false
@@ -68,6 +68,8 @@ class MarkerNotIndividualDetails: UIViewController {
         let navigationControllerStack = UINavigationController(rootViewController: cnfDonate)
         self.present(navigationControllerStack, animated: true, completion: nil)
        // self.navigationController?.pushViewController(navigationControllerStack, animated: true)
+        
+        MarkerData.SharedInstance.isNotIndividualAPN = false
 
 
     }

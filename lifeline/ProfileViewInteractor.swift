@@ -139,13 +139,13 @@ class ProfileViewInteractor
         let WorkAddressCity:String
         let DateOfBirth:String
         let LastDonationDate:String
-        
         let name:String = jsonDict["Name"].string!
         let emailID:String = jsonDict["EmailId"].string!
         let BloodGroup:String = jsonDict["BloodGroup"].string!
         if jsonDict["Age"].string != nil
         {
             age = jsonDict["Age"].string!
+            //FIXME:- Age
         }
         else
         {
