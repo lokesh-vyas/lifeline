@@ -20,6 +20,7 @@ class NotificationView: UIViewController {
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        print(UserJSON)
         if (UserJSON["Type"] as? String == "1")
         {
             btnCancel.setTitle("Thanks", for: .normal)
@@ -34,8 +35,13 @@ class NotificationView: UIViewController {
     }
     @IBAction func btnViewTapped(_ sender: Any)
     {
-        if (UserJSON["Type"] as? String == "1")
+        if (UserJSON["Type"] as? String == "2")
         {
+            print(UserJSON["ID"]!)
+            let myDonorView:MyDonorView = self.storyboard?.instantiateViewController(withIdentifier: "MyDonorView") as! MyDonorView
+            myDonorView.MyRequestIDFromPush = UserJSON["ID"] as! String
+            let rootView:UINavigationController = UINavigationController.init(rootViewController: myDonorView)
+            self.present(rootView, animated: true, completion: nil)
         }
     }
 }
