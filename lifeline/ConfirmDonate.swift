@@ -172,6 +172,7 @@ extension ConfirmDonate : ConfirmDonateProtocol {
         
         print("*****didSuccess-GetCompaignDetails******", jsonArray)
         self.lblToDate.text = String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["ToDate"]).characters.count > 10 ?  String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["ToDate"]).substring(to: 10):String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["ToDate"])
+        //FIXME:- with APNResponse
         self.lblCampDescription.text = String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["AdditionalInfo"])
         
         HudBar.sharedInstance.hideHudFormView(view: self.view)

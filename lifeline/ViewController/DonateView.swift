@@ -244,14 +244,6 @@ extension DonateView : CLLocationManagerDelegate {
 
 extension DonateView : GMSMapViewDelegate {
     
-    public func mapViewDidStartTileRendering(_ mapView: GMSMapView) {
-//        HudBar.sharedInstance.showHudWithMessage(message: "Loading...", view: self.mapView!)
-    }
-    public func mapViewDidFinishTileRendering(_ mapView: GMSMapView) {
-//        HudBar.sharedInstance.hideHudFormView(view: self.mapView!)
-    }
-
-    
     public func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition)
     {
         print("didChange")
@@ -590,7 +582,7 @@ extension DonateView : DonateViewProtocol {
     }
     func failedDonateSources() {
         print("Failed to get Donate resources !!")
-//        HudBar.sharedInstance.showHudWithMessage(message: "No Internet Connection", view: self.view)
+
     }
 }
 
