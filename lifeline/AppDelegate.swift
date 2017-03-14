@@ -109,7 +109,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if (type == "2")
         {
             //After accecpt request
-            IDFetchString = ""
+          IDFetchString = "gcm.notification.RequestID"
             
         }else if(type == "4")
         {
@@ -167,7 +167,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if (type == "2")
         {
             //After accecpt request
-            IDFetchString = ""
+            IDFetchString = "gcm.notification.RequestID"
             
         }else if(type == "4")
         {
@@ -317,7 +317,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         if (type == "2")
         {
             //After accecpt request
-            IDFetchString = ""
+            IDFetchString = "gcm.notification.RequestID"
           
         }else if(type == "4")
         {
@@ -369,7 +369,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         if (type == "2")
         {
             //After accecpt request
-            IDFetchString = ""
+           IDFetchString = "gcm.notification.RequestID"
             
         }else if(type == "4")
         {

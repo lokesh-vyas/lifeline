@@ -23,7 +23,7 @@ class NotificationView: UIViewController {
         print(UserJSON)
         if (UserJSON["Type"] as? String == "1")
         {
-            //for welcome notification
+            //for welcome notification & Request Status Update
             btnCancel.setTitle("Thanks", for: .normal)
             btnView.isHidden = true
         }
