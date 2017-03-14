@@ -238,7 +238,7 @@ extension SignUpView : customLoginProtocol
     {
         if success == true
         {
-            UserDefaults.standard.set("Custom", forKey: "LoginInformation")
+            UserDefaults.standard.set("Internal", forKey: "LoginInformation")
             HudBar.sharedInstance.hideHudFormView(view: self.view)
             HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "User Login Successfully", view: self.view)
             
