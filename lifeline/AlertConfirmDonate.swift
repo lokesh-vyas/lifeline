@@ -11,7 +11,7 @@ import SwiftyJSON
 import Toast_Swift
 
 class AlertConfirmDonate: UIViewController {
-
+    
     @IBOutlet weak var txtViewComment: UITextView!
     @IBOutlet weak var subViewAlert: UIView!
     @IBOutlet weak var btnPreferredDateTime: UIButton!
@@ -22,7 +22,7 @@ class AlertConfirmDonate: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-         NotificationCenter.default.addObserver(self, selector: #selector(AlertConfirmDonate.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AlertConfirmDonate.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
         
         //FIXME:- preferred date
         AlertConfirmDonateInteractor.sharedInstance.delegate = self
@@ -34,7 +34,7 @@ class AlertConfirmDonate: UIViewController {
             self.txtViewComment.text = MarkerData.SharedInstance.CommentLines
             preferredDateTime = MarkerData.SharedInstance.PreferredDateTime
         }
-   }
+    }
     //MARK:- PushNotificationView
     func PushNotificationView(_ notification: NSNotification)
     {
@@ -69,9 +69,9 @@ class AlertConfirmDonate: UIViewController {
     }
     
     
-
     
-
+    
+    
     @IBAction func btnPreferredDateTapped(_ sender: Any) {
         
         print("DatePicker Should come")
@@ -92,55 +92,46 @@ class AlertConfirmDonate: UIViewController {
         print("  WS must be called")
         
         if preferredDateTime != nil {
-        HudBar.sharedInstance.showHudWithMessage(message: "Submitting...", view: self.view)
-     //   let url = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.ConfirmDonate"
+            HudBar.sharedInstance.showHudWithMessage(message: "Submitting...", view: self.view)
+            
             let IDtoBeSent:String
             let TypeOfOrg:String
-            if MarkerData.SharedInstance.isIndividualAPN == false || MarkerData.SharedInstance.isNotIndividualAPN == false
-            {
-                  IDtoBeSent =
-                    String(describing: (MarkerData.SharedInstance.oneRequestOfDonate["CID"] != nil) ? (MarkerData.SharedInstance.oneRequestOfDonate["CID"])! : (MarkerData.SharedInstance.markerData["ID"]!))
-                
+            if MarkerData.SharedInstance.isIndividualAPN == false || MarkerData.SharedInstance.isNotIndividualAPN == false {
+                IDtoBeSent = String(describing: (MarkerData.SharedInstance.oneRequestOfDonate["CID"] != nil) ? (MarkerData.SharedInstance.oneRequestOfDonate["CID"])! : (MarkerData.SharedInstance.markerData["ID"]!))
                 if MarkerData.SharedInstance.oneRequestOfDonate["CID"] != nil {
-                    TypeOfOrg =  MarkerData.SharedInstance.markerData["CTypeOfOrg"]! as! String
-                    
+                    TypeOfOrg =  MarkerData.SharedInstance.oneRequestOfDonate["CTypeOfOrg"]! as! String
                 } else {
                     TypeOfOrg =  MarkerData.SharedInstance.markerData["TypeOfOrg"]! as! String
                 }
                 
-            }else
-            {
-                if MarkerData.SharedInstance.isAPNCamp == true
-                {
-                    IDtoBeSent =
-                        String(describing: MarkerData.SharedInstance.APNResponse["CampaignID"]!)
+            } else {
+                if MarkerData.SharedInstance.isAPNCamp == true {
+                    IDtoBeSent = String(describing: MarkerData.SharedInstance.APNResponse["CampaignID"]!)
                     TypeOfOrg = "2"
-                }else
-                {
-                    IDtoBeSent =
-                        String(describing: MarkerData.SharedInstance.APNResponse["RequestID"]!)
+                } else {
+                    IDtoBeSent = String(describing: MarkerData.SharedInstance.APNResponse["RequestID"]!)
                     TypeOfOrg = "3"
                 }
             }
             
-        //FIXME:- the request Body
-           
-            let CommentText = (MarkerData.SharedInstance.CommentLines != nil) ? MarkerData.SharedInstance.CommentLines! : self.txtViewComment.text!
-        let collectedParameters = ["ConfirmDonateRequest":
-                                        ["ConfirmDonateDetails":
-                                            ["LoginID": UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!,
-                                             "PrefferedDateTime": preferredDateTime!,
-                                             "ID": IDtoBeSent,
-                                             "TypeOfOrg":TypeOfOrg,
-                                             "Comment": CommentText
-                                            ]]]
-        
-        AlertConfirmDonateInteractor.sharedInstance.confirmsDonate(urlString: URLList.CONFIRM_DONATE.rawValue, params: collectedParameters)
+            //FIXME:- the request Body
+            
+            let CommentText = self.txtViewComment.text!//(MarkerData.SharedInstance.CommentLines != nil) ? MarkerData.SharedInstance.CommentLines! : self.txtViewComment.text!
+            let collectedParameters = ["ConfirmDonateRequest":
+                ["ConfirmDonateDetails":
+                    ["LoginID": UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!,
+                     "PrefferedDateTime": preferredDateTime!,
+                     "ID": IDtoBeSent,
+                     "TypeOfOrg":TypeOfOrg,
+                     "Comment": CommentText
+                    ]]]
+            
+            AlertConfirmDonateInteractor.sharedInstance.confirmsDonate(urlString: URLList.CONFIRM_DONATE.rawValue, params: collectedParameters)
         } else {
             let alert = UIAlertController(title: "Missing", message: "Preferred Date & Time is Missing", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             present(alert, animated: true, completion: nil)
-
+            
         }
     }
     
@@ -163,14 +154,15 @@ extension AlertConfirmDonate : AlertConfirmDonateProtocol {
     func successConfirmDonate(jsonArray: JSON) {
         print("****SUCCESS****", jsonArray)
         self.view.makeToast("Requested Details Submited Sucessfully")
-            let when = DispatchTime.now() + .seconds(2)
+        let when = DispatchTime.now() + .seconds(2)
         DispatchQueue.main.asyncAfter(deadline: when, execute: {
             let SWRevealView = self.storyboard!.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
             self.present(SWRevealView, animated: true, completion: nil)
+            HudBar.sharedInstance.hideHudFormView(view: self.view)
         }
         )
         
-        }
+    }
     func failedConfirmDonate() {
         print("****FAILED****")
         
@@ -183,13 +175,16 @@ extension AlertConfirmDonate : ProtocolCalendar {
         print("valueSent :\(valueSent) && CheckString :\(CheckString)")
         btnPreferredDateTime.setTitle(valueSent, for: .normal) //15/03/2017 03:14
         
-        let dateForCamp = Util.SharedInstance.preferredDateToCamp(selectedDate: valueSent) //yyyy-MM-dd HH:mm:ss
+        let dateForCamp = Util.SharedInstance.preferredDateToCamp(selectedDate: valueSent) //yyyy-MM-dd HH:mm:ss//sending to server
         
         //To send in the body //FIXME:- not changed
+        MarkerData.SharedInstance.PreferredDateTime = valueSent
+        MarkerData.SharedInstance.CommentLines = txtViewComment.text
+        
         preferredDateTime = (MarkerData.SharedInstance.PreferredDateTime != nil) ? Util.SharedInstance.preferredDateToCamp(selectedDate: MarkerData.SharedInstance.PreferredDateTime!) : dateForCamp
         
-        MarkerData.SharedInstance.CommentLines = txtViewComment.text
-        MarkerData.SharedInstance.PreferredDateTime = valueSent
+        
+        
         
     }
     func FailureProtocolCalendar(valueSent: String) {

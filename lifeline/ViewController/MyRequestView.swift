@@ -133,7 +133,14 @@ extension MyRequestView:MyRequestProtocol
             {
                 dataArray = JSON.init(arrayLiteral: dataArray)
             }
-            MyRequestArray = dataArray.array!
+            
+            if let temp = dataArray.array {
+                MyRequestArray = temp
+            } else {
+                //Here we found nil
+                return
+            }
+            
             self.tableRequestView.reloadData()
         }
         else
