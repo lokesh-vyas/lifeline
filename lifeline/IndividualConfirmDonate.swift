@@ -20,19 +20,22 @@ class IndividualConfirmDonate: UIViewController {
     @IBOutlet weak var lblDoctorName: UILabel!
     @IBOutlet weak var lblAddress: UILabel!
     @IBOutlet weak var lblPersonalAppeal: UILabel!
+    
     var iID = String()
     override func viewDidLoad() {
         super.viewDidLoad()
          NotificationCenter.default.addObserver(self, selector: #selector(IndividualConfirmDonate.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
         self.navigationController?.completelyTransparentBar()
         IndividualConfirmDonateInteractor.sharedInstance.delegate = self
-        
+        HudBar.sharedInstance.showHudWithMessage(message: "Loading...", view: self.view)
+
         //MARK:- Either coming from APN or Back
         if MarkerData.SharedInstance.isIndividualAPN == false {
             //Local steps
             iID = MarkerData.SharedInstance.oneRequestOfDonate["CID"]! as! String
         } else {
             //Through APN
+            navigationItem.hidesBackButton = true
         }
         
         self.IndividualConfirmDonateProperties()
@@ -116,6 +119,8 @@ extension IndividualConfirmDonate : IndividualRequestDetailsProtocol {
         self.lblContactNumber.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["ContactNumber"])
         self.lblAddress.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["AddressLine"])
         self.lblPersonalAppeal.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["PersonalAppeal"])
+        
+        HudBar.sharedInstance.hideHudFormView(view: self.view)
     }
     func didFailGetRequestDetails() {
         print("<<didFail-GetRequestDetails>>")
@@ -143,6 +148,7 @@ extension IndividualConfirmDonate : getVolunteerProtocol {
         alertConfirm.modalPresentationStyle = .overCurrentContext
         alertConfirm.view.backgroundColor = UIColor.clear
         present(alertConfirm, animated: true, completion: nil)
+        
         
     }
     
