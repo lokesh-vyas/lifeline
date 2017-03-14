@@ -107,6 +107,7 @@ class LoginView: UIViewController
                 switch result {
                 case .success(let response):
                     HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: StringList.LL_Welcome_Message.rawValue, view: self.view)
+                    UserDefaults.standard.set("Facebook", forKey: "LoginInformation")
                     UserDefaults.standard.set(response.dictionaryValue?["id"], forKey: StringList.LifeLine_User_ID.rawValue)
                     UserDefaults.standard.set(response.dictionaryValue?["name"], forKey: StringList.LifeLine_User_Name.rawValue)
                     UserDefaults.standard.set(response.dictionaryValue?["email"], forKey: StringList.LifeLine_User_Email.rawValue)
@@ -168,7 +169,7 @@ extension LoginView:GIDSignInUIDelegate,GIDSignInDelegate
         else
         {
             HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: StringList.LL_Welcome_Message.rawValue, view: self.view)
-     
+            UserDefaults.standard.set("G+", forKey: "LoginInformation")
             UserDefaults.standard.set(user.userID, forKey: StringList.LifeLine_User_ID.rawValue)
             UserDefaults.standard.set(user.profile.name, forKey: StringList.LifeLine_User_Name.rawValue)
             UserDefaults.standard.set(user.profile.email, forKey: StringList.LifeLine_User_Email.rawValue)
@@ -204,6 +205,7 @@ extension LoginView : customLoginProtocol
     {
         if success == true
         {
+             UserDefaults.standard.set("Custom", forKey: "LoginInformation")
             HudBar.sharedInstance.hideHudFormView(view: self.view)
             HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "User Login Successfully", view: self.view)
             let deadlineTime = DispatchTime.now() + .seconds(2)

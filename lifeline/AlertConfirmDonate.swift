@@ -96,16 +96,24 @@ class AlertConfirmDonate: UIViewController {
      //   let url = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.ConfirmDonate"
             let IDtoBeSent:String
             let TypeOfOrg:String
-            if MarkerData.SharedInstance.isIndividualAPN == false
+            if MarkerData.SharedInstance.isIndividualAPN == false || MarkerData.SharedInstance.isNotIndividualAPN == false
             {
                   IDtoBeSent =
                     String(describing: (MarkerData.SharedInstance.oneRequestOfDonate["CID"] != nil) ? (MarkerData.SharedInstance.oneRequestOfDonate["CID"])! : (MarkerData.SharedInstance.markerData["ID"]!))
                    TypeOfOrg =  ""
             }else
             {
-                IDtoBeSent =
-                    String(describing: MarkerData.SharedInstance.markerData["RequestID"])
-                TypeOfOrg = ""
+                if MarkerData.SharedInstance.isAPNCamp == true
+                {
+                    IDtoBeSent =
+                        String(describing: MarkerData.SharedInstance.APNResponse["CampaignID"]!)
+                    TypeOfOrg = "2"
+                }else
+                {
+                    IDtoBeSent =
+                        String(describing: MarkerData.SharedInstance.APNResponse["RequestID"]!)
+                    TypeOfOrg = "1"
+                }
             }
             
         //FIXME:- the request Body

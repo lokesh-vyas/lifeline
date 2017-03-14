@@ -387,10 +387,9 @@ class ProfileView: UIViewController
         {
            DateofBirth =  Util.SharedInstance.dateChangeForServerForProfile(dateString: ProfileViewModel.SharedInstance.DOBstring!)
         }
-        print(DateofBirth)
-        print(LastDontaionDate)
+        let AuthProvider:String
+            = UserDefaults.standard.string(forKey: "LoginInformation")!
         
-        let AuthProvider:String = "Custom"
         let customer : Dictionary = ["ProfileRegistrationRequest":["ProfileDetails":["LoginId":LoginID,"Name":self.txtName.text!,"DateofBirth":DateofBirth,"Age":self.txtAge.text!,"ContactNumber": self.txtContactNumber.text!, "BloodGroup": ProfileViewModel.SharedInstance.BloodGroup!,"EmailId": self.txtEmailID.text!,"AuthProvider": AuthProvider,"LastDonationDate": LastDontaionDate,"AddressDetails": myAddressDetail]]]
         
         HudBar.sharedInstance.showHudWithMessage(message: "Please wait..", view: self.view)
