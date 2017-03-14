@@ -25,6 +25,7 @@ class ConfirmDonate: UIViewController {
     @IBOutlet weak var VolunteerDetails: UILabel!
     @IBOutlet weak var lblCampDescription: UILabel!
     @IBOutlet weak var HospitalName: UILabel!
+    
     var ID = String()
     
 //    var MarkerData.SharedInstance.markerData = [String:Any]()
@@ -32,6 +33,7 @@ class ConfirmDonate: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.completelyTransparentBar()
+        
         ConfirmDonateInteractor.sharedInstance.delegate = self
         
         //MARK:- Invokes to add properties on controller
@@ -43,8 +45,9 @@ class ConfirmDonate: UIViewController {
             ID = (MarkerData.SharedInstance.markerData["ID"] as! String?)!
         } else {
             //Through APN
+            navigationItem.hidesBackButton = true
+            
         }
-    
     }
     
     @IBAction func btnBackTapped(_ sender: Any) {
@@ -111,7 +114,7 @@ class ConfirmDonate: UIViewController {
         lblAddress.text = MarkerData.SharedInstance.markerData["AddressLine"] as! String?
         
         if MarkerData.SharedInstance.markerData["TypeOfOrg"] as! String? == "2" { // this is camp
-            
+            HudBar.sharedInstance.showHudWithMessage(message: "Loading...", view: view)
 //            let urlGetCampDetails = "http://demo.frontman.isteer.com:8284/services/LifeLine.GetCampaignDetails"
             //FIXME:- LoginID
             let bodyGetCampDetails = ["CampaignDetailsRequest" : [
@@ -156,11 +159,12 @@ extension ConfirmDonate : ConfirmDonateProtocol {
         self.lblToDate.text = String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["ToDate"]).characters.count > 10 ?  String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["ToDate"]).substring(to: 10):String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["ToDate"])
         self.lblCampDescription.text = String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["AdditionalInfo"])
         
-        
+        HudBar.sharedInstance.hideHudFormView(view: self.view)
         
     }
     func didFailGetCompaignDetails() {
         print("*****didFail-GetCompaignDetails******")
+        HudBar.sharedInstance.hideHudFormView(view: self.view)
 //        HudBar.sharedInstance.showHudWithMessage(message: "No Internet Connection", view: self.view)
     }
     
@@ -170,6 +174,7 @@ extension ConfirmDonate : getVolunteerProtocol {
     func didSuccessGetVolunteerDetails(jsonArray: JSON) {
         //TODO:- true= comment & preferred date false= no vol
         print("*****didSuccessGetVolunteerDetails******", jsonArray)
+        
         if jsonArray["GetVolunteerListsReponse"]["ResponseDetails"]["StatusCode"] == 1 {
             
             MarkerData.SharedInstance.PreferredDateTime = nil

@@ -15,7 +15,6 @@ class AlertConfirmDonate: UIViewController {
     @IBOutlet weak var txtViewComment: UITextView!
     @IBOutlet weak var subViewAlert: UIView!
     @IBOutlet weak var btnPreferredDateTime: UIButton!
-    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var alertBoxTopConstraint : NSLayoutConstraint?
     
     var preferredDateTime : String?
@@ -32,6 +31,7 @@ class AlertConfirmDonate: UIViewController {
             
             self.btnPreferredDateTime.setTitle(MarkerData.SharedInstance.PreferredDateTime, for: .normal)
             self.txtViewComment.text = MarkerData.SharedInstance.CommentLines
+            preferredDateTime = MarkerData.SharedInstance.PreferredDateTime
         }
    }
     
@@ -124,10 +124,10 @@ extension AlertConfirmDonate : AlertConfirmDonateProtocol {
     func successConfirmDonate(jsonArray: JSON) {
         print("****SUCCESS****", jsonArray)
         self.view.makeToast("Requested Details Submited Sucessfully")
-        let when = DispatchTime.now() + .seconds(2)
+            let when = DispatchTime.now() + .seconds(2)
         DispatchQueue.main.asyncAfter(deadline: when, execute: {
-        let SWRevealView = self.storyboard!.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
-        self.present(SWRevealView, animated: true, completion: nil)
+            let SWRevealView = self.storyboard!.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
+            self.present(SWRevealView, animated: true, completion: nil)
         }
         )
         
