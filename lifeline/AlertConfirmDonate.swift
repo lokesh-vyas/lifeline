@@ -100,7 +100,14 @@ class AlertConfirmDonate: UIViewController {
             {
                   IDtoBeSent =
                     String(describing: (MarkerData.SharedInstance.oneRequestOfDonate["CID"] != nil) ? (MarkerData.SharedInstance.oneRequestOfDonate["CID"])! : (MarkerData.SharedInstance.markerData["ID"]!))
-                   TypeOfOrg =  ""
+                
+                if MarkerData.SharedInstance.oneRequestOfDonate["CID"] != nil {
+                    TypeOfOrg =  MarkerData.SharedInstance.markerData["CTypeOfOrg"]!
+                    
+                } else {
+                    TypeOfOrg =  MarkerData.SharedInstance.markerData["TypeOfOrg"]!
+                }
+                
             }else
             {
                 if MarkerData.SharedInstance.isAPNCamp == true
@@ -112,7 +119,7 @@ class AlertConfirmDonate: UIViewController {
                 {
                     IDtoBeSent =
                         String(describing: MarkerData.SharedInstance.APNResponse["RequestID"]!)
-                    TypeOfOrg = "1"
+                    TypeOfOrg = "3"
                 }
             }
             

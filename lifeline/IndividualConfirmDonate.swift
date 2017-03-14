@@ -83,9 +83,10 @@ class IndividualConfirmDonate: UIViewController {
         if data != nil {
             let profileData = NSKeyedUnarchiver.unarchiveObject(with: data as! Data) as! ProfileData
             if Int(profileData.Age)! < 18 {
-                    let alert = UIAlertController(title: "Warning", message: "You're under Age", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                    present(alert, animated: true, completion: nil)
+                let alert = UIAlertController(title: "Warning", message: "You are not eligible for donating blood as your age is below 18. If you still want to continue, please select OK to continue.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: nil))
+                present(alert, animated: true, completion: nil)
             }
         }
     }
