@@ -74,7 +74,7 @@ class HomeView: UIViewController {
         let requestView = self.storyboard?.instantiateViewController(withIdentifier: "MyRequestView")
         self.navigationController?.pushViewController(requestView!, animated: true)
     }
-    //MARK:- Share Application URL With Activity
+    //MARK:- PushNotificationView
     func PushNotificationView(_ notification: NSNotification)
     {
         let dict = notification.object as! Dictionary<String, Any>

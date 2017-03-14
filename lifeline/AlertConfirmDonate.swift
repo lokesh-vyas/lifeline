@@ -23,6 +23,7 @@ class AlertConfirmDonate: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+         NotificationCenter.default.addObserver(self, selector: #selector(AlertConfirmDonate.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
         
         //FIXME:- preferred date
         AlertConfirmDonateInteractor.sharedInstance.delegate = self
@@ -34,6 +35,18 @@ class AlertConfirmDonate: UIViewController {
             self.txtViewComment.text = MarkerData.SharedInstance.CommentLines
         }
    }
+    //MARK:- PushNotificationView
+    func PushNotificationView(_ notification: NSNotification)
+    {
+        let dict = notification.object as! Dictionary<String, Any>
+        
+        let notificationView:NotificationView = self.storyboard?.instantiateViewController(withIdentifier: "NotificationView") as! NotificationView
+        notificationView.UserJSON = dict
+        notificationView.modalPresentationStyle = .overCurrentContext
+        notificationView.modalTransitionStyle = .coverVertical
+        notificationView.view.backgroundColor = UIColor.clear
+        self.present(notificationView, animated: true, completion: nil)
+    }
     
     //MARK:- Keyboard Appear/Diappear
     func keyboardWillShow(notification:NSNotification)
@@ -73,9 +86,6 @@ class AlertConfirmDonate: UIViewController {
         preferredDateAlert.modalPresentationStyle = .overCurrentContext
         preferredDateAlert.view.backgroundColor =  UIColor.clear
         self.present(preferredDateAlert, animated: true, completion: nil)
-
-        
-        
     }
     
     @IBAction func btnDonateTapped(_ sender: Any) {
@@ -83,20 +93,34 @@ class AlertConfirmDonate: UIViewController {
         
         if preferredDateTime != nil {
         HudBar.sharedInstance.showHudWithMessage(message: "Submitting...", view: self.view)
-        let url = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.ConfirmDonate"
+     //   let url = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.ConfirmDonate"
+            let IDtoBeSent:String
+            let TypeOfOrg:String
+            if MarkerData.SharedInstance.isIndividualAPN == false
+            {
+                  IDtoBeSent =
+                    String(describing: (MarkerData.SharedInstance.oneRequestOfDonate["CID"] != nil) ? (MarkerData.SharedInstance.oneRequestOfDonate["CID"])! : (MarkerData.SharedInstance.markerData["ID"]!))
+                   TypeOfOrg =  ""
+            }else
+            {
+                IDtoBeSent =
+                    String(describing: MarkerData.SharedInstance.markerData["RequestID"])
+                TypeOfOrg = ""
+            }
+            
         //FIXME:- the request Body
-            let IDtoBeSent = (MarkerData.SharedInstance.oneRequestOfDonate["CID"] != nil) ? (MarkerData.SharedInstance.oneRequestOfDonate["CID"])! : (MarkerData.SharedInstance.markerData["ID"]!)
+           
             let CommentText = (MarkerData.SharedInstance.CommentLines != nil) ? MarkerData.SharedInstance.CommentLines! : self.txtViewComment.text!
         let collectedParameters = ["ConfirmDonateRequest":
                                         ["ConfirmDonateDetails":
                                             ["LoginID": UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!,
                                              "PrefferedDateTime": preferredDateTime!,
                                              "ID": IDtoBeSent,
-                                             "TypeOfOrg":"\(MarkerData.SharedInstance.markerData["TypeOfOrg"]!)",
+                                             "TypeOfOrg":TypeOfOrg,
                                              "Comment": CommentText
                                             ]]]
         
-        AlertConfirmDonateInteractor.sharedInstance.confirmsDonate(urlString: url, params: collectedParameters)
+        AlertConfirmDonateInteractor.sharedInstance.confirmsDonate(urlString: URLList.CONFIRM_DONATE.rawValue, params: collectedParameters)
         } else {
             let alert = UIAlertController(title: "Missing", message: "Preferred Date & Time is Missing", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
