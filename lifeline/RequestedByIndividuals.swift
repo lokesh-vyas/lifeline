@@ -71,6 +71,7 @@ extension RequestedByIndividuals : UITableViewDataSource {
         print(sender.tag)
         MarkerData.SharedInstance.oneRequestOfDonate = MarkerData.SharedInstance.IndividualsArray[sender.tag]
         print("-:user name :-",MarkerData.SharedInstance.IndividualsArray[sender.tag]["UserName"]!)
+        print("-:Typee name :-",MarkerData.SharedInstance.IndividualsArray[sender.tag]["CTypeOfOrg"]!)
     }
     
     

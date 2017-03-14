@@ -23,6 +23,7 @@ class NotificationView: UIViewController {
         print(UserJSON)
         if (UserJSON["Type"] as? String == "1")
         {
+            //for welcome notification & Request Status Update
             btnCancel.setTitle("Thanks", for: .normal)
             btnView.isHidden = true
         }
@@ -37,18 +38,21 @@ class NotificationView: UIViewController {
     {
         if (UserJSON["Type"] as? String == "2")
         {
+            //After accecpt request
             let myDonorView:MyDonorView = self.storyboard?.instantiateViewController(withIdentifier: "MyDonorView") as! MyDonorView
             myDonorView.MyRequestIDFromPush = UserJSON["ID"] as! String
             let rootView:UINavigationController = UINavigationController.init(rootViewController: myDonorView)
             self.present(rootView, animated: true, completion: nil)
         }else if(UserJSON["Type"] as? String == "4")
         {
+            //For Camp and Thank you for after confirm camp request
             let confirmDonate:ConfirmDonate = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmDonate") as! ConfirmDonate
             confirmDonate.ID = UserJSON["ID"] as! String
             let rootView:UINavigationController = UINavigationController(rootViewController: confirmDonate)
             self.present(rootView, animated: true, completion: nil)
         }else if(UserJSON["Type"] as? String == "3")
         {
+            //for individual request notificaton
             let indconfirmDonate:IndividualConfirmDonate = self.storyboard?.instantiateViewController(withIdentifier: "IndividualConfirmDonate") as! IndividualConfirmDonate
             indconfirmDonate.iID = UserJSON["ID"] as! String
             let rootView:UINavigationController = UINavigationController(rootViewController: indconfirmDonate)

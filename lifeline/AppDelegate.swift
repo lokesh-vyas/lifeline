@@ -105,13 +105,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         {
             type = String(describing: userINFO["gcm.notification.Type"].int)
         }
-        if userINFO["gcm.notification.RequestID"].string != nil
+        let IDFetchString:String
+        if (type == "2")
         {
-            ID = userINFO["gcm.notification.RequestID"].string!
+            //After accecpt request
+          IDFetchString = "gcm.notification.RequestID"
+            
+        }else if(type == "4")
+        {
+            //For Camp and Thank you for after confirm camp request
+            IDFetchString = "gcm.notification.CampaignID"
+            
+        }else if(type == "3")
+        {
+            //for individual request notificaton
+            IDFetchString = "gcm.notification.RequestID"
+        }else
+        {
+            IDFetchString = ""
+        }
+        
+        if userINFO[IDFetchString].string != nil
+        {
+            ID = userINFO[IDFetchString].string!
         }
         else
         {
-            ID = String(describing: userINFO["gcm.notification.RequestID"].int)
+            ID = String(describing: userINFO[IDFetchString].int)
         }
         
         let myDict = ["Title": userINFO["aps"]["alert"]["title"].string, "Message":userINFO["aps"]["alert"]["body"].string,"Type":type,"ID":ID]
@@ -143,13 +163,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         {
             type = String(describing: userINFO["gcm.notification.Type"].int)
         }
-        if userINFO["gcm.notification.RequestID"].string != nil
+        let IDFetchString:String
+        if (type == "2")
         {
-            ID = userINFO["gcm.notification.RequestID"].string!
+            //After accecpt request
+            IDFetchString = "gcm.notification.RequestID"
+            
+        }else if(type == "4")
+        {
+            //For Camp and Thank you for after confirm camp request
+            IDFetchString = "gcm.notification.CampaignID"
+            
+        }else if(type == "3")
+        {
+            //for individual request notificaton
+            IDFetchString = "gcm.notification.RequestID"
+        }else
+        {
+            IDFetchString = ""
+        }
+        
+        if userINFO[IDFetchString].string != nil
+        {
+            ID = userINFO[IDFetchString].string!
         }
         else
         {
-            ID = String(describing: userINFO["gcm.notification.RequestID"].int)
+            ID = String(describing: userINFO[IDFetchString].int)
         }
         
         let myDict = ["Title": userINFO["aps"]["alert"]["title"].string, "Message":userINFO["aps"]["alert"]["body"].string,"Type":type,"ID":ID]
@@ -273,13 +313,33 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         {
             type = String(describing: userINFO["gcm.notification.Type"].int)
         }
-        if userINFO["gcm.notification.RequestID"].string != nil
+        let IDFetchString:String
+        if (type == "2")
         {
-            ID = userINFO["gcm.notification.RequestID"].string!
+            //After accecpt request
+            IDFetchString = "gcm.notification.RequestID"
+          
+        }else if(type == "4")
+        {
+            //For Camp and Thank you for after confirm camp request
+            IDFetchString = "gcm.notification.CampaignID"
+          
+        }else if(type == "3")
+        {
+            //for individual request notificaton
+            IDFetchString = "gcm.notification.RequestID"
+        }else
+        {
+            IDFetchString = ""
+        }
+        
+        if userINFO[IDFetchString].string != nil
+        {
+            ID = userINFO[IDFetchString].string!
         }
         else
         {
-            ID = String(describing: userINFO["gcm.notification.RequestID"].int)
+            ID = String(describing: userINFO[IDFetchString].int)
         }
         
         let myDict = ["Title": userINFO["aps"]["alert"]["title"].string, "Message":userINFO["aps"]["alert"]["body"].string,"Type":type,"ID":ID]
@@ -305,13 +365,33 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         {
             type = String(describing: userINFO["gcm.notification.Type"].int)
         }
-        if userINFO["gcm.notification.RequestID"].string != nil
+        let IDFetchString:String
+        if (type == "2")
         {
-            ID = userINFO["gcm.notification.RequestID"].string!
+            //After accecpt request
+           IDFetchString = "gcm.notification.RequestID"
+            
+        }else if(type == "4")
+        {
+            //For Camp and Thank you for after confirm camp request
+            IDFetchString = "gcm.notification.CampaignID"
+            
+        }else if(type == "3")
+        {
+            //for individual request notificaton
+            IDFetchString = "gcm.notification.RequestID"
+        }else
+        {
+            IDFetchString = ""
+        }
+        
+        if userINFO[IDFetchString].string != nil
+        {
+            ID = userINFO[IDFetchString].string!
         }
         else
         {
-            ID = String(describing: userINFO["gcm.notification.RequestID"].int)
+            ID = String(describing: userINFO[IDFetchString].int)
         }
         
         let myDict = ["Title": userINFO["aps"]["alert"]["title"].string, "Message":userINFO["aps"]["alert"]["body"].string,"Type":type,"ID":ID]

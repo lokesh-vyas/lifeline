@@ -8,9 +8,12 @@
 
 import Foundation
 
-class MarkerData {
+class MarkerData
+{
     
     var markerData = [String : Any]()
+    var APNResponse = [String : Any]()
+    var isAPNCamp :Bool?
     var IndividualsArray = [Dictionary<String, Any>]()
     var oneRequestOfDonate  = [String : Any]()
     var PreferredDateTime : String?

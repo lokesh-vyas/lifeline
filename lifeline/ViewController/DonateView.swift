@@ -41,9 +41,7 @@ class DonateView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         CLLocationManager.locationServicesEnabled()
-        
         NotificationCenter.default.addObserver(self, selector: #selector(DonateView.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
         
         locationManager.requestAlwaysAuthorization()
@@ -64,15 +62,6 @@ class DonateView: UIViewController {
         mapView.isMyLocationEnabled = true
         mapView.delegate = self
         view = mapView
-        let when = DispatchTime.now() + .seconds(5)
-        DispatchQueue.main.asyncAfter(deadline: when, execute: {
-            HudBar.sharedInstance.showHudWithMessage(message: "Loading...", view: self.view)
-        })
-        
-        
-//        if status == CLAuthorizationStatus.AuthorizedWhenInUse {
-//            viewMap.myLocationEnabled = true
-//        }
         mapView.isBuildingsEnabled = true
         mapView.settings.compassButton = true
         mapView.settings.indoorPicker = true
@@ -224,15 +213,14 @@ class DonateView: UIViewController {
 extension DonateView : CLLocationManagerDelegate {
     
     
-    /// hudbar 1 can be
+    
      func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         print("MyLatitude :\((manager.location?.coordinate.latitude)!) and MyLongitude : \((manager.location?.coordinate.longitude)!)")
-        
+
         if manager.location?.coordinate.latitude != nil || manager.location?.coordinate.latitude != 0 {
             manager.stopUpdatingLocation()
             print("Updation Stopped !!")
-            // can be hide
         }
     }
     
@@ -428,7 +416,6 @@ extension DonateView : GMSAutocompleteResultsViewControllerDelegate {
 
 extension DonateView : DonateViewProtocol {
     func successDonateSources(jsonArray: JSON) {
-        
         
         if jsonArray["BloodRequestSearchResponse"] == JSON.null || jsonArray["BloodRequestSearchResponse"]["BloodRequestSearchResponseDetails"]["StatusCode"] == 1 {
             print("No Requirements in your location")
