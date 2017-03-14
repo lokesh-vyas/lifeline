@@ -39,6 +39,8 @@ class ConfirmDonate: UIViewController {
         //MARK:- Invokes to add properties on controller
         self.confirmDonateProperties()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(ConfirmDonate.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
+        
         //MARK:- Either coming from APN or Back
         if MarkerData.SharedInstance.isNotIndividualAPN == false || MarkerData.SharedInstance.isIndividualAPN == false {
             //local
@@ -49,6 +51,19 @@ class ConfirmDonate: UIViewController {
             
         }
     }
+    //MARK:- PushNotificationView
+    func PushNotificationView(_ notification: NSNotification)
+    {
+        let dict = notification.object as! Dictionary<String, Any>
+        
+        let notificationView:NotificationView = self.storyboard?.instantiateViewController(withIdentifier: "NotificationView") as! NotificationView
+        notificationView.UserJSON = dict
+        notificationView.modalPresentationStyle = .overCurrentContext
+        notificationView.modalTransitionStyle = .coverVertical
+        notificationView.view.backgroundColor = UIColor.clear
+        self.present(notificationView, animated: true, completion: nil)
+    }
+    
     
     @IBAction func btnBackTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)

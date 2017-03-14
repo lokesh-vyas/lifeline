@@ -115,7 +115,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         let myDict = ["Title": userINFO["aps"]["alert"]["title"].string, "Message":userINFO["aps"]["alert"]["body"].string,"Type":type,"ID":ID]
-        let deadlineTime = DispatchTime.now() + .milliseconds(100)
+        let deadlineTime = DispatchTime.now() + .seconds(1)
         DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute:
             {
                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PushNotification"), object:myDict)
@@ -153,7 +153,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         let myDict = ["Title": userINFO["aps"]["alert"]["title"].string, "Message":userINFO["aps"]["alert"]["body"].string,"Type":type,"ID":ID]
-        let deadlineTime = DispatchTime.now() + .milliseconds(100)
+        let deadlineTime = DispatchTime.now() + .seconds(1)
         DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute:
         {
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PushNotification"), object:myDict)
@@ -284,7 +284,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         
         let myDict = ["Title": userINFO["aps"]["alert"]["title"].string, "Message":userINFO["aps"]["alert"]["body"].string,"Type":type,"ID":ID]
         
-        let deadlineTime = DispatchTime.now() + .milliseconds(100)
+        let deadlineTime = DispatchTime.now() + .seconds(1)
         DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute:
             {
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PushNotification"), object:myDict)
@@ -316,7 +316,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         
         let myDict = ["Title": userINFO["aps"]["alert"]["title"].string, "Message":userINFO["aps"]["alert"]["body"].string,"Type":type,"ID":ID]
         
-        let deadlineTime = DispatchTime.now() + .milliseconds(100)
+        let deadlineTime = DispatchTime.now() + .seconds(1)
         DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute:
             {
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PushNotification"), object:myDict)

@@ -20,8 +20,20 @@ class RequestedByIndividuals: UIViewController {
         tblView.rowHeight = 100
         tblView.backgroundColor = UIColor.clear
         self.tblView.contentInset = UIEdgeInsetsMake(-35, 0, -20, 0);
-
+        NotificationCenter.default.addObserver(self, selector: #selector(RequestedByIndividuals.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
         
+    }
+    //MARK:-PushNotificationView
+    func PushNotificationView(_ notification: NSNotification)
+    {
+        let dict = notification.object as! Dictionary<String, Any>
+        
+        let notificationView:NotificationView = self.storyboard?.instantiateViewController(withIdentifier: "NotificationView") as! NotificationView
+        notificationView.UserJSON = dict
+        notificationView.modalPresentationStyle = .overCurrentContext
+        notificationView.modalTransitionStyle = .coverVertical
+        notificationView.view.backgroundColor = UIColor.clear
+        self.present(notificationView, animated: true, completion: nil)
     }
     
     @IBAction func btnBackTapped(_ sender: Any) {
