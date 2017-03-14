@@ -102,10 +102,10 @@ class AlertConfirmDonate: UIViewController {
                     String(describing: (MarkerData.SharedInstance.oneRequestOfDonate["CID"] != nil) ? (MarkerData.SharedInstance.oneRequestOfDonate["CID"])! : (MarkerData.SharedInstance.markerData["ID"]!))
                 
                 if MarkerData.SharedInstance.oneRequestOfDonate["CID"] != nil {
-                    TypeOfOrg =  MarkerData.SharedInstance.markerData["CTypeOfOrg"]!
+                    TypeOfOrg =  MarkerData.SharedInstance.markerData["CTypeOfOrg"]! as! String
                     
                 } else {
-                    TypeOfOrg =  MarkerData.SharedInstance.markerData["TypeOfOrg"]!
+                    TypeOfOrg =  MarkerData.SharedInstance.markerData["TypeOfOrg"]! as! String
                 }
                 
             }else
