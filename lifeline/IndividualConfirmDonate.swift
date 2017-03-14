@@ -23,10 +23,9 @@ class IndividualConfirmDonate: UIViewController {
     var iID = String()
     override func viewDidLoad() {
         super.viewDidLoad()
+         NotificationCenter.default.addObserver(self, selector: #selector(IndividualConfirmDonate.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
         self.navigationController?.completelyTransparentBar()
         IndividualConfirmDonateInteractor.sharedInstance.delegate = self
-        
-        
         
         //MARK:- Either coming from APN or Back
         if MarkerData.SharedInstance.isIndividualAPN == false {
@@ -38,7 +37,18 @@ class IndividualConfirmDonate: UIViewController {
         
         self.IndividualConfirmDonateProperties()
     }
-
+    //MARK:- PushNotificationView
+    func PushNotificationView(_ notification: NSNotification)
+    {
+        let dict = notification.object as! Dictionary<String, Any>
+        
+        let notificationView:NotificationView = self.storyboard?.instantiateViewController(withIdentifier: "NotificationView") as! NotificationView
+        notificationView.UserJSON = dict
+        notificationView.modalPresentationStyle = .overCurrentContext
+        notificationView.modalTransitionStyle = .coverVertical
+        notificationView.view.backgroundColor = UIColor.clear
+        self.present(notificationView, animated: true, completion: nil)
+    }
     
     @IBAction func btnBackTapped(_ sender: Any) {
 //        self.navigationController?.popViewController(animated: true)
@@ -96,6 +106,7 @@ extension IndividualConfirmDonate : IndividualRequestDetailsProtocol {
     func didSuccessGetRequestDetails(jsonArray: JSON) {
         //TODO:- use data
         print("<<<<<didSuccess-GetRequestDetails>>>>>", jsonArray)
+        MarkerData.SharedInstance.markerData = jsonArray["GetRequestDetailsResponse"]["ResponseDetails"].dictionaryObject!
         self.lblWhoRequested.text = "\(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["WhatNeeded"])) requirement for \(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["BloodGroup"]))"
         self.lblWhenRequired.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["WhenNeeded"])
         self.lblNoOfUnits.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["NumUnits"])

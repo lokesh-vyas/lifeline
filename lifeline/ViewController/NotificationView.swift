@@ -37,10 +37,21 @@ class NotificationView: UIViewController {
     {
         if (UserJSON["Type"] as? String == "2")
         {
-            print(UserJSON["ID"]!)
             let myDonorView:MyDonorView = self.storyboard?.instantiateViewController(withIdentifier: "MyDonorView") as! MyDonorView
             myDonorView.MyRequestIDFromPush = UserJSON["ID"] as! String
             let rootView:UINavigationController = UINavigationController.init(rootViewController: myDonorView)
+            self.present(rootView, animated: true, completion: nil)
+        }else if(UserJSON["Type"] as? String == "4")
+        {
+            let confirmDonate:ConfirmDonate = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmDonate") as! ConfirmDonate
+            confirmDonate.ID = UserJSON["ID"] as! String
+            let rootView:UINavigationController = UINavigationController(rootViewController: confirmDonate)
+            self.present(rootView, animated: true, completion: nil)
+        }else if(UserJSON["Type"] as? String == "3")
+        {
+            let indconfirmDonate:IndividualConfirmDonate = self.storyboard?.instantiateViewController(withIdentifier: "IndividualConfirmDonate") as! IndividualConfirmDonate
+            indconfirmDonate.iID = UserJSON["ID"] as! String
+            let rootView:UINavigationController = UINavigationController(rootViewController: indconfirmDonate)
             self.present(rootView, animated: true, completion: nil)
         }
     }
