@@ -30,6 +30,7 @@ class ConfirmDonateInteractor {
     
     //MARK:- Get Volunteer Details
     func getCompaignDetails(urlString : String, params : Dictionary<String,Any>) {
+        
         NetworkManager.sharedInstance.serviceCallForPOST(url: urlString,
                                                          method: "POST",
                                                          parameters: params,

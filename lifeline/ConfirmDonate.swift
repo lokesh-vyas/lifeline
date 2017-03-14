@@ -37,7 +37,7 @@ class ConfirmDonate: UIViewController {
         ConfirmDonateInteractor.sharedInstance.delegate = self
         
         //MARK:- Invokes to add properties on controller
-        self.confirmDonateProperties()
+        
         
         NotificationCenter.default.addObserver(self, selector: #selector(ConfirmDonate.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
         
@@ -45,9 +45,29 @@ class ConfirmDonate: UIViewController {
         if MarkerData.SharedInstance.isNotIndividualAPN == false || MarkerData.SharedInstance.isIndividualAPN == false {
             //local
             ID = (MarkerData.SharedInstance.markerData["ID"] as! String?)!
+            self.confirmDonateProperties()
         } else {
+             HudBar.sharedInstance.showHudWithMessage(message: "Loading...", view: view)
             //Through APN
             navigationItem.hidesBackButton = true
+            HospitalName.text = "Contact Name"
+            Email.isHidden = false
+            lblEmailID.isHidden = false
+            FromDate.isHidden = false
+            lblFromDate.isHidden = false
+            ToDate.isHidden = false
+            lblToDate.isHidden = false
+            VolunteerDetails.isHidden = false
+            lblCampDescription.isHidden = false
+            btnConfirmDonate.setTitle("Volunteer", for: .normal)
+            let bodyGetCampDetails = ["CampaignDetailsRequest" : [
+                "RequestDetails" : [
+                    "LoginID": "\(UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!)",
+                    "CampaignID": ID
+                ]]]
+            
+            //MARK:- GET COMPAIGN DETAILS
+            ConfirmDonateInteractor.sharedInstance.getCompaignDetails(urlString: URLList.GET_CAMPAGIN_DETAILS.rawValue, params: bodyGetCampDetails)
             
         }
     }
@@ -168,11 +188,22 @@ class ConfirmDonate: UIViewController {
 
 extension ConfirmDonate : ConfirmDonateProtocol {
     
-    func didSuccessGetCompaignDetails(jsonArray: JSON) {
+    func didSuccessGetCompaignDetails(jsonArray: JSON)
+    {
         
         print("*****didSuccess-GetCompaignDetails******", jsonArray)
+        MarkerData.SharedInstance.APNResponse = jsonArray["CampaignDetailsResponse"]["ResponseDetails"].dictionaryObject!
+        MarkerData.SharedInstance.isAPNCamp = true
         self.lblToDate.text = String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["ToDate"]).characters.count > 10 ?  String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["ToDate"]).substring(to: 10):String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["ToDate"])
         self.lblCampDescription.text = String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["AdditionalInfo"])
+        
+        lblName.text = MarkerData.SharedInstance.APNResponse["Name"] as! String?
+        lblWorkingHours.text = MarkerData.SharedInstance.APNResponse["WorkingHours"] as! String?
+        lblContactNumber.text = String(describing: MarkerData.SharedInstance.APNResponse["ContactNumber"])
+        lblEmailID.text = MarkerData.SharedInstance.APNResponse["Email"] as! String?
+        lblFromDate.text = MarkerData.SharedInstance.APNResponse["FromDate"] as! String?
+        lblToDate.text = MarkerData.SharedInstance.APNResponse["ToDate"] as! String?
+        lblAddress.text = MarkerData.SharedInstance.APNResponse["AddressLine"] as! String?
         
         HudBar.sharedInstance.hideHudFormView(view: self.view)
         

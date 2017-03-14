@@ -109,7 +109,8 @@ extension IndividualConfirmDonate : IndividualRequestDetailsProtocol {
     func didSuccessGetRequestDetails(jsonArray: JSON) {
         //TODO:- use data
         print("<<<<<didSuccess-GetRequestDetails>>>>>", jsonArray)
-        MarkerData.SharedInstance.markerData = jsonArray["GetRequestDetailsResponse"]["ResponseDetails"].dictionaryObject!
+           MarkerData.SharedInstance.isAPNCamp = false
+        MarkerData.SharedInstance.APNResponse = jsonArray["GetRequestDetailsResponse"]["ResponseDetails"].dictionaryObject!
         self.lblWhoRequested.text = "\(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["WhatNeeded"])) requirement for \(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["BloodGroup"]))"
         self.lblWhenRequired.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["WhenNeeded"])
         self.lblNoOfUnits.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["NumUnits"])

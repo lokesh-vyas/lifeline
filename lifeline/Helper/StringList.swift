@@ -37,7 +37,7 @@ public enum URLList:String
     case BLOOD_REQUEST_SEARCH             = "https://lifelineadmin-test.apigee.net/lifeline-dev/DEV-LifeLine.BloodRequestSearch"
     case CONFIRM_DONATE                   = "https://lifelineadmin-test.apigee.net/lifeline-dev/DEV-LifeLine.ConfirmDonate"
     case GET_REQUEST_DETAILS              = "https://lifelineadmin-test.apigee.net/lifeline-dev/DEV-LifeLine.GetRequestDetails"
-    case GET_CAMPAGIN_DETAILS             = "https://lifelineadmin-test.apigee.net/lifeline-dev/DEV-LifeLine.GetCampaignDetails"
+    case GET_CAMPAGIN_DETAILS             = "https://lifelineadmin-test.apigee.net/lifeline-dev/LifeLine.GetCampaignDetails"
     case BLOOD_REQUIREMENT                = "https://lifelineadmin-test.apigee.net/lifeline-dev/DEV-LifeLine.BloodRequirement"
     case GET_COLLECTION_CENTRE_LIST       = "https://lifelineadmin-test.apigee.net/lifeline-dev/DEV-LifeLine.GetCollectionCentersList"
     case PROFILE_REGISTRATION             = "https://lifelineadmin-test.apigee.net/lifeline-dev/DEV-LifeLine.ProfileRegistration"
