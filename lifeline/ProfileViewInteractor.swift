@@ -38,9 +38,9 @@ class ProfileViewModel
     var LastDonationStrin:String?
     var BloodGroup:String?
     var homeLat:String = ""
-    var homeLong = ""
-    var workLat = ""
-    var workLong = ""
+    var homeLong:String = ""
+    var workLat:String = ""
+    var workLong:String = ""
 }
 
 //MARK:- ProfileView Interactor

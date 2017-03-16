@@ -147,7 +147,8 @@ class RequestView: UIViewController,UITextViewDelegate
         let AddressStr = ("\(txtFieldHospitalBloodBankAddress.text!) \(txtFieldHospitalBloodBankAddressCity.text!) \(txtFieldHospitalBloodBankAddressLandMark.text!) \(txtFieldHospitalBloodBankAddressPINCode.text!)")
         hospitalInMap?.delegate = self
         hospitalInMap?.addresstring = AddressStr
-        self.navigationController?.present(hospitalInMap!, animated: true, completion: nil)
+        let navBar = UINavigationController(rootViewController: hospitalInMap!)
+        self.present(navBar, animated: true, completion: nil)
     }
     //MARK:- SwitchShareAction
     @IBAction func switchShareTapped(_ sender: Any)

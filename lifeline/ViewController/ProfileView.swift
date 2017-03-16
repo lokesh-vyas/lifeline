@@ -215,7 +215,8 @@ class ProfileView: UIViewController
         hospitalInMap?.delegate = self
         hospitalInMap?.addresstring = AddressStr
         hospitalInMap?.checkBool = true
-        self.navigationController?.present(hospitalInMap!, animated: true, completion: nil)
+        let navBar = UINavigationController(rootViewController: hospitalInMap!)
+        self.present(navBar, animated: true, completion: nil)
     }
     //MARK:- WorkGoogleMapAction
     @IBAction func workGoogleMapAction(_ sender: Any)
@@ -225,7 +226,8 @@ class ProfileView: UIViewController
         hospitalInMap?.checkBool = false
         hospitalInMap?.delegate = self
         hospitalInMap?.addresstring = AddressStr
-        self.navigationController?.present(hospitalInMap!, animated: true, completion: nil)
+        let navBar = UINavigationController(rootViewController: hospitalInMap!)
+        self.present(navBar, animated: true, completion: nil)
     }
     //MARK:- ProfileSubmitAction
     @IBAction func profileSubmitAction(_ sender: Any)
@@ -303,19 +305,19 @@ class ProfileView: UIViewController
             {
                ProfileViewModel.SharedInstance.DOBstring = ""
             }
-            if ProfileViewModel.SharedInstance.workLat == nil
+            if ProfileViewModel.SharedInstance.workLat == ""
             {
                 ProfileViewModel.SharedInstance.workLat = "0"
             }
-            if ProfileViewModel.SharedInstance.workLong == nil
+            if ProfileViewModel.SharedInstance.workLong == ""
             {
                 ProfileViewModel.SharedInstance.workLong = "0"
             }
-            if ProfileViewModel.SharedInstance.homeLat == nil
+            if ProfileViewModel.SharedInstance.homeLat == ""
             {
                 ProfileViewModel.SharedInstance.homeLat = "0"
             }
-            if ProfileViewModel.SharedInstance.homeLong == nil
+            if ProfileViewModel.SharedInstance.homeLong == ""
             {
                 ProfileViewModel.SharedInstance.homeLong = "0"
             }

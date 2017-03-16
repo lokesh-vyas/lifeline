@@ -45,6 +45,7 @@ class ShowHospitalInMapView: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+          self.navigationController?.completelyTransparentBar()
         // Do any additional setup after loading the view.
         HudBar.sharedInstance.showHudWithMessage(message: "Loading...", view: self.view)
         if addresstring.characters.count >= 7
@@ -117,6 +118,9 @@ class ShowHospitalInMapView: UIViewController
         let autocompleteController = GMSAutocompleteViewController()
         autocompleteController.delegate = self
         present(autocompleteController, animated: true, completion: nil)
+    }
+    @IBAction func btnbackTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
 }
 extension ShowHospitalInMapView : CLLocationManagerDelegate {
