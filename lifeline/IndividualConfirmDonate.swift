@@ -67,28 +67,32 @@ class IndividualConfirmDonate: UIViewController {
     }
     
     @IBAction func btnConfirmDonateTapped(_ sender: Any) {
-//        let strV = "http://demo.frontman.isteer.com:8284/services/GetVolunteerList"
-        //FIXME:- LoginID
-        let volunteerBody = ["GetVolunteerListRequest": [
-                                        "RequestDetails": [
-                                                    "LoginID" : "\(UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!)",
-                                                    "RequestID" : iID
-                                                    ]]]
-        
-        ConfirmDonateInteractor.sharedInstance.delegateV = self
-        ConfirmDonateInteractor.sharedInstance.getVolunteerDetails(urlString: URLList.LIFELINE_Get_VolunteerList.rawValue, params: volunteerBody)
-        
+
         //MARK:- Below Age 18
         let data = UserDefaults.standard.object(forKey: "ProfileData")
         if data != nil {
             let profileData = NSKeyedUnarchiver.unarchiveObject(with: data as! Data) as! ProfileData
             if Int(profileData.Age)! < 18 {
                 let alert = UIAlertController(title: "Warning", message: "You are not eligible for donating blood as your age is below 18. If you still want to continue, please select OK to continue.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {action in self.toiConfirmDonateSubmit()}))
                 alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: nil))
                 present(alert, animated: true, completion: nil)
             }
+        } else {
+            
         }
+    }
+    
+    func toiConfirmDonateSubmit() {
+        
+        let volunteerBody = ["GetVolunteerListRequest": [
+            "RequestDetails": [
+                "LoginID" : "\(UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!)",
+                "RequestID" : iID
+            ]]]
+        
+        ConfirmDonateInteractor.sharedInstance.delegateV = self
+        ConfirmDonateInteractor.sharedInstance.getVolunteerDetails(urlString: URLList.LIFELINE_Get_VolunteerList.rawValue, params: volunteerBody)
     }
     
     func IndividualConfirmDonateProperties() {
@@ -126,7 +130,7 @@ extension IndividualConfirmDonate : IndividualRequestDetailsProtocol {
     }
     func didFailGetRequestDetails() {
         print("<<didFail-GetRequestDetails>>")
-//        HudBar.sharedInstance.showHudWithMessage(message: "No Internet Connection", view: self.view)
+
     }
 }
 
@@ -156,7 +160,7 @@ extension IndividualConfirmDonate : getVolunteerProtocol {
     
     func didFailGetVolunteerDetails() {
         print("<<didFail-GetVolunteerDetails>>")
-//        HudBar.sharedInstance.showHudWithMessage(message: "No Internet Connection", view: self.view)
+
     }
 }
 

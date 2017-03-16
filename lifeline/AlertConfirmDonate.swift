@@ -9,6 +9,8 @@
 import UIKit
 import SwiftyJSON
 import Toast_Swift
+import UserNotifications
+
 
 class AlertConfirmDonate: UIViewController {
     
@@ -19,6 +21,7 @@ class AlertConfirmDonate: UIViewController {
     
     var preferredDateTime : String?
     var lastSentDate : String?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -126,6 +129,23 @@ class AlertConfirmDonate: UIViewController {
                      "Comment": CommentText
                     ]]]
             
+            print("+++++++++++\(preferredDateTime!)++++++++++++")
+            
+            if #available(iOS 10.0, *) {
+                
+                let content = UNMutableNotificationContent()
+                content.title = "PankajTilte"
+                content.body = "Hi, it welcomes you"
+                content.sound = UNNotificationSound.default()
+                
+                
+                
+                
+                
+            } else {
+                // Fallback on earlier versions
+            }
+  
             AlertConfirmDonateInteractor.sharedInstance.confirmsDonate(urlString: URLList.CONFIRM_DONATE.rawValue, params: collectedParameters)
         } else {
             let alert = UIAlertController(title: "Missing", message: "Preferred Date & Time is Missing", preferredStyle: .alert)

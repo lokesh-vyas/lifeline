@@ -35,13 +35,14 @@ class DonateView: UIViewController {
     var labelWarning = UILabel()
     let imageWarning = UIImageView()
     var lastEventDate : Date? = nil
-    
+    var loader : Bool?
     
     //MARK:- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        loader = true
         CLLocationManager.locationServicesEnabled()
+        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         NotificationCenter.default.addObserver(self, selector: #selector(DonateView.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
         
         locationManager.requestAlwaysAuthorization()
@@ -62,17 +63,19 @@ class DonateView: UIViewController {
         mapView.isMyLocationEnabled = true
         mapView.delegate = self
         view = mapView
+        
         mapView.isBuildingsEnabled = true
         mapView.settings.compassButton = true
         mapView.settings.indoorPicker = true
-        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         
+       
         
     }
     
     //MARK:- viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
         //For Result VC
         resultsViewController = GMSAutocompleteResultsViewController()
         resultsViewController?.delegate = self
@@ -205,6 +208,8 @@ class DonateView: UIViewController {
             }
         }
         mapView.delegate = self
+        HudBar.sharedInstance.hideHudFormView(view: self.view)
+
     }
     
     
@@ -217,10 +222,11 @@ extension DonateView : CLLocationManagerDelegate {
      func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         print("MyLatitude :\((manager.location?.coordinate.latitude)!) and MyLongitude : \((manager.location?.coordinate.longitude)!)")
-
+        
         if manager.location?.coordinate.latitude != nil || manager.location?.coordinate.latitude != 0 {
             manager.stopUpdatingLocation()
             print("Updation Stopped !!")
+            
         }
     }
     
@@ -232,9 +238,21 @@ extension DonateView : CLLocationManagerDelegate {
 
 extension DonateView : GMSMapViewDelegate {
     
+    public func mapViewDidStartTileRendering(_ mapView: GMSMapView) {
+        
+    }
+    public func mapViewDidFinishTileRendering(_ mapView: GMSMapView) {
+        
+        
+    }
+
+    
     public func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition)
     {
         print("didChange")
+        if loader == true {
+        HudBar.sharedInstance.showHudWithMessage(message: "Loading...", view: self.view)
+        }
         
         if lastEventDate != nil {
             let latestTime = Date()
@@ -258,11 +276,13 @@ extension DonateView : GMSMapViewDelegate {
         EastLongitude = SouthEast.longitude
         
         self.fetchBloodRequestToDonate()
+        loader = false
     }
     
     public func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         print("idleAt")
-        HudBar.sharedInstance.hideHudFormView(view: self.view)
+        
+        
     }
     
     public func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
@@ -417,10 +437,11 @@ extension DonateView : GMSAutocompleteResultsViewControllerDelegate {
 extension DonateView : DonateViewProtocol {
     func successDonateSources(jsonArray: JSON) {
         
+        
         if jsonArray["BloodRequestSearchResponse"] == JSON.null || jsonArray["BloodRequestSearchResponse"]["BloodRequestSearchResponseDetails"]["StatusCode"] == 1 {
             print("No Requirements in your location")
             
-            HudBar.sharedInstance.hideHudFormView(view: self.view)
+            
             //viewWarning
             viewWarning.backgroundColor = UIColor.white
             viewWarning.translatesAutoresizingMaskIntoConstraints = false
@@ -565,7 +586,7 @@ extension DonateView : DonateViewProtocol {
             self.bloodDonatingMarkers(responseData: jsonArray)
             
         }
-        HudBar.sharedInstance.hideHudFormView(view: self.view)
+        
     }
     func failedDonateSources() {
         print("Failed to get Donate resources !!")

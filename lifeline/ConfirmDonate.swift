@@ -89,54 +89,51 @@ class ConfirmDonate: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     @IBAction func btnHomeTapped(_ sender: Any) {
-//        dismiss(animated: true, completion: nil)
         let SWRevealView = self.storyboard!.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
         self.present(SWRevealView, animated: true, completion: nil)
-        
     }
-    
 
     @IBAction func btnConfirmDonateTapped(_ sender: Any) {
-        
-        //TODO: where I am coming from H/C/I
-        var whichID = String()
-        var idValue = String()
-        MarkerData.SharedInstance.oneRequestOfDonate["CID"] = nil
-        
-        if MarkerData.SharedInstance.markerData["TypeOfOrg"] as! String? == "1" {
-            if MarkerData.SharedInstance.markerData["IndividualDetails"] as! String != "null" { // Individual
-                whichID = "RequestID"
-            } else { // Hospital
-                whichID = "CenterID"
-            }
-            
-        } else if MarkerData.SharedInstance.markerData["TypeOfOrg"] as! String? == "2" { // Camp
-            whichID = "CampaignID"
-            
-        }
-        idValue = ID
-//        let strV = "http://demo.frontman.isteer.com:8284/services/GetVolunteerList"
-        //FIXME:- LoginID
-        let volDict = ["GetVolunteerListRequest": [
-                                        "RequestDetails": [
-                                        "LoginID" : "\(UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!)",
-                                        "\(whichID)":"\(idValue)"
-                    ]]]
-        
-        ConfirmDonateInteractor.sharedInstance.delegateV = self
-        ConfirmDonateInteractor.sharedInstance.getVolunteerDetails(urlString: URLList.LIFELINE_Get_VolunteerList.rawValue, params: volDict)
         
         //MARK:- Below Age 18
         let data = UserDefaults.standard.object(forKey: "ProfileData")
         if data != nil {
             let profileData = NSKeyedUnarchiver.unarchiveObject(with: data as! Data) as! ProfileData
             if Int(profileData.Age)! < 18 {
-                    let alert = UIAlertController(title: "Warning", message: "You are not eligible for donating blood as your age is below 18. If you still want to continue, please select OK to continue.", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                    alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: nil))
-                    present(alert, animated: true, completion: nil)
-                }
+                let alert = UIAlertController(title: "Warning", message: "You are not eligible for donating blood as your age is below 18. If you still want to continue, please select OK to continue.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in self.toConfirmDonateSubmit()}))
+                alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
+                present(alert, animated: true, completion: nil)
+            } else {
+                self.toConfirmDonateSubmit()
+            }
         }
+    }
+    
+    func toConfirmDonateSubmit()  {
+        
+        var whichID = String()
+        var idValue = String()
+        MarkerData.SharedInstance.oneRequestOfDonate["CID"] = nil
+        if MarkerData.SharedInstance.markerData["TypeOfOrg"] as! String? == "1" {
+            if MarkerData.SharedInstance.markerData["IndividualDetails"] as! String != "null" { // Individual
+                whichID = "RequestID"
+            } else { // Hospital
+                whichID = "CenterID"
+            }
+        } else if MarkerData.SharedInstance.markerData["TypeOfOrg"] as! String? == "2" { // Camp
+            whichID = "CampaignID"
+        }
+        idValue = ID
+        //        let strV = "http://demo.frontman.isteer.com:8284/services/GetVolunteerList"
+        //FIXME:- LoginID
+        let volDict = ["GetVolunteerListRequest": [
+            "RequestDetails": [
+                "LoginID" : "\(UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!)",
+                "\(whichID)":"\(idValue)"
+            ]]]
+        ConfirmDonateInteractor.sharedInstance.delegateV = self
+        ConfirmDonateInteractor.sharedInstance.getVolunteerDetails(urlString: URLList.LIFELINE_Get_VolunteerList.rawValue, params: volDict)
     }
     
     func confirmDonateProperties() {
@@ -201,7 +198,7 @@ extension ConfirmDonate : ConfirmDonateProtocol {
         
         lblName.text = MarkerData.SharedInstance.APNResponse["Name"] as! String?
         lblWorkingHours.text = MarkerData.SharedInstance.APNResponse["WorkingHours"] as! String?
-        lblContactNumber.text = String(describing: MarkerData.SharedInstance.APNResponse["ContactNumber"])
+        lblContactNumber.text = String(describing: MarkerData.SharedInstance.APNResponse["ContactNumber"]!)
         lblEmailID.text = MarkerData.SharedInstance.APNResponse["Email"] as! String?
         lblAddress.text = MarkerData.SharedInstance.APNResponse["AddressLine"] as! String?
         
