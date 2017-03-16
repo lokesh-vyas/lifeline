@@ -143,10 +143,11 @@ class RequestView: UIViewController,UITextViewDelegate
     //MARK:- GoogleMap IBAction
     @IBAction func btnGoogleMapTapped(_ sender: Any)
     {
-      let hospitalInMap = self.storyboard?.instantiateViewController(withIdentifier: "ShowHospitalInMapView") as! ShowHospitalInMapView!
-        hospitalInMap?.addresstring = txtFieldHospitalBloodBankAddress.text! + txtFieldHospitalBloodBankAddressCity.text!
-        
-      self.navigationController?.pushViewController(hospitalInMap!, animated: true)
+        let hospitalInMap = self.storyboard?.instantiateViewController(withIdentifier: "ShowHospitalInMapView") as! ShowHospitalInMapView!
+        let AddressStr = ("\(txtFieldHospitalBloodBankAddress.text!) \(txtFieldHospitalBloodBankAddressCity.text!) \(txtFieldHospitalBloodBankAddressLandMark.text!) \(txtFieldHospitalBloodBankAddressPINCode.text!)")
+        hospitalInMap?.delegate = self
+        hospitalInMap?.addresstring = AddressStr
+        self.navigationController?.present(hospitalInMap!, animated: true, completion: nil)
     }
     //MARK:- SwitchShareAction
     @IBAction func switchShareTapped(_ sender: Any)
@@ -467,5 +468,17 @@ extension RequestView:ProtocolCalendar
     func FailureProtocolCalendar(valueSent: String)
     {
         print("Try Again")
+    }
+}
+extension RequestView:MyAddressFormat
+{
+    func SuccessMyAddressFormat(AddressResponse: AddressString,checkBool:Bool)
+    {
+        self.txtFieldHospitalBloodBankAddress.text = AddressResponse.addressString
+        self.txtFieldHospitalBloodBankAddressCity.text = AddressResponse.City
+        self.txtFieldHospitalBloodBankAddressPINCode.text = AddressResponse.PINCode
+        
+        RequestViewModel.SharedInstance.Latitude = AddressResponse.latitude
+        RequestViewModel.SharedInstance.Longitude = AddressResponse.longitude
     }
 }

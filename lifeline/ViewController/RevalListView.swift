@@ -36,10 +36,21 @@ extension RevalListView:UITableViewDelegate,UITableViewDataSource
         let cell:UITableViewCell = (self.menuTableView.dequeueReusableCell(withIdentifier: cellString )! as UITableViewCell)
         return cell
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 2
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        let InternalCheck:String = UserDefaults.standard.value(forKey: "LoginInformation")! as! String
+        if InternalCheck == "Internal"
         {
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ShareApplicationURL"), object: nil)
+            if indexPath.row == 2
+            {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ShareApplicationURL"), object: nil)
+            }
+        }else
+        {
+            if indexPath.row == 1
+            {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ShareApplicationURL"), object: nil)
+            }
         }
-    }
+     }
 }
