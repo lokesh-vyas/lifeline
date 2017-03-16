@@ -14,7 +14,7 @@ import GoogleMaps
 import GooglePlaces
 import GooglePlacePicker
 import SwiftyJSON
-
+import UserNotifications
 
 //Notification
 import UserNotifications
@@ -58,22 +58,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // [START register_for_notifications]
         if #available(iOS 10.0, *) {
+            
             // For iOS 10 display notification (sent via APNS)
             UNUserNotificationCenter.current().delegate = self
-            
             let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-            UNUserNotificationCenter.current().requestAuthorization(
-                options: authOptions,
-                completionHandler: {_, _ in })
+            UNUserNotificationCenter.current().requestAuthorization( options: authOptions, completionHandler: {_, _ in })
             
             // For iOS 10 data message (sent via FCM)
+            
+            //Local Notifications
+            let center = UNUserNotificationCenter.current()
+            let options: UNAuthorizationOptions = [.alert, .sound]
+            
+            center.requestAuthorization(options: options) {
+                (granted, error) in
+                if !granted {
+                    print("Something went wrong")
+                }
+            }
+            center.getNotificationSettings { (settings) in
+                if settings.authorizationStatus != .authorized {
+                    // Notifications not allowed
+                }
+            }
+
             FIRMessaging.messaging().remoteMessageDelegate = self
             
         } else {
-            let settings: UIUserNotificationSettings =
-                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            let settings: UIUserNotificationSettings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
             application.registerUserNotificationSettings(settings)
         }
+        
+        
         
         application.registerForRemoteNotifications()
         
