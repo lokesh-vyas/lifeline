@@ -590,7 +590,6 @@ extension DonateView : DonateViewProtocol {
     }
     func failedDonateSources() {
         print("Failed to get Donate resources !!")
-
     }
 }
 

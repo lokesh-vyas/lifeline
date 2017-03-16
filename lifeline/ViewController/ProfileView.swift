@@ -210,10 +210,24 @@ class ProfileView: UIViewController
     //MARK:- HomeGoogleMapAction
     @IBAction func homeGoogleMapAction(_ sender: Any)
     {
+        let hospitalInMap = self.storyboard?.instantiateViewController(withIdentifier: "ShowHospitalInMapView") as! ShowHospitalInMapView!
+        let AddressStr = ("\(self.txtHomeAddressLine.text!) \(self.txtHomeAddressCity.text!) \(txtHomeAddressPINCode.text!)")
+        hospitalInMap?.delegate = self
+        hospitalInMap?.addresstring = AddressStr
+        hospitalInMap?.checkBool = true
+        let navBar = UINavigationController(rootViewController: hospitalInMap!)
+        self.present(navBar, animated: true, completion: nil)
     }
     //MARK:- WorkGoogleMapAction
     @IBAction func workGoogleMapAction(_ sender: Any)
     {
+        let hospitalInMap = self.storyboard?.instantiateViewController(withIdentifier: "ShowHospitalInMapView") as! ShowHospitalInMapView!
+        let AddressStr = ("\(self.txtWorkAddressLine.text!) \(self.txtWorkAddressCity.text!) \(self.txtWorkAddressPINCode.text!)")
+        hospitalInMap?.checkBool = false
+        hospitalInMap?.delegate = self
+        hospitalInMap?.addresstring = AddressStr
+        let navBar = UINavigationController(rootViewController: hospitalInMap!)
+        self.present(navBar, animated: true, completion: nil)
     }
     //MARK:- ProfileSubmitAction
     @IBAction func profileSubmitAction(_ sender: Any)
@@ -291,8 +305,24 @@ class ProfileView: UIViewController
             {
                ProfileViewModel.SharedInstance.DOBstring = ""
             }
+            if ProfileViewModel.SharedInstance.workLat == ""
+            {
+                ProfileViewModel.SharedInstance.workLat = "0"
+            }
+            if ProfileViewModel.SharedInstance.workLong == ""
+            {
+                ProfileViewModel.SharedInstance.workLong = "0"
+            }
+            if ProfileViewModel.SharedInstance.homeLat == ""
+            {
+                ProfileViewModel.SharedInstance.homeLat = "0"
+            }
+            if ProfileViewModel.SharedInstance.homeLong == ""
+            {
+                ProfileViewModel.SharedInstance.homeLong = "0"
+            }
             
-            let profileData = ProfileData(Name: self.txtName.text!, EmailID: self.txtEmailID.text!, ContactNumber: self.txtContactNumber.text!, DateOfBirth: ProfileViewModel.SharedInstance.DOBstring!, Age: self.txtAge.text!, BloodGroup: ProfileViewModel.SharedInstance.BloodGroup!, LastDonationDate: ProfileViewModel.SharedInstance.LastDonationStrin!, HomeAddressLine: self.txtHomeAddressLine.text!, HomeAddressCity: self.txtHomeAddressCity.text!, HomeAddressPINCode: self.txtHomeAddressPINCode.text!, HomeAddressLatitude: "0", HomeAddressLongitude: "0", WorkAddressLine: self.txtWorkAddressLine.text!, WorkAddressCity: self.txtWorkAddressCity.text!, WorkAddressPINCode: self.txtWorkAddressPINCode.text!, WorkAddressLatitude: "0", WorkAddressLongitude: "0")
+            let profileData = ProfileData(Name: self.txtName.text!, EmailID: self.txtEmailID.text!, ContactNumber: self.txtContactNumber.text!, DateOfBirth: ProfileViewModel.SharedInstance.DOBstring!, Age: self.txtAge.text!, BloodGroup: ProfileViewModel.SharedInstance.BloodGroup!, LastDonationDate: ProfileViewModel.SharedInstance.LastDonationStrin!, HomeAddressLine: self.txtHomeAddressLine.text!, HomeAddressCity: self.txtHomeAddressCity.text!, HomeAddressPINCode: self.txtHomeAddressPINCode.text!, HomeAddressLatitude: ProfileViewModel.SharedInstance.homeLat, HomeAddressLongitude: ProfileViewModel.SharedInstance.homeLong, WorkAddressLine: self.txtWorkAddressLine.text!, WorkAddressCity: self.txtWorkAddressCity.text!, WorkAddressPINCode: self.txtWorkAddressPINCode.text!, WorkAddressLatitude: ProfileViewModel.SharedInstance.workLat, WorkAddressLongitude: ProfileViewModel.SharedInstance.workLong)
             
             let data = NSKeyedArchiver.archivedData(withRootObject: profileData)
             UserDefaults.standard.set(data, forKey: "ProfileData")
@@ -330,8 +360,8 @@ class ProfileView: UIViewController
                                    "State": "",
                                    "Country": "",
                                    "ZipCode": self.txtWorkAddressPINCode.text!,
-                                   "Latitude": "22.22112211",
-                                   "Longitude": "33.33223322"])
+                                   "Latitude": ProfileViewModel.SharedInstance.workLat,
+                                   "Longitude": ProfileViewModel.SharedInstance.workLong])
             self.serverCallForProfileRegistration(myAddressDetail: myNewDictArray)
         //MARK:   With Work Address
         case 3:
@@ -340,8 +370,8 @@ class ProfileView: UIViewController
                                    "State": "",
                                    "Country": "",
                                    "ZipCode": self.txtHomeAddressPINCode.text!,
-                                   "Latitude": "22.22112211",
-                                   "Longitude": "33.33223322"])
+                                   "Latitude": ProfileViewModel.SharedInstance.homeLat,
+                                   "Longitude": ProfileViewModel.SharedInstance.homeLong])
             self.serverCallForProfileRegistration(myAddressDetail: myNewDictArray)
         //MARK: With Home Adress
         case 4:
@@ -351,15 +381,15 @@ class ProfileView: UIViewController
                                    "State": "",
                                    "Country": "",
                                    "ZipCode": self.txtHomeAddressPINCode.text!,
-                                   "Latitude": "22.22112211",
-                                   "Longitude": "33.33223322"])
+                                   "Latitude": ProfileViewModel.SharedInstance.homeLat,
+                                   "Longitude": ProfileViewModel.SharedInstance.homeLong])
             myNewDictArray.append(["AddressType":"Work","AddressLine":self.txtWorkAddressLine.text!,"City": self.txtWorkAddressCity.text!,
                                    "LandMark": "",
                                    "State": "",
                                    "Country": "",
                                    "ZipCode": self.txtWorkAddressPINCode.text!,
-                                   "Latitude": "22.22112211",
-                                   "Longitude": "33.33223322"])
+                                   "Latitude": ProfileViewModel.SharedInstance.workLat,
+                                   "Longitude": ProfileViewModel.SharedInstance.workLong])
             self.serverCallForProfileRegistration(myAddressDetail: myNewDictArray)
         default:
             self.serverCallForProfileRegistration(myAddressDetail: myNewDictArray)
@@ -578,4 +608,28 @@ extension ProfileView:ProtocolRegisterProfile
     {
         HudBar.sharedInstance.hideHudFormView(view: self.view)
     }
+}
+extension ProfileView:MyAddressFormat
+{
+    func SuccessMyAddressFormat(AddressResponse: AddressString,checkBool:Bool)
+    {
+        if checkBool == true
+        {
+            self.txtHomeAddressLine.text = AddressResponse.addressString
+            self.txtHomeAddressCity.text = AddressResponse.City
+            self.txtHomeAddressPINCode.text = AddressResponse.PINCode
+            
+            ProfileViewModel.SharedInstance.homeLat = AddressResponse.latitude
+            ProfileViewModel.SharedInstance.homeLong = AddressResponse.longitude
+        }
+        else
+        {
+            self.txtWorkAddressLine.text = AddressResponse.addressString
+            self.txtWorkAddressCity.text = AddressResponse.City
+            self.txtWorkAddressPINCode.text = AddressResponse.PINCode
+            
+            ProfileViewModel.SharedInstance.workLat = AddressResponse.latitude
+            ProfileViewModel.SharedInstance.workLong = AddressResponse.longitude
+        }
+       }
 }
