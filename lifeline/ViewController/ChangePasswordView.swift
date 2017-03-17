@@ -19,6 +19,7 @@ class ChangePasswordView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.completelyTransparentBar()
+        self.textFieldPadding()
         NotificationCenter.default.addObserver(self, selector: #selector(ChangePasswordView.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
         // Do any additional setup after loading the view.
     }
@@ -43,13 +44,15 @@ class ChangePasswordView: UIViewController {
                 if txtConfirmPassword.text == txtNewPassword.text {
                     
                     HudBar.sharedInstance.showHudWithMessage(message: "Please Wait...", view: self.view)
-                    let LoginID:String
-                        = UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!
-                      let customer : Dictionary = ["ChangePasswordRequest":["ChangePasswordRequestDetails":["UserID":LoginID,"OldPassword":txtOldPassword.text!,"NewPassword":txtNewPassword.text!]]]
-                          self.ChangePasswordForService(params: customer)
+                    let data = UserDefaults.standard.object(forKey: "ProfileData")
+                    
+                    let profileData:ProfileData = NSKeyedUnarchiver.unarchiveObject(with: data as! Data) as! ProfileData
+                    
+                    let customer : Dictionary = ["ChangePasswordRequest":["ChangePasswordRequestDetails":["UserID":profileData.EmailId,"OldPassword":txtOldPassword.text!,"NewPassword":txtNewPassword.text!]]]
+                    self.ChangePasswordForService(params: customer)
                     
                 } else {
-                    self.view.makeToast("Password mismatch", duration: 2.0, position: .bottom)
+                    self.view.makeToast("Password don't match", duration: 2.0, position: .bottom)
                 }
                 
             } else {
@@ -83,20 +86,26 @@ class ChangePasswordView: UIViewController {
                                                             (JSONResponse) -> Void in
                                                             print(JSONResponse)
                                                             HudBar.sharedInstance.hideHudFormView(view: self.view)
-                                                            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Your Password is updated successfully", view: self.view)
-
-                                                            let deadlineTime = DispatchTime.now() + .seconds(2)
-                                                            DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute:
-                                                                {
-                                                                    let SWRevealView = self.storyboard!.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
-                                                                    self.present(SWRevealView, animated: true, completion: nil)
-                                                            })
-                                                            },
+                                                            if (JSONResponse["ChangePasswordResponse"]["ChangePasswordResponseDetails"]["StatusCode"].int == 0)
+                                                            {
+                                                                HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Your Password is updated successfully", view: self.view)
+                                                                let deadlineTime = DispatchTime.now() + .seconds(2)
+                                                                DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute:
+                                                                    {
+                                                                        let SWRevealView = self.storyboard!.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
+                                                                        self.present(SWRevealView, animated: true, completion: nil)
+                                                                })
+                                                            }else
+                                                            {
+                                                                HudBar.sharedInstance.hideHudFormView(view: self.view)
+                                                                HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Please enter valid old password", view: self.view)
+                                                            }
+        },
                                                          failure: { _ in
                                                             
                                                             HudBar.sharedInstance.hideHudFormView(view: self.view)
                                                             HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Please enter valid old password", view: self.view)
-                                                           }
+        }
         )
     }
 }
@@ -132,13 +141,13 @@ extension ChangePasswordView:UITextFieldDelegate
             switch textField {
                 
             case txtOldPassword:
-                txtOldPassword.removeLoginErrorLine()
+                txtOldPassword.removeErrorLine()
                 
             case txtNewPassword:
                 
                 if typedString.characters.count >= 6
                 {
-                    txtNewPassword.removeLoginErrorLine()
+                    txtNewPassword.removeErrorLine()
                     Password = true
                 } else {
                     txtNewPassword.errorLine()
@@ -149,7 +158,7 @@ extension ChangePasswordView:UITextFieldDelegate
                 
                 if typedString.characters.count >= 6
                 {
-                    txtConfirmPassword.removeLoginErrorLine()
+                    txtConfirmPassword.removeErrorLine()
                     ConfPassword = true
                 } else {
                     txtConfirmPassword.errorLine()

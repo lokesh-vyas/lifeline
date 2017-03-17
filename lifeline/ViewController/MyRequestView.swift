@@ -114,7 +114,6 @@ extension MyRequestView:UITableViewDelegate,UITableViewDataSource
         cell?.btnViewDonars.tag = indexPath.row
         cell?.btnViewDonars.addTarget(self, action: #selector(MyRequestView.btnDonorViewTapped(sender:)), for: .touchUpInside)
         
-        
         return cell!
     }
 }

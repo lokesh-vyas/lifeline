@@ -84,7 +84,7 @@ class SignUpView: UIViewController
                     SignUpInteractor.SharedInstance.signUPCallForServices(email: self.emailTextField.text!, password: self.passwordTextField.text!, userID: self.emailTextField.text!,Name:self.nameTextField.text!)
                     
                 } else {
-                    self.view.makeToast("Password mismatch", duration: 2.0, position: .bottom)
+                    self.view.makeToast("Password don't match", duration: 2.0, position: .bottom)
                 }
                 
             } else {
