@@ -39,7 +39,7 @@ class RequestView: UIViewController,UITextViewDelegate
     let bloodGroupArray = ["O+","O-","A+","A-","B+","B-","AB+","AB-"]
     let bloodUnitArray = ["1","2","3","4","5","6","7","8","9","10"]
     let whatneedArray = ["Blood","Platelets","Plasma"]
-
+    
     //MARK:- viewWillAppear
     override func viewWillAppear(_ animated: Bool)
     {
@@ -51,10 +51,9 @@ class RequestView: UIViewController,UITextViewDelegate
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(RequestView.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(RequestView.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-
+        
         //MARK - Reval View Button
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-
         self.navigationController?.completelyTransparentBar()
         self.txtViewPersonalAppeal.delegate = self
     }
@@ -90,14 +89,12 @@ class RequestView: UIViewController,UITextViewDelegate
         txtFieldHospitalBloodBankAddressCity.setLeftPaddingPoints(10.0)
         txtFieldHospitalBloodBankAddressPINCode.setLeftPaddingPoints(10.0)
     }
-   
     //MARK:- btnWhatYouNeedTapped
     @IBAction func btnWhatYouNeedTapped(_ sender: Any)
     {
         let viewBloodInfo: BloodInfoView = self.storyboard?.instantiateViewController(withIdentifier: "BloodInfoView") as! BloodInfoView
         viewBloodInfo.delegate = self
         viewBloodInfo.pickerArray = self.whatneedArray
-    
         viewBloodInfo.bloodInfoString = "Select what you need"
         viewBloodInfo.modalPresentationStyle = .overCurrentContext
         viewBloodInfo.view.backgroundColor =  UIColor.clear
@@ -143,20 +140,20 @@ class RequestView: UIViewController,UITextViewDelegate
     //MARK:- GoogleMap IBAction
     @IBAction func btnGoogleMapTapped(_ sender: Any)
     {
-      let hospitalInMap = self.storyboard?.instantiateViewController(withIdentifier: "ShowHospitalInMapView") as! ShowHospitalInMapView!
-        hospitalInMap?.addresstring = txtFieldHospitalBloodBankAddress.text! + txtFieldHospitalBloodBankAddressCity.text!
-        
-      self.navigationController?.pushViewController(hospitalInMap!, animated: true)
+        let hospitalInMap = self.storyboard?.instantiateViewController(withIdentifier: "ShowHospitalInMapView") as! ShowHospitalInMapView!
+        let AddressStr = ("\(txtFieldHospitalBloodBankAddress.text!) \(txtFieldHospitalBloodBankAddressCity.text!) \(txtFieldHospitalBloodBankAddressLandMark.text!) \(txtFieldHospitalBloodBankAddressPINCode.text!)")
+        hospitalInMap?.delegate = self
+        hospitalInMap?.addresstring = AddressStr
+        let navBar = UINavigationController(rootViewController: hospitalInMap!)
+        self.present(navBar, animated: true, completion: nil)
     }
     //MARK:- SwitchShareAction
     @IBAction func switchShareTapped(_ sender: Any)
     {
         if switchForAppeal.isOn {
-            print("Switch is off")
             txtViewPersonalAppeal.isEditable = false
             switchForAppeal.setOn(false, animated:true)
         } else {
-            print("The Switch is On")
             txtViewPersonalAppeal.isEditable = true
             switchForAppeal.setOn(true, animated:true)
         }
@@ -164,8 +161,7 @@ class RequestView: UIViewController,UITextViewDelegate
     //MARK:- btnBackTapped
     @IBAction func btnBackTapped(_ sender: Any)
     {
-        let SWRevealView = self.storyboard!.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
-        self.navigationController?.present(SWRevealView, animated: true, completion: nil)
+        self.goToMainView()
     }
     //MARK:- btnSubmmitTapped
     @IBAction func btnSubmitTapped(_ sender: Any)
@@ -227,15 +223,56 @@ class RequestView: UIViewController,UITextViewDelegate
             HudBar.sharedInstance.showHudWithMessage(message: "Submiting...", view: self.view)
             RequestInterator.SharedInstance.delegateRequestBlood = self
             let CentreID = RequestViewModel.SharedInstance.CentreID
-           
+            
             print(CentreID)
             
             RequestInterator.SharedInstance.requesBlood(LoginId: LoginID,bloodgroup: RequestViewModel.SharedInstance.BloodGroup!,whatyouneed: RequestViewModel.SharedInstance.WhatYouNeed!,whenyouneed: Util.SharedInstance.dateChangeForServerForProfile(dateString: RequestViewModel.SharedInstance.WhenYouNeed!),Units: RequestViewModel.SharedInstance.BloodUnit!,patientname: txtFieldPatientName.text!,contactperson: txtFieldContactPerson.text!,contactnumber: txtFieldContactNumber.text!,doctorname:txtFieldDoctorName.text!,doctorcontactnumber:"9999999999",doctoremailID: "",centerID:CentreID,centername: self.txtFieldHospitalBloodBankName.text!,centercontactnumber:txtFieldHospitalBloodBankContactNumber.text!,centeraddress: txtFieldHospitalBloodBankAddress.text!,City: txtFieldHospitalBloodBankAddressCity.text!,State: "",
-                Landmark: txtFieldHospitalBloodBankAddressLandMark.text!,Latitude: RequestViewModel.SharedInstance.Latitude!,Longitude: RequestViewModel.SharedInstance.Longitude!,Pincode: txtFieldHospitalBloodBankAddressPINCode.text!,Country: "",personalappeal: txtViewPersonalAppeal.text!,Sharedinsocialmedia:"0")
+                                                        Landmark: txtFieldHospitalBloodBankAddressLandMark.text!,Latitude: RequestViewModel.SharedInstance.Latitude!,Longitude: RequestViewModel.SharedInstance.Longitude!,Pincode: txtFieldHospitalBloodBankAddressPINCode.text!,Country: "",personalappeal: txtViewPersonalAppeal.text!,Sharedinsocialmedia:"0")
         }
     }
+    //MARK:- POST on Social Media
+    func PostOnSocialMedia()
+    {
+        if(SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook))
+        {
+            let SocialMedia :SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+            SocialMedia.setInitialText(txtViewPersonalAppeal.text!)
+            present(SocialMedia, animated: true)
+            SocialMedia.completionHandler =
+                {
+                    result -> Void in
+                    
+                    let getResult = result as SLComposeViewControllerResult;
+                    switch(getResult.rawValue)
+                    {
+                    case SLComposeViewControllerResult.cancelled.rawValue:
+                        self.view.makeToast("Cancelled")
+                    
+                    case SLComposeViewControllerResult.done.rawValue:
+                        self.view.makeToast("Your post has been posted successfully")
+                    
+                    default: print("Error!")
+                    
+                    }
+                    self.dismiss(animated: true, completion: nil)
+                    self.goToMainView()
+            }
+        }
+        else
+        {
+            let alert = UIAlertController(title: "Facebook App not installed.", message: "Your device has no Facebook installed.", preferredStyle: UIAlertControllerStyle.alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    //MARK:- GO TO Main
+    func goToMainView()
+    {
+        let SWRevealView = self.storyboard!.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
+        self.present(SWRevealView, animated: true, completion: nil)
+    }
 }
-
 extension RequestView:ProtocolRequestView
 {
     
@@ -247,34 +284,15 @@ extension RequestView:ProtocolRequestView
             HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Your BloodRequest Submitted Successfully", view: self.view)
             if switchForAppeal.isOn
             {
-                    if(SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook))
-                        
-                {
-                    let SocialMedia :SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
-                            
-                            SocialMedia.completionHandler =
-                                {
-                                    result -> Void in
-                                    
-                                    let getResult = result as SLComposeViewControllerResult;
-                                    switch(getResult.rawValue) {
-                                    case SLComposeViewControllerResult.cancelled.rawValue: self.view.makeToast("Cancelled")
-                                    case SLComposeViewControllerResult.done.rawValue: self.view.makeToast("Your post has been posted successfully")
-                                    default: print("Error!")
-                                    }
-                                    self.dismiss(animated: true, completion: nil)
-                            }
-                        SocialMedia.setInitialText(txtViewPersonalAppeal.text)
-                    }
-                    else
+                self.PostOnSocialMedia()
+            }else
+            {
+                let deadlineTime = DispatchTime.now() + .seconds(2)
+                DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute:
                     {
-                        let alert = UIAlertController(title: "Facebook App not installed.", message: "Your device has no Facebook installed.", preferredStyle: UIAlertControllerStyle.alert)
-                        
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                        self.present(alert, animated: true, completion: nil)
-                    }
-                }
-            self.navigationController?.popViewController(animated: true)
+                        self.goToMainView()
+                })
+            }
         }
         else
         {
@@ -289,7 +307,6 @@ extension RequestView:ProtocolRequestView
         self.view.makeToast("Unable to access server, please try again later", duration: 2.0, position: .bottom)
     }
 }
-
 extension RequestView:UITextFieldDelegate
 {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -304,7 +321,6 @@ extension RequestView:UITextFieldDelegate
             hospitalListView.delegate = self
             let navController = UINavigationController(rootViewController: hospitalListView)
             self.navigationController?.present(navController, animated: true, completion: nil)
-            
         }
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -317,7 +333,7 @@ extension RequestView:UITextFieldDelegate
                 txtFieldContactPerson.errorLine()
             case txtFieldContactNumber:
                 txtFieldContactNumber.errorLine()
-          
+                
             case txtFieldHospitalBloodBankContactNumber:
                 txtFieldHospitalBloodBankContactNumber.errorLine()
             case txtFieldDoctorName:
@@ -330,7 +346,7 @@ extension RequestView:UITextFieldDelegate
                 txtFieldHospitalBloodBankAddressCity.errorLine()
             case txtFieldHospitalBloodBankAddressPINCode:
                 txtFieldHospitalBloodBankAddressPINCode.errorLine()
-            
+                
             default:
                 print("E-Default case")
             }
@@ -347,7 +363,7 @@ extension RequestView:UITextFieldDelegate
                 txtFieldPatientName.removeErrorLine()
             case txtFieldContactPerson:
                 txtFieldContactPerson.removeErrorLine()
-
+                
             case txtFieldDoctorName:
                 txtFieldDoctorName.removeErrorLine()
             case txtFieldHospitalBloodBankAddress:
@@ -355,7 +371,7 @@ extension RequestView:UITextFieldDelegate
             case txtFieldHospitalBloodBankAddressLandMark:
                 txtFieldHospitalBloodBankAddressLandMark.removeErrorLine()
             case txtFieldHospitalBloodBankAddressCity:
-            txtFieldHospitalBloodBankAddressCity.removeErrorLine()
+                txtFieldHospitalBloodBankAddressCity.removeErrorLine()
                 
             case txtFieldContactNumber:
                 if newString.characters.count < 4 || newString.characters.count > 13
@@ -467,5 +483,17 @@ extension RequestView:ProtocolCalendar
     func FailureProtocolCalendar(valueSent: String)
     {
         print("Try Again")
+    }
+}
+extension RequestView:MyAddressFormat
+{
+    func SuccessMyAddressFormat(AddressResponse: AddressString,checkBool:Bool)
+    {
+        self.txtFieldHospitalBloodBankAddress.text = AddressResponse.addressString
+        self.txtFieldHospitalBloodBankAddressCity.text = AddressResponse.City
+        self.txtFieldHospitalBloodBankAddressPINCode.text = AddressResponse.PINCode
+        
+        RequestViewModel.SharedInstance.Latitude = AddressResponse.latitude
+        RequestViewModel.SharedInstance.Longitude = AddressResponse.longitude
     }
 }

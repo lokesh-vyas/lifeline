@@ -5,7 +5,6 @@
 //  Created by iSteer on 06/01/17.
 //  Copyright © 2017 iSteer. All rights reserved.
 //
-
 import UIKit
 import FBSDKCoreKit
 import Google
@@ -296,7 +295,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.setValue(AuthProvider, forKey: "LoginInformation")
         }
         
-        
         if (UserDefaults.standard.value(forKey: StringList.LifeLine_User_ID.rawValue) != nil)
         {
             let profileSuccess = UserDefaults.standard.bool(forKey: "SuccessProfileRegistration")
@@ -376,7 +374,6 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PushNotification"), object:myDict)
         })
         completionHandler([])
-        
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
@@ -429,7 +426,6 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PushNotification"), object:myDict)
         })
         completionHandler()
-        
     }
 }
 // [END ios_10_message_handling]

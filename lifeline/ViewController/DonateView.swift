@@ -360,7 +360,6 @@ extension DonateView : GMSMapViewDelegate {
             markerDetails.view.backgroundColor = UIColor.clear
             self.navigationController?.present(markerDetails, animated: true, completion: nil)
             
-            
         } else if (jsonDict["TypeOfOrg"] == 1 && jsonDict["IndividualDetails"] == JSON.null) || jsonDict["TypeOfOrg"] == 2 {
             // Hospital or Campaign details
             let markerDetails = self.storyboard?.instantiateViewController(withIdentifier: "MarkerNotIndividualDetails") as! MarkerNotIndividualDetails
@@ -369,8 +368,6 @@ extension DonateView : GMSMapViewDelegate {
             markerDetails.modalPresentationStyle = .overCurrentContext
             markerDetails.view.backgroundColor = UIColor.clear
             self.navigationController?.present(markerDetails, animated: true, completion: nil)
-            
-            
         }
         return false //marker event is still handled by delegate
     }
@@ -590,7 +587,6 @@ extension DonateView : DonateViewProtocol {
     }
     func failedDonateSources() {
         print("Failed to get Donate resources !!")
-
     }
 }
 

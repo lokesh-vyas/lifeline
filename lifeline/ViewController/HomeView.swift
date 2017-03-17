@@ -97,7 +97,7 @@ class HomeView: UIViewController {
         let textToIOS = "iOS:- https://goo.gl/XJl5a7"
         let textToAndroid = "Android:- https://goo.gl/PUorhE"
         
-        if let myWebsite = NSURL(string: "") {
+        if let myWebsite = NSURL(string: "iOS:- https://goo.gl/XJl5a7") {
             let objectsToShare = [textToShare,textToIOS,textToAndroid, myWebsite] as [Any]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
             

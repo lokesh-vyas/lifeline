@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="EAy-Bt-t3J">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="EAy-Bt-t3J">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -466,7 +466,7 @@
                                             <constraint firstAttribute="height" constant="40" id="d4q-Og-R8T"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="5"/>
@@ -483,7 +483,7 @@
                                             <constraint firstAttribute="height" constant="40" id="f46-36-zfd"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="5"/>
@@ -500,7 +500,7 @@
                                             <constraint firstAttribute="height" constant="40" id="Bie-Nf-LUb"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="5"/>
@@ -972,7 +972,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Close Request" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gmm-PG-Hax">
-                                                <rect key="frame" x="73.5" y="5" width="197" height="35"/>
+                                                <rect key="frame" x="73" y="5" width="197" height="35"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="BMr-uv-pgQ"/>
                                                     <constraint firstAttribute="width" constant="197" id="M0m-mj-6Fi"/>
@@ -1278,7 +1278,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zer-fg-YhJ">
-                                <rect key="frame" x="37.5" y="233.5" width="300" height="200"/>
+                                <rect key="frame" x="38" y="234" width="300" height="200"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hospital/Blood Bank" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OEe-sP-tQY">
                                         <rect key="frame" x="2" y="2" width="296" height="35"/>
@@ -1437,7 +1437,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Volunteer Donation" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E8d-f5-n2I">
-                                <rect key="frame" x="103" y="84" width="169.5" height="27"/>
+                                <rect key="frame" x="103" y="84" width="170" height="27"/>
                                 <fontDescription key="fontDescription" name="SegoeUI-Italic" family="Segoe UI" pointSize="20"/>
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1458,19 +1458,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Working Hours" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V56-8r-YCu">
-                                <rect key="frame" x="26" y="197" width="113" height="23"/>
+                                <rect key="frame" x="26" y="197" width="114" height="23"/>
                                 <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hospitalName" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sSJ-hn-iGc">
-                                <rect key="frame" x="163" y="131" width="196" height="23"/>
+                                <rect key="frame" x="163" y="131" width="105" height="23"/>
                                 <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="contactNumber" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pgT-Ly-1Xi">
-                                <rect key="frame" x="163" y="164" width="117.5" height="23"/>
+                                <rect key="frame" x="163" y="164" width="118" height="23"/>
                                 <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -1504,19 +1504,19 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gop-6F-5D2">
-                                <rect key="frame" x="26" y="230" width="61.5" height="23"/>
+                                <rect key="frame" x="26" y="230" width="62" height="23"/>
                                 <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="emailID" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXV-5z-WbE">
-                                <rect key="frame" x="163" y="230" width="196" height="23"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="emailID" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXV-5z-WbE">
+                                <rect key="frame" x="163" y="230" width="57" height="23"/>
                                 <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VF5-aL-b92">
-                                <rect key="frame" x="26" y="263" width="78.5" height="23"/>
+                                <rect key="frame" x="26" y="263" width="79" height="23"/>
                                 <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1534,7 +1534,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Campaign Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OR7-mt-Ovx">
-                                <rect key="frame" x="104.5" y="454" width="166" height="23"/>
+                                <rect key="frame" x="105" y="454" width="166" height="23"/>
                                 <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1654,7 +1654,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Bj-qL-8k3">
-                                <rect key="frame" x="37.5" y="213.5" width="300" height="240"/>
+                                <rect key="frame" x="38" y="214" width="300" height="240"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Donate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nt4-Vr-tDg">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
@@ -1813,7 +1813,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wAK-c7-VcY">
-                                <rect key="frame" x="37.5" y="213.5" width="300" height="240"/>
+                                <rect key="frame" x="38" y="214" width="300" height="240"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hospital/Blood Bank" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8n-35-N6l">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="35"/>
@@ -1989,7 +1989,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="contactNumber" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAi-um-MfB">
-                                                    <rect key="frame" x="32" y="71.5" width="104.5" height="17.5"/>
+                                                    <rect key="frame" x="32" y="69" width="104" height="20"/>
                                                     <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -2122,7 +2122,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="whoRequested" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OD0-K7-jld">
-                                <rect key="frame" x="125.5" y="84" width="124" height="27"/>
+                                <rect key="frame" x="126" y="84" width="124" height="27"/>
                                 <fontDescription key="fontDescription" name="SegoeUI-Italic" family="Segoe UI" pointSize="20"/>
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2251,7 +2251,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Personal Appeal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BTI-r6-nqP">
-                                <rect key="frame" x="125.5" y="532" width="124" height="21"/>
+                                <rect key="frame" x="126" y="532" width="124" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -2400,7 +2400,7 @@
                                                     <constraint firstAttribute="height" constant="40" id="Sa4-IE-5Kz"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="18"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                         <integer key="value" value="5"/>
@@ -2417,7 +2417,7 @@
                                                     <constraint firstAttribute="height" constant="40" id="q4s-0k-lRZ"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="18"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                         <integer key="value" value="5"/>
@@ -2619,7 +2619,7 @@
                                                     <constraint firstAttribute="height" constant="40" id="wIX-r7-JOH"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="18"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                         <integer key="value" value="5"/>
@@ -2636,7 +2636,7 @@
                                                     <constraint firstAttribute="height" constant="40" id="ZwX-oC-GqY"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="18"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                         <integer key="value" value="5"/>
@@ -2722,7 +2722,7 @@
                                                     <constraint firstAttribute="height" constant="40" id="UVE-OO-Aex"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="18"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                         <integer key="value" value="5"/>
@@ -2739,7 +2739,7 @@
                                                     <constraint firstAttribute="height" constant="40" id="8VB-NL-Gi2"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="18"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                         <integer key="value" value="5"/>
@@ -2756,7 +2756,7 @@
                                                     <constraint firstAttribute="height" constant="40" id="7g1-S0-GeX"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="18"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                         <integer key="value" value="5"/>
@@ -3030,9 +3030,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sbM-CU-DFI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3556" y="1191.4542728635683"/>
+            <point key="canvasLocation" x="4495.1999999999998" y="1191.4542728635683"/>
         </scene>
-        <!--Show Hospital In Map View-->
+        <!--Address -->
         <scene sceneID="pAa-ok-yDx">
             <objects>
                 <viewController storyboardIdentifier="ShowHospitalInMapView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Att-y7-khS" customClass="ShowHospitalInMapView" customModule="lifeline" customModuleProvider="target" sceneMemberID="viewController">
@@ -3045,10 +3045,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Address " id="1vm-L7-Vjy">
+                        <barButtonItem key="leftBarButtonItem" image="Back_icon" id="5dO-lO-rK6">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="btnbackTapped:" destination="Att-y7-khS" id="ajT-xr-Cff"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="XOe-YS-VfQ">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="btnSearchTapped:" destination="Att-y7-khS" id="uWh-XO-lMH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zQ6-Gk-0dN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1978" y="1013"/>
+            <point key="canvasLocation" x="3001" y="1012"/>
         </scene>
         <!--Notification View-->
         <scene sceneID="42A-zX-BA2">
@@ -3066,7 +3081,7 @@
                                 <rect key="frame" x="42" y="200" width="290" height="280"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Login_Logo" translatesAutoresizingMaskIntoConstraints="NO" id="GRa-M1-fKK">
-                                        <rect key="frame" x="84.5" y="8" width="120" height="128"/>
+                                        <rect key="frame" x="84" y="8" width="120" height="128"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="128" id="Max-FJ-L3k"/>
                                             <constraint firstAttribute="width" constant="120" id="U1c-gq-uLp"/>
@@ -3162,7 +3177,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YvX-bo-ZUh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2796" y="1011.544227886057"/>
+            <point key="canvasLocation" x="3735.1999999999998" y="1011.544227886057"/>
         </scene>
         <!--Blood Info View-->
         <scene sceneID="r7f-n1-KfY">
@@ -3293,7 +3308,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HpP-TK-49F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4625" y="1012"/>
+            <point key="canvasLocation" x="5564" y="1011.544227886057"/>
         </scene>
         <!--Calendar View-->
         <scene sceneID="3NB-T4-bwy">
@@ -3308,7 +3323,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eL4-Q3-7fG">
-                                <rect key="frame" x="27.5" y="200" width="320" height="267"/>
+                                <rect key="frame" x="28" y="200" width="320" height="267"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NxS-Gz-wQi">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="41"/>
@@ -3416,7 +3431,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zUp-uA-aiZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5673" y="1012"/>
+            <point key="canvasLocation" x="6612" y="1011.544227886057"/>
         </scene>
         <!--Hospital/Blood Bank Info -->
         <scene sceneID="et7-q1-0ID">
@@ -3453,7 +3468,7 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="C2v-ta-hD0">
-                                <rect key="frame" x="16" y="132" width="343" height="72"/>
+                                <rect key="frame" x="16" y="168" width="343" height="72"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="72" id="zLy-Zm-KYC"/>
                                 </constraints>
@@ -3461,20 +3476,29 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="qiB-5d-vxA">
+                                <rect key="frame" x="177" y="127" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="DA1-JP-Tgp"/>
+                                    <constraint firstAttribute="height" constant="20" id="UAP-sF-sAy"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="C2v-ta-hD0" firstAttribute="leading" secondItem="2ks-98-VMK" secondAttribute="leadingMargin" id="37K-fE-qia"/>
                             <constraint firstAttribute="trailing" secondItem="vt2-wh-Ja1" secondAttribute="trailing" id="CRq-Me-vWf"/>
                             <constraint firstItem="JC1-nL-X0x" firstAttribute="leading" secondItem="2ks-98-VMK" secondAttribute="leading" id="D5O-G6-bcN"/>
-                            <constraint firstItem="C2v-ta-hD0" firstAttribute="top" secondItem="JC1-nL-X0x" secondAttribute="bottom" constant="24" id="Gjk-Ia-vdV"/>
+                            <constraint firstItem="C2v-ta-hD0" firstAttribute="top" secondItem="qiB-5d-vxA" secondAttribute="bottom" constant="21" id="IAQ-aC-rBH"/>
                             <constraint firstAttribute="trailing" secondItem="EkW-qg-ewu" secondAttribute="trailing" id="KuO-5S-DsM"/>
                             <constraint firstItem="JC1-nL-X0x" firstAttribute="top" secondItem="mfU-uA-QFi" secondAttribute="bottom" id="LDi-VJ-VEn"/>
                             <constraint firstItem="EgS-Bf-SsP" firstAttribute="top" secondItem="vt2-wh-Ja1" secondAttribute="bottom" id="Nlb-1x-Xmi"/>
+                            <constraint firstItem="qiB-5d-vxA" firstAttribute="top" secondItem="JC1-nL-X0x" secondAttribute="bottom" constant="19" id="RI5-hm-QOY"/>
                             <constraint firstItem="EkW-qg-ewu" firstAttribute="top" secondItem="JC1-nL-X0x" secondAttribute="bottom" id="WwC-24-vft"/>
                             <constraint firstAttribute="trailing" secondItem="JC1-nL-X0x" secondAttribute="trailing" id="efW-yq-RHN"/>
                             <constraint firstItem="EkW-qg-ewu" firstAttribute="leading" secondItem="2ks-98-VMK" secondAttribute="leading" id="lea-ie-7F9"/>
                             <constraint firstItem="EgS-Bf-SsP" firstAttribute="top" secondItem="EkW-qg-ewu" secondAttribute="bottom" id="pW0-Ci-Jrd"/>
+                            <constraint firstItem="qiB-5d-vxA" firstAttribute="centerX" secondItem="JC1-nL-X0x" secondAttribute="centerX" id="paR-VU-YxL"/>
                             <constraint firstItem="C2v-ta-hD0" firstAttribute="trailing" secondItem="2ks-98-VMK" secondAttribute="trailingMargin" id="qxr-Sf-RI9"/>
                             <constraint firstItem="vt2-wh-Ja1" firstAttribute="top" secondItem="2ks-98-VMK" secondAttribute="top" id="tz3-zM-OtX"/>
                             <constraint firstItem="vt2-wh-Ja1" firstAttribute="leading" secondItem="2ks-98-VMK" secondAttribute="leading" id="wqL-p3-eSb"/>
@@ -3483,6 +3507,7 @@
                     <navigationItem key="navigationItem" title="Hospital/Blood Bank Info " id="mtX-SS-qfM"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <connections>
+                        <outlet property="activityBar" destination="qiB-5d-vxA" id="zV5-Vl-sIf"/>
                         <outlet property="lblListNotAvailable" destination="C2v-ta-hD0" id="enm-ci-Sdi"/>
                         <outlet property="searchBarText" destination="JC1-nL-X0x" id="LVE-Wa-jrT"/>
                         <outlet property="searchTableView" destination="EkW-qg-ewu" id="36g-vH-ABe"/>
@@ -3490,7 +3515,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oJK-HT-noa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6668" y="1012"/>
+            <point key="canvasLocation" x="7607.1999999999998" y="1011.544227886057"/>
         </scene>
         <!--My Request-->
         <scene sceneID="Gqj-mb-CkS">
@@ -4020,7 +4045,7 @@
                                                             <constraint firstAttribute="height" constant="40" id="sMQ-xf-8QN"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="18"/>
-                                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                        <textInputTraits key="textInputTraits"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                                 <integer key="value" value="5"/>

@@ -114,7 +114,6 @@ extension MyRequestView:UITableViewDelegate,UITableViewDataSource
         cell?.btnViewDonars.tag = indexPath.row
         cell?.btnViewDonars.addTarget(self, action: #selector(MyRequestView.btnDonorViewTapped(sender:)), for: .touchUpInside)
         
-        
         return cell!
     }
 }
@@ -137,10 +136,12 @@ extension MyRequestView:MyRequestProtocol
             if let temp = dataArray.array {
                 MyRequestArray = temp
             } else {
+                self.tableRequestView.isHidden = true
+                self.lblInternetIssue.isHidden = false
+                self.lblInternetIssue.text = "Unable to access server"
                 //Here we found nil
                 return
             }
-            
             self.tableRequestView.reloadData()
         }
         else
