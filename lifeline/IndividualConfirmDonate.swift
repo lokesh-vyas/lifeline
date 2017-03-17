@@ -77,9 +77,9 @@ class IndividualConfirmDonate: UIViewController {
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {action in self.toiConfirmDonateSubmit()}))
                 alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: nil))
                 present(alert, animated: true, completion: nil)
+            } else {
+                self.toiConfirmDonateSubmit()
             }
-        } else {
-            
         }
     }
     

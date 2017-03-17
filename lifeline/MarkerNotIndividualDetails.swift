@@ -36,16 +36,15 @@ class MarkerNotIndividualDetails: UIViewController {
         if (MarkerData.SharedInstance.markerData["TypeOfOrg"] as! String?  == "2") { // i.e. Campaign
             
             //FIXME:- camp color #0dd670
-            FromDate.isHidden = false
-            ToDate.isHidden = false
-            lblFromDate.isHidden = false
-            lblToDate.isHidden = false
-            lblFromDate.text = MarkerData.SharedInstance.markerData["FromDate"] as! String?
-            lblToDate.text = MarkerData.SharedInstance.markerData["ToDate"] as! String?
-            
-            lblHead.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#0dd670")
-            btnDonate.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#0dd670")
-            viewMarkerDetails.layer.borderColor = Util.SharedInstance.hexStringToUIColor(hex: "#0dd670").cgColor
+        FromDate.isHidden = false
+        ToDate.isHidden = false
+        lblFromDate.isHidden = false
+        lblToDate.isHidden = false
+        lblFromDate.text = Util.SharedInstance.showingDateToUser(dateString: (MarkerData.SharedInstance.markerData["FromDate"] as! String?)!)
+        lblToDate.text = Util.SharedInstance.showingDateToUser(dateString: (MarkerData.SharedInstance.markerData["ToDate"] as! String?)!)
+        lblHead.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#0dd670")
+        btnDonate.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#0dd670")
+        viewMarkerDetails.layer.borderColor = Util.SharedInstance.hexStringToUIColor(hex: "#0dd670").cgColor
 
         } else {
             

@@ -98,6 +98,27 @@ class Util
         dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
         return dateFormatter.string(from: dateObj!)
     }
+    
+    //MARK:- Showing to User
+    func showingDateToUser(dateString:String) -> String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let dateObj = dateFormatter.date(from: dateString)
+        
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        return dateFormatter.string(from: dateObj!)
+    }
+    
+    //MARK:- DateString to Date, with time [for notifiction]
+    func dateStringToDateForNotification(dateString:String) -> Date
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyy HH:mm"
+         dateFormatter.timeZone = NSTimeZone(name: "GMT") as TimeZone!
+        let date = dateFormatter.date(from: dateString)
+        return date!
+    }
 
     //MARK:- Color Chenge From Hex String
     func hexStringToUIColor (hex:String) -> UIColor {
