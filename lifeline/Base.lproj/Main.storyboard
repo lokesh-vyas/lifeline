@@ -466,7 +466,7 @@
                                             <constraint firstAttribute="height" constant="40" id="d4q-Og-R8T"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="5"/>
@@ -483,7 +483,7 @@
                                             <constraint firstAttribute="height" constant="40" id="f46-36-zfd"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="5"/>
@@ -500,7 +500,7 @@
                                             <constraint firstAttribute="height" constant="40" id="Bie-Nf-LUb"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="5"/>
@@ -3458,7 +3458,7 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="C2v-ta-hD0">
-                                <rect key="frame" x="16" y="132" width="343" height="72"/>
+                                <rect key="frame" x="16" y="168" width="343" height="72"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="72" id="zLy-Zm-KYC"/>
                                 </constraints>
@@ -3466,20 +3466,29 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="qiB-5d-vxA">
+                                <rect key="frame" x="177" y="127" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="DA1-JP-Tgp"/>
+                                    <constraint firstAttribute="height" constant="20" id="UAP-sF-sAy"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="C2v-ta-hD0" firstAttribute="leading" secondItem="2ks-98-VMK" secondAttribute="leadingMargin" id="37K-fE-qia"/>
                             <constraint firstAttribute="trailing" secondItem="vt2-wh-Ja1" secondAttribute="trailing" id="CRq-Me-vWf"/>
                             <constraint firstItem="JC1-nL-X0x" firstAttribute="leading" secondItem="2ks-98-VMK" secondAttribute="leading" id="D5O-G6-bcN"/>
-                            <constraint firstItem="C2v-ta-hD0" firstAttribute="top" secondItem="JC1-nL-X0x" secondAttribute="bottom" constant="24" id="Gjk-Ia-vdV"/>
+                            <constraint firstItem="C2v-ta-hD0" firstAttribute="top" secondItem="qiB-5d-vxA" secondAttribute="bottom" constant="21" id="IAQ-aC-rBH"/>
                             <constraint firstAttribute="trailing" secondItem="EkW-qg-ewu" secondAttribute="trailing" id="KuO-5S-DsM"/>
                             <constraint firstItem="JC1-nL-X0x" firstAttribute="top" secondItem="mfU-uA-QFi" secondAttribute="bottom" id="LDi-VJ-VEn"/>
                             <constraint firstItem="EgS-Bf-SsP" firstAttribute="top" secondItem="vt2-wh-Ja1" secondAttribute="bottom" id="Nlb-1x-Xmi"/>
+                            <constraint firstItem="qiB-5d-vxA" firstAttribute="top" secondItem="JC1-nL-X0x" secondAttribute="bottom" constant="19" id="RI5-hm-QOY"/>
                             <constraint firstItem="EkW-qg-ewu" firstAttribute="top" secondItem="JC1-nL-X0x" secondAttribute="bottom" id="WwC-24-vft"/>
                             <constraint firstAttribute="trailing" secondItem="JC1-nL-X0x" secondAttribute="trailing" id="efW-yq-RHN"/>
                             <constraint firstItem="EkW-qg-ewu" firstAttribute="leading" secondItem="2ks-98-VMK" secondAttribute="leading" id="lea-ie-7F9"/>
                             <constraint firstItem="EgS-Bf-SsP" firstAttribute="top" secondItem="EkW-qg-ewu" secondAttribute="bottom" id="pW0-Ci-Jrd"/>
+                            <constraint firstItem="qiB-5d-vxA" firstAttribute="centerX" secondItem="JC1-nL-X0x" secondAttribute="centerX" id="paR-VU-YxL"/>
                             <constraint firstItem="C2v-ta-hD0" firstAttribute="trailing" secondItem="2ks-98-VMK" secondAttribute="trailingMargin" id="qxr-Sf-RI9"/>
                             <constraint firstItem="vt2-wh-Ja1" firstAttribute="top" secondItem="2ks-98-VMK" secondAttribute="top" id="tz3-zM-OtX"/>
                             <constraint firstItem="vt2-wh-Ja1" firstAttribute="leading" secondItem="2ks-98-VMK" secondAttribute="leading" id="wqL-p3-eSb"/>
@@ -3488,6 +3497,7 @@
                     <navigationItem key="navigationItem" title="Hospital/Blood Bank Info " id="mtX-SS-qfM"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <connections>
+                        <outlet property="activityBar" destination="qiB-5d-vxA" id="zV5-Vl-sIf"/>
                         <outlet property="lblListNotAvailable" destination="C2v-ta-hD0" id="enm-ci-Sdi"/>
                         <outlet property="searchBarText" destination="JC1-nL-X0x" id="LVE-Wa-jrT"/>
                         <outlet property="searchTableView" destination="EkW-qg-ewu" id="36g-vH-ABe"/>

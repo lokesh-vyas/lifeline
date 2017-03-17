@@ -17,6 +17,7 @@ class HospitalListView: UIViewController
 {
     @IBOutlet weak var lblListNotAvailable: UILabel!
     
+    @IBOutlet weak var activityBar: UIActivityIndicatorView!
     @IBOutlet weak var searchTableView: UITableView!
     @IBOutlet weak var searchBarText: UISearchBar!
     var searchFilterArray = [JSON]()
@@ -26,6 +27,8 @@ class HospitalListView: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        self.activityBar.startAnimating()
+        self.activityBar.isHidden = false
         self.searchTableView.isHidden = true
         self.searchTableView.rowHeight = UITableViewAutomaticDimension
         self.lblListNotAvailable.isHidden = true
@@ -63,8 +66,13 @@ extension HospitalListView:UITableViewDelegate,UITableViewDataSource
         {
             searchTableView.isHidden = false
             self.lblListNotAvailable.isHidden = true
+            
+            self.activityBar.stopAnimating()
+            self.activityBar.isHidden = true
             return searchFilterArray.count
         }
+        self.activityBar.stopAnimating()
+        self.activityBar.isHidden = true
         searchTableView.isHidden = true
         return 0
     }
@@ -148,6 +156,8 @@ extension HospitalListView:HospitalListProtocol
         }
         else
         {
+            self.activityBar.stopAnimating()
+            self.activityBar.isHidden = true
             self.lblListNotAvailable.isHidden = false
             searchTableView.isHidden = true
             self.lblListNotAvailable.text = jsonArray["GetCollectionCentersList"]["ResponseDetails"]["ErrorDescription"].string
