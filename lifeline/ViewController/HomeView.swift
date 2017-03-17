@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import SwiftyJSON
+import UserNotifications
 
 class HomeView: UIViewController {
     //MARK:- IBOutlet
@@ -21,6 +22,7 @@ class HomeView: UIViewController {
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
         self.navigationController?.completelyTransparentBar()
        //MARK - Reval View Button
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
@@ -42,6 +44,8 @@ class HomeView: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(HomeView.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
     }
+    
+    
     
     //MARK:- Device Registration
     func DeviceRegistrationForServer(DeviceToken:String)
