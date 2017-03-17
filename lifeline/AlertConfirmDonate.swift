@@ -130,22 +130,13 @@ class AlertConfirmDonate: UIViewController {
                     ]]]
             
             print("+++++++++++\(preferredDateTime!)++++++++++++")
-            
-            if #available(iOS 10.0, *) {
                 
-                let content = UNMutableNotificationContent()
-                content.title = "PankajTilte"
-                content.body = "Hi, it welcomes you"
-                content.sound = UNNotificationSound.default()
+                var reminder = Util.SharedInstance.dateStringToDateForNotification(dateString: "17/03/2017 20:00")
+                reminder.addTimeInterval(_: -120)
+                print("^^^^^\(reminder)^^^^^")
+                self.scheduleNotification(at:reminder)
                 
-                
-                
-                
-                
-            } else {
-                // Fallback on earlier versions
-            }
-  
+           
             AlertConfirmDonateInteractor.sharedInstance.confirmsDonate(urlString: URLList.CONFIRM_DONATE.rawValue, params: collectedParameters)
         } else {
             let alert = UIAlertController(title: "Missing", message: "Preferred Date & Time is Missing", preferredStyle: .alert)
@@ -157,6 +148,39 @@ class AlertConfirmDonate: UIViewController {
     
     @IBAction func btnCancelTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    func scheduleNotification(at date: Date) {
+        
+        let calendar = Calendar(identifier: .gregorian)
+        let components = calendar.dateComponents(in: .current, from: date)
+        let newComponents = DateComponents(calendar: calendar, timeZone: .current, month: components.month, day: components.day, hour: components.hour, minute: components.minute)
+        
+        if #available(iOS 10.0, *) {
+            
+            let content = UNMutableNotificationContent()
+            content.title = "Tutorial Reminder"
+            content.body = "Just a reminder to read your tutorial over at appcoda.com!"
+            content.sound = UNNotificationSound.default()
+            
+            let trigger = UNCalendarNotificationTrigger(dateMatching: newComponents, repeats: false)
+            //            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 120, repeats: false)
+            
+            content.title = "Tutorial Reminder"
+            content.body = "Just a reminder to read your tutorial over at appcoda.com!"
+            content.sound = UNNotificationSound.default()
+            let request = UNNotificationRequest(identifier: "textNotification", content: content, trigger: trigger)
+            //        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+            UNUserNotificationCenter.current().add(request) {(error) in
+                if let error = error {
+                    print("Uh oh! We had an error: \(error)")
+                }
+            }
+        } else {
+            // Fallback on earlier versions
+        }
+        
+        
     }
 }
 
