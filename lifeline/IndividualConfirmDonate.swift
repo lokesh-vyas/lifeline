@@ -120,14 +120,16 @@ extension IndividualConfirmDonate : IndividualRequestDetailsProtocol {
         MarkerData.SharedInstance.isAPNCamp = false
         MarkerData.SharedInstance.APNResponse = jsonArray["GetRequestDetailsResponse"]["ResponseDetails"].dictionaryObject!
         
-        self.lblWhoRequested.text = "\(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["WhatNeeded"])) requirement for \(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["BloodGroup"]))"
+        self.lblWhoRequested.text = "\(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["WhatNeeded"])) Requirement for \(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["BloodGroup"]))"
         self.lblWhenRequired.text = Util.SharedInstance.showingDateToUser(dateString: String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["WhenNeeded"]))
         self.lblNoOfUnits.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["NumUnits"])
         self.lblDoctorName.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["DoctorName"])
         self.lblPatientName.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["PatientName"])
         self.lblContactPerson.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["ContactPerson"])
         self.lblContactNumber.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["ContactNumber"])
-        self.lblAddress.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["AddressLine"])
+        
+        self.lblAddress.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["AddressLine"]).replacingOccurrences(of: "\n", with: ",").appending(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["City"])).appending(", ").appending(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["State"])).appending(" - ").appending(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["PINCode"]))
+        
         self.lblPersonalAppeal.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["PersonalAppeal"])
         HudBar.sharedInstance.hideHudFormView(view: self.view)
     }
