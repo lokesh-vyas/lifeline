@@ -85,7 +85,7 @@ class AlertConfirmDonate: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
         preferredDateAlert.dateFormatter = dateFormatter
-        preferredDateAlert.calenderHeading = "Confirm Your Date"
+        preferredDateAlert.calenderHeading = "Confirm Date & Time"
         preferredDateAlert.calendar.minimumDate = Date() as Date
         preferredDateAlert.calendar.datePickerMode = UIDatePickerMode.dateAndTime
         preferredDateAlert.modalPresentationStyle = .overCurrentContext
@@ -153,8 +153,6 @@ class AlertConfirmDonate: UIViewController {
     
     @IBAction func btnCancelTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
-        HudBar.sharedInstance.hideHudFormView(view: ConfirmDonate().view)
-        HudBar.sharedInstance.hideHudFormView(view: IndividualConfirmDonate().view)
     }
     
     func scheduleNotification(at date: Date) {
