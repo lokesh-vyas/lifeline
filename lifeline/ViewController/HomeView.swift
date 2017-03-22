@@ -22,7 +22,6 @@ class HomeView: UIViewController {
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
         self.navigationController?.completelyTransparentBar()
        //MARK - Reval View Button
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())

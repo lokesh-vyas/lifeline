@@ -437,7 +437,7 @@ extension DonateView : DonateViewProtocol {
         
         if jsonArray["BloodRequestSearchResponse"] == JSON.null || jsonArray["BloodRequestSearchResponse"]["BloodRequestSearchResponseDetails"]["StatusCode"] == 1 {
             print("No Requirements in your location")
-            
+            HudBar.sharedInstance.hideHudFormView(view: self.view)
             
             //viewWarning
             viewWarning.backgroundColor = UIColor.white

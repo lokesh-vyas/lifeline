@@ -28,19 +28,14 @@ class ConfirmDonate: UIViewController {
     
     var ID = String()
     
-//    var MarkerData.SharedInstance.markerData = [String:Any]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.completelyTransparentBar()
-        
         ConfirmDonateInteractor.sharedInstance.delegate = self
         
         //MARK:- Invokes to add properties on controller
-        
-        
         NotificationCenter.default.addObserver(self, selector: #selector(ConfirmDonate.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
-        
         //MARK:- Either coming from APN or Back
         if MarkerData.SharedInstance.isNotIndividualAPN == false || MarkerData.SharedInstance.isIndividualAPN == false {
             //local
@@ -71,6 +66,7 @@ class ConfirmDonate: UIViewController {
             
         }
     }
+  
     //MARK:- PushNotificationView
     func PushNotificationView(_ notification: NSNotification)
     {
@@ -94,6 +90,8 @@ class ConfirmDonate: UIViewController {
     }
 
     @IBAction func btnConfirmDonateTapped(_ sender: Any) {
+        
+        
         
         //MARK:- Below Age 18
         let data = UserDefaults.standard.object(forKey: "ProfileData")
@@ -214,7 +212,7 @@ extension ConfirmDonate : ConfirmDonateProtocol {
     func didFailGetCompaignDetails() {
         print("*****didFail-GetCompaignDetails******")
         HudBar.sharedInstance.hideHudFormView(view: self.view)
-//        HudBar.sharedInstance.showHudWithMessage(message: "No Internet Connection", view: self.view)
+
     }
     
 }
@@ -243,6 +241,6 @@ extension ConfirmDonate : getVolunteerProtocol {
     }
     func didFailGetVolunteerDetails() {
         print("*****didFail-GetVolunteerDetails******")
-//        HudBar.sharedInstance.showHudWithMessage(message: "No Internet Connection", view: self.view)
+
     }
 }
