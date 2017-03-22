@@ -119,6 +119,17 @@ class Util
         let date = dateFormatter.date(from: dateString)
         return date!
     }
+    //MARK:- Calculate Age
+    func calcAge(birthday:String) -> String {
+        let dateFormater = DateFormatter()
+        dateFormater.dateFormat = "dd/MM/yyyy"
+        let birthdayDate = dateFormater.date(from: birthday)
+        let calendar: NSCalendar! = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)
+        let now: NSDate! = NSDate()
+        let calcAge = calendar.components(.year, from: birthdayDate!, to: now as Date, options: [])
+        let age = calcAge.year
+        return String(describing: age!)
+    }
 
     //MARK:- Color Chenge From Hex String
     func hexStringToUIColor (hex:String) -> UIColor {

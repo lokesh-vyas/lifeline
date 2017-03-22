@@ -22,7 +22,6 @@ class HomeView: UIViewController {
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
         self.navigationController?.completelyTransparentBar()
        //MARK - Reval View Button
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
@@ -97,7 +96,7 @@ class HomeView: UIViewController {
         let textToIOS = "iOS:- https://goo.gl/XJl5a7"
         let textToAndroid = "Android:- https://goo.gl/PUorhE"
         
-        if let myWebsite = NSURL(string: "iOS:- https://goo.gl/XJl5a7") {
+        if let myWebsite = NSURL(string: "https://goo.gl/XJl5a7") {
             let objectsToShare = [textToShare,textToIOS,textToAndroid, myWebsite] as [Any]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
             
@@ -118,7 +117,7 @@ extension HomeView:ProtocolRegisterProfile
             HudBar.sharedInstance.hideHudFormView(view: self.view)
             HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Device Register successfully", view: self.view)
         }else{
-             UserDefaults.standard.set(false, forKey: "DeviceRegister")
+            UserDefaults.standard.set(false, forKey: "DeviceRegister")
             HudBar.sharedInstance.hideHudFormView(view: self.view)
             HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Failed to Update", view: self.view)
         }
