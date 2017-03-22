@@ -28,19 +28,14 @@ class ConfirmDonate: UIViewController {
     
     var ID = String()
     
-//    var MarkerData.SharedInstance.markerData = [String:Any]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.completelyTransparentBar()
-        
         ConfirmDonateInteractor.sharedInstance.delegate = self
         
         //MARK:- Invokes to add properties on controller
-        
-        
         NotificationCenter.default.addObserver(self, selector: #selector(ConfirmDonate.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
-        
         //MARK:- Either coming from APN or Back
         if MarkerData.SharedInstance.isNotIndividualAPN == false || MarkerData.SharedInstance.isIndividualAPN == false {
             //local
