@@ -109,10 +109,10 @@ class AlertConfirmDonate: UIViewController {
                 } else {
                     TypeOfOrg =  MarkerData.SharedInstance.markerData["TypeOfOrg"]! as! String
                     
-                    if String(describing: MarkerData.SharedInstance.markerData["TypeOfOrg"]) == "2" {
+                    if String(describing: MarkerData.SharedInstance.markerData["TypeOfOrg"]!) == "2" {
                         TypeLocalNotificationIndividual = "12" // Camp
                     }
-                    if String(describing: MarkerData.SharedInstance.markerData["TypeOfOrg"]) == "1" && String(describing: MarkerData.SharedInstance.markerData["IndividualDetails"]) == "null" {
+                    if String(describing: MarkerData.SharedInstance.markerData["TypeOfOrg"]!) == "1" {
                         TypeLocalNotificationIndividual = "13" // Hospital
                     }
                     
@@ -153,6 +153,8 @@ class AlertConfirmDonate: UIViewController {
     
     @IBAction func btnCancelTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+        HudBar.sharedInstance.hideHudFormView(view: ConfirmDonate().view)
+        HudBar.sharedInstance.hideHudFormView(view: IndividualConfirmDonate().view)
     }
     
     func scheduleNotification(at date: Date) {

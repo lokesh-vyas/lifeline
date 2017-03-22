@@ -41,6 +41,7 @@ class IndividualConfirmDonate: UIViewController {
         
         self.IndividualConfirmDonateProperties()
     }
+    
     //MARK:- PushNotificationView
     func PushNotificationView(_ notification: NSNotification)
     {

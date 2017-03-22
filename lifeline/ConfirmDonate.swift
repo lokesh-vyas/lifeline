@@ -66,6 +66,7 @@ class ConfirmDonate: UIViewController {
             
         }
     }
+  
     //MARK:- PushNotificationView
     func PushNotificationView(_ notification: NSNotification)
     {
@@ -89,6 +90,8 @@ class ConfirmDonate: UIViewController {
     }
 
     @IBAction func btnConfirmDonateTapped(_ sender: Any) {
+        
+        
         
         //MARK:- Below Age 18
         let data = UserDefaults.standard.object(forKey: "ProfileData")
@@ -209,7 +212,7 @@ extension ConfirmDonate : ConfirmDonateProtocol {
     func didFailGetCompaignDetails() {
         print("*****didFail-GetCompaignDetails******")
         HudBar.sharedInstance.hideHudFormView(view: self.view)
-//        HudBar.sharedInstance.showHudWithMessage(message: "No Internet Connection", view: self.view)
+
     }
     
 }
@@ -238,6 +241,6 @@ extension ConfirmDonate : getVolunteerProtocol {
     }
     func didFailGetVolunteerDetails() {
         print("*****didFail-GetVolunteerDetails******")
-//        HudBar.sharedInstance.showHudWithMessage(message: "No Internet Connection", view: self.view)
+
     }
 }
