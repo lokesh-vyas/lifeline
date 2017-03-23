@@ -28,19 +28,14 @@ class ConfirmDonate: UIViewController {
     
     var ID = String()
     
-//    var MarkerData.SharedInstance.markerData = [String:Any]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.completelyTransparentBar()
-        
         ConfirmDonateInteractor.sharedInstance.delegate = self
         
         //MARK:- Invokes to add properties on controller
-        
-        
         NotificationCenter.default.addObserver(self, selector: #selector(ConfirmDonate.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
-        
         //MARK:- Either coming from APN or Back
         if MarkerData.SharedInstance.isNotIndividualAPN == false || MarkerData.SharedInstance.isIndividualAPN == false {
             //local
@@ -71,6 +66,8 @@ class ConfirmDonate: UIViewController {
             
         }
     }
+    
+  
     //MARK:- PushNotificationView
     func PushNotificationView(_ notification: NSNotification)
     {
@@ -94,6 +91,8 @@ class ConfirmDonate: UIViewController {
     }
 
     @IBAction func btnConfirmDonateTapped(_ sender: Any) {
+        
+        
         
         //MARK:- Below Age 18
         let data = UserDefaults.standard.object(forKey: "ProfileData")
@@ -144,7 +143,7 @@ class ConfirmDonate: UIViewController {
         lblEmailID.text = MarkerData.SharedInstance.markerData["Email"] as! String?
         lblFromDate.text = MarkerData.SharedInstance.markerData["FromDate"] as! String?
         lblToDate.text = MarkerData.SharedInstance.markerData["ToDate"] as! String?
-        lblAddress.text = MarkerData.SharedInstance.markerData["AddressLine"] as! String?
+        lblAddress.text = (MarkerData.SharedInstance.markerData["AddressLine"] as! String?)?.replacingOccurrences(of: "\n", with: ", ").appending(MarkerData.SharedInstance.markerData["City"] as! String).appending(", ").appending(MarkerData.SharedInstance.markerData["State"] as! String).appending(" - ").appending(MarkerData.SharedInstance.markerData["PINCode"] as! String)
         
         if MarkerData.SharedInstance.markerData["TypeOfOrg"] as! String? == "2" { // this is camp
             HudBar.sharedInstance.showHudWithMessage(message: "Loading...", view: view)
@@ -206,7 +205,9 @@ extension ConfirmDonate : ConfirmDonateProtocol {
         lblWorkingHours.text = MarkerData.SharedInstance.APNResponse["WorkingHours"] as! String?
         lblContactNumber.text = String(describing: MarkerData.SharedInstance.APNResponse["ContactNumber"]!)
         lblEmailID.text = MarkerData.SharedInstance.APNResponse["Email"] as! String?
-        lblAddress.text = MarkerData.SharedInstance.APNResponse["AddressLine"] as! String?
+//        lblAddress.text = (MarkerData.SharedInstance.APNResponse["AddressLine"] as! String?)?.replacingOccurrences(of: "\n", with: ", ")
+        
+        lblAddress.text =  (MarkerData.SharedInstance.APNResponse["AddressLine"] as! String?)?.replacingOccurrences(of: "\n", with: ", ").appending(MarkerData.SharedInstance.APNResponse["City"] as! String).appending(", ").appending(MarkerData.SharedInstance.APNResponse["State"] as! String).appending(" - ").appending(String(describing : MarkerData.SharedInstance.APNResponse["PINCode"]!))
         
         HudBar.sharedInstance.hideHudFormView(view: self.view)
         
@@ -214,7 +215,7 @@ extension ConfirmDonate : ConfirmDonateProtocol {
     func didFailGetCompaignDetails() {
         print("*****didFail-GetCompaignDetails******")
         HudBar.sharedInstance.hideHudFormView(view: self.view)
-//        HudBar.sharedInstance.showHudWithMessage(message: "No Internet Connection", view: self.view)
+
     }
     
 }
@@ -243,6 +244,6 @@ extension ConfirmDonate : getVolunteerProtocol {
     }
     func didFailGetVolunteerDetails() {
         print("*****didFail-GetVolunteerDetails******")
-//        HudBar.sharedInstance.showHudWithMessage(message: "No Internet Connection", view: self.view)
+
     }
 }

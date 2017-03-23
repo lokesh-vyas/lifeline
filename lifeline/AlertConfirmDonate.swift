@@ -21,6 +21,8 @@ class AlertConfirmDonate: UIViewController {
     
     var preferredDateTime : String?
     var lastSentDate : String?
+    var IDtoBeSent:String?
+    var TypeLocalNotificationIndividual : String?
     
     
     override func viewDidLoad() {
@@ -81,9 +83,9 @@ class AlertConfirmDonate: UIViewController {
         let preferredDateAlert: CalendarView = self.storyboard?.instantiateViewController(withIdentifier: "CalendarView") as! CalendarView
         preferredDateAlert.delegate = self
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy hh:mm"
+        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
         preferredDateAlert.dateFormatter = dateFormatter
-        preferredDateAlert.calenderHeading = "Confirm Your Date"
+        preferredDateAlert.calenderHeading = "Confirm Date & Time"
         preferredDateAlert.calendar.minimumDate = Date() as Date
         preferredDateAlert.calendar.datePickerMode = UIDatePickerMode.dateAndTime
         preferredDateAlert.modalPresentationStyle = .overCurrentContext
@@ -97,14 +99,23 @@ class AlertConfirmDonate: UIViewController {
         if preferredDateTime != nil {
             HudBar.sharedInstance.showHudWithMessage(message: "Submitting...", view: self.view)
             
-            let IDtoBeSent:String
+            
             let TypeOfOrg:String
             if MarkerData.SharedInstance.isIndividualAPN == false || MarkerData.SharedInstance.isNotIndividualAPN == false {
                 IDtoBeSent = String(describing: (MarkerData.SharedInstance.oneRequestOfDonate["CID"] != nil) ? (MarkerData.SharedInstance.oneRequestOfDonate["CID"])! : (MarkerData.SharedInstance.markerData["ID"]!))
                 if MarkerData.SharedInstance.oneRequestOfDonate["CID"] != nil {
                     TypeOfOrg =  MarkerData.SharedInstance.oneRequestOfDonate["CTypeOfOrg"]! as! String
+                    TypeLocalNotificationIndividual = "11"
                 } else {
                     TypeOfOrg =  MarkerData.SharedInstance.markerData["TypeOfOrg"]! as! String
+                    
+                    if String(describing: MarkerData.SharedInstance.markerData["TypeOfOrg"]!) == "2" {
+                        TypeLocalNotificationIndividual = "12" // Camp
+                    }
+                    if String(describing: MarkerData.SharedInstance.markerData["TypeOfOrg"]!) == "1" {
+                        TypeLocalNotificationIndividual = "13" // Hospital
+                    }
+                    
                 }
                 
             } else {
@@ -118,7 +129,6 @@ class AlertConfirmDonate: UIViewController {
             }
             
             //FIXME:- the request Body
-            
             let CommentText = self.txtViewComment.text!//(MarkerData.SharedInstance.CommentLines != nil) ? MarkerData.SharedInstance.CommentLines! : self.txtViewComment.text!
             let collectedParameters = ["ConfirmDonateRequest":
                 ["ConfirmDonateDetails":
@@ -129,20 +139,15 @@ class AlertConfirmDonate: UIViewController {
                      "Comment": CommentText
                     ]]]
             
-            print("+++++++++++\(preferredDateTime!)++++++++++++")
-                
-                var reminder = Util.SharedInstance.dateStringToDateForNotification(dateString: "17/03/2017 20:00")
-                reminder.addTimeInterval(_: -120)
-                print("^^^^^\(reminder)^^^^^")
-                self.scheduleNotification(at:reminder)
-                
-           
+            var reminder = Util.SharedInstance.dateStringToDateForNotification(dateString: Util.SharedInstance.dateForReminder(dateString: preferredDateTime!))
+            reminder.addTimeInterval(_: -60)
+            self.scheduleNotification(at:reminder)
             AlertConfirmDonateInteractor.sharedInstance.confirmsDonate(urlString: URLList.CONFIRM_DONATE.rawValue, params: collectedParameters)
+            
         } else {
             let alert = UIAlertController(title: "Missing", message: "Preferred Date & Time is Missing", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             present(alert, animated: true, completion: nil)
-            
         }
     }
     
@@ -159,18 +164,12 @@ class AlertConfirmDonate: UIViewController {
         if #available(iOS 10.0, *) {
             
             let content = UNMutableNotificationContent()
-            content.title = "Tutorial Reminder"
-            content.body = "Just a reminder to read your tutorial over at appcoda.com!"
+            content.title = "Blood Donation"
+            content.body = "Reminder for Blood Donation"
+            content.userInfo = [ "Title":"\(content.title)", "Body":"\(content.body)", "ID":"\(IDtoBeSent!)","Type":"\(TypeLocalNotificationIndividual!)"]
             content.sound = UNNotificationSound.default()
-            
             let trigger = UNCalendarNotificationTrigger(dateMatching: newComponents, repeats: false)
-            //            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 120, repeats: false)
-            
-            content.title = "Tutorial Reminder"
-            content.body = "Just a reminder to read your tutorial over at appcoda.com!"
-            content.sound = UNNotificationSound.default()
             let request = UNNotificationRequest(identifier: "textNotification", content: content, trigger: trigger)
-            //        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
             UNUserNotificationCenter.current().add(request) {(error) in
                 if let error = error {
                     print("Uh oh! We had an error: \(error)")
@@ -178,11 +177,18 @@ class AlertConfirmDonate: UIViewController {
             }
         } else {
             // Fallback on earlier versions
+            let notification = UILocalNotification()
+            notification.fireDate = date
+            notification.alertTitle = "Blood Donation"
+            notification.alertBody = "Reminder for Blood Donation"
+            notification.soundName = UILocalNotificationDefaultSoundName
+            notification.timeZone = NSTimeZone.default
+            UIApplication.shared.scheduleLocalNotification(notification)
+
         }
         
-        
+        }
     }
-}
 
 extension AlertConfirmDonate : UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
@@ -217,7 +223,7 @@ extension AlertConfirmDonate : ProtocolCalendar {
     
     func SuccessProtocolCalendar(valueSent: String, CheckString: String) {
         print("valueSent :\(valueSent) && CheckString :\(CheckString)")
-        btnPreferredDateTime.setTitle(valueSent, for: .normal) //15/03/2017 03:14
+        btnPreferredDateTime.setTitle(valueSent, for: .normal) //15/03/2017 17:52
         
         let dateForCamp = Util.SharedInstance.preferredDateToCamp(selectedDate: valueSent) //yyyy-MM-dd HH:mm:ss//sending to server
         
@@ -232,6 +238,6 @@ extension AlertConfirmDonate : ProtocolCalendar {
         
     }
     func FailureProtocolCalendar(valueSent: String) {
-        print("CALENDER is FAILED")
+        print("CALENDAR is FAILED")
     }
 }

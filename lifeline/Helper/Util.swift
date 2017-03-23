@@ -78,8 +78,6 @@ class Util
         dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
         let date = dateFormatter.date(from: selectedDate)
         
-
-        //        dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0) as TimeZone!
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.timeZone = NSTimeZone(name: "IST") as TimeZone!
         let stringFromDate = dateFormatter.string(from: date!)
@@ -114,11 +112,12 @@ class Util
     func dateStringToDateForNotification(dateString:String) -> Date
     {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyy HH:mm"
-         dateFormatter.timeZone = NSTimeZone(name: "GMT") as TimeZone!
+        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
+        dateFormatter.timeZone = NSTimeZone(name: "IST") as TimeZone!
         let date = dateFormatter.date(from: dateString)
         return date!
     }
+
     //MARK:- Calculate Age
     func calcAge(birthday:String) -> String {
         let dateFormater = DateFormatter()
@@ -130,6 +129,21 @@ class Util
         let age = calcAge.year
         return String(describing: age!)
     }
+
+    
+    //MARK:- Date for reminding donation
+    func dateForReminder(dateString:String) -> String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let date = dateFormatter.date(from: dateString)
+        
+        dateFormatter.timeZone = NSTimeZone(name: "IST") as TimeZone!
+        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
+        let stringFromDate = dateFormatter.string(from: date!)
+        return stringFromDate
+    }
+
 
     //MARK:- Color Chenge From Hex String
     func hexStringToUIColor (hex:String) -> UIColor {
