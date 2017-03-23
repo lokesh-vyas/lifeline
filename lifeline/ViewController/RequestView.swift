@@ -9,6 +9,7 @@
 import UIKit
 import Social
 import Toast_Swift
+import SafariServices
 
 class RequestView: UIViewController,UITextViewDelegate
 {
@@ -49,6 +50,15 @@ class RequestView: UIViewController,UITextViewDelegate
     //MARK:- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        let AuthProvider:String
+            = UserDefaults.standard.string(forKey: "LoginInformation")!
+        if AuthProvider == "G+"
+        {
+            imgSocialShare.image = UIImage(named: "Google_icon")
+        }else
+        {
+            imgSocialShare.image = UIImage(named: "facebook_btn_icon")
+        }
         NotificationCenter.default.addObserver(self, selector: #selector(RequestView.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(RequestView.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
@@ -167,7 +177,7 @@ class RequestView: UIViewController,UITextViewDelegate
     @IBAction func btnSubmitTapped(_ sender: Any)
     {
         view.endEditing(true)
-        if (txtFieldPatientName.text?.characters.count)! < 1 || (txtFieldContactNumber.text?.characters.count)! < 1 || (txtFieldContactPerson.text?.characters.count)! < 1 || (txtFieldHospitalBloodBankName.text?.characters.count)! < 1 || (txtFieldHospitalBloodBankContactNumber.text?.characters.count)! < 1 || (txtFieldHospitalBloodBankAddressPINCode.text?.characters.count)! < 1 || (txtFieldDoctorName.text?.characters.count)! < 1 || (txtFieldHospitalBloodBankAddress.text?.characters.count)! < 1 || (txtFieldHospitalBloodBankAddressLandMark.text?.characters.count)! < 1 || (txtFieldHospitalBloodBankAddressCity.text?.characters.count)! < 1
+        if (txtFieldPatientName.text?.characters.count)! < 1 || (txtFieldContactNumber.text?.characters.count)! < 1 || (txtFieldContactPerson.text?.characters.count)! < 1 || (txtFieldHospitalBloodBankName.text?.characters.count)! < 1 || (txtFieldHospitalBloodBankContactNumber.text?.characters.count)! < 1 || (txtFieldHospitalBloodBankAddressPINCode.text?.characters.count)! < 1 || (txtFieldDoctorName.text?.characters.count)! < 1 || (txtFieldHospitalBloodBankAddress.text?.characters.count)! < 1 || (txtFieldHospitalBloodBankAddressCity.text?.characters.count)! < 1
         {
             self.view.makeToast("Please fill all Mandatory fields", duration: 2.0, position: .bottom)
         }
@@ -232,37 +242,48 @@ class RequestView: UIViewController,UITextViewDelegate
     //MARK:- POST on Social Media
     func PostOnSocialMedia()
     {
-        if(SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook))
+        let AuthProvider:String
+            = UserDefaults.standard.string(forKey: "LoginInformation")!
+        if AuthProvider == "G+"
         {
-            let SocialMedia :SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
-            SocialMedia.setInitialText(txtViewPersonalAppeal.text!)
-            present(SocialMedia, animated: true)
-            SocialMedia.completionHandler =
-                {
-                    result -> Void in
-                    
-                    let getResult = result as SLComposeViewControllerResult;
-                    switch(getResult.rawValue)
-                    {
-                    case SLComposeViewControllerResult.cancelled.rawValue:
-                        self.view.makeToast("Cancelled")
-                    
-                    case SLComposeViewControllerResult.done.rawValue:
-                        self.view.makeToast("Your post has been posted successfully")
-                    
-                    default: print("Error!")
-                    
-                    }
-                    self.dismiss(animated: true, completion: nil)
-                    self.goToMainView()
+            if let url = URL(string: "https://plus.google.com/share") {
+                let vc = SFSafariViewController(url: url, entersReaderIfAvailable: true)
+                present(vc, animated: true)
             }
-        }
-        else
+        }else
         {
-            let alert = UIAlertController(title: "Facebook App not installed.", message: "Your device has no Facebook installed.", preferredStyle: UIAlertControllerStyle.alert)
-            
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            if(SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook))
+            {
+                let SocialMedia :SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+                SocialMedia.setInitialText(txtViewPersonalAppeal.text!)
+                present(SocialMedia, animated: true)
+                SocialMedia.completionHandler =
+                    {
+                        result -> Void in
+                        
+                        let getResult = result as SLComposeViewControllerResult;
+                        switch(getResult.rawValue)
+                        {
+                        case SLComposeViewControllerResult.cancelled.rawValue:
+                            self.view.makeToast("Cancelled")
+                            
+                        case SLComposeViewControllerResult.done.rawValue:
+                            self.view.makeToast("Your post has been posted successfully")
+                            
+                        default: print("Error!")
+                            
+                        }
+                        self.dismiss(animated: true, completion: nil)
+                        self.goToMainView()
+                }
+            }
+            else
+            {
+                let alert = UIAlertController(title: "Facebook App not installed.", message: "Your device has no Facebook installed.", preferredStyle: UIAlertControllerStyle.alert)
+                
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
         }
     }
     //MARK:- GO TO Main
@@ -288,7 +309,7 @@ extension RequestView:ProtocolRequestView
             {
                 let deadlineTime = DispatchTime.now() + .seconds(2)
                 DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute:
-                    {
+                {
                         self.goToMainView()
                 })
             }
@@ -339,8 +360,7 @@ extension RequestView:UITextFieldDelegate
                 txtFieldDoctorName.errorLine()
             case txtFieldHospitalBloodBankAddress:
                 txtFieldHospitalBloodBankAddress.errorLine()
-            case txtFieldHospitalBloodBankAddressLandMark:
-                txtFieldHospitalBloodBankAddressLandMark.errorLine()
+           
             case txtFieldHospitalBloodBankAddressCity:
                 txtFieldHospitalBloodBankAddressCity.errorLine()
             case txtFieldHospitalBloodBankAddressPINCode:
@@ -367,8 +387,7 @@ extension RequestView:UITextFieldDelegate
                 txtFieldDoctorName.removeErrorLine()
             case txtFieldHospitalBloodBankAddress:
                 txtFieldHospitalBloodBankAddress.removeErrorLine()
-            case txtFieldHospitalBloodBankAddressLandMark:
-                txtFieldHospitalBloodBankAddressLandMark.removeErrorLine()
+         
             case txtFieldHospitalBloodBankAddressCity:
                 txtFieldHospitalBloodBankAddressCity.removeErrorLine()
                 
@@ -446,6 +465,11 @@ extension RequestView:HospitalListCompletDataProtocol
         {
             RequestViewModel.SharedInstance.Latitude = ListData.Latitude
         }
+    }
+    func failureResponse(hospitalName: String)
+    {
+        RequestViewModel.SharedInstance.CentreID = ""
+        self.txtFieldHospitalBloodBankName.text = hospitalName
     }
 }
 extension RequestView:ProtocolBloodInfo
