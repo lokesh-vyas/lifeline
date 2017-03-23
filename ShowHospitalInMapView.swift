@@ -181,6 +181,11 @@ extension ShowHospitalInMapView : GMSMapViewDelegate {
         geocoder.reverseGeocodeCoordinate(coordinate) { response , error in
             
             //Add this line
+            if response == nil
+            {
+                return
+            }
+
             if let address = response!.firstResult()
             {
                 self.addressFormat.MessageAddressString = ("\(address.lines![0]) \(address.lines![1])")

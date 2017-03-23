@@ -466,6 +466,11 @@ extension RequestView:HospitalListCompletDataProtocol
             RequestViewModel.SharedInstance.Latitude = ListData.Latitude
         }
     }
+    func failureResponse(hospitalName: String)
+    {
+        RequestViewModel.SharedInstance.CentreID = ""
+        self.txtFieldHospitalBloodBankName.text = hospitalName
+    }
 }
 extension RequestView:ProtocolBloodInfo
 {
