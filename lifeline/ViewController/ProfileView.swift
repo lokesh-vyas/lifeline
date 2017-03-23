@@ -488,6 +488,7 @@ extension ProfileView:UITextFieldDelegate
                     ProfileViewModel.SharedInstance.isContactNumber = true
                 }
             case txtHomeAddressPINCode:
+               
                 if typedString.characters.count < 4 || typedString.characters.count > 13
                 {
                     txtHomeAddressPINCode.errorLine()
@@ -497,13 +498,23 @@ extension ProfileView:UITextFieldDelegate
                     txtHomeAddressPINCode.removeErrorLine()
                     ProfileViewModel.SharedInstance.isHomePin = true
                 }
+                if typedString.characters.count <= 1
+                {
+                    txtHomeAddressPINCode.removeErrorLine()
+                    ProfileViewModel.SharedInstance.isHomePin = true
+                }
             case txtWorkAddressPINCode:
-                
+               
                 if typedString.characters.count < 4 || typedString.characters.count > 13
                 {
                     txtWorkAddressPINCode.errorLine()
                     ProfileViewModel.SharedInstance.isWorkPin = false
                 } else {
+                    txtWorkAddressPINCode.removeErrorLine()
+                    ProfileViewModel.SharedInstance.isWorkPin = true
+                }
+                if typedString.characters.count <= 1
+                {
                     txtWorkAddressPINCode.removeErrorLine()
                     ProfileViewModel.SharedInstance.isWorkPin = true
                 }
@@ -529,6 +540,7 @@ extension ProfileView:ProtocolCalendar
         if CheckString == "Date of Birth"
         {
             ProfileViewModel.SharedInstance.DOBstring = valueSent
+            self.txtAge.text = Util.SharedInstance.calcAge(birthday: ProfileViewModel.SharedInstance.DOBstring!)
             btnDOBOutlet.setTitle(valueSent, for: .normal)
         }
         else if CheckString == "Last Donation Date"

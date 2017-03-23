@@ -12,6 +12,7 @@ import SwiftyJSON
 protocol HospitalListCompletDataProtocol
 {
     func SuccessHospitalListCompletData(ListData:HospitalListModel)
+    func failureResponse(hospitalName:String)
 }
 class HospitalListView: UIViewController
 {
@@ -54,6 +55,7 @@ extension HospitalListView:UISearchBarDelegate
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar)
     {
+        self.delegate?.failureResponse(hospitalName: searchBar.text!)
         self.dismiss(animated: true, completion: nil)
     }
 }
