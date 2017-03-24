@@ -19,6 +19,7 @@
 		1841C6B51E698B39006F14B2 /* IndividualConfirmDonateInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1841C6B41E698B39006F14B2 /* IndividualConfirmDonateInteractor.swift */; };
 		18C6883B1E62ECBB0026453C /* MarkerIndividualDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C6883A1E62ECBB0026453C /* MarkerIndividualDetails.swift */; };
 		18C6883D1E62ECDB0026453C /* MarkerNotIndividualDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C6883C1E62ECDB0026453C /* MarkerNotIndividualDetails.swift */; };
+		18F8ECB41E84EAE00071C0A0 /* BloodInventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F8ECB31E84EAE00071C0A0 /* BloodInventory.swift */; };
 		661F3C5E1E7673B9008E7E34 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 661F3C5D1E7673B9008E7E34 /* NotificationCenter.framework */; };
 		66316B801E53132500114055 /* HospitalListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66316B7F1E53132500114055 /* HospitalListView.swift */; };
 		66316B841E5572B800114055 /* HospitalListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66316B831E5572B800114055 /* HospitalListInteractor.swift */; };
@@ -142,6 +143,7 @@
 		1841C6B41E698B39006F14B2 /* IndividualConfirmDonateInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualConfirmDonateInteractor.swift; sourceTree = "<group>"; };
 		18C6883A1E62ECBB0026453C /* MarkerIndividualDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerIndividualDetails.swift; sourceTree = "<group>"; };
 		18C6883C1E62ECDB0026453C /* MarkerNotIndividualDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerNotIndividualDetails.swift; sourceTree = "<group>"; };
+		18F8ECB31E84EAE00071C0A0 /* BloodInventory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BloodInventory.swift; sourceTree = "<group>"; };
 		19B74CD6720B8FE1E0D554ED /* Pods-lifelineUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lifelineUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-lifelineUITests/Pods-lifelineUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1A7713EA892985CA8991C0DE /* Pods_lifelineTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lifelineTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65CFD1F97B4EDC4D89096216 /* Pods-lifelineUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lifelineUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-lifelineUITests/Pods-lifelineUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -415,6 +417,7 @@
 				18C6883C1E62ECDB0026453C /* MarkerNotIndividualDetails.swift */,
 				18C6883A1E62ECBB0026453C /* MarkerIndividualDetails.swift */,
 				1830CE881E6567CE005BBC19 /* ConfirmDonate.swift */,
+				18F8ECB31E84EAE00071C0A0 /* BloodInventory.swift */,
 				1841C6B21E696990006F14B2 /* ConfirmDonateInteractor.swift */,
 				1830CE8E1E6569ED005BBC19 /* RequestedByIndividuals.swift */,
 				1830CE8C1E6568BC005BBC19 /* IndividualConfirmDonate.swift */,
@@ -1073,6 +1076,7 @@
 				1830CE8D1E6568BC005BBC19 /* IndividualConfirmDonate.swift in Sources */,
 				18C6883B1E62ECBB0026453C /* MarkerIndividualDetails.swift in Sources */,
 				1830CE8B1E6567FE005BBC19 /* AlertConfirmDonate.swift in Sources */,
+				18F8ECB41E84EAE00071C0A0 /* BloodInventory.swift in Sources */,
 				EDE9AEAD1E5DC2B40031BCB0 /* RequestApi.swift in Sources */,
 				66316B881E5575D700114055 /* HospitalListApi.swift in Sources */,
 				183A1D9D1E66DCBF0048DC65 /* AlertConfirmDonateInteractor.swift in Sources */,
