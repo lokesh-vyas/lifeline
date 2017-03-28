@@ -24,6 +24,7 @@
 		18C04FCD1E86CD43000B15EA /* Unchecked Checkbox-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C04FCB1E86CD43000B15EA /* Unchecked Checkbox-32.png */; };
 		18C6883B1E62ECBB0026453C /* MarkerIndividualDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C6883A1E62ECBB0026453C /* MarkerIndividualDetails.swift */; };
 		18C6883D1E62ECDB0026453C /* MarkerNotIndividualDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C6883C1E62ECDB0026453C /* MarkerNotIndividualDetails.swift */; };
+		18F3AD691E8A66B10086274E /* List-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F3AD681E8A66B10086274E /* List-32.png */; };
 		18F8ECB41E84EAE00071C0A0 /* BloodInventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F8ECB31E84EAE00071C0A0 /* BloodInventory.swift */; };
 		661F3C5E1E7673B9008E7E34 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 661F3C5D1E7673B9008E7E34 /* NotificationCenter.framework */; };
 		66316B801E53132500114055 /* HospitalListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66316B7F1E53132500114055 /* HospitalListView.swift */; };
@@ -153,6 +154,7 @@
 		18C04FCB1E86CD43000B15EA /* Unchecked Checkbox-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Unchecked Checkbox-32.png"; sourceTree = "<group>"; };
 		18C6883A1E62ECBB0026453C /* MarkerIndividualDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerIndividualDetails.swift; sourceTree = "<group>"; };
 		18C6883C1E62ECDB0026453C /* MarkerNotIndividualDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerNotIndividualDetails.swift; sourceTree = "<group>"; };
+		18F3AD681E8A66B10086274E /* List-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "List-32.png"; sourceTree = "<group>"; };
 		18F8ECB31E84EAE00071C0A0 /* BloodInventory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BloodInventory.swift; sourceTree = "<group>"; };
 		19B74CD6720B8FE1E0D554ED /* Pods-lifelineUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lifelineUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-lifelineUITests/Pods-lifelineUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1A7713EA892985CA8991C0DE /* Pods_lifelineTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lifelineTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -613,6 +615,7 @@
 			children = (
 				663D6FEB1E7003B900EB2CD8 /* HOME_SCREEN_03.png */,
 				18C04FCA1E86CD43000B15EA /* Checked Checkbox 2-32.png */,
+				18F3AD681E8A66B10086274E /* List-32.png */,
 				18C04FCB1E86CD43000B15EA /* Unchecked Checkbox-32.png */,
 				18C04FC41E8540ED000B15EA /* Filter50.png */,
 				18C04FC61E8541B8000B15EA /* Filter32.png */,
@@ -885,6 +888,7 @@
 				18C04FCD1E86CD43000B15EA /* Unchecked Checkbox-32.png in Resources */,
 				66EA8E161E275A4000646797 /* drop_red.png in Resources */,
 				EDE9AEA51E5C47D10031BCB0 /* twitter.png in Resources */,
+				18F3AD691E8A66B10086274E /* List-32.png in Resources */,
 				66EA8D681E1F700200646797 /* GoogleService-Info.plist in Resources */,
 				66EA8E121E275A4000646797 /* chat_bubble.png in Resources */,
 				EDE9AEA31E5C47D10031BCB0 /* facebbok.png in Resources */,
@@ -1272,6 +1276,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = lifeline/lifeline.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = FXZ4W6ZJ63;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1298,6 +1303,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = lifeline/lifeline.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = FXZ4W6ZJ63;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

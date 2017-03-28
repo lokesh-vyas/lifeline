@@ -34,6 +34,7 @@ class DonateView: UIViewController {
     var viewWarning = UIView()
     var labelWarning = UILabel()
     let imageWarning = UIImageView()
+    let imgViewListofMarkers = UIImageView()
     var lastEventDate : Date? = nil
     var loader : Bool?
     
@@ -469,6 +470,10 @@ extension DonateView : DonateViewProtocol {
             imageWarning.image = UIImage(named: "error-sign.png")
             imageWarning.translatesAutoresizingMaskIntoConstraints = false
             
+            // ListofMarkers
+            imgViewListofMarkers.image = UIImage(named: "List-32.png")
+            imgViewListofMarkers.translatesAutoresizingMaskIntoConstraints = false
+            
             self.viewWarning.addSubview(labelWarning)
             self.viewWarning.addSubview(imageWarning)
             self.mapView.addSubview(viewWarning)
@@ -585,6 +590,7 @@ extension DonateView : DonateViewProtocol {
                 multiplier: 1,
                 constant: 45)
             
+            
             //subView
             view.addConstraints([viewWarningHeightConstraint, viewWarningLeadingConstraints, viewWarningTrailingConstraints, viewWarningBottomConstraints])
             //Label
@@ -592,12 +598,66 @@ extension DonateView : DonateViewProtocol {
             //image warning
             view.addConstraints([imageWarningLeadingConstraints, imageWarningTopConstraints, imageWarningBottomConstraints, imageWarningWidthConstraint])
             
-        } else {
             
+            
+        } else {
             viewWarning.removeFromSuperview()
             self.bloodDonatingMarkers(responseData: jsonArray)
-            
         }
+        
+        // ListofMarkers
+        imgViewListofMarkers.image = UIImage(named: "List-32.png")
+        imgViewListofMarkers.translatesAutoresizingMaskIntoConstraints = false
+        self.mapView.addSubview(imgViewListofMarkers)
+        self.view = self.mapView
+        
+        //ListAutolayout
+        //Height
+        let listHeightConstraint = NSLayoutConstraint(
+            item: imgViewListofMarkers,
+            attribute: NSLayoutAttribute.height,
+            relatedBy: NSLayoutRelation.equal,
+            toItem: nil,
+            attribute: NSLayoutAttribute.notAnAttribute,
+            multiplier: 1,
+            constant: 55)
+        
+        //Width
+        let listWidthConstraint = NSLayoutConstraint(
+            item: imgViewListofMarkers,
+            attribute: NSLayoutAttribute.height,
+            relatedBy: NSLayoutRelation.equal,
+            toItem: nil,
+            attribute: NSLayoutAttribute.notAnAttribute,
+            multiplier: 1,
+            constant: 55)
+        
+        //Trailing
+        let listTrailingConstraint = NSLayoutConstraint(
+            item: imgViewListofMarkers,
+            attribute: NSLayoutAttribute.trailing,
+            relatedBy: NSLayoutRelation.equal,
+            toItem: view,
+            attribute: NSLayoutAttribute.trailing,
+            multiplier: 1,
+            constant: -10)
+        
+        //Vertical Space
+        let listVerticalSpaceConstraint = NSLayoutConstraint(
+            item: imgViewListofMarkers,
+            attribute: NSLayoutAttribute.bottom,
+            relatedBy: NSLayoutRelation.equal,
+            toItem: viewWarning,
+            attribute: NSLayoutAttribute.bottom,
+            multiplier: 1,
+            constant: 10)
+        
+        //List
+        view.addConstraints([listHeightConstraint, listWidthConstraint, listTrailingConstraint, listVerticalSpaceConstraint])
+        
+        
+        
+        
         
     }
     func failedDonateSources() {
