@@ -17,6 +17,11 @@
 		183A1D9D1E66DCBF0048DC65 /* AlertConfirmDonateInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183A1D9C1E66DCBF0048DC65 /* AlertConfirmDonateInteractor.swift */; };
 		1841C6B31E696990006F14B2 /* ConfirmDonateInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1841C6B21E696990006F14B2 /* ConfirmDonateInteractor.swift */; };
 		1841C6B51E698B39006F14B2 /* IndividualConfirmDonateInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1841C6B41E698B39006F14B2 /* IndividualConfirmDonateInteractor.swift */; };
+		18C04FC51E8540ED000B15EA /* Filter50.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C04FC41E8540ED000B15EA /* Filter50.png */; };
+		18C04FC71E8541B8000B15EA /* Filter32.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C04FC61E8541B8000B15EA /* Filter32.png */; };
+		18C04FC91E85450C000B15EA /* FilterChecks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C04FC81E85450C000B15EA /* FilterChecks.swift */; };
+		18C04FCC1E86CD43000B15EA /* Checked Checkbox 2-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C04FCA1E86CD43000B15EA /* Checked Checkbox 2-32.png */; };
+		18C04FCD1E86CD43000B15EA /* Unchecked Checkbox-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C04FCB1E86CD43000B15EA /* Unchecked Checkbox-32.png */; };
 		18C6883B1E62ECBB0026453C /* MarkerIndividualDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C6883A1E62ECBB0026453C /* MarkerIndividualDetails.swift */; };
 		18C6883D1E62ECDB0026453C /* MarkerNotIndividualDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C6883C1E62ECDB0026453C /* MarkerNotIndividualDetails.swift */; };
 		18F8ECB41E84EAE00071C0A0 /* BloodInventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F8ECB31E84EAE00071C0A0 /* BloodInventory.swift */; };
@@ -145,6 +150,11 @@
 		183A1D9C1E66DCBF0048DC65 /* AlertConfirmDonateInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertConfirmDonateInteractor.swift; sourceTree = "<group>"; };
 		1841C6B21E696990006F14B2 /* ConfirmDonateInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmDonateInteractor.swift; sourceTree = "<group>"; };
 		1841C6B41E698B39006F14B2 /* IndividualConfirmDonateInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualConfirmDonateInteractor.swift; sourceTree = "<group>"; };
+		18C04FC41E8540ED000B15EA /* Filter50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Filter50.png; sourceTree = "<group>"; };
+		18C04FC61E8541B8000B15EA /* Filter32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Filter32.png; sourceTree = "<group>"; };
+		18C04FC81E85450C000B15EA /* FilterChecks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterChecks.swift; sourceTree = "<group>"; };
+		18C04FCA1E86CD43000B15EA /* Checked Checkbox 2-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Checked Checkbox 2-32.png"; sourceTree = "<group>"; };
+		18C04FCB1E86CD43000B15EA /* Unchecked Checkbox-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Unchecked Checkbox-32.png"; sourceTree = "<group>"; };
 		18C6883A1E62ECBB0026453C /* MarkerIndividualDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerIndividualDetails.swift; sourceTree = "<group>"; };
 		18C6883C1E62ECDB0026453C /* MarkerNotIndividualDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerNotIndividualDetails.swift; sourceTree = "<group>"; };
 		18F8ECB31E84EAE00071C0A0 /* BloodInventory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BloodInventory.swift; sourceTree = "<group>"; };
@@ -442,6 +452,7 @@
 			children = (
 				66C4E68A1E37400B00526C1D /* DonateView.swift */,
 				18324D371E5D6E030043B204 /* DonateInteractor.swift */,
+				18C04FC81E85450C000B15EA /* FilterChecks.swift */,
 				18C6883C1E62ECDB0026453C /* MarkerNotIndividualDetails.swift */,
 				18C6883A1E62ECBB0026453C /* MarkerIndividualDetails.swift */,
 				1830CE881E6567CE005BBC19 /* ConfirmDonate.swift */,
@@ -629,6 +640,10 @@
 			isa = PBXGroup;
 			children = (
 				663D6FEB1E7003B900EB2CD8 /* HOME_SCREEN_03.png */,
+				18C04FCA1E86CD43000B15EA /* Checked Checkbox 2-32.png */,
+				18C04FCB1E86CD43000B15EA /* Unchecked Checkbox-32.png */,
+				18C04FC41E8540ED000B15EA /* Filter50.png */,
+				18C04FC61E8541B8000B15EA /* Filter32.png */,
 				663D6FEC1E7003B900EB2CD8 /* HOME_SCREEN_F.png */,
 				663D6FED1E7003B900EB2CD8 /* HOME_SCREEN_G.png */,
 				66EA8DFA1E2517C400646797 /* LifeLine_icon.png */,
@@ -892,9 +907,11 @@
 				66EA8D3F1E1F6B4300646797 /* LaunchScreen.storyboard in Resources */,
 				EDE9AEA11E5C47D10031BCB0 /* chat.png in Resources */,
 				66EA8E191E275A4000646797 /* errorimage.png in Resources */,
+				18C04FCC1E86CD43000B15EA /* Checked Checkbox 2-32.png in Resources */,
 				66C578261E37799F00B235F4 /* segoeui.ttf in Resources */,
 				6633E9111E8908680008C730 /* InventoryCell.xib in Resources */,
 				66EA8E1C1E275A4000646797 /* person.png in Resources */,
+				18C04FCD1E86CD43000B15EA /* Unchecked Checkbox-32.png in Resources */,
 				66EA8E161E275A4000646797 /* drop_red.png in Resources */,
 				6633E90A1E88F7F50008C730 /* InventoryTableCell.xib in Resources */,
 				EDE9AEA51E5C47D10031BCB0 /* twitter.png in Resources */,
@@ -907,6 +924,7 @@
 				66C5782D1E37799F00B235F4 /* seguisb.ttf in Resources */,
 				66C578281E37799F00B235F4 /* segoeuii.ttf in Resources */,
 				66EA8E1F1E275A4000646797 /* user_noti.png in Resources */,
+				18C04FC71E8541B8000B15EA /* Filter32.png in Resources */,
 				66C5782F1E37799F00B235F4 /* seguisli.ttf in Resources */,
 				66EA8E171E275A4000646797 /* e-mail-envelope.png in Resources */,
 				663D6FF01E7003B900EB2CD8 /* HOME_SCREEN_G.png in Resources */,
@@ -914,6 +932,7 @@
 				EDE9AEA61E5C47D10031BCB0 /* watsapp.png in Resources */,
 				66C5782B1E37799F00B235F4 /* segoeuiz.ttf in Resources */,
 				66EA8E1A1E275A4000646797 /* message.png in Resources */,
+				18C04FC51E8540ED000B15EA /* Filter50.png in Resources */,
 				66EA8E201E275A4000646797 /* watsapp_logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1118,6 +1137,7 @@
 				6633E90C1E88F89F0008C730 /* InventoryTableCell.swift in Sources */,
 				1841C6B51E698B39006F14B2 /* IndividualConfirmDonateInteractor.swift in Sources */,
 				66EA8E2E1E27A36900646797 /* SignUpInteractor.swift in Sources */,
+				18C04FC91E85450C000B15EA /* FilterChecks.swift in Sources */,
 				66C4E6851E372AAA00526C1D /* FAQView.swift in Sources */,
 				66EA8E361E27AF2600646797 /* APIBuilder.swift in Sources */,
 				665111B41E5D9D8600A6AFAA /* ProfileViewInteractor.swift in Sources */,

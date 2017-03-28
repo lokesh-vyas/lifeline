@@ -40,9 +40,12 @@ class DonateView: UIViewController {
     //MARK:- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        let temmp = FilterChecks()
+        temmp.delegate = self
+        
         loader = true
         CLLocationManager.locationServicesEnabled()
-        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        //self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         NotificationCenter.default.addObserver(self, selector: #selector(DonateView.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
         
         locationManager.requestAlwaysAuthorization()
@@ -72,6 +75,11 @@ class DonateView: UIViewController {
         
     }
     
+    //MARK:- delegateFunction from filter
+    
+   
+
+    
     //MARK:- viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -84,6 +92,7 @@ class DonateView: UIViewController {
         self.definesPresentationContext = true
         searchController?.hidesNavigationBarDuringPresentation = false
         DonateInteractor.sharedInstance.delegate = self
+        
         
     }
     //MARK:- PushNotificationView
@@ -110,6 +119,14 @@ class DonateView: UIViewController {
         let autocompleteController = GMSAutocompleteViewController()
         autocompleteController.delegate = self
         present(autocompleteController, animated: true, completion: nil)
+    }
+    
+    //MARK:- Filter Button
+    @IBAction func btnFilterTapped(_ sender: Any) {
+        let filterView = self.storyboard!.instantiateViewController(withIdentifier: "FilterChecks") as! FilterChecks
+        filterView.modalPresentationStyle = .overCurrentContext
+        filterView.view.backgroundColor = UIColor.clear
+        self.navigationController?.present(filterView, animated: true, completion: nil)
     }
     
     //MARK:- Search Locations
@@ -153,8 +170,8 @@ class DonateView: UIViewController {
         
         for (i, _) in dataArray.enumerated() {
             
-            if dataArray[i]["TypeOfOrg"] == 1 {
-                if dataArray[i]["IndividualDetails"] == JSON.null {
+            if dataArray[i]["TypeOfOrg"] == 1  {
+                if dataArray[i]["IndividualDetails"] == JSON.null && SingleTon.SharedInstance.isCheckedHospital {
                     
                     //                    print("Hosp",dataArray)
                     self.rLatitude = dataArray[i]["Latitude"].doubleValue
@@ -171,7 +188,7 @@ class DonateView: UIViewController {
                     self.view = self.mapView
                     
                     
-                } else {
+                } else if SingleTon.SharedInstance.isCheckedIndividual {
                     
                     //                    print("Indi",dataArray)
                     self.rLatitude = dataArray[i]["Latitude"].doubleValue
@@ -188,7 +205,7 @@ class DonateView: UIViewController {
                     
                 }
                 
-            } else if dataArray[i]["TypeOfOrg"] == 2 {
+            } else if dataArray[i]["TypeOfOrg"] == 2 && SingleTon.SharedInstance.isCheckedCamp {
                 
                 
                 //                print("CASE 2: $CAMP")
@@ -434,7 +451,6 @@ extension DonateView : GMSAutocompleteResultsViewControllerDelegate {
 extension DonateView : DonateViewProtocol {
     func successDonateSources(jsonArray: JSON) {
         
-        
         if jsonArray["BloodRequestSearchResponse"] == JSON.null || jsonArray["BloodRequestSearchResponse"]["BloodRequestSearchResponseDetails"]["StatusCode"] == 1 {
             print("No Requirements in your location")
             HudBar.sharedInstance.hideHudFormView(view: self.view)
@@ -446,7 +462,6 @@ extension DonateView : DonateViewProtocol {
             
             //labelWarning
             labelWarning.text = "No Requirements in your location"
-            //            labelWarning.textAlignment = .center
             labelWarning.numberOfLines = 2
             labelWarning.translatesAutoresizingMaskIntoConstraints = false
             
@@ -587,6 +602,12 @@ extension DonateView : DonateViewProtocol {
     }
     func failedDonateSources() {
         print("Failed to get Donate resources !!")
+    }
+}
+
+extension DonateView : filterMarkersProtocol {
+    func didSuccessFilters(sender: FilterChecks) {
+     //   TODO:-
     }
 }
 

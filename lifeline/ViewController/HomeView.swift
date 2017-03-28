@@ -60,6 +60,10 @@ class HomeView: UIViewController {
 //MARK:- DonateAction
     @IBAction func DonateAction(_ sender: Any)
     {
+        SingleTon.SharedInstance.isCheckedIndividual = true
+        SingleTon.SharedInstance.isCheckedHospital = true
+        SingleTon.SharedInstance.isCheckedCamp = true
+        
         let donateView = self.storyboard?.instantiateViewController(withIdentifier: "DonateView")
         self.navigationController?.pushViewController(donateView!, animated: true)
 
