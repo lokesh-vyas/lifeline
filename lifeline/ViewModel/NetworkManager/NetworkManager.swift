@@ -49,9 +49,10 @@ class NetworkManager
                 
                 if let temp = response.response {
                     print("Getting response from Servdr !!", temp)
+                    
                 } else {
-                    if let test = response.result.error as? AFError {
-                        
+                    if (response.result.error as? AFError) != nil {
+                        failure()
                     }
                     print("Couldn't get Response from Server !!")
                     failure()

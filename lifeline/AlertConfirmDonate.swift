@@ -139,13 +139,17 @@ class AlertConfirmDonate: UIViewController {
                      "Comment": CommentText
                     ]]]
             
+            //Local Notification
+            if MarkerData.SharedInstance.isIndividualAPN == false || MarkerData.SharedInstance.isNotIndividualAPN == false {
             var reminder = Util.SharedInstance.dateStringToDateForNotification(dateString: Util.SharedInstance.dateForReminder(dateString: preferredDateTime!))
             reminder.addTimeInterval(_: -60)
             self.scheduleNotification(at:reminder)
+            }
+            
             AlertConfirmDonateInteractor.sharedInstance.confirmsDonate(urlString: URLList.CONFIRM_DONATE.rawValue, params: collectedParameters)
             
         } else {
-            let alert = UIAlertController(title: "Missing", message: "Preferred Date & Time is Missing", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Missing", message: "Please Select Preferred Date and Time", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             present(alert, animated: true, completion: nil)
         }

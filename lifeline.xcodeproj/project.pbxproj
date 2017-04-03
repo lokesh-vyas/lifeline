@@ -17,6 +17,8 @@
 		183A1D9D1E66DCBF0048DC65 /* AlertConfirmDonateInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183A1D9C1E66DCBF0048DC65 /* AlertConfirmDonateInteractor.swift */; };
 		1841C6B31E696990006F14B2 /* ConfirmDonateInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1841C6B21E696990006F14B2 /* ConfirmDonateInteractor.swift */; };
 		1841C6B51E698B39006F14B2 /* IndividualConfirmDonateInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1841C6B41E698B39006F14B2 /* IndividualConfirmDonateInteractor.swift */; };
+		18569D291E8D045C007B78DC /* MarkersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18569D281E8D045C007B78DC /* MarkersListView.swift */; };
+		18569D2B1E8E6479007B78DC /* Point Objects-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 18569D2A1E8E6479007B78DC /* Point Objects-32.png */; };
 		18C04FC51E8540ED000B15EA /* Filter50.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C04FC41E8540ED000B15EA /* Filter50.png */; };
 		18C04FC71E8541B8000B15EA /* Filter32.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C04FC61E8541B8000B15EA /* Filter32.png */; };
 		18C04FC91E85450C000B15EA /* FilterChecks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C04FC81E85450C000B15EA /* FilterChecks.swift */; };
@@ -24,6 +26,7 @@
 		18C04FCD1E86CD43000B15EA /* Unchecked Checkbox-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C04FCB1E86CD43000B15EA /* Unchecked Checkbox-32.png */; };
 		18C6883B1E62ECBB0026453C /* MarkerIndividualDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C6883A1E62ECBB0026453C /* MarkerIndividualDetails.swift */; };
 		18C6883D1E62ECDB0026453C /* MarkerNotIndividualDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C6883C1E62ECDB0026453C /* MarkerNotIndividualDetails.swift */; };
+		18F3AD691E8A66B10086274E /* List-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F3AD681E8A66B10086274E /* List-32.png */; };
 		18F8ECB41E84EAE00071C0A0 /* BloodInventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F8ECB31E84EAE00071C0A0 /* BloodInventory.swift */; };
 		661F3C5E1E7673B9008E7E34 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 661F3C5D1E7673B9008E7E34 /* NotificationCenter.framework */; };
 		66316B801E53132500114055 /* HospitalListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66316B7F1E53132500114055 /* HospitalListView.swift */; };
@@ -150,6 +153,8 @@
 		183A1D9C1E66DCBF0048DC65 /* AlertConfirmDonateInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertConfirmDonateInteractor.swift; sourceTree = "<group>"; };
 		1841C6B21E696990006F14B2 /* ConfirmDonateInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmDonateInteractor.swift; sourceTree = "<group>"; };
 		1841C6B41E698B39006F14B2 /* IndividualConfirmDonateInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualConfirmDonateInteractor.swift; sourceTree = "<group>"; };
+		18569D281E8D045C007B78DC /* MarkersListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkersListView.swift; sourceTree = "<group>"; };
+		18569D2A1E8E6479007B78DC /* Point Objects-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Point Objects-32.png"; sourceTree = "<group>"; };
 		18C04FC41E8540ED000B15EA /* Filter50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Filter50.png; sourceTree = "<group>"; };
 		18C04FC61E8541B8000B15EA /* Filter32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Filter32.png; sourceTree = "<group>"; };
 		18C04FC81E85450C000B15EA /* FilterChecks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterChecks.swift; sourceTree = "<group>"; };
@@ -157,6 +162,7 @@
 		18C04FCB1E86CD43000B15EA /* Unchecked Checkbox-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Unchecked Checkbox-32.png"; sourceTree = "<group>"; };
 		18C6883A1E62ECBB0026453C /* MarkerIndividualDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerIndividualDetails.swift; sourceTree = "<group>"; };
 		18C6883C1E62ECDB0026453C /* MarkerNotIndividualDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerNotIndividualDetails.swift; sourceTree = "<group>"; };
+		18F3AD681E8A66B10086274E /* List-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "List-32.png"; sourceTree = "<group>"; };
 		18F8ECB31E84EAE00071C0A0 /* BloodInventory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BloodInventory.swift; sourceTree = "<group>"; };
 		19B74CD6720B8FE1E0D554ED /* Pods-lifelineUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lifelineUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-lifelineUITests/Pods-lifelineUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1A7713EA892985CA8991C0DE /* Pods_lifelineTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lifelineTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -305,6 +311,68 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18F3AD6A1E8A86900086274E /* FinalDonate */ = {
+			isa = PBXGroup;
+			children = (
+				1830CE8A1E6567FE005BBC19 /* AlertConfirmDonate.swift */,
+				183A1D9C1E66DCBF0048DC65 /* AlertConfirmDonateInteractor.swift */,
+			);
+			name = FinalDonate;
+			sourceTree = "<group>";
+		};
+		18F3AD6B1E8A86D30086274E /* MarkerTapped */ = {
+			isa = PBXGroup;
+			children = (
+				18C6883C1E62ECDB0026453C /* MarkerNotIndividualDetails.swift */,
+				18C6883A1E62ECBB0026453C /* MarkerIndividualDetails.swift */,
+			);
+			name = MarkerTapped;
+			sourceTree = "<group>";
+		};
+		18F3AD6C1E8A87BB0086274E /* AllMarkers */ = {
+			isa = PBXGroup;
+			children = (
+				66C4E68A1E37400B00526C1D /* DonateView.swift */,
+				18324D371E5D6E030043B204 /* DonateInteractor.swift */,
+			);
+			name = AllMarkers;
+			sourceTree = "<group>";
+		};
+		18F3AD6D1E8A87E60086274E /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				18C04FC81E85450C000B15EA /* FilterChecks.swift */,
+			);
+			name = Filters;
+			sourceTree = "<group>";
+		};
+		18F3AD6E1E8A880A0086274E /* BloodInventory */ = {
+			isa = PBXGroup;
+			children = (
+				18F8ECB31E84EAE00071C0A0 /* BloodInventory.swift */,
+			);
+			name = BloodInventory;
+			sourceTree = "<group>";
+		};
+		18F3AD6F1E8A88220086274E /* ConfirmDonate */ = {
+			isa = PBXGroup;
+			children = (
+				1830CE881E6567CE005BBC19 /* ConfirmDonate.swift */,
+				1841C6B21E696990006F14B2 /* ConfirmDonateInteractor.swift */,
+				1830CE8C1E6568BC005BBC19 /* IndividualConfirmDonate.swift */,
+				1841C6B41E698B39006F14B2 /* IndividualConfirmDonateInteractor.swift */,
+			);
+			name = ConfirmDonate;
+			sourceTree = "<group>";
+		};
+		18F3AD721E8A88CF0086274E /* Multiple Requests */ = {
+			isa = PBXGroup;
+			children = (
+				1830CE8E1E6569ED005BBC19 /* RequestedByIndividuals.swift */,
+			);
+			name = "Multiple Requests";
+			sourceTree = "<group>";
+		};
 		661274111E51D75E008FB81B /* Float Text Field */ = {
 			isa = PBXGroup;
 			children = (
@@ -447,24 +515,19 @@
 			name = ChangePassword;
 			sourceTree = "<group>";
 		};
-		66C4E6891E373FEF00526C1D /* DonateView */ = {
+		66C4E6891E373FEF00526C1D /* Donate */ = {
 			isa = PBXGroup;
 			children = (
-				66C4E68A1E37400B00526C1D /* DonateView.swift */,
-				18324D371E5D6E030043B204 /* DonateInteractor.swift */,
-				18C04FC81E85450C000B15EA /* FilterChecks.swift */,
-				18C6883C1E62ECDB0026453C /* MarkerNotIndividualDetails.swift */,
-				18C6883A1E62ECBB0026453C /* MarkerIndividualDetails.swift */,
-				1830CE881E6567CE005BBC19 /* ConfirmDonate.swift */,
-				18F8ECB31E84EAE00071C0A0 /* BloodInventory.swift */,
-				1841C6B21E696990006F14B2 /* ConfirmDonateInteractor.swift */,
-				1830CE8E1E6569ED005BBC19 /* RequestedByIndividuals.swift */,
-				1830CE8C1E6568BC005BBC19 /* IndividualConfirmDonate.swift */,
-				1841C6B41E698B39006F14B2 /* IndividualConfirmDonateInteractor.swift */,
-				1830CE8A1E6567FE005BBC19 /* AlertConfirmDonate.swift */,
-				183A1D9C1E66DCBF0048DC65 /* AlertConfirmDonateInteractor.swift */,
+				18F3AD6C1E8A87BB0086274E /* AllMarkers */,
+				18F3AD6D1E8A87E60086274E /* Filters */,
+				18F3AD6B1E8A86D30086274E /* MarkerTapped */,
+				18F3AD6E1E8A880A0086274E /* BloodInventory */,
+				18F3AD721E8A88CF0086274E /* Multiple Requests */,
+				18F3AD6F1E8A88220086274E /* ConfirmDonate */,
+				18F3AD6A1E8A86900086274E /* FinalDonate */,
+				18569D281E8D045C007B78DC /* MarkersListView.swift */,
 			);
-			name = DonateView;
+			name = Donate;
 			sourceTree = "<group>";
 		};
 		66C4E68C1E37401100526C1D /* RequestView */ = {
@@ -581,7 +644,7 @@
 			children = (
 				66DE4EBF1E71680E00145346 /* NotificationView */,
 				66C4E67B1E37252600526C1D /* HomeView */,
-				66C4E6891E373FEF00526C1D /* DonateView */,
+				66C4E6891E373FEF00526C1D /* Donate */,
 				66C4E68C1E37401100526C1D /* RequestView */,
 				ED1118A21E63ED94003EA467 /* ShowHospital */,
 				66C4E68F1E37403100526C1D /* MyRequestView */,
@@ -641,6 +704,8 @@
 			children = (
 				663D6FEB1E7003B900EB2CD8 /* HOME_SCREEN_03.png */,
 				18C04FCA1E86CD43000B15EA /* Checked Checkbox 2-32.png */,
+				18569D2A1E8E6479007B78DC /* Point Objects-32.png */,
+				18F3AD681E8A66B10086274E /* List-32.png */,
 				18C04FCB1E86CD43000B15EA /* Unchecked Checkbox-32.png */,
 				18C04FC41E8540ED000B15EA /* Filter50.png */,
 				18C04FC61E8541B8000B15EA /* Filter32.png */,
@@ -915,10 +980,12 @@
 				66EA8E161E275A4000646797 /* drop_red.png in Resources */,
 				6633E90A1E88F7F50008C730 /* InventoryTableCell.xib in Resources */,
 				EDE9AEA51E5C47D10031BCB0 /* twitter.png in Resources */,
+				18F3AD691E8A66B10086274E /* List-32.png in Resources */,
 				66EA8D681E1F700200646797 /* GoogleService-Info.plist in Resources */,
 				66EA8E121E275A4000646797 /* chat_bubble.png in Resources */,
 				EDE9AEA31E5C47D10031BCB0 /* facebbok.png in Resources */,
 				66EA8D3C1E1F6B4300646797 /* Assets.xcassets in Resources */,
+				18569D2B1E8E6479007B78DC /* Point Objects-32.png in Resources */,
 				66C578291E37799F00B235F4 /* segoeuil.ttf in Resources */,
 				66EA8E151E275A4000646797 /* drop_black.png in Resources */,
 				66C5782D1E37799F00B235F4 /* seguisb.ttf in Resources */,
@@ -1116,6 +1183,7 @@
 				66DE4EC11E71683000145346 /* NotificationView.swift in Sources */,
 				66EA8DE61E24BDB700646797 /* LoginView.swift in Sources */,
 				665111B71E61824500A6AFAA /* MyRequestCell.swift in Sources */,
+				18569D291E8D045C007B78DC /* MarkersListView.swift in Sources */,
 				665111BC1E61B69D00A6AFAA /* MyRequestClose.swift in Sources */,
 				1830CE891E6567CE005BBC19 /* ConfirmDonate.swift in Sources */,
 				183A1D9B1E66D2AC0048DC65 /* MarkerData.swift in Sources */,
@@ -1304,6 +1372,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = lifeline/lifeline.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = FXZ4W6ZJ63;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1330,6 +1399,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = lifeline/lifeline.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = FXZ4W6ZJ63;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

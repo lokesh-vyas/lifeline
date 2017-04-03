@@ -17,7 +17,6 @@ protocol HospitalListCompletDataProtocol
 class HospitalListView: UIViewController
 {
     @IBOutlet weak var lblListNotAvailable: UILabel!
-    
     @IBOutlet weak var activityBar: UIActivityIndicatorView!
     @IBOutlet weak var searchTableView: UITableView!
     @IBOutlet weak var searchBarText: UISearchBar!
