@@ -2314,7 +2314,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="contactNumber" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAi-um-MfB">
-                                                    <rect key="frame" x="32" y="69" width="104" height="20"/>
+                                                    <rect key="frame" x="32" y="69" width="103.5" height="20"/>
                                                     <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -2718,7 +2718,7 @@
                                                     <constraint firstAttribute="bottom" secondItem="dpF-9m-tVq" secondAttribute="bottom" constant="2" id="qgV-Jg-Aev"/>
                                                 </constraints>
                                             </view>
-                                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Patient Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iUe-dH-BLt" customClass="FloatLabelTextField" customModule="lifeline" customModuleProvider="target">
+                                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Patient Name*" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iUe-dH-BLt" customClass="FloatLabelTextField" customModule="lifeline" customModuleProvider="target">
                                                 <rect key="frame" x="15" y="46" width="342" height="40"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -2735,7 +2735,7 @@
                                                     <outlet property="delegate" destination="yrd-hD-PsX" id="7jY-hU-Y0L"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Contact Person" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nch-d1-2WF" customClass="FloatLabelTextField" customModule="lifeline" customModuleProvider="target">
+                                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Contact Person*" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nch-d1-2WF" customClass="FloatLabelTextField" customModule="lifeline" customModuleProvider="target">
                                                 <rect key="frame" x="15" y="92" width="342" height="40"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -2752,7 +2752,7 @@
                                                     <outlet property="delegate" destination="yrd-hD-PsX" id="w0I-Wb-WCC"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Contact Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jV1-E5-yHu" customClass="FloatLabelTextField" customModule="lifeline" customModuleProvider="target">
+                                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Contact Number*" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jV1-E5-yHu" customClass="FloatLabelTextField" customModule="lifeline" customModuleProvider="target">
                                                 <rect key="frame" x="15" y="138" width="342" height="40"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -2937,7 +2937,7 @@
                                                     <constraint firstItem="Xaa-Dv-hpJ" firstAttribute="top" secondItem="FYg-PM-k6H" secondAttribute="top" constant="5" id="uiY-yM-Oef"/>
                                                 </constraints>
                                             </view>
-                                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Hospital / Bloodbank Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KSd-oU-hqN" customClass="FloatLabelTextField" customModule="lifeline" customModuleProvider="target">
+                                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Hospital / Bloodbank Name*" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KSd-oU-hqN" customClass="FloatLabelTextField" customModule="lifeline" customModuleProvider="target">
                                                 <rect key="frame" x="15" y="46" width="342" height="40"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -2954,7 +2954,7 @@
                                                     <outlet property="delegate" destination="yrd-hD-PsX" id="G44-Yi-16A"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Doctor Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wG5-tu-clk" customClass="FloatLabelTextField" customModule="lifeline" customModuleProvider="target">
+                                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Doctor Name*" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wG5-tu-clk" customClass="FloatLabelTextField" customModule="lifeline" customModuleProvider="target">
                                                 <rect key="frame" x="15" y="92" width="342" height="40"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -2971,7 +2971,7 @@
                                                     <outlet property="delegate" destination="yrd-hD-PsX" id="e5i-Sb-xNS"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Contact Number(Blood Bank/Hospital)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cwc-9E-9b3" customClass="FloatLabelTextField" customModule="lifeline" customModuleProvider="target">
+                                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Contact Number(Blood Bank/Hospital)*" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cwc-9E-9b3" customClass="FloatLabelTextField" customModule="lifeline" customModuleProvider="target">
                                                 <rect key="frame" x="15" y="138" width="342" height="40"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -3040,7 +3040,7 @@
                                                     <constraint firstItem="W8x-Pd-mOF" firstAttribute="leading" secondItem="CbO-Rd-8uD" secondAttribute="trailing" constant="15" id="lhq-o9-Twz"/>
                                                 </constraints>
                                             </view>
-                                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WcT-Xy-gA4" customClass="FloatLabelTextField" customModule="lifeline" customModuleProvider="target">
+                                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Address*" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WcT-Xy-gA4" customClass="FloatLabelTextField" customModule="lifeline" customModuleProvider="target">
                                                 <rect key="frame" x="15" y="46" width="288" height="40"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -3074,7 +3074,7 @@
                                                     <outlet property="delegate" destination="yrd-hD-PsX" id="g7C-TW-zzS"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="City" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QIu-Tl-LdC" customClass="FloatLabelTextField" customModule="lifeline" customModuleProvider="target">
+                                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="City*" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QIu-Tl-LdC" customClass="FloatLabelTextField" customModule="lifeline" customModuleProvider="target">
                                                 <rect key="frame" x="15" y="138" width="165" height="40"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
