@@ -17,6 +17,8 @@
 		183A1D9D1E66DCBF0048DC65 /* AlertConfirmDonateInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183A1D9C1E66DCBF0048DC65 /* AlertConfirmDonateInteractor.swift */; };
 		1841C6B31E696990006F14B2 /* ConfirmDonateInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1841C6B21E696990006F14B2 /* ConfirmDonateInteractor.swift */; };
 		1841C6B51E698B39006F14B2 /* IndividualConfirmDonateInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1841C6B41E698B39006F14B2 /* IndividualConfirmDonateInteractor.swift */; };
+		18569D291E8D045C007B78DC /* MarkersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18569D281E8D045C007B78DC /* MarkersListView.swift */; };
+		18569D2B1E8E6479007B78DC /* Point Objects-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 18569D2A1E8E6479007B78DC /* Point Objects-32.png */; };
 		18C04FC51E8540ED000B15EA /* Filter50.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C04FC41E8540ED000B15EA /* Filter50.png */; };
 		18C04FC71E8541B8000B15EA /* Filter32.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C04FC61E8541B8000B15EA /* Filter32.png */; };
 		18C04FC91E85450C000B15EA /* FilterChecks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C04FC81E85450C000B15EA /* FilterChecks.swift */; };
@@ -32,6 +34,10 @@
 		66316B881E5575D700114055 /* HospitalListApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66316B871E5575D700114055 /* HospitalListApi.swift */; };
 		66316B8B1E557D4200114055 /* HospitalListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66316B8A1E557D4200114055 /* HospitalListCell.swift */; };
 		66316B8D1E557D8300114055 /* HospitalListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66316B8C1E557D8300114055 /* HospitalListCell.xib */; };
+		6633E90A1E88F7F50008C730 /* InventoryTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6633E9091E88F7F50008C730 /* InventoryTableCell.xib */; };
+		6633E90C1E88F89F0008C730 /* InventoryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6633E90B1E88F89F0008C730 /* InventoryTableCell.swift */; };
+		6633E90F1E8907A00008C730 /* InventoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6633E90E1E8907A00008C730 /* InventoryCell.swift */; };
+		6633E9111E8908680008C730 /* InventoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6633E9101E8908680008C730 /* InventoryCell.xib */; };
 		663706C71E2FB08400EC5EF3 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 663706C61E2FB08400EC5EF3 /* SWRevealViewController.m */; };
 		663D6FEE1E7003B900EB2CD8 /* HOME_SCREEN_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 663D6FEB1E7003B900EB2CD8 /* HOME_SCREEN_03.png */; };
 		663D6FEF1E7003B900EB2CD8 /* HOME_SCREEN_F.png in Resources */ = {isa = PBXBuildFile; fileRef = 663D6FEC1E7003B900EB2CD8 /* HOME_SCREEN_F.png */; };
@@ -147,6 +153,8 @@
 		183A1D9C1E66DCBF0048DC65 /* AlertConfirmDonateInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertConfirmDonateInteractor.swift; sourceTree = "<group>"; };
 		1841C6B21E696990006F14B2 /* ConfirmDonateInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmDonateInteractor.swift; sourceTree = "<group>"; };
 		1841C6B41E698B39006F14B2 /* IndividualConfirmDonateInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualConfirmDonateInteractor.swift; sourceTree = "<group>"; };
+		18569D281E8D045C007B78DC /* MarkersListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkersListView.swift; sourceTree = "<group>"; };
+		18569D2A1E8E6479007B78DC /* Point Objects-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Point Objects-32.png"; sourceTree = "<group>"; };
 		18C04FC41E8540ED000B15EA /* Filter50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Filter50.png; sourceTree = "<group>"; };
 		18C04FC61E8541B8000B15EA /* Filter32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Filter32.png; sourceTree = "<group>"; };
 		18C04FC81E85450C000B15EA /* FilterChecks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterChecks.swift; sourceTree = "<group>"; };
@@ -165,6 +173,10 @@
 		66316B871E5575D700114055 /* HospitalListApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HospitalListApi.swift; path = "ViewModel/NetworkManager/API's/HospitalListApi.swift"; sourceTree = "<group>"; };
 		66316B8A1E557D4200114055 /* HospitalListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HospitalListCell.swift; path = Cell/HospitalListCell.swift; sourceTree = "<group>"; };
 		66316B8C1E557D8300114055 /* HospitalListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HospitalListCell.xib; path = Cell/HospitalListCell.xib; sourceTree = "<group>"; };
+		6633E9091E88F7F50008C730 /* InventoryTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = InventoryTableCell.xib; path = Cell/InventoryTableCell.xib; sourceTree = "<group>"; };
+		6633E90B1E88F89F0008C730 /* InventoryTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InventoryTableCell.swift; path = Cell/InventoryTableCell.swift; sourceTree = "<group>"; };
+		6633E90E1E8907A00008C730 /* InventoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InventoryCell.swift; path = Cell/InventoryCell.swift; sourceTree = "<group>"; };
+		6633E9101E8908680008C730 /* InventoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = InventoryCell.xib; path = Cell/InventoryCell.xib; sourceTree = "<group>"; };
 		663706C41E2FB08400EC5EF3 /* lifeline-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "lifeline-Bridging-Header.h"; sourceTree = "<group>"; };
 		663706C51E2FB08400EC5EF3 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		663706C61E2FB08400EC5EF3 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
@@ -299,6 +311,68 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18F3AD6A1E8A86900086274E /* FinalDonate */ = {
+			isa = PBXGroup;
+			children = (
+				1830CE8A1E6567FE005BBC19 /* AlertConfirmDonate.swift */,
+				183A1D9C1E66DCBF0048DC65 /* AlertConfirmDonateInteractor.swift */,
+			);
+			name = FinalDonate;
+			sourceTree = "<group>";
+		};
+		18F3AD6B1E8A86D30086274E /* MarkerTapped */ = {
+			isa = PBXGroup;
+			children = (
+				18C6883C1E62ECDB0026453C /* MarkerNotIndividualDetails.swift */,
+				18C6883A1E62ECBB0026453C /* MarkerIndividualDetails.swift */,
+			);
+			name = MarkerTapped;
+			sourceTree = "<group>";
+		};
+		18F3AD6C1E8A87BB0086274E /* AllMarkers */ = {
+			isa = PBXGroup;
+			children = (
+				66C4E68A1E37400B00526C1D /* DonateView.swift */,
+				18324D371E5D6E030043B204 /* DonateInteractor.swift */,
+			);
+			name = AllMarkers;
+			sourceTree = "<group>";
+		};
+		18F3AD6D1E8A87E60086274E /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				18C04FC81E85450C000B15EA /* FilterChecks.swift */,
+			);
+			name = Filters;
+			sourceTree = "<group>";
+		};
+		18F3AD6E1E8A880A0086274E /* BloodInventory */ = {
+			isa = PBXGroup;
+			children = (
+				18F8ECB31E84EAE00071C0A0 /* BloodInventory.swift */,
+			);
+			name = BloodInventory;
+			sourceTree = "<group>";
+		};
+		18F3AD6F1E8A88220086274E /* ConfirmDonate */ = {
+			isa = PBXGroup;
+			children = (
+				1830CE881E6567CE005BBC19 /* ConfirmDonate.swift */,
+				1841C6B21E696990006F14B2 /* ConfirmDonateInteractor.swift */,
+				1830CE8C1E6568BC005BBC19 /* IndividualConfirmDonate.swift */,
+				1841C6B41E698B39006F14B2 /* IndividualConfirmDonateInteractor.swift */,
+			);
+			name = ConfirmDonate;
+			sourceTree = "<group>";
+		};
+		18F3AD721E8A88CF0086274E /* Multiple Requests */ = {
+			isa = PBXGroup;
+			children = (
+				1830CE8E1E6569ED005BBC19 /* RequestedByIndividuals.swift */,
+			);
+			name = "Multiple Requests";
+			sourceTree = "<group>";
+		};
 		661274111E51D75E008FB81B /* Float Text Field */ = {
 			isa = PBXGroup;
 			children = (
@@ -319,6 +393,7 @@
 		66316B811E54555E00114055 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				6633E9081E88F7AF0008C730 /* InventoryTableCell */,
 				665111C41E66E36100A6AFAA /* MyDonorCell */,
 				665111B51E6181F300A6AFAA /* MyRequestCell */,
 				66316B891E557AE600114055 /* HospitalListCell */,
@@ -333,6 +408,25 @@
 				66316B8C1E557D8300114055 /* HospitalListCell.xib */,
 			);
 			name = HospitalListCell;
+			sourceTree = "<group>";
+		};
+		6633E9081E88F7AF0008C730 /* InventoryTableCell */ = {
+			isa = PBXGroup;
+			children = (
+				6633E9091E88F7F50008C730 /* InventoryTableCell.xib */,
+				6633E90B1E88F89F0008C730 /* InventoryTableCell.swift */,
+				6633E90D1E8907710008C730 /* InventoryCell */,
+			);
+			name = InventoryTableCell;
+			sourceTree = "<group>";
+		};
+		6633E90D1E8907710008C730 /* InventoryCell */ = {
+			isa = PBXGroup;
+			children = (
+				6633E90E1E8907A00008C730 /* InventoryCell.swift */,
+				6633E9101E8908680008C730 /* InventoryCell.xib */,
+			);
+			name = InventoryCell;
 			sourceTree = "<group>";
 		};
 		663706C81E2FB08D00EC5EF3 /* SWRevalView */ = {
@@ -421,24 +515,19 @@
 			name = ChangePassword;
 			sourceTree = "<group>";
 		};
-		66C4E6891E373FEF00526C1D /* DonateView */ = {
+		66C4E6891E373FEF00526C1D /* Donate */ = {
 			isa = PBXGroup;
 			children = (
-				66C4E68A1E37400B00526C1D /* DonateView.swift */,
-				18324D371E5D6E030043B204 /* DonateInteractor.swift */,
-				18C04FC81E85450C000B15EA /* FilterChecks.swift */,
-				18C6883C1E62ECDB0026453C /* MarkerNotIndividualDetails.swift */,
-				18C6883A1E62ECBB0026453C /* MarkerIndividualDetails.swift */,
-				1830CE881E6567CE005BBC19 /* ConfirmDonate.swift */,
-				18F8ECB31E84EAE00071C0A0 /* BloodInventory.swift */,
-				1841C6B21E696990006F14B2 /* ConfirmDonateInteractor.swift */,
-				1830CE8E1E6569ED005BBC19 /* RequestedByIndividuals.swift */,
-				1830CE8C1E6568BC005BBC19 /* IndividualConfirmDonate.swift */,
-				1841C6B41E698B39006F14B2 /* IndividualConfirmDonateInteractor.swift */,
-				1830CE8A1E6567FE005BBC19 /* AlertConfirmDonate.swift */,
-				183A1D9C1E66DCBF0048DC65 /* AlertConfirmDonateInteractor.swift */,
+				18F3AD6C1E8A87BB0086274E /* AllMarkers */,
+				18F3AD6D1E8A87E60086274E /* Filters */,
+				18F3AD6B1E8A86D30086274E /* MarkerTapped */,
+				18F3AD6E1E8A880A0086274E /* BloodInventory */,
+				18F3AD721E8A88CF0086274E /* Multiple Requests */,
+				18F3AD6F1E8A88220086274E /* ConfirmDonate */,
+				18F3AD6A1E8A86900086274E /* FinalDonate */,
+				18569D281E8D045C007B78DC /* MarkersListView.swift */,
 			);
-			name = DonateView;
+			name = Donate;
 			sourceTree = "<group>";
 		};
 		66C4E68C1E37401100526C1D /* RequestView */ = {
@@ -555,7 +644,7 @@
 			children = (
 				66DE4EBF1E71680E00145346 /* NotificationView */,
 				66C4E67B1E37252600526C1D /* HomeView */,
-				66C4E6891E373FEF00526C1D /* DonateView */,
+				66C4E6891E373FEF00526C1D /* Donate */,
 				66C4E68C1E37401100526C1D /* RequestView */,
 				ED1118A21E63ED94003EA467 /* ShowHospital */,
 				66C4E68F1E37403100526C1D /* MyRequestView */,
@@ -615,6 +704,7 @@
 			children = (
 				663D6FEB1E7003B900EB2CD8 /* HOME_SCREEN_03.png */,
 				18C04FCA1E86CD43000B15EA /* Checked Checkbox 2-32.png */,
+				18569D2A1E8E6479007B78DC /* Point Objects-32.png */,
 				18F3AD681E8A66B10086274E /* List-32.png */,
 				18C04FCB1E86CD43000B15EA /* Unchecked Checkbox-32.png */,
 				18C04FC41E8540ED000B15EA /* Filter50.png */,
@@ -884,15 +974,18 @@
 				66EA8E191E275A4000646797 /* errorimage.png in Resources */,
 				18C04FCC1E86CD43000B15EA /* Checked Checkbox 2-32.png in Resources */,
 				66C578261E37799F00B235F4 /* segoeui.ttf in Resources */,
+				6633E9111E8908680008C730 /* InventoryCell.xib in Resources */,
 				66EA8E1C1E275A4000646797 /* person.png in Resources */,
 				18C04FCD1E86CD43000B15EA /* Unchecked Checkbox-32.png in Resources */,
 				66EA8E161E275A4000646797 /* drop_red.png in Resources */,
+				6633E90A1E88F7F50008C730 /* InventoryTableCell.xib in Resources */,
 				EDE9AEA51E5C47D10031BCB0 /* twitter.png in Resources */,
 				18F3AD691E8A66B10086274E /* List-32.png in Resources */,
 				66EA8D681E1F700200646797 /* GoogleService-Info.plist in Resources */,
 				66EA8E121E275A4000646797 /* chat_bubble.png in Resources */,
 				EDE9AEA31E5C47D10031BCB0 /* facebbok.png in Resources */,
 				66EA8D3C1E1F6B4300646797 /* Assets.xcassets in Resources */,
+				18569D2B1E8E6479007B78DC /* Point Objects-32.png in Resources */,
 				66C578291E37799F00B235F4 /* segoeuil.ttf in Resources */,
 				66EA8E151E275A4000646797 /* drop_black.png in Resources */,
 				66C5782D1E37799F00B235F4 /* seguisb.ttf in Resources */,
@@ -1074,6 +1167,7 @@
 				66EA8DF91E2510A300646797 /* HudBar.swift in Sources */,
 				66316B8B1E557D4200114055 /* HospitalListCell.swift in Sources */,
 				665111C11E63F9D700A6AFAA /* MyRequestInteractor.swift in Sources */,
+				6633E90F1E8907A00008C730 /* InventoryCell.swift in Sources */,
 				66C4E68E1E37402B00526C1D /* RequestView.swift in Sources */,
 				EDE9AEAF1E5FECCC0031BCB0 /* RequestViewInteractor.swift in Sources */,
 				665111C31E6407F600A6AFAA /* MyRequestApi.swift in Sources */,
@@ -1089,6 +1183,7 @@
 				66DE4EC11E71683000145346 /* NotificationView.swift in Sources */,
 				66EA8DE61E24BDB700646797 /* LoginView.swift in Sources */,
 				665111B71E61824500A6AFAA /* MyRequestCell.swift in Sources */,
+				18569D291E8D045C007B78DC /* MarkersListView.swift in Sources */,
 				665111BC1E61B69D00A6AFAA /* MyRequestClose.swift in Sources */,
 				1830CE891E6567CE005BBC19 /* ConfirmDonate.swift in Sources */,
 				183A1D9B1E66D2AC0048DC65 /* MarkerData.swift in Sources */,
@@ -1107,6 +1202,7 @@
 				66316B841E5572B800114055 /* HospitalListInteractor.swift in Sources */,
 				66C4E6821E37273100526C1D /* RevalListView.swift in Sources */,
 				66C4E68B1E37400B00526C1D /* DonateView.swift in Sources */,
+				6633E90C1E88F89F0008C730 /* InventoryTableCell.swift in Sources */,
 				1841C6B51E698B39006F14B2 /* IndividualConfirmDonateInteractor.swift in Sources */,
 				66EA8E2E1E27A36900646797 /* SignUpInteractor.swift in Sources */,
 				18C04FC91E85450C000B15EA /* FilterChecks.swift in Sources */,

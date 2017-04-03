@@ -43,6 +43,11 @@ class MarkerIndividualDetails: UIViewController {
         
     }
    
+    @IBAction func btnBloodInventoryTapped(_ sender: Any) {
+        let bloodInventory = self.storyboard?.instantiateViewController(withIdentifier: "BloodInventory") as! BloodInventory
+        let navBar = UINavigationController.init(rootViewController:bloodInventory)
+        self.present(navBar, animated: true, completion: nil)
+    }
 }
 
 extension MarkerIndividualDetails : UIGestureRecognizerDelegate {

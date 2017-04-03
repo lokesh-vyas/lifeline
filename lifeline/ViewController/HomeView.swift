@@ -96,7 +96,7 @@ class HomeView: UIViewController {
     //MARK:- Share Application URL With Activity
     func shareAppURLTapped()
     {
-        let textToShare = "LifeLine is a social application dedicated to connecting blood banks,donors and recipients."
+        let textToShare = "LifeLine is a social application dedicated to connecting blood banks, donors and recipients."
         let textToIOS = "iOS:- https://goo.gl/XJl5a7"
         let textToAndroid = "Android:- https://goo.gl/PUorhE"
         

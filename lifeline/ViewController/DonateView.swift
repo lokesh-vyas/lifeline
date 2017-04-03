@@ -13,6 +13,7 @@ import GooglePlacePicker
 import CoreLocation
 import SwiftyJSON
 
+
 class DonateView: UIViewController {
     
     var camera : GMSCameraPosition?
@@ -34,9 +35,10 @@ class DonateView: UIViewController {
     var viewWarning = UIView()
     var labelWarning = UILabel()
     let imageWarning = UIImageView()
-    let imgViewListofMarkers = UIImageView()
+    let btnListofMarkers = UIButton()
     var lastEventDate : Date? = nil
     var loader : Bool?
+    var appendsListMarkers = [Dictionary<String, Any>]()
     
     //MARK:- viewDidLoad
     override func viewDidLoad() {
@@ -174,7 +176,6 @@ class DonateView: UIViewController {
             if dataArray[i]["TypeOfOrg"] == 1  {
                 if dataArray[i]["IndividualDetails"] == JSON.null && SingleTon.SharedInstance.isCheckedHospital {
                     
-                    //                    print("Hosp",dataArray)
                     self.rLatitude = dataArray[i]["Latitude"].doubleValue
                     self.rLongitude = dataArray[i]["Longitude"].doubleValue
                     self.rLocation = CLLocation.init(latitude:
@@ -183,13 +184,12 @@ class DonateView: UIViewController {
                     let myMarker1 = GMSMarker()
                     myMarker1.position = self.rCoordinates!
                     myMarker1.userData = dataArray[i]
-                    //                    myMarker1.snippet = dataArray[i]["Name"].stringValue
                     myMarker1.icon = UIImage(named: "Hospital_icon")!
                     myMarker1.map = self.mapView
                     self.view = self.mapView
                     
                     
-                } else if SingleTon.SharedInstance.isCheckedIndividual {
+                } else if dataArray[i]["IndividualDetails"] != JSON.null && SingleTon.SharedInstance.isCheckedIndividual {
                     
                     //                    print("Indi",dataArray)
                     self.rLatitude = dataArray[i]["Latitude"].doubleValue
@@ -199,7 +199,6 @@ class DonateView: UIViewController {
                     let myMarker2 = GMSMarker()
                     myMarker2.position = self.rCoordinates!
                     myMarker2.userData = dataArray[i]
-                    //                    myMarker2.snippet = dataArray[i]["Name"].stringValue
                     myMarker2.icon = UIImage(named: "Individual_icon")!
                     myMarker2.map = self.mapView
                     self.view = self.mapView
@@ -208,9 +207,6 @@ class DonateView: UIViewController {
                 
             } else if dataArray[i]["TypeOfOrg"] == 2 && SingleTon.SharedInstance.isCheckedCamp {
                 
-                
-                //                print("CASE 2: $CAMP")
-                //                print("Camp",dataArray)
                 rLatitude = dataArray[i]["Latitude"].doubleValue
                 rLongitude = dataArray[i]["Longitude"].doubleValue
                 rLocation = CLLocation.init(latitude: CLLocationDegrees(rLatitude!), longitude: CLLocationDegrees(rLongitude!))
@@ -219,8 +215,6 @@ class DonateView: UIViewController {
                 myMarker3.position = rCoordinates!
                 myMarker3.userData = dataArray[i]
                 myMarker3.icon = UIImage(named: "Camp_icon")!
-                //                print("Camp_icon came ?")
-                //                myMarker3.snippet = dataArray[i]["Name"].stringValue
                 myMarker3.map = mapView
                 view = mapView
             }
@@ -280,7 +274,6 @@ extension DonateView : GMSMapViewDelegate {
                 return
             }
         }
-        
         
         lastEventDate = Date()
         let visibleRegion = mapView.projection.visibleRegion()
@@ -432,7 +425,7 @@ extension DonateView : GMSAutocompleteResultsViewControllerDelegate {
     }
     
     public func resultsController(_ resultsController: GMSAutocompleteResultsViewController, didFailAutocompleteWithError error: Error) {
-        print("REsult Place Error: ", error.localizedDescription)
+        print("Result Place Error: ", error.localizedDescription)
     }
     
     public func resultsController(_ resultsController: GMSAutocompleteResultsViewController, didSelect prediction: GMSAutocompletePrediction) -> Bool {
@@ -452,6 +445,63 @@ extension DonateView : GMSAutocompleteResultsViewControllerDelegate {
 extension DonateView : DonateViewProtocol {
     func successDonateSources(jsonArray: JSON) {
         
+        // ListofMarkers
+        btnListofMarkers.setImage(UIImage(named : "List-32.png"), for: .normal)
+        btnListofMarkers.backgroundColor = UIColor.white
+        btnListofMarkers.cornerRadius = 27.5
+        btnListofMarkers.layer.shadowColor = UIColor.red.cgColor
+        btnListofMarkers.layer.shadowRadius = 5.0
+        btnListofMarkers.addTarget(self, action:#selector(self.btnListClicked), for: .touchUpInside)
+        btnListofMarkers.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.mapView.addSubview(btnListofMarkers)
+        self.view = self.mapView
+        
+        //ListAutolayout
+        //Height
+        let listHeightConstraint = NSLayoutConstraint(
+            item: btnListofMarkers,
+            attribute: NSLayoutAttribute.height,
+            relatedBy: NSLayoutRelation.equal,
+            toItem: nil,
+            attribute: NSLayoutAttribute.notAnAttribute,
+            multiplier: 1,
+            constant: 55)
+        
+        //Width
+        let listWidthConstraint = NSLayoutConstraint(
+            item: btnListofMarkers,
+            attribute: NSLayoutAttribute.width,
+            relatedBy: NSLayoutRelation.equal,
+            toItem: nil,
+            attribute: NSLayoutAttribute.notAnAttribute,
+            multiplier: 1,
+            constant: 55)
+        
+        //Trailing
+        let listTrailingConstraint = NSLayoutConstraint(
+            item: btnListofMarkers,
+            attribute: NSLayoutAttribute.trailing,
+            relatedBy: NSLayoutRelation.equal,
+            toItem: view,
+            attribute: NSLayoutAttribute.trailing,
+            multiplier: 1,
+            constant: -10)
+        
+        //Vertical Space
+        let listVerticalSpaceConstraint = NSLayoutConstraint(
+            item: btnListofMarkers,
+            attribute: NSLayoutAttribute.bottom,
+            relatedBy: NSLayoutRelation.equal,
+            toItem: view,
+            attribute: NSLayoutAttribute.bottom,
+            multiplier: 1,
+            constant: -75)
+        
+        //List
+        self.view.addConstraints([listHeightConstraint, listWidthConstraint, listTrailingConstraint, listVerticalSpaceConstraint])
+        
+        //MARK:- Availability of Markers
         if jsonArray["BloodRequestSearchResponse"] == JSON.null || jsonArray["BloodRequestSearchResponse"]["BloodRequestSearchResponseDetails"]["StatusCode"] == 1 {
             print("No Requirements in your location")
             HudBar.sharedInstance.hideHudFormView(view: self.view)
@@ -469,10 +519,6 @@ extension DonateView : DonateViewProtocol {
             // imageWarning
             imageWarning.image = UIImage(named: "error-sign.png")
             imageWarning.translatesAutoresizingMaskIntoConstraints = false
-            
-            // ListofMarkers
-            imgViewListofMarkers.image = UIImage(named: "List-32.png")
-            imgViewListofMarkers.translatesAutoresizingMaskIntoConstraints = false
             
             self.viewWarning.addSubview(labelWarning)
             self.viewWarning.addSubview(imageWarning)
@@ -590,76 +636,47 @@ extension DonateView : DonateViewProtocol {
                 multiplier: 1,
                 constant: 45)
             
-            
             //subView
             view.addConstraints([viewWarningHeightConstraint, viewWarningLeadingConstraints, viewWarningTrailingConstraints, viewWarningBottomConstraints])
             //Label
             view.addConstraints([labelWarningLeadingConstraints, labelWarningTrailingConstraints, labelWarningVerticalConstraint])
             //image warning
             view.addConstraints([imageWarningLeadingConstraints, imageWarningTopConstraints, imageWarningBottomConstraints, imageWarningWidthConstraint])
-            
+            //
+            appendsListMarkers = []
+            SingleTon.SharedInstance.noMarkers = true
             
             
         } else {
             viewWarning.removeFromSuperview()
+            SingleTon.SharedInstance.noMarkers = false
+            var tempDict = [String : Any]()
+//            var mySet : Set = ["":"","":""]
+            
+            var jDict = JSON.init(dictionaryLiteral: ("Index", jsonArray["BloodRequestSearchResponse"]["BloodRequestDetails"]))
+            jDict = jDict["Index"]
+            
+            for (i, _) in jDict.enumerated() {
+                    tempDict["Name"] = jDict[i]["Name"]
+                    tempDict["WorkingHours"] = jDict[i]["WorkingHours"]
+//                    mySet.insert(tempDict)
+                    appendsListMarkers.append(tempDict)
+            }
+            
             self.bloodDonatingMarkers(responseData: jsonArray)
         }
         
-        // ListofMarkers
-        imgViewListofMarkers.image = UIImage(named: "List-32.png")
-        imgViewListofMarkers.translatesAutoresizingMaskIntoConstraints = false
-        self.mapView.addSubview(imgViewListofMarkers)
-        self.view = self.mapView
-        
-        //ListAutolayout
-        //Height
-        let listHeightConstraint = NSLayoutConstraint(
-            item: imgViewListofMarkers,
-            attribute: NSLayoutAttribute.height,
-            relatedBy: NSLayoutRelation.equal,
-            toItem: nil,
-            attribute: NSLayoutAttribute.notAnAttribute,
-            multiplier: 1,
-            constant: 55)
-        
-        //Width
-        let listWidthConstraint = NSLayoutConstraint(
-            item: imgViewListofMarkers,
-            attribute: NSLayoutAttribute.height,
-            relatedBy: NSLayoutRelation.equal,
-            toItem: nil,
-            attribute: NSLayoutAttribute.notAnAttribute,
-            multiplier: 1,
-            constant: 55)
-        
-        //Trailing
-        let listTrailingConstraint = NSLayoutConstraint(
-            item: imgViewListofMarkers,
-            attribute: NSLayoutAttribute.trailing,
-            relatedBy: NSLayoutRelation.equal,
-            toItem: view,
-            attribute: NSLayoutAttribute.trailing,
-            multiplier: 1,
-            constant: -10)
-        
-        //Vertical Space
-        let listVerticalSpaceConstraint = NSLayoutConstraint(
-            item: imgViewListofMarkers,
-            attribute: NSLayoutAttribute.bottom,
-            relatedBy: NSLayoutRelation.equal,
-            toItem: viewWarning,
-            attribute: NSLayoutAttribute.bottom,
-            multiplier: 1,
-            constant: 10)
-        
-        //List
-        view.addConstraints([listHeightConstraint, listWidthConstraint, listTrailingConstraint, listVerticalSpaceConstraint])
-        
-        
-        
-        
-        
     }
+    //MARK:- List Button action
+    func btnListClicked() {
+        print("ImHere..!!")
+        let lists = self.storyboard?.instantiateViewController(withIdentifier: "MarkersListView") as! MarkersListView
+        lists.listMarkers = appendsListMarkers
+        let nav = UINavigationController(rootViewController: lists)
+        self.navigationController?.present(nav, animated: true, completion: nil)
+    }
+    
+    
     func failedDonateSources() {
         print("Failed to get Donate resources !!")
     }

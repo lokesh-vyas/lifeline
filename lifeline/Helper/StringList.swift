@@ -30,8 +30,8 @@ public enum URLList:String
 //    case LIFELINE_ForgetPassword = "https://api.lifeline.services/services/ForgetPasswordV1.1"
 //    case LIFELINE_CustomLogin = "https://api.lifeline.services/services/CustomLoginV1.1"
 //    case GET_CAMPAGIN_DETAILS   =    "http://api.lifeline.services/services/GetCampaignDetailsV1.1"
-//    http://api.lifeline.services/services/GetVolunteerListV1.1
-    
+// case LIFELINE_Get_VolunteerList       = "https://lifelineadmin-test.apigee.net/lifeline-dev/GetVolunteerList"
+//  case LIFELINE_Get_Inventory           = "https://lifelineadmin-test.apigee.net/lifeline-dev/DEV-LifeLine.GetInventory"
      //MARK:- Development URL's
     case ACCESS                           = "https://lifelineadmin-test.apigee.net/lifeline-dev/DEV-LifeLine.Access"
     case BLOOD_REQUEST_SEARCH             = "https://lifelineadmin-test.apigee.net/lifeline-dev/DEV-LifeLine.BloodRequestSearch"
@@ -52,6 +52,7 @@ public enum URLList:String
     case LIFELINE_Get_Profile             = "https://lifelineadmin-test.apigee.net/lifeline-dev/DEV-LifeLine.GetProfile"
     case LIFELINE_Get_VolunteerList       = "https://lifelineadmin-test.apigee.net/lifeline-dev/GetVolunteerList"
     case LIFELINE_Get_Inventory           = "https://lifelineadmin-test.apigee.net/lifeline-dev/DEV-LifeLine.GetInventory"
+    
     
 }
 //MARK:- STRING LIST

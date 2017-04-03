@@ -17,13 +17,13 @@ class SingleTon {
     var isCheckedIndividual = true
     var isCheckedHospital = true
     var isCheckedCamp = true
+    var noMarkers : Bool?
     class var SharedInstance : SingleTon {
         struct Shared {
             static let Instance = SingleTon()
         }
         return Shared.Instance
     }
-    
 }
 
 class FilterChecks: UIViewController {
