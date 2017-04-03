@@ -119,7 +119,7 @@ extension HomeView:ProtocolRegisterProfile
         {
             UserDefaults.standard.set(true, forKey: "DeviceRegister")
             HudBar.sharedInstance.hideHudFormView(view: self.view)
-            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Device Register successfully", view: self.view)
+           // HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Device Register successfully", view: self.view)
         }else{
             UserDefaults.standard.set(false, forKey: "DeviceRegister")
             HudBar.sharedInstance.hideHudFormView(view: self.view)
