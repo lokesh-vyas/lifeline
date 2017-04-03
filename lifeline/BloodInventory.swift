@@ -13,7 +13,6 @@ class BloodInventory: UIViewController {
     
     @IBOutlet weak var tableInventoryView: UITableView!
     @IBOutlet weak var lblBloodInventory: UILabel!
-    var BloodBankID = String()
     var TitleArray = ["GP","WB","PC","FFP","PLT","CR","SDP"]
     var TotalArray = ["TOTAL","0","0","0","0","0","0"]
     var APlusArray = ["A+","0","0","0","0","0","0"]
@@ -39,10 +38,12 @@ class BloodInventory: UIViewController {
         HudBar.sharedInstance.showHudWithMessage(message: "Loading...", view: self.view)
         self.navigationController?.completelyTransparentBar()
         tableInventoryView.contentInset = UIEdgeInsetsMake(-35, 0.0, 0, 0.0)
-        BloodBankID = "2003"
+        let bloodbankIDDict = MarkerData.SharedInstance.markerData
+        let bloodBankId:String = bloodbankIDDict["ID"] as! String
+        print(bloodBankId)
         let reqBody : Dictionary = ["GetBloodInventoryRequest":
             ["GetBloodInventoryRequestDetails":
-                ["BloodBankID" : BloodBankID
+                ["BloodBankID" : bloodBankId
                 ]]]
         DonateInteractor.sharedInstance.delegate = self
         DonateInteractor.sharedInstance.findingDonateSources(urlString: URLList.LIFELINE_Get_Inventory.rawValue, params: reqBody)

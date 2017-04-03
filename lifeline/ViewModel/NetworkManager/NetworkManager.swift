@@ -27,14 +27,14 @@ class NetworkManager
         configuration.timeoutIntervalForRequest = 20
         sessionManager = Alamofire.SessionManager(configuration: configuration)
     }
-    func serviceCallForPOSTforHTTPS()
-    {
-        let manager = NetworkReachabilityManager(host: "api.lifeline.services")
-        manager?.listener = { status in
-            print("Network Status Changed: \(status)")
-        }
-        manager?.startListening()
-    }
+//    func serviceCallForPOSTforHTTPS()
+//    {
+//        let manager = NetworkReachabilityManager(host: "api.lifeline.services")
+//        manager?.listener = { status in
+//            print("Network Status Changed: \(status)")
+//        }
+//        manager?.startListening()
+//    }
     func serviceCallForPOST(url:String, method:String, parameters:Parameters, sucess:@escaping (JSON) -> Void, failure:@escaping () -> Void)
     {
         print("----------\(parameters)-------")
@@ -70,6 +70,5 @@ class NetworkManager
                     failure()
                 }
         }
-        
     }
 }

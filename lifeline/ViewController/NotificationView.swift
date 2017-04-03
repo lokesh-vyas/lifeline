@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 
 class NotificationView: UIViewController {
-
+    
     @IBOutlet weak var lblTitleText: UILabel!
     @IBOutlet weak var lblMessageText: UILabel!
     @IBOutlet weak var btnView: UIButton!
@@ -20,7 +20,7 @@ class NotificationView: UIViewController {
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        print(UserJSON)
+        
         if (UserJSON["Type"] as? String == "1")
         {
             //for welcome notification & Request Status Update

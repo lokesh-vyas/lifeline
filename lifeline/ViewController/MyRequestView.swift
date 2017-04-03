@@ -148,7 +148,7 @@ extension MyRequestView:MyRequestProtocol
         {
             self.tableRequestView.isHidden = true
             self.lblInternetIssue.isHidden = false
-            self.lblInternetIssue.text = "No Request with your ID"
+            self.lblInternetIssue.text = "No requests found"
         }
         
     }
