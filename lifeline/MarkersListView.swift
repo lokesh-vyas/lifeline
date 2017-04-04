@@ -18,18 +18,10 @@ class MarkersListView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.completelyTransparentBar()
+        tblView.contentInset = UIEdgeInsetsMake(-35, 0.0, +195, 0.0)
         if SingleTon.SharedInstance.noMarkers == true {
             tblView.isHidden = true
         }
-        var arrayName = [String]()
-        var arrayTimings = [String]()
-        
-        for (i, _) in listMarkers.enumerated() {
-            arrayName[i] = String(describing: listMarkers[i]["Name"]!)
-            arrayTimings[i] = String(describing: listMarkers[i]["WorkingHours"]!)
-        }
-        let temp = Set(arrayName)
-        print("------\(temp)-----")
     }
 
     @IBAction func btnCancelTapped(_ sender: Any) {
@@ -45,17 +37,28 @@ extension MarkersListView : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        
-        let cell = self.tblView.dequeueReusableCell(withIdentifier: "List", for: indexPath)
-        cell.textLabel?.text = String(describing: listMarkers[indexPath.row]["Name"]!)
-        cell.detailTextLabel?.text = String(describing: listMarkers[indexPath.row]["WorkingHours"]!)
-        
-        return cell
+        let cellIdentifier:String = "HospitalListCell"
+        var cell:HospitalListCell? = tblView.dequeueReusableCell(withIdentifier: cellIdentifier) as? HospitalListCell
+        if (cell == nil)
+        {
+            var nib:Array = Bundle.main.loadNibNamed("HospitalListCell", owner: self, options: nil)!
+            cell = nib[0] as? HospitalListCell
+        }
+        cell?.lblHospitalName.text = String(describing: listMarkers[indexPath.row]["Name"]!)
+        cell?.lblCityName.text = String(describing: listMarkers[indexPath.row]["WorkingHours"]!)
+
+        return cell!
     }
 }
 
 extension MarkersListView : UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return UITableViewAutomaticDimension
+    }
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
 }
 
 extension MarkersListView : UISearchBarDelegate {

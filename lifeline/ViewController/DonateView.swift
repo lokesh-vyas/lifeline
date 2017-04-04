@@ -86,7 +86,7 @@ class DonateView: UIViewController {
     //MARK:- viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
+        self.navigationController?.completelyTransparentBar()
         //For Result VC
         resultsViewController = GMSAutocompleteResultsViewController()
         resultsViewController?.delegate = self
@@ -653,7 +653,7 @@ extension DonateView : DonateViewProtocol {
             var tempDict = [String : Any]()
             var jDict = JSON.init(dictionaryLiteral: ("Index", jsonArray["BloodRequestSearchResponse"]["BloodRequestDetails"]))
             jDict = jDict["Index"]
-            
+            appendsListMarkers.removeAll()
             for (i, _) in jDict.enumerated() {
                     tempDict["Name"] = jDict[i]["Name"]
                     tempDict["WorkingHours"] = jDict[i]["WorkingHours"]
@@ -668,6 +668,7 @@ extension DonateView : DonateViewProtocol {
     func btnListClicked() {
         print("ImHere..!!")
         let lists = self.storyboard?.instantiateViewController(withIdentifier: "MarkersListView") as! MarkersListView
+        lists.listMarkers.removeAll()
         lists.listMarkers = appendsListMarkers
         let nav = UINavigationController(rootViewController: lists)
         self.navigationController?.present(nav, animated: true, completion: nil)
