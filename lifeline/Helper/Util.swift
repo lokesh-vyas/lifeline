@@ -167,6 +167,19 @@ class Util
             alpha: CGFloat(1.0)
         )
     }
+    
+    //MARK:- searchBar Title
+    func setSearchButtonText(text:String,searchBar:UISearchBar) {
+        for subview in searchBar.subviews {
+            for innerSubViews in subview.subviews {
+                if let cancelButton = innerSubViews as? UIButton {
+                   // cancelButton.setTitleColor(UIColor.white, for: .normal)
+                    cancelButton.setTitle(text, for: .normal)
+                }
+            }
+        }
+        
+    }
 }
 
 //MARK:- Valid Mail ID

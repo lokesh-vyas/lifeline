@@ -12,7 +12,7 @@ import SwiftyJSON
 //MARK:- ProtocolGetProfile
 protocol ProtocolGetProfile {
     func succesfullyGetProfile(success: Bool)
-    func failedGetProfile()
+    func failedGetProfile(success: Bool)
 }
 //MARK:- ProtocolRegisterProfile
 protocol ProtocolRegisterProfile {
@@ -65,6 +65,15 @@ class ProfileViewInteractor
                 (JSONResponse) -> Void in
                 if(JSONResponse["GetProfileResponse"]["GetProfileResponseDetails"]["StatusCode"].int == 0)
                 {
+                    let jsonDict = JSONResponse["GetProfileResponse"]["GetProfileResponseDetails"]
+                    if jsonDict["RoleName"].string != nil
+                    {
+                        if (jsonDict["RoleName"].string == "BloodBank")
+                        {
+                            self.delegate?.failedGetProfile(success: true)
+                            return
+                        }
+                    }
                     self.serverDataInProfileData(JSONResponse: JSONResponse)
                 }
                 else
@@ -73,7 +82,7 @@ class ProfileViewInteractor
                 }
         }, failure:
             { _ in
-                self.delegate?.failedGetProfile()
+                self.delegate?.failedGetProfile(success: false)
         })
     }
     //MARK:- MyProfileRegistration

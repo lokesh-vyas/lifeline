@@ -20,7 +20,6 @@ class NotificationView: UIViewController {
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
         if (UserJSON["Type"] as? String == "1")
         {
             //for welcome notification & Request Status Update

@@ -23,7 +23,6 @@ class LoginView: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view.
     }
     //MARK:- ViewWill Appear
@@ -31,15 +30,37 @@ class LoginView: UIViewController
         super.viewWillAppear(true)
         userNameTextField.removeLoginErrorLine()
         passwordTextField.removeLoginErrorLine()
+        view.endEditing(true)
         self.navigationController?.navigationBar.isHidden = true
         let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
         if statusBar.responds(to: #selector(setter: UIView.backgroundColor))
         {
             statusBar.backgroundColor = UIColor.clear
         }
+        let isBloodBank = UserDefaults.standard.bool(forKey: "BloodBankUser")
+        if isBloodBank == true
+        {
+            let AuthProvider:String
+                = UserDefaults.standard.string(forKey: "LoginInformation")!
+            if AuthProvider == "G+"
+            {
+                GIDSignIn.sharedInstance().signOut()
+            }else if(AuthProvider == "Facebook")
+            {
+                let loginManager = LoginManager()
+                loginManager.logOut()
+            }
+            UserDefaults.standard.removeObject(forKey: "LoginInformation")
+            UserDefaults.standard.removeObject(forKey: "BloodBankUser")
+            let alert = UIAlertController(title: "Warning!", message: "This Email Id is already use for BloodBank,Please Login with different Email Id", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
+        
     }
     //MARK:- SignUpAction
-    @IBAction func btnSignUpTapped(_ sender: Any) {
+    @IBAction func btnSignUpTapped(_ sender: Any)
+    {
         let viewController:SignUpView = self.storyboard?.instantiateViewController(withIdentifier: "SignUpView") as! SignUpView
         
         viewController.modalPresentationStyle =  .overCurrentContext
@@ -47,13 +68,15 @@ class LoginView: UIViewController
         self.present(viewController, animated: true, completion: nil)
     }
     //MARK:- Forgot Password
-    @IBAction func btnForgotPasswordTapped(_ sender: Any) {
+    @IBAction func btnForgotPasswordTapped(_ sender: Any)
+    {
         self.view.endEditing(true)
         if (userNameTextField.text?.characters.count)! < 1
         {
-            self.view.makeToast("Please enter UserID", duration: 3.0, position: .bottom)
+            self.view.makeToast("Please enter Email Address", duration: 3.0, position: .bottom)
             return
         }
+        HudBar.sharedInstance.showHudWithMessage(message: "Please Wait...", view: self.view)
         let trimmedString = self.userNameTextField.text?.trimmingCharacters(in: .whitespaces)
         SignUpInteractor.SharedInstance.delegateForgetPassword = self
         SignUpInteractor.SharedInstance.checkForgetPassword(checkString:trimmedString!)
@@ -185,6 +208,7 @@ extension LoginView:checkForgetPasswordProtocol
 {
     func successForgetPassword(success: Bool)
     {
+        HudBar.sharedInstance.hideHudFormView(view: self.view)
         if success
         {
             HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "You will shortly recive mail in your registered Email id with the new password", view: self.view)
@@ -196,6 +220,7 @@ extension LoginView:checkForgetPasswordProtocol
     }
     func failSignUp()
     {
+        HudBar.sharedInstance.hideHudFormView(view: self.view)
         self.view.makeToast("Unable to access server, please try again later", duration: 3.0, position: .bottom)
     }
 }

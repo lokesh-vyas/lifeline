@@ -33,12 +33,16 @@ class ProfileView: UIViewController
     {
         super.viewWillAppear(true)
         self.textFieldPadding()
-        
         let profileSuccess = UserDefaults.standard.bool(forKey: "SuccessProfileRegistration")
         if profileSuccess == false
         {
             self.navigationItem.leftBarButtonItem = nil
         }
+    }
+    //MARK:- viewDidLoad
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
         let data = UserDefaults.standard.object(forKey: "ProfileData")
         if data != nil {
             let profileData:ProfileData = NSKeyedUnarchiver.unarchiveObject(with: data as! Data) as! ProfileData
@@ -51,11 +55,6 @@ class ProfileView: UIViewController
             ProfileViewInteractor.SharedInstance.delegate = self
             ProfileViewInteractor.SharedInstance.checkGetProfileData(LoginID: LoginId)
         }
-    }
-    //MARK:- viewDidLoad
-    override func viewDidLoad()
-    {
-        super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(ProfileView.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ProfileView.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ProfileView.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
@@ -76,7 +75,7 @@ class ProfileView: UIViewController
         notificationView.view.backgroundColor = UIColor.clear
         self.present(notificationView, animated: true, completion: nil)
     }
-   
+    
     //MARK:- Show Data On view
     func showDataOnView(profileData:ProfileData)
     {
@@ -244,7 +243,7 @@ class ProfileView: UIViewController
             self.view.makeToast("Invalid Contact Number", duration: 2.0, position: .bottom)
             return
         }
-       
+        
         if ProfileViewModel.SharedInstance.BloodGroup == nil
         {
             self.view.makeToast("Please select Blood Group", duration: 2.0, position: .bottom)
@@ -299,11 +298,11 @@ class ProfileView: UIViewController
             }
             if ProfileViewModel.SharedInstance.LastDonationStrin == nil
             {
-               ProfileViewModel.SharedInstance.LastDonationStrin = ""
+                ProfileViewModel.SharedInstance.LastDonationStrin = ""
             }
             if ProfileViewModel.SharedInstance.DOBstring == nil
             {
-               ProfileViewModel.SharedInstance.DOBstring = ""
+                ProfileViewModel.SharedInstance.DOBstring = ""
             }
             if ProfileViewModel.SharedInstance.workLat == ""
             {
@@ -415,7 +414,7 @@ class ProfileView: UIViewController
             DateofBirth = ""
         }else
         {
-           DateofBirth =  Util.SharedInstance.dateChangeForServerForProfile(dateString: ProfileViewModel.SharedInstance.DOBstring!)
+            DateofBirth =  Util.SharedInstance.dateChangeForServerForProfile(dateString: ProfileViewModel.SharedInstance.DOBstring!)
         }
         let AuthProvider:String
             = UserDefaults.standard.string(forKey: "LoginInformation")!
@@ -488,7 +487,7 @@ extension ProfileView:UITextFieldDelegate
                     ProfileViewModel.SharedInstance.isContactNumber = true
                 }
             case txtHomeAddressPINCode:
-               
+                
                 if typedString.characters.count < 4 || typedString.characters.count > 13
                 {
                     txtHomeAddressPINCode.errorLine()
@@ -504,7 +503,7 @@ extension ProfileView:UITextFieldDelegate
                     ProfileViewModel.SharedInstance.isHomePin = true
                 }
             case txtWorkAddressPINCode:
-               
+                
                 if typedString.characters.count < 4 || typedString.characters.count > 13
                 {
                     txtWorkAddressPINCode.errorLine()
@@ -587,11 +586,23 @@ extension ProfileView:ProtocolGetProfile
             self.txtEmailID.text = UserDefaults.standard.string(forKey: StringList.LifeLine_User_Email.rawValue)
         }
     }
-    func failedGetProfile()
+    func failedGetProfile(success: Bool)
     {
-        self.txtName.text = UserDefaults.standard.string(forKey: StringList.LifeLine_User_Name.rawValue)
-        self.txtEmailID.text = UserDefaults.standard.string(forKey: StringList.LifeLine_User_Email.rawValue)
         HudBar.sharedInstance.hideHudFormView(view: self.view)
+        if success == false
+        {
+            self.txtName.text = UserDefaults.standard.string(forKey: StringList.LifeLine_User_Name.rawValue)
+            self.txtEmailID.text = UserDefaults.standard.string(forKey: StringList.LifeLine_User_Email.rawValue)
+        }else if (success == true)
+        {
+            UserDefaults.standard.removeObject(forKey: StringList.LifeLine_User_Name.rawValue)
+            UserDefaults.standard.removeObject(forKey: StringList.LifeLine_User_Email.rawValue)
+            UserDefaults.standard.removeObject(forKey: StringList.LifeLine_User_ID.rawValue)
+            UserDefaults.standard.set(true, forKey: "BloodBankUser")
+            let loginView:LoginView = self.storyboard?.instantiateViewController(withIdentifier: "LoginView") as! LoginView
+            let navBar = UINavigationController(rootViewController: loginView)
+            self.present(navBar, animated: true, completion: nil)
+        }
     }
 }
 //MARK:- ProtocolBloodInfo
@@ -627,21 +638,21 @@ extension ProfileView:MyAddressFormat
     {
         if checkBool == true
         {
-            self.txtHomeAddressLine.text = AddressResponse.addressString
-            self.txtHomeAddressCity.text = AddressResponse.City
-            self.txtHomeAddressPINCode.text = AddressResponse.PINCode
+            self.txtHomeAddressLine.text! = AddressResponse.addressString
+            self.txtHomeAddressCity.text! = AddressResponse.City
+            self.txtHomeAddressPINCode.text! = AddressResponse.PINCode
             
             ProfileViewModel.SharedInstance.homeLat = AddressResponse.latitude
             ProfileViewModel.SharedInstance.homeLong = AddressResponse.longitude
         }
         else
         {
-            self.txtWorkAddressLine.text = AddressResponse.addressString
-            self.txtWorkAddressCity.text = AddressResponse.City
-            self.txtWorkAddressPINCode.text = AddressResponse.PINCode
+            self.txtWorkAddressLine.text! = AddressResponse.addressString
+            self.txtWorkAddressCity.text! = AddressResponse.City
+            self.txtWorkAddressPINCode.text! = AddressResponse.PINCode
             
             ProfileViewModel.SharedInstance.workLat = AddressResponse.latitude
             ProfileViewModel.SharedInstance.workLong = AddressResponse.longitude
         }
-       }
+    }
 }
