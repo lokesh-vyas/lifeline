@@ -654,6 +654,7 @@ extension DonateView : DonateViewProtocol {
             var jDict = JSON.init(dictionaryLiteral: ("Index", jsonArray["BloodRequestSearchResponse"]["BloodRequestDetails"]))
             jDict = jDict["Index"]
             
+            appendsListMarkers = []
             for (i, _) in jDict.enumerated() {
                     tempDict["Name"] = jDict[i]["Name"]
                     tempDict["WorkingHours"] = jDict[i]["WorkingHours"]
@@ -666,7 +667,7 @@ extension DonateView : DonateViewProtocol {
     }
     //MARK:- List Button action
     func btnListClicked() {
-        print("ImHere..!!")
+        
         let lists = self.storyboard?.instantiateViewController(withIdentifier: "MarkersListView") as! MarkersListView
         lists.listMarkers = appendsListMarkers
         let nav = UINavigationController(rootViewController: lists)
