@@ -21,6 +21,15 @@ class MarkersListView: UIViewController {
         if SingleTon.SharedInstance.noMarkers == true {
             tblView.isHidden = true
         }
+        var arrayName = [String]()
+        var arrayTimings = [String]()
+        
+        for (i, _) in listMarkers.enumerated() {
+            arrayName[i] = String(describing: listMarkers[i]["Name"]!)
+            arrayTimings[i] = String(describing: listMarkers[i]["WorkingHours"]!)
+        }
+        let temp = Set(arrayName)
+        print("------\(temp)-----")
     }
 
     @IBAction func btnCancelTapped(_ sender: Any) {
@@ -35,6 +44,8 @@ extension MarkersListView : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        
         let cell = self.tblView.dequeueReusableCell(withIdentifier: "List", for: indexPath)
         cell.textLabel?.text = String(describing: listMarkers[indexPath.row]["Name"]!)
         cell.detailTextLabel?.text = String(describing: listMarkers[indexPath.row]["WorkingHours"]!)
@@ -49,7 +60,7 @@ extension MarkersListView : UITableViewDelegate {
 
 extension MarkersListView : UISearchBarDelegate {
       func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("Yor r trying to search something...")
+        print("You're trying to search something...")
         
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
