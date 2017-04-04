@@ -35,6 +35,7 @@ class HospitalListView: UIViewController
         searchBarText.becomeFirstResponder()
         searchTableView.contentInset = UIEdgeInsetsMake(-35, 0.0, +195, 0.0)
         self.navigationController?.completelyTransparentBar()
+        Util.SharedInstance.setSearchButtonText(text:"Select",searchBar:searchBarText)
     }
 }
 //MARK:- SearchBar
@@ -171,4 +172,5 @@ extension HospitalListView:HospitalListProtocol
         self.lblListNotAvailable.text = StringList.LifeLine_Internet_Error_Message.rawValue
     }
 }
+
 

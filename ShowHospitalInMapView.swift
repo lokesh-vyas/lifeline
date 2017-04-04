@@ -190,11 +190,13 @@ extension ShowHospitalInMapView : GMSMapViewDelegate {
             {
                 self.addressFormat.MessageAddressString = ("\(address.lines![0]) \(address.lines![1])")
                 self.addressFormat.addressString = address.lines![0]
-                self.addressFormat.City = address.locality!
+                if address.locality != nil
+                {
+                     self.addressFormat.City = address.locality!
+                }
                 if address.postalCode != nil
                 {
                     self.addressFormat.PINCode = address.postalCode!
-
                 }
                 self.addressFormat.latitude = String(address.coordinate.latitude)
                 self.addressFormat.longitude = String(address.coordinate.longitude)

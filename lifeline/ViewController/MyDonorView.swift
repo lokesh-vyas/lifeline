@@ -185,9 +185,9 @@ extension MyDonorView:UITableViewDelegate,UITableViewDataSource
         //MARK: OPEN
         if (MyRequestCloseJSON["Status"].string == "Open")
         {
-            cell?.viewColorStatus.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#ffa800")
             if (myDonorDetail["HasDonated"].string == "NULL")
             {
+                cell?.viewColorStatus.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#ffa800")
                 if myDonorDetail["PreferredDateTime"].dictionary == nil
                 {
                     if (myDonorDetail["Comments"].string == "N/A") || (myDonorDetail["Comments"].null == nil)
@@ -211,7 +211,7 @@ extension MyDonorView:UITableViewDelegate,UITableViewDataSource
                 cell?.viewColorStatus.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#35ce11")
                 cell?.btnCloseTapped.isHidden = true
                 cell?.imgCloseView.isHidden = true
-                if myDonorDetail["PreferredDateTime"].dictionary != nil
+                if myDonorDetail["PreferredDateTime"].string != nil
                 {
                     cell?.lblDonorComment.text = myDonorDetail["HasDonated"].string
                     cell?.lblDonorTime.text = Util.SharedInstance.dateChangeForInternal(dateString: myDonorDetail["PreferredDateTime"].string!)
@@ -245,7 +245,7 @@ extension MyDonorView:UITableViewDelegate,UITableViewDataSource
             }
             else if(myDonorDetail["HasDonated"] == "NO")
             {
-                if myDonorDetail["PreferredDateTime"].dictionary == nil
+                if myDonorDetail["PreferredDateTime"].string == nil
                 {
                     
                     cell?.lblDonorComment.isHidden = true
@@ -255,7 +255,7 @@ extension MyDonorView:UITableViewDelegate,UITableViewDataSource
             }
             else if(myDonorDetail["HasDonated"] == "YES")
             {
-                if myDonorDetail["PreferredDateTime"].dictionary == nil
+                if myDonorDetail["PreferredDateTime"].string == nil
                 {
                     
                     cell?.lblDonorComment.isHidden = true
