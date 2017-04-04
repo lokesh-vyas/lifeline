@@ -43,7 +43,7 @@ class BloodInventory: UIViewController {
         print(bloodBankId)
         let reqBody : Dictionary = ["GetBloodInventoryRequest":
             ["GetBloodInventoryRequestDetails":
-                ["BloodBankID" : bloodBankId
+                ["BloodBankID" : "1"
                 ]]]
         DonateInteractor.sharedInstance.delegate = self
         DonateInteractor.sharedInstance.findingDonateSources(urlString: URLList.LIFELINE_Get_Inventory.rawValue, params: reqBody)

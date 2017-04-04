@@ -288,7 +288,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if UserDefaults.standard.value(forKey: "fbID") != nil
         {
             let Loginid = UserDefaults.standard.value(forKey: "fbID")!
-            print(Loginid)
             let AuthProvider = UserDefaults.standard.value(forKey: "SignIN")!
             print(AuthProvider)
             UserDefaults.standard.setValue(Loginid, forKey: StringList.LifeLine_User_ID.rawValue)

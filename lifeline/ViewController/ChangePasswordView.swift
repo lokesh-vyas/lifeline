@@ -38,6 +38,7 @@ class ChangePasswordView: UIViewController {
     //MARK:- btnChangePasswordTapped
     @IBAction func btnChangePasswordTapped(_ sender: Any)
     {
+        view.endEditing(true)
         if Password == true {
             if ConfPassword == true {
                 

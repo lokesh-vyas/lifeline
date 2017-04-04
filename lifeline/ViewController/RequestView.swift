@@ -280,8 +280,10 @@ class RequestView: UIViewController,UITextViewDelegate
             else
             {
                 let alert = UIAlertController(title: "Facebook App not installed.", message: "Your device has no Facebook installed.", preferredStyle: UIAlertControllerStyle.alert)
-                
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                let OkButton = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { _ in
+                    self.goToMainView()
+                }
+                alert.addAction(OkButton)
                 self.present(alert, animated: true, completion: nil)
             }
         }
