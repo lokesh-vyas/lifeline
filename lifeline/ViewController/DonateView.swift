@@ -48,7 +48,7 @@ class DonateView: UIViewController {
         
         loader = true
         CLLocationManager.locationServicesEnabled()
-        //self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+//        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         NotificationCenter.default.addObserver(self, selector: #selector(DonateView.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
         
         locationManager.requestAlwaysAuthorization()
@@ -651,15 +651,12 @@ extension DonateView : DonateViewProtocol {
             viewWarning.removeFromSuperview()
             SingleTon.SharedInstance.noMarkers = false
             var tempDict = [String : Any]()
-//            var mySet : Set = ["":"","":""]
-            
             var jDict = JSON.init(dictionaryLiteral: ("Index", jsonArray["BloodRequestSearchResponse"]["BloodRequestDetails"]))
             jDict = jDict["Index"]
             
             for (i, _) in jDict.enumerated() {
                     tempDict["Name"] = jDict[i]["Name"]
                     tempDict["WorkingHours"] = jDict[i]["WorkingHours"]
-//                    mySet.insert(tempDict)
                     appendsListMarkers.append(tempDict)
             }
             
