@@ -48,11 +48,7 @@ class DonateView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loader = true
-<<<<<<< HEAD
-        
-=======
         InternetIssue = true
->>>>>>> 7c8c2f54ed8f5a44abf799237bb00449166433df
         CLLocationManager.locationServicesEnabled()
 //        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         NotificationCenter.default.addObserver(self, selector: #selector(DonateView.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
