@@ -13,7 +13,7 @@ import SwiftyJSON
 protocol MyRequestProtocol
 {
     func SuccessMyRequest(JSONResponse: JSON,Sucess:Bool)
-    func FailMyRequest()
+    func FailMyRequest(Response:String)
 }
 //MARK:- MyRequestInteractor
 class MyRequestInteractor
@@ -41,8 +41,8 @@ class MyRequestInteractor
                     self.delegate?.SuccessMyRequest(JSONResponse: JSONResponse,Sucess:true)
                 }
         }, failure:
-            { _ in
-                self.delegate?.FailMyRequest()
+            { (Response) -> Void in
+                self.delegate?.FailMyRequest(Response:Response)
         })
     }
     //MARK:- MyRequestClose
@@ -55,11 +55,10 @@ class MyRequestInteractor
                                                          parameters: params,
                                                          sucess: {
                                                             (JSONResponse) -> Void in
-                                                            print(JSONResponse)
                                                             self.delegate?.SuccessMyRequest(JSONResponse: JSONResponse,Sucess:true)
         },
-                                                         failure: { _ in
-                                                            self.delegate?.FailMyRequest()
+                                                         failure: { (Response) -> Void in
+                                                            self.delegate?.FailMyRequest(Response:Response)
         }
         )
     }

@@ -46,6 +46,10 @@ class ShowHospitalInMapView: UIViewController
     {
         super.viewDidLoad()
           self.navigationController?.completelyTransparentBar()
+        CLLocationManager.locationServicesEnabled()
+        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
+        
         // Do any additional setup after loading the view.
         HudBar.sharedInstance.showHudWithMessage(message: "Loading...", view: self.view)
         if addresstring.characters.count >= 7
@@ -78,8 +82,9 @@ class ShowHospitalInMapView: UIViewController
         placesClient = GMSPlacesClient.shared()
         mapView.settings.myLocationButton = true
         mapView.isMyLocationEnabled = true
-        self.view = mapView
         mapView.delegate = self
+        view = mapView
+        
         mapView.isBuildingsEnabled = true
         mapView.settings.compassButton = true
         mapView.settings.indoorPicker = true
@@ -110,7 +115,13 @@ class ShowHospitalInMapView: UIViewController
         mapView.delegate = self
         camera = GMSCameraPosition.camera(withLatitude: (coordinates?.latitude)!, longitude: (coordinates?.longitude)!, zoom: 15.0)
         mapView.camera = camera!
+        mapView.settings.myLocationButton = true
+        mapView.isMyLocationEnabled = true
         view = mapView
+        
+        mapView.isBuildingsEnabled = true
+        mapView.settings.compassButton = true
+        mapView.settings.indoorPicker = true
     }
     
     @IBAction func btnSearchTapped(_ sender: Any)

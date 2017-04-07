@@ -13,25 +13,25 @@ import SwiftyJSON
 protocol customLoginProtocol
 {
     func successCustomLogin(success: Bool)
-    func failCustomLogin()
+    func failCustomLogin(Response: String)
 }
 //MARK:- checkForgetPasswordProtocol
 protocol checkForgetPasswordProtocol
 {
     func successForgetPassword(success: Bool)
-    func failSignUp()
+    func failSignUp(Response: String)
 }
 //MARK:- checkAvabilityProtocol
 protocol checkAvabilityProtocol
 {
     func checkAvailbaleSucess(success: Bool)
-    func checkAvailbaleFail()
+    func checkAvailbaleFail(Response: String)
 }
 //MARK:- successSignUpProtocol
 protocol successSignUpProtocol
 {
     func successSignUp(success: Bool)
-    func failSignUp()
+    func failSignUp(Response: String)
 }
 //MARK:- SignUpInteractor
 class SignUpInteractor
@@ -62,8 +62,8 @@ class SignUpInteractor
                     self.delegateSignUp?.successSignUp(success: false)
                 }
         }, failure:
-            { _ in
-                self.delegateSignUp?.failSignUp()
+            { (Response) -> Void in
+                self.delegateSignUp?.failSignUp(Response:Response)
         })
     }
     //MARK:- checkAvabilityCallForServices
@@ -83,8 +83,8 @@ class SignUpInteractor
                     self.delegate?.checkAvailbaleSucess(success: false)
                 }
         }, failure:
-            { _ in
-                self.delegate?.checkAvailbaleFail()
+            { (Response) -> Void in
+                self.delegate?.checkAvailbaleFail(Response:Response)
         })
     }
     //MARK:- checkForgetPassword
@@ -105,8 +105,8 @@ class SignUpInteractor
                     self.delegateForgetPassword?.successForgetPassword(success: false)
                 }
         }, failure:
-            { _ in
-                self.delegateForgetPassword?.failSignUp()
+            { (Response) -> Void in
+                self.delegateForgetPassword?.failSignUp(Response:Response)
         })
     }
     //MARK:- checkcustomLogin
@@ -131,8 +131,8 @@ class SignUpInteractor
                      self.delegateLogin?.successCustomLogin(success: false)
                 }
         }, failure:
-            { _ in
-                self.delegateLogin?.failCustomLogin()
+            { (Response) -> Void in
+                self.delegateLogin?.failCustomLogin(Response:Response)
         })
     }
 }

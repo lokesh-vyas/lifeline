@@ -212,12 +212,15 @@ extension ConfirmDonate : ConfirmDonateProtocol {
         HudBar.sharedInstance.hideHudFormView(view: self.view)
         
     }
-    func didFailGetCompaignDetails() {
-        print("*****didFail-GetCompaignDetails******")
+    func didFailGetCompaignDetails(Response:String) {
         HudBar.sharedInstance.hideHudFormView(view: self.view)
-
+        if Response == "NoInternet" {
+            self.view.makeToast("No Internet Connection, please check your Internet Connection", duration: 3.0, position: .bottom)
+        }else
+        {
+            self.view.makeToast("Unable to access server, please try again later", duration: 3.0, position: .bottom)
+        }
     }
-    
 }
 
 extension ConfirmDonate : getVolunteerProtocol {
@@ -242,8 +245,13 @@ extension ConfirmDonate : getVolunteerProtocol {
         alertConfirm.view.backgroundColor = UIColor.clear
         present(alertConfirm, animated: true, completion: nil)
     }
-    func didFailGetVolunteerDetails() {
-        print("*****didFail-GetVolunteerDetails******")
-
+    func didFailGetVolunteerDetails(Response:String) {
+        HudBar.sharedInstance.hideHudFormView(view: self.view)
+        if Response == "NoInternet" {
+            self.view.makeToast("No Internet Connection, please check your Internet Connection", duration: 3.0, position: .bottom)
+        }else
+        {
+            self.view.makeToast("Unable to access server, please try again later", duration: 3.0, position: .bottom)
+        }
     }
 }

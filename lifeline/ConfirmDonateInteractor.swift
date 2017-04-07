@@ -11,12 +11,12 @@ import SwiftyJSON
 
 protocol ConfirmDonateProtocol {
     func didSuccessGetCompaignDetails(jsonArray : JSON)
-    func didFailGetCompaignDetails()
+    func didFailGetCompaignDetails(Response:String)
 }
 
 protocol getVolunteerProtocol {
     func didSuccessGetVolunteerDetails(jsonArray : JSON)
-    func didFailGetVolunteerDetails()
+    func didFailGetVolunteerDetails(Response:String)
 }
 
 class ConfirmDonateInteractor {
@@ -38,8 +38,7 @@ class ConfirmDonateInteractor {
                                                             (JSONResponse) -> Void in
                                                             self.delegate?.didSuccessGetCompaignDetails(jsonArray: JSONResponse)
         },
-                                                         failure: { _ in
-                                                            self.delegate?.didFailGetCompaignDetails()
+                                                         failure: { (Response) -> Void in                                                            self.delegate?.didFailGetCompaignDetails(Response:Response)
         }
         )
     }
@@ -53,10 +52,10 @@ class ConfirmDonateInteractor {
                                                             (JSONResponse) -> Void in
                                                             self.delegateV?.didSuccessGetVolunteerDetails(jsonArray: JSONResponse)
         },
-                                                         failure: { _ in
-                                                            self.delegateV?.didFailGetVolunteerDetails()
-        }
-        )
+                                                         failure: {(Response) -> Void in
+                                                            
+                                                            self.delegateV?.didFailGetVolunteerDetails(Response:Response)
+        })
     }
 }
 

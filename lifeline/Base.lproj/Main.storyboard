@@ -1174,7 +1174,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Inner_bg" translatesAutoresizingMaskIntoConstraints="NO" id="6hJ-dv-t5Y">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bov-dD-cyQ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bov-dD-cyQ">
                                 <rect key="frame" x="10" y="95" width="343" height="111"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="111" id="qur-9g-RZQ"/>
@@ -1291,7 +1291,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cgC-dg-arh">
-                                <rect key="frame" x="37.5" y="233.5" width="300" height="200"/>
+                                <rect key="frame" x="38" y="234" width="300" height="200"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7gk-dR-1wU">
                                         <rect key="frame" x="10" y="155" width="130" height="35"/>
@@ -2451,7 +2451,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OD0-K7-jld">
-                                <rect key="frame" x="184.5" y="84" width="6" height="27"/>
+                                <rect key="frame" x="185" y="84" width="6" height="27"/>
                                 <fontDescription key="fontDescription" name="SegoeUI-Italic" family="Segoe UI" pointSize="20"/>
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2580,7 +2580,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Personal Appeal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BTI-r6-nqP">
-                                <rect key="frame" x="125.5" y="532" width="124" height="21"/>
+                                <rect key="frame" x="126" y="532" width="124" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -3410,7 +3410,7 @@
                                 <rect key="frame" x="42" y="200" width="290" height="280"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Login_Logo" translatesAutoresizingMaskIntoConstraints="NO" id="GRa-M1-fKK">
-                                        <rect key="frame" x="84.5" y="8" width="120" height="128"/>
+                                        <rect key="frame" x="84" y="8" width="120" height="128"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="128" id="Max-FJ-L3k"/>
                                             <constraint firstAttribute="width" constant="120" id="U1c-gq-uLp"/>
@@ -3754,6 +3754,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnCancel" destination="7uz-ZI-071" id="xwK-CU-X1G"/>
                         <outlet property="labelHeading" destination="jIe-BE-q2Q" id="6L2-7C-jHs"/>
                         <outlet property="pickerSelectDate" destination="vg4-kn-M3I" id="OFo-fm-2HV"/>
                     </connections>
@@ -3949,7 +3950,7 @@
                                     <outlet property="delegate" destination="rFX-gT-Pxo" id="h5J-bb-Dra"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Nt-hg-fuj">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Nt-hg-fuj">
                                 <rect key="frame" x="16" y="95" width="343" height="111"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="111" id="0LJ-uF-JC1"/>
@@ -4002,7 +4003,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EAy-Bt-t3J" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="vDG-0H-GIB">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="vDG-0H-GIB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -4021,7 +4022,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xzR-lU-lNy" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="OG2-W9-IDA">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="OG2-W9-IDA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -4039,7 +4040,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5uU-Yw-cvt" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="CYN-TS-jfv">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="CYN-TS-jfv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -4057,7 +4058,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="W96-jF-MdL" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="oCS-T6-nyV">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="oCS-T6-nyV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -4718,7 +4719,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VXc-D5-0vM" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="HU0-rI-4ye">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="HU0-rI-4ye">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -4737,7 +4738,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="l1b-SO-lU6" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="Ale-Vf-WZM">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="Ale-Vf-WZM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

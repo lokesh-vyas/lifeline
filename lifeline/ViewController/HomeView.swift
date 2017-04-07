@@ -126,9 +126,15 @@ extension HomeView:ProtocolRegisterProfile
             HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Failed to Update", view: self.view)
         }
     }
-    func failedRegisterProfile()
+    func failedRegisterProfile(Response:String)
     {
         UserDefaults.standard.set(false, forKey: "DeviceRegister")
         HudBar.sharedInstance.hideHudFormView(view: self.view)
+        if Response == "NoInternet" {
+            self.view.makeToast("No Internet Connection, please check your Internet Connection", duration: 3.0, position: .bottom)
+        }else
+        {
+            self.view.makeToast("Unable to access server, please try again later", duration: 3.0, position: .bottom)
+        }
     }
 }

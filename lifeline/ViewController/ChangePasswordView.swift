@@ -102,7 +102,8 @@ class ChangePasswordView: UIViewController {
                                                                 HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Please enter valid old password", view: self.view)
                                                             }
         },
-                                                         failure: { _ in
+                                                         failure: {(Response) -> Void in
+                                                            
                                                             
                                                             HudBar.sharedInstance.hideHudFormView(view: self.view)
                                                             HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Please enter valid old password", view: self.view)

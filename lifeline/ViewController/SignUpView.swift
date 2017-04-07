@@ -28,6 +28,7 @@ class SignUpView: UIViewController
         passwordTextField.removeLoginErrorLine()
         emailTextField.removeLoginErrorLine()
         confirmTextField.removeLoginErrorLine()
+        
         self.navigationController?.navigationBar.isHidden = true
         self.navigationController?.completelyTransparentBar()
         NotificationCenter.default.addObserver(self, selector: #selector(SignUpView.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
@@ -199,9 +200,15 @@ extension SignUpView : checkAvabilityProtocol
             HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "User id you entered is already in use please enter another user id", view: self.view)
         }
     }
-    func checkAvailbaleFail()
+    func checkAvailbaleFail(Response:String)
     {
-        self.view.makeToast("Unable to access server, please try again later", duration: 3.0, position: .bottom)
+        HudBar.sharedInstance.hideHudFormView(view: self.view)
+        if Response == "NoInternet" {
+             self.view.makeToast("No Internet Connection, please check your Internet Connection", duration: 3.0, position: .bottom)
+        }else
+        {
+             self.view.makeToast("Unable to access server, please try again later", duration: 3.0, position: .bottom)
+        }
     }
 }
 //MARK:- successSignUpProtocol
@@ -226,10 +233,15 @@ extension SignUpView : successSignUpProtocol
             HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "User id you entered is already in use please enter another user id", view: self.view)
         }
     }
-    func failSignUp()
+    func failSignUp(Response:String)
     {
         HudBar.sharedInstance.hideHudFormView(view: self.view)
-        self.view.makeToast("Unable to access server, please try again later", duration: 2.0, position: .bottom)
+        if Response == "NoInternet" {
+            self.view.makeToast("No Internet Connection, please check your Internet Connection", duration: 3.0, position: .bottom)
+        }else
+        {
+            self.view.makeToast("Unable to access server, please try again later", duration: 3.0, position: .bottom)
+        }
     }
 }
 extension SignUpView : customLoginProtocol
@@ -254,10 +266,15 @@ extension SignUpView : customLoginProtocol
             HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Please Check your UserID And Password and try again", view: self.view)
         }
     }
-    func failCustomLogin()
+    func failCustomLogin(Response:String)
     {
         HudBar.sharedInstance.hideHudFormView(view: self.view)
-        self.view.makeToast("Unable to access server, please try again later", duration: 2.0, position: .bottom)
+        if Response == "NoInternet" {
+            self.view.makeToast("No Internet Connection, please check your Internet Connection", duration: 3.0, position: .bottom)
+        }else
+        {
+            self.view.makeToast("Unable to access server, please try again later", duration: 3.0, position: .bottom)
+        }
     }
 }
 

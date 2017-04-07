@@ -285,9 +285,17 @@ extension MyDonorView:MyRequestProtocol
         }
         self.FetchRequestIDfromService(JSONResponse: dataArray)
     }
-    func FailMyRequest()
+    func FailMyRequest(Response:String)
     {
+        self.tableViewDonor.isHidden = true
+        self.lblInternetIssueMessage.isHidden = false
         HudBar.sharedInstance.hideHudFormView(view: self.view)
+        if Response == "NoInternet" {
+            self.lblInternetIssueMessage.text = "No Internet Connection, please check your Internet Connection"
+        }else
+        {
+            self.lblInternetIssueMessage.text = "Unable to access server, please try again later"
+        }
     }
 }
 extension MyDonorView : MFMailComposeViewControllerDelegate,MFMessageComposeViewControllerDelegate

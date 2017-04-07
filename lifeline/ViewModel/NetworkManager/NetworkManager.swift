@@ -27,24 +27,32 @@ class NetworkManager
         configuration.timeoutIntervalForRequest = 20
         sessionManager = Alamofire.SessionManager(configuration: configuration)
     }
-//    func serviceCallForPOSTforHTTPS()
-//    {
-//        let manager = NetworkReachabilityManager(host: "api.lifeline.services")
-//        manager?.listener = { status in
-//            print("Network Status Changed: \(status)")
-//        }
-//        manager?.startListening()
-//    }
-    func serviceCallForPOST(url:String, method:String, parameters:Parameters, sucess:@escaping (JSON) -> Void, failure:@escaping () -> Void)
+    func serviceCallForPOSTforHTTPS()
+    {
+        let manager = NetworkReachabilityManager(host: "api.lifeline.services")
+        manager?.listener = { status in
+            print("Network Status Changed: \(status)")
+        }
+        manager?.startListening()
+    }
+    func serviceCallForPOST(url:String, method:String, parameters:Parameters, sucess:@escaping (JSON) -> Void, failure:@escaping (String) -> Void)
     {
         print("----------\(parameters)-------")
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
-            "apikey": "ALDZ5abmAnppumwtjIdMBQU1SqHgL12G"
+            //"apikey": "ALDZ5abmAnppumwtjIdMBQU1SqHgL12G"
         ]
         sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
             .responseJSON {
                 response in
+                
+                if let networkError = response.error {
+                    if (networkError._code == -1009)
+                    {
+                        failure("NoInternet")
+                        return
+                    }
+                }
                 print("----------\(response.request!)----------")
                 
                 if let temp = response.response {
@@ -52,21 +60,21 @@ class NetworkManager
                     
                 } else {
                     if (response.result.error as? AFError) != nil {
-                        failure()
+                        failure("UnableServer")
                     }
                     print("Couldn't get Response from Server !!")
-                    failure()
+                    failure("UnableServer")
                 }
                 if response.result.isSuccess {
                     let resJson = JSON(response.result.value!)
                     if !resJson.isEmpty {
                         sucess(resJson)
                     } else {
-                        failure()
+                        failure("UnableServer")
                     }
                 }
                 if response.result.isFailure {
-                    failure()
+                    failure("UnableServer")
                 }
         }
     }
