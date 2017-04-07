@@ -21,32 +21,32 @@ class DonateView: UIViewController {
     var resultsViewController: GMSAutocompleteResultsViewController?
     var searchController: UISearchController?
     var locationManager = CLLocationManager()
-    var placesClient : GMSPlacesClient?
-    var coordinates : CLLocationCoordinate2D?
+    var placesClient  : GMSPlacesClient?
+    var coordinates   : CLLocationCoordinate2D?
     var SouthLatitude : CLLocationDegrees?
     var NorthLatitude : CLLocationDegrees?
     var WestLongitude : CLLocationDegrees?
     var EastLongitude : CLLocationDegrees?
-    var rLatitude : CLLocationDegrees?
-    var rLongitude : CLLocationDegrees?
-    var rLocation : CLLocation?
-    var rCoordinates : CLLocationCoordinate2D?
-    var dataArray : JSON!
-    var viewWarning = UIView()
-    var labelWarning = UILabel()
-    let imageWarning = UIImageView()
+    var rLatitude     : CLLocationDegrees?
+    var rLongitude    : CLLocationDegrees?
+    var rLocation     : CLLocation?
+    var rCoordinates  : CLLocationCoordinate2D?
+    var dataArray     : JSON!
+    var viewWarning   = UIView()
+    var labelWarning  = UILabel()
+    let imageWarning  = UIImageView()
     let btnListofMarkers = UIButton()
     var lastEventDate : Date? = nil
     var loader : Bool?
     var InternetIssue : Bool?
     var appendsListMarkers = [Dictionary<String, Any>]()
     
+    var currentLat : CLLocationDegrees!
+    var currentLong : CLLocationDegrees!
+    
     //MARK:- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        let temmp = FilterChecks()
-        temmp.delegate = self
-        
         loader = true
         InternetIssue = true
         CLLocationManager.locationServicesEnabled()
@@ -58,13 +58,12 @@ class DonateView: UIViewController {
         
         if CLLocationManager.locationServicesEnabled() == true {
             locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
         }
-        if locationManager.location?.coordinate.latitude != nil {
-            camera = GMSCameraPosition.camera(withLatitude: (locationManager.location?.coordinate.latitude)!, longitude:(locationManager.location?.coordinate.longitude)!, zoom:15.0)
-        } else {
-            camera = GMSCameraPosition.camera(withLatitude: 12.9716, longitude:77.5946, zoom :15.0)
-        }
+        
+        camera = GMSCameraPosition.camera(withLatitude: SingleTon.SharedInstance.currentLatitude, longitude:SingleTon.SharedInstance.currentLongitude, zoom :15.0)
+        
         mapView = GMSMapView.map(withFrame: .zero, camera:camera!)
         placesClient = GMSPlacesClient.shared()
         mapView.settings.myLocationButton = true
@@ -76,19 +75,15 @@ class DonateView: UIViewController {
         mapView.settings.compassButton = true
         mapView.settings.indoorPicker = true
         
-       
-        
-    }
+}
     
-    //MARK:- delegateFunction from filter
-    
-   
-
     
     //MARK:- viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.completelyTransparentBar()
+        self.navigationController?.topViewController?.title = "Donate"
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:Util.SharedInstance.hexStringToUIColor(hex: "b60b16")]
         //For Result VC
         resultsViewController = GMSAutocompleteResultsViewController()
         resultsViewController?.delegate = self
@@ -97,8 +92,7 @@ class DonateView: UIViewController {
         self.definesPresentationContext = true
         searchController?.hidesNavigationBarDuringPresentation = false
         DonateInteractor.sharedInstance.delegate = self
-        
-        
+       
     }
     //MARK:- PushNotificationView
     func PushNotificationView(_ notification: NSNotification)
@@ -241,6 +235,11 @@ extension DonateView : CLLocationManagerDelegate {
             manager.stopUpdatingLocation()
             print("Updation Stopped !!")
             
+            let loc: CLLocation = locations[locations.count - 1]
+             currentLat = loc.coordinate.latitude
+             currentLong = loc.coordinate.longitude
+            
+            print("<=\(currentLat) & \(currentLong)=>")
         }
     }
     
@@ -644,8 +643,7 @@ extension DonateView : DonateViewProtocol {
             view.addConstraints([labelWarningLeadingConstraints, labelWarningTrailingConstraints, labelWarningVerticalConstraint])
             //image warning
             view.addConstraints([imageWarningLeadingConstraints, imageWarningTopConstraints, imageWarningBottomConstraints, imageWarningWidthConstraint])
-            //
-            appendsListMarkers = []
+            
             SingleTon.SharedInstance.noMarkers = true
             
             
@@ -655,7 +653,9 @@ extension DonateView : DonateViewProtocol {
             var tempDict = [String : Any]()
             var jDict = JSON.init(dictionaryLiteral: ("Index", jsonArray["BloodRequestSearchResponse"]["BloodRequestDetails"]))
             jDict = jDict["Index"]
+
             appendsListMarkers.removeAll()
+            
             for (i, _) in jDict.enumerated() {
                     tempDict["Name"] = jDict[i]["Name"]
                     tempDict["WorkingHours"] = jDict[i]["WorkingHours"]
@@ -668,7 +668,7 @@ extension DonateView : DonateViewProtocol {
     }
     //MARK:- List Button action
     func btnListClicked() {
-        print("ImHere..!!")
+        
         let lists = self.storyboard?.instantiateViewController(withIdentifier: "MarkersListView") as! MarkersListView
         lists.listMarkers.removeAll()
         lists.listMarkers = appendsListMarkers

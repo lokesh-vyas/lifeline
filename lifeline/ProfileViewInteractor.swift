@@ -137,7 +137,7 @@ class ProfileViewInteractor
         let jsonDict = JSONResponse["GetProfileResponse"]["GetProfileResponseDetails"]
         
         let contactNumber:String
-        let age:String
+        var age:String
         let HomeLatitude:String
         let HomeLongitude:String
         let WorkLatitude:String
@@ -153,6 +153,7 @@ class ProfileViewInteractor
         let name:String = jsonDict["Name"].string!
         let emailID:String = jsonDict["EmailId"].string!
         let BloodGroup:String = jsonDict["BloodGroup"].string!
+       
         if jsonDict["Age"].string != nil
         {
             age = jsonDict["Age"].string!
@@ -319,9 +320,11 @@ class ProfileViewInteractor
             WorkAddressLine = ""
             WorkAddressCity = ""
         }
+        
         if jsonDict["DateofBirth"].string != nil
         {
             DateOfBirth = Util.SharedInstance.dateChangeForGetProfileDOB(dateString: jsonDict["DateofBirth"].string!)
+            age = Util.SharedInstance.calcAge(birthday: DateOfBirth)
         }
         else
         {

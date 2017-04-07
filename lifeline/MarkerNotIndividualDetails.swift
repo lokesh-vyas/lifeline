@@ -21,6 +21,8 @@ class MarkerNotIndividualDetails: UIViewController {
     @IBOutlet weak var lblFromDate: UILabel!
     @IBOutlet weak var FromDate: UILabel!
     @IBOutlet weak var ToDate: UILabel!
+    @IBOutlet weak var btnBloodInventory : UIButton!
+    @IBOutlet weak var viewUnderLine: UIView!
     
 //    var markerDict = [String:Any]()
     
@@ -35,7 +37,9 @@ class MarkerNotIndividualDetails: UIViewController {
         
         if (MarkerData.SharedInstance.markerData["TypeOfOrg"] as! String?  == "2") { // i.e. Campaign
             
-            //FIXME:- camp color #0dd670
+        //FIXME:- camp color #0dd670
+        btnBloodInventory.isHidden = true
+        viewUnderLine.isHidden = true
         FromDate.isHidden = false
         ToDate.isHidden = false
         lblFromDate.isHidden = false
@@ -49,6 +53,8 @@ class MarkerNotIndividualDetails: UIViewController {
         } else {
             
             //FIXME:- Ho color #b6800b
+            btnBloodInventory.isHidden = false
+            viewUnderLine.isHidden = false
             lblHead.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#b6800b")
             btnDonate.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#b6800b")
             viewMarkerDetails.layer.borderColor = Util.SharedInstance.hexStringToUIColor(hex: "#b6800b").cgColor
@@ -66,7 +72,7 @@ class MarkerNotIndividualDetails: UIViewController {
         let cnfDonate = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmDonate") as! ConfirmDonate
         let navigationControllerStack = UINavigationController(rootViewController: cnfDonate)
         self.present(navigationControllerStack, animated: true, completion: nil)
-       // self.navigationController?.pushViewController(navigationControllerStack, animated: true)
+        // self.navigationController?.pushViewController(navigationControllerStack, animated: true)
         
         MarkerData.SharedInstance.isNotIndividualAPN = false
 

@@ -10,9 +10,12 @@ import UIKit
 
 class MarkersListView: UIViewController {
 
-    @IBOutlet weak var tblView: UITableView!
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var tblView : UITableView!
+    @IBOutlet weak var searchBar : UISearchBar!
+    @IBOutlet weak var lblNoRequirement : UILabel!
     var listMarkers = [Dictionary<String, Any>]()
+    var searchController : UISearchController!
+    var myContent = [String]()
     
     
     override func viewDidLoad() {
@@ -21,7 +24,16 @@ class MarkersListView: UIViewController {
         tblView.contentInset = UIEdgeInsetsMake(-35, 0.0, +195, 0.0)
         if SingleTon.SharedInstance.noMarkers == true {
             tblView.isHidden = true
+        } else {
+            tblView.isHidden = false
+            lblNoRequirement.text = ""
         }
+        for (i, _) in listMarkers.enumerated() {
+            myContent.append(String(describing: listMarkers[i]["Name"]!))
+            
+            
+        }
+        
     }
 
     @IBAction func btnCancelTapped(_ sender: Any) {
@@ -48,6 +60,7 @@ extension MarkersListView : UITableViewDataSource {
         cell?.lblCityName.text = String(describing: listMarkers[indexPath.row]["WorkingHours"]!)
 
         return cell!
+
     }
 }
 
@@ -59,11 +72,34 @@ extension MarkersListView : UITableViewDelegate {
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let cnfDonate = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmDonate") as! ConfirmDonate
+        let navigationControllerStack = UINavigationController(rootViewController: cnfDonate)
+        self.present(navigationControllerStack, animated: true, completion: nil)
+        
+    }
 }
 
 extension MarkersListView : UISearchBarDelegate {
-      func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("You're trying to search something...")
+//        searchController.searchBar.resignFirstResponder()
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+
+//        var filterdTerms = [String]()
+//        filterdTerms = myContent.filter { term in
+//            return term.lowercased().contains(searchText.lowercased())listMarkers
+//        }
+//        self.tblView.reloadData()
+        
+        let searchPredicate : NSPredicate = NSPredicate(format: "listMarkers CONTAINS[c] %@", searchText)
+            let array = (listMarkers as NSArray).filtered(using: searchPredicate)
+            print ("array = \(array)")
+            
+            self.tblView.reloadData()
         
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -71,3 +107,5 @@ extension MarkersListView : UISearchBarDelegate {
     }
 
 }
+
+

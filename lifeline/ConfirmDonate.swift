@@ -27,8 +27,6 @@ class ConfirmDonate: UIViewController {
     @IBOutlet weak var HospitalName: UILabel!
     
     var ID = String()
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.completelyTransparentBar()
@@ -143,7 +141,7 @@ class ConfirmDonate: UIViewController {
         lblEmailID.text = MarkerData.SharedInstance.markerData["Email"] as! String?
         lblFromDate.text = MarkerData.SharedInstance.markerData["FromDate"] as! String?
         lblToDate.text = MarkerData.SharedInstance.markerData["ToDate"] as! String?
-        lblAddress.text = (MarkerData.SharedInstance.markerData["AddressLine"] as! String?)?.replacingOccurrences(of: "\n", with: ", ").appending(MarkerData.SharedInstance.markerData["City"] as! String).appending(", ").appending(MarkerData.SharedInstance.markerData["State"] as! String).appending(" - ").appending(MarkerData.SharedInstance.markerData["PINCode"] as! String)
+        lblAddress.text = (MarkerData.SharedInstance.markerData["AddressLine"] as! String?)?.replacingOccurrences(of: "\n", with: ", ").appending(MarkerData.SharedInstance.markerData["City"] as! String).appending(" - ").appending(MarkerData.SharedInstance.markerData["PINCode"] as! String)
         
         if MarkerData.SharedInstance.markerData["TypeOfOrg"] as! String? == "2" { // this is camp
             HudBar.sharedInstance.showHudWithMessage(message: "Loading...", view: view)
@@ -205,9 +203,7 @@ extension ConfirmDonate : ConfirmDonateProtocol {
         lblWorkingHours.text = MarkerData.SharedInstance.APNResponse["WorkingHours"] as! String?
         lblContactNumber.text = String(describing: MarkerData.SharedInstance.APNResponse["ContactNumber"]!)
         lblEmailID.text = MarkerData.SharedInstance.APNResponse["Email"] as! String?
-//        lblAddress.text = (MarkerData.SharedInstance.APNResponse["AddressLine"] as! String?)?.replacingOccurrences(of: "\n", with: ", ")
-        
-        lblAddress.text =  (MarkerData.SharedInstance.APNResponse["AddressLine"] as! String?)?.replacingOccurrences(of: "\n", with: ", ").appending(MarkerData.SharedInstance.APNResponse["City"] as! String).appending(", ").appending(MarkerData.SharedInstance.APNResponse["State"] as! String).appending(" - ").appending(String(describing : MarkerData.SharedInstance.APNResponse["PINCode"]!))
+        lblAddress.text =  (MarkerData.SharedInstance.APNResponse["AddressLine"] as! String?)?.replacingOccurrences(of: "\n", with: ", ").appending(MarkerData.SharedInstance.APNResponse["City"] as! String).appending(" - ").appending(String(describing : MarkerData.SharedInstance.APNResponse["PINCode"]!))
         
         HudBar.sharedInstance.hideHudFormView(view: self.view)
         

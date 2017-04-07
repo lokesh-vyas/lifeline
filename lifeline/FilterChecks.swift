@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 protocol filterMarkersProtocol {
     func didSuccessFilters(sender: FilterChecks)
@@ -18,6 +19,10 @@ class SingleTon {
     var isCheckedHospital = true
     var isCheckedCamp = true
     var noMarkers : Bool?
+    var currentLatitude : CLLocationDegrees!
+    var currentLongitude : CLLocationDegrees!
+    
+    
     class var SharedInstance : SingleTon {
         struct Shared {
             static let Instance = SingleTon()
@@ -31,6 +36,7 @@ class FilterChecks: UIViewController {
     @IBOutlet weak var btnCheckboxIndividual: UIButton!
     @IBOutlet weak var btnCheckboxHospital: UIButton!
     @IBOutlet weak var btnCheckboxCamp: UIButton!
+    @IBOutlet weak var subViewFilter: UIView!
     
     var delegate : filterMarkersProtocol?
     override func viewDidLoad() {
@@ -94,3 +100,17 @@ class FilterChecks: UIViewController {
     }
 
 }
+
+extension FilterChecks : UIGestureRecognizerDelegate {
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        
+        if (touch.view?.isDescendant(of: subViewFilter))! {
+            return true
+        }
+        
+        dismiss(animated: true, completion: nil)
+        return false
+    }
+}
+

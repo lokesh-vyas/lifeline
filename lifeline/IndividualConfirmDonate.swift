@@ -128,7 +128,7 @@ extension IndividualConfirmDonate : IndividualRequestDetailsProtocol {
         self.lblContactPerson.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["ContactPerson"])
         self.lblContactNumber.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["ContactNumber"])
         
-        self.lblAddress.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["AddressLine"]).replacingOccurrences(of: "\n", with: ",").appending(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["City"])).appending(", ").appending(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["State"])).appending(" - ").appending(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["PINCode"]))
+        self.lblAddress.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["AddressLine"]).replacingOccurrences(of: "\n", with: ",").appending(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["City"])).appending(" - ").appending(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["PINCode"]))
         
         self.lblPersonalAppeal.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["PersonalAppeal"])
         HudBar.sharedInstance.hideHudFormView(view: self.view)
