@@ -35,6 +35,7 @@ class RequestView: UIViewController,UITextViewDelegate
     
     //MARK:- String
     var datetostring = String()
+    var isDoctorName = Bool()
     
     //MARK:- Arrays
     let bloodGroupArray = ["O+","O-","A+","A-","B+","B-","AB+","AB-"]
@@ -192,6 +193,12 @@ class RequestView: UIViewController,UITextViewDelegate
                 self.view.makeToast("Invalid Hospial Contact Number", duration: 2.0, position: .bottom)
                 return
             }
+            if isDoctorName == false
+            {
+                self.view.makeToast("Special characters are not allowed", duration: 2.0, position: .bottom)
+                 txtFieldDoctorName.errorLine()
+                return
+            }
             if RequestViewModel.SharedInstance.isPin == false
             {
                 self.view.makeToast("Invalid Hospial Address PIN Code", duration: 2.0, position: .bottom)
@@ -232,9 +239,7 @@ class RequestView: UIViewController,UITextViewDelegate
             HudBar.sharedInstance.showHudWithMessage(message: "Submiting...", view: self.view)
             RequestInterator.SharedInstance.delegateRequestBlood = self
             let CentreID = RequestViewModel.SharedInstance.CentreID
-            
-            print(CentreID)
-            
+           
             RequestInterator.SharedInstance.requesBlood(LoginId: LoginID,bloodgroup: RequestViewModel.SharedInstance.BloodGroup!,whatyouneed: RequestViewModel.SharedInstance.WhatYouNeed!,whenyouneed: Util.SharedInstance.dateChangeForServerForProfile(dateString: RequestViewModel.SharedInstance.WhenYouNeed!),Units: RequestViewModel.SharedInstance.BloodUnit!,patientname: txtFieldPatientName.text!,contactperson: txtFieldContactPerson.text!,contactnumber: txtFieldContactNumber.text!,doctorname:txtFieldDoctorName.text!,doctorcontactnumber:"9999999999",doctoremailID: "",centerID:CentreID,centername: self.txtFieldHospitalBloodBankName.text!,centercontactnumber:txtFieldHospitalBloodBankContactNumber.text!,centeraddress: txtFieldHospitalBloodBankAddress.text!,City: txtFieldHospitalBloodBankAddressCity.text!,State: "",
                                                         Landmark: txtFieldHospitalBloodBankAddressLandMark.text!,Latitude: RequestViewModel.SharedInstance.Latitude!,Longitude: RequestViewModel.SharedInstance.Longitude!,Pincode: txtFieldHospitalBloodBankAddressPINCode.text!,Country: "",personalappeal: txtViewPersonalAppeal.text!,Sharedinsocialmedia:"0")
         }
@@ -323,10 +328,15 @@ extension RequestView:ProtocolRequestView
         }
     }
     
-    func failedBloodRequest()
+    func failedBloodRequest(Response:String)
     {
         HudBar.sharedInstance.hideHudFormView(view: self.view)
-        self.view.makeToast("Unable to access server, please try again later", duration: 2.0, position: .bottom)
+        if Response == "NoInternet" {
+            self.view.makeToast("No Internet Connection, please check your Internet Connection", duration: 3.0, position: .bottom)
+        }else
+        {
+            self.view.makeToast("Unable to access server, please try again later", duration: 3.0, position: .bottom)
+        }
     }
 }
 extension RequestView:UITextFieldDelegate
@@ -384,14 +394,22 @@ extension RequestView:UITextFieldDelegate
                 txtFieldPatientName.removeErrorLine()
             case txtFieldContactPerson:
                 txtFieldContactPerson.removeErrorLine()
-                
-            case txtFieldDoctorName:
-                txtFieldDoctorName.removeErrorLine()
+           
             case txtFieldHospitalBloodBankAddress:
                 txtFieldHospitalBloodBankAddress.removeErrorLine()
          
             case txtFieldHospitalBloodBankAddressCity:
                 txtFieldHospitalBloodBankAddressCity.removeErrorLine()
+                
+            case txtFieldDoctorName:
+                if newString.isValidSpecialCharacter(){
+                    txtFieldDoctorName.removeErrorLine()
+                    isDoctorName = true
+                    
+                } else {
+                    txtFieldDoctorName.errorLine()
+                    isDoctorName = false
+                }
                 
             case txtFieldContactNumber:
                 if newString.characters.count < 4 || newString.characters.count > 13

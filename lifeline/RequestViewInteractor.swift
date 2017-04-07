@@ -12,7 +12,7 @@ import SwiftyJSON
 protocol ProtocolRequestView {
     
     func succesfullyBloodRequest(success: Bool)
-    func failedBloodRequest()
+    func failedBloodRequest(Response:String)
 }
 //MARK:- ProfileView Model
 class RequestViewModel
@@ -63,8 +63,8 @@ class RequestInterator
                         self.delegateRequestBlood?.succesfullyBloodRequest(success: false)
                     }
             }, failure:
-                { _ in
-                    self.delegateRequestBlood?.failedBloodRequest()
+                { (Response) -> Void in
+                    self.delegateRequestBlood?.failedBloodRequest(Response:Response)
             })
             
         }

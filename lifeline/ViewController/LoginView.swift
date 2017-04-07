@@ -218,10 +218,15 @@ extension LoginView:checkForgetPasswordProtocol
             HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Type your UserID Correctly", view: self.view)
         }
     }
-    func failSignUp()
+    func failSignUp(Response:String)
     {
         HudBar.sharedInstance.hideHudFormView(view: self.view)
-        self.view.makeToast("Unable to access server, please try again later", duration: 3.0, position: .bottom)
+        if Response == "NoInternet" {
+            self.view.makeToast("No Internet Connection, please check your Internet Connection", duration: 3.0, position: .bottom)
+        }else
+        {
+            self.view.makeToast("Unable to access server, please try again later", duration: 3.0, position: .bottom)
+        }
     }
 }
 extension LoginView : customLoginProtocol
@@ -245,10 +250,15 @@ extension LoginView : customLoginProtocol
             HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Please Check your UserID And Password and try again", view: self.view)
         }
     }
-    func failCustomLogin()
+    func failCustomLogin(Response:String)
     {
         HudBar.sharedInstance.hideHudFormView(view: self.view)
-        self.view.makeToast("Unable to access server, please try again later", duration: 2.0, position: .bottom)
+        if Response == "NoInternet" {
+            self.view.makeToast("No Internet Connection, please check your Internet Connection", duration: 3.0, position: .bottom)
+        }else
+        {
+            self.view.makeToast("Unable to access server, please try again later", duration: 3.0, position: .bottom)
+        }
     }
 }
 //MARK:- TextFieldDelegate

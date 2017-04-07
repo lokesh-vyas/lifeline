@@ -38,6 +38,7 @@ class DonateView: UIViewController {
     let btnListofMarkers = UIButton()
     var lastEventDate : Date? = nil
     var loader : Bool?
+    var InternetIssue : Bool?
     var appendsListMarkers = [Dictionary<String, Any>]()
     
     //MARK:- viewDidLoad
@@ -47,6 +48,7 @@ class DonateView: UIViewController {
         temmp.delegate = self
         
         loader = true
+        InternetIssue = true
         CLLocationManager.locationServicesEnabled()
 //        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         NotificationCenter.default.addObserver(self, selector: #selector(DonateView.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
@@ -675,8 +677,20 @@ extension DonateView : DonateViewProtocol {
     }
     
     
-    func failedDonateSources() {
-        print("Failed to get Donate resources !!")
+    func failedDonateSources(Response:String) {
+        HudBar.sharedInstance.hideHudFormView(view: self.view)
+        if Response == "NoInternet" {
+            if InternetIssue == true {
+                InternetIssue = false
+                self.view.makeToast("No Internet Connection, please check your Internet Connection", duration: 3.0, position: .bottom)
+            }
+        }else
+        {
+            if InternetIssue == true {
+                InternetIssue = false
+               self.view.makeToast("Unable to access server, please try again later", duration: 3.0, position: .bottom)
+            }
+        }
     }
 }
 

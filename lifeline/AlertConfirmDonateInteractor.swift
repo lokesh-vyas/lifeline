@@ -11,7 +11,7 @@ import SwiftyJSON
 
 protocol AlertConfirmDonateProtocol {
     func successConfirmDonate(jsonArray : JSON)
-    func failedConfirmDonate()
+    func failedConfirmDonate(Response:String)
 }
 
 class AlertConfirmDonateInteractor {
@@ -28,8 +28,9 @@ class AlertConfirmDonateInteractor {
                                                             (JSONResponse) -> Void in
                                                             self.delegate?.successConfirmDonate(jsonArray: JSONResponse)
         },
-                                                         failure: { _ in
-                                                            self.delegate?.failedConfirmDonate()
+                                                         failure: {(Response) -> Void in
+                                                            
+                                                            self.delegate?.failedConfirmDonate(Response:Response)
         }
         )
     }

@@ -17,6 +17,7 @@ class CalendarView: UIViewController {
 
     @IBOutlet var labelHeading: UILabel!
     @IBOutlet var pickerSelectDate: UIDatePicker!
+    @IBOutlet weak var btnCancel: UIButton!
     
     var delegate:ProtocolCalendar?
     var dateFormatter = DateFormatter()
@@ -26,6 +27,10 @@ class CalendarView: UIViewController {
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        if calenderHeading == "Last Donation Date"
+        {
+            btnCancel.setTitle("Clear", for: .normal)
+        }
         labelHeading.text = calenderHeading
         pickerSelectDate.maximumDate = calendar.maximumDate
         pickerSelectDate.minimumDate = calendar.minimumDate
@@ -41,5 +46,10 @@ class CalendarView: UIViewController {
     //MARK:- btnCancelTapped
     @IBAction func btnCancelTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+        if calenderHeading == "Last Donation Date"
+        {
+           delegate?.FailureProtocolCalendar(valueSent:"Clear")
+        }
+       
     }
 }

@@ -192,6 +192,16 @@ extension String
         let result = emailTest.evaluate(with: self)
         return result
     }
+    func isValidSpecialCharacter() -> Bool
+    {
+        let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ0123456789.-()")
+        if (self).rangeOfCharacter(from: characterset.inverted) != nil {
+            return false
+        }else
+        {
+            return true
+        }
+  }
 }
 //MARK:- Navigtion bar transperent
 extension UINavigationController {
