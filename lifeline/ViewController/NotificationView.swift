@@ -42,20 +42,25 @@ class NotificationView: UIViewController {
             myDonorView.MyRequestIDFromPush = UserJSON["ID"] as! String
             let rootView:UINavigationController = UINavigationController.init(rootViewController: myDonorView)
             self.present(rootView, animated: true, completion: nil)
-        }else if(UserJSON["Type"] as? String == "4")
+            
+        } else if(UserJSON["Type"] as? String == "4" || UserJSON["Type"] as? String == "12") //camp
         {
             //For Camp and Thank you for after confirm camp request
             let confirmDonate:ConfirmDonate = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmDonate") as! ConfirmDonate
             confirmDonate.ID = UserJSON["ID"] as! String
             let rootView:UINavigationController = UINavigationController(rootViewController: confirmDonate)
             self.present(rootView, animated: true, completion: nil)
-        }else if(UserJSON["Type"] as? String == "3")
+            
+        } else if(UserJSON["Type"] as? String == "3" || UserJSON["Type"] as? String == "11") //Indi
         {
             //for individual request notificaton
             let indconfirmDonate:IndividualConfirmDonate = self.storyboard?.instantiateViewController(withIdentifier: "IndividualConfirmDonate") as! IndividualConfirmDonate
             indconfirmDonate.iID = UserJSON["ID"] as! String
             let rootView:UINavigationController = UINavigationController(rootViewController: indconfirmDonate)
             self.present(rootView, animated: true, completion: nil)
-        }
+            
+        } 
+
+
     }
 }

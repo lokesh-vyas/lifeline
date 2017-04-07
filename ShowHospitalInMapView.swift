@@ -69,11 +69,8 @@ class ShowHospitalInMapView: UIViewController
             locationManager.delegate = self
             locationManager.startUpdatingLocation()
         }
-        if locationManager.location?.coordinate.latitude != nil {
-            camera = GMSCameraPosition.camera(withLatitude: (locationManager.location?.coordinate.latitude)!, longitude:(locationManager.location?.coordinate.longitude)!, zoom:15.0)
-        } else {
-            camera = GMSCameraPosition.camera(withLatitude: 12.9716, longitude:77.5946, zoom :15.0)
-        }
+            camera = GMSCameraPosition.camera(withLatitude: SingleTon.SharedInstance.currentLatitude, longitude: SingleTon.SharedInstance.currentLongitude, zoom :15.0)
+        
         mapView = GMSMapView.map(withFrame: .zero, camera:camera!)
         placesClient = GMSPlacesClient.shared()
         mapView.settings.myLocationButton = true

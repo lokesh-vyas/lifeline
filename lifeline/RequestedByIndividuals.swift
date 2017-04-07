@@ -12,8 +12,7 @@ class RequestedByIndividuals: UIViewController {
 
     @IBOutlet weak var tblView: UITableView!
     var requestDetailsArray = [String]()
-//    var tagg : Int? = nil
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.completelyTransparentBar()

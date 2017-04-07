@@ -57,8 +57,6 @@ class NetworkManager
                     print("Couldn't get Response from Server !!")
                     failure()
                 }
-//                print(response.data!)
-//                print(response.result)
                 if response.result.isSuccess {
                     let resJson = JSON(response.result.value!)
                     if !resJson.isEmpty {
