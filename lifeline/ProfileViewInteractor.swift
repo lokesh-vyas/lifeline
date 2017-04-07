@@ -17,7 +17,7 @@ protocol ProtocolGetProfile {
 //MARK:- ProtocolRegisterProfile
 protocol ProtocolRegisterProfile {
     func succesfullyRegisterProfile(success: Bool)
-    func failedRegisterProfile()
+    func failedRegisterProfile(Response:String)
 }
 //MARK:- ProfileView Model
 class ProfileViewModel
@@ -95,7 +95,6 @@ class ProfileViewInteractor
                                                          parameters: params,
                                                          sucess: {
                                                             (JSONResponse) -> Void in
-                                                            print(JSONResponse)
                                                             if (JSONResponse["ProfileRegistrationResponse"]["ProfileDetails"]["StatusCode"].int == 0)
                                                             {
                                                                 self.delegateProfile?.succesfullyRegisterProfile(success: true)
@@ -104,8 +103,8 @@ class ProfileViewInteractor
                                                                 self.delegateProfile?.succesfullyRegisterProfile(success: false)
                                                             }
         },
-                                                         failure: { _ in
-                                                            self.delegateProfile?.failedRegisterProfile()
+                                                         failure: { (Response) -> Void in
+                                                            self.delegateProfile?.failedRegisterProfile(Response:Response)
         }
         )
     }
@@ -119,7 +118,6 @@ class ProfileViewInteractor
                                                          parameters: params,
                                                          sucess: {
                                                             (JSONResponse) -> Void in
-                                                            print(JSONResponse)
                                                             if (JSONResponse["DeviceDetailsResponse"]["DeviceDetails"]["StatusCode"].int == 0)
                                                             {
                                                                 self.delegateProfile?.succesfullyRegisterProfile(success: true)
@@ -128,8 +126,8 @@ class ProfileViewInteractor
                                                                 self.delegateProfile?.succesfullyRegisterProfile(success: false)
                                                             }
         },
-                                                         failure: { _ in
-                                                            self.delegateProfile?.failedRegisterProfile()
+                                                         failure: {  (Response) -> Void in
+                                                            self.delegateProfile?.failedRegisterProfile(Response:Response)
         }
         )
     }

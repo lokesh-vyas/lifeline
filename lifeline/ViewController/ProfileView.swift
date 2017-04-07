@@ -551,7 +551,11 @@ extension ProfileView:ProtocolCalendar
     
     func FailureProtocolCalendar(valueSent: String)
     {
-        print("Try Again")
+        if valueSent == "Clear"
+        {
+            ProfileViewModel.SharedInstance.LastDonationStrin = ""
+            btnLastDonationDate.setTitle("Last Donation Date", for: .normal)
+        }
     }
 }
 //MARK:- ProtocolBloodInfo
@@ -627,9 +631,16 @@ extension ProfileView:ProtocolRegisterProfile
             HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Failed to Update", view: self.view)
         }
     }
-    func failedRegisterProfile()
+    func failedRegisterProfile(Response:String)
     {
         HudBar.sharedInstance.hideHudFormView(view: self.view)
+        if Response == "NoInternet" {
+            self.view.makeToast("No Internet Connection, please check your Internet Connection", duration: 3.0, position: .bottom)
+        }else
+        {
+            self.view.makeToast("Unable to access server, please try again later", duration: 3.0, position: .bottom)
+        }
+
     }
 }
 extension ProfileView:MyAddressFormat

@@ -165,11 +165,17 @@ extension HospitalListView:HospitalListProtocol
             self.lblListNotAvailable.text = jsonArray["GetCollectionCentersList"]["ResponseDetails"]["ErrorDescription"].string
         }
     }
-    func FailedHospitalListProtocol()
+    func FailedHospitalListProtocol(Response:String)
     {
+        HudBar.sharedInstance.hideHudFormView(view: self.view)
         searchFilterArray.removeAll()
         searchTableView.isHidden = true
-        self.lblListNotAvailable.text = StringList.LifeLine_Internet_Error_Message.rawValue
+        if Response == "NoInternet" {
+            self.lblListNotAvailable.text = "No Internet Connection, please check your Internet Connection"
+        }else
+        {
+            self.lblListNotAvailable.text = "Unable to access server, please try again later"
+        }
     }
 }
 

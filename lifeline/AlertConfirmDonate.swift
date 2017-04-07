@@ -215,9 +215,14 @@ extension AlertConfirmDonate : AlertConfirmDonateProtocol {
         )
         
     }
-    func failedConfirmDonate() {
-        print("****FAILED****")
-        
+    func failedConfirmDonate(Response:String) {
+        HudBar.sharedInstance.hideHudFormView(view: self.view)
+        if Response == "NoInternet" {
+            self.view.makeToast("No Internet Connection, please check your Internet Connection", duration: 3.0, position: .bottom)
+        }else
+        {
+            self.view.makeToast("Unable to access server, please try again later", duration: 3.0, position: .bottom)
+        }
     }
 }
 

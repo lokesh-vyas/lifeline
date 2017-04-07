@@ -152,8 +152,16 @@ extension MyRequestView:MyRequestProtocol
         }
         
     }
-    func FailMyRequest()
+    func FailMyRequest(Response:String)
     {
+        self.tableRequestView.isHidden = true
+        self.lblInternetIssue.isHidden = false
         HudBar.sharedInstance.hideHudFormView(view: self.view)
+        if Response == "NoInternet" {
+            self.lblInternetIssue.text = "No Internet Connection, please check your Internet Connection"
+        }else
+        {
+            self.lblInternetIssue.text = "Unable to access server, please try again later"
+        }
     }
 }

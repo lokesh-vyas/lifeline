@@ -1174,7 +1174,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Inner_bg" translatesAutoresizingMaskIntoConstraints="NO" id="6hJ-dv-t5Y">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bov-dD-cyQ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bov-dD-cyQ">
                                 <rect key="frame" x="10" y="95" width="343" height="111"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="111" id="qur-9g-RZQ"/>
@@ -1252,20 +1252,20 @@
                     </view>
                     <navigationItem key="navigationItem" id="lM7-GP-6kO">
                         <barButtonItem key="leftBarButtonItem" image="Back_icon" id="EiS-Ow-JNz">
-                            <color key="tintColor" red="0.50196078430000002" green="0.25098039220000001" blue="0.0" alpha="0.60183005140000001" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" red="0.71372549019999998" green="0.043137254899999998" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="backButton:" destination="It2-WR-duq" id="cAM-ei-aTu"/>
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="search" id="8IL-df-raT">
-                                <color key="tintColor" red="0.50196078430000002" green="0.25098039220000001" blue="0.0" alpha="0.60183005140000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.71372549019999998" green="0.043137254899999998" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="btnSearchTapped:" destination="It2-WR-duq" id="Kjn-mj-1eX"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="Filter32.png" id="Yrs-Dm-N3W">
-                                <color key="tintColor" red="0.50196078430000002" green="0.25098039220000001" blue="0.0" alpha="0.60183005140000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.71372549019999998" green="0.043137254899999998" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="btnFilterTapped:" destination="It2-WR-duq" id="Cw5-Ya-4xP"/>
                                 </connections>
@@ -3677,7 +3677,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7uz-ZI-071">
-                                        <rect key="frame" x="13" y="218" width="140" height="39"/>
+                                        <rect key="frame" x="13" y="221" width="140" height="36"/>
                                         <color key="backgroundColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="20"/>
                                         <state key="normal" title="Cancel">
@@ -3693,7 +3693,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hff-MS-SWd">
-                                        <rect key="frame" x="169" y="218" width="140" height="39"/>
+                                        <rect key="frame" x="169" y="221" width="140" height="36"/>
                                         <color key="backgroundColor" red="0.50196078430000002" green="0.25098039220000001" blue="0.0" alpha="0.60183005140000001" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="20"/>
                                         <state key="normal" title="Done">
@@ -3709,7 +3709,7 @@
                                         </connections>
                                     </button>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="vg4-kn-M3I">
-                                        <rect key="frame" x="0.0" y="42" width="320" height="165"/>
+                                        <rect key="frame" x="0.0" y="42" width="320" height="168"/>
                                         <date key="date" timeIntervalSinceReferenceDate="510214755.566185">
                                             <!--2017-03-03 06:19:15 +0000-->
                                         </date>
@@ -3757,6 +3757,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnCancel" destination="7uz-ZI-071" id="xwK-CU-X1G"/>
                         <outlet property="labelHeading" destination="jIe-BE-q2Q" id="6L2-7C-jHs"/>
                         <outlet property="pickerSelectDate" destination="vg4-kn-M3I" id="OFo-fm-2HV"/>
                     </connections>
@@ -3953,7 +3954,7 @@
                                     <outlet property="delegate" destination="rFX-gT-Pxo" id="h5J-bb-Dra"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Nt-hg-fuj">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Nt-hg-fuj">
                                 <rect key="frame" x="16" y="95" width="343" height="111"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="111" id="0LJ-uF-JC1"/>
@@ -4006,7 +4007,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EAy-Bt-t3J" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="vDG-0H-GIB">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="vDG-0H-GIB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -4025,7 +4026,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xzR-lU-lNy" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="OG2-W9-IDA">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="OG2-W9-IDA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -4043,7 +4044,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5uU-Yw-cvt" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="CYN-TS-jfv">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="CYN-TS-jfv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -4061,7 +4062,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="W96-jF-MdL" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="oCS-T6-nyV">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="oCS-T6-nyV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -4741,7 +4742,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="l1b-SO-lU6" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="Ale-Vf-WZM">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="Ale-Vf-WZM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

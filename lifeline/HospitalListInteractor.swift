@@ -12,7 +12,7 @@ import SwiftyJSON
 protocol HospitalListProtocol
 {
     func SuccessHospitalListProtocol(jsonArray:JSON)
-    func FailedHospitalListProtocol()
+    func FailedHospitalListProtocol(Response:String)
 }
 class HospitalListModel
 {
@@ -49,8 +49,9 @@ class HospitalListInteractor
             (JSONResponse) -> Void in
             self.delegate?.SuccessHospitalListProtocol(jsonArray: JSONResponse)
             
-        }, failure: {_  in
-            self.delegate?.FailedHospitalListProtocol()
+        }, failure: {(Response) -> Void in
+
+            self.delegate?.FailedHospitalListProtocol(Response:Response)
         })
     }
 }

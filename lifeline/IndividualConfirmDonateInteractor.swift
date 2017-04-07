@@ -11,7 +11,7 @@ import SwiftyJSON
 
 protocol IndividualRequestDetailsProtocol {
     func didSuccessGetRequestDetails(jsonArray : JSON)
-    func didFailGetRequestDetails()
+    func didFailGetRequestDetails(Response:String)
 }
 
 class IndividualConfirmDonateInteractor {
@@ -28,8 +28,8 @@ class IndividualConfirmDonateInteractor {
                                                             (JSONResponse) -> Void in
                                                             self.delegate?.didSuccessGetRequestDetails(jsonArray: JSONResponse)
         },
-                                                         failure: { _ in
-                                                            self.delegate?.didFailGetRequestDetails()
+                                                         failure: { (Response) -> Void in
+                                                            self.delegate?.didFailGetRequestDetails(Response:Response)
         }
         )
     }

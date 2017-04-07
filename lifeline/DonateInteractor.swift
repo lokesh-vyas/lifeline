@@ -11,7 +11,7 @@ import SwiftyJSON
 
 protocol DonateViewProtocol {
     func successDonateSources(jsonArray : JSON)
-    func failedDonateSources()
+    func failedDonateSources(Response:String)
 }
 
 class DonateInteractor {
@@ -28,8 +28,8 @@ class DonateInteractor {
                                                                     (JSONResponse) -> Void in
                                                         self.delegate?.successDonateSources(jsonArray: JSONResponse)
                                                                     },
-                                                          failure: { _ in
-                                                        self.delegate?.failedDonateSources()
+                                                          failure: { (Response) -> Void in
+                                                            self.delegate?.failedDonateSources(Response:Response)
                                                                   }
         )
     }
