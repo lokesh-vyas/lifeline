@@ -27,8 +27,8 @@ class ConfirmDonate: UIViewController {
     @IBOutlet weak var HospitalName: UILabel!
     
     var ID = String()
-    var fromDateCamp = NSDate()
-    var toDateCamp = NSDate()
+    var fromDateCamp:NSDate?
+    var toDateCamp:NSDate?
     var checkForString = String()
     
     override func viewDidLoad() {
@@ -129,12 +129,21 @@ class ConfirmDonate: UIViewController {
         } else if MarkerData.SharedInstance.markerData["TypeOfOrg"] as! String? == "2" { // Camp
             whichID = "CampaignID"
             checkForString = "Campaign"
-            fromDateCamp = Util.SharedInstance.dateChangeForFromDateInCamp(dateString: self.lblFromDate.text!) as NSDate
-            toDateCamp = Util.SharedInstance.dateChangeForFromDateInCamp(dateString: self.lblToDate.text!) as NSDate
+            if self.lblFromDate.text != nil
+            {
+                fromDateCamp = Util.SharedInstance.dateChangeForFromDateInCamp(dateString: self.lblFromDate.text!) as NSDate
+                toDateCamp = Util.SharedInstance.dateChangeForFromDateInCamp(dateString: self.lblToDate.text!) as NSDate
+            }else
+            {
+                checkForString = "CenterID"
+            }
+            if fromDateCamp == nil
+            {
+                checkForString = "CenterID"
+            }
         }
         idValue = ID
-        print(toDateCamp)
-        print(fromDateCamp)
+        
         let volDict = ["GetVolunteerListRequest": [
             "RequestDetails": [
                 "LoginID" : "\(UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!)",
@@ -249,8 +258,11 @@ extension ConfirmDonate : getVolunteerProtocol {
         
         let alertConfirm = self.storyboard?.instantiateViewController(withIdentifier: "AlertConfirmDonate") as! AlertConfirmDonate
         alertConfirm.checkForDate = checkForString
-        alertConfirm.fromDate = fromDateCamp
-        alertConfirm.toDate = toDateCamp
+        if fromDateCamp != nil
+        {
+            alertConfirm.fromDate = fromDateCamp!
+            alertConfirm.toDate = toDateCamp!
+        }
         alertConfirm.modalPresentationStyle = .overCurrentContext
         alertConfirm.view.backgroundColor = UIColor.clear
         present(alertConfirm, animated: true, completion: nil)
