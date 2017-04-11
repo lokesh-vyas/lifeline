@@ -42,7 +42,7 @@ class ConfirmDonate: UIViewController {
         } else {
              HudBar.sharedInstance.showHudWithMessage(message: "Loading...", view: view)
             //Through APN
-            navigationItem.hidesBackButton = true
+            navigationItem.leftBarButtonItem = nil
             HospitalName.text = "Contact Name"
             Email.isHidden = false
             lblEmailID.isHidden = false

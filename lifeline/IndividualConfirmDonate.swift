@@ -35,7 +35,7 @@ class IndividualConfirmDonate: UIViewController {
             iID = MarkerData.SharedInstance.oneRequestOfDonate["CID"]! as! String
         } else {
             //Through APN
-            navigationItem.hidesBackButton = true
+            navigationItem.leftBarButtonItem = nil
         }
         
         
