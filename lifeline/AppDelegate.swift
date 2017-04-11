@@ -37,7 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         CLLocationManager.locationServicesEnabled()
         myLocManager.desiredAccuracy = kCLLocationAccuracyBest
         myLocManager.startUpdatingLocation()
-        
         myLocManager.requestAlwaysAuthorization()
         
         //MARK:Facebook
@@ -237,6 +236,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             ID = IDFetchString
             
         } else {
+            
             IDFetchString = ""
         }
         
@@ -246,7 +246,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         } else {
             ID = String(describing: userINFO[IDFetchString].int)
         }
-        if titleInDict == ""
+        if titleInDict == "" && (type != "11" || type != "12")
         {
             titleInDict = userINFO["aps"]["alert"]["title"].string!
             messageInDict = userINFO["aps"]["alert"]["body"].string!
@@ -433,7 +433,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         } else {
             ID = String(describing: userINFO[IDFetchString].int)
         }
-        if titleInDict == ""
+        if titleInDict == "" && (type != "11" || type != "12")
         {
             titleInDict = userINFO["aps"]["alert"]["title"].string!
             messageInDict = userINFO["aps"]["alert"]["body"].string!
