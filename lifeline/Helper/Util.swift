@@ -129,7 +129,6 @@ class Util
         let age = calcAge.year
         return String(describing: age!)
     }
-
     
     //MARK:- Date for reminding donation
     func dateForReminder(dateString:String) -> String
@@ -143,8 +142,7 @@ class Util
         let stringFromDate = dateFormatter.string(from: date!)
         return stringFromDate
     }
-
-
+    
     //MARK:- Color Chenge From Hex String
     func hexStringToUIColor (hex:String) -> UIColor {
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
