@@ -213,7 +213,15 @@ extension MyDonorView:UITableViewDelegate,UITableViewDataSource
                 cell?.imgCloseView.isHidden = true
                 if myDonorDetail["PreferredDateTime"].string != nil
                 {
-                    cell?.lblDonorComment.text = myDonorDetail["HasDonated"].string
+                    if(myDonorDetail["HasDonated"] == "NO")
+                    {
+                        cell?.lblDonorComment.text = "Not Donated"
+                        cell?.imgDonorComment.image = UIImage.init(named: "delete_icon.png")
+                    }else if(myDonorDetail["HasDonated"] == "YES")
+                    {
+                        cell?.lblDonorComment.text = "Donated"
+                        cell?.imgDonorComment.image = UIImage.init(named: "save.png")
+                    }
                     cell?.lblDonorTime.text = Util.SharedInstance.dateChangeForInternal(dateString: myDonorDetail["PreferredDateTime"].string!)
                 }
             }
@@ -247,9 +255,8 @@ extension MyDonorView:UITableViewDelegate,UITableViewDataSource
             {
                 if myDonorDetail["PreferredDateTime"].string == nil
                 {
-                    
-                    cell?.lblDonorComment.isHidden = true
-                    cell?.imgDonorComment.isHidden = true
+                    cell?.lblDonorComment.text = "Not Donated"
+                    cell?.imgDonorComment.image = UIImage.init(named: "delete_icon.png")
                     cell?.lblDonorTime.text = Util.SharedInstance.dateChangeForInternal(dateString: myDonorDetail["PreferredDateTime"].string!)
                 }
             }
@@ -257,9 +264,8 @@ extension MyDonorView:UITableViewDelegate,UITableViewDataSource
             {
                 if myDonorDetail["PreferredDateTime"].string == nil
                 {
-                    
-                    cell?.lblDonorComment.isHidden = true
-                    cell?.imgDonorComment.isHidden = true
+                    cell?.lblDonorComment.text = "Donated"
+                    cell?.imgDonorComment.image = UIImage.init(named: "save.png")
                     cell?.lblDonorTime.text = Util.SharedInstance.dateChangeForInternal(dateString: myDonorDetail["PreferredDateTime"].string!)
                 }
             }

@@ -117,6 +117,73 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     // [START receive_message]
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
+        let userINFO = JSON(userInfo)
+        var type:String!
+        var ID:String!
+        var titleInDict = ""
+        var messageInDict = ""
+        var IDFetchString:String!
+        
+        if userINFO["gcm.notification.Type"].string != nil
+        {   type = userINFO["gcm.notification.Type"].string!
+        } else {
+            type = String(describing: userINFO["gcm.notification.Type"].int)
+        }
+        
+        if userINFO["Type"].string != nil {
+            type = userINFO["Type"].string!
+        }
+        
+        if (type == "2")
+        {
+            //After accecpt request
+            IDFetchString = "gcm.notification.RequestID"
+            titleInDict = userINFO["aps"]["alert"]["title"].string!
+            messageInDict = userINFO["aps"]["alert"]["body"].string!
+            
+        }else if(type == "4")
+        {
+            //For Camp and Thank you for after confirm camp request
+            IDFetchString = "gcm.notification.CampaignID"
+            titleInDict = userINFO["aps"]["alert"]["title"].string!
+            messageInDict = userINFO["aps"]["alert"]["body"].string!
+            
+        }else if(type == "3")
+        {
+            //for individual request notificaton
+            IDFetchString = "gcm.notification.RequestID"
+            titleInDict = userINFO["aps"]["alert"]["title"].string!
+            messageInDict = userINFO["aps"]["alert"]["body"].string!
+        } else if(type == "11" || type == "12") {
+            
+            IDFetchString = String(describing: userINFO["ID"])
+            titleInDict = String(describing: userINFO["Title"])
+            messageInDict = String(describing: userINFO["Body"])
+            ID = IDFetchString
+            
+        } else {
+            IDFetchString = ""
+        }
+        
+        if userINFO[IDFetchString].string != nil
+        {
+            ID = userINFO[IDFetchString].string!
+        } else {
+            ID = String(describing: userINFO[IDFetchString].int)
+        }
+        if titleInDict == ""
+        {
+            titleInDict = userINFO["aps"]["alert"]["title"].string!
+            messageInDict = userINFO["aps"]["alert"]["body"].string!
+        }
+        
+        let myDict = ["Title" : "\(titleInDict)", "Message" : "\(messageInDict)", "Type" : type!,"ID" : ID]
+        
+        let deadlineTime = DispatchTime.now() + .seconds(1)
+        DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute:
+            {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PushNotification"), object:myDict)
+        })
     }
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
