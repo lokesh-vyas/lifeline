@@ -23,10 +23,11 @@ class AlertConfirmDonate: UIViewController {
     var lastSentDate : String?
     var IDtoBeSent:String?
     var LocalNotificationType : String?
+    var isDateChanged = false
     var checkForDate : String?
     var fromDate = NSDate()
     var toDate = NSDate()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(AlertConfirmDonate.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
@@ -140,6 +141,10 @@ class AlertConfirmDonate: UIViewController {
             
             //FIXME:- the request Body
             let CommentText = self.txtViewComment.text!//(MarkerData.SharedInstance.CommentLines != nil) ? MarkerData.SharedInstance.CommentLines! : self.txtViewComment.text!
+            
+            if !isDateChanged {
+                preferredDateTime = Util.SharedInstance.preferredDateToCamp(selectedDate: preferredDateTime!)
+            }
             let collectedParameters = ["ConfirmDonateRequest":
                 ["ConfirmDonateDetails":
                     ["LoginID": UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!,
@@ -151,7 +156,10 @@ class AlertConfirmDonate: UIViewController {
             
             //Local Notification
             if MarkerData.SharedInstance.isIndividualAPN == false || MarkerData.SharedInstance.isNotIndividualAPN == false {
-            var reminder = Util.SharedInstance.dateStringToDateForNotification(dateString: Util.SharedInstance.dateForReminder(dateString: preferredDateTime!))
+
+            var reminder = Date()
+            reminder = Util.SharedInstance.dateStringToDateForNotification(dateString: Util.SharedInstance.dateForReminder(dateString: preferredDateTime!))
+                
             reminder.addTimeInterval(_: -60)
             self.scheduleNotification(at:reminder)
             }
@@ -240,6 +248,7 @@ extension AlertConfirmDonate : ProtocolCalendar {
     
     func SuccessProtocolCalendar(valueSent: String, CheckString: String) {
         print("valueSent :\(valueSent) && CheckString :\(CheckString)")
+        isDateChanged = true
         btnPreferredDateTime.setTitle(valueSent, for: .normal) //15/03/2017 17:52
         
         let dateForCamp = Util.SharedInstance.preferredDateToCamp(selectedDate: valueSent) //yyyy-MM-dd HH:mm:ss//sending to server
