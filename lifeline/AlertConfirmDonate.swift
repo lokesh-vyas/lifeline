@@ -25,9 +25,8 @@ class AlertConfirmDonate: UIViewController {
     var LocalNotificationType : String?
     var isDateChanged = false
     var checkForDate : String?
-    var fromDate = NSDate()
-    var toDate = NSDate()
-
+    var fromDate:NSDate?
+    var toDate:NSDate?
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(AlertConfirmDonate.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
@@ -91,8 +90,8 @@ class AlertConfirmDonate: UIViewController {
         preferredDateAlert.calenderHeading = "Confirm Date & Time"
         if checkForDate == "Campaign"
         {
-            preferredDateAlert.calendar.minimumDate = fromDate as Date
-            preferredDateAlert.calendar.maximumDate = toDate as Date
+            preferredDateAlert.calendar.minimumDate = fromDate as? Date
+            preferredDateAlert.calendar.maximumDate = toDate as? Date
         }
         else
         {
