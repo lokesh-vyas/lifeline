@@ -35,10 +35,8 @@ class IndividualConfirmDonate: UIViewController {
             iID = MarkerData.SharedInstance.oneRequestOfDonate["CID"]! as! String
         } else {
             //Through APN
-            navigationItem.hidesBackButton = true
+              navigationItem.leftBarButtonItem = nil
         }
-        
-        
         self.IndividualConfirmDonateProperties()
     }
     
@@ -161,6 +159,8 @@ extension IndividualConfirmDonate : getVolunteerProtocol {
         }
         
         let alertConfirm = self.storyboard?.instantiateViewController(withIdentifier: "AlertConfirmDonate") as! AlertConfirmDonate
+        alertConfirm.checkForDate = "Request"
+
         alertConfirm.modalPresentationStyle = .overCurrentContext
         alertConfirm.view.backgroundColor = UIColor.clear
         present(alertConfirm, animated: true, completion: nil)

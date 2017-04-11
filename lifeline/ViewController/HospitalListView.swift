@@ -37,6 +37,10 @@ class HospitalListView: UIViewController
         self.navigationController?.completelyTransparentBar()
         Util.SharedInstance.setSearchButtonText(text:"Select",searchBar:searchBarText)
     }
+
+    @IBAction func btnBackTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
 //MARK:- SearchBar
 extension HospitalListView:UISearchBarDelegate

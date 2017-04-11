@@ -40,10 +40,9 @@ class BloodInventory: UIViewController {
         tableInventoryView.contentInset = UIEdgeInsetsMake(-35, 0.0, 0, 0.0)
         let bloodbankIDDict = MarkerData.SharedInstance.markerData
         let bloodBankId:String = bloodbankIDDict["ID"] as! String
-        print(bloodBankId)
         let reqBody : Dictionary = ["GetBloodInventoryRequest":
             ["GetBloodInventoryRequestDetails":
-                ["BloodBankID" : "1"
+                ["BloodBankID" : bloodBankId
                 ]]]
         DonateInteractor.sharedInstance.delegate = self
         DonateInteractor.sharedInstance.findingDonateSources(urlString: URLList.LIFELINE_Get_Inventory.rawValue, params: reqBody)
