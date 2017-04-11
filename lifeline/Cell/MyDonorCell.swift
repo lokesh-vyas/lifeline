@@ -21,6 +21,7 @@ class MyDonorCell: UITableViewCell {
     @IBOutlet weak var lblDonorTime: UILabel!
     @IBOutlet weak var lblDonorComment: UILabel!
     @IBOutlet weak var imgDonorComment: UIImageView!
+
     
     override func awakeFromNib() {
         super.awakeFromNib()

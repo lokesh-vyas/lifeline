@@ -178,6 +178,19 @@ class Util
         }
         
     }
+    //MARK:- Date Change From Date /To Date For Sever
+    func dateChangeForFromDateInCamp(dateString:String) -> Date
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        
+        let dateObj = dateFormatter.date(from: dateString)
+        
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let strDate = dateFormatter.string(from: dateObj!)
+        
+        return dateFormatter.date(from: strDate)!
+    }
 }
 
 //MARK:- Valid Mail ID

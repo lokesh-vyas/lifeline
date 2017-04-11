@@ -27,6 +27,10 @@ class ConfirmDonate: UIViewController {
     @IBOutlet weak var HospitalName: UILabel!
     
     var ID = String()
+    var fromDateCamp = NSDate()
+    var toDateCamp = NSDate()
+    var checkForString = String()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.completelyTransparentBar()
@@ -111,19 +115,26 @@ class ConfirmDonate: UIViewController {
         
         var whichID = String()
         var idValue = String()
+        
         MarkerData.SharedInstance.oneRequestOfDonate["CID"] = nil
-        if MarkerData.SharedInstance.markerData["TypeOfOrg"] as! String? == "1" {
+        if MarkerData.SharedInstance.markerData["TypeOfOrg"] as! String? == "1"
+        {
             if MarkerData.SharedInstance.markerData["IndividualDetails"] as! String != "null" { // Individual
                 whichID = "RequestID"
+                 checkForString = "RequestID"
             } else { // Hospital
                 whichID = "CenterID"
+                checkForString = "CenterID"
             }
         } else if MarkerData.SharedInstance.markerData["TypeOfOrg"] as! String? == "2" { // Camp
             whichID = "CampaignID"
+            checkForString = "Campaign"
+            fromDateCamp = Util.SharedInstance.dateChangeForFromDateInCamp(dateString: self.lblFromDate.text!) as NSDate
+            toDateCamp = Util.SharedInstance.dateChangeForFromDateInCamp(dateString: self.lblToDate.text!) as NSDate
         }
         idValue = ID
-        //        let strV = "http://demo.frontman.isteer.com:8284/services/GetVolunteerList"
-        //FIXME:- LoginID
+        print(toDateCamp)
+        print(fromDateCamp)
         let volDict = ["GetVolunteerListRequest": [
             "RequestDetails": [
                 "LoginID" : "\(UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!)",
@@ -237,6 +248,9 @@ extension ConfirmDonate : getVolunteerProtocol {
         }
         
         let alertConfirm = self.storyboard?.instantiateViewController(withIdentifier: "AlertConfirmDonate") as! AlertConfirmDonate
+        alertConfirm.checkForDate = checkForString
+        alertConfirm.fromDate = fromDateCamp
+        alertConfirm.toDate = toDateCamp
         alertConfirm.modalPresentationStyle = .overCurrentContext
         alertConfirm.view.backgroundColor = UIColor.clear
         present(alertConfirm, animated: true, completion: nil)
