@@ -124,7 +124,16 @@ extension IndividualConfirmDonate : IndividualRequestDetailsProtocol {
         self.lblDoctorName.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["DoctorName"])
         self.lblPatientName.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["PatientName"])
         self.lblContactPerson.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["ContactPerson"])
-        self.lblContactNumber.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["ContactNumber"])
+        
+        let strContact = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["ContactNumber"])
+        if strContact == "null"
+        {
+            lblContactNumber.text = "00"
+        }else
+        {
+            lblContactNumber.text = strContact
+        }
+//        self.lblContactNumber.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["ContactNumber"])
         
         self.lblAddress.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["AddressLine"]).replacingOccurrences(of: "\n", with: ",").appending(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["City"])).appending(" - ").appending(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["PINCode"]))
         

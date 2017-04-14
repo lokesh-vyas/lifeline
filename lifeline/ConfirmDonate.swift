@@ -157,7 +157,16 @@ class ConfirmDonate: UIViewController {
         
         lblName.text = MarkerData.SharedInstance.markerData["Name"] as! String?
         lblWorkingHours.text = MarkerData.SharedInstance.markerData["WorkingHours"] as! String?
-        lblContactNumber.text = MarkerData.SharedInstance.markerData["ContactNumber"] as! String?
+        let strContact = MarkerData.SharedInstance.markerData["ContactNumber"] as! String?
+        if strContact == "null"
+        {
+            lblContactNumber.text = "00"
+        }else
+        {
+            lblContactNumber.text = strContact
+        }
+        
+       // lblContactNumber.text = MarkerData.SharedInstance.markerData["ContactNumber"] as! String?
         lblEmailID.text = MarkerData.SharedInstance.markerData["Email"] as! String?
         lblFromDate.text = MarkerData.SharedInstance.markerData["FromDate"] as! String?
         lblToDate.text = MarkerData.SharedInstance.markerData["ToDate"] as! String?
@@ -221,7 +230,15 @@ extension ConfirmDonate : ConfirmDonateProtocol {
         
         lblName.text = MarkerData.SharedInstance.APNResponse["Name"] as! String?
         lblWorkingHours.text = MarkerData.SharedInstance.APNResponse["WorkingHours"] as! String?
-        lblContactNumber.text = String(describing: MarkerData.SharedInstance.APNResponse["ContactNumber"]!)
+        let strContact = String(describing: MarkerData.SharedInstance.APNResponse["ContactNumber"]!)
+        if strContact == "null"
+        {
+            lblContactNumber.text = "00"
+        }else
+        {
+            lblContactNumber.text = strContact
+        }
+     
         lblEmailID.text = MarkerData.SharedInstance.APNResponse["Email"] as! String?
         lblAddress.text =  (MarkerData.SharedInstance.APNResponse["AddressLine"] as! String?)?.replacingOccurrences(of: "\n", with: ", ").appending(MarkerData.SharedInstance.APNResponse["City"] as! String).appending(" - ").appending(String(describing : MarkerData.SharedInstance.APNResponse["PINCode"]!))
         

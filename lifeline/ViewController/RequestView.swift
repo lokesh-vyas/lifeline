@@ -459,6 +459,7 @@ extension RequestView:HospitalListCompletDataProtocol
         RequestViewModel.SharedInstance.CentreID = ListData.CentreID
         self.txtFieldHospitalBloodBankName.text = ListData.HospitalName
         self.txtFieldHospitalBloodBankAddress.text = ListData.AddressLine
+        txtFieldHospitalBloodBankAddress.removeErrorLine()
         self.txtFieldHospitalBloodBankAddressCity.text = ListData.City
         if ListData.HospitalContactNumber != nil
         {
