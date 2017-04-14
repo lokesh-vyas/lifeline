@@ -12,21 +12,29 @@ import SwiftyJSON
 
 class NetworkManager
 {
+    
     static let sharedInstance : NetworkManager =
         {
             let instance = NetworkManager()
             return instance
     }()
-    var sessionManager = Alamofire.SessionManager()
-    //SingleTon Object
-    
-    //MARK:- Alamofire Implementation With Header
-    init() {
-        
+
+   var sessionManager : Alamofire.SessionManager = {
+        // Create the server trust policies
+        let serverTrustPolicies: [String: ServerTrustPolicy] = [
+            URLList.TrustHostProd.rawValue: .disableEvaluation
+        ]
+        // Create custom manager
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = 20
-        sessionManager = Alamofire.SessionManager(configuration: configuration)
-    }
+        let sessionManager = Alamofire.SessionManager(
+            configuration: URLSessionConfiguration.default,
+            serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
+        )
+        return sessionManager
+    }()
+    //SingleTon Object
+
     func serviceCallForPOSTforHTTPS()
     {
         let manager = NetworkReachabilityManager(host: "api.lifeline.services")
@@ -37,10 +45,11 @@ class NetworkManager
     }
     func serviceCallForPOST(url:String, method:String, parameters:Parameters, sucess:@escaping (JSON) -> Void, failure:@escaping (String) -> Void)
     {
+        
         print("----------\(parameters)-------")
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
-            //"apikey": "ALDZ5abmAnppumwtjIdMBQU1SqHgL12G"
+            "apikey": "ALDZ5abmAnppumwtjIdMBQU1SqHgL12G"
         ]
         sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
             .responseJSON {

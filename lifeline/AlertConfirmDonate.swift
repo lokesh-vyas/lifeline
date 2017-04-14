@@ -159,7 +159,7 @@ class AlertConfirmDonate: UIViewController {
             var reminder = Date()
             reminder = Util.SharedInstance.dateStringToDateForNotification(dateString: Util.SharedInstance.dateForReminder(dateString: preferredDateTime!))
                 
-            reminder.addTimeInterval(_: -60)
+            reminder.addTimeInterval(_: -60*60)
             self.scheduleNotification(at:reminder)
             }
             
