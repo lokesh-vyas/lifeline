@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         myLocManager.desiredAccuracy = kCLLocationAccuracyBest
         myLocManager.startUpdatingLocation()
         
-        myLocManager.requestAlwaysAuthorization()
+        myLocManager.requestWhenInUseAuthorization()
         
         //MARK:Facebook
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
@@ -180,7 +180,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         let myDict = ["Title" : "\(titleInDict)", "Message" : "\(messageInDict)", "Type" : type!,"ID" : ID]
         
-        let deadlineTime = DispatchTime.now() + .seconds(1)
+        let deadlineTime = DispatchTime.now() + .milliseconds(500)
+        
         DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute:
             {
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PushNotification"), object:myDict)
@@ -254,7 +255,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         let myDict = ["Title" : "\(titleInDict)", "Message" : "\(messageInDict)", "Type" : type!,"ID" : ID]
         
-        let deadlineTime = DispatchTime.now() + .seconds(1)
+        let deadlineTime = DispatchTime.now() + .milliseconds(500)
+        
         DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute:
             {
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PushNotification"), object:myDict)
@@ -441,7 +443,8 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         
         let myDict = ["Title" : "\(titleInDict)", "Message" : "\(messageInDict)", "Type" : type!,"ID" : ID]
         
-        let deadlineTime = DispatchTime.now() + .seconds(1)
+        let deadlineTime = DispatchTime.now() + .milliseconds(500)
+        
         DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute:
             {
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PushNotification"), object:myDict)
