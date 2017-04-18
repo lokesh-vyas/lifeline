@@ -47,7 +47,6 @@ class ShowHospitalInMapView: UIViewController
         super.viewDidLoad()
           self.navigationController?.completelyTransparentBar()
         CLLocationManager.locationServicesEnabled()
-        locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
         
         // Do any additional setup after loading the view.
@@ -65,8 +64,6 @@ class ShowHospitalInMapView: UIViewController
     {
         HudBar.sharedInstance.hideHudFormView(view: self.view)
         CLLocationManager.locationServicesEnabled()
-        
-        locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
         
         if CLLocationManager.locationServicesEnabled() == true {
