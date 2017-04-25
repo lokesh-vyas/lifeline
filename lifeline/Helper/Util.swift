@@ -182,11 +182,11 @@ class Util
     func dateChangeForFromDateInCamp(dateString:String) -> Date
     {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
+        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
         
         let dateObj = dateFormatter.date(from: dateString)
-        
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.timeZone = NSTimeZone(name: "IST") as TimeZone!
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
         let strDate = dateFormatter.string(from: dateObj!)
         
         return dateFormatter.date(from: strDate)!

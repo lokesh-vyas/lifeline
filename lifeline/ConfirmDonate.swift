@@ -131,8 +131,25 @@ class ConfirmDonate: UIViewController {
             checkForString = "Campaign"
             if self.lblFromDate.text != nil
             {
-                fromDateCamp = Util.SharedInstance.dateChangeForFromDateInCamp(dateString: self.lblFromDate.text!) as NSDate
-                toDateCamp = Util.SharedInstance.dateChangeForFromDateInCamp(dateString: self.lblToDate.text!) as NSDate
+                let workingHours:String = MarkerData.SharedInstance.markerData["WorkingHours"] as! String
+                let fullNameArr : [String] = workingHours.components(separatedBy: " To ")
+                var fromTime: String? = fullNameArr[0]
+                var toTimeO: String? = fullNameArr[1]
+                if fromTime == nil
+                {
+                    fromTime = "09:00"
+                }
+                if toTimeO == nil
+                {
+                    toTimeO = "05:00"
+                }
+                let toDateWithTime:String = (self.lblToDate.text!).appending(" ").appending(toTimeO!)
+                let fromDateWithTime:String = (self.lblFromDate.text!).appending(" ").appending(fromTime!)
+                
+                fromDateCamp = Util.SharedInstance.dateChangeForFromDateInCamp(dateString: fromDateWithTime) as NSDate
+                toDateCamp = Util.SharedInstance.dateChangeForFromDateInCamp(dateString: toDateWithTime) as NSDate
+            
+                
             }else
             {
                 checkForString = "CenterID"
