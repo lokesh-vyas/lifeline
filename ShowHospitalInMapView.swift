@@ -46,6 +46,24 @@ class ShowHospitalInMapView: UIViewController
     {
         super.viewDidLoad()
           self.navigationController?.completelyTransparentBar()
+        if CLLocationManager.locationServicesEnabled()
+        {
+            switch(CLLocationManager.authorizationStatus()) {
+            case .notDetermined, .restricted, .denied:
+                self.openSettingsForDisableMap()
+            case .authorizedWhenInUse:
+                self.goToInCurrentLoction()
+            default:
+                self.openSettingsForDisableMap()
+            }
+        } else
+        {
+            self.openSettingsForDisableMap()
+        }
+    }
+    //MARK:- goToInCurrentLoction
+    func goToInCurrentLoction()
+    {
         CLLocationManager.locationServicesEnabled()
         locationManager.requestWhenInUseAuthorization()
         
@@ -59,6 +77,33 @@ class ShowHospitalInMapView: UIViewController
         {
             self.currentLoctionSearch()
         }
+    }
+    //MARK:- openSettingsForDisableMap
+    func openSettingsForDisableMap()
+    {
+        let alertController = UIAlertController (title: "Loction Service is Turned Off ", message: "You can turn on Location Service for this app in Settings.", preferredStyle: .alert)
+        
+        let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+            
+            guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+                return
+            }
+            if UIApplication.shared.canOpenURL(settingsUrl) {
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                    })
+                } else {
+                    if let settingsURL = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
+                        UIApplication.shared.openURL(settingsURL as URL)
+                    }
+                }
+            }
+        }
+        alertController.addAction(settingsAction)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
     }
     func currentLoctionSearch()
     {

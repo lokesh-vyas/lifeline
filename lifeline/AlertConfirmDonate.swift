@@ -81,7 +81,6 @@ class AlertConfirmDonate: UIViewController {
     
     @IBAction func btnPreferredDateTapped(_ sender: Any) {
         
-        print("DatePicker Should come")
         let preferredDateAlert: CalendarView = self.storyboard?.instantiateViewController(withIdentifier: "CalendarView") as! CalendarView
         preferredDateAlert.delegate = self
         let dateFormatter = DateFormatter()
