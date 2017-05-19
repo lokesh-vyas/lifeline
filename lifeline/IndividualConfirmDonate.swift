@@ -20,6 +20,7 @@ class IndividualConfirmDonate: UIViewController {
     @IBOutlet weak var lblDoctorName: UILabel!
     @IBOutlet weak var lblAddress: UILabel!
     @IBOutlet weak var lblPersonalAppeal: UILabel!
+    var textShareArray = [String]()
     
     var iID = String()
     override func viewDidLoad() {
@@ -65,7 +66,22 @@ class IndividualConfirmDonate: UIViewController {
         self.present(SWRevealView, animated: true, completion: nil)
         
     }
-    
+    //MARK:- btnSharedTapped
+    @IBAction func btnSharedTapped(_ sender: Any)
+    {
+        let textShareLink = "You can also access the request on LifeLine here:"
+        let textToIOS = "iOS:- https://goo.gl/XJl5a7"
+        let textToAndroid = "Android:- https://goo.gl/PUorhE"
+        
+        if let myWebsite = NSURL(string: "https://goo.gl/XJl5a7") {
+            let objectsToShare = [StringList.LifeLine_BloodDonation_Share_Text.rawValue,textShareArray[0],textShareArray[1],textShareArray[2],textShareArray[3],textShareArray[4],textShareLink,textToIOS,textToAndroid, myWebsite] as [Any]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            
+            //New Excluded Activities Code
+            activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+            self.present(activityVC, animated: true, completion: nil)
+        }
+    }
     @IBAction func btnConfirmDonateTapped(_ sender: Any) {
 
         //MARK:- Below Age 18
@@ -119,20 +135,32 @@ extension IndividualConfirmDonate : IndividualRequestDetailsProtocol {
         MarkerData.SharedInstance.APNResponse = jsonArray["GetRequestDetailsResponse"]["ResponseDetails"].dictionaryObject!
         
         self.lblWhoRequested.text = "\(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["WhatNeeded"])) Requirement for \(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["BloodGroup"]))"
+        
+        self.textShareArray.insert("Blood Group : \(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["BloodGroup"]))", at: 0)
+         self.textShareArray.insert("Requirement : \(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["WhatNeeded"]))", at: 1)
+        
         self.lblWhenRequired.text = Util.SharedInstance.showingDateToUser(dateString: String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["WhenNeeded"]))
+        
+        self.textShareArray.insert("Needed By : \(Util.SharedInstance.showingDateToUser(dateString: String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["WhenNeeded"])))", at: 2)
+        
         self.lblNoOfUnits.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["NumUnits"])
         self.lblDoctorName.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["DoctorName"])
         self.lblPatientName.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["PatientName"])
         self.lblContactPerson.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["ContactPerson"])
         
+        self.textShareArray.insert("Contact Name : \(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["ContactPerson"]))", at: 3)
+        
         let strContact = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["ContactNumber"])
         if strContact == "null"
         {
             lblContactNumber.text = "00"
+            self.textShareArray.insert("Contact Number : 00", at: 4)
         }else
         {
             lblContactNumber.text = strContact
+             self.textShareArray.insert("Contact Number : \(strContact)", at: 4)
         }
+        
 //        self.lblContactNumber.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["ContactNumber"])
         
         self.lblAddress.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["AddressLine"]).replacingOccurrences(of: "\n", with: ",").appending(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["City"])).appending(" - ").appending(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["PINCode"]))
