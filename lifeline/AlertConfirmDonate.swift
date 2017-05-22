@@ -160,6 +160,12 @@ class AlertConfirmDonate: UIViewController {
                 
             reminder.addTimeInterval(_: -60*60)
             self.scheduleNotification(at:reminder)
+                
+                reminder.addTimeInterval(_: -60*60*6)
+                self.scheduleNotification(at:reminder)
+                reminder.addTimeInterval(_: -60*60*24)
+                self.scheduleNotification(at:reminder)
+                
             }
             
             AlertConfirmDonateInteractor.sharedInstance.confirmsDonate(urlString: URLList.CONFIRM_DONATE.rawValue, params: collectedParameters)
