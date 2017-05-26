@@ -11,7 +11,7 @@ import SwiftyJSON
 
 protocol ProtocolRequestView {
     
-    func succesfullyBloodRequest(success: Bool)
+    func succesfullyBloodRequest(success: Bool,message:String)
     func failedBloodRequest(Response:String)
 }
 //MARK:- ProfileView Model
@@ -57,10 +57,10 @@ class RequestInterator
                     print(JSONResponse)
                     if(JSONResponse["BloodRequirementResponse"]["ResponseDetails"]["StatusCode"].int == 0)
                     {
-                        self.delegateRequestBlood?.succesfullyBloodRequest(success: true)
-                    }else
+                        self.delegateRequestBlood?.succesfullyBloodRequest(success: true,message: JSONResponse["BloodRequirementResponse"]["ResponseDetails"]["StatusMessage"].string!)
+                    }else if(JSONResponse["BloodRequirementResponse"]["ResponseDetails"]["StatusCode"].int == 1)
                     {
-                        self.delegateRequestBlood?.succesfullyBloodRequest(success: false)
+                        self.delegateRequestBlood?.succesfullyBloodRequest(success: false,message: JSONResponse["BloodRequirementResponse"]["ResponseDetails"]["StatusMessage"].string!)
                     }
             }, failure:
                 { (Response) -> Void in
