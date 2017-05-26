@@ -303,12 +303,12 @@ class RequestView: UIViewController,UITextViewDelegate
 extension RequestView:ProtocolRequestView
 {
     
-    func succesfullyBloodRequest(success:Bool)
+    func succesfullyBloodRequest(success:Bool,message:String)
     {
         if success == true
         {
             HudBar.sharedInstance.hideHudFormView(view: self.view)
-            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Your BloodRequest Submitted Successfully", view: self.view)
+            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: message, view: self.view)
             if switchForAppeal.isOn
             {
                 self.PostOnSocialMedia()
@@ -324,7 +324,7 @@ extension RequestView:ProtocolRequestView
         else
         {
             HudBar.sharedInstance.hideHudFormView(view: self.view)
-            self.view.makeToast("Unable to access server, please try again later", duration: 2.0, position: .bottom)
+            self.view.makeToast(message, duration: 2.0, position: .bottom)
         }
     }
     
