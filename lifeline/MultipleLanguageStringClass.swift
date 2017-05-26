@@ -19,11 +19,19 @@ public enum StringListForHindi:String
 {
     case LifeLine_Social_Share_String = ""
     case LifeLine_PleaseWait_String = ""
+    case LifeLine_Failed_TO_Update = ""
+    case Life_Line_No_Internet_Connection_String = ""
 }
 public enum StringListForEnglish:String
 {
     case LifeLine_Social_Share_String = "LifeLine is a social application dedicated to connecting blood banks, donors and recipients."
     case LifeLine_PleaseWait_String = "Please wait.."
+    case LifeLine_Failed_TO_Update = "Failed to Update"
+    case Life_Line_No_Internet_Connection_String = "No Internet Connection, please check your Internet Connection"
+    case Life_Line_Unable_Access_server_String = "Unable to access server, please try again later"
+    case Life_Line_Thanks_String = "Thanks"
+    
+    
 }
 
 //MARK:- STRING LIST
