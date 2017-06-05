@@ -33,7 +33,7 @@ public enum URLList:String
 //    case GET_CAMPAGIN_DETAILS   =    "http://api.lifeline.services/services/GetCampaignDetailsV1.1"
 //    case LIFELINE_Get_VolunteerList       = "http://api.lifeline.services/services/GetVolunteerListV1.1"
 //    case LIFELINE_Get_Inventory           = "http://api.lifeline.services/services/GetInventoryV1.1"
-    
+//    
     //MARK:- Staging URL's For Production
  //   case TrustHostProd = "staging.lifeline.services"
   //  case ACCESS      =               "http://staging.lifeline.services/services/AccessV1.1"
@@ -79,7 +79,7 @@ public enum URLList:String
 //    case LIFELINE_Get_VolunteerList       = "https://lifelineadmin-test.apigee.net/lifeline-dev/GetVolunteerList"
 //    case LIFELINE_Get_Inventory           = "https://lifelineadmin-test.apigee.net/lifeline-dev/DEV-LifeLine.GetInventory"
     
-    //MARK:- Development URL's
+//    //MARK:- Development URL's
     case TrustHostProd = "demo.frontman.isteer.com"
     case ACCESS                           = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.Access"
     case BLOOD_REQUEST_SEARCH             = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.BloodRequestSearch"
