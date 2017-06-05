@@ -14,6 +14,7 @@ import CoreLocation
 import SwiftyJSON
 
 
+
 class DonateView: UIViewController {
     
     var camera : GMSCameraPosition?
@@ -70,6 +71,7 @@ class DonateView: UIViewController {
     }
     
     //MARK:- viewWillAppear
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         btnListofMarkers.isHidden = true

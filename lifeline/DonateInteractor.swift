@@ -20,6 +20,7 @@ class DonateInteractor {
         return instance
     }()
     var delegate:DonateViewProtocol?
+    
     func findingDonateSources(urlString : String, params : Dictionary<String,Any>) {
         NetworkManager.sharedInstance.serviceCallForPOST(url: urlString,
                                                          method: "POST",
