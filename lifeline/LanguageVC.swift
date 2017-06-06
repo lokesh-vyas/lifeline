@@ -45,6 +45,9 @@ extension LanguageVC : UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
+        let cell = self.tableObj.cellForRow(at: indexPath) as! LanguageTableCell
+        cell.accessoryType = UITableViewCellAccessoryType.checkmark
         
+        let alertMsg = UIAlertController(title: "Warning", message: "Are you sure you want to convert this language", preferredStyle: UIAlertControllerStyle.)
     }
 }

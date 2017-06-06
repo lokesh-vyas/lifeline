@@ -63,8 +63,8 @@ public enum StringListForHindi:String
  //   case Life_Line_Special_Character_String = "विशेष वर्णों की अनुमति नहीं है"
  //   case Life_Line_Invalid_Hospital_Pin_String = "अमान्य अस्पताल का पता पिन कोड"
   //  case Life_Line_Blood_Group_Select_String = "कृपया रक्त समूह चुनें"
-  //  case Life_Line_Select_what_You_Need_String = "कृप्या चयन करे अापको क्या चहिये"
-   // case Life_Line_Select_When_You_Need_String = "कृप्या चयन करे अापको कब चहिये"
+  //  case Life_Line_Select_what_You_Need_String = "कृप्या चयन करे अापको क्या चहिये" //  avashyakta
+   // case Life_Line_Select_When_You_Need_String = "कृप्या चयन करे अापको कब चहिये"  // kab avas
    // case case Life_Line_select_Units_String = "कृप्या युनिट का चयन करे"
    // case Life_Line_Facebook_Post_Success_String = "आपकी पोस्ट सफलतापूर्वक पोस्ट की गई है"
    // case Life_Line_Facebook_Post_Failure_STring = "फेसबुक ऐप इंसटाल नही है"
