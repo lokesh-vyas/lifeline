@@ -18,10 +18,10 @@ class RevalListView: UIViewController
         let InternalCheck:String = UserDefaults.standard.value(forKey: "LoginInformation")! as! String
         if InternalCheck == "Internal"
         {
-            menuArray = ["myProfile","changePassword","share","FAQ"]
+            menuArray = ["myProfile","changePassword","share","Language","FAQ"]
         }else
         {
-            menuArray = ["myProfile","share","FAQ"]
+            menuArray = ["myProfile","share","FAQ", "Language"]
         }
         // Do any additional setup after loading the view.
     }
@@ -52,6 +52,13 @@ extension RevalListView:UITableViewDelegate,UITableViewDataSource
             {
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ShareApplicationURL"), object: nil)
             }
+        }
+        
+        if indexPath.row == 3
+        {
+            let storyObj = self.storyboard?.instantiateViewController(withIdentifier: "LanguageView")
+            let nav = UINavigationController(rootViewController: storyObj!)
+            self.present(nav, animated: true, completion: nil)
         }
      }
 }
