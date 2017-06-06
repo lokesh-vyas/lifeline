@@ -1,9 +1,69 @@
-/* 
-  Localizable.strings
-  lifeline
-
-  Created by iSteer on 01/06/17.
-  Copyright © 2017 iSteer. All rights reserved.
-*/
-
-THANKS = "Thanks"
+///* 
+//  Localizable.strings
+//  lifeline
+//
+//  Created by iSteer on 01/06/17.
+//  Copyright © 2017 iSteer. All rights reserved.
+//*/
+//
+//THANKS = "Thanks";
+//
+//
+///* LoginView.swift */
+//
+///* BUTTON TITLE */
+//
+//CANCEL = "Cancel"
+//
+///* TOAST MESSAGE */
+//
+//TOAST_ENTER_MAILID = "Please enter Email Address";
+//TOAST_PLEASE_WAIT = "Please Wait...";
+//TOAST_ENTER_PASSWORD = "Please enter Password";
+//TOAST_FAIL_LOGIN = "Fail to Login"
+//
+//ERROR_MAIL_ID_ALREADY_EXIST = "This Email Id is already use for BloodBank,Please Login with different Email Id";
+//ERROR_INCORRECT_USERID = "Type your UserID Correctly";
+//ERROR_INCORRECT_USERID_PASSWORD = "Please Check your UserID And Password and try again
+//
+//SUCCESS_NEW_PASSWORD = "You will shortly recive mail in your registered Email id with the new password";
+//
+///* MyRequestView.swift */
+//
+///* TOAST MESSAGE */
+//
+//TOAST_LOADING = "Loading.."
+//
+//ERROR_NO_REQUEST_FOUND = "No requests found"
+//
+///* RequestView.swift */
+//
+///* BUTTON TITLE */
+//OK = "OK"
+//
+///* TOAST MESSAGE */
+//
+//TOAST_SELECT_WHAT_YOU_NEED = "Select what you need"
+//TOAST_SELECT_UNITS = "Select number of units"
+//TOAST_SELECT_BLOOD_GROUP = "Please select Blood Group"
+//TOAST_POST_SUCCESSFULLY_POST = "Your post has been posted successfully"
+//TOAST_FACEBOOK_NOT_INSTALLED = "Facebook App not installed."
+//TOAST_INVALID_CONTACT = "Invalid Contact Number"
+//TOAST_INVALID_HOSPITAL_CONTACT = "Invalid Hospial Contact Number"
+//TOAST_SPECIAL_CHAR_NOT_ALLOWED = "Special characters are not allowed"
+//TOAST_INVALID_HOSPITAL_PIN = "Invalid Hospial Address PIN Code"
+//TOAST_SUBMIT = "Submiting..."
+//
+//CONFIRM_DATE = "Confirm Your Date"
+//ERROR_FACEBOOK_NOT_INSTALLED = "Your device has no Facebook installed."
+//
+///* ShowHospitalMapView.swift */
+//
+///* TOAST MESSAGE */
+//
+//TOAST_LOCATION_OFF = "Loction Service is Turned Off "
+//TOAST_SETTING = "Settings"
+//TOAST_SELECT_ADDRESS = "Selected Address"
+//TOAST_SELECT = "Select"
+//
+//TURN_ON_LOCATION = "You can turn on Location Service for this app in Settings."

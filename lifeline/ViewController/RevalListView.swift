@@ -18,7 +18,7 @@ class RevalListView: UIViewController
         let InternalCheck:String = UserDefaults.standard.value(forKey: "LoginInformation")! as! String
         if InternalCheck == "Internal"
         {
-            menuArray = ["myProfile","changePassword","share","FAQ","Language"]
+            menuArray = ["myProfile","changePassword","share","Language","FAQ"]
         }else
         {
             menuArray = ["myProfile","share","FAQ", "Language"]
@@ -56,10 +56,9 @@ extension RevalListView:UITableViewDelegate,UITableViewDataSource
         
         if indexPath.row == 3
         {
-            let alert = UIAlertController(title: "Choose", message: "Choose Your Language", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "English", style: UIAlertActionStyle.default, handler: nil))
-            alert.addAction(UIAlertAction(title: "हिन्दी", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            let storyObj = self.storyboard?.instantiateViewController(withIdentifier: "LanguageView")
+            let nav = UINavigationController(rootViewController: storyObj!)
+            self.present(nav, animated: true, completion: nil)
         }
      }
 }
