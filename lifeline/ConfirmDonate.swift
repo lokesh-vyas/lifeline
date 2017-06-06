@@ -26,16 +26,19 @@ class ConfirmDonate: UIViewController {
     @IBOutlet weak var lblCampDescription: UILabel!
     @IBOutlet weak var HospitalName: UILabel!
     
+    @IBOutlet var BarBtnHome: UIBarButtonItem!
+    @IBOutlet var btnShare: UIBarButtonItem!
     var ID = String()
-    var fromDateCamp = NSDate()
-    var toDateCamp = NSDate()
+    var fromDateCamp:NSDate?
+    var toDateCamp:NSDate?
     var checkForString = String()
+    var textShareArray = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.completelyTransparentBar()
         ConfirmDonateInteractor.sharedInstance.delegate = self
-        
+        navigationItem.rightBarButtonItem = nil
         //MARK:- Invokes to add properties on controller
         NotificationCenter.default.addObserver(self, selector: #selector(ConfirmDonate.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
         //MARK:- Either coming from APN or Back
@@ -46,6 +49,7 @@ class ConfirmDonate: UIViewController {
         } else {
              HudBar.sharedInstance.showHudWithMessage(message: "Loading...", view: view)
             //Through APN
+            navigationItem.rightBarButtonItems = [btnShare,BarBtnHome]
             navigationItem.leftBarButtonItem = nil
             HospitalName.text = "Contact Name"
             Email.isHidden = false
@@ -68,7 +72,22 @@ class ConfirmDonate: UIViewController {
             
         }
     }
-    
+    //MARK:- btnShareTapped
+    @IBAction func btnShareTapped(_ sender: Any)
+    {
+        let textShareLink = "You can also access the request on LifeLine here:"
+        let textToIOS = "iOS:- https://goo.gl/XJl5a7"
+        let textToAndroid = "Android:- https://goo.gl/PUorhE"
+        
+        if let myWebsite = NSURL(string: "https://goo.gl/XJl5a7") {
+            let objectsToShare = [StringList.LifeLine_BloodDonation_Share_Text.rawValue,textShareArray[0],textShareArray[1],textShareArray[2],textShareArray[3],textShareLink,textToIOS,textToAndroid, myWebsite] as [Any]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            
+            //New Excluded Activities Code
+            activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+            self.present(activityVC, animated: true, completion: nil)
+        }
+    }
   
     //MARK:- PushNotificationView
     func PushNotificationView(_ notification: NSNotification)
@@ -129,12 +148,38 @@ class ConfirmDonate: UIViewController {
         } else if MarkerData.SharedInstance.markerData["TypeOfOrg"] as! String? == "2" { // Camp
             whichID = "CampaignID"
             checkForString = "Campaign"
-            fromDateCamp = Util.SharedInstance.dateChangeForFromDateInCamp(dateString: self.lblFromDate.text!) as NSDate
-            toDateCamp = Util.SharedInstance.dateChangeForFromDateInCamp(dateString: self.lblToDate.text!) as NSDate
+            if self.lblFromDate.text != nil
+            {
+                let workingHours:String = MarkerData.SharedInstance.markerData["WorkingHours"] as! String
+                let fullNameArr : [String] = workingHours.components(separatedBy: " To ")
+                var fromTime: String? = fullNameArr[0]
+                var toTimeO: String? = fullNameArr[1]
+                if fromTime == nil
+                {
+                    fromTime = "09:00"
+                }
+                if toTimeO == nil
+                {
+                    toTimeO = "05:00"
+                }
+                let toDateWithTime:String = (self.lblToDate.text!).appending(" ").appending(toTimeO!)
+                let fromDateWithTime:String = (self.lblFromDate.text!).appending(" ").appending(fromTime!)
+                
+                fromDateCamp = Util.SharedInstance.dateChangeForFromDateInCamp(dateString: fromDateWithTime) as NSDate
+                toDateCamp = Util.SharedInstance.dateChangeForFromDateInCamp(dateString: toDateWithTime) as NSDate
+            
+                
+            }else
+            {
+                checkForString = "CenterID"
+            }
+            if fromDateCamp == nil
+            {
+                checkForString = "CenterID"
+            }
         }
         idValue = ID
-        print(toDateCamp)
-        print(fromDateCamp)
+        
         let volDict = ["GetVolunteerListRequest": [
             "RequestDetails": [
                 "LoginID" : "\(UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!)",
@@ -148,7 +193,16 @@ class ConfirmDonate: UIViewController {
         
         lblName.text = MarkerData.SharedInstance.markerData["Name"] as! String?
         lblWorkingHours.text = MarkerData.SharedInstance.markerData["WorkingHours"] as! String?
-        lblContactNumber.text = MarkerData.SharedInstance.markerData["ContactNumber"] as! String?
+        let strContact = MarkerData.SharedInstance.markerData["ContactNumber"] as! String?
+        if strContact == "null"
+        {
+            lblContactNumber.text = "00"
+        }else
+        {
+            lblContactNumber.text = strContact
+        }
+        
+       // lblContactNumber.text = MarkerData.SharedInstance.markerData["ContactNumber"] as! String?
         lblEmailID.text = MarkerData.SharedInstance.markerData["Email"] as! String?
         lblFromDate.text = MarkerData.SharedInstance.markerData["FromDate"] as! String?
         lblToDate.text = MarkerData.SharedInstance.markerData["ToDate"] as! String?
@@ -176,9 +230,10 @@ class ConfirmDonate: UIViewController {
             VolunteerDetails.isHidden = false
             lblCampDescription.isHidden = false
             btnConfirmDonate.setTitle("Volunteer", for: .normal)
+            navigationItem.rightBarButtonItems = [btnShare,BarBtnHome]
             
         } else {
-            
+            navigationItem.rightBarButtonItem = BarBtnHome
             HospitalName.text = "Hospital Name"
             Email.isHidden = true
             lblEmailID.isHidden = true
@@ -204,15 +259,29 @@ extension ConfirmDonate : ConfirmDonateProtocol {
 //        
 //        self.lblFromDate.text = String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["FromDate"]).characters.count > 10 ?  String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["FromDate"]).substring(to: 10):String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["FromDate"])
         
-        lblFromDate.text = Util.SharedInstance.showingDateToUser(dateString: (String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["FromDate"]).characters.count > 10 ?  String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["FromDate"]).substring(to: 10):String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["FromDate"])))
-        lblToDate.text = Util.SharedInstance.showingDateToUser(dateString: (String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["ToDate"]).characters.count > 10 ?  String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["ToDate"]).substring(to: 10):String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["ToDate"])))
-        
         
         self.lblCampDescription.text = String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["AdditionalInfo"])
         
         lblName.text = MarkerData.SharedInstance.APNResponse["Name"] as! String?
+        self.textShareArray.insert("Contact Name : \(lblName.text!)", at: 0)
+        
+        let strContact = String(describing: MarkerData.SharedInstance.APNResponse["ContactNumber"]!)
+        if strContact == "null"
+        {
+            lblContactNumber.text = "00"
+            self.textShareArray.insert("Contact Number : 00", at: 1)
+        }else
+        {
+            lblContactNumber.text = strContact
+            self.textShareArray.insert("Contact Number : \(strContact)", at: 1)
+        }
         lblWorkingHours.text = MarkerData.SharedInstance.APNResponse["WorkingHours"] as! String?
-        lblContactNumber.text = String(describing: MarkerData.SharedInstance.APNResponse["ContactNumber"]!)
+        self.textShareArray.insert("Working Hours : \(lblWorkingHours.text!)", at: 2)
+        lblFromDate.text = Util.SharedInstance.showingDateToUser(dateString: (String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["FromDate"]).characters.count > 10 ?  String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["FromDate"]).substring(to: 10):String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["FromDate"])))
+        lblToDate.text = Util.SharedInstance.showingDateToUser(dateString: (String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["ToDate"]).characters.count > 10 ?  String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["ToDate"]).substring(to: 10):String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["ToDate"])))
+        
+        self.textShareArray.insert("Needed by : \(lblToDate.text!)", at: 3)
+
         lblEmailID.text = MarkerData.SharedInstance.APNResponse["Email"] as! String?
         lblAddress.text =  (MarkerData.SharedInstance.APNResponse["AddressLine"] as! String?)?.replacingOccurrences(of: "\n", with: ", ").appending(MarkerData.SharedInstance.APNResponse["City"] as! String).appending(" - ").appending(String(describing : MarkerData.SharedInstance.APNResponse["PINCode"]!))
         
@@ -249,8 +318,11 @@ extension ConfirmDonate : getVolunteerProtocol {
         
         let alertConfirm = self.storyboard?.instantiateViewController(withIdentifier: "AlertConfirmDonate") as! AlertConfirmDonate
         alertConfirm.checkForDate = checkForString
-        alertConfirm.fromDate = fromDateCamp
-        alertConfirm.toDate = toDateCamp
+        if fromDateCamp != nil
+        {
+            alertConfirm.fromDate = fromDateCamp!
+            alertConfirm.toDate = toDateCamp!
+        }
         alertConfirm.modalPresentationStyle = .overCurrentContext
         alertConfirm.view.backgroundColor = UIColor.clear
         present(alertConfirm, animated: true, completion: nil)

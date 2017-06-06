@@ -25,9 +25,8 @@ class AlertConfirmDonate: UIViewController {
     var LocalNotificationType : String?
     var isDateChanged = false
     var checkForDate : String?
-    var fromDate = NSDate()
-    var toDate = NSDate()
-
+    var fromDate:NSDate?
+    var toDate:NSDate?
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(AlertConfirmDonate.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
@@ -82,7 +81,6 @@ class AlertConfirmDonate: UIViewController {
     
     @IBAction func btnPreferredDateTapped(_ sender: Any) {
         
-        print("DatePicker Should come")
         let preferredDateAlert: CalendarView = self.storyboard?.instantiateViewController(withIdentifier: "CalendarView") as! CalendarView
         preferredDateAlert.delegate = self
         let dateFormatter = DateFormatter()
@@ -91,8 +89,8 @@ class AlertConfirmDonate: UIViewController {
         preferredDateAlert.calenderHeading = "Confirm Date & Time"
         if checkForDate == "Campaign"
         {
-            preferredDateAlert.calendar.minimumDate = fromDate as Date
-            preferredDateAlert.calendar.maximumDate = toDate as Date
+            preferredDateAlert.calendar.minimumDate = fromDate as? Date
+            preferredDateAlert.calendar.maximumDate = toDate as? Date
         }
         else
         {
@@ -160,8 +158,14 @@ class AlertConfirmDonate: UIViewController {
             var reminder = Date()
             reminder = Util.SharedInstance.dateStringToDateForNotification(dateString: Util.SharedInstance.dateForReminder(dateString: preferredDateTime!))
                 
-            reminder.addTimeInterval(_: -60)
+            reminder.addTimeInterval(_: -60*60)
             self.scheduleNotification(at:reminder)
+                
+                reminder.addTimeInterval(_: -60*60*6)
+                self.scheduleNotification(at:reminder)
+                reminder.addTimeInterval(_: -60*60*24)
+                self.scheduleNotification(at:reminder)
+                
             }
             
             AlertConfirmDonateInteractor.sharedInstance.confirmsDonate(urlString: URLList.CONFIRM_DONATE.rawValue, params: collectedParameters)

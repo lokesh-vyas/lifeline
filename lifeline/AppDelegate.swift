@@ -22,12 +22,14 @@ import FirebaseMessaging
 
 @UIApplicationMain
 
+
+
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
     
     var window: UIWindow?
     let gcmMessageIDKey = "523732833608"
     var myLocManager = CLLocationManager()
-    
+ 
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
     {
@@ -38,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         myLocManager.desiredAccuracy = kCLLocationAccuracyBest
         myLocManager.startUpdatingLocation()
         
-        myLocManager.requestAlwaysAuthorization()
+        myLocManager.requestWhenInUseAuthorization()
         
         //MARK:Facebook
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
@@ -46,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         var configureError: NSError?
         GGLContext.sharedInstance().configureWithError(&configureError)
         
-        assert(configureError == nil, "Error configuring Google services: \(configureError)")
+        assert(configureError == nil, "Error configuring Google services: \(String(describing: configureError))")
         self.checkForViewControllers()
         
         GMSServices.provideAPIKey("AIzaSyANI0kErKaaeku5vY_pNlGCG7a6LUIhlq8")
@@ -102,6 +104,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         // [END register_for_notifications]
         FIRApp.configure()
+        
         return true
     }
     
@@ -117,74 +120,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         }
     }
     // [START receive_message]
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
-        let userINFO = JSON(userInfo)
-        var type:String!
-        var ID:String!
-        var titleInDict = ""
-        var messageInDict = ""
-        var IDFetchString:String!
-        
-        if userINFO["gcm.notification.Type"].string != nil
-        {   type = userINFO["gcm.notification.Type"].string!
-        } else {
-            type = String(describing: userINFO["gcm.notification.Type"].int)
-        }
-        
-        if userINFO["Type"].string != nil {
-            type = userINFO["Type"].string!
-        }
-        
-        if (type == "2")
-        {
-            //After accecpt request
-            IDFetchString = "gcm.notification.RequestID"
-            titleInDict = userINFO["aps"]["alert"]["title"].string!
-            messageInDict = userINFO["aps"]["alert"]["body"].string!
-            
-        }else if(type == "4")
-        {
-            //For Camp and Thank you for after confirm camp request
-            IDFetchString = "gcm.notification.CampaignID"
-            titleInDict = userINFO["aps"]["alert"]["title"].string!
-            messageInDict = userINFO["aps"]["alert"]["body"].string!
-            
-        }else if(type == "3")
-        {
-            //for individual request notificaton
-            IDFetchString = "gcm.notification.RequestID"
-            titleInDict = userINFO["aps"]["alert"]["title"].string!
-            messageInDict = userINFO["aps"]["alert"]["body"].string!
-        } else if(type == "11" || type == "12") {
-            
-            IDFetchString = String(describing: userINFO["ID"])
-            titleInDict = String(describing: userINFO["Title"])
-            messageInDict = String(describing: userINFO["Body"])
-            ID = IDFetchString
-            
-        } else {
-            IDFetchString = ""
-        }
-        
-        if userINFO[IDFetchString].string != nil
-        {
-            ID = userINFO[IDFetchString].string!
-        } else {
-            ID = String(describing: userINFO[IDFetchString].int)
-        }
-        if titleInDict == ""
-        {
-            titleInDict = userINFO["aps"]["alert"]["title"].string!
-            messageInDict = userINFO["aps"]["alert"]["body"].string!
-        }
-        
-        let myDict = ["Title" : "\(titleInDict)", "Message" : "\(messageInDict)", "Type" : type!,"ID" : ID]
-        
-        let deadlineTime = DispatchTime.now() + .seconds(1)
-        DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute:
-            {
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PushNotification"), object:myDict)
-        })
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any])
+    {
+        self.notificationViewMessageForIdentify(userINFO: JSON(userInfo))
     }
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
@@ -192,73 +130,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
         }
-        let userINFO = JSON(userInfo)
-        var type:String!
-        var ID:String!
-        var titleInDict = ""
-        var messageInDict = ""
-        var IDFetchString:String!
-        
-        if userINFO["gcm.notification.Type"].string != nil
-        {   type = userINFO["gcm.notification.Type"].string!
-        } else {
-            type = String(describing: userINFO["gcm.notification.Type"].int)
-        }
-        
-        if userINFO["Type"].string != nil {
-            type = userINFO["Type"].string!
-        }
-        
-        if (type == "2")
-        {
-            //After accecpt request
-            IDFetchString = "gcm.notification.RequestID"
-            titleInDict = userINFO["aps"]["alert"]["title"].string!
-            messageInDict = userINFO["aps"]["alert"]["body"].string!
-            
-        }else if(type == "4")
-        {
-            //For Camp and Thank you for after confirm camp request
-            IDFetchString = "gcm.notification.CampaignID"
-            titleInDict = userINFO["aps"]["alert"]["title"].string!
-            messageInDict = userINFO["aps"]["alert"]["body"].string!
-            
-        }else if(type == "3")
-        {
-            //for individual request notificaton
-            IDFetchString = "gcm.notification.RequestID"
-            titleInDict = userINFO["aps"]["alert"]["title"].string!
-            messageInDict = userINFO["aps"]["alert"]["body"].string!
-        } else if(type == "11" || type == "12") {
-            
-            IDFetchString = String(describing: userINFO["ID"])
-            titleInDict = String(describing: userINFO["Title"])
-            messageInDict = String(describing: userINFO["Body"])
-            ID = IDFetchString
-            
-        } else {
-            IDFetchString = ""
-        }
-        
-        if userINFO[IDFetchString].string != nil
-        {
-            ID = userINFO[IDFetchString].string!
-        } else {
-            ID = String(describing: userINFO[IDFetchString].int)
-        }
-        if titleInDict == ""
-        {
-            titleInDict = userINFO["aps"]["alert"]["title"].string!
-            messageInDict = userINFO["aps"]["alert"]["body"].string!
-        }
-        
-        let myDict = ["Title" : "\(titleInDict)", "Message" : "\(messageInDict)", "Type" : type!,"ID" : ID]
-        
-        let deadlineTime = DispatchTime.now() + .seconds(1)
-        DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute:
-            {
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PushNotification"), object:myDict)
-        })
+        self.notificationViewMessageForIdentify(userINFO: JSON(userInfo))
         completionHandler(UIBackgroundFetchResult.newData)
     }
     func tokenRefreshNotification(_ notification: Notification) {
@@ -273,7 +145,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         print("APNs token retrieved: \(deviceToken)")
         
         // With swizzling disabled you must set the APNs token here.
-        FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: FIRInstanceIDAPNSTokenType.sandbox)
+        FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: FIRInstanceIDAPNSTokenType.prod)
     }
     // [START connect_to_fcm]
     func connectToFcm() {
@@ -287,7 +159,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         FIRMessaging.messaging().connect { (error) in
             if error != nil {
-                print("Unable to connect with FCM. \(error)")
+                print("Unable to connect with FCM. \(String(describing: error))")
             } else {
                 print("Connected to FCM.")
             }
@@ -327,6 +199,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         return true
     }
+    
     //MARK:- Check For View Controllers
     func checkForViewControllers()
     {
@@ -367,25 +240,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         }
         self.window?.makeKeyAndVisible()
     }
-}
-@available(iOS 10, *)
-extension AppDelegate : UNUserNotificationCenterDelegate {
     
-    func userNotificationCenter(_ center: UNUserNotificationCenter,  willPresent notification: UNNotification, withCompletionHandler   completionHandler: @escaping (_ options:   UNNotificationPresentationOptions) -> Void) {
-        // custom code to handle push while app is in the foreground
-    }
+    //MARK:- Push Notifation Handling For view
     
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        
-        var userINFO = JSON(response.notification.request.content.userInfo)
+    func notificationViewMessageForIdentify(userINFO:JSON)
+    {
         var type:String!
         var ID:String!
         var titleInDict = ""
         var messageInDict = ""
         var IDFetchString:String!
         
-        if userINFO["gcm.notification.Type"].string != nil {
-            type = userINFO["gcm.notification.Type"].string!
+        if userINFO["gcm.notification.Type"].string != nil
+        {   type = userINFO["gcm.notification.Type"].string!
         } else {
             type = String(describing: userINFO["gcm.notification.Type"].int)
         }
@@ -394,28 +261,26 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
             type = userINFO["Type"].string!
         }
         
-        
-        if (type == "2") {
-            
+        if (type == "2")
+        {
             //After accecpt request
             IDFetchString = "gcm.notification.RequestID"
             titleInDict = userINFO["aps"]["alert"]["title"].string!
             messageInDict = userINFO["aps"]["alert"]["body"].string!
             
-        } else if(type == "4") {
-            
+        }else if(type == "4")
+        {
             //For Camp and Thank you for after confirm camp request
             IDFetchString = "gcm.notification.CampaignID"
             titleInDict = userINFO["aps"]["alert"]["title"].string!
             messageInDict = userINFO["aps"]["alert"]["body"].string!
             
-        } else if(type == "3") {
-            
+        }else if(type == "3")
+        {
             //for individual request notificaton
             IDFetchString = "gcm.notification.RequestID"
             titleInDict = userINFO["aps"]["alert"]["title"].string!
             messageInDict = userINFO["aps"]["alert"]["body"].string!
-            
         } else if(type == "11" || type == "12") {
             
             IDFetchString = String(describing: userINFO["ID"])
@@ -441,11 +306,24 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         
         let myDict = ["Title" : "\(titleInDict)", "Message" : "\(messageInDict)", "Type" : type!,"ID" : ID]
         
-        let deadlineTime = DispatchTime.now() + .seconds(1)
+        let deadlineTime = DispatchTime.now() + .milliseconds(500)
+        
         DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute:
-            {
+        {
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PushNotification"), object:myDict)
         })
+    }
+}
+@available(iOS 10, *)
+extension AppDelegate : UNUserNotificationCenterDelegate {
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter,  willPresent notification: UNNotification, withCompletionHandler   completionHandler: @escaping (_ options:   UNNotificationPresentationOptions) -> Void) {
+        // custom code to handle push while app is in the foreground
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void)
+    {
+        self.notificationViewMessageForIdentify(userINFO: JSON(response.notification.request.content.userInfo))
         completionHandler()
     }
 }

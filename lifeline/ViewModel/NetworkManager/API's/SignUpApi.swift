@@ -28,7 +28,7 @@ class SignUpApi {
     }
     func makeParams() -> Parameters
     {
-        let parameters:Parameters = ["UserIDAvilableityCheckRequest":["UserIDAvilableityCheckRequestDetails":[["Name":self.Name],["UserID":self.userId],["Password":self.password],["Email":self.Email]]]]
+        let parameters:Parameters = ["CustomSignUpRequest":["CustomSignUpRequestDetails":["Name":self.Name,"UserID":self.userId,"Password":self.password,"Email":self.Email]]]
         return parameters
     }
 }

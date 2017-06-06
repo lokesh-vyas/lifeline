@@ -32,8 +32,12 @@ class CalendarView: UIViewController {
             btnCancel.setTitle("Clear", for: .normal)
         }
         labelHeading.text = calenderHeading
-        pickerSelectDate.maximumDate = calendar.maximumDate
-        pickerSelectDate.minimumDate = calendar.minimumDate
+        if calendar.maximumDate != nil {
+               pickerSelectDate.maximumDate = calendar.maximumDate!
+        }
+        if calendar.minimumDate != nil {
+            pickerSelectDate.minimumDate = calendar.minimumDate!
+        }
         pickerSelectDate.datePickerMode = calendar.datePickerMode
         pickerSelectDate.backgroundColor = UIColor.white
         

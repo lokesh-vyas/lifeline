@@ -79,7 +79,7 @@ class LoginView: UIViewController
         HudBar.sharedInstance.showHudWithMessage(message: "Please Wait...", view: self.view)
         let trimmedString = self.userNameTextField.text?.trimmingCharacters(in: .whitespaces)
         SignUpInteractor.SharedInstance.delegateForgetPassword = self
-        SignUpInteractor.SharedInstance.checkForgetPassword(checkString:trimmedString!)
+        SignUpInteractor.SharedInstance.checkForgetPassword(checkString:trimmedString!.lowercased())
     }
     //MARK:- CustomLogin
     @IBAction func btnCustomSignIn(_ sender: Any) {

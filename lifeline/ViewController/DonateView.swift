@@ -14,6 +14,7 @@ import CoreLocation
 import SwiftyJSON
 
 
+
 class DonateView: UIViewController {
     
     var camera : GMSCameraPosition?
@@ -49,10 +50,48 @@ class DonateView: UIViewController {
         super.viewDidLoad()
         loader = true
         InternetIssue = true
-        CLLocationManager.locationServicesEnabled()
-//        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        NotificationCenter.default.addObserver(self, selector: #selector(DonateView.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
         
+        if CLLocationManager.locationServicesEnabled()
+        {
+            switch(CLLocationManager.authorizationStatus()) {
+            case .notDetermined, .restricted, .denied:
+                self.openSettingsForDisableMap()
+            case .authorizedWhenInUse:
+                self.goToInCurrentLoction()
+            default:
+                self.openSettingsForDisableMap()
+            }
+        } else
+        {
+            self.openSettingsForDisableMap()
+        }
+        NotificationCenter.default.addObserver(self, selector: #selector(DonateView.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
+        //        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        
+    }
+    
+    //MARK:- viewWillAppear
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        btnListofMarkers.isHidden = true
+        self.navigationController?.completelyTransparentBar()
+        self.navigationController?.topViewController?.title = "Donate"
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:Util.SharedInstance.hexStringToUIColor(hex: "b60b16")]
+        //For Result VC
+        resultsViewController = GMSAutocompleteResultsViewController()
+        resultsViewController?.delegate = self
+        searchController = UISearchController(searchResultsController: resultsViewController)
+        searchController?.searchResultsUpdater = resultsViewController
+        self.definesPresentationContext = true
+        searchController?.hidesNavigationBarDuringPresentation = false
+        DonateInteractor.sharedInstance.delegate = self
+        
+    }
+    //MARK:- GoToInCurrentLoction
+    func goToInCurrentLoction()
+    {
+        CLLocationManager.locationServicesEnabled()
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
         
@@ -74,26 +113,36 @@ class DonateView: UIViewController {
         mapView.isBuildingsEnabled = true
         mapView.settings.compassButton = true
         mapView.settings.indoorPicker = true
-        
-}
-    
-    
-    //MARK:- viewWillAppear
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        self.navigationController?.completelyTransparentBar()
-        self.navigationController?.topViewController?.title = "Donate"
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:Util.SharedInstance.hexStringToUIColor(hex: "b60b16")]
-        //For Result VC
-        resultsViewController = GMSAutocompleteResultsViewController()
-        resultsViewController?.delegate = self
-        searchController = UISearchController(searchResultsController: resultsViewController)
-        searchController?.searchResultsUpdater = resultsViewController
-        self.definesPresentationContext = true
-        searchController?.hidesNavigationBarDuringPresentation = false
-        DonateInteractor.sharedInstance.delegate = self
-       
     }
+    //MARK:- openSettingsForDisableMap
+    func openSettingsForDisableMap()
+    {
+        let alertController = UIAlertController (title: "Loction Service is Turned Off ", message: "You can turn on Location Service for this app in Settings.", preferredStyle: .alert)
+        
+        let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+           
+            guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+                return
+            }
+            if UIApplication.shared.canOpenURL(settingsUrl) {
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                    })
+                } else {
+                    if let settingsURL = URL(string: UIApplicationOpenSettingsURLString + Bundle.main.bundleIdentifier!) {
+                        UIApplication.shared.openURL(settingsURL as URL)
+                    }
+                }
+            }
+        }
+        alertController.addAction(settingsAction)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    
     //MARK:- PushNotificationView
     func PushNotificationView(_ notification: NSNotification)
     {
@@ -217,7 +266,7 @@ class DonateView: UIViewController {
         }
         mapView.delegate = self
         HudBar.sharedInstance.hideHudFormView(view: self.view)
-
+        
     }
     
     
@@ -227,7 +276,7 @@ extension DonateView : CLLocationManagerDelegate {
     
     
     
-     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         print("MyLatitude :\((manager.location?.coordinate.latitude)!) and MyLongitude : \((manager.location?.coordinate.longitude)!)")
         
@@ -236,8 +285,8 @@ extension DonateView : CLLocationManagerDelegate {
             print("Updation Stopped !!")
             
             let loc: CLLocation = locations[locations.count - 1]
-             currentLat = loc.coordinate.latitude
-             currentLong = loc.coordinate.longitude
+            currentLat = loc.coordinate.latitude
+            currentLong = loc.coordinate.longitude
             
             print("<=\(currentLat) & \(currentLong)=>")
         }
@@ -258,13 +307,13 @@ extension DonateView : GMSMapViewDelegate {
         
         
     }
-
+    
     
     public func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition)
     {
         
         if loader == true {
-        HudBar.sharedInstance.showHudWithMessage(message: "Loading...", view: self.view)
+            HudBar.sharedInstance.showHudWithMessage(message: "Loading...", view: self.view)
         }
         
         if lastEventDate != nil {
@@ -677,13 +726,13 @@ extension DonateView : DonateViewProtocol {
             var tempDict = [String : Any]()
             var jDict = JSON.init(dictionaryLiteral: ("Index", jsonArray["BloodRequestSearchResponse"]["BloodRequestDetails"]))
             jDict = jDict["Index"]
-
+            
             appendsListMarkers.removeAll()
             
             for (i, _) in jDict.enumerated() {
-                    tempDict["Name"] = jDict[i]["Name"]
-                    tempDict["WorkingHours"] = jDict[i]["WorkingHours"]
-                    appendsListMarkers.append(tempDict)
+                tempDict["Name"] = jDict[i]["Name"]
+                tempDict["WorkingHours"] = jDict[i]["WorkingHours"]
+                appendsListMarkers.append(tempDict)
             }
             
             self.bloodDonatingMarkers(responseData: jsonArray)
@@ -712,7 +761,7 @@ extension DonateView : DonateViewProtocol {
         {
             if InternetIssue == true {
                 InternetIssue = false
-               self.view.makeToast("Unable to access server, please try again later", duration: 3.0, position: .bottom)
+                self.view.makeToast("Unable to access server, please try again later", duration: 3.0, position: .bottom)
             }
         }
     }
@@ -720,7 +769,7 @@ extension DonateView : DonateViewProtocol {
 
 extension DonateView : filterMarkersProtocol {
     func didSuccessFilters(sender: FilterChecks) {
-     //   TODO:-
+        //   TODO:-
     }
 }
 

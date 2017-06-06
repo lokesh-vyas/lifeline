@@ -28,6 +28,7 @@
 		18C6883D1E62ECDB0026453C /* MarkerNotIndividualDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C6883C1E62ECDB0026453C /* MarkerNotIndividualDetails.swift */; };
 		18F3AD691E8A66B10086274E /* List-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F3AD681E8A66B10086274E /* List-32.png */; };
 		18F8ECB41E84EAE00071C0A0 /* BloodInventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F8ECB31E84EAE00071C0A0 /* BloodInventory.swift */; };
+		252B7AEA1ED8104C00A900D7 /* MultipleLanguageStringClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252B7AE91ED8104C00A900D7 /* MultipleLanguageStringClass.swift */; };
 		661F3C5E1E7673B9008E7E34 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 661F3C5D1E7673B9008E7E34 /* NotificationCenter.framework */; };
 		66316B801E53132500114055 /* HospitalListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66316B7F1E53132500114055 /* HospitalListView.swift */; };
 		66316B841E5572B800114055 /* HospitalListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66316B831E5572B800114055 /* HospitalListInteractor.swift */; };
@@ -42,6 +43,7 @@
 		663D6FEE1E7003B900EB2CD8 /* HOME_SCREEN_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 663D6FEB1E7003B900EB2CD8 /* HOME_SCREEN_03.png */; };
 		663D6FEF1E7003B900EB2CD8 /* HOME_SCREEN_F.png in Resources */ = {isa = PBXBuildFile; fileRef = 663D6FEC1E7003B900EB2CD8 /* HOME_SCREEN_F.png */; };
 		663D6FF01E7003B900EB2CD8 /* HOME_SCREEN_G.png in Resources */ = {isa = PBXBuildFile; fileRef = 663D6FED1E7003B900EB2CD8 /* HOME_SCREEN_G.png */; };
+		663F67621EDFF27900D5C49E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 663F67641EDFF27900D5C49E /* Localizable.strings */; };
 		665111B41E5D9D8600A6AFAA /* ProfileViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665111B31E5D9D8600A6AFAA /* ProfileViewInteractor.swift */; };
 		665111B71E61824500A6AFAA /* MyRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665111B61E61824500A6AFAA /* MyRequestCell.swift */; };
 		665111B91E61826D00A6AFAA /* MyRequestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 665111B81E61826D00A6AFAA /* MyRequestCell.xib */; };
@@ -119,6 +121,18 @@
 		EDE9AEAF1E5FECCC0031BCB0 /* RequestViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE9AEAE1E5FECCC0031BCB0 /* RequestViewInteractor.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXBuildRule section */
+		66131D811EDE9B7C004E50B0 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = text.plist.stringsdict;
+			isEditable = 1;
+			outputFiles = (
+			);
+			script = "# builtin-copyStrings\n";
+		};
+/* End PBXBuildRule section */
+
 /* Begin PBXContainerItemProxy section */
 		66EA8D461E1F6B4300646797 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -160,6 +174,7 @@
 		18F8ECB31E84EAE00071C0A0 /* BloodInventory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BloodInventory.swift; sourceTree = "<group>"; };
 		19B74CD6720B8FE1E0D554ED /* Pods-lifelineUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lifelineUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-lifelineUITests/Pods-lifelineUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1A7713EA892985CA8991C0DE /* Pods_lifelineTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lifelineTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		252B7AE91ED8104C00A900D7 /* MultipleLanguageStringClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleLanguageStringClass.swift; sourceTree = "<group>"; };
 		65CFD1F97B4EDC4D89096216 /* Pods-lifelineUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lifelineUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-lifelineUITests/Pods-lifelineUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		661F3C5D1E7673B9008E7E34 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		66316B7F1E53132500114055 /* HospitalListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HospitalListView.swift; path = ViewController/HospitalListView.swift; sourceTree = "<group>"; };
@@ -177,6 +192,8 @@
 		663D6FEB1E7003B900EB2CD8 /* HOME_SCREEN_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HOME_SCREEN_03.png; sourceTree = "<group>"; };
 		663D6FEC1E7003B900EB2CD8 /* HOME_SCREEN_F.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HOME_SCREEN_F.png; sourceTree = "<group>"; };
 		663D6FED1E7003B900EB2CD8 /* HOME_SCREEN_G.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HOME_SCREEN_G.png; sourceTree = "<group>"; };
+		663F67631EDFF27900D5C49E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		663F67651EDFF36000D5C49E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		665111B31E5D9D8600A6AFAA /* ProfileViewInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewInteractor.swift; sourceTree = "<group>"; };
 		665111B61E61824500A6AFAA /* MyRequestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyRequestCell.swift; path = Cell/MyRequestCell.swift; sourceTree = "<group>"; };
 		665111B81E61826D00A6AFAA /* MyRequestCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyRequestCell.xib; path = Cell/MyRequestCell.xib; sourceTree = "<group>"; };
@@ -186,6 +203,18 @@
 		665111C21E6407F600A6AFAA /* MyRequestApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRequestApi.swift; sourceTree = "<group>"; };
 		665111C71E66E3FF00A6AFAA /* MyDonorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyDonorCell.xib; path = Cell/MyDonorCell.xib; sourceTree = "<group>"; };
 		665111C91E66E42600A6AFAA /* MyDonorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyDonorCell.swift; path = Cell/MyDonorCell.swift; sourceTree = "<group>"; };
+		66A0EC7A1EE292650019C5FB /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/Main.strings; sourceTree = "<group>"; };
+		66A0EC7B1EE292670019C5FB /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		66A0EC7C1EE292690019C5FB /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		66A0EC7D1EE292820019C5FB /* ta-IN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ta-IN"; path = "ta-IN.lproj/Main.strings"; sourceTree = "<group>"; };
+		66A0EC7E1EE292830019C5FB /* ta-IN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ta-IN"; path = "ta-IN.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		66A0EC7F1EE292850019C5FB /* ta-IN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ta-IN"; path = "ta-IN.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		66A0EC801EE292940019C5FB /* kn-IN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "kn-IN"; path = "kn-IN.lproj/Main.strings"; sourceTree = "<group>"; };
+		66A0EC811EE292950019C5FB /* kn-IN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "kn-IN"; path = "kn-IN.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		66A0EC821EE292970019C5FB /* kn-IN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "kn-IN"; path = "kn-IN.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		66A0EC831EE292C90019C5FB /* te-IN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "te-IN"; path = "te-IN.lproj/Main.strings"; sourceTree = "<group>"; };
+		66A0EC841EE292CB0019C5FB /* te-IN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "te-IN"; path = "te-IN.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		66A0EC851EE292CD0019C5FB /* te-IN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "te-IN"; path = "te-IN.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		66C4E67C1E37258B00526C1D /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeView.swift; path = ViewController/HomeView.swift; sourceTree = "<group>"; };
 		66C4E67E1E3725A300526C1D /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileView.swift; path = ViewController/ProfileView.swift; sourceTree = "<group>"; };
 		66C4E6811E37273100526C1D /* RevalListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RevalListView.swift; path = ViewController/RevalListView.swift; sourceTree = "<group>"; };
@@ -566,6 +595,7 @@
 		66EA8D281E1F6B4200646797 = {
 			isa = PBXGroup;
 			children = (
+				663F67641EDFF27900D5C49E /* Localizable.strings */,
 				66EA8D331E1F6B4300646797 /* lifeline */,
 				66EA8D481E1F6B4300646797 /* lifelineTests */,
 				66EA8D531E1F6B4300646797 /* lifelineUITests */,
@@ -683,6 +713,7 @@
 				66EA8DFC1E26611300646797 /* StringList.swift */,
 				66EA8E271E277D0400646797 /* Util.swift */,
 				183A1D9A1E66D2AC0048DC65 /* MarkerData.swift */,
+				252B7AE91ED8104C00A900D7 /* MultipleLanguageStringClass.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -822,6 +853,7 @@
 				BAE5330AC3598A8A0F7CD6B2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
+				66131D811EDE9B7C004E50B0 /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -886,7 +918,7 @@
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = FXZ4W6ZJ63;
 						LastSwiftMigration = 0820;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -914,6 +946,10 @@
 			knownRegions = (
 				en,
 				Base,
+				hi,
+				"ta-IN",
+				"kn-IN",
+				"te-IN",
 			);
 			mainGroup = 66EA8D281E1F6B4200646797;
 			productRefGroup = 66EA8D321E1F6B4200646797 /* Products */;
@@ -957,6 +993,7 @@
 				66EA8E1C1E275A4000646797 /* person.png in Resources */,
 				18C04FCD1E86CD43000B15EA /* Unchecked Checkbox-32.png in Resources */,
 				66EA8E161E275A4000646797 /* drop_red.png in Resources */,
+				663F67621EDFF27900D5C49E /* Localizable.strings in Resources */,
 				6633E90A1E88F7F50008C730 /* InventoryTableCell.xib in Resources */,
 				18F3AD691E8A66B10086274E /* List-32.png in Resources */,
 				66EA8D681E1F700200646797 /* GoogleService-Info.plist in Resources */,
@@ -1192,6 +1229,7 @@
 				EDE9AE941E5C35CE0031BCB0 /* BloodInfoView.swift in Sources */,
 				66C4E67F1E3725A300526C1D /* ProfileView.swift in Sources */,
 				ED11189F1E61983F003EA467 /* ShowHospitalInMapView.swift in Sources */,
+				252B7AEA1ED8104C00A900D7 /* MultipleLanguageStringClass.swift in Sources */,
 				663706C71E2FB08400EC5EF3 /* SWRevealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1228,10 +1266,27 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		663F67641EDFF27900D5C49E /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				663F67631EDFF27900D5C49E /* en */,
+				663F67651EDFF36000D5C49E /* Base */,
+				66A0EC7C1EE292690019C5FB /* hi */,
+				66A0EC7F1EE292850019C5FB /* ta-IN */,
+				66A0EC821EE292970019C5FB /* kn-IN */,
+				66A0EC851EE292CD0019C5FB /* te-IN */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		66EA8D381E1F6B4300646797 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				66EA8D391E1F6B4300646797 /* Base */,
+				66A0EC7A1EE292650019C5FB /* hi */,
+				66A0EC7D1EE292820019C5FB /* ta-IN */,
+				66A0EC801EE292940019C5FB /* kn-IN */,
+				66A0EC831EE292C90019C5FB /* te-IN */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1240,6 +1295,10 @@
 			isa = PBXVariantGroup;
 			children = (
 				66EA8D3E1E1F6B4300646797 /* Base */,
+				66A0EC7B1EE292670019C5FB /* hi */,
+				66A0EC7E1EE292830019C5FB /* ta-IN */,
+				66A0EC811EE292950019C5FB /* kn-IN */,
+				66A0EC841EE292CB0019C5FB /* te-IN */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1251,6 +1310,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1268,6 +1328,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1301,6 +1362,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1318,6 +1380,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1348,7 +1411,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = lifeline/lifeline.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = FXZ4W6ZJ63;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1360,8 +1423,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.isteer.lifeline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "97b17029-2461-4f76-a1ed-a76050509b26";
-				PROVISIONING_PROFILE_SPECIFIER = LifeLine;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "lifeline/lifeline-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1377,7 +1440,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = lifeline/lifeline.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Umashanker K Krishnamaraju Venkatraju (FXZ4W6ZJ63)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = FXZ4W6ZJ63;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1389,8 +1452,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.isteer.lifeline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "97b17029-2461-4f76-a1ed-a76050509b26";
-				PROVISIONING_PROFILE_SPECIFIER = LifeLine;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "lifeline/lifeline-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

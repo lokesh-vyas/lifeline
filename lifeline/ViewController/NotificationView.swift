@@ -29,21 +29,10 @@ class NotificationView: UIViewController {
         self.lblTitleText.text = UserJSON["Title"] as? String
         self.lblMessageText.text = UserJSON["Message"] as? String
     }
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(true)
-        self.dismiss(animated: true, completion: nil)
-    }
+  
     @IBAction func btnCancelTapped(_ sender: Any)
     {
-        if(UserJSON["Type"] as? String == "4" || UserJSON["Type"] as? String == "12") //camp
-        {
-            let SWRevealView = self.storyboard!.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
-            self.present(SWRevealView, animated: true, completion: nil)
-            
-        }else
-        {
             self.dismiss(animated: true, completion: nil)
-        }
     }
     @IBAction func btnViewTapped(_ sender: Any)
     {
