@@ -19,6 +19,8 @@
 		1841C6B51E698B39006F14B2 /* IndividualConfirmDonateInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1841C6B41E698B39006F14B2 /* IndividualConfirmDonateInteractor.swift */; };
 		18569D291E8D045C007B78DC /* MarkersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18569D281E8D045C007B78DC /* MarkersListView.swift */; };
 		18569D2B1E8E6479007B78DC /* Point Objects-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 18569D2A1E8E6479007B78DC /* Point Objects-32.png */; };
+		18A6703E1EE6BE4F0066C541 /* AppleLanguagesGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A6703D1EE6BE4F0066C541 /* AppleLanguagesGroup.swift */; };
+		18A670401EE6BED30066C541 /* Localizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A6703F1EE6BED30066C541 /* Localizer.swift */; };
 		18C04FC51E8540ED000B15EA /* Filter50.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C04FC41E8540ED000B15EA /* Filter50.png */; };
 		18C04FC71E8541B8000B15EA /* Filter32.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C04FC61E8541B8000B15EA /* Filter32.png */; };
 		18C04FC91E85450C000B15EA /* FilterChecks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C04FC81E85450C000B15EA /* FilterChecks.swift */; };
@@ -163,6 +165,8 @@
 		1841C6B41E698B39006F14B2 /* IndividualConfirmDonateInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualConfirmDonateInteractor.swift; sourceTree = "<group>"; };
 		18569D281E8D045C007B78DC /* MarkersListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkersListView.swift; sourceTree = "<group>"; };
 		18569D2A1E8E6479007B78DC /* Point Objects-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Point Objects-32.png"; sourceTree = "<group>"; };
+		18A6703D1EE6BE4F0066C541 /* AppleLanguagesGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleLanguagesGroup.swift; sourceTree = "<group>"; };
+		18A6703F1EE6BED30066C541 /* Localizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizer.swift; sourceTree = "<group>"; };
 		18C04FC41E8540ED000B15EA /* Filter50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Filter50.png; sourceTree = "<group>"; };
 		18C04FC61E8541B8000B15EA /* Filter32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Filter32.png; sourceTree = "<group>"; };
 		18C04FC81E85450C000B15EA /* FilterChecks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterChecks.swift; sourceTree = "<group>"; };
@@ -714,6 +718,8 @@
 				66EA8E271E277D0400646797 /* Util.swift */,
 				183A1D9A1E66D2AC0048DC65 /* MarkerData.swift */,
 				252B7AE91ED8104C00A900D7 /* MultipleLanguageStringClass.swift */,
+				18A6703D1EE6BE4F0066C541 /* AppleLanguagesGroup.swift */,
+				18A6703F1EE6BED30066C541 /* Localizer.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -1188,12 +1194,14 @@
 				665111BF1E63F55800A6AFAA /* MyDonorView.swift in Sources */,
 				66C4E67D1E37258B00526C1D /* HomeView.swift in Sources */,
 				18C6883D1E62ECDB0026453C /* MarkerNotIndividualDetails.swift in Sources */,
+				18A670401EE6BED30066C541 /* Localizer.swift in Sources */,
 				66C4E6911E37404C00526C1D /* MyRequestView.swift in Sources */,
 				EDE9AE981E5C3D110031BCB0 /* CalendarView.swift in Sources */,
 				665111CA1E66E42600A6AFAA /* MyDonorCell.swift in Sources */,
 				66C4E6881E372AD900526C1D /* ChangePasswordView.swift in Sources */,
 				66EA8E261E2772D300646797 /* FloatLabelTextField-2.swift in Sources */,
 				66DE4EC11E71683000145346 /* NotificationView.swift in Sources */,
+				18A6703E1EE6BE4F0066C541 /* AppleLanguagesGroup.swift in Sources */,
 				66EA8DE61E24BDB700646797 /* LoginView.swift in Sources */,
 				665111B71E61824500A6AFAA /* MyRequestCell.swift in Sources */,
 				18569D291E8D045C007B78DC /* MarkersListView.swift in Sources */,
