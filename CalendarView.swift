@@ -27,9 +27,9 @@ class CalendarView: UIViewController {
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        if calenderHeading == "Last Donation Date"
+        if calenderHeading == "LAST_DONATION_DATE"
         {
-            btnCancel.setTitle("Clear", for: .normal)
+            btnCancel.setTitle("BTN_CLEAR", for: .normal)
         }
         labelHeading.text = calenderHeading
         if calendar.maximumDate != nil {
@@ -50,7 +50,7 @@ class CalendarView: UIViewController {
     //MARK:- btnCancelTapped
     @IBAction func btnCancelTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
-        if calenderHeading == "Last Donation Date"
+        if calenderHeading == "LAST_DONATION_DATE"
         {
            delegate?.FailureProtocolCalendar(valueSent:"Clear")
         }

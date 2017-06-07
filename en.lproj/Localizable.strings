@@ -141,3 +141,11 @@ MAIL_CANCEL = "LifeLine mail cancelled";
 MAIL_IN_DRAFT =  "LifeLine mail saved message in the drafts folder";
 MAIL_SENT_SUCCESSFULLY = "LifeLine mail sent successfully";
 MAIL-FAILED = "LifeLine mail failed";
+
+/* NEW STRINGS */
+
+SELECT_WHEN_YOU_NEED = "Please select When You Need";
+ERROR_CONFIRM_PASSWORD_VALIDATION = "Confirm Password must be greater than 6 Digits";
+ERROR_ENTER_OLD_PASSWORD = "Please enter valid old password";
+ERROR_ALL_MANDATORY_NEW_FIELDS = "Please fill all Mandatory fields";
+BTN_CLEAR = "Clear";
