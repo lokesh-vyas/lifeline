@@ -311,7 +311,7 @@ extension DonateView : GMSMapViewDelegate {
     
     public func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition)
     {
-        print("didChange")
+        
         if loader == true {
             HudBar.sharedInstance.showHudWithMessage(message: "Loading...", view: self.view)
         }
@@ -323,9 +323,39 @@ extension DonateView : GMSMapViewDelegate {
             if didChangeInterval < 0.5 {
                 return
             }
+            
         }
+        print("didChange")
         
         lastEventDate = Date()
+        
+//        let visibleRegion = mapView.projection.visibleRegion()
+//        let mapBounds = GMSCoordinateBounds.init(region: visibleRegion)
+//        let NorthWest = CLLocationCoordinate2DMake(mapBounds.northEast.latitude, mapBounds.southWest.longitude)
+//        let SouthEast = CLLocationCoordinate2DMake(mapBounds.southWest.latitude, mapBounds.northEast.longitude)
+//        
+//        SouthLatitude = SouthEast.latitude
+//        NorthLatitude = NorthWest.latitude
+//        WestLongitude = NorthWest.longitude
+//        EastLongitude = SouthEast.longitude
+//        
+//        self.fetchBloodRequestToDonate()
+        loader = false
+    }
+    
+    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
+        if lastEventDate != nil {
+            let latestTime = Date()
+            let didChangeInterval = latestTime.timeIntervalSince(lastEventDate!)
+            
+            if didChangeInterval < 0.5 {
+                return
+            }
+            
+        }
+        print("I am in idle state...")
+        
+        
         let visibleRegion = mapView.projection.visibleRegion()
         let mapBounds = GMSCoordinateBounds.init(region: visibleRegion)
         let NorthWest = CLLocationCoordinate2DMake(mapBounds.northEast.latitude, mapBounds.southWest.longitude)
@@ -337,15 +367,9 @@ extension DonateView : GMSMapViewDelegate {
         EastLongitude = SouthEast.longitude
         
         self.fetchBloodRequestToDonate()
-        loader = false
     }
     
-    public func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
-        print("idleAt")
-        
-        
-    }
-    
+   
     public func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         
         lastEventDate = Date()
@@ -731,13 +755,13 @@ extension DonateView : DonateViewProtocol {
         if Response == "NoInternet" {
             if InternetIssue == true {
                 InternetIssue = false
-                self.view.makeToast("No Internet Connection, please check your Internet Connection", duration: 3.0, position: .bottom)
+               self.view.makeToast(MultiLanguage.getLanguageUsingKey("TOAST_NO_INTERNET_WARNING"), duration: 3.0, position: .bottom)
             }
         }else
         {
             if InternetIssue == true {
                 InternetIssue = false
-                self.view.makeToast("Unable to access server, please try again later", duration: 3.0, position: .bottom)
+                self.view.makeToast(MultiLanguage.getLanguageUsingKey("TOAST_ACCESS_SERVER_WARNING"), duration: 3.0, position: .bottom)
             }
         }
     }

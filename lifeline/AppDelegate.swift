@@ -33,13 +33,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
     {
+        // for language selection
+        Localizer.DoTheMagic()
         
         //Current Location
         myLocManager.delegate = self
         CLLocationManager.locationServicesEnabled()
         myLocManager.desiredAccuracy = kCLLocationAccuracyBest
         myLocManager.startUpdatingLocation()
-        
         myLocManager.requestWhenInUseAuthorization()
         
         //MARK:Facebook
