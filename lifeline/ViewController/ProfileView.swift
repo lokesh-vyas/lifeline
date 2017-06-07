@@ -51,7 +51,7 @@ class ProfileView: UIViewController
         else
         {
             let LoginId:String = UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!
-            HudBar.sharedInstance.showHudWithMessage(message: "Please Wait...", view: self.view)
+            HudBar.sharedInstance.showHudWithMessage(message: "TOAST_PLEASE_WAIT", view: self.view)
             ProfileViewInteractor.SharedInstance.delegate = self
             ProfileViewInteractor.SharedInstance.checkGetProfileData(LoginID: LoginId)
         }
@@ -167,7 +167,7 @@ class ProfileView: UIViewController
         let viewBloodInfo: BloodInfoView = self.storyboard?.instantiateViewController(withIdentifier: "BloodInfoView") as! BloodInfoView
         viewBloodInfo.delegate = self
         viewBloodInfo.pickerArray = self.bloodGroupArray
-        viewBloodInfo.bloodInfoString = "Select your blood group"
+        viewBloodInfo.bloodInfoString = "SELECT_BLOOD_GROUP"
         viewBloodInfo.modalPresentationStyle = .overCurrentContext
         viewBloodInfo.view.backgroundColor =  UIColor.clear
         viewBloodInfo.modalTransitionStyle = .coverVertical
@@ -181,7 +181,7 @@ class ProfileView: UIViewController
         dateFormatter.dateFormat = "dd/MM/yyyy"
         viewCalendar.delegate = self
         viewCalendar.dateFormatter = dateFormatter
-        viewCalendar.calenderHeading = "Date of Birth"
+        viewCalendar.calenderHeading = "DATE_OF_BIRTH"
         viewCalendar.calendar.maximumDate = Date() as Date
         viewCalendar.calendar.datePickerMode = UIDatePickerMode.date
         viewCalendar.modalPresentationStyle = .overCurrentContext
@@ -198,7 +198,7 @@ class ProfileView: UIViewController
         dateFormatter.dateFormat = "dd/MM/yyyy"
         viewCalendar.delegate = self
         viewCalendar.dateFormatter = dateFormatter
-        viewCalendar.calenderHeading = "Last Donation Date"
+        viewCalendar.calenderHeading = "LAST_DONATION_DATE"
         viewCalendar.calendar.maximumDate = Date() as Date
         viewCalendar.calendar.datePickerMode = UIDatePickerMode.date
         viewCalendar.modalPresentationStyle = .overCurrentContext
@@ -235,25 +235,25 @@ class ProfileView: UIViewController
         
         if ProfileViewModel.SharedInstance.isEmail == false
         {
-            self.view.makeToast("Invalid Email", duration: 2.0, position: .bottom)
+            self.view.makeToast("ERROR_INVALID_MAIL_ID", duration: 2.0, position: .bottom)
             return
         }
         if ProfileViewModel.SharedInstance.isContactNumber == false
         {
-            self.view.makeToast("Invalid Contact Number", duration: 2.0, position: .bottom)
+            self.view.makeToast("ERROR_INVALID_CONTACT", duration: 2.0, position: .bottom)
             return
         }
         
         if ProfileViewModel.SharedInstance.BloodGroup == nil
         {
-            self.view.makeToast("Please select Blood Group", duration: 2.0, position: .bottom)
+            self.view.makeToast("SELECT_BLOOD_GROUP", duration: 2.0, position: .bottom)
             return
         }
         if (txtHomeAddressPINCode.text?.characters.count)! > 1
         {
             if ProfileViewModel.SharedInstance.isHomePin == false
             {
-                self.view.makeToast("Invalid Home PIN code", duration: 2.0, position: .bottom)
+                self.view.makeToast("INVALID_HOME_PIN", duration: 2.0, position: .bottom)
                 return
             }
         }
@@ -261,13 +261,13 @@ class ProfileView: UIViewController
         {
             if ProfileViewModel.SharedInstance.isWorkPin == false
             {
-                self.view.makeToast("Invalid Home PIN code", duration: 2.0, position: .bottom)
+                self.view.makeToast("INVALID_HOME_PIN", duration: 2.0, position: .bottom)
                 return
             }
         }
         if (txtName.text?.characters.count)! < 1 || (txtEmailID.text?.characters.count)! < 1 || (txtContactNumber.text?.characters.count)! < 1 || (txtAge.text?.characters.count)! < 1
         {
-            self.view.makeToast("Please fill all Mandatory fields", duration: 2.0, position: .bottom)
+            self.view.makeToast("ERROR_ALL_MANDATORY_NEW_FIELDS", duration: 2.0, position: .bottom)
             
         }else{
             //TODO:-
@@ -421,7 +421,7 @@ class ProfileView: UIViewController
         
         let customer : Dictionary = ["ProfileRegistrationRequest":["ProfileDetails":["LoginId":LoginID,"Name":self.txtName.text!,"DateofBirth":DateofBirth,"Age":self.txtAge.text!,"ContactNumber": self.txtContactNumber.text!, "BloodGroup": ProfileViewModel.SharedInstance.BloodGroup!,"EmailId": self.txtEmailID.text!,"AuthProvider": AuthProvider,"LastDonationDate": LastDontaionDate,"AddressDetails": myAddressDetail]]]
         
-        HudBar.sharedInstance.showHudWithMessage(message: "Please wait..", view: self.view)
+        HudBar.sharedInstance.showHudWithMessage(message: "TOAST_PLEASE_WAIT", view: self.view)
         ProfileViewInteractor.SharedInstance.delegateProfile = self
         ProfileViewInteractor.SharedInstance.MyProfileRegistration(params: customer)
     }
@@ -536,13 +536,13 @@ extension ProfileView:ProtocolCalendar
     
     func SuccessProtocolCalendar(valueSent: String,CheckString:String)
     {
-        if CheckString == "Date of Birth"
+        if CheckString == "DATE_OF_BIRTH"
         {
             ProfileViewModel.SharedInstance.DOBstring = valueSent
             self.txtAge.text = Util.SharedInstance.calcAge(birthday: ProfileViewModel.SharedInstance.DOBstring!)
             btnDOBOutlet.setTitle(valueSent, for: .normal)
         }
-        else if CheckString == "Last Donation Date"
+        else if CheckString == "LAST_DONATION_DATE"
         {
             ProfileViewModel.SharedInstance.LastDonationStrin = valueSent
             btnLastDonationDate.setTitle(valueSent, for: .normal)
@@ -554,7 +554,7 @@ extension ProfileView:ProtocolCalendar
         if valueSent == "Clear"
         {
             ProfileViewModel.SharedInstance.LastDonationStrin = ""
-            btnLastDonationDate.setTitle("Last Donation Date", for: .normal)
+            btnLastDonationDate.setTitle("LAST_DONATION_DATE", for: .normal)
         }
     }
 }
@@ -618,7 +618,7 @@ extension ProfileView:ProtocolRegisterProfile
         {
             UserDefaults.standard.set(true, forKey: "SuccessProfileRegistration")
             HudBar.sharedInstance.hideHudFormView(view: self.view)
-            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Your Profile has been Updated", view: self.view)
+            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "SUCESS_PROFILE_UPDATE", view: self.view)
             let deadlineTime = DispatchTime.now() + .seconds(2)
             DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute:
                 {
@@ -628,7 +628,7 @@ extension ProfileView:ProtocolRegisterProfile
         }else{
             
             HudBar.sharedInstance.hideHudFormView(view: self.view)
-            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Failed to Update", view: self.view)
+            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "ERROR_PROFILE_UPDATE", view: self.view)
         }
     }
     func failedRegisterProfile(Response:String)

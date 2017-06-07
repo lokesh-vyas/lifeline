@@ -16,7 +16,7 @@ class FAQView: UIViewController,UIWebViewDelegate{
     {
         super.viewDidLoad()
         self.navigationController?.completelyTransparentBar()
-        HudBar.sharedInstance.showHudWithMessage(message: "Please wait..", view: self.view)
+        HudBar.sharedInstance.showHudWithMessage(message: "TOAST_PLEASE_WAIT", view: self.view)
         webView.loadRequest(NSURLRequest(url: NSURL(string: "http://www.lifeline.services/faq")! as URL) as URLRequest)
         NotificationCenter.default.addObserver(self, selector: #selector(FAQView.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
         // Do any additional setup after loading the view.

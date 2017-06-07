@@ -106,7 +106,7 @@ class RequestView: UIViewController,UITextViewDelegate
         let viewBloodInfo: BloodInfoView = self.storyboard?.instantiateViewController(withIdentifier: "BloodInfoView") as! BloodInfoView
         viewBloodInfo.delegate = self
         viewBloodInfo.pickerArray = self.whatneedArray
-        viewBloodInfo.bloodInfoString = "Select what you need"
+        viewBloodInfo.bloodInfoString = "SELECT_WHAT_YOU_NEED"
         viewBloodInfo.modalPresentationStyle = .overCurrentContext
         viewBloodInfo.view.backgroundColor =  UIColor.clear
         self.present(viewBloodInfo, animated: true, completion: nil)
@@ -119,7 +119,7 @@ class RequestView: UIViewController,UITextViewDelegate
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
         viewCalendar.dateFormatter = dateFormatter
-        viewCalendar.calenderHeading = "Confirm Your Date"
+        viewCalendar.calenderHeading = "CONFIRM_DATE"
         viewCalendar.calendar.minimumDate = Date() as Date
         viewCalendar.calendar.datePickerMode = UIDatePickerMode.date
         viewCalendar.modalPresentationStyle = .overCurrentContext
@@ -132,7 +132,7 @@ class RequestView: UIViewController,UITextViewDelegate
         let viewBloodInfo: BloodInfoView = self.storyboard?.instantiateViewController(withIdentifier: "BloodInfoView") as! BloodInfoView
         viewBloodInfo.delegate = self
         viewBloodInfo.pickerArray = self.bloodGroupArray
-        viewBloodInfo.bloodInfoString = "Select your blood group"
+        viewBloodInfo.bloodInfoString = "SELECT_BLOOD_GROUP"
         viewBloodInfo.modalPresentationStyle = .overCurrentContext
         viewBloodInfo.view.backgroundColor =  UIColor.clear
         self.present(viewBloodInfo, animated: true, completion: nil)
@@ -143,7 +143,7 @@ class RequestView: UIViewController,UITextViewDelegate
         let viewBloodInfo: BloodInfoView = self.storyboard?.instantiateViewController(withIdentifier: "BloodInfoView") as! BloodInfoView
         viewBloodInfo.delegate = self
         viewBloodInfo.pickerArray = self.bloodUnitArray
-        viewBloodInfo.bloodInfoString = "Select number of units"
+        viewBloodInfo.bloodInfoString = "SELECT_UNITS"
         viewBloodInfo.modalPresentationStyle = .overCurrentContext
         viewBloodInfo.view.backgroundColor =  UIColor.clear
         self.present(viewBloodInfo, animated: true, completion: nil)
@@ -180,48 +180,48 @@ class RequestView: UIViewController,UITextViewDelegate
         view.endEditing(true)
         if (txtFieldPatientName.text?.characters.count)! < 1 || (txtFieldContactNumber.text?.characters.count)! < 1 || (txtFieldContactPerson.text?.characters.count)! < 1 || (txtFieldHospitalBloodBankName.text?.characters.count)! < 1 || (txtFieldHospitalBloodBankContactNumber.text?.characters.count)! < 1 || (txtFieldHospitalBloodBankAddressPINCode.text?.characters.count)! < 1 || (txtFieldDoctorName.text?.characters.count)! < 1 || (txtFieldHospitalBloodBankAddress.text?.characters.count)! < 1 || (txtFieldHospitalBloodBankAddressCity.text?.characters.count)! < 1
         {
-            self.view.makeToast("Please fill all Mandatory fields", duration: 2.0, position: .bottom)
+            self.view.makeToast("ERROR_ALL_MANDATORY_NEW_FIELDS", duration: 2.0, position: .bottom)
         }
         else{
             if RequestViewModel.SharedInstance.isContactNumber == false
             {
-                self.view.makeToast("Invalid Contact Number", duration: 2.0, position: .bottom)
+                self.view.makeToast("ERROR_INVALID_CONTACT", duration: 2.0, position: .bottom)
                 return
             }
             if RequestViewModel.SharedInstance.isHospitalContactNumber == false
             {
-                self.view.makeToast("Invalid Hospial Contact Number", duration: 2.0, position: .bottom)
+                self.view.makeToast("ERROR_INVALID_HOSPITAL_CONTACT", duration: 2.0, position: .bottom)
                 return
             }
             if isDoctorName == false
             {
-                self.view.makeToast("Special characters are not allowed", duration: 2.0, position: .bottom)
+                self.view.makeToast("ERROR_SPECIAL_CHAR_NOT_ALLOWED", duration: 2.0, position: .bottom)
                  txtFieldDoctorName.errorLine()
                 return
             }
             if RequestViewModel.SharedInstance.isPin == false
             {
-                self.view.makeToast("Invalid Hospial Address PIN Code", duration: 2.0, position: .bottom)
+                self.view.makeToast("ERROR_INVALID_HOSPITAL_PIN", duration: 2.0, position: .bottom)
                 return
             }
             if RequestViewModel.SharedInstance.BloodGroup == nil
             {
-                self.view.makeToast("Please select Blood Group", duration: 2.0, position: .bottom)
+                self.view.makeToast("SELECT_BLOOD_GROUP", duration: 2.0, position: .bottom)
                 return
             }
             if RequestViewModel.SharedInstance.WhatYouNeed == nil
             {
-                self.view.makeToast("Please select What You Need", duration: 2.0, position: .bottom)
+                self.view.makeToast("SELECT_WHAT_YOU_NEED", duration: 2.0, position: .bottom)
                 return
             }
             if RequestViewModel.SharedInstance.WhenYouNeed == nil
             {
-                self.view.makeToast("Please select When You Need", duration: 2.0, position: .bottom)
+                self.view.makeToast("SELECT_WHEN_YOU_NEED", duration: 2.0, position: .bottom)
                 return
             }
             if RequestViewModel.SharedInstance.BloodUnit == nil
             {
-                self.view.makeToast("Please select Units", duration: 2.0, position: .bottom)
+                self.view.makeToast("SELECT_UNITS", duration: 2.0, position: .bottom)
                 return
             }
             if RequestViewModel.SharedInstance.Longitude == nil
@@ -236,7 +236,7 @@ class RequestView: UIViewController,UITextViewDelegate
             let LoginID:String
                 = UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!
             
-            HudBar.sharedInstance.showHudWithMessage(message: "Submiting...", view: self.view)
+            HudBar.sharedInstance.showHudWithMessage(message: "TOAST_SUBMIT_MESSAGE", view: self.view)
             RequestInterator.SharedInstance.delegateRequestBlood = self
             let CentreID = RequestViewModel.SharedInstance.CentreID
            
@@ -270,10 +270,10 @@ class RequestView: UIViewController,UITextViewDelegate
                         switch(getResult.rawValue)
                         {
                         case SLComposeViewControllerResult.cancelled.rawValue:
-                            self.view.makeToast("Cancelled")
+                            self.view.makeToast("BTN_CANCEL")
                             
                         case SLComposeViewControllerResult.done.rawValue:
-                            self.view.makeToast("Your post has been posted successfully")
+                            self.view.makeToast("SUCCESSFULLY_SUBMIT_POST")
                             
                         default: print("Error!")
                             
@@ -284,8 +284,8 @@ class RequestView: UIViewController,UITextViewDelegate
             }
             else
             {
-                let alert = UIAlertController(title: "Facebook App not installed.", message: "Your device has no Facebook installed.", preferredStyle: UIAlertControllerStyle.alert)
-                let OkButton = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { _ in
+                let alert = UIAlertController(title: "FACEBOOK_NOT_INSTALLED", message: "ERROR_FACEBOOK_NOT_INSTALLED", preferredStyle: UIAlertControllerStyle.alert)
+                let OkButton = UIAlertAction(title: "BTN_OK", style: UIAlertActionStyle.default) { _ in
                     self.goToMainView()
                 }
                 alert.addAction(OkButton)
@@ -497,17 +497,17 @@ extension RequestView:ProtocolBloodInfo
 {
     func SuccessProtocolBloodInfo(valueSent: String, CheckString: String)
     {
-        if (CheckString == "Select what you need")
+        if (CheckString == "SELECT_WHAT_YOU_NEED")
         {
             btnWhatYouNeed.setTitle(valueSent, for: .normal)
             RequestViewModel.SharedInstance.WhatYouNeed = valueSent
         }
-        else if (CheckString == "Select your blood group")
+        else if (CheckString == "SELECT_BLOOD_GROUP")
         {
             btnBloodGroup.setTitle(valueSent, for: .normal)
             RequestViewModel.SharedInstance.BloodGroup = valueSent
         }
-        else if(CheckString == "Select number of units")
+        else if(CheckString == "SELECT_UNITS")
         {
             btnBloodUnit.setTitle(valueSent, for: .normal)
             RequestViewModel.SharedInstance.BloodUnit = valueSent
