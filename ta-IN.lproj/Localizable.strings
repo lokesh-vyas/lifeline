@@ -65,8 +65,9 @@ INVENTORY_WARNING = "இந்த இரத்த வங்கிக்கான
 /* CONFIRM DONATE VIEW */
 HOSPITAL_CONTACT_NAME_LBL = "தொடர்பு கொள்ள";
 HOSPITAL_NAME_LBL = "மருத்துவமனை பெயர்";
-HOSPITAL_CONTACT_NUMBER_LBL = "தொடர்பு கொள்ள :";
-HOSPITAL_NEEDED_BY = "தேவை தேதி :";
+
+HOSPITAL_CONTACT_NUMBER_LBL = "தொடர்பு கொள்ள";
+HOSPITAL_NEEDED_BY = "தேவை தேதி";
 
 REQUEST_SHARE_TITLE_MESSAGE = "இங்கே லைல்லைன் கோரிக்கையை நீங்கள் அணுகலாம்:";
 REQUEST_VOLUNTEER_SHARE_MESSAGE = "இரத்தம் நன்கொடை கோரிக்கை LifeLine இல் உருவாக்கப்பட்டது. இரத்தத்தை தானம் செய்ய அல்லது உங்கள் வட்டத்தில் இதை பகிர்ந்து கொள்ளுங்கள். விவரங்கள் இங்கே உள்ளன:";
@@ -141,16 +142,18 @@ MAIL-FAILED = "லைவ்லைன் அஞ்சல் தோல்வி
 
 /* NEW STRINGS */
 
-SELECT_WHEN_YOU_NEED = "Please select When You Need";
-ERROR_CONFIRM_PASSWORD_VALIDATION = "Confirm Password must be greater than 6 Digits";
-ERROR_ENTER_OLD_PASSWORD = "Please enter valid old password";
-ERROR_ALL_MANDATORY_NEW_FIELDS = "Please fill all Mandatory fields";
-BTN_CLEAR = "Clear";
+SELECT_WHEN_YOU_NEED = "உங்களுக்கு தேவைப்படும்போது தேர்ந்தெடுக்கவும்";
+ERROR_CONFIRM_PASSWORD_VALIDATION = "கடவுச்சொல் உறுதிப்படுத்தி 6 இலக்கங்களை விட அதிகமாக இருக்க வேண்டும்";
+ERROR_ENTER_OLD_PASSWORD = "சரியான பழைய கடவுச்சொல்லை உள்ளிடுக";
+ERROR_ALL_MANDATORY_NEW_FIELDS = "அனைத்து அவசியமான துறைகள் நிரப்பவும்";
+BTN_CLEAR = "தெளிவு";
 
-HOSPITAL_WORKING_HOURS = "Working Hours :";
-CAMP_VOLUNTEER = "Volunteer";
-BLOOD_GROUP = "Blood Group";
-BLOOD_REQUIREMENT = "Requirement";
+HOSPITAL_WORKING_HOURS = "வேலை நேரங்கள்";
+CAMP_VOLUNTEER = "தன்னார்வ";
+BLOOD_GROUP = "இரத்த வகை";
+BLOOD_REQUIREMENT = "தேவை";
+
+REQUEST_CAMP_VOLUNTEER_SHARE_MESSAGE = "லைஃப்லைன் மீது இரத்த தான முகாம் உருவாக்கப்பட்டுள்ளது. இரத்தத்தை தானமாக வழங்க அல்லது உங்கள் வட்டத்தில் இதை பகிர்ந்து கொள்ளுங்கள். இங்கே விவரங்கள்:";
 
 
 
