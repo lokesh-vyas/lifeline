@@ -297,10 +297,10 @@ extension MyDonorView:MyRequestProtocol
         self.lblInternetIssueMessage.isHidden = false
         HudBar.sharedInstance.hideHudFormView(view: self.view)
         if Response == "NoInternet" {
-            self.lblInternetIssueMessage.text = "No Internet Connection, please check your Internet Connection"
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("TOAST_NO_INTERNET_WARNING"), duration: 3.0, position: .bottom)
         }else
         {
-            self.lblInternetIssueMessage.text = "Unable to access server, please try again later"
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("TOAST_ACCESS_SERVER_WARNING"), duration: 3.0, position: .bottom)
         }
     }
 }

@@ -37,7 +37,7 @@ class HospitalListView: UIViewController
         self.navigationController?.completelyTransparentBar()
         Util.SharedInstance.setSearchButtonText(text:"Select",searchBar:searchBarText)
     }
-
+    
     @IBAction func btnBackTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -175,10 +175,10 @@ extension HospitalListView:HospitalListProtocol
         searchFilterArray.removeAll()
         searchTableView.isHidden = true
         if Response == "NoInternet" {
-            self.lblListNotAvailable.text = "No Internet Connection, please check your Internet Connection"
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("TOAST_NO_INTERNET_WARNING"), duration: 3.0, position: .bottom)
         }else
         {
-            self.lblListNotAvailable.text = "Unable to access server, please try again later"
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("TOAST_ACCESS_SERVER_WARNING"), duration: 3.0, position: .bottom)
         }
     }
 }
