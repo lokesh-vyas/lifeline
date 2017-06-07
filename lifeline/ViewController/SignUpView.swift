@@ -74,25 +74,25 @@ class SignUpView: UIViewController
         view.endEditing(true)
         if (Email == nil || Password == nil || (emailTextField.text?.characters.count)! < 1 || (confirmTextField.text?.characters.count)! < 1 || (nameTextField.text?.characters.count)! < 1)
         {
-            self.view.makeToast("Please fill all fields", duration: 2.0, position: .bottom)
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("ERROR_ALL_MANDATORY_NEW_FIELDS"), duration: 2.0, position: .bottom)
             
         }else if (Email == true) {
             if Password == true {
                 if passwordTextField.text == confirmTextField.text {
                     
-                    HudBar.sharedInstance.showHudWithMessage(message: "Signin...", view: self.view)
+                    HudBar.sharedInstance.showHudWithMessage(message: MultiLanguage.getLanguageUsingKey("TOAST_SIGN_IN"), view: self.view)
                     SignUpInteractor.SharedInstance.delegateSignUp = self
                     SignUpInteractor.SharedInstance.signUPCallForServices(email: self.emailTextField.text!, password: self.passwordTextField.text!, userID: self.emailTextField.text!,Name:self.nameTextField.text!)
                     
                 } else {
-                    self.view.makeToast("Password don't match", duration: 2.0, position: .bottom)
+                    self.view.makeToast(MultiLanguage.getLanguageUsingKey("ERROR_PASSWORD_NOT_MATCHED"), duration: 2.0, position: .bottom)
                 }
                 
             } else {
-                self.view.makeToast("Password must be greater than 6 Digits", duration: 2.0, position: .bottom)
+                self.view.makeToast(MultiLanguage.getLanguageUsingKey("ERROR_PASSWORD_VALIDATION"), duration: 2.0, position: .bottom)
             }
         } else {
-            self.view.makeToast("Invalid Email ID", duration: 2.0, position: .bottom)
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("ERROR_INVALID_MAIL_ID"), duration: 2.0, position: .bottom)
         }
         
     }
@@ -193,11 +193,11 @@ extension SignUpView : checkAvabilityProtocol
     {
         if success
         {
-            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "User id is available", view: self.view)
+            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: MultiLanguage.getLanguageUsingKey("SUCESS_USER_ID_AVAILABLE"), view: self.view)
         }
         else
         {
-            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "User id you entered is already in use please enter another user id", view: self.view)
+            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: MultiLanguage.getLanguageUsingKey("ERROR_WRONG_USER_ID"), view: self.view)
         }
     }
     func checkAvailbaleFail(Response:String)

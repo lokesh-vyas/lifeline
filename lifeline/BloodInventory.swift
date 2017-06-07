@@ -122,7 +122,7 @@ extension BloodInventory : DonateViewProtocol
         HudBar.sharedInstance.hideHudFormView(view: self.view)
         if jsonArray["GetBloodInventoryResponse"]["BloodBankInventory"]["StatusCode"].int == 1
         {
-            self.lblBloodInventory.text = "No Inventory Information For this Blood Bank"
+            self.lblBloodInventory.text = MultiLanguage.getLanguageUsingKey("INVENTORY_WARNING")
             self.tableInventoryView.isHidden = true
         }
         else

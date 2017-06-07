@@ -86,7 +86,7 @@ class AlertConfirmDonate: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
         preferredDateAlert.dateFormatter = dateFormatter
-        preferredDateAlert.calenderHeading = "Confirm Date & Time"
+        preferredDateAlert.calenderHeading = MultiLanguage.getLanguageUsingKey("CALENDER_HEADING")
         if checkForDate == "Campaign"
         {
             preferredDateAlert.calendar.minimumDate = fromDate as? Date
@@ -103,10 +103,9 @@ class AlertConfirmDonate: UIViewController {
     }
     
     @IBAction func btnDonateTapped(_ sender: Any) {
-        print("  WS must be called")
-        
+      
         if preferredDateTime != nil {
-            HudBar.sharedInstance.showHudWithMessage(message: "Submitting...", view: self.view)
+            HudBar.sharedInstance.showHudWithMessage(message: MultiLanguage.getLanguageUsingKey("TOAST_SUBMIT_MESSAGE"), view: self.view)
             
             
             let TypeOfOrg:String
@@ -171,8 +170,8 @@ class AlertConfirmDonate: UIViewController {
             AlertConfirmDonateInteractor.sharedInstance.confirmsDonate(urlString: URLList.CONFIRM_DONATE.rawValue, params: collectedParameters)
             
         } else {
-            let alert = UIAlertController(title: "Alert", message: "Please Select Preferred Date and Time", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            let alert = UIAlertController(title: MultiLanguage.getLanguageUsingKey("TOAST_ALERT_MESSAGE"), message: MultiLanguage.getLanguageUsingKey("WARNING_DATE_AND_TIME"), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: MultiLanguage.getLanguageUsingKey("BTN_OK"), style: UIAlertActionStyle.default, handler: nil))
             present(alert, animated: true, completion: nil)
         }
     }
@@ -190,8 +189,8 @@ class AlertConfirmDonate: UIViewController {
         if #available(iOS 10.0, *) {
             
             let content = UNMutableNotificationContent()
-            content.title = "Blood Donation"
-            content.body = "Reminder for Blood Donation"
+            content.title = MultiLanguage.getLanguageUsingKey("LOCAL_NOTIFICATION_TITLE")
+            content.body = MultiLanguage.getLanguageUsingKey("LOCAL_NOTIFICATION_MESSAGE")
             content.userInfo = [ "Title":"\(content.title)", "Body":"\(content.body)", "ID":"\(IDtoBeSent!)","Type":"\(LocalNotificationType!)"]
             content.sound = UNNotificationSound.default()
             let trigger = UNCalendarNotificationTrigger(dateMatching: newComponents, repeats: false)
@@ -205,8 +204,8 @@ class AlertConfirmDonate: UIViewController {
             // Fallback on earlier versions
             let notification = UILocalNotification()
             notification.fireDate = date
-            notification.alertTitle = "Blood Donation"
-            notification.alertBody = "Reminder for Blood Donation"
+            notification.alertTitle = MultiLanguage.getLanguageUsingKey("LOCAL_NOTIFICATION_TITLE")
+            notification.alertBody = MultiLanguage.getLanguageUsingKey("LOCAL_NOTIFICATION_MESSAGE")
             notification.soundName = UILocalNotificationDefaultSoundName
             notification.timeZone = NSTimeZone.default
             UIApplication.shared.scheduleLocalNotification(notification)
@@ -227,7 +226,7 @@ extension AlertConfirmDonate : UIGestureRecognizerDelegate {
 extension AlertConfirmDonate : AlertConfirmDonateProtocol {
     func successConfirmDonate(jsonArray: JSON) {
         print("****SUCCESS****", jsonArray)
-        self.view.makeToast("Requested Details Submited Sucessfully")
+        self.view.makeToast(MultiLanguage.getLanguageUsingKey("SUCESS_SUBMIT_REQUEST"))
         let when = DispatchTime.now() + .seconds(2)
         DispatchQueue.main.asyncAfter(deadline: when, execute: {
             let SWRevealView = self.storyboard!.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
