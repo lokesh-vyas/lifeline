@@ -102,7 +102,7 @@ class MyRequestClose: UIViewController {
         let RequestID = MyRequestCloseJSON["RequestID"]
         let customer : Dictionary = ["RequestStatusUpdateReqest":["RequestDetails":["RequestID":String(describing: RequestID),"Status":"Open","DonorsDetails":[["DonationId":DonorID,"HasDonated":HasDonated!,"DonatedOn":Util.SharedInstance.currentDateChangeForServer(),"ThankYouNote":self.txtThankNote.text!]]]]]
         print(customer)
-        HudBar.sharedInstance.showHudWithMessage(message: "TOAST_PLEASE_WAIT", view: self.view)
+        HudBar.sharedInstance.showHudWithMessage(message: MultiLanguage.getLanguageUsingKey("TOAST_PLEASE_WAIT"), view: self.view)
         MyRequestInteractor.SharedInstance.delegate = self
         MyRequestInteractor.SharedInstance.MyRequestClose(params: customer)
     }
@@ -151,7 +151,7 @@ extension MyRequestClose:MyRequestProtocol
     {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "MyRequestServiceCallUpdate"), object: nil)
         HudBar.sharedInstance.hideHudFormView(view: self.view)
-        HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "REQUEST_CLOSED", view: self.view)
+        HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: MultiLanguage.getLanguageUsingKey("REQUEST_CLOSED"), view: self.view)
         if StringForCheckView == "MyRequest" {
             self.dismiss(animated: true, completion: nil)
         }

@@ -32,7 +32,7 @@ class MyRequestView: UIViewController {
     {
         let LoginID:String
             = UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!
-        HudBar.sharedInstance.showHudWithMessage(message: "TOAST_LOADING_MESSAGE", view: self.view)
+        HudBar.sharedInstance.showHudWithMessage(message: MultiLanguage.getLanguageUsingKey("TOAST_LOADING_MESSAGE"), view: self.view)
         MyRequestInteractor.SharedInstance.delegate = self
         MyRequestInteractor.SharedInstance.MyRequestServiceCall(loginID: LoginID)
     }
@@ -138,7 +138,7 @@ extension MyRequestView:MyRequestProtocol
             } else {
                 self.tableRequestView.isHidden = true
                 self.lblInternetIssue.isHidden = false
-                self.lblInternetIssue.text = "TOAST_ACCESS_SERVER_WARNING"
+                self.lblInternetIssue.text = MultiLanguage.getLanguageUsingKey("TOAST_ACCESS_SERVER_WARNING")
                 //Here we found nil
                 return
             }

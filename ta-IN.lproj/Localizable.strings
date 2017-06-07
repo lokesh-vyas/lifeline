@@ -1,10 +1,4 @@
-/* 
-  Localizable.strings
-  lifeline
 
-  Created by iSteer on 01/06/17.
-  Copyright © 2017 iSteer. All rights reserved.
-*/
 /*
  Localizable.strings
  lifeline
@@ -71,6 +65,7 @@ INVENTORY_WARNING = "இந்த இரத்த வங்கிக்கான
 /* CONFIRM DONATE VIEW */
 HOSPITAL_CONTACT_NAME_LBL = "தொடர்பு கொள்ள";
 HOSPITAL_NAME_LBL = "மருத்துவமனை பெயர்";
+
 HOSPITAL_CONTACT_NUMBER_LBL = "தொடர்பு கொள்ள";
 HOSPITAL_NEEDED_BY = "தேவை தேதி";
 
