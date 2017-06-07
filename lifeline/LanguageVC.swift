@@ -43,11 +43,49 @@ extension LanguageVC : UITableViewDataSource {
         return cell
     }
     
-    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-    {
-        let cell = self.tableObj.cellForRow(at: indexPath) as! LanguageTableCell
-        cell.accessoryType = UITableViewCellAccessoryType.checkmark
+    
+}
+
+extension LanguageVC : UITableViewDelegate {
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let alertMsg = UIAlertController(title: "Warning", message: "Are you sure you want to convert this language", preferredStyle: UIAlertControllerStyle.)
+        switch indexPath.row {
+        case 0:
+            MultiLanguage.setAppleLAnguageTo(lang: "en")
+            reloadVC()
+            break
+            
+        case 1 :
+            MultiLanguage.setAppleLAnguageTo(lang: "hi")
+            reloadVC()
+            break
+            
+        case 2 :
+            MultiLanguage.setAppleLAnguageTo(lang: "kn-IN")
+            reloadVC()
+            break
+            
+        case 3 :
+            MultiLanguage.setAppleLAnguageTo(lang: "ta-IN")
+            reloadVC()
+            break
+            
+        case 4 :
+            MultiLanguage.setAppleLAnguageTo(lang: "te-IN")
+            reloadVC()
+            break
+            
+        default:
+            print("Default Cell..")
+        }
+        
     }
+    
+    func reloadVC() {
+        let rootviewcontroller: UIWindow = ((UIApplication.shared.delegate?.window)!)!
+        rootviewcontroller.rootViewController = self.storyboard?.instantiateViewController(withIdentifier: "SWRevealViewController")
+    }
+
+    
 }

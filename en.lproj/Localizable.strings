@@ -138,4 +138,3 @@ MAIL_CANCEL = "LifeLine mail cancelled";
 MAIL_IN_DRAFT =  "LifeLine mail saved message in the drafts folder";
 MAIL_SENT_SUCCESSFULLY = "LifeLine mail sent successfully";
 MAIL-FAILED = "LifeLine mail failed";
-
