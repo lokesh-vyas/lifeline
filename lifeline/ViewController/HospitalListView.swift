@@ -35,7 +35,7 @@ class HospitalListView: UIViewController
         searchBarText.becomeFirstResponder()
         searchTableView.contentInset = UIEdgeInsetsMake(-35, 0.0, +195, 0.0)
         self.navigationController?.completelyTransparentBar()
-        Util.SharedInstance.setSearchButtonText(text:"BTN_SELECT",searchBar:searchBarText)
+        Util.SharedInstance.setSearchButtonText(text:MultiLanguage.getLanguageUsingKey("BTN_SELECT"),searchBar:searchBarText)
     }
     
     @IBAction func btnBackTapped(_ sender: Any) {

@@ -149,3 +149,4 @@ ERROR_CONFIRM_PASSWORD_VALIDATION = "Confirm Password must be greater than 6 Dig
 ERROR_ENTER_OLD_PASSWORD = "Please enter valid old password";
 ERROR_ALL_MANDATORY_NEW_FIELDS = "Please fill all Mandatory fields";
 BTN_CLEAR = "Clear";
+SUCCESS_PASSWORD_UPDATED = "Your Password is updated successfully";
