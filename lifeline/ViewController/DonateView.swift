@@ -136,6 +136,7 @@ class DonateView: UIViewController {
             }
         }
         alertController.addAction(settingsAction)
+
         let cancelAction = UIAlertAction(title: MultiLanguage.getLanguageUsingKey("BTN_CANCEL"), style: .default, handler: nil)
         alertController.addAction(cancelAction)
         
