@@ -117,9 +117,9 @@ class DonateView: UIViewController {
     //MARK:- openSettingsForDisableMap
     func openSettingsForDisableMap()
     {
-        let alertController = UIAlertController (title: "Loction Service is Turned Off ", message: "You can turn on Location Service for this app in Settings.", preferredStyle: .alert)
+        let alertController = UIAlertController (title: MultiLanguage.getLanguageUsingKey("LOCATION_TITLE_WARNING"), message: MultiLanguage.getLanguageUsingKey("LOCATION_MESSAGE_WARNING"), preferredStyle: .alert)
         
-        let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+        let settingsAction = UIAlertAction(title: MultiLanguage.getLanguageUsingKey("TOAST_SETTING_TITLE"), style: .default) { (_) -> Void in
            
             guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
                 return
@@ -136,7 +136,8 @@ class DonateView: UIViewController {
             }
         }
         alertController.addAction(settingsAction)
-        let cancelAction = UIAlertAction(title: "BTN_CANCEL", style: .default, handler: nil)
+
+        let cancelAction = UIAlertAction(title: MultiLanguage.getLanguageUsingKey("BTN_CANCEL"), style: .default, handler: nil)
         alertController.addAction(cancelAction)
         
         present(alertController, animated: true, completion: nil)
@@ -586,7 +587,7 @@ extension DonateView : DonateViewProtocol {
             viewWarning.layer.cornerRadius = 27.5
             
             //labelWarning
-            labelWarning.text = "No Requirements in your location"
+            labelWarning.text = MultiLanguage.getLanguageUsingKey("NO_REQUIREMENT_WARNING")
             labelWarning.numberOfLines = 2
             labelWarning.translatesAutoresizingMaskIntoConstraints = false
             
