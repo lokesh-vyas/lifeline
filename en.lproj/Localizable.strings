@@ -150,7 +150,8 @@ SELECT_WHEN_YOU_NEED = "Please select When You Need";
 ERROR_CONFIRM_PASSWORD_VALIDATION = "Confirm Password must be greater than 6 Digits";
 ERROR_ENTER_OLD_PASSWORD = "Please enter valid old password";
 ERROR_ALL_MANDATORY_NEW_FIELDS = "Please fill all Mandatory fields";
-BTN_CLEAR = "Clear";
+
+SUCCESS_PASSWORD_UPDATED = "Your Password is updated successfully";
 
 HOSPITAL_WORKING_HOURS = "Working Hours :";
 CAMP_VOLUNTEER = "Volunteer";

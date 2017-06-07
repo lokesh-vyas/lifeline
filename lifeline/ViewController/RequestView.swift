@@ -180,48 +180,48 @@ class RequestView: UIViewController,UITextViewDelegate
         view.endEditing(true)
         if (txtFieldPatientName.text?.characters.count)! < 1 || (txtFieldContactNumber.text?.characters.count)! < 1 || (txtFieldContactPerson.text?.characters.count)! < 1 || (txtFieldHospitalBloodBankName.text?.characters.count)! < 1 || (txtFieldHospitalBloodBankContactNumber.text?.characters.count)! < 1 || (txtFieldHospitalBloodBankAddressPINCode.text?.characters.count)! < 1 || (txtFieldDoctorName.text?.characters.count)! < 1 || (txtFieldHospitalBloodBankAddress.text?.characters.count)! < 1 || (txtFieldHospitalBloodBankAddressCity.text?.characters.count)! < 1
         {
-            self.view.makeToast("ERROR_ALL_MANDATORY_NEW_FIELDS", duration: 2.0, position: .bottom)
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("ERROR_ALL_MANDATORY_NEW_FIELDS"), duration: 2.0, position: .bottom)
         }
         else{
             if RequestViewModel.SharedInstance.isContactNumber == false
             {
-                self.view.makeToast("ERROR_INVALID_CONTACT", duration: 2.0, position: .bottom)
+                self.view.makeToast(MultiLanguage.getLanguageUsingKey("ERROR_INVALID_CONTACT"), duration: 2.0, position: .bottom)
                 return
             }
             if RequestViewModel.SharedInstance.isHospitalContactNumber == false
             {
-                self.view.makeToast("ERROR_INVALID_HOSPITAL_CONTACT", duration: 2.0, position: .bottom)
+                self.view.makeToast(MultiLanguage.getLanguageUsingKey("ERROR_INVALID_HOSPITAL_CONTACT"), duration: 2.0, position: .bottom)
                 return
             }
             if isDoctorName == false
             {
-                self.view.makeToast("ERROR_SPECIAL_CHAR_NOT_ALLOWED", duration: 2.0, position: .bottom)
+                self.view.makeToast(MultiLanguage.getLanguageUsingKey("ERROR_SPECIAL_CHAR_NOT_ALLOWED"), duration: 2.0, position: .bottom)
                  txtFieldDoctorName.errorLine()
                 return
             }
             if RequestViewModel.SharedInstance.isPin == false
             {
-                self.view.makeToast("ERROR_INVALID_HOSPITAL_PIN", duration: 2.0, position: .bottom)
+                self.view.makeToast(MultiLanguage.getLanguageUsingKey("ERROR_INVALID_HOSPITAL_PIN"), duration: 2.0, position: .bottom)
                 return
             }
             if RequestViewModel.SharedInstance.BloodGroup == nil
             {
-                self.view.makeToast("SELECT_BLOOD_GROUP", duration: 2.0, position: .bottom)
+                self.view.makeToast(MultiLanguage.getLanguageUsingKey("SELECT_BLOOD_GROUP"), duration: 2.0, position: .bottom)
                 return
             }
             if RequestViewModel.SharedInstance.WhatYouNeed == nil
             {
-                self.view.makeToast("SELECT_WHAT_YOU_NEED", duration: 2.0, position: .bottom)
+                self.view.makeToast(MultiLanguage.getLanguageUsingKey("SELECT_WHAT_YOU_NEED"), duration: 2.0, position: .bottom)
                 return
             }
             if RequestViewModel.SharedInstance.WhenYouNeed == nil
             {
-                self.view.makeToast("SELECT_WHEN_YOU_NEED", duration: 2.0, position: .bottom)
+                self.view.makeToast(MultiLanguage.getLanguageUsingKey("SELECT_WHEN_YOU_NEED"), duration: 2.0, position: .bottom)
                 return
             }
             if RequestViewModel.SharedInstance.BloodUnit == nil
             {
-                self.view.makeToast("SELECT_UNITS", duration: 2.0, position: .bottom)
+                self.view.makeToast(MultiLanguage.getLanguageUsingKey("SELECT_UNITS"), duration: 2.0, position: .bottom)
                 return
             }
             if RequestViewModel.SharedInstance.Longitude == nil
@@ -236,7 +236,7 @@ class RequestView: UIViewController,UITextViewDelegate
             let LoginID:String
                 = UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!
             
-            HudBar.sharedInstance.showHudWithMessage(message: "TOAST_SUBMIT_MESSAGE", view: self.view)
+            HudBar.sharedInstance.showHudWithMessage(message: MultiLanguage.getLanguageUsingKey("TOAST_SUBMIT_MESSAGE"), view: self.view)
             RequestInterator.SharedInstance.delegateRequestBlood = self
             let CentreID = RequestViewModel.SharedInstance.CentreID
            
@@ -270,10 +270,10 @@ class RequestView: UIViewController,UITextViewDelegate
                         switch(getResult.rawValue)
                         {
                         case SLComposeViewControllerResult.cancelled.rawValue:
-                            self.view.makeToast("BTN_CANCEL")
+                            self.view.makeToast(MultiLanguage.getLanguageUsingKey("BTN_CANCEL"))
                             
                         case SLComposeViewControllerResult.done.rawValue:
-                            self.view.makeToast("SUCCESSFULLY_SUBMIT_POST")
+                            self.view.makeToast(MultiLanguage.getLanguageUsingKey("SUCCESSFULLY_SUBMIT_POST"))
                             
                         default: print("Error!")
                             
@@ -284,8 +284,8 @@ class RequestView: UIViewController,UITextViewDelegate
             }
             else
             {
-                let alert = UIAlertController(title: "FACEBOOK_NOT_INSTALLED", message: "ERROR_FACEBOOK_NOT_INSTALLED", preferredStyle: UIAlertControllerStyle.alert)
-                let OkButton = UIAlertAction(title: "BTN_OK", style: UIAlertActionStyle.default) { _ in
+                let alert = UIAlertController(title: MultiLanguage.getLanguageUsingKey("FACEBOOK_NOT_INSTALLED"), message: MultiLanguage.getLanguageUsingKey("ERROR_FACEBOOK_NOT_INSTALLED"), preferredStyle: UIAlertControllerStyle.alert)
+                let OkButton = UIAlertAction(title: MultiLanguage.getLanguageUsingKey("BTN_OK"), style: UIAlertActionStyle.default) { _ in
                     self.goToMainView()
                 }
                 alert.addAction(OkButton)
@@ -497,17 +497,17 @@ extension RequestView:ProtocolBloodInfo
 {
     func SuccessProtocolBloodInfo(valueSent: String, CheckString: String)
     {
-        if (CheckString == "SELECT_WHAT_YOU_NEED")
+        if (CheckString == MultiLanguage.getLanguageUsingKey("SELECT_WHAT_YOU_NEED"))
         {
             btnWhatYouNeed.setTitle(valueSent, for: .normal)
             RequestViewModel.SharedInstance.WhatYouNeed = valueSent
         }
-        else if (CheckString == "SELECT_BLOOD_GROUP")
+        else if (CheckString == MultiLanguage.getLanguageUsingKey("SELECT_BLOOD_GROUP"))
         {
             btnBloodGroup.setTitle(valueSent, for: .normal)
             RequestViewModel.SharedInstance.BloodGroup = valueSent
         }
-        else if(CheckString == "SELECT_UNITS")
+        else if(CheckString == MultiLanguage.getLanguageUsingKey("SELECT_UNITS"))
         {
             btnBloodUnit.setTitle(valueSent, for: .normal)
             RequestViewModel.SharedInstance.BloodUnit = valueSent
