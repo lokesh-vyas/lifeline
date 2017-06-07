@@ -42,12 +42,24 @@ extension LanguageVC : UITableViewDataSource {
         
         return cell
     }
+}
+
+extension LanguageVC: UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         let cell = self.tableObj.cellForRow(at: indexPath) as! LanguageTableCell
         cell.accessoryType = UITableViewCellAccessoryType.checkmark
-        
-        let alertMsg = UIAlertController(title: "Warning", message: "Are you sure you want to convert this language", preferredStyle: UIAlertControllerStyle.)
+
+        let alert = UIAlertController(title: "Alert", message: "Are you sure you want to change your language", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    public func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath)
+    {
+        let cell = self.tableObj.cellForRow(at: indexPath) as! LanguageTableCell
+        cell.accessoryType = UITableViewCellAccessoryType.none
     }
 }

@@ -19,8 +19,8 @@ public enum StringListForHindi:String
     case LifeLine_Social_Share_String = "लाइफलाइन एक सामाजिक एप्लिकेशन है जो रक्त बैंक, दाताओं और प्राप्तकर्ताओं को जोड़ने के लिए समर्पित है।"
 //    case LifeLine_PleaseWait_String = "कृप्या प़तिक्षा करे"
 //    case LifeLine_Failed_TO_Update = "अपडेट नही हो रहा"
-//    case Life_Line_No_Internet_Connection_String = "कृप्या अपना इंटरनेट कनेक्शन चेक करे"
- //   case Life_Line_Unable_Access_server_String = "सर्वर तक पहुंचने में असमर्थ, कृपया बाद में फिर से प्रयास करें"
+//    case Life_Line_No_Internet_Connection_String = "कृप्या अपना इंटरनेट कनेक्शन चेक करे" // change
+ //   case Life_Line_Unable_Access_server_String = "सर्वर तक पहुंचने में असमर्थ, कृपया बाद में फिर से प्रयास करें" // punh
 //    case Life_Line_Thanks_String = "धन्यवाद"
 //    case Life_Line_Title_Donate_String = "दान"
 //    case Life_Line_Title_Location_Off_String = "लोकेशन सुविधा बंद है"
@@ -38,7 +38,7 @@ public enum StringListForHindi:String
 //    case Life_Line_Link_Share_String = "आप यहां लाइफलाइन पर अनुरोध प्राप्त कर सकते हैं:"
     //    case Life_Line_Warning_String = "चेतावनी"
 //    case Life_Line_Under_Age_Alert_String = "आप अपनी उम्र कम से कम रक्त दान करने के लिए पात्र नहीं हैं। अगर आप अभी भी जारी रखना चाहते हैं, तो जारी रखने के लिए ठीक का चयन करें।"
-//    case Life_Line_Ok_String = "ठीक"
+//    case Life_Line_Ok_String = "ठीक" // ok
 //    case Life_Line_To_String = "टू"
 //    case Life_Line_Email_String = "ईमेल"
 //    case Life_Line_FromDate_String = "तारीख से"
@@ -77,7 +77,7 @@ public enum StringListForHindi:String
   //  case Life_Line_Password_Dont_Matched = "पासवर्ड मैच नहीं है"
   //  case Life_Line_Confirm_Password_Validation = "पासवर्ड की पुष्टि करें 6 अंकों से अधिक होना चाहिए"
   //  case Life_Line_Password_Validation = "पासवर्ड 6 अंकों से अधिक होना चाहिए"
-   // case Life_Line_DOB_String = "जन्मतिथि"
+   // case Life_Line_DOB_String = "जन्मतिथि" //janmtareekh
   //  case Life_Line_Last_Donation_Date = "अंतिम रक्तदान तिथि"
  //   case Life_Line_Invalid_Email = "अमान्य ई-मेल"
  //   case Life_Line_Invalid_Pin = "ये पिन कोड अमान्य है"
