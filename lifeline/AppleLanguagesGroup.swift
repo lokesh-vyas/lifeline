@@ -37,4 +37,13 @@ class MultiLanguage {  //is responsible for getting/setting language from/in the
         userdef.set([lang,currentAppleLanguage()], forKey: APPLE_LANGUAGE_KEY)
         userdef.synchronize()
     }
+    /// get Local Strings from using KEY
+    class func getLanguageUsingKey(_ key:String)->String{
+   
+        let path1 = Bundle.main.path(forResource: currentAppleLanguage(), ofType: "lproj")
+        let bundle1 = Bundle(path: path1!)
+        let string1 = bundle1?.localizedString(forKey: key, value: nil, table: nil)
+    
+        return string1!
+    }
 }
