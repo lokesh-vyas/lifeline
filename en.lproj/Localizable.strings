@@ -71,7 +71,7 @@ HOSPITAL_NEEDED_BY = "Needed by";
 
 REQUEST_SHARE_TITLE_MESSAGE = "You can also access the request on LifeLine here:";
 
-REQUEST_CAMP_VOLUNTEER_SHARE_MESSAGE = "A blood donation camp has been created on LifeLine. Please volunteer to donate blood or share this within your circle. Here are the details:";
+
 REQUEST_VOLUNTEER_SHARE_MESSAGE = "A blood donation request has been created on LifeLine.Please volunteer to donate blood or share this within your circle. Here are the details:";
 
 AGE_WARNING_MESSAGE = "You are not eligible for donating blood as your age is below 18. If you still want to continue, please select OK to continue.";
@@ -152,9 +152,10 @@ ERROR_ENTER_OLD_PASSWORD = "Please enter valid old password";
 ERROR_ALL_MANDATORY_NEW_FIELDS = "Please fill all Mandatory fields";
 BTN_CLEAR = "Clear";
 
-HOSPITAL_WORKING_HOURS = "Working Hours :";
+HOSPITAL_WORKING_HOURS = "Working Hours";
 CAMP_VOLUNTEER = "Volunteer";
 BLOOD_GROUP = "Blood Group";
 BLOOD_REQUIREMENT = "Requirement";
+REQUEST_CAMP_VOLUNTEER_SHARE_MESSAGE = "A blood donation camp has been created on LifeLine. Please volunteer to donate blood or share this within your circle. Here are the details:";
 
 

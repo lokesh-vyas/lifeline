@@ -314,7 +314,7 @@ extension DonateView : GMSMapViewDelegate {
     {
         
         if loader == true {
-            HudBar.sharedInstance.showHudWithMessage(message: "Loading...", view: self.view)
+            HudBar.sharedInstance.showHudWithMessage(message: MultiLanguage.getLanguageUsingKey("TOAST_LOADING_MESSAGE"), view: self.view)
         }
         
         if lastEventDate != nil {
@@ -330,17 +330,17 @@ extension DonateView : GMSMapViewDelegate {
         
         lastEventDate = Date()
         
-//        let visibleRegion = mapView.projection.visibleRegion()
-//        let mapBounds = GMSCoordinateBounds.init(region: visibleRegion)
-//        let NorthWest = CLLocationCoordinate2DMake(mapBounds.northEast.latitude, mapBounds.southWest.longitude)
-//        let SouthEast = CLLocationCoordinate2DMake(mapBounds.southWest.latitude, mapBounds.northEast.longitude)
-//        
-//        SouthLatitude = SouthEast.latitude
-//        NorthLatitude = NorthWest.latitude
-//        WestLongitude = NorthWest.longitude
-//        EastLongitude = SouthEast.longitude
-//        
-//        self.fetchBloodRequestToDonate()
+        let visibleRegion = mapView.projection.visibleRegion()
+        let mapBounds = GMSCoordinateBounds.init(region: visibleRegion)
+        let NorthWest = CLLocationCoordinate2DMake(mapBounds.northEast.latitude, mapBounds.southWest.longitude)
+        let SouthEast = CLLocationCoordinate2DMake(mapBounds.southWest.latitude, mapBounds.northEast.longitude)
+        
+        SouthLatitude = SouthEast.latitude
+        NorthLatitude = NorthWest.latitude
+        WestLongitude = NorthWest.longitude
+        EastLongitude = SouthEast.longitude
+        
+        self.fetchBloodRequestToDonate()
         loader = false
     }
     

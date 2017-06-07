@@ -148,7 +148,7 @@ extension MyRequestView:MyRequestProtocol
         {
             self.tableRequestView.isHidden = true
             self.lblInternetIssue.isHidden = false
-            self.lblInternetIssue.text = "NO_REQUEST_FOUND"
+            self.lblInternetIssue.text = MultiLanguage.getLanguageUsingKey("NO_REQUEST_FOUND")
         }
         
     }

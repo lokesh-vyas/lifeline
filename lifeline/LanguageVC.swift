@@ -18,9 +18,8 @@ class LanguageVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableObj.contentInset = UIEdgeInsetsMake(-35, 0.0, -20, 0.0)
         let lang = MultiLanguage.currentAppleLanguageFull()
-        print(lang)
-        
         for i in 0..<langCode.count {
             if langCode[i] == lang
             {
@@ -28,7 +27,6 @@ class LanguageVC: UIViewController {
             }
         }
         self.navigationController?.completelyTransparentBar()
-        
     }
     
     @IBAction func BackToHome(_ sender: Any)
@@ -37,9 +35,22 @@ class LanguageVC: UIViewController {
         self.present(storyObj!, animated: true, completion: nil)
     }
     //MARK:- Reload VC
-    func reloadVC() {
-        let rootviewcontroller: UIWindow = ((UIApplication.shared.delegate?.window)!)!
-        rootviewcontroller.rootViewController = self.storyboard?.instantiateViewController(withIdentifier: "SWRevealViewController")
+    func reloadVC()
+    {
+        let deadlineTime = DispatchTime.now() + .seconds(2)
+        DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute:
+            {
+                let transition: UIViewAnimationOptions = .transitionFlipFromLeft
+                HudBar.sharedInstance.hideHudFormView(view: self.view)
+                let rootviewcontroller: UIWindow = ((UIApplication.shared.delegate?.window)!)!
+                rootviewcontroller.rootViewController = self.storyboard?.instantiateViewController(withIdentifier: "SWRevealViewController")
+                let mainwindow = (UIApplication.shared.delegate?.window!)!
+                mainwindow.backgroundColor = UIColor(hue: 0.6477, saturation: 0.6314, brightness: 0.6077, alpha: 0.8)
+                UIView.transition(with: mainwindow, duration: 0.55001, options: transition, animations: { () -> Void in
+                }) { (finished) -> Void in
+                    
+                }
+        })
     }
     func tableReloadData()
     {
@@ -110,7 +121,8 @@ extension LanguageVC: UITableViewDelegate {
         
         let alert = UIAlertController(title: "Alert", message: "Are you sure you want to change your language", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler:
-        { _ in
+            { _ in
+                HudBar.sharedInstance.showHudWithMessage(message: "TOAST_LOADING_MESSAGE", view: self.view)
                 self.langaugeSelectFromTable(indexPath: indexPath.row)
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: {

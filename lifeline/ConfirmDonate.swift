@@ -81,7 +81,7 @@ class ConfirmDonate: UIViewController {
         let textToAndroid = "Android:- https://goo.gl/PUorhE"
         
         if let myWebsite = NSURL(string: "https://goo.gl/XJl5a7") {
-            let objectsToShare = [StringList.LifeLine_BloodDonation_Share_Text.rawValue,textShareArray[0],textShareArray[1],textShareArray[2],textShareArray[3],textShareLink,textToIOS,textToAndroid, myWebsite] as [Any]
+            let objectsToShare = [MultiLanguage.getLanguageUsingKey("REQUEST_CAMP_VOLUNTEER_SHARE_MESSAGE"),textShareArray[0],textShareArray[1],textShareArray[2],textShareArray[3],textShareLink,textToIOS,textToAndroid, myWebsite] as [Any]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
             
             //New Excluded Activities Code
