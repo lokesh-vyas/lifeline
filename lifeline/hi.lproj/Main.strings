@@ -1,6 +1,6 @@
 
 /* Class = "UIButton"; normalTitle = "When you need"; ObjectID = "0Bx-83-oKh"; */
-"0Bx-83-oKh.normalTitle" = "When you need";
+"0Bx-83-oKh.normalTitle" = "घर";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "0Nt-hg-fuj"; */
 "0Nt-hg-fuj.text" = "Label";
@@ -42,7 +42,7 @@
 "6VC-6O-oIt.text" = "Patient's Name";
 
 /* Class = "UIButton"; normalTitle = "Donate"; ObjectID = "6cw-Xz-M53"; */
-"6cw-Xz-M53.normalTitle" = "Donate";
+"6cw-Xz-M53.normalTitle" = "घर";
 
 /* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "7gk-dR-1wU"; */
 "7gk-dR-1wU.normalTitle" = "Cancel";
