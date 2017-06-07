@@ -136,29 +136,29 @@ extension IndividualConfirmDonate : IndividualRequestDetailsProtocol {
         
         self.lblWhoRequested.text = "\(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["WhatNeeded"])) Requirement for \(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["BloodGroup"]))"
         
-        self.textShareArray.insert("Blood Group : \(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["BloodGroup"]))", at: 0)
-         self.textShareArray.insert("Requirement : \(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["WhatNeeded"]))", at: 1)
+        self.textShareArray.insert("\(MultiLanguage.getLanguageUsingKey("BLOOD_GROUP")) : \(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["BloodGroup"]))", at: 0)
+         self.textShareArray.insert("\(MultiLanguage.getLanguageUsingKey("BLOOD_REQUIREMENT")) : \(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["WhatNeeded"]))", at: 1)
         
         self.lblWhenRequired.text = Util.SharedInstance.showingDateToUser(dateString: String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["WhenNeeded"]))
         
-        self.textShareArray.insert("Needed By : \(Util.SharedInstance.showingDateToUser(dateString: String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["WhenNeeded"])))", at: 2)
+        self.textShareArray.insert("\(MultiLanguage.getLanguageUsingKey("HOSPITAL_NEEDED_BY")) : \(Util.SharedInstance.showingDateToUser(dateString: String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["WhenNeeded"])))", at: 2)
         
         self.lblNoOfUnits.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["NumUnits"])
         self.lblDoctorName.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["DoctorName"])
         self.lblPatientName.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["PatientName"])
         self.lblContactPerson.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["ContactPerson"])
         
-        self.textShareArray.insert("Contact Name : \(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["ContactPerson"]))", at: 3)
+        self.textShareArray.insert("\(MultiLanguage.getLanguageUsingKey("HOSPITAL_CONTACT_NAME_LBL")) : \(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["ContactPerson"]))", at: 3)
         
         let strContact = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["ContactNumber"])
         if strContact == "null"
         {
             lblContactNumber.text = "00"
-            self.textShareArray.insert("Contact Number : 00", at: 4)
+            self.textShareArray.insert("\(MultiLanguage.getLanguageUsingKey("HOSPITAL_CONTACT_NUMBER_LBL")) : 00", at: 4)
         }else
         {
             lblContactNumber.text = strContact
-             self.textShareArray.insert("Contact Number : \(strContact)", at: 4)
+             self.textShareArray.insert("\(MultiLanguage.getLanguageUsingKey("HOSPITAL_CONTACT_NUMBER_LBL")) : \(strContact)", at: 4)
         }
         
 //        self.lblContactNumber.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["ContactNumber"])

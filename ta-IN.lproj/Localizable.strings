@@ -1,7 +1,171 @@
-/* 
-  Localizable.strings
-  lifeline
 
-  Created by iSteer on 01/06/17.
-  Copyright © 2017 iSteer. All rights reserved.
-*/
+/*
+ Localizable.strings
+ lifeline
+ 
+ Created by iSteer on 01/06/17.
+ Copyright © 2017 iSteer. All rights reserved.
+ */
+
+
+/* Appdelegate Strings */
+
+/* BUTTON TITLE*/
+
+BTN_CANCEL = "ரத்து";
+BTN_OK = "சரி";
+BTN_SUBMIT = "சமர்ப்பி";
+BTN_SELECT = "தேர்வு";
+BTN_SELECT_ADDRESS = "தேர்ந்தெடுக்கப்பட்ட முகவரி";
+
+/* Toast Message */
+
+TOAST_SIGN_IN = "உள்நுழைக...";
+TOAST_WARNIG = "எச்சரிக்கை";
+TOAST_LOGIN_IN = "உள் நுழை...";
+TOAST_PLEASE_WAIT = "காத்திருக்கவும்..";
+TOAST_SETTING_TITLE = "அமைப்புகள்";
+TOAST_LOADING_MESSAGE = "காத்திருப்பு ஏற்றது...";
+TOAST_SUBMIT_MESSAGE = "சமர்ப்பிக்கிறது...";
+TOAST_ALERT_MESSAGE = "எச்சரிக்கை";
+
+TOAST_NO_INTERNET_WARNING = "இணைய இணைப்பு இல்லை, உங்கள் இணைய இணைப்பு சரிபார்க்கவும்";
+TOAST_ACCESS_SERVER_WARNING = "சேவையகத்தை அணுக முடியவில்லை, பிறகு மீண்டும் முயற்சிக்கவும்";
+
+
+/* SignIn View */
+
+ERROR_ALL_MANDATORY_FIELDS = "எல்லா துறைகள் நிரப்பவும்";
+ERROR_PASSWORD_NOT_MATCHED = "கடவுச்சொல் பொருந்தவில்லை";
+ERROR_PASSWORD_VALIDATION = "கடவுச்சொல் 6 இலக்கங்களுக்கும் அதிகமாக இருக்க வேண்டும்";
+ERROR_INVALID_MAIL_ID = "தவறான மின்னஞ்சல் ஐடி";
+ERROR_WRONG_USER_ID = "நீங்கள் உள்ளிட்ட பயனீட்டாளர் ஐடியானது முன்பே உபயோகத்தில் உள்ளது, தயவுசெய்து மற்றொரு பயனர் ஐடியை உள்ளிடுக";
+
+CHECK_USERID_PASSWORD = "தயவுசெய்து உங்கள் பயனர் ஐடி மற்றும் கடவுச்சொல்லைச் சரிபார்த்து மீண்டும் முயற்சிக்கவும்";
+
+SUCESS_USER_ID_AVAILABLE = "பயனர் ஐடி உள்ளது";
+SUCESS_LOGIN_MESSAGE = "உள்நுழைவு வெற்றிகரமாக";
+
+
+/* Home View */
+
+SOCAIL_SHARE_TITLE_MESSAGE = "லைஃப்லைன் என்பது இரத்த வங்கிகள், நன்கொடையாளர்கள் மற்றும் பெறுநர்களை இணைக்கும் ஒரு சமூக பயன்பாடாகும்.";
+
+/* DONATE VIEW */
+
+DONATE_TITLE = "நன்கொடை";
+LOCATION_TITLE_WARNING = "இருப்பிட சேவை முடக்கப்பட்டுள்ளது ";
+LOCATION_MESSAGE_WARNING = "அமைப்புகளில் இந்த பயன்பாட்டிற்கான இருப்பிடச் சேவையை நீங்கள் இயக்க வேண்டும்";
+NO_REQUIREMENT_WARNING = "உங்கள் இருப்பிடத்திற்கு அருகில் இரத்த தேவைகள் இல்லை";
+
+/* INVENTORY VIEW */
+
+INVENTORY_WARNING = "இந்த இரத்த வங்கிக்கான சேமிப்பு தகவல்கள் இல்லை";
+
+/* CONFIRM DONATE VIEW */
+HOSPITAL_CONTACT_NAME_LBL = "தொடர்பு கொள்ள";
+HOSPITAL_NAME_LBL = "மருத்துவமனை பெயர்";
+HOSPITAL_CONTACT_NUMBER_LBL = "தொடர்பு கொள்ள :";
+HOSPITAL_NEEDED_BY = "தேவை தேதி :";
+
+REQUEST_SHARE_TITLE_MESSAGE = "இங்கே லைல்லைன் கோரிக்கையை நீங்கள் அணுகலாம்:";
+REQUEST_VOLUNTEER_SHARE_MESSAGE = "இரத்தம் நன்கொடை கோரிக்கை LifeLine இல் உருவாக்கப்பட்டது. இரத்தத்தை தானம் செய்ய அல்லது உங்கள் வட்டத்தில் இதை பகிர்ந்து கொள்ளுங்கள். விவரங்கள் இங்கே உள்ளன:";
+AGE_WARNING_MESSAGE = "உங்கள் வயதை 18 வயதிற்குட்பட்டது என இரத்த தானம் செய்வதற்கான தகுதி உங்களுக்கு இல்லை. நீங்கள் தொடர விரும்பினால், தொடர சரி என்பதைத் தேர்ந்தெடுக்கவும்.";
+
+/* ALERT CONFIRM DONATE */
+
+CALENDER_HEADING = "தேதி மற்றும் நேரத்தை உறுதிசெய்க";
+WARNING_DATE_AND_TIME = "தயவுசெய்து விருப்பமான தேதி மற்றும் நேரம் தேர்ந்தெடுக்கவும்";
+
+SUCESS_SUBMIT_REQUEST = "கோரப்பட்ட விவரங்கள் வெற்றிகரமாக சமர்ப்பிக்கப்பட்டன";
+
+/* LOCAL NOTIFICATION */
+
+LOCAL_NOTIFICATION_TITLE = "இரத்த தானம்";
+LOCAL_NOTIFICATION_MESSAGE = "இரத்த நன்கொடைக்கான நினைவூட்டல்";
+
+/* PROFILE VIEW */
+CLEAR = "அகற்று";
+DATE_OF_BIRTH = "பிறந்த தேதி";
+LAST_DONATION_DATE = "கடைசி நன்கொடை தேதி";
+
+INVALID_HOME_PIN =  "தவறான முகப்புஅஞ்சல் குறியீடு";
+INVALID_WORK_PIN =  "தவறான அலுவலக அஞ்சல் குறியீடு";
+
+SUCESS_PROFILE_UPDATE = "உங்கள் சுயவிவர மேம்படுத்தப்பட்டது";
+ERROR_PROFILE_UPDATE = "புதுப்பிக்க முடியவில்லை";
+
+/* REQUEST VIEW */
+
+SELECT_WHAT_YOU_NEED = "உங்களுக்குத் தேவையானதைத் தேர்ந்தெடுக்கவும்";
+SELECT_UNITS = "அலகுகளின் எண்ணிக்கையைத் தேர்ந்தெடுக்கவும்";
+SELECT_BLOOD_GROUP = "இரத்தக் குழுவைத் தேர்ந்தெடுக்கவும்";
+SUCCESSFULLY_SUBMIT_POST = "உங்கள் கோரிக்கை வெற்றிகரமாக வெளியிடப்பட்டது";
+FACEBOOK_NOT_INSTALLED = "பேஸ்புக் App நிறுவப்படவில்லை.";
+
+ERROR_INVALID_CONTACT = "தவறான தொடர்பு எண்";
+ERROR_INVALID_HOSPITAL_CONTACT = "தவறான மருத்துவமனை தொடர்பு எண்";
+ERROR_SPECIAL_CHAR_NOT_ALLOWED = "சிறப்பு எழுத்துகள் அனுமதிக்கப்படவில்லை";
+ERROR_INVALID_HOSPITAL_PIN = "தவறான மருத்துவமனை முகவரி அஞ்சல் குறியீடு";
+ERROR_FACEBOOK_NOT_INSTALLED = "உங்கள் செல்பேசி பேஸ்புக் நிறுவப்படவில்லை.";
+
+CONFIRM_DATE = "உங்கள் தேதி உறுதிப்படுத்தவும்";
+
+/* Login View */
+
+ERROR_ENTER_MAILID = "மின்னஞ்சல் முகவரியை உள்ளிடுக";
+ERROR_FAIL_LOGIN = "உள்நுழைய முடியவில்லை";
+ERROR_MAIL_ID_ALREADY_EXIST = "இந்த மின்னஞ்சல் ஐடி ஏற்கனவே இரத்த வங்கிக்காகப் பயன்படுத்தப்படுகிறது, தயவுசெய்து வெவ்வேறு மின்னஞ்சல் ஐடி மூலம் உள்நுழைக";
+ERROR_INCORRECT_USERID = "சரியாக உங்கள் பயனர் ஐடி தட்டச்சு செய்யவும்";
+ERROR_INCORRECT_USERID_PASSWORD = "தயவுசெய்து உங்கள் பயனர் ஐடி மற்றும் கடவுச்சொல்லைச் சரிபார்த்து மீண்டும் முயற்சிக்கவும்";
+
+WARNING_ENTER_PASSWORD = "தயவுசெய்து கடவுச்சொல்லை உள்ளிடவும்";
+
+SUCCESS_NEW_PASSWORD = "புதிய கடவுச்சொல் மூலம் உங்கள் பதிவு மின்னஞ்சல் முகவரியில் விரைவில் அஞ்சல் பெறுவீர்கள்";
+
+/* MY REQUEST VIEW */
+
+NO_REQUEST_FOUND = "கோரிக்கை எதுவும் இல்லை";
+REQUEST_CLOSED = "உங்கள் கோரிக்கை மூடப்பட்டது";
+
+NO_ONE_ACCEPT = "உங்கள் கோரிக்கை ஏற்கப்படவில்லை";
+
+MAIL_TITLE = "லைவ்லைன் - இரத்த தானம் உறுதிப்படுத்தல்";
+MAIL_SEND_CANCEL = "மின்னஞ்சல் அனுப்ப முடியவில்லை";
+MAIL_CANCEL_MESSAGE = "உங்கள் சாதனம் மின்னஞ்சலை அனுப்ப முடியவில்லை. மின்னஞ்சல் உள்ளமைவை சரிபார்த்து மீண்டும் முயற்சிக்கவும்.";
+
+MAIL_CANCEL = "லைவ்லைன் மின்னஞ்சல் ரத்து செய்யப்பட்டது";
+MAIL_IN_DRAFT =  "வரைவு கோப்புறையில் லைவ்லைன் அஞ்சல் சேமிக்கப்பட்ட செய்தி";
+MAIL_SENT_SUCCESSFULLY = "லைவ்லைன் அஞ்சல் அனுப்பப்பட்டது";
+MAIL-FAILED = "லைவ்லைன் அஞ்சல் தோல்வி";
+
+/* NEW STRINGS */
+
+SELECT_WHEN_YOU_NEED = "Please select When You Need";
+ERROR_CONFIRM_PASSWORD_VALIDATION = "Confirm Password must be greater than 6 Digits";
+ERROR_ENTER_OLD_PASSWORD = "Please enter valid old password";
+ERROR_ALL_MANDATORY_NEW_FIELDS = "Please fill all Mandatory fields";
+BTN_CLEAR = "Clear";
+
+HOSPITAL_WORKING_HOURS = "Working Hours :";
+CAMP_VOLUNTEER = "Volunteer";
+BLOOD_GROUP = "Blood Group";
+BLOOD_REQUIREMENT = "Requirement";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
