@@ -600,7 +600,6 @@
 		66EA8D281E1F6B4200646797 = {
 			isa = PBXGroup;
 			children = (
-				663F67641EDFF27900D5C49E /* Localizable.strings */,
 				66EA8D331E1F6B4300646797 /* lifeline */,
 				66EA8D481E1F6B4300646797 /* lifelineTests */,
 				66EA8D531E1F6B4300646797 /* lifelineUITests */,
@@ -686,6 +685,7 @@
 		66EA8D651E1F6FA800646797 /* StoryBoard */ = {
 			isa = PBXGroup;
 			children = (
+				663F67641EDFF27900D5C49E /* Localizable.strings */,
 				66EA8D381E1F6B4300646797 /* Main.storyboard */,
 				66EA8D3B1E1F6B4300646797 /* Assets.xcassets */,
 				66EA8D3D1E1F6B4300646797 /* LaunchScreen.storyboard */,
@@ -1285,6 +1285,7 @@
 				66A0EC851EE292CD0019C5FB /* te-IN */,
 			);
 			name = Localizable.strings;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		66EA8D381E1F6B4300646797 /* Main.storyboard */ = {
