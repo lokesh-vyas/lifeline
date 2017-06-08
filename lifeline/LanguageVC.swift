@@ -58,6 +58,7 @@ class LanguageVC: UIViewController {
     }
     func langaugeSelectFromTable(indexPath:Int)
     {
+        UserDefaults.standard.set(true, forKey: "LangaugeSelected")
         switch indexPath {
         case 0:
             MultiLanguage.setAppleLAnguageTo(lang: "en")

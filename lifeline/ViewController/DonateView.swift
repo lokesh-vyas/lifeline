@@ -184,7 +184,7 @@ class DonateView: UIViewController {
         marker.position = coordinates!
         marker.icon = UIImage(named: "Current_icon")
         marker.map = mapView
-        marker.snippet = "You searched this Location"
+        marker.snippet = MultiLanguage.getLanguageUsingKey("SEARCH_LOCATION")
         camera = GMSCameraPosition.camera(withLatitude: (coordinates?.latitude)!, longitude: (coordinates?.longitude)!, zoom: 18.0)
         mapView.camera = camera!
         view = mapView
