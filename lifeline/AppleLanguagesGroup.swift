@@ -39,6 +39,7 @@ class MultiLanguage {  //is responsible for getting/setting language from/in the
     }
     /// get Local Strings from using KEY
     class func getLanguageUsingKey(_ key:String)->String{
+
         var lagStr :String
         let profileSuccess = UserDefaults.standard.bool(forKey: "SuccessProfileRegistration")
         if profileSuccess == false

@@ -127,7 +127,7 @@ class MyRequestClose: UIViewController {
             }
         }
         let customer : Dictionary = ["RequestStatusUpdateReqest":["RequestDetails":["RequestID":String(describing: RequestID),"Status":"Close","DonorsDetails":myNewDictArray]]]
-        HudBar.sharedInstance.showHudWithMessage(message: "TOAST_PLEASE_WAIT", view: self.view)
+        HudBar.sharedInstance.showHudWithMessage(message: MultiLanguage.getLanguageUsingKey("TOAST_PLEASE_WAIT"), view: self.view)
         MyRequestInteractor.SharedInstance.delegate = self
         MyRequestInteractor.SharedInstance.MyRequestClose(params: customer)
     }
