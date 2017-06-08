@@ -232,6 +232,22 @@ extension UINavigationController {
             statusBar.backgroundColor = UIColor.black.withAlphaComponent(0.2)
         }
     }
+    func completelyTransparentBarForDonate()
+    {
+        navigationBar.setBackgroundImage(UIImage(), for:  .default)
+        navigationBar.shadowImage     = UIImage()
+        navigationBar.isTranslucent   = true
+        view.backgroundColor          = UIColor.black.withAlphaComponent(0.8)
+        navigationBar.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        
+        let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
+        if statusBar.responds(to: #selector(setter: UIView.backgroundColor))
+        {
+            statusBar.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        }
+    }
+
 }
 //MARK:- Padding of textfield
 extension UITextField {
