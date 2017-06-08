@@ -580,6 +580,7 @@ extension DonateView : DonateViewProtocol {
             //labelWarning
             labelWarning.text = MultiLanguage.getLanguageUsingKey("NO_REQUIREMENT_WARNING")
             labelWarning.numberOfLines = 2
+            labelWarning.adjustsFontSizeToFitWidth = true
             labelWarning.translatesAutoresizingMaskIntoConstraints = false
             
             // imageWarning

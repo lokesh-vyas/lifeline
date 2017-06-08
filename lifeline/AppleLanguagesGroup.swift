@@ -39,8 +39,16 @@ class MultiLanguage {  //is responsible for getting/setting language from/in the
     }
     /// get Local Strings from using KEY
     class func getLanguageUsingKey(_ key:String)->String{
-   
-        let path1 = Bundle.main.path(forResource: currentAppleLanguageFull(), ofType: "lproj")
+        var lagStr :String
+        let profileSuccess = UserDefaults.standard.bool(forKey: "SuccessProfileRegistration")
+        if profileSuccess == false
+        {
+            lagStr = currentAppleLanguage()
+        }else
+        {
+            lagStr = currentAppleLanguageFull()
+        }
+        let path1 = Bundle.main.path(forResource: lagStr, ofType: "lproj")
         let bundle1 = Bundle(path: path1!)
         let string1 = bundle1?.localizedString(forKey: key, value: nil, table: nil)
     
