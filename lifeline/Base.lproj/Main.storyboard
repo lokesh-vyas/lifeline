@@ -1350,7 +1350,7 @@
             </objects>
             <point key="canvasLocation" x="2116" y="312.59370314842579"/>
         </scene>
-        <!--Donate View-->
+        <!--Donate-->
         <scene sceneID="nS4-eu-D7C">
             <objects>
                 <viewController storyboardIdentifier="DonateView" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="It2-WR-duq" customClass="DonateView" customModule="lifeline" customModuleProvider="target" sceneMemberID="viewController">
@@ -1363,22 +1363,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="lM7-GP-6kO">
+                    <navigationItem key="navigationItem" title="Donate" id="lM7-GP-6kO">
                         <barButtonItem key="leftBarButtonItem" image="Back_icon" id="EiS-Ow-JNz">
-                            <color key="tintColor" red="0.71372549019999998" green="0.043137254899999998" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="backButton:" destination="It2-WR-duq" id="cAM-ei-aTu"/>
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="search" id="8IL-df-raT">
-                                <color key="tintColor" red="0.71372549019999998" green="0.043137254899999998" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="btnSearchTapped:" destination="It2-WR-duq" id="Kjn-mj-1eX"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem image="Filter32.png" id="Yrs-Dm-N3W">
-                                <color key="tintColor" red="0.71372549019999998" green="0.043137254899999998" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <barButtonItem image="Filter Filled.png" id="Yrs-Dm-N3W">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="btnFilterTapped:" destination="It2-WR-duq" id="Cw5-Ya-4xP"/>
                                 </connections>
@@ -4916,7 +4916,7 @@
         <image name="Checked Checkbox 2-32.png" width="32" height="32"/>
         <image name="Doctor_info" width="15" height="15"/>
         <image name="Drops" width="12" height="37"/>
-        <image name="Filter32.png" width="32" height="32"/>
+        <image name="Filter Filled.png" width="25" height="25"/>
         <image name="HOME_SCREEN_03.png" width="799" height="73"/>
         <image name="HOME_SCREEN_F.png" width="495" height="100"/>
         <image name="HOME_SCREEN_G.png" width="497" height="100"/>

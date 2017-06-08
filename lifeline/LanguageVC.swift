@@ -121,11 +121,11 @@ extension LanguageVC: UITableViewDelegate {
         
         let alert = UIAlertController(title: "Alert", message: "Are you sure you want to change your language", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler:
-            { _ in
-                HudBar.sharedInstance.showHudWithMessage(message:MultiLanguage.getLanguageUsingKey("TOAST_LOADING_MESSAGE"), view: self.view)
+            { _ in    HudBar.sharedInstance.showHudWithMessage(message:MultiLanguage.getLanguageUsingKey("TOAST_LOADING_MESSAGE"), view: self.view)
+
                 self.langaugeSelectFromTable(indexPath: indexPath.row)
         }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: {
+        alert.addAction(UIAlertAction(title: MultiLanguage.getLanguageUsingKey("BTN_CANCEL"), style: UIAlertActionStyle.default, handler: {
             _ in
             self.tableReloadData()
         }))
