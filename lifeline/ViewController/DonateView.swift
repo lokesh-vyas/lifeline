@@ -75,9 +75,8 @@ class DonateView: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         btnListofMarkers.isHidden = true
-        self.navigationController?.completelyTransparentBar()
-        self.navigationController?.topViewController?.title = "Donate"
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:Util.SharedInstance.hexStringToUIColor(hex: "b60b16")]
+        self.navigationController?.completelyTransparentBarForDonate()
+      
         //For Result VC
         resultsViewController = GMSAutocompleteResultsViewController()
         resultsViewController?.delegate = self
