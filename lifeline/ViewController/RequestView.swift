@@ -106,7 +106,7 @@ class RequestView: UIViewController,UITextViewDelegate
         let viewBloodInfo: BloodInfoView = self.storyboard?.instantiateViewController(withIdentifier: "BloodInfoView") as! BloodInfoView
         viewBloodInfo.delegate = self
         viewBloodInfo.pickerArray = self.whatneedArray
-        viewBloodInfo.bloodInfoString = "SELECT_WHAT_YOU_NEED"
+        viewBloodInfo.bloodInfoString = MultiLanguage.getLanguageUsingKey("SELECT_WHAT_YOU_NEED")
         viewBloodInfo.modalPresentationStyle = .overCurrentContext
         viewBloodInfo.view.backgroundColor =  UIColor.clear
         self.present(viewBloodInfo, animated: true, completion: nil)
@@ -119,7 +119,7 @@ class RequestView: UIViewController,UITextViewDelegate
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
         viewCalendar.dateFormatter = dateFormatter
-        viewCalendar.calenderHeading = "CONFIRM_DATE"
+        viewCalendar.calenderHeading = MultiLanguage.getLanguageUsingKey("CONFIRM_DATE")
         viewCalendar.calendar.minimumDate = Date() as Date
         viewCalendar.calendar.datePickerMode = UIDatePickerMode.date
         viewCalendar.modalPresentationStyle = .overCurrentContext
@@ -132,7 +132,7 @@ class RequestView: UIViewController,UITextViewDelegate
         let viewBloodInfo: BloodInfoView = self.storyboard?.instantiateViewController(withIdentifier: "BloodInfoView") as! BloodInfoView
         viewBloodInfo.delegate = self
         viewBloodInfo.pickerArray = self.bloodGroupArray
-        viewBloodInfo.bloodInfoString = "SELECT_BLOOD_GROUP"
+        viewBloodInfo.bloodInfoString = MultiLanguage.getLanguageUsingKey("SELECT_BLOOD_GROUP")
         viewBloodInfo.modalPresentationStyle = .overCurrentContext
         viewBloodInfo.view.backgroundColor =  UIColor.clear
         self.present(viewBloodInfo, animated: true, completion: nil)
@@ -143,7 +143,7 @@ class RequestView: UIViewController,UITextViewDelegate
         let viewBloodInfo: BloodInfoView = self.storyboard?.instantiateViewController(withIdentifier: "BloodInfoView") as! BloodInfoView
         viewBloodInfo.delegate = self
         viewBloodInfo.pickerArray = self.bloodUnitArray
-        viewBloodInfo.bloodInfoString = "SELECT_UNITS"
+        viewBloodInfo.bloodInfoString = MultiLanguage.getLanguageUsingKey("SELECT_UNITS")
         viewBloodInfo.modalPresentationStyle = .overCurrentContext
         viewBloodInfo.view.backgroundColor =  UIColor.clear
         self.present(viewBloodInfo, animated: true, completion: nil)

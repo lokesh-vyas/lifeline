@@ -41,7 +41,7 @@ class MultiLanguage {  //is responsible for getting/setting language from/in the
     class func getLanguageUsingKey(_ key:String)->String{
 
         var lagStr :String
-        let profileSuccess = UserDefaults.standard.bool(forKey: "SuccessProfileRegistration")
+        let profileSuccess = UserDefaults.standard.bool(forKey: "LangaugeSelected")
         if profileSuccess == false
         {
             lagStr = currentAppleLanguage()

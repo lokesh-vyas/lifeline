@@ -29,7 +29,7 @@ class CalendarView: UIViewController {
         super.viewDidLoad()
         if calenderHeading == MultiLanguage.getLanguageUsingKey("LAST_DONATION_DATE")
         {
-            btnCancel.setTitle(MultiLanguage.getLanguageUsingKey("BTN_CLEAR"), for: .normal)
+            btnCancel.setTitle(MultiLanguage.getLanguageUsingKey("CLEAR"), for: .normal)
         }
         labelHeading.text = calenderHeading
         if calendar.maximumDate != nil {
