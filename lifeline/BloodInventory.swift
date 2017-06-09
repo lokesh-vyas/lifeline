@@ -35,7 +35,7 @@ class BloodInventory: UIViewController {
     {
         super.viewDidLoad()
         self.tableInventoryView.isHidden = true
-        HudBar.sharedInstance.showHudWithMessage(message: "Loading...", view: self.view)
+        HudBar.sharedInstance.showHudWithMessage(message:MultiLanguage.getLanguageUsingKey("TOAST_LOADING_MESSAGE"), view: self.view)
         self.navigationController?.completelyTransparentBar()
         tableInventoryView.contentInset = UIEdgeInsetsMake(-35, 0.0, 0, 0.0)
         let bloodbankIDDict = MarkerData.SharedInstance.markerData
