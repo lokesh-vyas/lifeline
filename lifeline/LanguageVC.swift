@@ -120,8 +120,8 @@ extension LanguageVC: UITableViewDelegate {
         let cell = self.tableObj.cellForRow(at: indexPath) as! LanguageTableCell
         cell.accessoryType = UITableViewCellAccessoryType.checkmark
         
-        let alert = UIAlertController(title: "Alert", message: "Are you sure you want to change LifeLine language", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler:
+        let alert = UIAlertController(title: MultiLanguage.getLanguageUsingKey("TOAST_ALERT_MESSAGE"), message: MultiLanguage.getLanguageUsingKey("LANGUAGE_CHANGE_ALERT"), preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: MultiLanguage.getLanguageUsingKey("BTN_OK"), style: UIAlertActionStyle.default, handler:
             { _ in    HudBar.sharedInstance.showHudWithMessage(message:MultiLanguage.getLanguageUsingKey("TOAST_LOADING_MESSAGE"), view: self.view)
 
                 self.langaugeSelectFromTable(indexPath: indexPath.row)

@@ -67,7 +67,6 @@ class DonateView: UIViewController {
         }
         NotificationCenter.default.addObserver(self, selector: #selector(DonateView.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
         //        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        
     }
     
     //MARK:- viewWillAppear
@@ -76,7 +75,7 @@ class DonateView: UIViewController {
         super.viewWillAppear(true)
         btnListofMarkers.isHidden = true
         self.navigationController?.completelyTransparentBarForDonate()
-      
+        
         //For Result VC
         resultsViewController = GMSAutocompleteResultsViewController()
         resultsViewController?.delegate = self
