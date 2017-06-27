@@ -17,7 +17,6 @@ class MarkersListView: UIViewController {
     var searchController : UISearchController!
     var myContent = [String]()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.completelyTransparentBar()
@@ -30,20 +29,28 @@ class MarkersListView: UIViewController {
         }
         for (i, _) in listMarkers.enumerated() {
             myContent.append(String(describing: listMarkers[i]["Name"]!))
-            
-            
         }
-        
     }
-
+    
     @IBAction func btnCancelTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    @IBAction func btnFilterTapped(_ sender: Any) {
+        
+        SingleTon.SharedInstance.cameFromMarkersList = true
+        let temp = self.storyboard?.instantiateViewController(withIdentifier: "FilterChecks") as! FilterChecks
+        temp.modalPresentationStyle = .overCurrentContext
+        temp.view.backgroundColor = UIColor.clear
+        present(temp, animated: true, completion: nil)
+        
+    }
+    
+    
 }
-
-
 extension MarkersListView : UITableViewDataSource {
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+     print("Total items in LisView = \(listMarkers.count)")
      return listMarkers.count
     }
     
@@ -55,12 +62,12 @@ extension MarkersListView : UITableViewDataSource {
         {
             var nib:Array = Bundle.main.loadNibNamed("HospitalListCell", owner: self, options: nil)!
             cell = nib[0] as? HospitalListCell
+            print("cell = \(String(describing: cell))")
         }
         cell?.lblHospitalName.text = String(describing: listMarkers[indexPath.row]["Name"]!)
         cell?.lblCityName.text = String(describing: listMarkers[indexPath.row]["WorkingHours"]!)
-
+        
         return cell!
-
     }
 }
 
@@ -74,7 +81,6 @@ extension MarkersListView : UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         let cnfDonate = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmDonate") as! ConfirmDonate
         let navigationControllerStack = UINavigationController(rootViewController: cnfDonate)
         self.present(navigationControllerStack, animated: true, completion: nil)

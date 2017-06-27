@@ -160,4 +160,8 @@ BLOOD_REQUIREMENT = "Requirement";
 REQUEST_CAMP_VOLUNTEER_SHARE_MESSAGE = "A blood donation camp has been created on LifeLine. Please volunteer to donate blood or share this within your circle. Here are the details:";
 SEARCH_LOCATION = "You searched this Location";
 LANGUAGE_CHANGE_ALERT = "Are you sure you want to change LifeLine language";
+CALANDER_TO = "To";
+BLOOD_STRING = "Blood";
+PLASMA_STRING = "Plasma";
+PLATELETS_STRING = "Platelets";
 

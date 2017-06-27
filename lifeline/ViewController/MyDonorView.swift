@@ -130,6 +130,7 @@ extension MyDonorView:UITableViewDelegate,UITableViewDataSource
         if MyDonorDetailJSON[buttonRow]["ContactNumber"].int != nil
         {
             PhoneNumber = String(describing: MyDonorDetailJSON[buttonRow]["ContactNumber"])
+            print("Donar Phone Number is: \(PhoneNumber)")
         }
         else
         {
