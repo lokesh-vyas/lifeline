@@ -5,3 +5,162 @@
   Created by iSteer on 01/06/17.
   Copyright © 2017 iSteer. All rights reserved.
 */
+
+/* Appdelegate Strings */
+
+/* BUTTON TITLE*/
+
+BTN_CANCEL = "రద్దు";
+BTN_OK = "అవును";
+BTN_SUBMIT = "సమర్పించండి";
+BTN_SELECT = "ఎంచుకోండి";
+BTN_SELECT_ADDRESS = "ఎంచుకున్న చిరునామా";
+
+/* Toast Message */
+
+TOAST_SIGN_IN = "సైన్ఇన్ ...";
+TOAST_WARNIG = "హెచ్చరిక";
+TOAST_LOGIN_IN = "లాగిన్ ...";
+TOAST_PLEASE_WAIT = "దయచేసి వేచి ఉండండి ..";
+TOAST_SETTING_TITLE = "సెట్టింగులు";
+TOAST_LOADING_MESSAGE = "లోడ్...";
+TOAST_SUBMIT_MESSAGE = "సమర్పిస్తోంది ...";
+TOAST_ALERT_MESSAGE = "హెచ్చరిక";
+
+TOAST_NO_INTERNET_WARNING = "ఇంటర్నెట్ కనెక్షన్ లేదు, దయచేసి మీ ఇంటర్నెట్ కనెక్షన్ను తనిఖీ చేయండి";
+TOAST_ACCESS_SERVER_WARNING = "సర్వర్ ని ప్రాప్యత చెయ్యడం సాధ్యం కాలేదు, దయచేసి తర్వాత మళ్లీ ప్రయత్నించండి";
+
+
+/* SignIn View */
+
+ERROR_ALL_MANDATORY_FIELDS = "దయచేసి అన్ని ఖాళీలను పూరించండి";
+ERROR_PASSWORD_NOT_MATCHED = "పాస్వర్డ్ సరిపోలేదు";
+ERROR_PASSWORD_VALIDATION = "పాస్వర్డ్ 6 అంకెల కంటే ఎక్కువ ఉండాలి";
+ERROR_INVALID_MAIL_ID = "చెల్లని ఇమెయిల్ ID";
+ERROR_WRONG_USER_ID = "మీరు ఎంటర్ చేసిన వినియోగదారు ఐడి ఇప్పటికే ఉపయోగంలో ఉంది దయచేసి మరొక వినియోగదారు ఐడి ఎంటర్ చెయ్యండి";
+
+CHECK_USERID_PASSWORD = "దయచేసి మీ వినియోగదారు ఐడి మరియు పాస్వర్డ్ను తనిఖీ చేసి మళ్ళీ ప్రయత్నించండి";
+
+SUCESS_USER_ID_AVAILABLE = "వినియోగదారు ఐడి అందుబాటులో ఉంది";
+SUCESS_LOGIN_MESSAGE = "వినియోగదారు లాగిన్ విజయవంతమైంది";
+
+
+/* Home View */
+
+SOCAIL_SHARE_TITLE_MESSAGE = "LifeLine అనేది రక్తం బ్యాంకులు, దాతలు మరియు గ్రహీతలను కలిపే ఒక సామాజిక అనువర్తనం.";
+
+/* DONATE VIEW */
+
+DONATE_TITLE = "దానం";
+LOCATION_TITLE_WARNING = "స్థాన సేవ ఆఫ్ చేయబడింది ";
+LOCATION_MESSAGE_WARNING = "మీరు సెట్టింగ్ల్లో ఈ అనువర్తనం కోసం స్థాన సేవను ఆన్ చేయవచ్చు.";
+NO_REQUIREMENT_WARNING = "మీ ప్రదేశంలో అవసరాలు లేవు";
+
+/* INVENTORY VIEW */
+
+INVENTORY_WARNING = "ఈ బ్లడ్ బ్యాంక్ కోసం ఇన్వెంటరీ సమాచారం లేదు";
+
+/* CONFIRM DONATE VIEW */
+HOSPITAL_CONTACT_NAME_LBL = "సంప్రదింపు పేరు";
+HOSPITAL_NAME_LBL = "హాస్పిటల్ పేరు";
+HOSPITAL_CONTACT_NUMBER_LBL = "సంప్రదింపు ఫోన్ సంఖ్య";
+HOSPITAL_NEEDED_BY = "అవసరం";
+
+
+REQUEST_SHARE_TITLE_MESSAGE = "ఇక్కడ LifeLine పై మీరు అభ్యర్థనను కూడా యాక్సెస్ చెయ్యవచ్చు:";
+
+
+REQUEST_VOLUNTEER_SHARE_MESSAGE = "LifeLine పై రక్త దానం అభ్యర్థన సృష్టించబడింది. దయచేసి రక్తాన్ని దానం చేయడానికి లేదా మీ సర్కిల్లో దీన్ని భాగస్వామ్యం చేయడానికి వాలంటీర్ చేయండి. ఇక్కడ వివరాలు ఉన్నాయి:";
+
+AGE_WARNING_MESSAGE = "మీ వయస్సు తక్కువగా ఉండటం వలన మీరు రక్తాన్ని దానం చేయటానికి అర్హులు కాదు. మీరు ఇంకా కొనసాగాలనుకుంటే, కొనసాగించడానికి OK ఎంచుకోండి.";
+
+/* ALERT CONFIRM DONATE */
+
+CALENDER_HEADING = "తేదీ & సమయం నిర్ధారించండి";
+WARNING_DATE_AND_TIME = "దయచేసి ప్రాధాన్యమైన తేదీ మరియు సమయం ఎంచుకోండి";
+
+SUCESS_SUBMIT_REQUEST = "అభ్యర్థించిన వివరాలు విజయవంతంగా సమర్పించబడ్డాయి";
+
+/* LOCAL NOTIFICATION */
+
+LOCAL_NOTIFICATION_TITLE = "రక్త దానం";
+LOCAL_NOTIFICATION_MESSAGE = "రక్త దానం కోసం రిమైండర్";
+
+/* PROFILE VIEW */
+CLEAR = "స్పష్టమైన";
+DATE_OF_BIRTH = "పుట్టిన తేది";
+LAST_DONATION_DATE = "చివరి విరాళం తేదీ";
+
+INVALID_HOME_PIN =  "చెల్లని హోమ్ పిన్ కోడ్";
+INVALID_WORK_PIN =  "చెల్లని కార్యాలయ పిన్ కోడ్";
+
+SUCESS_PROFILE_UPDATE = "మీ ప్రొఫైల్ నవీకరించబడింది";
+ERROR_PROFILE_UPDATE = "నవీకరించడంలో విఫలమైంది";
+
+/* REQUEST VIEW */
+
+SELECT_WHAT_YOU_NEED = "మీకు కావలసినదాన్ని ఎంచుకోండి";
+SELECT_UNITS = "యూనిట్ల సంఖ్యను ఎంచుకోండి";
+SELECT_BLOOD_GROUP = "దయచేసి బ్లడ్ గ్రూప్ ను ఎంచుకోండి";
+SUCCESSFULLY_SUBMIT_POST = "మీ పోస్ట్ విజయవంతంగా పోస్ట్ చేయబడింది";
+FACEBOOK_NOT_INSTALLED = "Facebook అనువర్తనం ఇన్స్టాల్ చేయబడలేదు.";
+
+ERROR_INVALID_CONTACT = "చెల్లని సంప్రదింపు ఫోన్ సంఖ్య";
+ERROR_INVALID_HOSPITAL_CONTACT = "చెల్లని హాస్పిటల్ సంప్రదింపు  ఫోన్ సంఖ్య";
+ERROR_SPECIAL_CHAR_NOT_ALLOWED = "ప్రత్యేక అక్షరాలు అనుమతించబడవు";
+ERROR_INVALID_HOSPITAL_PIN = "చెల్లని హాస్పిటల్ అడ్రస్ పిన్ కోడ్";
+ERROR_FACEBOOK_NOT_INSTALLED = "మీ పరికరంలో FACEBOOK ఇన్స్టాల్ చేయబడలేదు.";
+
+CONFIRM_DATE = "మీ తేదీని నిర్ధారించండి";
+
+/* Login View */
+
+ERROR_ENTER_MAILID = "దయచేసి ఇమెయిల్ చిరునామాను నమోదు చేయండి";
+ERROR_FAIL_LOGIN = "లాగిన్ చేయలేకపోతే";
+ERROR_MAIL_ID_ALREADY_EXIST = "ఈ ఇమెయిల్ ఐడి ఇప్పటికే బ్లడ్ బ్యాంక్ కోసం వాడబడుతుంది, దయచేసి వివిధ ఇమెయిల్ ఐడితో లాగిన్ చేయండి";
+ERROR_INCORRECT_USERID = "మీ వినియోగదారుని గుర్తింపు సరిగ్గా టైప్ చేయండి";
+ERROR_INCORRECT_USERID_PASSWORD = "దయచేసి మీ వినియోగదారుని గుర్తింపు మరియు పాస్వర్డ్ను తనిఖీ చేసి మళ్ళీ ప్రయత్నించండి";
+
+WARNING_ENTER_PASSWORD = "దయచేసి పాస్వర్డ్ను నమోదు చేయండి";
+
+SUCCESS_NEW_PASSWORD = "మీరు మీ రిజిస్టర్డ్ ఇమెయిల్ ఐడిలో కొత్త పాస్ వర్డ్ తో త్వరలో మెయిల్ ను రిసీవ్ చేస్తారు";
+
+/* MY REQUEST VIEW */
+
+NO_REQUEST_FOUND = "అభ్యర్థనలు ఏవీ కనుగొనబడలేదు";
+REQUEST_CLOSED = "మీ అభ్యర్థన మూసివేయబడింది";
+
+NO_ONE_ACCEPT = "ఎవరూ మీ అభ్యర్థనను అంగీకరించరు";
+
+MAIL_TITLE = "LifeLine - బ్లడ్ డొనేషన్ నిర్ధారణ";
+MAIL_SEND_CANCEL = "ఇమెయిల్ పంపడం సాధ్యం కాలేదు";
+MAIL_CANCEL_MESSAGE = "మీ పరికరం ఇ-మెయిల్ను పంపలేక పోయింది. దయచేసి ఇ-మెయిల్ ఆకృతీకరణను తనిఖీ చేసి మళ్ళీ ప్రయత్నించండి.";
+
+MAIL_CANCEL = "LifeLine మెయిల్ రద్దు చేయబడింది";
+MAIL_IN_DRAFT =  "డ్రాఫ్ట్ ఫోల్డర్లో LifeLine మెయిల్ సేవ్ చేసిన సందేశం";
+MAIL_SENT_SUCCESSFULLY = "LifeLine మెయిల్ విజయవంతంగా పంపబడింది";
+MAIL-FAILED = "LifeLine మెయిల్ విఫలమైంది";
+
+
+/* NEW STRINGS */
+
+SELECT_WHEN_YOU_NEED = "మీకు అవసరమైనప్పుడు దయచేసి ఎంచుకోండి";
+ERROR_CONFIRM_PASSWORD_VALIDATION = "పాస్వర్డ్ తప్పనిసరిగా 6 అంకెల కంటే ఎక్కువ ఉండాలి";
+ERROR_ENTER_OLD_PASSWORD = "దయచేసి చెల్లుబాటు అయ్యే పాత పాస్వర్డ్ను నమోదు చేయండి";
+ERROR_ALL_MANDATORY_NEW_FIELDS = "దయచేసి తప్పనిసరి అన్ని ఖాళీలను పూరించండి";
+
+SUCCESS_PASSWORD_UPDATED = "మీ పాస్వర్డ్ విజయవంతంగా నవీకరించబడింది";
+
+HOSPITAL_WORKING_HOURS = "పని సమయం";
+CAMP_VOLUNTEER = "వాలంటీర్";
+BLOOD_GROUP = "రక్తపు గ్రూపు";
+BLOOD_REQUIREMENT = "రిక్వైర్మెంట్";
+REQUEST_CAMP_VOLUNTEER_SHARE_MESSAGE = "LifeLine లో రక్త దానం శిబిరం సృష్టించబడింది. రక్తాన్ని దానం చేయడానికి లేదా మీ సర్కిల్లో దీన్ని భాగస్వామ్యం చేయండి. ఇక్కడ వివరాలు ఉన్నాయి:";
+
+SEARCH_LOCATION = "మీరు ఈ స్థానాన్ని శోధించారు";
+LANGUAGE_CHANGE_ALERT = "మీరు LifeLine భాషను మార్చాలనుకుంటున్నారా?";
+CALANDER_TO = "వరకు ";
+BLOOD_STRING = "రక్తం";
+PLASMA_STRING = "ప్లాస్మా";
+PLATELETS_STRING = "రక్తఫలకికలు";
+

@@ -5,3 +5,160 @@
   Created by iSteer on 01/06/17.
   Copyright © 2017 iSteer. All rights reserved.
 */
+
+/* Appdelegate Strings */
+
+/* BUTTON TITLE*/
+
+BTN_CANCEL = "ರದ್ದುಮಾಡಿ";
+BTN_OK = "ಸರಿ";
+BTN_SUBMIT = "ಸಲ್ಲಿಸಲು";
+BTN_SELECT = "ಆಯ್ಕೆಮಾಡಿ";
+BTN_SELECT_ADDRESS = "
+ಆಯ್ದ ವಿಳಾಸ";
+
+/* Toast Message */
+
+TOAST_SIGN_IN = "ಸೈನ್ ಇನ್...";
+TOAST_WARNIG = "ಎಚ್ಚರಿಕೆ";
+TOAST_LOGIN_IN = "ಲಾಗಿನ್ ಮಾಡಿ...";
+TOAST_PLEASE_WAIT = "
+ದಯಮಾಡಿ ನಿರೀಕ್ಷಿಸಿ..";
+TOAST_SETTING_TITLE = "ಸೆಟ್ಟಿಂಗ್ಗಳು";
+TOAST_LOADING_MESSAGE = "ಲೋಡ್ ಆಗುತ್ತಿದೆ...";
+TOAST_SUBMIT_MESSAGE = "ಸಲ್ಲಿಸಲಾಗುತ್ತಿದೆ...";
+TOAST_ALERT_MESSAGE = "ಎಚ್ಚರಿಕೆ";
+
+TOAST_NO_INTERNET_WARNING = "ಇಂಟರ್ನೆಟ್ ಸಂಪರ್ಕವಿಲ್ಲ, ದಯವಿಟ್ಟು ನಿಮ್ಮ ಇಂಟರ್ನೆಟ್ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ";
+TOAST_ACCESS_SERVER_WARNING = "ಸರ್ವರ್ ಪ್ರವೇಶಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ, ದಯವಿಟ್ಟು ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ";
+
+
+/* SignIn View */
+
+ERROR_ALL_MANDATORY_FIELDS = "
+ದಯವಿಟ್ಟು ಎಲ್ಲಾ ಕ್ಷೇತ್ರಗಳನ್ನು ಭರ್ತಿ ಮಾಡಿ";
+ERROR_PASSWORD_NOT_MATCHED = "ಪಾಸ್ವರ್ಡ್ ಹೊಂದುತ್ತಿಲ್ಲ";
+ERROR_PASSWORD_VALIDATION = "ಪಾಸ್ವರ್ಡ್ 6 ಅಂಕಿಗಳಿಗಿಂತ ಹೆಚ್ಚಿನದಾಗಿರಬೇಕು";
+ERROR_INVALID_MAIL_ID = "ಅಮಾನ್ಯ ಇಮೇಲ್ ID";
+ERROR_WRONG_USER_ID = "ನೀವು ನಮೂದಿಸಿದ ಬಳಕೆದಾರ ಐಡಿ ಈಗಾಗಲೇ ಬಳಕೆಯಲ್ಲಿದೆ ದಯವಿಟ್ಟು ಇನ್ನೊಂದು ಬಳಕೆದಾರ ಐಡಿ ಅನ್ನು ನಮೂದಿಸಿ";
+
+CHECK_USERID_PASSWORD = "ದಯವಿಟ್ಟು ನಿಮ್ಮ UserID ಮತ್ತು ಪಾಸ್ವರ್ಡ್ ಪರಿಶೀಲಿಸಿ ಮತ್ತು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ";
+
+SUCESS_USER_ID_AVAILABLE = "ಬಳಕೆದಾರ ಐಡಿ ಲಭ್ಯವಿದೆ";
+SUCESS_LOGIN_MESSAGE = "ಬಳಕೆದಾರರ ಲಾಗಿನ್ ಯಶಸ್ವಿಯಾಗಿ";
+
+
+/* Home View */
+
+SOCAIL_SHARE_TITLE_MESSAGE = "ಲೈಫ್ಲೈನ್ ಎನ್ನುವುದು ರಕ್ತದ ಬ್ಯಾಂಕುಗಳು, ದಾನಿಗಳು ಮತ್ತು ಸ್ವೀಕರಿಸುವವರನ್ನು ಸಂಪರ್ಕಿಸಲು ಮೀಸಲಾಗಿರುವ ಒಂದು ಸಾಮಾಜಿಕ ಬಳಕೆಯಾಗಿದೆ.";
+
+/* DONATE VIEW */
+
+DONATE_TITLE = "ದಾನ";
+LOCATION_TITLE_WARNING = "ಲೊಕೇಷನ್ ಸೇವೆಯು ಆಫ್ ಆಗಿದೆ ";
+LOCATION_MESSAGE_WARNING = "
+ಸೆಟ್ಟಿಂಗ್ಗಳಲ್ಲಿ ನೀವು ಈ ಅಪ್ಲಿಕೇಶನ್ಗಾಗಿ ಸ್ಥಳ ಸೇವೆಯನ್ನು ಆನ್ ಮಾಡಬಹುದು";
+NO_REQUIREMENT_WARNING = "ನಿಮ್ಮ ಸ್ಥಳದಲ್ಲಿ ಅಗತ್ಯವಿರುವುದಿಲ್ಲ";
+
+/* INVENTORY VIEW */
+
+INVENTORY_WARNING = "ಈ ಬ್ಲಡ್ ಬ್ಯಾಂಕ್ಗೆ ಇನ್ವೆಂಟರಿ ಮಾಹಿತಿ ಇಲ್ಲ";
+
+/* CONFIRM DONATE VIEW */
+HOSPITAL_CONTACT_NAME_LBL = "ಸಂಪರ್ಕಿಸುವ ಹೆಸರು";
+HOSPITAL_NAME_LBL = "ಆಸ್ಪತ್ರೆ ಹೆಸರು";
+HOSPITAL_CONTACT_NUMBER_LBL = "ಸಂಪರ್ಕ ಸಂಖ್ಯೆ:";
+HOSPITAL_NEEDED_BY = "ಅದಕ್ಕೆ ಅಗತ್ಯವಿದೆ:";
+
+REQUEST_SHARE_TITLE_MESSAGE = "ಲೈಫ್ಲೈನ್ನಲ್ಲಿ ವಿನಂತಿಯನ್ನು ನೀವು ಇಲ್ಲಿ ಪ್ರವೇಶಿಸಬಹುದು:";
+REQUEST_VOLUNTEER_SHARE_MESSAGE = "ಲೈಫ್ಲೈನ್ನಲ್ಲಿ ರಕ್ತದಾನ ವಿನಂತಿಯನ್ನು ರಚಿಸಲಾಗಿದೆ.ದಯವಿಟ್ಟು ರಕ್ತದಾನ ಮಾಡಲು ಸ್ವಯಂಸೇವಕರಾಗಿ ಅಥವಾ ನಿಮ್ಮ ವಲಯದಲ್ಲಿ ಇದನ್ನು ಹಂಚಿಕೊಳ್ಳಿ. ವಿವರಗಳು ಇಲ್ಲಿವೆ:";
+AGE_WARNING_MESSAGE = "ನಿಮ್ಮ ವಯಸ್ಸು 18 ಕ್ಕಿಂತ ಕಡಿಮೆ ಇರುವಂತೆ ರಕ್ತದಾನ ಮಾಡುವುದಕ್ಕೆ ನಿಮಗೆ ಅರ್ಹತೆ ಇಲ್ಲ. ನೀವು ಇನ್ನೂ ಮುಂದುವರಿಸಲು ಬಯಸಿದರೆ, ದಯವಿಟ್ಟು ಮುಂದುವರಿಸಲು ಸರಿ ಅನ್ನು ಆಯ್ಕೆ ಮಾಡಿ.";
+
+/* ALERT CONFIRM DONATE */
+
+CALENDER_HEADING = "ದಿನಾಂಕ ಮತ್ತು ಸಮಯವನ್ನು ದೃಢೀಕರಿಸಿ";
+WARNING_DATE_AND_TIME = "ದಯವಿಟ್ಟು ಮೆಚ್ಚಿನ ದಿನಾಂಕ ಮತ್ತು ಸಮಯವನ್ನು ಆಯ್ಕೆಮಾಡಿ";
+
+SUCESS_SUBMIT_REQUEST = "ವಿನಂತಿಸಿದ ವಿವರಗಳು ಯಶಸ್ವಿಯಾಗಿ ಸಲ್ಲಿಸಿರುವುದು";
+
+/* LOCAL NOTIFICATION */
+
+LOCAL_NOTIFICATION_TITLE = "ರಕ್ತದಾನ";
+LOCAL_NOTIFICATION_MESSAGE = "ರಕ್ತದಾನಕ್ಕೆ ಜ್ಞಾಪನೆ";
+
+/* PROFILE VIEW */
+CLEAR = "ಸ್ಪಷ್ಟ";
+DATE_OF_BIRTH = "ಹುಟ್ತಿದ ದಿನ";
+LAST_DONATION_DATE = "ಕೊನೆಯ ಕೊಡುಗೆ ದಿನಾಂಕ";
+
+INVALID_HOME_PIN =  "ಅಮಾನ್ಯವಾದ ಮುಖಪುಟ ಪಿನ್ ಕೋಡ್";
+INVALID_WORK_PIN =  "ಅಮಾನ್ಯ ಕಾರ್ಯ ಪಿನ್ ಕೋಡ್";
+
+SUCESS_PROFILE_UPDATE = "ನಿಮ್ಮ ಪ್ರೊಫೈಲ್ ಅನ್ನು ನವೀಕರಿಸಲಾಗಿದೆ";
+ERROR_PROFILE_UPDATE = "ನವೀಕರಿಸಲು ವಿಫಲವಾಗಿದೆ";
+
+/* REQUEST VIEW */
+
+SELECT_WHAT_YOU_NEED = "ನಿಮಗೆ ಬೇಕಾದುದನ್ನು ಆಯ್ಕೆಮಾಡಿ";
+SELECT_UNITS = "ಘಟಕಗಳ ಸಂಖ್ಯೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ";
+SELECT_BLOOD_GROUP = "ದಯವಿಟ್ಟು ರಕ್ತ ಗುಂಪು ಆಯ್ಕೆಮಾಡಿ";
+SUCCESSFULLY_SUBMIT_POST = "ನಿಮ್ಮ ಪೋಸ್ಟ್ ಅನ್ನು ಯಶಸ್ವಿಯಾಗಿ ಪೋಸ್ಟ್ ಮಾಡಲಾಗಿದೆ";
+FACEBOOK_NOT_INSTALLED = "ಫೇಸ್ಬುಕ್ ಅಪ್ಲಿಕೇಶನ್ ಅನ್ನು ಸ್ಥಾಪಿಸಲಾಗಿಲ್ಲ.";
+
+ERROR_INVALID_CONTACT = "ಅಮಾನ್ಯವಾದ ಸಂಪರ್ಕ ಸಂಖ್ಯೆ";
+ERROR_INVALID_HOSPITAL_CONTACT = "ಅಮಾನ್ಯ Hospial ಸಂಪರ್ಕ ಸಂಖ್ಯೆ";
+ERROR_SPECIAL_CHAR_NOT_ALLOWED = "ವಿಶೇಷ ಅಕ್ಷರಗಳನ್ನು ಅನುಮತಿಸಲಾಗುವುದಿಲ್ಲ";
+ERROR_INVALID_HOSPITAL_PIN = "ಅಮಾನ್ಯ Hospial ವಿಳಾಸ ಪಿನ್ ಕೋಡ್";
+ERROR_FACEBOOK_NOT_INSTALLED = "ನಿಮ್ಮ ಸಾಧನವು ಫೇಸ್ಬುಕ್ ಅನ್ನು ಸ್ಥಾಪಿಸಿಲ್ಲ.";
+
+CONFIRM_DATE = "ನಿಮ್ಮ ದಿನಾಂಕವನ್ನು ದೃಢೀಕರಿಸಿ";
+
+/* Login View */
+
+ERROR_ENTER_MAILID = "ದಯವಿಟ್ಟು ಇಮೇಲ್ ವಿಳಾಸವನ್ನು ನಮೂದಿಸಿ";
+ERROR_FAIL_LOGIN = "ಲಾಗಿನ್ ಮಾಡಲು ವಿಫಲವಾಗಿದೆ";
+ERROR_MAIL_ID_ALREADY_EXIST = "ಈ ಇಮೇಲ್ ಐಡಿ ಈಗಾಗಲೇ ಬ್ಲಡ್ಬ್ಯಾಂಕ್ಗಾಗಿ ಬಳಸಿದೆ, ದಯವಿಟ್ಟು ವಿವಿಧ ಇಮೇಲ್ ಐಡಿನೊಂದಿಗೆ ಲಾಗಿನ್ ಮಾಡಿ";
+ERROR_INCORRECT_USERID = "ನಿಮ್ಮ UserID ಅನ್ನು ಸರಿಯಾಗಿ ಟೈಪ್ ಮಾಡಿ";
+ERROR_INCORRECT_USERID_PASSWORD = "ದಯವಿಟ್ಟು ನಿಮ್ಮ UserID ಮತ್ತು ಪಾಸ್ವರ್ಡ್ ಪರಿಶೀಲಿಸಿ ಮತ್ತು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ";
+
+WARNING_ENTER_PASSWORD = "ದಯವಿಟ್ಟು ಪಾಸ್ವರ್ಡ್ ನಮೂದಿಸಿ";
+
+SUCCESS_NEW_PASSWORD = "ಹೊಸ ಪಾಸ್ವರ್ಡ್ನೊಂದಿಗೆ ನಿಮ್ಮ ನೋಂದಾಯಿತ ಇಮೇಲ್ ಐಡಿನಲ್ಲಿ ನೀವು ಶೀಘ್ರದಲ್ಲೇ ಮೇಲ್ ಅನ್ನು ಮರುಪಡೆಯುತ್ತೀರಿ";
+
+/* MY REQUEST VIEW */
+
+NO_REQUEST_FOUND = "ಯಾವುದೇ ವಿನಂತಿಗಳು ಕಂಡುಬಂದಿಲ್ಲ";
+REQUEST_CLOSED = "ನಿಮ್ಮ ವಿನಂತಿಯನ್ನು ಮುಚ್ಚಲಾಗಿದೆ";
+
+NO_ONE_ACCEPT = "ನಿಮ್ಮ ವಿನಂತಿಯನ್ನು ಯಾರೂ ಸ್ವೀಕರಿಸುವುದಿಲ್ಲ";
+
+MAIL_TITLE = "ಲೈಫ್ಲೈನ್ - ರಕ್ತ ದಾನ ದೃಢೀಕರಣ";
+MAIL_SEND_CANCEL = "ಇಮೇಲ್ ಕಳುಹಿಸಲಾಗಲಿಲ್ಲ";
+MAIL_CANCEL_MESSAGE = "ನಿಮ್ಮ ಸಾಧನ ಇ-ಮೇಲ್ ಕಳುಹಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ಇ-ಮೇಲ್ ಕಾನ್ಫಿಗರೇಶನ್ ಪರಿಶೀಲಿಸಿ ಮತ್ತು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.";
+
+MAIL_CANCEL = "ಲೈಫ್ಲೈನ್ ಮೇಲ್ ರದ್ದುಗೊಂಡಿದೆ.";
+MAIL_IN_DRAFT =  "ಲೈಫ್ಲೈನ್ ಮೇಲ್ ಸಂದೇಶವನ್ನು ಡ್ರಾಫ್ಟ್ ಫೋಲ್ಡರ್ನಲ್ಲಿ ಉಳಿಸಲಾಗಿದೆ";
+MAIL_SENT_SUCCESSFULLY = "ಲೈಫ್ಲೈನ್ ಮೇಲ್ ಯಶಸ್ವಿಯಾಗಿ ಕಳುಹಿಸಲಾಗಿದೆ";
+MAIL-FAILED = "ಲೈಫ್ಲೈನ್ ಮೇಲ್ ವಿಫಲವಾಗಿದೆ";
+
+/* NEW STRINGS */
+
+SELECT_WHEN_YOU_NEED = "Please select When You Need";
+ERROR_CONFIRM_PASSWORD_VALIDATION = "Confirm Password must be greater than 6 Digits";
+ERROR_ENTER_OLD_PASSWORD = "Please enter valid old password";
+ERROR_ALL_MANDATORY_NEW_FIELDS = "Please fill all Mandatory fields";
+
+SUCCESS_PASSWORD_UPDATED = "Your Password is updated successfully";
+
+HOSPITAL_WORKING_HOURS = "Working Hours";
+CAMP_VOLUNTEER = "Volunteer";
+BLOOD_GROUP = "Blood Group";
+BLOOD_REQUIREMENT = "Requirement";
+REQUEST_CAMP_VOLUNTEER_SHARE_MESSAGE = "A blood donation camp has been created on LifeLine. Please volunteer to donate blood or share this within your circle. Here are the details:";
+SEARCH_LOCATION = "You searched this Location";
+LANGUAGE_CHANGE_ALERT = "Are you sure you want to change LifeLine language";
+CALANDER_TO = "To";
+BLOOD_STRING = "Blood";
+PLASMA_STRING = "Plasma";
+PLATELETS_STRING = "Platelets";
+

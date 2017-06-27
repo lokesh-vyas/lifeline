@@ -146,8 +146,16 @@ ERROR_ENTER_OLD_PASSWORD = "कृपया पुराने मान्य �
 ERROR_ALL_MANDATORY_NEW_FIELDS = "कृपया सभी अनिवार्य क्षेत्रों को भरें";
 SUCCESS_PASSWORD_UPDATED = "आपका पासवर्ड सफलतापूर्वक अपडेट किया गया है";
 
-HOSPITAL_WORKING_HOURS = "Working Hours";
-CAMP_VOLUNTEER = "Volunteer";
+HOSPITAL_WORKING_HOURS = "कार्यकाल";
+CAMP_VOLUNTEER = "स्वयंसेवी";
 BLOOD_GROUP = "Blood Group";
 BLOOD_REQUIREMENT = "Requirement";
+REQUEST_CAMP_VOLUNTEER_SHARE_MESSAGE = "A blood donation camp has been created on LifeLine. Please volunteer to donate blood or share this within your circle. Here are the details:";
+SEARCH_LOCATION = "You searched this Location";
+LANGUAGE_CHANGE_ALERT = "क्या आप वाकई LifeLine भाषा को बदलना चाहते हैं";
+CALANDER_TO = "से";
+BLOOD_STRING = "ब्लड";
+PLASMA_STRING = "प्लाज्मा";
+PLATELETS_STRING = "प्लेटलेट्स";
+
 

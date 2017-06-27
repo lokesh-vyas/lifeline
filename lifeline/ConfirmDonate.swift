@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import MessageUI
 
 class ConfirmDonate: UIViewController {
 
@@ -71,7 +72,59 @@ class ConfirmDonate: UIViewController {
             ConfirmDonateInteractor.sharedInstance.getCompaignDetails(urlString: URLList.GET_CAMPAGIN_DETAILS.rawValue, params: bodyGetCampDetails)
             
         }
+        let tapRec = UITapGestureRecognizer(target: self, action: #selector(ConfirmDonate.lblCallTapped(_:)))
+        lblContactNumber.addGestureRecognizer(tapRec)
+        lblContactNumber.isUserInteractionEnabled = true
+        let tapEmailRec = UITapGestureRecognizer(target: self, action: #selector(ConfirmDonate.lblEmailTapped(_:)))
+        lblEmailID.addGestureRecognizer(tapEmailRec)
+        lblEmailID.isUserInteractionEnabled = true
     }
+    
+    func lblCallTapped(_ sender: UITapGestureRecognizer)
+    {
+        let phoneNumber: String
+        let formatedNumber: String
+        if(MarkerData.SharedInstance.markerData["ContactNumber"] != nil)
+        {
+            phoneNumber = String(describing: MarkerData.SharedInstance.markerData["ContactNumber"])
+            print("Requester phone number is : \(phoneNumber)")
+            formatedNumber = phoneNumber.components(separatedBy: NSCharacterSet.decimalDigits.inverted).joined(separator: "")
+            print("calling \(formatedNumber)")
+        }
+        else
+        {
+            phoneNumber = (MarkerData.SharedInstance.markerData["ContactNumber"] as! String)
+            print("Requester phone number is : \(phoneNumber)")
+            formatedNumber = phoneNumber.components(separatedBy: NSCharacterSet.decimalDigits.inverted).joined(separator: "")
+            print("calling \(formatedNumber)")
+        }
+        if let url = URL(string: "tel://\(formatedNumber)") {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url as URL)
+            }
+        }
+    }
+    
+    func lblEmailTapped(_ sender: UITapGestureRecognizer)
+    {
+        let emailAddress = MarkerData.SharedInstance.markerData["Email"]
+        if MFMailComposeViewController.canSendMail() {
+            let mailVC = MFMailComposeViewController()
+            mailVC.mailComposeDelegate = self
+            mailVC.setToRecipients([emailAddress as! String])
+            mailVC.setSubject("")
+            mailVC.setMessageBody("", isHTML: true)
+            self.present(mailVC, animated: true, completion: nil)
+        }
+        else {
+            let alert = UIAlertController(title: MultiLanguage.getLanguageUsingKey("MAIL_SEND_CANCEL"), message: MultiLanguage.getLanguageUsingKey("MAIL_CANCEL_MESSAGE"), preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: MultiLanguage.getLanguageUsingKey("BTN_OK"), style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
     //MARK:- btnShareTapped
     @IBAction func btnShareTapped(_ sender: Any)
     {
@@ -152,7 +205,7 @@ class ConfirmDonate: UIViewController {
             if self.lblFromDate.text != nil
             {
                 let workingHours:String = MarkerData.SharedInstance.markerData["WorkingHours"] as! String
-                let fullNameArr : [String] = workingHours.components(separatedBy: " To ")
+                let fullNameArr : [String] = workingHours.components(separatedBy: MultiLanguage.getLanguageUsingKey("CALANDER_TO"))
                 var fromTime: String? = fullNameArr[0]
                 var toTimeO: String? = fullNameArr[1]
                 if fromTime == nil
@@ -338,4 +391,32 @@ extension ConfirmDonate : getVolunteerProtocol {
         {
             self.view.makeToast(MultiLanguage.getLanguageUsingKey("TOAST_ACCESS_SERVER_WARNING"), duration: 3.0, position: .bottom)
         }    }
+}
+
+extension ConfirmDonate : MFMailComposeViewControllerDelegate,MFMessageComposeViewControllerDelegate
+{
+    // MARK: MFMailComposeViewControllerDelegate Method
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?)
+    {
+        switch (result)
+        {
+        case MFMailComposeResult.cancelled:
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("MAIL_CANCEL"), duration: 2.0, position: .bottom)
+            break;
+        case MFMailComposeResult.saved:
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("MAIL_IN_DRAFT"), duration: 2.0, position: .bottom)
+            break;
+        case MFMailComposeResult.sent:
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("MAIL_SENT_SUCCESSFULLY"), duration: 2.0, position: .bottom)
+            break;
+        case MFMailComposeResult.failed:
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("MAIL-FAILED"), duration: 2.0, position: .bottom)
+            break;
+        }
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }

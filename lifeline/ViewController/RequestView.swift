@@ -40,7 +40,7 @@ class RequestView: UIViewController,UITextViewDelegate
     //MARK:- Arrays
     let bloodGroupArray = ["O+","O-","A+","A-","B+","B-","AB+","AB-"]
     let bloodUnitArray = ["1","2","3","4","5","6","7","8","9","10"]
-    let whatneedArray = ["Blood","Platelets","Plasma"]
+    let whatneedArray = [MultiLanguage.getLanguageUsingKey("BLOOD_STRING"),MultiLanguage.getLanguageUsingKey("PLATELETS_STRING"),MultiLanguage.getLanguageUsingKey("PLASMA_STRING")]
     
     //MARK:- viewWillAppear
     override func viewWillAppear(_ animated: Bool)
