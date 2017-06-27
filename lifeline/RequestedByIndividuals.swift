@@ -63,6 +63,9 @@ extension RequestedByIndividuals : UITableViewDataSource {
         cell.lblContactNumber.text = MarkerData.SharedInstance.IndividualsArray[indexPath.row]["CContactNumber"] as! String?
         cell.btnDonate.tag = indexPath.row
         cell.btnDonate.addTarget(self, action: #selector(RequestedByIndividuals.doTry(sender:)), for: .touchUpInside)
+        let tapRec = UITapGestureRecognizer(target: self, action: #selector(RequestedByIndividuals.lblCallTapped(_:)))
+        cell.lblContactNumber.addGestureRecognizer(tapRec)
+        cell.lblContactNumber.isUserInteractionEnabled = true
         cell.backgroundColor = UIColor.lightGray
         return cell
     }
@@ -73,7 +76,33 @@ extension RequestedByIndividuals : UITableViewDataSource {
         print("-:Typee name :-",MarkerData.SharedInstance.IndividualsArray[sender.tag]["CTypeOfOrg"]!)
     }
     
-    
+    func lblCallTapped(_ sender: UITapGestureRecognizer) {
+        
+        let button = sender.view?.tag
+        let phoneNumber: String
+        let formatedNumber: String
+        if(MarkerData.SharedInstance.IndividualsArray[button!]["CContactNumber"] != nil)
+        {
+            phoneNumber = String(describing: MarkerData.SharedInstance.IndividualsArray[button!]["CContactNumber"])
+            print("Requester phone number is : \(phoneNumber)")
+            formatedNumber = phoneNumber.components(separatedBy: NSCharacterSet.decimalDigits.inverted).joined(separator: "")
+            print("calling \(formatedNumber)")
+        }
+        else
+        {
+            phoneNumber = (MarkerData.SharedInstance.IndividualsArray[button!]["CContactNumber"] as! String)
+            print("Requester phone number is : \(phoneNumber)")
+            formatedNumber = phoneNumber.components(separatedBy: NSCharacterSet.decimalDigits.inverted).joined(separator: "")
+            print("calling \(formatedNumber)")
+        }
+        if let url = URL(string: "tel://\(formatedNumber)") {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url as URL)
+            }
+        }
+    }
 }
 
 //FIXME:- no need of this extension
