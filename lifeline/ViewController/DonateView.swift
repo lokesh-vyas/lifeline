@@ -732,6 +732,7 @@ extension DonateView : DonateViewProtocol {
             for (i, _) in jDict.enumerated() {
                 tempDict["Name"] = jDict[i]["Name"]
                 tempDict["WorkingHours"] = jDict[i]["WorkingHours"]
+                tempDict["TypeOfOrg"] = jDict[i]["TypeOfOrg"]
                 tempDict["Individuals"] = jDict[i]["IndividualDetails"]
                 appendsListMarkers.append(tempDict)
             }
@@ -744,9 +745,7 @@ extension DonateView : DonateViewProtocol {
     func btnListClicked() {
         
         let lists = self.storyboard?.instantiateViewController(withIdentifier: "MarkersListView") as! MarkersListView
-        lists.listMarkers.removeAll()
-        lists.listMarkers = appendsListMarkers
-        
+        lists.listMarker2 = JSON.init(dictionaryLiteral: ("Data",appendsListMarkers))
         print("++++++++\(appendsListMarkers.count)++++")
         let nav = UINavigationController(rootViewController: lists)
         self.navigationController?.present(nav, animated: true, completion: nil)
