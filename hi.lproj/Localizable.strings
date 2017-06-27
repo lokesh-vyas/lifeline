@@ -153,4 +153,9 @@ BLOOD_REQUIREMENT = "Requirement";
 REQUEST_CAMP_VOLUNTEER_SHARE_MESSAGE = "A blood donation camp has been created on LifeLine. Please volunteer to donate blood or share this within your circle. Here are the details:";
 SEARCH_LOCATION = "You searched this Location";
 LANGUAGE_CHANGE_ALERT = "क्या आप वाकई LifeLine भाषा को बदलना चाहते हैं";
+CALANDER_TO = "से";
+BLOOD_STRING = "ब्लड";
+PLASMA_STRING = "प्लाज्मा";
+PLATELETS_STRING = "प्लेटलेट्स";
+
 

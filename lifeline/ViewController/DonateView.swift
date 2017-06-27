@@ -40,7 +40,7 @@ class DonateView: UIViewController {
     var lastEventDate : Date? = nil
     var loader : Bool?
     var InternetIssue : Bool?
-    var appendsListMarkers = [Dictionary<String, Any>]()
+    var appendsListMarkers : [Dictionary<String, Any>] = []
     
     var currentLat : CLLocationDegrees!
     var currentLong : CLLocationDegrees!
@@ -67,13 +67,14 @@ class DonateView: UIViewController {
         }
         NotificationCenter.default.addObserver(self, selector: #selector(DonateView.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
         //        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+       
     }
     
     //MARK:- viewWillAppear
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        btnListofMarkers.isHidden = true
+//        btnListofMarkers.isHidden = true
         self.navigationController?.completelyTransparentBarForDonate()
         
         //For Result VC
@@ -107,7 +108,6 @@ class DonateView: UIViewController {
         mapView.isMyLocationEnabled = true
         mapView.delegate = self
         view = mapView
-        
         mapView.isBuildingsEnabled = true
         mapView.settings.compassButton = true
         mapView.settings.indoorPicker = true
@@ -170,6 +170,7 @@ class DonateView: UIViewController {
     
     //MARK:- Filter Button
     @IBAction func btnFilterTapped(_ sender: Any) {
+        SingleTon.SharedInstance.cameFromMarkersList = false
         let filterView = self.storyboard!.instantiateViewController(withIdentifier: "FilterChecks") as! FilterChecks
         filterView.modalPresentationStyle = .overCurrentContext
         filterView.view.backgroundColor = UIColor.clear
@@ -299,6 +300,8 @@ extension DonateView : CLLocationManagerDelegate {
 
 extension DonateView : GMSMapViewDelegate {
     
+    
+    //FIXME:- removable methods
     public func mapViewDidStartTileRendering(_ mapView: GMSMapView) {
         
     }
@@ -328,17 +331,17 @@ extension DonateView : GMSMapViewDelegate {
         
         lastEventDate = Date()
         
-//        let visibleRegion = mapView.projection.visibleRegion()
-//        let mapBounds = GMSCoordinateBounds.init(region: visibleRegion)
-//        let NorthWest = CLLocationCoordinate2DMake(mapBounds.northEast.latitude, mapBounds.southWest.longitude)
-//        let SouthEast = CLLocationCoordinate2DMake(mapBounds.southWest.latitude, mapBounds.northEast.longitude)
-//        
-//        SouthLatitude = SouthEast.latitude
-//        NorthLatitude = NorthWest.latitude
-//        WestLongitude = NorthWest.longitude
-//        EastLongitude = SouthEast.longitude
-//        
-//        self.fetchBloodRequestToDonate()
+        let visibleRegion = mapView.projection.visibleRegion()
+        let mapBounds = GMSCoordinateBounds.init(region: visibleRegion)
+        let NorthWest = CLLocationCoordinate2DMake(mapBounds.northEast.latitude, mapBounds.southWest.longitude)
+        let SouthEast = CLLocationCoordinate2DMake(mapBounds.southWest.latitude, mapBounds.northEast.longitude)
+        
+        SouthLatitude = SouthEast.latitude
+        NorthLatitude = NorthWest.latitude
+        WestLongitude = NorthWest.longitude
+        EastLongitude = SouthEast.longitude
+        
+        self.fetchBloodRequestToDonate()
         loader = false
     }
     
@@ -511,11 +514,13 @@ extension DonateView : DonateViewProtocol {
     func successDonateSources(jsonArray: JSON) {
         
         // ListofMarkers
-        btnListofMarkers.setImage(UIImage(named : "List-32.png"), for: .normal)
+        btnListofMarkers.setImage(UIImage(named : "List-32"), for: .normal)
+        
         btnListofMarkers.backgroundColor = UIColor.white
         btnListofMarkers.cornerRadius = 27.5
         btnListofMarkers.layer.shadowColor = UIColor.red.cgColor
         btnListofMarkers.layer.shadowRadius = 5.0
+        
         btnListofMarkers.addTarget(self, action:#selector(self.btnListClicked), for: .touchUpInside)
         btnListofMarkers.translatesAutoresizingMaskIntoConstraints = false
         
@@ -568,7 +573,7 @@ extension DonateView : DonateViewProtocol {
         
         //MARK:- Availability of Markers
         if jsonArray["BloodRequestSearchResponse"] == JSON.null || jsonArray["BloodRequestSearchResponse"]["BloodRequestSearchResponseDetails"]["StatusCode"] == 1 {
-            print("No Requirements in your location")
+            
             HudBar.sharedInstance.hideHudFormView(view: self.view)
             
             //viewWarning
@@ -712,18 +717,22 @@ extension DonateView : DonateViewProtocol {
             SingleTon.SharedInstance.noMarkers = true
             
             
-        } else {
+        } else { // when we get marekrs (also when we find another markers through 'No requirements' places)
             viewWarning.removeFromSuperview()
             SingleTon.SharedInstance.noMarkers = false
             var tempDict = [String : Any]()
             var jDict = JSON.init(dictionaryLiteral: ("Index", jsonArray["BloodRequestSearchResponse"]["BloodRequestDetails"]))
             jDict = jDict["Index"]
             
+            if jDict["ToDate"].exists() {
+                jDict =  [jDict]
+            }
             appendsListMarkers.removeAll()
             
             for (i, _) in jDict.enumerated() {
                 tempDict["Name"] = jDict[i]["Name"]
                 tempDict["WorkingHours"] = jDict[i]["WorkingHours"]
+                tempDict["Individuals"] = jDict[i]["IndividualDetails"]
                 appendsListMarkers.append(tempDict)
             }
             
@@ -737,6 +746,8 @@ extension DonateView : DonateViewProtocol {
         let lists = self.storyboard?.instantiateViewController(withIdentifier: "MarkersListView") as! MarkersListView
         lists.listMarkers.removeAll()
         lists.listMarkers = appendsListMarkers
+        
+        print("++++++++\(appendsListMarkers.count)++++")
         let nav = UINavigationController(rootViewController: lists)
         self.navigationController?.present(nav, animated: true, completion: nil)
     }
@@ -759,11 +770,11 @@ extension DonateView : DonateViewProtocol {
     }
 }
 
-extension DonateView : filterMarkersProtocol {
-    func didSuccessFilters(sender: FilterChecks) {
-        //   TODO:-
-    }
-}
+//extension DonateView : filterMarkersProtocol {
+//    func didSuccessFilters(sender: FilterChecks) {
+//        //   TODO:-
+//    }
+//}
 
 extension String {
     func index(from: Int) -> Index {
