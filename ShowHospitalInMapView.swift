@@ -68,7 +68,7 @@ class ShowHospitalInMapView: UIViewController
         locationManager.requestWhenInUseAuthorization()
         
         // Do any additional setup after loading the view.
-        HudBar.sharedInstance.showHudWithMessage(message: "Loading...", view: self.view)
+        HudBar.sharedInstance.showHudWithMessage(message: MultiLanguage.getLanguageUsingKey("TOAST_LOADING_MESSAGE"), view: self.view)
         if addresstring.characters.count >= 7
         {
             self.SearchWithString(AdressString: addresstring)
@@ -81,9 +81,9 @@ class ShowHospitalInMapView: UIViewController
     //MARK:- openSettingsForDisableMap
     func openSettingsForDisableMap()
     {
-        let alertController = UIAlertController (title: "Loction Service is Turned Off ", message: "You can turn on Location Service for this app in Settings.", preferredStyle: .alert)
+        let alertController = UIAlertController (title: MultiLanguage.getLanguageUsingKey("LOCATION_TITLE_WARNING"), message: MultiLanguage.getLanguageUsingKey("LOCATION_MESSAGE_WARNING"), preferredStyle: .alert)
         
-        let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+        let settingsAction = UIAlertAction(title: MultiLanguage.getLanguageUsingKey("TOAST_SETTING_TITLE"), style: .default) { (_) -> Void in
             
             guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
                 return
@@ -100,7 +100,7 @@ class ShowHospitalInMapView: UIViewController
             }
         }
         alertController.addAction(settingsAction)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        let cancelAction = UIAlertAction(title: MultiLanguage.getLanguageUsingKey("BTN_CANCEL"), style: .default, handler: nil)
         alertController.addAction(cancelAction)
         
         present(alertController, animated: true, completion: nil)
@@ -251,9 +251,9 @@ extension ShowHospitalInMapView : GMSMapViewDelegate {
                 self.addressFormat.latitude = String(address.coordinate.latitude)
                 self.addressFormat.longitude = String(address.coordinate.longitude)
                 
-                let alert = UIAlertController(title: "Selected Address", message: self.addressFormat.MessageAddressString, preferredStyle: .alert)
+                let alert = UIAlertController(title: MultiLanguage.getLanguageUsingKey("BTN_SELECT_ADDRESS"), message: self.addressFormat.MessageAddressString, preferredStyle: .alert)
                 
-                let saveAction = UIAlertAction(title: "Select", style: .default, handler:
+                let saveAction = UIAlertAction(title: MultiLanguage.getLanguageUsingKey("BTN_SELECT"), style: .default, handler:
                     {
                         alert -> Void in
                         if self.checkBool == nil
@@ -264,7 +264,7 @@ extension ShowHospitalInMapView : GMSMapViewDelegate {
                         self.dismiss(animated: true, completion: nil)
                 })
                 
-                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: nil))
+                alert.addAction(UIAlertAction(title: MultiLanguage.getLanguageUsingKey("BTN_CANCEL"), style: UIAlertActionStyle.destructive, handler: nil))
                 
                 alert.addAction(saveAction)
                 

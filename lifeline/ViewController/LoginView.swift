@@ -52,8 +52,8 @@ class LoginView: UIViewController
             }
             UserDefaults.standard.removeObject(forKey: "LoginInformation")
             UserDefaults.standard.removeObject(forKey: "BloodBankUser")
-            let alert = UIAlertController(title: "Warning!", message: "This Email Id is already use for BloodBank,Please Login with different Email Id", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            let alert = UIAlertController(title: MultiLanguage.getLanguageUsingKey("TOAST_WARNIG"), message: MultiLanguage.getLanguageUsingKey("ERROR_MAIL_ID_ALREADY_EXIST"), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: MultiLanguage.getLanguageUsingKey("BTN_OK"), style: UIAlertActionStyle.default, handler: nil))
             present(alert, animated: true, completion: nil)
         }
         
@@ -73,10 +73,10 @@ class LoginView: UIViewController
         self.view.endEditing(true)
         if (userNameTextField.text?.characters.count)! < 1
         {
-            self.view.makeToast("Please enter Email Address", duration: 3.0, position: .bottom)
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("ERROR_ENTER_MAILID"), duration: 3.0, position: .bottom)
             return
         }
-        HudBar.sharedInstance.showHudWithMessage(message: "Please Wait...", view: self.view)
+        HudBar.sharedInstance.showHudWithMessage(message: MultiLanguage.getLanguageUsingKey("TOAST_PLEASE_WAIT"), view: self.view)
         let trimmedString = self.userNameTextField.text?.trimmingCharacters(in: .whitespaces)
         SignUpInteractor.SharedInstance.delegateForgetPassword = self
         SignUpInteractor.SharedInstance.checkForgetPassword(checkString:trimmedString!.lowercased())
@@ -86,15 +86,15 @@ class LoginView: UIViewController
         self.view.endEditing(true)
         if((userNameTextField.text?.characters.count)! <= 0)
         {
-            self.view.makeToast("Please enter Email Address", duration: 2.0, position: .bottom)
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("ERROR_ENTER_MAILID"), duration: 2.0, position: .bottom)
         }
         else if((passwordTextField.text?.characters.count)! <= 0)
         {
-            self.view.makeToast("Please enter Password", duration: 2.0, position: .bottom)
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("WARNING_ENTER_PASSWORD"), duration: 2.0, position: .bottom)
         }
         else
         {
-            HudBar.sharedInstance.showHudWithMessage(message: "Login...", view: self.view)
+            HudBar.sharedInstance.showHudWithMessage(message: MultiLanguage.getLanguageUsingKey("TOAST_LOGIN_IN"), view: self.view)
             let trimmedString = self.userNameTextField.text?.trimmingCharacters(in: .whitespaces)
             SignUpInteractor.SharedInstance.delegateLogin = self
             SignUpInteractor.SharedInstance.checkCustomLogin(UserID: trimmedString!, Password: self.passwordTextField.text!)
@@ -103,16 +103,16 @@ class LoginView: UIViewController
     }
     //MARK:- FB Login
     @IBAction func btnFacrbookTapped(_ sender: Any) {
-        HudBar.sharedInstance.showHudWithMessage(message: "Logging", view: self.view)
+        HudBar.sharedInstance.showHudWithMessage(message: MultiLanguage.getLanguageUsingKey("TOAST_LOGIN_IN"), view: self.view)
         let loginManager = LoginManager()
         loginManager.logIn([.publicProfile], viewController: self)
         {
             loginResult in
             switch loginResult {
             case .failed( _):
-                HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Fail to Login", view: self.view)
+                HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: MultiLanguage.getLanguageUsingKey("ERROR_FAIL_LOGIN"), view: self.view)
             case .cancelled:
-                HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Cancel", view: self.view)
+                HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: MultiLanguage.getLanguageUsingKey("BTN_CANCEL"), view: self.view)
             case .success(grantedPermissions: _, declinedPermissions: _, token: _):
                 self.getFBUserData()
                 
@@ -186,7 +186,7 @@ extension LoginView:GIDSignInUIDelegate,GIDSignInDelegate
               withError error: Error!) {
         if let error = error
         {
-            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Cancel", view: self.view)
+            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: MultiLanguage.getLanguageUsingKey("BTN_CANCEL"), view: self.view)
             print("\(error.localizedDescription)")
         }
         else
@@ -211,21 +211,21 @@ extension LoginView:checkForgetPasswordProtocol
         HudBar.sharedInstance.hideHudFormView(view: self.view)
         if success
         {
-            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "You will shortly recive mail in your registered Email id with the new password", view: self.view)
+            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: MultiLanguage.getLanguageUsingKey("SUCCESS_NEW_PASSWORD"), view: self.view)
         }
         else
         {
-            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Type your UserID Correctly", view: self.view)
+            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: MultiLanguage.getLanguageUsingKey("ERROR_INCORRECT_USERID"), view: self.view)
         }
     }
     func failSignUp(Response:String)
     {
         HudBar.sharedInstance.hideHudFormView(view: self.view)
         if Response == "NoInternet" {
-            self.view.makeToast("No Internet Connection, please check your Internet Connection", duration: 3.0, position: .bottom)
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("TOAST_NO_INTERNET_WARNING"), duration: 3.0, position: .bottom)
         }else
         {
-            self.view.makeToast("Unable to access server, please try again later", duration: 3.0, position: .bottom)
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("TOAST_ACCESS_SERVER_WARNING"), duration: 3.0, position: .bottom)
         }
     }
 }
@@ -237,7 +237,7 @@ extension LoginView : customLoginProtocol
         {
              UserDefaults.standard.set("Internal", forKey: "LoginInformation")
             HudBar.sharedInstance.hideHudFormView(view: self.view)
-            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "User Login Successfully", view: self.view)
+            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: MultiLanguage.getLanguageUsingKey("SUCESS_LOGIN_MESSAGE"), view: self.view)
             let deadlineTime = DispatchTime.now() + .seconds(2)
             DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute:
             {
@@ -247,17 +247,17 @@ extension LoginView : customLoginProtocol
         else
         {
             HudBar.sharedInstance.hideHudFormView(view: self.view)
-            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Please Check your UserID And Password and try again", view: self.view)
+            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: MultiLanguage.getLanguageUsingKey("CHECK_USERID_PASSWORD"), view: self.view)
         }
     }
     func failCustomLogin(Response:String)
     {
         HudBar.sharedInstance.hideHudFormView(view: self.view)
         if Response == "NoInternet" {
-            self.view.makeToast("No Internet Connection, please check your Internet Connection", duration: 3.0, position: .bottom)
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("TOAST_NO_INTERNET_WARNING"), duration: 3.0, position: .bottom)
         }else
         {
-            self.view.makeToast("Unable to access server, please try again later", duration: 3.0, position: .bottom)
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("TOAST_ACCESS_SERVER_WARNING"), duration: 3.0, position: .bottom)
         }
     }
 }

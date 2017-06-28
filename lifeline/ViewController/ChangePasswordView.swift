@@ -44,7 +44,7 @@ class ChangePasswordView: UIViewController {
                 
                 if txtConfirmPassword.text == txtNewPassword.text {
                     
-                    HudBar.sharedInstance.showHudWithMessage(message: "Please Wait...", view: self.view)
+                    HudBar.sharedInstance.showHudWithMessage(message: MultiLanguage.getLanguageUsingKey("TOAST_PLEASE_WAIT"), view: self.view)
                     let data = UserDefaults.standard.object(forKey: "ProfileData")
                     
                     let profileData:ProfileData = NSKeyedUnarchiver.unarchiveObject(with: data as! Data) as! ProfileData
@@ -53,14 +53,14 @@ class ChangePasswordView: UIViewController {
                     self.ChangePasswordForService(params: customer)
                     
                 } else {
-                    self.view.makeToast("Password don't match", duration: 2.0, position: .bottom)
+                    self.view.makeToast(MultiLanguage.getLanguageUsingKey("ERROR_PASSWORD_NOT_MATCHED"), duration: 2.0, position: .bottom)
                 }
                 
             } else {
-                self.view.makeToast("Confirm Password must be greater than 6 Digits", duration: 2.0, position: .bottom)
+                self.view.makeToast(MultiLanguage.getLanguageUsingKey("ERROR_CONFIRM_PASSWORD_VALIDATION"), duration: 2.0, position: .bottom)
             }
         }else {
-            self.view.makeToast("Password must be greater than 6 Digits", duration: 2.0, position: .bottom)
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("ERROR_PASSWORD_VALIDATION"), duration: 2.0, position: .bottom)
         }
     }
     //MARK:- Share Application URL With Activity
@@ -89,7 +89,7 @@ class ChangePasswordView: UIViewController {
                                                             HudBar.sharedInstance.hideHudFormView(view: self.view)
                                                             if (JSONResponse["ChangePasswordResponse"]["ChangePasswordResponseDetails"]["StatusCode"].int == 0)
                                                             {
-                                                                HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Your Password is updated successfully", view: self.view)
+                                                                HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: MultiLanguage.getLanguageUsingKey("SUCCESS_PASSWORD_UPDATED"), view: self.view)
                                                                 let deadlineTime = DispatchTime.now() + .seconds(2)
                                                                 DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute:
                                                                     {
@@ -99,14 +99,14 @@ class ChangePasswordView: UIViewController {
                                                             }else
                                                             {
                                                                 HudBar.sharedInstance.hideHudFormView(view: self.view)
-                                                                HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Please enter valid old password", view: self.view)
+                                                                HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: MultiLanguage.getLanguageUsingKey("ERROR_ENTER_OLD_PASSWORD"), view: self.view)
                                                             }
         },
                                                          failure: {(Response) -> Void in
                                                             
                                                             
                                                             HudBar.sharedInstance.hideHudFormView(view: self.view)
-                                                            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Please enter valid old password", view: self.view)
+                                                            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: MultiLanguage.getLanguageUsingKey("ERROR_ENTER_OLD_PASSWORD"), view: self.view)
         }
         )
     }

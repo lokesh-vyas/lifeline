@@ -39,6 +39,38 @@ class IndividualConfirmDonate: UIViewController {
               navigationItem.leftBarButtonItem = nil
         }
         self.IndividualConfirmDonateProperties()
+        
+        let tapRec = UITapGestureRecognizer(target: self, action: #selector(IndividualConfirmDonate.lblCallTapped(_:)))
+        lblContactNumber.addGestureRecognizer(tapRec)
+        lblContactNumber.isUserInteractionEnabled = true
+    }
+    
+    func lblCallTapped(_ sender: UITapGestureRecognizer)
+    {
+        let button =  sender.view?.tag
+        let phoneNumber: String
+        let formatedNumber: String
+        if(MarkerData.SharedInstance.IndividualsArray[button!]["CContactNumber"] != nil)
+        {
+            phoneNumber = String(describing: MarkerData.SharedInstance.IndividualsArray[button!]["CContactNumber"])
+            print("Requester phone number is : \(phoneNumber)")
+            formatedNumber = phoneNumber.components(separatedBy: NSCharacterSet.decimalDigits.inverted).joined(separator: "")
+            print("calling \(formatedNumber)")
+        }
+        else
+        {
+            phoneNumber = (MarkerData.SharedInstance.IndividualsArray[button!]["CContactNumber"] as! String)
+            print("Requester phone number is : \(phoneNumber)")
+            formatedNumber = phoneNumber.components(separatedBy: NSCharacterSet.decimalDigits.inverted).joined(separator: "")
+            print("calling \(formatedNumber)")
+        }
+        if let url = URL(string: "tel://\(formatedNumber)") {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url as URL)
+            }
+        }
     }
     
     //MARK:- PushNotificationView
@@ -69,12 +101,12 @@ class IndividualConfirmDonate: UIViewController {
     //MARK:- btnSharedTapped
     @IBAction func btnSharedTapped(_ sender: Any)
     {
-        let textShareLink = "You can also access the request on LifeLine here:"
+        let textShareLink = MultiLanguage.getLanguageUsingKey("REQUEST_SHARE_TITLE_MESSAGE")
         let textToIOS = "iOS:- https://goo.gl/XJl5a7"
         let textToAndroid = "Android:- https://goo.gl/PUorhE"
         
         if let myWebsite = NSURL(string: "https://goo.gl/XJl5a7") {
-            let objectsToShare = [StringList.LifeLine_BloodDonation_Share_Text.rawValue,textShareArray[0],textShareArray[1],textShareArray[2],textShareArray[3],textShareArray[4],textShareLink,textToIOS,textToAndroid, myWebsite] as [Any]
+            let objectsToShare = [MultiLanguage.getLanguageUsingKey("REQUEST_VOLUNTEER_SHARE_MESSAGE"),textShareArray[0],textShareArray[1],textShareArray[2],textShareArray[3],textShareArray[4],textShareLink,textToIOS,textToAndroid, myWebsite] as [Any]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
             
             //New Excluded Activities Code
@@ -136,29 +168,29 @@ extension IndividualConfirmDonate : IndividualRequestDetailsProtocol {
         
         self.lblWhoRequested.text = "\(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["WhatNeeded"])) Requirement for \(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["BloodGroup"]))"
         
-        self.textShareArray.insert("Blood Group : \(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["BloodGroup"]))", at: 0)
-         self.textShareArray.insert("Requirement : \(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["WhatNeeded"]))", at: 1)
+        self.textShareArray.insert("\(MultiLanguage.getLanguageUsingKey("BLOOD_GROUP")) : \(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["BloodGroup"]))", at: 0)
+         self.textShareArray.insert("\(MultiLanguage.getLanguageUsingKey("BLOOD_REQUIREMENT")) : \(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["WhatNeeded"]))", at: 1)
         
         self.lblWhenRequired.text = Util.SharedInstance.showingDateToUser(dateString: String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["WhenNeeded"]))
         
-        self.textShareArray.insert("Needed By : \(Util.SharedInstance.showingDateToUser(dateString: String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["WhenNeeded"])))", at: 2)
+        self.textShareArray.insert("\(MultiLanguage.getLanguageUsingKey("HOSPITAL_NEEDED_BY")) : \(Util.SharedInstance.showingDateToUser(dateString: String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["WhenNeeded"])))", at: 2)
         
         self.lblNoOfUnits.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["NumUnits"])
         self.lblDoctorName.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["DoctorName"])
         self.lblPatientName.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["PatientName"])
         self.lblContactPerson.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["ContactPerson"])
         
-        self.textShareArray.insert("Contact Name : \(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["ContactPerson"]))", at: 3)
+        self.textShareArray.insert("\(MultiLanguage.getLanguageUsingKey("HOSPITAL_CONTACT_NAME_LBL")) : \(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["ContactPerson"]))", at: 3)
         
         let strContact = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["ContactNumber"])
         if strContact == "null"
         {
             lblContactNumber.text = "00"
-            self.textShareArray.insert("Contact Number : 00", at: 4)
+            self.textShareArray.insert("\(MultiLanguage.getLanguageUsingKey("HOSPITAL_CONTACT_NUMBER_LBL")) : 00", at: 4)
         }else
         {
             lblContactNumber.text = strContact
-             self.textShareArray.insert("Contact Number : \(strContact)", at: 4)
+             self.textShareArray.insert("\(MultiLanguage.getLanguageUsingKey("HOSPITAL_CONTACT_NUMBER_LBL")) : \(strContact)", at: 4)
         }
         
 //        self.lblContactNumber.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["ContactNumber"])
@@ -171,10 +203,10 @@ extension IndividualConfirmDonate : IndividualRequestDetailsProtocol {
     func didFailGetRequestDetails(Response:String) {
         HudBar.sharedInstance.hideHudFormView(view: self.view)
         if Response == "NoInternet" {
-            self.view.makeToast("No Internet Connection, please check your Internet Connection", duration: 3.0, position: .bottom)
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("TOAST_NO_INTERNET_WARNING"), duration: 3.0, position: .bottom)
         }else
         {
-            self.view.makeToast("Unable to access server, please try again later", duration: 3.0, position: .bottom)
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("TOAST_ACCESS_SERVER_WARNING"), duration: 3.0, position: .bottom)
         }
     }
 }
@@ -208,12 +240,11 @@ extension IndividualConfirmDonate : getVolunteerProtocol {
     func didFailGetVolunteerDetails(Response:String) {
         HudBar.sharedInstance.hideHudFormView(view: self.view)
         if Response == "NoInternet" {
-            self.view.makeToast("No Internet Connection, please check your Internet Connection", duration: 3.0, position: .bottom)
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("TOAST_NO_INTERNET_WARNING"), duration: 3.0, position: .bottom)
         }else
         {
-            self.view.makeToast("Unable to access server, please try again later", duration: 3.0, position: .bottom)
-        }
-    }
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("TOAST_ACCESS_SERVER_WARNING"), duration: 3.0, position: .bottom)
+        }    }
 }
 
 

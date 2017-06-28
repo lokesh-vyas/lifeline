@@ -102,7 +102,7 @@ class MyRequestClose: UIViewController {
         let RequestID = MyRequestCloseJSON["RequestID"]
         let customer : Dictionary = ["RequestStatusUpdateReqest":["RequestDetails":["RequestID":String(describing: RequestID),"Status":"Open","DonorsDetails":[["DonationId":DonorID,"HasDonated":HasDonated!,"DonatedOn":Util.SharedInstance.currentDateChangeForServer(),"ThankYouNote":self.txtThankNote.text!]]]]]
         print(customer)
-        HudBar.sharedInstance.showHudWithMessage(message: "Please wait..", view: self.view)
+        HudBar.sharedInstance.showHudWithMessage(message: MultiLanguage.getLanguageUsingKey("TOAST_PLEASE_WAIT"), view: self.view)
         MyRequestInteractor.SharedInstance.delegate = self
         MyRequestInteractor.SharedInstance.MyRequestClose(params: customer)
     }
@@ -127,7 +127,7 @@ class MyRequestClose: UIViewController {
             }
         }
         let customer : Dictionary = ["RequestStatusUpdateReqest":["RequestDetails":["RequestID":String(describing: RequestID),"Status":"Close","DonorsDetails":myNewDictArray]]]
-        HudBar.sharedInstance.showHudWithMessage(message: "Please wait..", view: self.view)
+        HudBar.sharedInstance.showHudWithMessage(message: MultiLanguage.getLanguageUsingKey("TOAST_PLEASE_WAIT"), view: self.view)
         MyRequestInteractor.SharedInstance.delegate = self
         MyRequestInteractor.SharedInstance.MyRequestClose(params: customer)
     }
@@ -151,7 +151,7 @@ extension MyRequestClose:MyRequestProtocol
     {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "MyRequestServiceCallUpdate"), object: nil)
         HudBar.sharedInstance.hideHudFormView(view: self.view)
-        HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Your Request has been closed", view: self.view)
+        HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: MultiLanguage.getLanguageUsingKey("REQUEST_CLOSED"), view: self.view)
         if StringForCheckView == "MyRequest" {
             self.dismiss(animated: true, completion: nil)
         }
@@ -169,10 +169,10 @@ extension MyRequestClose:MyRequestProtocol
     {
         HudBar.sharedInstance.hideHudFormView(view: self.view)
         if Response == "NoInternet" {
-            self.view.makeToast("No Internet Connection, please check your Internet Connection", duration: 3.0, position: .bottom)
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("TOAST_NO_INTERNET_WARNING"), duration: 3.0, position: .bottom)
         }else
         {
-            self.view.makeToast("Unable to access server, please try again later", duration: 3.0, position: .bottom)
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("TOAST_ACCESS_SERVER_WARNING"), duration: 3.0, position: .bottom)
         }
     }
 }

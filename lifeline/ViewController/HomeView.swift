@@ -96,7 +96,7 @@ class HomeView: UIViewController {
     //MARK:- Share Application URL With Activity
     func shareAppURLTapped()
     {
-        let textToShare = "LifeLine is a social application dedicated to connecting blood banks, donors and recipients."
+        let textToShare = MultiLanguage.getLanguageUsingKey("SOCAIL_SHARE_TITLE_MESSAGE")
         let textToIOS = "iOS:- https://goo.gl/XJl5a7"
         let textToAndroid = "Android:- https://goo.gl/PUorhE"
         
@@ -131,10 +131,10 @@ extension HomeView:ProtocolRegisterProfile
         UserDefaults.standard.set(false, forKey: "DeviceRegister")
         HudBar.sharedInstance.hideHudFormView(view: self.view)
         if Response == "NoInternet" {
-            self.view.makeToast("No Internet Connection, please check your Internet Connection", duration: 3.0, position: .bottom)
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("TOAST_NO_INTERNET_WARNING"), duration: 3.0, position: .bottom)
         }else
         {
-            self.view.makeToast("Unable to access server, please try again later", duration: 3.0, position: .bottom)
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("TOAST_ACCESS_SERVER_WARNING"), duration: 3.0, position: .bottom)
         }
     }
 }

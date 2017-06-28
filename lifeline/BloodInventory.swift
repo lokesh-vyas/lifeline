@@ -35,7 +35,7 @@ class BloodInventory: UIViewController {
     {
         super.viewDidLoad()
         self.tableInventoryView.isHidden = true
-        HudBar.sharedInstance.showHudWithMessage(message: "Loading...", view: self.view)
+        HudBar.sharedInstance.showHudWithMessage(message:MultiLanguage.getLanguageUsingKey("TOAST_LOADING_MESSAGE"), view: self.view)
         self.navigationController?.completelyTransparentBar()
         tableInventoryView.contentInset = UIEdgeInsetsMake(-35, 0.0, 0, 0.0)
         let bloodbankIDDict = MarkerData.SharedInstance.markerData
@@ -122,8 +122,9 @@ extension BloodInventory : DonateViewProtocol
         HudBar.sharedInstance.hideHudFormView(view: self.view)
         if jsonArray["GetBloodInventoryResponse"]["BloodBankInventory"]["StatusCode"].int == 1
         {
-            self.lblBloodInventory.text = "No Inventory Information For this Blood Bank"
-            self.tableInventoryView.isHidden = true
+            //self.lblBloodInventory.text = MultiLanguage.getLanguageUsingKey("INVENTORY_WARNING")
+            self.tableInventoryView.isHidden = false
+            tableInventoryView.reloadData()
         }
         else
         {
@@ -382,10 +383,10 @@ extension BloodInventory : DonateViewProtocol
     {
         HudBar.sharedInstance.hideHudFormView(view: self.view)
         if Response == "NoInternet" {
-            self.view.makeToast("No Internet Connection, please check your Internet Connection", duration: 3.0, position: .bottom)
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("TOAST_NO_INTERNET_WARNING"), duration: 3.0, position: .bottom)
         }else
         {
-            self.view.makeToast("Unable to access server, please try again later", duration: 3.0, position: .bottom)
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("TOAST_ACCESS_SERVER_WARNING"), duration: 3.0, position: .bottom)
         }
     }
 }

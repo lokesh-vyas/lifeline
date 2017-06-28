@@ -1,0 +1,167 @@
+
+/*
+ Localizable.strings
+ lifeline
+ 
+ Created by iSteer on 01/06/17.
+ Copyright © 2017 iSteer. All rights reserved.
+ */
+
+
+/* Appdelegate Strings */
+
+/* BUTTON TITLE*/
+
+BTN_CANCEL = "Cancel";
+BTN_OK = "OK";
+BTN_SUBMIT = "Submit";
+BTN_SELECT = "Select";
+BTN_SELECT_ADDRESS = "Selected Address";
+ 
+/* Toast Message */
+
+TOAST_SIGN_IN = "Signin...";
+TOAST_WARNIG = "Warning";
+TOAST_LOGIN_IN = "Login...";
+TOAST_PLEASE_WAIT = "Please wait..";
+TOAST_SETTING_TITLE = "Settings";
+TOAST_LOADING_MESSAGE = "Loading...";
+TOAST_SUBMIT_MESSAGE = "Submitting...";
+TOAST_ALERT_MESSAGE = "Alert";
+
+TOAST_NO_INTERNET_WARNING = "No Internet Connection, please check your Internet Connection";
+TOAST_ACCESS_SERVER_WARNING = "Unable to access server, please try again later";
+
+
+/* SignIn View */
+
+ERROR_ALL_MANDATORY_FIELDS = "Please fill all fields";
+ERROR_PASSWORD_NOT_MATCHED = "Password don't match";
+ERROR_PASSWORD_VALIDATION = "Password must be greater than 6 Digits";
+ERROR_INVALID_MAIL_ID = "Invalid Email ID";
+ERROR_WRONG_USER_ID = "User id you entered is already in use please enter another user id";
+
+CHECK_USERID_PASSWORD = "Please Check your UserID And Password and try again";
+
+SUCESS_USER_ID_AVAILABLE = "User id is available";
+SUCESS_LOGIN_MESSAGE = "User Login Successfully";
+
+
+/* Home View */
+
+SOCAIL_SHARE_TITLE_MESSAGE = "LifeLine is a social application dedicated to connecting blood banks, donors and recipients.";
+
+/* DONATE VIEW */
+
+DONATE_TITLE = "Donate";
+LOCATION_TITLE_WARNING = "Loction Service is Turned Off ";
+LOCATION_MESSAGE_WARNING = "You can turn on Location Service for this app in Settings.";
+NO_REQUIREMENT_WARNING = "No Requirements in your location";
+
+/* INVENTORY VIEW */
+
+INVENTORY_WARNING = "No Inventory Information For this Blood Bank";
+
+/* CONFIRM DONATE VIEW */
+HOSPITAL_CONTACT_NAME_LBL = "Contact Name";
+HOSPITAL_NAME_LBL = "Hospital Name";
+HOSPITAL_CONTACT_NUMBER_LBL = "Contact Number";
+HOSPITAL_NEEDED_BY = "Needed by";
+
+
+REQUEST_SHARE_TITLE_MESSAGE = "You can also access the request on LifeLine here:";
+
+
+REQUEST_VOLUNTEER_SHARE_MESSAGE = "A blood donation request has been created on LifeLine.Please volunteer to donate blood or share this within your circle. Here are the details:";
+
+AGE_WARNING_MESSAGE = "You are not eligible for donating blood as your age is below 18. If you still want to continue, please select OK to continue.";
+
+/* ALERT CONFIRM DONATE */
+
+CALENDER_HEADING = "Confirm Date & Time";
+WARNING_DATE_AND_TIME = "Please Select Preferred Date and Time";
+
+SUCESS_SUBMIT_REQUEST = "Requested Details Submited Sucessfully";
+
+/* LOCAL NOTIFICATION */
+
+LOCAL_NOTIFICATION_TITLE = "Blood Donation";
+LOCAL_NOTIFICATION_MESSAGE = "Reminder for Blood Donation";
+
+/* PROFILE VIEW */
+CLEAR = "Clear";
+DATE_OF_BIRTH = "Date of Birth";
+LAST_DONATION_DATE = "Last Donation Date";
+
+INVALID_HOME_PIN =  "Invalid Home PIN code";
+INVALID_WORK_PIN =  "Invalid Work PIN code";
+
+SUCESS_PROFILE_UPDATE = "Your Profile has been Updated";
+ERROR_PROFILE_UPDATE = "Failed to Update";
+
+/* REQUEST VIEW */
+
+SELECT_WHAT_YOU_NEED = "Select what you need";
+SELECT_UNITS = "Select number of units";
+SELECT_BLOOD_GROUP = "Please select Blood Group";
+SUCCESSFULLY_SUBMIT_POST = "Your post has been posted successfully";
+FACEBOOK_NOT_INSTALLED = "Facebook App not installed.";
+
+ERROR_INVALID_CONTACT = "Invalid Contact Number";
+ERROR_INVALID_HOSPITAL_CONTACT = "Invalid Hospial Contact Number";
+ERROR_SPECIAL_CHAR_NOT_ALLOWED = "Special characters are not allowed";
+ERROR_INVALID_HOSPITAL_PIN = "Invalid Hospial Address PIN Code";
+ERROR_FACEBOOK_NOT_INSTALLED = "Your device has no Facebook installed.";
+
+CONFIRM_DATE = "Confirm Your Date";
+
+/* Login View */
+
+ERROR_ENTER_MAILID = "Please enter Email Address";
+ERROR_FAIL_LOGIN = "Fail to Login";
+ERROR_MAIL_ID_ALREADY_EXIST = "This Email Id is already use for BloodBank,Please Login with different Email Id";
+ERROR_INCORRECT_USERID = "Type your UserID Correctly";
+ERROR_INCORRECT_USERID_PASSWORD = "Please Check your UserID And Password and try again";
+
+WARNING_ENTER_PASSWORD = "Please enter Password";
+
+SUCCESS_NEW_PASSWORD = "You will shortly recive mail in your registered Email id with the new password";
+
+/* MY REQUEST VIEW */
+
+NO_REQUEST_FOUND = "No requests found";
+REQUEST_CLOSED = "Your Request has been closed";
+
+NO_ONE_ACCEPT = "No one accept your request";
+
+MAIL_TITLE = "LifeLine - Blood Donation Confirmation";
+MAIL_SEND_CANCEL = "Could Not Send Email";
+MAIL_CANCEL_MESSAGE = "Your device could not send e-mail.  Please check e-mail configuration and try again.";
+
+MAIL_CANCEL = "LifeLine mail cancelled";
+MAIL_IN_DRAFT =  "LifeLine mail saved message in the drafts folder";
+MAIL_SENT_SUCCESSFULLY = "LifeLine mail sent successfully";
+MAIL-FAILED = "LifeLine mail failed";
+
+
+/* NEW STRINGS */
+
+SELECT_WHEN_YOU_NEED = "Please select When You Need";
+ERROR_CONFIRM_PASSWORD_VALIDATION = "Confirm Password must be greater than 6 Digits";
+ERROR_ENTER_OLD_PASSWORD = "Please enter valid old password";
+ERROR_ALL_MANDATORY_NEW_FIELDS = "Please fill all Mandatory fields";
+
+SUCCESS_PASSWORD_UPDATED = "Your Password is updated successfully";
+
+HOSPITAL_WORKING_HOURS = "Working Hours";
+CAMP_VOLUNTEER = "Volunteer";
+BLOOD_GROUP = "Blood Group";
+BLOOD_REQUIREMENT = "Requirement";
+REQUEST_CAMP_VOLUNTEER_SHARE_MESSAGE = "A blood donation camp has been created on LifeLine. Please volunteer to donate blood or share this within your circle. Here are the details:";
+SEARCH_LOCATION = "You searched this Location";
+LANGUAGE_CHANGE_ALERT = "Are you sure you want to change LifeLine language";
+CALANDER_TO = "To";
+BLOOD_STRING = "Blood";
+PLASMA_STRING = "Plasma";
+PLATELETS_STRING = "Platelets";
+

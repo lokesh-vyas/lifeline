@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import MessageUI
 
 class ConfirmDonate: UIViewController {
 
@@ -47,11 +48,11 @@ class ConfirmDonate: UIViewController {
             ID = (MarkerData.SharedInstance.markerData["ID"] as! String?)!
             self.confirmDonateProperties()
         } else {
-             HudBar.sharedInstance.showHudWithMessage(message: "Loading...", view: view)
+             HudBar.sharedInstance.showHudWithMessage(message: MultiLanguage.getLanguageUsingKey("TOAST_LOADING_MESSAGE"), view: view)
             //Through APN
             navigationItem.rightBarButtonItems = [btnShare,BarBtnHome]
             navigationItem.leftBarButtonItem = nil
-            HospitalName.text = "Contact Name"
+            HospitalName.text = MultiLanguage.getLanguageUsingKey("HOSPITAL_CONTACT_NAME_LBL")
             Email.isHidden = false
             lblEmailID.isHidden = false
             FromDate.isHidden = false
@@ -71,16 +72,69 @@ class ConfirmDonate: UIViewController {
             ConfirmDonateInteractor.sharedInstance.getCompaignDetails(urlString: URLList.GET_CAMPAGIN_DETAILS.rawValue, params: bodyGetCampDetails)
             
         }
+        let tapRec = UITapGestureRecognizer(target: self, action: #selector(ConfirmDonate.lblCallTapped(_:)))
+        lblContactNumber.addGestureRecognizer(tapRec)
+        lblContactNumber.isUserInteractionEnabled = true
+        let tapEmailRec = UITapGestureRecognizer(target: self, action: #selector(ConfirmDonate.lblEmailTapped(_:)))
+        lblEmailID.addGestureRecognizer(tapEmailRec)
+        lblEmailID.isUserInteractionEnabled = true
     }
+    
+    func lblCallTapped(_ sender: UITapGestureRecognizer)
+    {
+        let phoneNumber: String
+        let formatedNumber: String
+        if(MarkerData.SharedInstance.markerData["ContactNumber"] != nil)
+        {
+            phoneNumber = String(describing: MarkerData.SharedInstance.markerData["ContactNumber"])
+            print("Requester phone number is : \(phoneNumber)")
+            formatedNumber = phoneNumber.components(separatedBy: NSCharacterSet.decimalDigits.inverted).joined(separator: "")
+            print("calling \(formatedNumber)")
+        }
+        else
+        {
+            phoneNumber = (MarkerData.SharedInstance.markerData["ContactNumber"] as! String)
+            print("Requester phone number is : \(phoneNumber)")
+            formatedNumber = phoneNumber.components(separatedBy: NSCharacterSet.decimalDigits.inverted).joined(separator: "")
+            print("calling \(formatedNumber)")
+        }
+        if let url = URL(string: "tel://\(formatedNumber)") {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url as URL)
+            }
+        }
+    }
+    
+    func lblEmailTapped(_ sender: UITapGestureRecognizer)
+    {
+        let emailAddress = MarkerData.SharedInstance.markerData["Email"]
+        if MFMailComposeViewController.canSendMail() {
+            let mailVC = MFMailComposeViewController()
+            mailVC.mailComposeDelegate = self
+            mailVC.setToRecipients([emailAddress as! String])
+            mailVC.setSubject("")
+            mailVC.setMessageBody("", isHTML: true)
+            self.present(mailVC, animated: true, completion: nil)
+        }
+        else {
+            let alert = UIAlertController(title: MultiLanguage.getLanguageUsingKey("MAIL_SEND_CANCEL"), message: MultiLanguage.getLanguageUsingKey("MAIL_CANCEL_MESSAGE"), preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: MultiLanguage.getLanguageUsingKey("BTN_OK"), style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
     //MARK:- btnShareTapped
     @IBAction func btnShareTapped(_ sender: Any)
     {
-        let textShareLink = "You can also access the request on LifeLine here:"
+        
+        let textShareLink = MultiLanguage.getLanguageUsingKey("REQUEST_SHARE_TITLE_MESSAGE")
         let textToIOS = "iOS:- https://goo.gl/XJl5a7"
         let textToAndroid = "Android:- https://goo.gl/PUorhE"
         
         if let myWebsite = NSURL(string: "https://goo.gl/XJl5a7") {
-            let objectsToShare = [StringList.LifeLine_BloodDonation_Share_Text.rawValue,textShareArray[0],textShareArray[1],textShareArray[2],textShareArray[3],textShareLink,textToIOS,textToAndroid, myWebsite] as [Any]
+            let objectsToShare = [MultiLanguage.getLanguageUsingKey("REQUEST_CAMP_VOLUNTEER_SHARE_MESSAGE"),textShareArray[0],textShareArray[1],textShareArray[2],textShareArray[3],textShareLink,textToIOS,textToAndroid, myWebsite] as [Any]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
             
             //New Excluded Activities Code
@@ -120,9 +174,9 @@ class ConfirmDonate: UIViewController {
         if data != nil {
             let profileData = NSKeyedUnarchiver.unarchiveObject(with: data as! Data) as! ProfileData
             if Int(profileData.Age)! < 18 {
-                let alert = UIAlertController(title: "Warning", message: "You are not eligible for donating blood as your age is below 18. If you still want to continue, please select OK to continue.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in self.toConfirmDonateSubmit()}))
-                alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
+                let alert = UIAlertController(title: MultiLanguage.getLanguageUsingKey("TOAST_WARNIG"), message: MultiLanguage.getLanguageUsingKey("AGE_WARNING_MESSAGE"), preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: MultiLanguage.getLanguageUsingKey("BTN_OK"), style: .default, handler: { action in self.toConfirmDonateSubmit()}))
+                alert.addAction(UIAlertAction(title: MultiLanguage.getLanguageUsingKey("BTN_CANCEL"), style: .destructive, handler: nil))
                 present(alert, animated: true, completion: nil)
             } else {
                 self.toConfirmDonateSubmit()
@@ -151,7 +205,7 @@ class ConfirmDonate: UIViewController {
             if self.lblFromDate.text != nil
             {
                 let workingHours:String = MarkerData.SharedInstance.markerData["WorkingHours"] as! String
-                let fullNameArr : [String] = workingHours.components(separatedBy: " To ")
+                let fullNameArr : [String] = workingHours.components(separatedBy: MultiLanguage.getLanguageUsingKey("CALANDER_TO"))
                 var fromTime: String? = fullNameArr[0]
                 var toTimeO: String? = fullNameArr[1]
                 if fromTime == nil
@@ -209,7 +263,7 @@ class ConfirmDonate: UIViewController {
         lblAddress.text = (MarkerData.SharedInstance.markerData["AddressLine"] as! String?)?.replacingOccurrences(of: "\n", with: ", ").appending(MarkerData.SharedInstance.markerData["City"] as! String).appending(" - ").appending(MarkerData.SharedInstance.markerData["PINCode"] as! String)
         
         if MarkerData.SharedInstance.markerData["TypeOfOrg"] as! String? == "2" { // this is camp
-            HudBar.sharedInstance.showHudWithMessage(message: "Loading...", view: view)
+            HudBar.sharedInstance.showHudWithMessage(message: MultiLanguage.getLanguageUsingKey("TOAST_LOADING_MESSAGE"), view: view)
 //            let urlGetCampDetails = "http://demo.frontman.isteer.com:8284/services/LifeLine.GetCampaignDetails"
             //FIXME:- LoginID
             let bodyGetCampDetails = ["CampaignDetailsRequest" : [
@@ -220,7 +274,7 @@ class ConfirmDonate: UIViewController {
             
             //MARK:- GET COMPAIGN DETAILS
             ConfirmDonateInteractor.sharedInstance.getCompaignDetails(urlString: URLList.GET_CAMPAGIN_DETAILS.rawValue, params: bodyGetCampDetails)
-            HospitalName.text = "Contact Name"
+            HospitalName.text = MultiLanguage.getLanguageUsingKey("HOSPITAL_CONTACT_NAME_LBL")
             Email.isHidden = false
             lblEmailID.isHidden = false
             FromDate.isHidden = false
@@ -229,12 +283,12 @@ class ConfirmDonate: UIViewController {
             lblToDate.isHidden = false
             VolunteerDetails.isHidden = false
             lblCampDescription.isHidden = false
-            btnConfirmDonate.setTitle("Volunteer", for: .normal)
+            btnConfirmDonate.setTitle(MultiLanguage.getLanguageUsingKey("CAMP_VOLUNTEER"), for: .normal)
             navigationItem.rightBarButtonItems = [btnShare,BarBtnHome]
             
         } else {
             navigationItem.rightBarButtonItem = BarBtnHome
-            HospitalName.text = "Hospital Name"
+            HospitalName.text = MultiLanguage.getLanguageUsingKey("HOSPITAL_NAME_LBL")
             Email.isHidden = true
             lblEmailID.isHidden = true
             FromDate.isHidden = true
@@ -263,24 +317,26 @@ extension ConfirmDonate : ConfirmDonateProtocol {
         self.lblCampDescription.text = String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["AdditionalInfo"])
         
         lblName.text = MarkerData.SharedInstance.APNResponse["Name"] as! String?
-        self.textShareArray.insert("Contact Name : \(lblName.text!)", at: 0)
+        self.textShareArray.insert("\(MultiLanguage.getLanguageUsingKey("HOSPITAL_CONTACT_NAME_LBL")) : \(lblName.text!)", at: 0)
         
         let strContact = String(describing: MarkerData.SharedInstance.APNResponse["ContactNumber"]!)
         if strContact == "null"
         {
             lblContactNumber.text = "00"
-            self.textShareArray.insert("Contact Number : 00", at: 1)
+            self.textShareArray.insert("\(MultiLanguage.getLanguageUsingKey("HOSPITAL_CONTACT_NUMBER_LBL")) : 00", at: 1)
         }else
         {
             lblContactNumber.text = strContact
-            self.textShareArray.insert("Contact Number : \(strContact)", at: 1)
+            self.textShareArray.insert("\(MultiLanguage.getLanguageUsingKey("HOSPITAL_CONTACT_NUMBER_LBL")) : \(strContact)", at: 1)
         }
         lblWorkingHours.text = MarkerData.SharedInstance.APNResponse["WorkingHours"] as! String?
-        self.textShareArray.insert("Working Hours : \(lblWorkingHours.text!)", at: 2)
+        
+        self.textShareArray.insert("\(MultiLanguage.getLanguageUsingKey("HOSPITAL_WORKING_HOURS")) : \(lblWorkingHours.text!)", at: 2)
+        
         lblFromDate.text = Util.SharedInstance.showingDateToUser(dateString: (String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["FromDate"]).characters.count > 10 ?  String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["FromDate"]).substring(to: 10):String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["FromDate"])))
         lblToDate.text = Util.SharedInstance.showingDateToUser(dateString: (String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["ToDate"]).characters.count > 10 ?  String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["ToDate"]).substring(to: 10):String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["ToDate"])))
         
-        self.textShareArray.insert("Needed by : \(lblToDate.text!)", at: 3)
+        self.textShareArray.insert("\(MultiLanguage.getLanguageUsingKey("HOSPITAL_NEEDED_BY")) : \(lblToDate.text!)", at: 3)
 
         lblEmailID.text = MarkerData.SharedInstance.APNResponse["Email"] as! String?
         lblAddress.text =  (MarkerData.SharedInstance.APNResponse["AddressLine"] as! String?)?.replacingOccurrences(of: "\n", with: ", ").appending(MarkerData.SharedInstance.APNResponse["City"] as! String).appending(" - ").appending(String(describing : MarkerData.SharedInstance.APNResponse["PINCode"]!))
@@ -291,10 +347,10 @@ extension ConfirmDonate : ConfirmDonateProtocol {
     func didFailGetCompaignDetails(Response:String) {
         HudBar.sharedInstance.hideHudFormView(view: self.view)
         if Response == "NoInternet" {
-            self.view.makeToast("No Internet Connection, please check your Internet Connection", duration: 3.0, position: .bottom)
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("TOAST_NO_INTERNET_WARNING"), duration: 3.0, position: .bottom)
         }else
         {
-            self.view.makeToast("Unable to access server, please try again later", duration: 3.0, position: .bottom)
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("TOAST_ACCESS_SERVER_WARNING"), duration: 3.0, position: .bottom)
         }
     }
 }
@@ -330,10 +386,37 @@ extension ConfirmDonate : getVolunteerProtocol {
     func didFailGetVolunteerDetails(Response:String) {
         HudBar.sharedInstance.hideHudFormView(view: self.view)
         if Response == "NoInternet" {
-            self.view.makeToast("No Internet Connection, please check your Internet Connection", duration: 3.0, position: .bottom)
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("TOAST_NO_INTERNET_WARNING"), duration: 3.0, position: .bottom)
         }else
         {
-            self.view.makeToast("Unable to access server, please try again later", duration: 3.0, position: .bottom)
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("TOAST_ACCESS_SERVER_WARNING"), duration: 3.0, position: .bottom)
+        }    }
+}
+
+extension ConfirmDonate : MFMailComposeViewControllerDelegate,MFMessageComposeViewControllerDelegate
+{
+    // MARK: MFMailComposeViewControllerDelegate Method
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?)
+    {
+        switch (result)
+        {
+        case MFMailComposeResult.cancelled:
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("MAIL_CANCEL"), duration: 2.0, position: .bottom)
+            break;
+        case MFMailComposeResult.saved:
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("MAIL_IN_DRAFT"), duration: 2.0, position: .bottom)
+            break;
+        case MFMailComposeResult.sent:
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("MAIL_SENT_SUCCESSFULLY"), duration: 2.0, position: .bottom)
+            break;
+        case MFMailComposeResult.failed:
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("MAIL-FAILED"), duration: 2.0, position: .bottom)
+            break;
         }
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        self.dismiss(animated: true, completion: nil)
     }
 }

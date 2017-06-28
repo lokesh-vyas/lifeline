@@ -32,7 +32,7 @@ class MyRequestView: UIViewController {
     {
         let LoginID:String
             = UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!
-        HudBar.sharedInstance.showHudWithMessage(message: "Loading..", view: self.view)
+        HudBar.sharedInstance.showHudWithMessage(message: MultiLanguage.getLanguageUsingKey("TOAST_LOADING_MESSAGE"), view: self.view)
         MyRequestInteractor.SharedInstance.delegate = self
         MyRequestInteractor.SharedInstance.MyRequestServiceCall(loginID: LoginID)
     }
@@ -138,7 +138,7 @@ extension MyRequestView:MyRequestProtocol
             } else {
                 self.tableRequestView.isHidden = true
                 self.lblInternetIssue.isHidden = false
-                self.lblInternetIssue.text = "Unable to access server"
+                self.lblInternetIssue.text = MultiLanguage.getLanguageUsingKey("TOAST_ACCESS_SERVER_WARNING")
                 //Here we found nil
                 return
             }
@@ -148,7 +148,7 @@ extension MyRequestView:MyRequestProtocol
         {
             self.tableRequestView.isHidden = true
             self.lblInternetIssue.isHidden = false
-            self.lblInternetIssue.text = "No requests found"
+            self.lblInternetIssue.text = MultiLanguage.getLanguageUsingKey("NO_REQUEST_FOUND")
         }
         
     }
@@ -158,10 +158,10 @@ extension MyRequestView:MyRequestProtocol
         self.lblInternetIssue.isHidden = false
         HudBar.sharedInstance.hideHudFormView(view: self.view)
         if Response == "NoInternet" {
-            self.lblInternetIssue.text = "No Internet Connection, please check your Internet Connection"
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("TOAST_NO_INTERNET_WARNING"), duration: 3.0, position: .bottom)
         }else
         {
-            self.lblInternetIssue.text = "Unable to access server, please try again later"
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("TOAST_ACCESS_SERVER_WARNING"), duration: 3.0, position: .bottom)
         }
     }
 }

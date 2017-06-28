@@ -9,9 +9,9 @@
 import UIKit
 import CoreLocation
 
-protocol filterMarkersProtocol {
-    func didSuccessFilters(sender: FilterChecks)
-}
+//protocol filterMarkersProtocol {
+//    func didSuccessFilters(sender: FilterChecks)
+//}
 
 class SingleTon {
     
@@ -19,9 +19,9 @@ class SingleTon {
     var isCheckedHospital = true
     var isCheckedCamp = true
     var noMarkers : Bool?
+    var cameFromMarkersList : Bool?
     var currentLatitude : CLLocationDegrees!
     var currentLongitude : CLLocationDegrees!
-    
     
     class var SharedInstance : SingleTon {
         struct Shared {
@@ -38,7 +38,7 @@ class FilterChecks: UIViewController {
     @IBOutlet weak var btnCheckboxCamp: UIButton!
     @IBOutlet weak var subViewFilter: UIView!
     
-    var delegate : filterMarkersProtocol?
+//    var delegate : filterMarkersProtocol?
     override func viewDidLoad() {
         super.viewDidLoad()
         if !(SingleTon.SharedInstance.isCheckedIndividual) {
@@ -88,11 +88,24 @@ class FilterChecks: UIViewController {
         //TODO:-
         //HudBar.sharedInstance.showHudWithMessage(message: "Filtering...", view: self.view)
         print("Apply Tapped..!!")
-        let temp = self.storyboard?.instantiateViewController(withIdentifier: "DonateView") as! DonateView
-        let naC = UINavigationController(rootViewController: temp)
-        present(naC, animated: true, completion: nil)
+        if SingleTon.SharedInstance.cameFromMarkersList! {
+            
+            dismiss(animated: true, completion: nil)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+
+//            let temp = self.storyboard?.instantiateViewController(withIdentifier: "MarkersListView") as! MarkersListView
+//            let naC = UINavigationController(rootViewController: temp)
+//            present(naC, animated: true, completion: nil)
+            
+        } else {
         
-        
+            let temp = DonateView()
+            
+            dismiss(animated: true, completion: nil)
+//        let temp = self.storyboard?.instantiateViewController(withIdentifier: "DonateView") as! DonateView
+//        let naC = UINavigationController(rootViewController: temp)
+//        present(naC, animated: true, completion: nil)
+        }
      }
    
     @IBAction func btnCancelTapped(_ sender: Any) {

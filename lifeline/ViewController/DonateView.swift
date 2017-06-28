@@ -14,6 +14,7 @@ import CoreLocation
 import SwiftyJSON
 
 
+
 class DonateView: UIViewController {
     
     var camera : GMSCameraPosition?
@@ -39,7 +40,7 @@ class DonateView: UIViewController {
     var lastEventDate : Date? = nil
     var loader : Bool?
     var InternetIssue : Bool?
-    var appendsListMarkers = [Dictionary<String, Any>]()
+    var appendsListMarkers : [Dictionary<String, Any>] = []
     
     var currentLat : CLLocationDegrees!
     var currentLong : CLLocationDegrees!
@@ -66,16 +67,16 @@ class DonateView: UIViewController {
         }
         NotificationCenter.default.addObserver(self, selector: #selector(DonateView.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
         //        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        
+       
     }
     
     //MARK:- viewWillAppear
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        btnListofMarkers.isHidden = true
-        self.navigationController?.completelyTransparentBar()
-        self.navigationController?.topViewController?.title = "Donate"
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:Util.SharedInstance.hexStringToUIColor(hex: "b60b16")]
+//        btnListofMarkers.isHidden = true
+        self.navigationController?.completelyTransparentBarForDonate()
+        
         //For Result VC
         resultsViewController = GMSAutocompleteResultsViewController()
         resultsViewController?.delegate = self
@@ -107,7 +108,6 @@ class DonateView: UIViewController {
         mapView.isMyLocationEnabled = true
         mapView.delegate = self
         view = mapView
-        
         mapView.isBuildingsEnabled = true
         mapView.settings.compassButton = true
         mapView.settings.indoorPicker = true
@@ -115,9 +115,9 @@ class DonateView: UIViewController {
     //MARK:- openSettingsForDisableMap
     func openSettingsForDisableMap()
     {
-        let alertController = UIAlertController (title: "Loction Service is Turned Off ", message: "You can turn on Location Service for this app in Settings.", preferredStyle: .alert)
+        let alertController = UIAlertController (title: MultiLanguage.getLanguageUsingKey("LOCATION_TITLE_WARNING"), message: MultiLanguage.getLanguageUsingKey("LOCATION_MESSAGE_WARNING"), preferredStyle: .alert)
         
-        let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+        let settingsAction = UIAlertAction(title: MultiLanguage.getLanguageUsingKey("TOAST_SETTING_TITLE"), style: .default) { (_) -> Void in
            
             guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
                 return
@@ -134,7 +134,8 @@ class DonateView: UIViewController {
             }
         }
         alertController.addAction(settingsAction)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+
+        let cancelAction = UIAlertAction(title: MultiLanguage.getLanguageUsingKey("BTN_CANCEL"), style: .default, handler: nil)
         alertController.addAction(cancelAction)
         
         present(alertController, animated: true, completion: nil)
@@ -169,6 +170,7 @@ class DonateView: UIViewController {
     
     //MARK:- Filter Button
     @IBAction func btnFilterTapped(_ sender: Any) {
+        SingleTon.SharedInstance.cameFromMarkersList = false
         let filterView = self.storyboard!.instantiateViewController(withIdentifier: "FilterChecks") as! FilterChecks
         filterView.modalPresentationStyle = .overCurrentContext
         filterView.view.backgroundColor = UIColor.clear
@@ -182,7 +184,7 @@ class DonateView: UIViewController {
         marker.position = coordinates!
         marker.icon = UIImage(named: "Current_icon")
         marker.map = mapView
-        marker.snippet = "You searched this Location"
+        marker.snippet = MultiLanguage.getLanguageUsingKey("SEARCH_LOCATION")
         camera = GMSCameraPosition.camera(withLatitude: (coordinates?.latitude)!, longitude: (coordinates?.longitude)!, zoom: 18.0)
         mapView.camera = camera!
         view = mapView
@@ -298,6 +300,8 @@ extension DonateView : CLLocationManagerDelegate {
 
 extension DonateView : GMSMapViewDelegate {
     
+    
+    //FIXME:- removable methods
     public func mapViewDidStartTileRendering(_ mapView: GMSMapView) {
         
     }
@@ -309,9 +313,9 @@ extension DonateView : GMSMapViewDelegate {
     
     public func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition)
     {
-        print("didChange")
+        
         if loader == true {
-            HudBar.sharedInstance.showHudWithMessage(message: "Loading...", view: self.view)
+            HudBar.sharedInstance.showHudWithMessage(message: MultiLanguage.getLanguageUsingKey("TOAST_LOADING_MESSAGE"), view: self.view)
         }
         
         if lastEventDate != nil {
@@ -321,9 +325,12 @@ extension DonateView : GMSMapViewDelegate {
             if didChangeInterval < 0.5 {
                 return
             }
+            
         }
+        print("didChange")
         
         lastEventDate = Date()
+        
         let visibleRegion = mapView.projection.visibleRegion()
         let mapBounds = GMSCoordinateBounds.init(region: visibleRegion)
         let NorthWest = CLLocationCoordinate2DMake(mapBounds.northEast.latitude, mapBounds.southWest.longitude)
@@ -338,12 +345,25 @@ extension DonateView : GMSMapViewDelegate {
         loader = false
     }
     
-    public func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
-        print("idleAt")
+    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
+    
+        print("I am in idle state...")
         
         
+        let visibleRegion = mapView.projection.visibleRegion()
+        let mapBounds = GMSCoordinateBounds.init(region: visibleRegion)
+        let NorthWest = CLLocationCoordinate2DMake(mapBounds.northEast.latitude, mapBounds.southWest.longitude)
+        let SouthEast = CLLocationCoordinate2DMake(mapBounds.southWest.latitude, mapBounds.northEast.longitude)
+        
+        SouthLatitude = SouthEast.latitude
+        NorthLatitude = NorthWest.latitude
+        WestLongitude = NorthWest.longitude
+        EastLongitude = SouthEast.longitude
+        
+        self.fetchBloodRequestToDonate()
     }
     
+   
     public func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         
         lastEventDate = Date()
@@ -494,11 +514,13 @@ extension DonateView : DonateViewProtocol {
     func successDonateSources(jsonArray: JSON) {
         
         // ListofMarkers
-        btnListofMarkers.setImage(UIImage(named : "List-32.png"), for: .normal)
+        btnListofMarkers.setImage(UIImage(named : "List-32"), for: .normal)
+        
         btnListofMarkers.backgroundColor = UIColor.white
         btnListofMarkers.cornerRadius = 27.5
         btnListofMarkers.layer.shadowColor = UIColor.red.cgColor
         btnListofMarkers.layer.shadowRadius = 5.0
+        
         btnListofMarkers.addTarget(self, action:#selector(self.btnListClicked), for: .touchUpInside)
         btnListofMarkers.translatesAutoresizingMaskIntoConstraints = false
         
@@ -551,7 +573,7 @@ extension DonateView : DonateViewProtocol {
         
         //MARK:- Availability of Markers
         if jsonArray["BloodRequestSearchResponse"] == JSON.null || jsonArray["BloodRequestSearchResponse"]["BloodRequestSearchResponseDetails"]["StatusCode"] == 1 {
-            print("No Requirements in your location")
+            
             HudBar.sharedInstance.hideHudFormView(view: self.view)
             
             //viewWarning
@@ -560,8 +582,9 @@ extension DonateView : DonateViewProtocol {
             viewWarning.layer.cornerRadius = 27.5
             
             //labelWarning
-            labelWarning.text = "No Requirements in your location"
+            labelWarning.text = MultiLanguage.getLanguageUsingKey("NO_REQUIREMENT_WARNING")
             labelWarning.numberOfLines = 2
+            labelWarning.adjustsFontSizeToFitWidth = true
             labelWarning.translatesAutoresizingMaskIntoConstraints = false
             
             // imageWarning
@@ -694,18 +717,23 @@ extension DonateView : DonateViewProtocol {
             SingleTon.SharedInstance.noMarkers = true
             
             
-        } else {
+        } else { // when we get marekrs (also when we find another markers through 'No requirements' places)
             viewWarning.removeFromSuperview()
             SingleTon.SharedInstance.noMarkers = false
             var tempDict = [String : Any]()
             var jDict = JSON.init(dictionaryLiteral: ("Index", jsonArray["BloodRequestSearchResponse"]["BloodRequestDetails"]))
             jDict = jDict["Index"]
             
+            if jDict["ToDate"].exists() {
+                jDict =  [jDict]
+            }
             appendsListMarkers.removeAll()
             
             for (i, _) in jDict.enumerated() {
                 tempDict["Name"] = jDict[i]["Name"]
                 tempDict["WorkingHours"] = jDict[i]["WorkingHours"]
+                tempDict["TypeOfOrg"] = jDict[i]["TypeOfOrg"]
+                tempDict["Individuals"] = jDict[i]["IndividualDetails"]
                 appendsListMarkers.append(tempDict)
             }
             
@@ -717,8 +745,8 @@ extension DonateView : DonateViewProtocol {
     func btnListClicked() {
         
         let lists = self.storyboard?.instantiateViewController(withIdentifier: "MarkersListView") as! MarkersListView
-        lists.listMarkers.removeAll()
-        lists.listMarkers = appendsListMarkers
+        lists.listMarker2 = JSON.init(dictionaryLiteral: ("Data",appendsListMarkers))
+        print("++++++++\(appendsListMarkers.count)++++")
         let nav = UINavigationController(rootViewController: lists)
         self.navigationController?.present(nav, animated: true, completion: nil)
     }
@@ -729,23 +757,23 @@ extension DonateView : DonateViewProtocol {
         if Response == "NoInternet" {
             if InternetIssue == true {
                 InternetIssue = false
-                self.view.makeToast("No Internet Connection, please check your Internet Connection", duration: 3.0, position: .bottom)
+               self.view.makeToast(MultiLanguage.getLanguageUsingKey("TOAST_NO_INTERNET_WARNING"), duration: 3.0, position: .bottom)
             }
         }else
         {
             if InternetIssue == true {
                 InternetIssue = false
-                self.view.makeToast("Unable to access server, please try again later", duration: 3.0, position: .bottom)
+                self.view.makeToast(MultiLanguage.getLanguageUsingKey("TOAST_ACCESS_SERVER_WARNING"), duration: 3.0, position: .bottom)
             }
         }
     }
 }
 
-extension DonateView : filterMarkersProtocol {
-    func didSuccessFilters(sender: FilterChecks) {
-        //   TODO:-
-    }
-}
+//extension DonateView : filterMarkersProtocol {
+//    func didSuccessFilters(sender: FilterChecks) {
+//        //   TODO:-
+//    }
+//}
 
 extension String {
     func index(from: Int) -> Index {

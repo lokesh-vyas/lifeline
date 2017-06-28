@@ -37,7 +37,7 @@ class MyDonorView: UIViewController {
             let LoginID:String
                 = UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!
             self.navigationItem.leftBarButtonItem = nil
-            HudBar.sharedInstance.showHudWithMessage(message: "Loading..", view: self.view)
+            HudBar.sharedInstance.showHudWithMessage(message: MultiLanguage.getLanguageUsingKey("TOAST_LOADING_MESSAGE"), view: self.view)
             MyRequestInteractor.SharedInstance.delegate = self
             MyRequestInteractor.SharedInstance.MyRequestServiceCall(loginID: LoginID)
         }
@@ -70,7 +70,7 @@ class MyDonorView: UIViewController {
         else{
             self.tableViewDonor.isHidden = true
             self.lblInternetIssueMessage.isHidden = false
-            self.lblInternetIssueMessage.text = "No one accept your request"
+            self.lblInternetIssueMessage.text = MultiLanguage.getLanguageUsingKey("NO_ONE_ACCEPT")
         }
     }
     //MARK:- FetchDataFromDonarDetail
@@ -113,12 +113,12 @@ extension MyDonorView:UITableViewDelegate,UITableViewDataSource
             let mailComposerVC = MFMailComposeViewController()
             mailComposerVC.mailComposeDelegate = self
             mailComposerVC.setToRecipients([toRecipient!])
-            mailComposerVC.setSubject("LifeLine - Blood Donation Confirmation")
+            mailComposerVC.setSubject(MultiLanguage.getLanguageUsingKey("MAIL_TITLE"))
             mailComposerVC.setMessageBody("https://itunes.apple.com/in/app/lifeline/id1087262408?mt=8", isHTML: false)
             self.present(mailComposerVC, animated: true, completion: nil)
         }
         else{
-            let sendMailErrorAlert = UIAlertView(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", delegate: self, cancelButtonTitle: "OK")
+            let sendMailErrorAlert = UIAlertView(title: MultiLanguage.getLanguageUsingKey("MAIL_SEND_CANCEL"), message: MultiLanguage.getLanguageUsingKey("MAIL_CANCEL_MESSAGE"), delegate: self, cancelButtonTitle: MultiLanguage.getLanguageUsingKey("BTN_OK"))
             sendMailErrorAlert.show()
         }
     }
@@ -130,6 +130,7 @@ extension MyDonorView:UITableViewDelegate,UITableViewDataSource
         if MyDonorDetailJSON[buttonRow]["ContactNumber"].int != nil
         {
             PhoneNumber = String(describing: MyDonorDetailJSON[buttonRow]["ContactNumber"])
+            print("Donar Phone Number is: \(PhoneNumber)")
         }
         else
         {
@@ -297,10 +298,10 @@ extension MyDonorView:MyRequestProtocol
         self.lblInternetIssueMessage.isHidden = false
         HudBar.sharedInstance.hideHudFormView(view: self.view)
         if Response == "NoInternet" {
-            self.lblInternetIssueMessage.text = "No Internet Connection, please check your Internet Connection"
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("TOAST_NO_INTERNET_WARNING"), duration: 3.0, position: .bottom)
         }else
         {
-            self.lblInternetIssueMessage.text = "Unable to access server, please try again later"
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("TOAST_ACCESS_SERVER_WARNING"), duration: 3.0, position: .bottom)
         }
     }
 }
@@ -312,16 +313,16 @@ extension MyDonorView : MFMailComposeViewControllerDelegate,MFMessageComposeView
         switch (result)
         {
         case MFMailComposeResult.cancelled:
-            self.view.makeToast("LifeLine mail cancelled", duration: 2.0, position: .bottom)
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("MAIL_CANCEL"), duration: 2.0, position: .bottom)
             break;
         case MFMailComposeResult.saved:
-            self.view.makeToast("LifeLine mail saved message in the drafts folder", duration: 2.0, position: .bottom)
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("MAIL_IN_DRAFT"), duration: 2.0, position: .bottom)
             break;
         case MFMailComposeResult.sent:
-            self.view.makeToast("LifeLine mail sent successfully", duration: 2.0, position: .bottom)
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("MAIL_SENT_SUCCESSFULLY"), duration: 2.0, position: .bottom)
             break;
         case MFMailComposeResult.failed:
-              self.view.makeToast("LifeLine mail failed", duration: 2.0, position: .bottom)
+              self.view.makeToast(MultiLanguage.getLanguageUsingKey("MAIL-FAILED"), duration: 2.0, position: .bottom)
             break;
             }
         controller.dismiss(animated: true, completion: nil)

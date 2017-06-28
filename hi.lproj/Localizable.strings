@@ -1,0 +1,161 @@
+/* 
+  Localizable.strings
+  lifeline
+
+  Created by iSteer on 01/06/17.
+  Copyright © 2017 iSteer. All rights reserved.
+*/
+/* Appdelegate Strings */
+
+/* BUTTON TITLE*/
+
+BTN_CANCEL = "रद्द करे";
+BTN_OK = "ओके";
+BTN_SUBMIT = "जमा करें";
+BTN_SELECT = "चुने";
+BTN_SELECT_ADDRESS = "चयनित पता";
+
+/* Toast Message */
+
+TOAST_SIGN_IN = "साइन इन करें...";
+TOAST_WARNIG = "चेतावनी";
+TOAST_LOGIN_IN = "लॉग इन करें...";
+TOAST_PLEASE_WAIT = "कृपया प्रतीक्षा करे...";
+TOAST_SETTING_TITLE = "सेटिंग्स";
+TOAST_LOADING_MESSAGE = "लोड हो रहा है...";
+TOAST_SUBMIT_MESSAGE = "सबमिट हो रहा है ...";
+TOAST_ALERT_MESSAGE = "चेतावनी";
+
+TOAST_NO_INTERNET_WARNING = "कोई इंटरनेट कनेक्शन नहीं, कृपया अपने इंटरनेट कनेक्शन की जांच करें";
+TOAST_ACCESS_SERVER_WARNING = "सर्वर तक पहुंचने में असमर्थ, कृपया पुनः प्रयास करे";
+
+/* SignIn View */
+
+ERROR_ALL_MANDATORY_FIELDS = "कृपया सभी स्थान भरे";
+ERROR_PASSWORD_NOT_MATCHED = "पासवर्ड मैच नहीं हुआ";
+ERROR_PASSWORD_VALIDATION = "पासवर्ड 6 अंकों से अधिक होना चाहिए";
+ERROR_INVALID_MAIL_ID = "अमान्य ईमेल आईडी";
+ERROR_WRONG_USER_ID = "आपके द्वारा दर्ज यूजर आईडी पहले से उपयोग में है कृपया अन्य यूजर आईडी दर्ज करें";
+
+CHECK_USERID_PASSWORD = "कृपया अपना यूजर आईडी और पासवर्ड जांचें और पुनः प्रयास करे";
+
+SUCESS_USER_ID_AVAILABLE = "यूजर आईडी उपलब्ध है";
+SUCESS_LOGIN_MESSAGE = "यूजर लॉगिन सफलतापूर्वक हो गया है";
+
+
+/* Home View */
+
+SOCAIL_SHARE_TITLE_MESSAGE = "LifeLine एक सामाजिक आवेदन है जो रक्त बैंक, दाताओं और प्राप्तकर्ताओं को जोड़ने के लिए समर्पित है।";
+
+/* DONATE VIEW */
+
+DONATE_TITLE = "रक्त दान करना";
+LOCATION_TITLE_WARNING = "लोकेशन सर्विस बंद है ";
+LOCATION_MESSAGE_WARNING = "आप सेटिंग में इस ऐप के लिए लोकेशन सर्विस चालू कर सकते हैं।";
+NO_REQUIREMENT_WARNING = "आपके स्थान पर कोई निवेदन प्राप्त नहीं हुआ है";
+
+/* INVENTORY VIEW */
+
+INVENTORY_WARNING = "इस रक्त बैंक के लिए कोई इन्वेंटरी जानकारी नहीं है";
+
+/* CONFIRM DONATE VIEW */
+HOSPITAL_CONTACT_NAME_LBL = "संपर्क नाम";
+HOSPITAL_NAME_LBL = "अस्पताल का नाम";
+HOSPITAL_CONTACT_NUMBER_LBL = "संपर्क संख्या";
+HOSPITAL_NEEDED_BY = "ज़रुरतकर्ता";
+
+REQUEST_SHARE_TITLE_MESSAGE = "आप यहां LifeLine पर अनुरोध प्राप्त कर सकते हैं :";
+
+REQUEST_CAMP_VOLUNTEER_SHARE_MESSAGE = "LifeLine पर एक रक्तदान शिविर बनाया गया है। कृपया रक्तदान करने या अपने सर्कल में इसका प्रसार करे । यहाँ विवरण हैं:";
+REQUEST_VOLUNTEER_SHARE_MESSAGE = "LifeLine पर एक रक्तदान अनुरोध बनाया गया है। कृपया रक्तदान करने या अपने सर्कल में इसका प्रसार करे । यहाँ विवरण हैं:";
+
+AGE_WARNING_MESSAGE = "आप अपनी उम्र के अनुसार रक्त दान करने के लिए योग्य नहीं है। यदि आप अभी भी जारी रखना चाहते हैं, तो जारी रखने के लिए ओके का चयन करें।";
+
+/* ALERT CONFIRM DONATE */
+
+CALENDER_HEADING = "तारीख और समय की पुष्टि करें";
+WARNING_DATE_AND_TIME = "कृपया अपनी तारीख और समय चुनें";
+
+SUCESS_SUBMIT_REQUEST = "अनुरोधित विवरण सफलतापूर्वक जमा कर दिया गया है";
+
+/* LOCAL NOTIFICATION */
+
+LOCAL_NOTIFICATION_TITLE = "रक्त दान";
+LOCAL_NOTIFICATION_MESSAGE = "रक्त दान के लिए अलार्म";
+
+/* PROFILE VIEW */
+CLEAR = "मिटायें";
+DATE_OF_BIRTH = "जन्मतिथि";
+LAST_DONATION_DATE = "अंतिम दान तिथि";
+
+INVALID_HOME_PIN =  "अमान्य होम पिन कोड";
+INVALID_WORK_PIN =  "अमान्य कार्यालय पिन कोड";
+
+SUCESS_PROFILE_UPDATE = "आपका प्रोफाइल अपडेट किया गया है";
+ERROR_PROFILE_UPDATE = "अपडेट करने में असफल";
+
+/* REQUEST VIEW */
+
+SELECT_WHAT_YOU_NEED = "चुनें कि आपको क्या चाहिए";
+SELECT_UNITS = "यूनिट्स चुने";
+SELECT_BLOOD_GROUP = "कृपया रक्त समूह चुनें";
+SUCCESSFULLY_SUBMIT_POST = "आपकी पोस्ट सफलतापूर्वक पोस्ट हो गयी है";
+FACEBOOK_NOT_INSTALLED = "फेसबुक ऐप इंस्टॉल नहीं है";
+
+ERROR_INVALID_CONTACT = "अमान्य संपर्क संख्या";
+ERROR_INVALID_HOSPITAL_CONTACT = "अमान्य अस्पताल संपर्क नंबर";
+ERROR_SPECIAL_CHAR_NOT_ALLOWED = "विशेष वर्णों की अनुमति नहीं है";
+ERROR_INVALID_HOSPITAL_PIN = "अमान्य होस्पियल पता पिन कोड";
+ERROR_FACEBOOK_NOT_INSTALLED = "आपके डिवाइस पर कोई फेसबुक इंस्टॉल नहीं है";
+
+CONFIRM_DATE = "अपनी तारीख की पुष्टि करें";
+
+/* Login View */
+
+ERROR_ENTER_MAILID = "कृपया ईमेल पता दर्ज करें";
+ERROR_FAIL_LOGIN = "लॉग इन करने में असफल";
+ERROR_MAIL_ID_ALREADY_EXIST = "यह ईमेल आईडी पहले से ही रक्त बैंक के लिए उपयोग की गई है, कृपया अलग ईमेल आईडी के साथ लॉगिन करें";
+ERROR_INCORRECT_USERID = "अपना यूजर आईडी सही ढंग से लिखें";
+ERROR_INCORRECT_USERID_PASSWORD = "कृपया अपना यूजर आईडी और पासवर्ड जांचें और पुनः प्रयास करें";
+
+WARNING_ENTER_PASSWORD = "कृपया पासवर्ड एंटर करे";
+
+SUCCESS_NEW_PASSWORD = "आप शीघ्र ही अपने रजिस्टर ईमेल आईडी में नए पासवर्ड के साथ मेल प्राप्त करेंगे";
+
+/* MY REQUEST VIEW */
+
+NO_REQUEST_FOUND = "कोई अनुरोध प्राप्त नहीं हुआ";
+REQUEST_CLOSED = "आपका अनुरोध बंद कर दिया गया है";
+
+NO_ONE_ACCEPT = "आपका अनुरोध किसी ने स्वीकार नहीं किया है ";
+
+MAIL_TITLE = "LifeLine - रक्तदान की पुष्टि";
+MAIL_SEND_CANCEL = "ईमेल नहीं भेजा जा सकता है";
+MAIL_CANCEL_MESSAGE = "आपके डिवाइस से ईमेल नहीं भेजी जा सकती है। कृपया ई-मेल कॉन्फ़िगरेशन की जांच करें और पुनः प्रयास करें।";
+
+MAIL_CANCEL = "LifeLine मेल रद्द";
+MAIL_IN_DRAFT =  "LifeLine मेल ड्राफ्ट फोल्डर में है";
+MAIL_SENT_SUCCESSFULLY = "LifeLine मेल सफलतापूर्वक भेज दिया गया है";
+MAIL-FAILED = "LifeLine मेल असफल हो गया है";
+
+/* NEW STRINGS */
+
+SELECT_WHEN_YOU_NEED = "कृपया जब आपको आवश्यकता है तब चुनें";
+ERROR_CONFIRM_PASSWORD_VALIDATION = "कन्फर्म पासवर्ड 6 अंकों से अधिक होना चाहिए";
+ERROR_ENTER_OLD_PASSWORD = "कृपया पुराने मान्य पासवर्ड दर्ज करें";
+ERROR_ALL_MANDATORY_NEW_FIELDS = "कृपया सभी अनिवार्य क्षेत्रों को भरें";
+SUCCESS_PASSWORD_UPDATED = "आपका पासवर्ड सफलतापूर्वक अपडेट किया गया है";
+
+HOSPITAL_WORKING_HOURS = "कार्यकाल";
+CAMP_VOLUNTEER = "स्वयंसेवी";
+BLOOD_GROUP = "Blood Group";
+BLOOD_REQUIREMENT = "Requirement";
+REQUEST_CAMP_VOLUNTEER_SHARE_MESSAGE = "A blood donation camp has been created on LifeLine. Please volunteer to donate blood or share this within your circle. Here are the details:";
+SEARCH_LOCATION = "You searched this Location";
+LANGUAGE_CHANGE_ALERT = "क्या आप वाकई LifeLine भाषा को बदलना चाहते हैं";
+CALANDER_TO = "से";
+BLOOD_STRING = "ब्लड";
+PLASMA_STRING = "प्लाज्मा";
+PLATELETS_STRING = "प्लेटलेट्स";
+
+

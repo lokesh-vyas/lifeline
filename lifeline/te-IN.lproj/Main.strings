@@ -1,0 +1,528 @@
+
+/* Class = "UIButton"; normalTitle = "When you need"; ObjectID = "0Bx-83-oKh"; */
+"0Bx-83-oKh.normalTitle" = "మీకు అవసరమైనప్పుడు";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "0Nt-hg-fuj"; */
+"0Nt-hg-fuj.text" = "లేబుల్";
+
+/* Class = "UINavigationItem"; title = "Address"; ObjectID = "1vm-L7-Vjy"; */
+"1vm-L7-Vjy.title" = "చిరునామా  ";
+
+/* Class = "UINavigationItem"; title = "Donate "; ObjectID = "lM7-GP-6kO"; */
+"lM7-GP-6kO.title" = "దానం";
+
+/* Class = "UILabel"; text = "Working Hours :"; ObjectID = "1wB-2C-LKb"; */
+"1wB-2C-LKb.text" = "పని సమయం:";
+
+/* Class = "UITextField"; placeholder = "PIN Code"; ObjectID = "237-ZS-f6d"; */
+"237-ZS-f6d.placeholder" = "పిన్ కోడ్";
+
+/* Class = "UILabel"; text = "Individuals"; ObjectID = "2Fv-t2-4b5"; */
+"2Fv-t2-4b5.text" = "వ్యక్తులు";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "2Yj-1M-3mA"; */
+"2Yj-1M-3mA.normalTitle" = "బటన్";
+
+/* Class = "UITextField"; placeholder = "Address"; ObjectID = "2nl-QR-EZ3"; */
+"2nl-QR-EZ3.placeholder" = "చిరునామా";
+
+/* Class = "UILabel"; text = "FAQ"; ObjectID = "2om-Tk-ufr"; */
+"2om-Tk-ufr.text" = "FAQ";
+
+/* Class = "UILabel"; text = "Message"; ObjectID = "35J-bo-gCo"; */
+"35J-bo-gCo.text" = "సందేశం";
+
+/* Class = "UILabel"; text = " "; ObjectID = "4JX-of-IjI"; */
+"4JX-of-IjI.text" = " ";
+
+/* Class = "UITextField"; placeholder = "City"; ObjectID = "4Xt-Rg-XDY"; */
+"4Xt-Rg-XDY.placeholder" = "నగరం";
+
+/* Class = "UITextField"; placeholder = "PIN Code"; ObjectID = "5d1-LB-2PY"; */
+"5d1-LB-2PY.placeholder" = "పిన్ కోడ్";
+
+/* Class = "UILabel"; text = "Patient's Name"; ObjectID = "6VC-6O-oIt"; */
+"6VC-6O-oIt.text" = "రోగి యొక్క పేరు";
+
+/* Class = "UIButton"; normalTitle = "Donate"; ObjectID = "6cw-Xz-M53"; */
+"6cw-Xz-M53.normalTitle" = "దానం";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "7gk-dR-1wU"; */
+"7gk-dR-1wU.normalTitle" = "రద్దు";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "7uz-ZI-071"; */
+"7uz-ZI-071.normalTitle" = "రద్దు";
+
+/* Class = "UILabel"; text = "To Date"; ObjectID = "8FA-h0-4jo"; */
+"8FA-h0-4jo.text" = "తేదీ";
+
+/* Class = "UINavigationItem"; title = "Change Password"; ObjectID = "8Pz-1O-1kv"; */
+"8Pz-1O-1kv.title" = "పాస్వర్డ్ మార్చండి";
+
+/* Class = "UILabel"; text = "userName"; ObjectID = "92y-gV-Xnm"; */
+"92y-gV-Xnm.text" = "యూజర్ పేరు";
+
+/* Class = "UILabel"; text = "Head"; ObjectID = "AKz-ok-arv"; */
+"AKz-ok-arv.text" = "హెడ్";
+
+/* Class = "UILabel"; text = " "; ObjectID = "AL4-tg-ndE"; */
+"AL4-tg-ndE.text" = " ";
+
+/* Class = "UILabel"; text = "REQUEST"; ObjectID = "Aug-T3-jhe"; */
+"Aug-T3-jhe.text" = "విన్నపం";
+
+/* Class = "UITextField"; placeholder = "Name"; ObjectID = "Awh-mr-UUt"; */
+"Awh-mr-UUt.placeholder" = "పేరు";
+
+/* Class = "UILabel"; text = "fromDate"; ObjectID = "B9U-wo-Fdl"; */
+"B9U-wo-Fdl.text" = "తేదీ నుండి";
+
+/* Class = "UILabel"; text = "Personal Appeal"; ObjectID = "BKV-0e-EYf"; */
+"BKV-0e-EYf.text" = "వ్యక్తిగత అప్పీల్";
+
+/* Class = "UILabel"; text = "Personal Appeal"; ObjectID = "BTI-r6-nqP"; */
+"BTI-r6-nqP.text" = "వ్యక్తిగత అప్పీల్";
+
+/* Class = "UILabel"; text = "Comment"; ObjectID = "Bk6-th-Ic9"; */
+"Bk6-th-Ic9.text" = "వ్యాఖ్య";
+
+/* Class = "UILabel"; text = "Timing"; ObjectID = "BqE-jc-byJ"; */
+"BqE-jc-byJ.text" = "టైమింగ్";
+
+/* Class = "UIButton"; normalTitle = "Last Donation Date"; ObjectID = "CAv-8s-OLv"; */
+"CAv-8s-OLv.normalTitle" = "చివరి విరాళం తేదీ";
+
+/* Class = "UITextField"; placeholder = "Email*"; ObjectID = "Cll-De-sAw"; */
+"Cll-De-sAw.placeholder" = "ఇమెయిల్ *";
+
+/* Class = "UINavigationItem"; title = "My Request"; ObjectID = "D36-gX-8Vb"; */
+"D36-gX-8Vb.title" = "మా అభ్యర్థన";
+
+/* Class = "UIButton"; normalTitle = "Apply"; ObjectID = "D4e-lB-xrM"; */
+"D4e-lB-xrM.normalTitle" = "వర్తించు";
+
+/* Class = "UIButton"; normalTitle = "Blood Inventory"; ObjectID = "D9f-Wt-ZS6"; */
+"D9f-Wt-ZS6.normalTitle" = "బ్లడ్ ఇన్వెంటరీ";
+
+/* Class = "UIButton"; normalTitle = "SIGN IN"; ObjectID = "DAs-6u-mNw"; */
+"DAs-6u-mNw.normalTitle" = "సైన్ ఇన్ చేయండి";
+
+/* Class = "UILabel"; text = " "; ObjectID = "DB1-lp-BXS"; */
+"DB1-lp-BXS.text" = " ";
+
+/* Class = "UINavigationItem"; title = "Blood Inventory"; ObjectID = "DRM-VO-3LS"; */
+"DRM-VO-3LS.title" = "బ్లడ్ ఇన్వెంటరీ";
+
+/* Class = "UILabel"; text = "Voluntary Donation"; ObjectID = "E8d-f5-n2I"; */
+"E8d-f5-n2I.text" = "స్వచ్ఛంద విరాళం";
+
+/* Class = "UILabel"; text = "Work Address  (Optional)"; ObjectID = "E9s-kv-u2m"; */
+"E9s-kv-u2m.text" = "కార్యాలయ చిరునామా (ఆప్షనల్)";
+
+/* Class = "UINavigationItem"; title = "Requests"; ObjectID = "EoX-cx-AJD"; */
+"EoX-cx-AJD.title" = "అభ్యర్థనలు";
+
+/* Class = "UIButton"; normalTitle = "Tap to view"; ObjectID = "EqE-Gg-hmB"; */
+"EqE-Gg-hmB.normalTitle" = "వీక్షించడానికి నొక్కండి";
+
+/* Class = "UILabel"; text = "Share"; ObjectID = "G7a-Fz-IGm"; */
+"G7a-Fz-IGm.text" = "వాటా";
+
+/* Class = "UIButton"; normalTitle = "SIGN UP"; ObjectID = "Gm4-XE-bkz"; */
+"Gm4-XE-bkz.normalTitle" = "సైన్ అప్ చేయండి";
+
+/* Class = "UILabel"; text = "Close Request"; ObjectID = "Gmm-PG-Hax"; */
+"Gmm-PG-Hax.text" = "అభ్యర్థన మూసివేయి";
+
+/* Class = "UIButton"; normalTitle = "SIGN IN"; ObjectID = "GnG-F8-xUN"; */
+"GnG-F8-xUN.normalTitle" = "సైన్ ఇన్ చేయండి";
+
+/* Class = "UIButton"; normalTitle = "Donate"; ObjectID = "H4i-eI-eki"; */
+"H4i-eI-eki.normalTitle" = "దానం";
+
+/* Class = "UIButton"; normalTitle = "SIGN UP"; ObjectID = "HF2-FN-LfL"; */
+"HF2-FN-LfL.normalTitle" = "సైన్ అప్ చేయండి";
+
+/* Class = "UITextField"; placeholder = "New Password*"; ObjectID = "Hgh-HU-kW1"; */
+"Hgh-HU-kW1.placeholder" = "కొత్త పాస్వర్డ్*";
+
+/* Class = "UILabel"; text = "Contact Number"; ObjectID = "Ik9-ja-k21"; */
+"Ik9-ja-k21.text" = "సంప్రదింపు ఫోన్ సంఖ్య";
+
+/* Class = "UILabel"; text = " "; ObjectID = "IsI-4Y-E47"; */
+"IsI-4Y-E47.text" = " ";
+
+/* Class = "UILabel"; text = "Change Password"; ObjectID = "J1W-nN-ri3"; */
+"J1W-nN-ri3.text" = "పాస్వర్డ్ మార్చండి";
+
+/* Class = "UISearchBar"; placeholder = "Enter Hospital Name"; ObjectID = "JC1-nL-X0x"; */
+"JC1-nL-X0x.placeholder" = "హాస్పిటల్ పేరును నమోదు చేయండి";
+
+/* Class = "UISearchBar"; JC1-nL-X0x.scopeButtonTitles[0] = "Title"; ObjectID = "JC1-nL-X0x"; */
+"JC1-nL-X0x.scopeButtonTitles[0]" = "టైటిల్";
+
+/* Class = "UISearchBar"; JC1-nL-X0x.scopeButtonTitles[1] = "Title"; ObjectID = "JC1-nL-X0x"; */
+"JC1-nL-X0x.scopeButtonTitles[1]" = "టైటిల్";
+
+/* Class = "UITextField"; placeholder = "City"; ObjectID = "JOk-4K-2zk"; */
+"JOk-4K-2zk.placeholder" = "నగరం";
+
+/* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "JRh-y7-vX9"; */
+"JRh-y7-vX9.normalTitle" = "సమర్పించండి";
+
+/* Class = "UILabel"; text = "Hospitals"; ObjectID = "JUb-lS-sY1"; */
+"JUb-lS-sY1.text" = "హాస్పిటల్స్";
+
+/* Class = "UITextField"; placeholder = "Hospital / Bloodbank Name*"; ObjectID = "KSd-oU-hqN"; */
+"KSd-oU-hqN.placeholder" = "హాస్పిటల్ / బ్లడ్బ్యాంక్ పేరు *";
+
+/* Class = "UITextField"; placeholder = "Age*"; ObjectID = "KjB-od-Qw9"; */
+"KjB-od-Qw9.placeholder" = "వయస్సు *";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Me7-Uk-S17"; */
+"Me7-Uk-S17.normalTitle" = "బటన్";
+
+/* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "Mkw-2o-jrh"; */
+"Mkw-2o-jrh.normalTitle" = "సమర్పించండి";
+
+/* Class = "UITextField"; placeholder = "Contact Person*"; ObjectID = "Nch-d1-2WF"; */
+"Nch-d1-2WF.placeholder" = "వ్యక్తి సంప్రదించండి";
+
+/* Class = "UIButton"; normalTitle = "Donate"; ObjectID = "Ni4-4p-kcZ"; */
+"Ni4-4p-kcZ.normalTitle" = "దానం";
+
+/* Class = "UILabel"; text = " "; ObjectID = "O0g-bA-DYy"; */
+"O0g-bA-DYy.text" = " ";
+
+/* Class = "UILabel"; text = " "; ObjectID = "OD0-K7-jld"; */
+"OD0-K7-jld.text" = " ";
+
+/* Class = "UILabel"; text = "Hospital/Blood Bank"; ObjectID = "OEe-sP-tQY"; */
+"OEe-sP-tQY.text" = "హాస్పిటల్ / బ్లడ్ బ్యాంక్";
+
+/* Class = "UIButton"; normalTitle = "Confirm Donate"; ObjectID = "OQa-en-FfI"; */
+"OQa-en-FfI.normalTitle" = "ధృవీకరించండి";
+
+/* Class = "UILabel"; text = "Campaign Description"; ObjectID = "OR7-mt-Ovx"; */
+"OR7-mt-Ovx.text" = "ప్రచార వివరణ";
+
+/* Class = "UIButton"; normalTitle = "SIGN UP"; ObjectID = "Pbd-zn-Mcw"; */
+"Pbd-zn-Mcw.normalTitle" = "సైన్ అప్ చేయండి";
+
+/* Class = "UIButton"; normalTitle = "SIGN IN"; ObjectID = "Q6n-tx-iAA"; */
+"Q6n-tx-iAA.normalTitle" = "సైన్ ఇన్ చేయండి";
+
+/* Class = "UILabel"; text = "Donated"; ObjectID = "QBc-dm-Fkm"; */
+"QBc-dm-Fkm.text" = "దానం";
+
+/* Class = "UITextField"; placeholder = "City*"; ObjectID = "QIu-Tl-LdC"; */
+"QIu-Tl-LdC.placeholder" = "నగరం*";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "QQi-U1-6Ua"; */
+"QQi-U1-6Ua.normalTitle" = "రద్దు";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "Qh4-My-GGa"; */
+"Qh4-My-GGa.normalTitle" = "రద్దు";
+
+/* Class = "UILabel"; text = "DONATE"; ObjectID = "Qk8-jp-aa4"; */
+"Qk8-jp-aa4.text" = "దానం";
+
+/* Class = "UILabel"; text = "Health Info"; ObjectID = "Rcv-Mk-3Cg"; */
+"Rcv-Mk-3Cg.text" = "ఆరోగ్య సమాచారం";
+
+/* Class = "UILabel"; text = "Working Hours :"; ObjectID = "Rra-8B-OWW"; */
+"Rra-8B-OWW.text" = "పని సమయం :";
+
+/* Class = "UITextField"; placeholder = "Email Address"; ObjectID = "S89-bZ-Cho"; */
+"S89-bZ-Cho.placeholder" = "ఇమెయిల్ చిరునామా";
+
+/* Class = "UILabel"; text = "Hospital Name"; ObjectID = "Si4-eW-f0j"; */
+"Si4-eW-f0j.text" = "హాస్పిటల్ పేరు";
+
+/* Class = "UILabel"; text = "My Profile"; ObjectID = "TDP-kr-M3g"; */
+"TDP-kr-M3g.text" = "మా ప్రొఫైల్";
+
+/* Class = "UILabel"; text = "Request Information"; ObjectID = "TIM-UO-sld"; */
+"TIM-UO-sld.text" = "సమాచారం అభ్యర్థించండి";
+
+/* Class = "UILabel"; text = " "; ObjectID = "TiA-e2-DmS"; */
+"TiA-e2-DmS.text" = " ";
+
+/* Class = "UILabel"; text = "needDescription"; ObjectID = "Tyk-Ao-mcV"; */
+"Tyk-Ao-mcV.text" = "వివరణ అవసరం";
+
+/* Class = "UILabel"; text = "N/A"; ObjectID = "Tym-tX-1v1"; */
+"Tym-tX-1v1.text" = "N/A";
+
+/* Class = "UIButton"; normalTitle = "My Requests"; ObjectID = "UFu-Km-CcU"; */
+"UFu-Km-CcU.normalTitle" = "మా అభ్యర్థనలు";
+
+/* Class = "UIButton"; normalTitle = "What you need"; ObjectID = "UM5-pu-tKE"; */
+"UM5-pu-tKE.normalTitle" = "మీకు కావాల్సింది ఏంటి";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "Uj6-bI-PvC"; */
+"Uj6-bI-PvC.normalTitle" = "రద్దు";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "Upk-Lo-0c5"; */
+"Upk-Lo-0c5.placeholder" = "ఇమెయిల్";
+
+/* Class = "UILabel"; text = "Working Hours"; ObjectID = "V56-8r-YCu"; */
+"V56-8r-YCu.text" = "పని సమయం";
+
+/* Class = "UILabel"; text = "From Date"; ObjectID = "VF5-aL-b92"; */
+"VF5-aL-b92.text" = "తేదీ నుండి";
+
+/* Class = "UILabel"; text = "Hospital/Blood Bank"; ObjectID = "W8n-35-N6l"; */
+"W8n-35-N6l.text" = "హాస్పిటల్ / బ్లడ్ బ్యాంక్";
+
+/* Class = "UILabel"; text = "Hospital Address"; ObjectID = "W8x-Pd-mOF"; */
+"W8x-Pd-mOF.text" = "హాస్పిటల్ చిరునామా";
+
+/* Class = "UITextField"; placeholder = "Address*"; ObjectID = "WcT-Xy-gA4"; */
+"WcT-Xy-gA4.placeholder" = "చిరునామా *";
+
+/* Class = "UILabel"; text = " "; ObjectID = "XBO-H5-byp"; */
+"XBO-H5-byp.text" = " ";
+
+/* Class = "UILabel"; text = "No requirement in your location"; ObjectID = "XUm-28-Fwo"; */
+"XUm-28-Fwo.text" = "మీ స్థానం లో రిక్వైర్మెంట్ లేదు";
+
+/* Class = "UILabel"; text = "Hospital/Blood Bank Info"; ObjectID = "Xaa-Dv-hpJ"; */
+"Xaa-Dv-hpJ.text" = "హాస్పిటల్ / బ్లడ్ బ్యాంకు సమాచారం";
+
+/* Class = "UITextField"; placeholder = "Landmark"; ObjectID = "Y6Z-28-wV2"; */
+"Y6Z-28-wV2.placeholder" = "ల్యాండ్మార్క్";
+
+/* Class = "UITextField"; placeholder = "Confirm Password*"; ObjectID = "Yaj-Vs-nPP"; */
+"Yaj-Vs-nPP.placeholder" = "పాస్వర్డ్ను నిర్ధారించండి *";
+
+/* Class = "UILabel"; text = "contactNumber"; ObjectID = "ZAi-um-MfB"; */
+"ZAi-um-MfB.text" = "సంప్రదింపు ఫోన్ సంఖ్య";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "ZST-Tc-Ni8"; */
+"ZST-Tc-Ni8.text" = "చిరునామా";
+
+/* Class = "UINavigationItem"; title = "Confirm Donate"; ObjectID = "aGP-BK-U8w"; */
+"aGP-BK-U8w.title" = "ధృవీకరించండి";
+
+/* Class = "UINavigationItem"; title = "Donor Details"; ObjectID = "auf-Zv-hCk"; */
+"auf-Zv-hCk.title" = "దాత వివరాలు";
+
+/* Class = "UILabel"; text = "Hospital/Blood Bank Name"; ObjectID = "cAV-nA-hJs"; */
+"cAV-nA-hJs.text" = "హాస్పిటల్ / బ్లడ్ బ్యాంక్ పేరు";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "cbi-hR-bof"; */
+"cbi-hR-bof.text" = "పేరు";
+
+/* Class = "UIButton"; normalTitle = "View"; ObjectID = "cjh-1K-bcg"; */
+"cjh-1K-bcg.normalTitle" = "చూడండి";
+
+/* Class = "UILabel"; text = "Thank You Note"; ObjectID = "cq5-If-EwU"; */
+"cq5-If-EwU.text" = "ధన్యవాదాలు గమనించండి";
+
+/* Class = "UITextField"; placeholder = "Contact Number(Blood Bank/Hospital)*"; ObjectID = "cwc-9E-9b3"; */
+"cwc-9E-9b3.placeholder" = "సంప్రదింపు ఫోన్ సంఖ్య (బ్లడ్ బ్యాంక్ / హాస్పిటల్) *";
+
+/* Class = "UILabel"; text = " "; ObjectID = "dXV-5z-WbE"; */
+"dXV-5z-WbE.text" = " ";
+
+/* Class = "UITextField"; placeholder = "Name*"; ObjectID = "die-8M-tBC"; */
+"die-8M-tBC.placeholder" = "పేరు *";
+
+/* Class = "UINavigationItem"; title = "Request Details"; ObjectID = "ePk-OR-ple"; */
+"ePk-OR-ple.title" = "అభ్యర్థన వివరాలు";
+
+/* Class = "UIButton"; normalTitle = "Blood Group"; ObjectID = "f03-Z4-oCC"; */
+"f03-Z4-oCC.normalTitle" = "రక్తపు గ్రూపు";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "fLi-vY-ryN"; */
+"fLi-vY-ryN.normalTitle" = "రద్దు";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "gQR-am-OWB"; */
+"gQR-am-OWB.normalTitle" = "పూర్తి";
+
+/* Class = "UILabel"; text = "Language"; ObjectID = "u3p-5p-Lik"; */
+"u3p-5p-Lik.text" = "భాషా";
+
+/* Class = "UILabel"; text = "Post Request on Social Media"; ObjectID = "gii-AP-mNZ"; */
+"gii-AP-mNZ.text" = "సోషల్ మీడియాలో పోస్ట్ అభ్యర్ధన";
+
+/* Class = "UILabel"; text = "Email ID"; ObjectID = "gop-6F-5D2"; */
+"gop-6F-5D2.text" = "ఇమెయిల్ ఐడి";
+
+/* Class = "UIButton"; normalTitle = "DOB"; ObjectID = "goq-ur-qEv"; */
+"goq-ur-qEv.normalTitle" = "పుట్టిన తేది";
+
+/* Class = "UISearchBar"; placeholder = "Blood Donate Places"; ObjectID = "heb-vv-Zvc"; */
+"heb-vv-Zvc.placeholder" = "రక్తం దానం స్థలాలు";
+
+/* Class = "UISearchBar"; heb-vv-Zvc.scopeButtonTitles[0] = "Title"; ObjectID = "heb-vv-Zvc"; */
+"heb-vv-Zvc.scopeButtonTitles[0]" = "టైటిల్";
+
+/* Class = "UISearchBar"; heb-vv-Zvc.scopeButtonTitles[1] = "Title"; ObjectID = "heb-vv-Zvc"; */
+"heb-vv-Zvc.scopeButtonTitles[1]" = "టైటిల్";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "hff-MS-SWd"; */
+"hff-MS-SWd.normalTitle" = "పూర్తి";
+
+/* Class = "UILabel"; text = " "; ObjectID = "hgD-lh-SM4"; */
+"hgD-lh-SM4.text" = " ";
+
+/* Class = "UIButton"; normalTitle = "Forgot Password?"; ObjectID = "hjG-3h-KT4"; */
+"hjG-3h-KT4.normalTitle" = "పాస్వర్డ్ మర్చిపోయారా?";
+
+/* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "hmq-e0-7Ay"; */
+"hmq-e0-7Ay.normalTitle" = "సమర్పించండి";
+
+/* Class = "UILabel"; text = "Doctor Name"; ObjectID = "iO2-Uh-7Rn"; */
+"iO2-Uh-7Rn.text" = "డాక్టర్ పేరు";
+
+/* Class = "UITextField"; placeholder = "Patient Name*"; ObjectID = "iUe-dH-BLt"; */
+"iUe-dH-BLt.placeholder" = "రోగి పేరు *";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "idj-bd-OTX"; */
+"idj-bd-OTX.placeholder" = "పాస్వర్డ్";
+
+/* Class = "UILabel"; text = "Contact Person"; ObjectID = "jAv-YE-uO9"; */
+"jAv-YE-uO9.text" = "వ్యక్తి సంప్రదించండి";
+
+/* Class = "UILabel"; text = "When Required"; ObjectID = "jBk-fl-514"; */
+"jBk-fl-514.text" = "అవసరమైనప్పుడు";
+
+/* Class = "UILabel"; text = "There are multiple individual requests in this hospital"; ObjectID = "jEF-3d-76Y"; */
+"jEF-3d-76Y.text" = "ఈ ఆస్పత్రిలో బహుళ వ్యక్తిగత అభ్యర్థనలు ఉన్నాయి";
+
+/* Class = "UILabel"; text = "Head"; ObjectID = "jIe-BE-q2Q"; */
+"jIe-BE-q2Q.text" = "హెడ్";
+
+/* Class = "UILabel"; text = "To Date              :"; ObjectID = "jMu-Vq-gas"; */
+"jMu-Vq-gas.text" = "తేదీ కు:";
+
+/* Class = "UITextField"; placeholder = "Contact Number*"; ObjectID = "jV1-E5-yHu"; */
+"jV1-E5-yHu.placeholder" = "సంప్రదింపు ఫోన్ సంఖ్య ";
+
+/* Class = "UILabel"; text = "toDate"; ObjectID = "jqt-3W-bJF"; */
+"jqt-3W-bJF.text" = "తేదీ కు:";
+
+/* Class = "UINavigationItem"; title = "Donated Places List"; ObjectID = "jxV-yA-Awc"; */
+"jxV-yA-Awc.title" = "విరాళమిచ్చిన స్థలాల జాబితా:";
+
+/* Class = "UINavigationItem"; title = "Sign Up"; ObjectID = "kYE-Md-EnF"; */
+"kYE-Md-EnF.title" = "సైన్ అప్ చేయండి";
+
+/* Class = "UILabel"; text = " "; ObjectID = "l0k-7O-tPJ"; */
+"l0k-7O-tPJ.text" = " ";
+
+/* Class = "UILabel"; text = "No. of Units"; ObjectID = "l2p-Og-5MD"; */
+"l2p-Og-5MD.text" = "యూనిట్ల సంఖ్య";
+
+/* Class = "UILabel"; text = "address"; ObjectID = "laf-ll-1Ab"; */
+"laf-ll-1Ab.text" = "చిరునామా";
+
+/* Class = "UILabel"; text = " "; ObjectID = "lcO-R7-oLE"; */
+"lcO-R7-oLE.text" = " ";
+
+/* Class = "UINavigationItem"; title = "Login"; ObjectID = "lgb-no-rP5"; */
+"lgb-no-rP5.title" = "లాగిన్";
+
+/* Class = "UITextField"; placeholder = "Contact Number*"; ObjectID = "mXs-5D-obm"; */
+"mXs-5D-obm.placeholder" = "సంప్రదింపు ఫోన్ సంఖ్య*";
+
+/* Class = "UINavigationItem"; title = "Hospital/Blood Bank Info "; ObjectID = "mtX-SS-qfM"; */
+"mtX-SS-qfM.title" = "హాస్పిటల్ / బ్లడ్ బ్యాంకు సమాచారం ";
+
+/* Class = "UILabel"; text = "Confirm Donate"; ObjectID = "nt4-Vr-tDg"; */
+"nt4-Vr-tDg.text" = "ధృవీకరించండి";
+
+/* Class = "UILabel"; text = "Patient Information"; ObjectID = "oXl-dv-G7c"; */
+"oXl-dv-G7c.text" = "రోగి సమాచారం";
+
+/* Class = "UINavigationItem"; title = "Request"; ObjectID = "p7U-2F-YDD"; */
+"p7U-2F-YDD.title" = "అభ్యర్థన";
+
+/* Class = "UILabel"; text = " "; ObjectID = "pgT-Ly-1Xi"; */
+"pgT-Ly-1Xi.text" = " ";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "qA5-cN-tPG"; */
+"qA5-cN-tPG.text" = "చిరునామా";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "qK6-Zx-BAo"; */
+"qK6-Zx-BAo.normalTitle" = "బటన్";
+
+/* Class = "UIButton"; normalTitle = "Blood Inventory"; ObjectID = "ryY-FP-aGJ"; */
+"ryY-FP-aGJ.normalTitle" = "బ్లడ్ ఇన్వెంటరీ";
+
+/* Class = "UINavigationItem"; title = "LifeLine"; ObjectID = "sIG-5i-UxH"; */
+"sIG-5i-UxH.title" = "LifeLine";
+
+/* Class = "UILabel"; text = "Home Address (Optional)"; ObjectID = "sIu-Bx-mgj"; */
+"sIu-Bx-mgj.text" = "ఇంటి చిరునామా (ఐచ్ఛికం)";
+
+/* Class = "UILabel"; text = " "; ObjectID = "sSJ-hn-iGc"; */
+"sSJ-hn-iGc.text" = " ";
+
+/* Class = "UITextField"; placeholder = "Address"; ObjectID = "tQk-hY-1dr"; */
+"tQk-hY-1dr.placeholder" = "చిరునామా";
+
+/* Class = "UINavigationItem"; title = "FAQ"; ObjectID = "tdl-L4-1Ps"; */
+"tdl-L4-1Ps.title" = "FAQ";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "u0B-7p-dQR"; */
+"u0B-7p-dQR.placeholder" = "పాస్వర్డ్";
+
+/* Class = "UILabel"; text = "Personal Info"; ObjectID = "uFL-BT-pmS"; */
+"uFL-BT-pmS.text" = "వ్యక్తిగత సమాచారం";
+
+/* Class = "UILabel"; text = "Donate"; ObjectID = "uJv-fu-AYf"; */
+"uJv-fu-AYf.text" = "దానం";
+
+/* Class = "UILabel"; text = "Contact Number"; ObjectID = "utE-4g-TxJ"; */
+"utE-4g-TxJ.text" = "సంప్రదింపు ఫోన్ సంఖ్య*";
+
+/* Class = "UITextField"; placeholder = "Old Password*"; ObjectID = "vDw-ek-qUe"; */
+"vDw-ek-qUe.placeholder" = "ఓల్డ్ పాస్వర్డ్ *";
+
+/* Class = "UITextField"; placeholder = "PIN Code"; ObjectID = "vFb-As-yO0"; */
+"vFb-As-yO0.placeholder" = "పిన్ కోడ్";
+
+/* Class = "UINavigationItem"; title = "My Profile"; ObjectID = "vLA-0u-ipU"; */
+"vLA-0u-ipU.title" = "మా ప్రొఫైల్";
+
+/* Class = "UILabel"; text = " "; ObjectID = "vLK-Yt-8dh"; */
+"vLK-Yt-8dh.text" = " ";
+
+/* Class = "UIButton"; normalTitle = "Change Password"; ObjectID = "vRK-Fp-j6c"; */
+"vRK-Fp-j6c.normalTitle" = "పాస్వర్డ్ మార్చండి";
+
+/* Class = "UILabel"; text = "OR"; ObjectID = "vdd-cH-bQd"; */
+"vdd-cH-bQd.text" = "లేదా";
+
+/* Class = "UIButton"; normalTitle = "Confirm Donate"; ObjectID = "viO-4Q-oHF"; */
+"viO-4Q-oHF.normalTitle" = "ధృవీకరించండి";
+
+/* Class = "UIButton"; normalTitle = "Blood Group"; ObjectID = "vzg-tf-OZl"; */
+"vzg-tf-OZl.normalTitle" = "రక్తపు గ్రూపు";
+
+/* Class = "UITextField"; placeholder = "Doctor Name*"; ObjectID = "wG5-tu-clk"; */
+"wG5-tu-clk.placeholder" = "డాక్టర్ పేరు *";
+
+/* Class = "UIButton"; normalTitle = "Units"; ObjectID = "wge-wf-c4a"; */
+"wge-wf-c4a.normalTitle" = "యూనిట్లు";
+
+/* Class = "UILabel"; text = "Campaigns"; ObjectID = "woo-lf-VrF"; */
+"woo-lf-VrF.text" = "ప్రచారాలు";
+
+/* Class = "UIButton"; normalTitle = "Preferred Date & Time"; ObjectID = "x6V-Bx-RGk"; */
+"x6V-Bx-RGk.normalTitle" = "ప్రాధాన్య తేదీ & సమయం";
+
+/* Class = "UILabel"; text = "Timing"; ObjectID = "xHr-n6-ZSI"; */
+"xHr-n6-ZSI.text" = "టైమింగ్";
+
+/* Class = "UILabel"; text = "From Date         :"; ObjectID = "yI3-Yb-2I7"; */
+"yI3-Yb-2I7.text" = "తేదీ నుండి:";
+
+/* Class = "UITextField"; placeholder = "Confirm Password"; ObjectID = "yq2-Bx-1oS"; */
+"yq2-Bx-1oS.placeholder" = "పాస్వర్డ్ని నిర్ధారించండి";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "yz5-DD-wbp"; */
+"yz5-DD-wbp.text" = "టైటిల్";
