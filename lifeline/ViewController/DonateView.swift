@@ -74,7 +74,7 @@ class DonateView: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-//        btnListofMarkers.isHidden = true
+        btnListofMarkers.isHidden = true
         self.navigationController?.completelyTransparentBarForDonate()
         
         //For Result VC
@@ -224,7 +224,7 @@ class DonateView: UIViewController {
                     self.rLatitude = dataArray[i]["Latitude"].doubleValue
                     self.rLongitude = dataArray[i]["Longitude"].doubleValue
                     self.rLocation = CLLocation.init(latitude:
-                        CLLocationDegrees(self.rLatitude!), longitude: CLLocationDegrees(self.rLongitude!))
+                    CLLocationDegrees(self.rLatitude!), longitude: CLLocationDegrees(self.rLongitude!))
                     self.rCoordinates = self.rLocation?.coordinate
                     let myMarker1 = GMSMarker()
                     myMarker1.position = self.rCoordinates!
@@ -733,12 +733,11 @@ extension DonateView : DonateViewProtocol {
                 tempDict["Name"] = jDict[i]["Name"]
                 tempDict["WorkingHours"] = jDict[i]["WorkingHours"]
                 tempDict["Individuals"] = jDict[i]["IndividualDetails"]
+                //print("Here is my Info \(String(describing: tempDict["Individuals"]))")
                 appendsListMarkers.append(tempDict)
             }
-            
             self.bloodDonatingMarkers(responseData: jsonArray)
         }
-        
     }
     //MARK:- List Button action
     func btnListClicked() {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class MarkersListView: UIViewController {
 
@@ -42,10 +43,7 @@ class MarkersListView: UIViewController {
         temp.modalPresentationStyle = .overCurrentContext
         temp.view.backgroundColor = UIColor.clear
         present(temp, animated: true, completion: nil)
-        
     }
-    
-    
 }
 extension MarkersListView : UITableViewDataSource {
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -110,8 +108,8 @@ extension MarkersListView : UISearchBarDelegate {
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         dismiss(animated: true, completion: nil)
+        
     }
 
 }
-
 
