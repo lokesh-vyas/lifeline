@@ -23,7 +23,6 @@ class SingleTon {
     var currentLatitude : CLLocationDegrees!
     var currentLongitude : CLLocationDegrees!
     
-    
     class var SharedInstance : SingleTon {
         struct Shared {
             static let Instance = SingleTon()
@@ -90,15 +89,22 @@ class FilterChecks: UIViewController {
         //HudBar.sharedInstance.showHudWithMessage(message: "Filtering...", view: self.view)
         print("Apply Tapped..!!")
         if SingleTon.SharedInstance.cameFromMarkersList! {
-            let temp = self.storyboard?.instantiateViewController(withIdentifier: "MarkersListView") as! MarkersListView
-            let naC = UINavigationController(rootViewController: temp)
-            present(naC, animated: true, completion: nil)
+            
+            dismiss(animated: true, completion: nil)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+
+//            let temp = self.storyboard?.instantiateViewController(withIdentifier: "MarkersListView") as! MarkersListView
+//            let naC = UINavigationController(rootViewController: temp)
+//            present(naC, animated: true, completion: nil)
             
         } else {
         
-        let temp = self.storyboard?.instantiateViewController(withIdentifier: "DonateView") as! DonateView
-        let naC = UINavigationController(rootViewController: temp)
-        present(naC, animated: true, completion: nil)
+            let temp = DonateView()
+            
+            dismiss(animated: true, completion: nil)
+//        let temp = self.storyboard?.instantiateViewController(withIdentifier: "DonateView") as! DonateView
+//        let naC = UINavigationController(rootViewController: temp)
+//        present(naC, animated: true, completion: nil)
         }
      }
    
