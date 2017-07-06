@@ -52,7 +52,7 @@ class HomeView: UIViewController {
         let LoginID:String = UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!
         let customer : Dictionary = ["DeviceDetailsRequest":["DeviceDetails":["LoginID":LoginID,"DeviceToken":DeviceToken,"OSType":"IOS"]]]
         
-        HudBar.sharedInstance.showHudWithMessage(message: "Please wait..", view: self.view)
+        HudBar.sharedInstance.showHudWithMessage(message: MultiLanguage.getLanguageUsingKey("Please wait.."), view: self.view)
         ProfileViewInteractor.SharedInstance.delegateProfile = self
         ProfileViewInteractor.SharedInstance.MyDeviceRegistration(params: customer)
 
@@ -123,7 +123,7 @@ extension HomeView:ProtocolRegisterProfile
         }else{
             UserDefaults.standard.set(false, forKey: "DeviceRegister")
             HudBar.sharedInstance.hideHudFormView(view: self.view)
-            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Failed to Update", view: self.view)
+            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: MultiLanguage.getLanguageUsingKey("ERROR_PROFILE_UPDATE"), view: self.view)
         }
     }
     func failedRegisterProfile(Response:String)

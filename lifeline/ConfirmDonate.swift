@@ -61,7 +61,7 @@ class ConfirmDonate: UIViewController {
             lblToDate.isHidden = false
             VolunteerDetails.isHidden = false
             lblCampDescription.isHidden = false
-            btnConfirmDonate.setTitle("Volunteer", for: .normal)
+            btnConfirmDonate.setTitle(MultiLanguage.getLanguageUsingKey("CAMP_VOLUNTEER"), for: .normal)
             let bodyGetCampDetails = ["CampaignDetailsRequest" : [
                 "RequestDetails" : [
                     "LoginID": "\(UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!)",

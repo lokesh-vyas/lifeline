@@ -28,7 +28,7 @@ class IndividualConfirmDonate: UIViewController {
          NotificationCenter.default.addObserver(self, selector: #selector(IndividualConfirmDonate.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
         self.navigationController?.completelyTransparentBar()
         IndividualConfirmDonateInteractor.sharedInstance.delegate = self
-        HudBar.sharedInstance.showHudWithMessage(message: "Loading...", view: self.view)
+        HudBar.sharedInstance.showHudWithMessage(message: MultiLanguage.getLanguageUsingKey("TOAST_LOADING_MESSAGE"), view: self.view)
 
         //MARK:- Either coming from APN or Back
         if MarkerData.SharedInstance.isIndividualAPN == false {
@@ -121,9 +121,9 @@ class IndividualConfirmDonate: UIViewController {
         if data != nil {
             let profileData = NSKeyedUnarchiver.unarchiveObject(with: data as! Data) as! ProfileData
             if Int(profileData.Age)! < 18 {
-                let alert = UIAlertController(title: "Warning", message: "You are not eligible for donating blood as your age is below 18. If you still want to continue, please select OK to continue.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {action in self.toiConfirmDonateSubmit()}))
-                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: nil))
+                let alert = UIAlertController(title: MultiLanguage.getLanguageUsingKey("TOAST_WARNIG"), message: MultiLanguage.getLanguageUsingKey("AGE_WARNING_MESSAGE"), preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: MultiLanguage.getLanguageUsingKey("BTN_OK"), style: UIAlertActionStyle.default, handler: {action in self.toiConfirmDonateSubmit()}))
+                alert.addAction(UIAlertAction(title: MultiLanguage.getLanguageUsingKey("BTN_CANCEL"), style: UIAlertActionStyle.destructive, handler: nil))
                 present(alert, animated: true, completion: nil)
             } else {
                 self.toiConfirmDonateSubmit()

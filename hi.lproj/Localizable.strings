@@ -150,12 +150,11 @@ HOSPITAL_WORKING_HOURS = "कार्यकाल";
 CAMP_VOLUNTEER = "स्वयंसेवी";
 BLOOD_GROUP = "Blood Group";
 BLOOD_REQUIREMENT = "Requirement";
-REQUEST_CAMP_VOLUNTEER_SHARE_MESSAGE = "A blood donation camp has been created on LifeLine. Please volunteer to donate blood or share this within your circle. Here are the details:";
-SEARCH_LOCATION = "You searched this Location";
+SEARCH_LOCATION = "आपने इस स्थान की खोज की";
 LANGUAGE_CHANGE_ALERT = "क्या आप वाकई LifeLine भाषा को बदलना चाहते हैं";
 CALANDER_TO = "से";
 BLOOD_STRING = "ब्लड";
 PLASMA_STRING = "प्लाज्मा";
 PLATELETS_STRING = "प्लेटलेट्स";
-
-
+ADDRESS_MAP_TITLE = "पता";
+TOAST_LOGIN_MESSAGE = "Logging";

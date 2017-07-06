@@ -138,7 +138,7 @@ class LoginView: UIViewController
                     
                 case .failed(let error):
                     print("Graph Request Failed: \(error)")
-                    HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Fail to Login", view: self.view)
+                    HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: MultiLanguage.getLanguageUsingKey("ERROR_FAIL_LOGIN"), view: self.view)
                 }
             }
             connection.start()
@@ -154,7 +154,7 @@ class LoginView: UIViewController
     }
     //MARK:- G+ Login
     @IBAction func btnGoogleLoginTapped(_ sender: Any) {
-        HudBar.sharedInstance.showHudWithMessage(message: "Logging", view: self.view)
+        HudBar.sharedInstance.showHudWithMessage(message: MultiLanguage.getLanguageUsingKey("TOAST_LOGIN_MESSAGE"), view: self.view)
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().shouldFetchBasicProfile = true
