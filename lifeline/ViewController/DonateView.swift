@@ -45,11 +45,14 @@ class DonateView: UIViewController {
     var currentLat : CLLocationDegrees!
     var currentLong : CLLocationDegrees!
     
+    var count : Int = 0
     //MARK:- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         loader = true
         InternetIssue = true
+        
+         count = count + 1
         
         if CLLocationManager.locationServicesEnabled()
         {
@@ -67,14 +70,15 @@ class DonateView: UIViewController {
         }
         NotificationCenter.default.addObserver(self, selector: #selector(DonateView.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
         //        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-       
     }
     
     //MARK:- viewWillAppear
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-//        btnListofMarkers.isHidden = true
+        
+        
+        btnListofMarkers.isHidden = true
         self.navigationController?.completelyTransparentBarForDonate()
         
         //For Result VC
@@ -210,10 +214,8 @@ class DonateView: UIViewController {
     func bloodDonatingMarkers(responseData : JSON) {
         
         var dataArray = responseData["BloodRequestSearchResponse"]["BloodRequestDetails"]
-        
         if ((dataArray as? JSON)?.dictionary) != nil {
             dataArray = JSON.init(arrayLiteral: dataArray)
-            
         }
         
         for (i, _) in dataArray.enumerated() {
@@ -224,7 +226,7 @@ class DonateView: UIViewController {
                     self.rLatitude = dataArray[i]["Latitude"].doubleValue
                     self.rLongitude = dataArray[i]["Longitude"].doubleValue
                     self.rLocation = CLLocation.init(latitude:
-                        CLLocationDegrees(self.rLatitude!), longitude: CLLocationDegrees(self.rLongitude!))
+                    CLLocationDegrees(self.rLatitude!), longitude: CLLocationDegrees(self.rLongitude!))
                     self.rCoordinates = self.rLocation?.coordinate
                     let myMarker1 = GMSMarker()
                     myMarker1.position = self.rCoordinates!
@@ -325,7 +327,6 @@ extension DonateView : GMSMapViewDelegate {
             if didChangeInterval < 0.5 {
                 return
             }
-            
         }
         print("didChange")
         
@@ -718,10 +719,37 @@ extension DonateView : DonateViewProtocol {
             
             
         } else { // when we get marekrs (also when we find another markers through 'No requirements' places)
+            
+             countsForMarkers(myJSON: jsonArray)
+//            viewWarning.removeFromSuperview()
+//            SingleTon.SharedInstance.noMarkers = false
+//            var tempDict = [String : Any]()
+//            var jDict = JSON.init(dictionaryLiteral: ("Index", jsonArray["BloodRequestSearchResponse"]["BloodRequestDetails"]))
+//            jDict = jDict["Index"]
+//            
+//            if jDict["ToDate"].exists() {
+//                jDict =  [jDict]
+//            }
+//            appendsListMarkers.removeAll()
+//            
+//            for (i, _) in jDict.enumerated() {
+//                tempDict["Name"] = jDict[i]["Name"]
+//                tempDict["WorkingHours"] = jDict[i]["WorkingHours"]
+//                tempDict["TypeOfOrg"] = jDict[i]["TypeOfOrg"]
+//                tempDict["Individuals"] = jDict[i]["IndividualDetails"]
+//                //print("Here is my Info \(String(describing: tempDict["Individuals"]))")
+//                appendsListMarkers.append(tempDict)
+//            }
+//            self.bloodDonatingMarkers(responseData: jsonArray)
+        }
+    }
+    
+    func countsForMarkers(myJSON : JSON) {
+        
+         // when we get marekrs (also when we find another markers through 'No requirements' places)
             viewWarning.removeFromSuperview()
-            SingleTon.SharedInstance.noMarkers = false
             var tempDict = [String : Any]()
-            var jDict = JSON.init(dictionaryLiteral: ("Index", jsonArray["BloodRequestSearchResponse"]["BloodRequestDetails"]))
+            var jDict = JSON.init(dictionaryLiteral: ("Index", myJSON["BloodRequestSearchResponse"]["BloodRequestDetails"]))
             jDict = jDict["Index"]
             
             if jDict["ToDate"].exists() {
@@ -730,23 +758,51 @@ extension DonateView : DonateViewProtocol {
             appendsListMarkers.removeAll()
             
             for (i, _) in jDict.enumerated() {
-                tempDict["Name"] = jDict[i]["Name"]
-                tempDict["WorkingHours"] = jDict[i]["WorkingHours"]
-                tempDict["TypeOfOrg"] = jDict[i]["TypeOfOrg"]
-                tempDict["Individuals"] = jDict[i]["IndividualDetails"]
-                appendsListMarkers.append(tempDict)
-            }
-            
-            self.bloodDonatingMarkers(responseData: jsonArray)
+                
+                if jDict[i]["TypeOfOrg"].int == 1 {
+                    if String(describing: jDict[i]["IndividualDetails"]) != "null" && SingleTon.SharedInstance.isCheckedIndividual { // Individuals
+                        
+                        tempDict["Name"] = jDict[i]["Name"]
+                        tempDict["WorkingHours"] = jDict[i]["WorkingHours"]
+                        tempDict["TypeOfOrg"] = jDict[i]["TypeOfOrg"]
+                        tempDict["Individuals"] = jDict[i]["IndividualDetails"]
+                        appendsListMarkers.append(tempDict)
+                        
+                    } else if String(describing: jDict[i]["IndividualDetails"]) == "null" && SingleTon.SharedInstance.isCheckedHospital { // Hospital
+                        
+                        tempDict["Name"] = jDict[i]["Name"]
+                        tempDict["WorkingHours"] = jDict[i]["WorkingHours"]
+                        tempDict["TypeOfOrg"] = jDict[i]["TypeOfOrg"]
+                        tempDict["Individuals"] = jDict[i]["IndividualDetails"]
+                        appendsListMarkers.append(tempDict)
+                    }
+                    
+                } else if jDict[i]["TypeOfOrg"].int == 2 && SingleTon.SharedInstance.isCheckedCamp { // Camps
+                    
+                    tempDict["Name"] = jDict[i]["Name"]
+                    tempDict["WorkingHours"] = jDict[i]["WorkingHours"]
+                    tempDict["TypeOfOrg"] = jDict[i]["TypeOfOrg"]
+                    tempDict["Individuals"] = jDict[i]["IndividualDetails"]
+                    appendsListMarkers.append(tempDict)
+                    
+                } else {
+                    SingleTon.SharedInstance.noMarkers = true
+                }
+                SingleTon.SharedInstance.noMarkers = false
         }
+            self.bloodDonatingMarkers(responseData: myJSON)
         
     }
+    
+    
     //MARK:- List Button action
     func btnListClicked() {
         
         let lists = self.storyboard?.instantiateViewController(withIdentifier: "MarkersListView") as! MarkersListView
-        lists.listMarker2 = JSON.init(dictionaryLiteral: ("Data",appendsListMarkers))
-        print("++++++++\(appendsListMarkers.count)++++")
+//        lists.listMarker2 = JSON.init(dictionaryLiteral: ("Data",appendsListMarkers))
+        let tempDictionary = JSON.init(dictionaryLiteral: ("Data",appendsListMarkers))
+        SingleTon.SharedInstance.sMarkers = tempDictionary["Data"]
+        
         let nav = UINavigationController(rootViewController: lists)
         self.navigationController?.present(nav, animated: true, completion: nil)
     }

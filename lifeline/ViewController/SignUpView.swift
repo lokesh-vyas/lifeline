@@ -230,7 +230,7 @@ extension SignUpView : successSignUpProtocol
             self.emailTextField.errorLine()
             Email = false
             HudBar.sharedInstance.hideHudFormView(view: self.view)
-            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "User id you entered is already in use please enter another user id", view: self.view)
+            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: MultiLanguage.getLanguageUsingKey("ERROR_WRONG_USER_ID"), view: self.view)
         }
     }
     func failSignUp(Response:String)
@@ -252,7 +252,7 @@ extension SignUpView : customLoginProtocol
         {
             UserDefaults.standard.set("Internal", forKey: "LoginInformation")
             HudBar.sharedInstance.hideHudFormView(view: self.view)
-            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "User Login Successfully", view: self.view)
+            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: MultiLanguage.getLanguageUsingKey("SUCESS_LOGIN_MESSAGE"), view: self.view)
             
             HudBar.sharedInstance.hideHudFormView(view: self.view)
             
@@ -263,7 +263,7 @@ extension SignUpView : customLoginProtocol
         else
         {
             HudBar.sharedInstance.hideHudFormView(view: self.view)
-            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Please Check your UserID And Password and try again", view: self.view)
+            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: MultiLanguage.getLanguageUsingKey("ERROR_INCORRECT_USERID_PASSWORD"), view: self.view)
         }
     }
     func failCustomLogin(Response:String)

@@ -163,4 +163,5 @@ CALANDER_TO = "వరకు ";
 BLOOD_STRING = "రక్తం";
 PLASMA_STRING = "ప్లాస్మా";
 PLATELETS_STRING = "రక్తఫలకికలు";
-
+ADDRESS_MAP_TITLE = "చిరునామా";
+TOAST_LOGIN_MESSAGE = "Logging";
