@@ -7,18 +7,23 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class MarkersListView: UIViewController {
 
     @IBOutlet weak var tblView : UITableView!
     @IBOutlet weak var searchBar : UISearchBar!
     @IBOutlet weak var lblNoRequirement : UILabel!
-    var listMarkers = [Dictionary<String, Any>]()
+//    var listMarker2 : JSON = []
+    var listMarkers : JSON!
     var searchController : UISearchController!
     var myContent = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //FIXME:- No need of listMarkers
+        listMarkers = SingleTon.SharedInstance.sMarkers//["Data"] //listMarker2["Data"]
         self.navigationController?.completelyTransparentBar()
         tblView.contentInset = UIEdgeInsetsMake(-35, 0.0, +195, 0.0)
         if SingleTon.SharedInstance.noMarkers == true {
@@ -28,10 +33,22 @@ class MarkersListView: UIViewController {
             lblNoRequirement.text = ""
         }
         for (i, _) in listMarkers.enumerated() {
-            myContent.append(String(describing: listMarkers[i]["Name"]!))
+            myContent.append(String(describing: listMarkers[i]["Name"]))
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
+
     }
     
+    func loadList(notification: NSNotification){
+        listMarkers = []
+        listMarkers = JSON(SingleTon.SharedInstance.appendedMarkers) 
+        print(listMarkers)
+        self.tblView.reloadData()
+        print("table is reloaded")
+    }
+    
+
     @IBAction func btnCancelTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -42,16 +59,17 @@ class MarkersListView: UIViewController {
         temp.modalPresentationStyle = .overCurrentContext
         temp.view.backgroundColor = UIColor.clear
         present(temp, animated: true, completion: nil)
-        
     }
-    
-    
 }
 extension MarkersListView : UITableViewDataSource {
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
      print("Total items in LisView = \(listMarkers.count)")
-     return listMarkers.count
+        if listMarkers.count <= 0
+        {
+            return 0
+        }
+       return listMarkers.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -64,10 +82,32 @@ extension MarkersListView : UITableViewDataSource {
             cell = nib[0] as? HospitalListCell
             print("cell = \(String(describing: cell))")
         }
-        cell?.lblHospitalName.text = String(describing: listMarkers[indexPath.row]["Name"]!)
-        cell?.lblCityName.text = String(describing: listMarkers[indexPath.row]["WorkingHours"]!)
-        
-        return cell!
+        if listMarkers[indexPath.row]["TypeOfOrg"].int == 1 {
+            if String(describing: listMarkers[indexPath.row]["Individuals"]) == "null" && SingleTon.SharedInstance.isCheckedHospital {
+                cell?.lblHospitalName.text = String(describing: listMarkers[indexPath.row]["Name"])
+                cell?.lblCityName.text = String(describing: listMarkers[indexPath.row]["WorkingHours"])
+                cell?.lblHospitalName.textColor = UIColor.blue //hospital
+                cell?.lblCityName.textColor = UIColor.blue
+            }
+            else if String(describing: listMarkers[indexPath.row]["Individuals"]) != "null" && SingleTon.SharedInstance.isCheckedIndividual {
+                cell?.lblHospitalName.text = String(describing: listMarkers[indexPath.row]["Name"])
+                cell?.lblCityName.text = String(describing: listMarkers[indexPath.row]["WorkingHours"])
+                cell?.lblHospitalName.textColor = UIColor.red // Individuals
+                cell?.lblCityName.textColor = UIColor.red
+            }
+            
+        } else if listMarkers[indexPath.row]["TypeOfOrg"].int == 2 && SingleTon.SharedInstance.isCheckedCamp  {
+            cell?.lblHospitalName.text = String(describing: listMarkers[indexPath.row]["Name"])
+            cell?.lblCityName.text = String(describing: listMarkers[indexPath.row]["WorkingHours"])
+            cell?.lblHospitalName.textColor = UIColor.green // Campaign
+            cell?.lblCityName.textColor = UIColor.green
+        }
+       /*else
+       {
+           listMarkers.arrayObject?.remove(at: indexPath.row)
+           tblView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+       }*/
+    return cell!
     }
 }
 
@@ -79,8 +119,8 @@ extension MarkersListView : UITableViewDelegate {
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let cnfDonate = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmDonate") as! ConfirmDonate
         let navigationControllerStack = UINavigationController(rootViewController: cnfDonate)
         self.present(navigationControllerStack, animated: true, completion: nil)
@@ -102,16 +142,16 @@ extension MarkersListView : UISearchBarDelegate {
 //        self.tblView.reloadData()
         
         let searchPredicate : NSPredicate = NSPredicate(format: "listMarkers CONTAINS[c] %@", searchText)
-            let array = (listMarkers as NSArray).filtered(using: searchPredicate)
-            print ("array = \(array)")
+//            let array = (listMarkers as NSArray).filtered(using: searchPredicate)
+//            print ("array = \(array)")
             
             self.tblView.reloadData()
         
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         dismiss(animated: true, completion: nil)
+        
     }
 
 }
-
 

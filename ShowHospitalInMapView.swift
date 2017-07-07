@@ -46,6 +46,7 @@ class ShowHospitalInMapView: UIViewController
     {
         super.viewDidLoad()
           self.navigationController?.completelyTransparentBar()
+        self.navigationItem.title = MultiLanguage.getLanguageUsingKey("ADDRESS_MAP_TITLE")
         if CLLocationManager.locationServicesEnabled()
         {
             switch(CLLocationManager.authorizationStatus()) {

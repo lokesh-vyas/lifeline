@@ -674,7 +674,7 @@
 				66C4E67B1E37252600526C1D /* HomeView */,
 				66C4E6891E373FEF00526C1D /* Donate */,
 				66C4E68C1E37401100526C1D /* RequestView */,
-				ED1118A21E63ED94003EA467 /* ShowHospital */,
+				ED1118A21E63ED94003EA467 /*  Map Address */,
 				66C4E68F1E37403100526C1D /* MyRequestView */,
 				66C4E6861E372AB900526C1D /* ChangePassword */,
 				66C4E6831E372A9300526C1D /* FAQ */,
@@ -845,12 +845,12 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		ED1118A21E63ED94003EA467 /* ShowHospital */ = {
+		ED1118A21E63ED94003EA467 /*  Map Address */ = {
 			isa = PBXGroup;
 			children = (
 				ED11189E1E61983F003EA467 /* ShowHospitalInMapView.swift */,
 			);
-			name = ShowHospital;
+			name = " Map Address";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1433,7 +1433,7 @@
 				CODE_SIGN_ENTITLEMENTS = lifeline/lifeline.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = FXZ4W6ZJ63;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/FBSDKCoreKit",
@@ -1462,7 +1462,7 @@
 				CODE_SIGN_ENTITLEMENTS = lifeline/lifeline.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Umashanker K Krishnamaraju Venkatraju (FXZ4W6ZJ63)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = FXZ4W6ZJ63;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/FBSDKCoreKit",

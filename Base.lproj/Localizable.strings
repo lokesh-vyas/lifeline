@@ -163,4 +163,5 @@ CALANDER_TO = "To";
 BLOOD_STRING = "Blood";
 PLASMA_STRING = "Plasma";
 PLATELETS_STRING = "Platelets";
-
+ADDRESS_MAP_TITLE = "Address";
+TOAST_LOGIN_MESSAGE = "Logging";

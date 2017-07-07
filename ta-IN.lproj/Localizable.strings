@@ -161,8 +161,8 @@ CALANDER_TO = "இறுதி";
 BLOOD_STRING = "இரத்த";
 PLASMA_STRING = "குருதி நீர்";
 PLATELETS_STRING = "தட்டுக்கள்";
-
-
+ADDRESS_MAP_TITLE = "முகவரி";
+TOAST_LOGIN_MESSAGE = "Logging";
 
 
 

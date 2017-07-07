@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import SwiftyJSON
 
 //protocol filterMarkersProtocol {
 //    func didSuccessFilters(sender: FilterChecks)
@@ -22,7 +23,9 @@ class SingleTon {
     var cameFromMarkersList : Bool?
     var currentLatitude : CLLocationDegrees!
     var currentLongitude : CLLocationDegrees!
-    
+    var sMarkers : JSON = []
+    var appendedMarkers = [Dictionary<String,Any>]()
+    var cameFromFilterChecks: Bool?
     
     class var SharedInstance : SingleTon {
         struct Shared {
@@ -84,24 +87,73 @@ class FilterChecks: UIViewController {
             SingleTon.SharedInstance.isCheckedCamp = true
         }
     }
-
+    
+    
+    
     @IBAction func btnApplyTapped(_ sender: Any) {
+        
         //TODO:-
-        //HudBar.sharedInstance.showHudWithMessage(message: "Filtering...", view: self.view)
+        HudBar.sharedInstance.showHudWithMessage(message: "Filtering...", view: self.view)
         print("Apply Tapped..!!")
+        
         if SingleTon.SharedInstance.cameFromMarkersList! {
-            let temp = self.storyboard?.instantiateViewController(withIdentifier: "MarkersListView") as! MarkersListView
-            let naC = UINavigationController(rootViewController: temp)
-            present(naC, animated: true, completion: nil)
+            
+            var tempDict = [String : Any]()
+            var jDict = SingleTon.SharedInstance.sMarkers//["Data"]
+            
+//            SingleTon.SharedInstance.sMarkers = []
+            
+            for (i, _) in jDict.enumerated() {
+                
+                if jDict[i]["TypeOfOrg"].int == 1 {
+                    if String(describing: jDict[i]["Individuals"]) != "null" && SingleTon.SharedInstance.isCheckedIndividual { // Individuals
+                        
+                        tempDict["Name"] = jDict[i]["Name"]
+                        tempDict["WorkingHours"] = jDict[i]["WorkingHours"]
+                        SingleTon.SharedInstance.appendedMarkers.append(tempDict)
+                        
+                    } else if String(describing: jDict[i]["Individuals"]) == "null" && SingleTon.SharedInstance.isCheckedHospital { // Hospital
+                        
+                        tempDict["Name"] = jDict[i]["Name"]
+                        tempDict["WorkingHours"] = jDict[i]["WorkingHours"]
+                        SingleTon.SharedInstance.appendedMarkers.append(tempDict)
+                        
+//                        SingleTon.SharedInstance.appendedMarkers.arrayValue.append(tempDict)
+                    }
+                    
+                } else if jDict[i]["TypeOfOrg"].int == 2 && SingleTon.SharedInstance.isCheckedCamp { // Camps
+                    
+                    tempDict["Name"] = jDict[i]["Name"]
+                    tempDict["WorkingHours"] = jDict[i]["WorkingHours"]
+                    SingleTon.SharedInstance.appendedMarkers.append(tempDict)
+                }
+                if !SingleTon.SharedInstance.isCheckedIndividual && !SingleTon.SharedInstance.isCheckedHospital && !SingleTon.SharedInstance.isCheckedCamp {
+                    SingleTon.SharedInstance.sMarkers = []
+                    SingleTon.SharedInstance.sMarkers.arrayObject?.removeAll()
+                    SingleTon.SharedInstance.noMarkers = true
+
+                }
+                    
+                else {
+                    
+                    SingleTon.SharedInstance.noMarkers = false
+                }
+            }
+           
+            dismiss(animated: true, completion: nil)
+            
             
         } else {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "DataFilter"), object:nil)
-        self.dismiss(animated: true, completion: nil)
-            
-//        let temp = self.storyboard?.instantiateViewController(withIdentifier: "DonateView") as! DonateView
-//        let naC = UINavigationController(rootViewController: temp)
-//        present(naC, animated: true, completion: nil)
+            let temp = self.storyboard?.instantiateViewController(withIdentifier: "DonateView") as! DonateView
+            let naC = UINavigationController(rootViewController: temp)
+            present(naC, animated: true, completion: nil)
+
         }
+        
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+        
+        
      }
    
     @IBAction func btnCancelTapped(_ sender: Any) {
