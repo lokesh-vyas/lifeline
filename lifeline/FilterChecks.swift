@@ -95,10 +95,12 @@ class FilterChecks: UIViewController {
             present(naC, animated: true, completion: nil)
             
         } else {
-        
-        let temp = self.storyboard?.instantiateViewController(withIdentifier: "DonateView") as! DonateView
-        let naC = UINavigationController(rootViewController: temp)
-        present(naC, animated: true, completion: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "DataFilter"), object:nil)
+        self.dismiss(animated: true, completion: nil)
+            
+//        let temp = self.storyboard?.instantiateViewController(withIdentifier: "DonateView") as! DonateView
+//        let naC = UINavigationController(rootViewController: temp)
+//        present(naC, animated: true, completion: nil)
         }
      }
    
