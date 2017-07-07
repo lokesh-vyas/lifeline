@@ -157,4 +157,16 @@ BLOOD_STRING = "ब्लड";
 PLASMA_STRING = "प्लाज्मा";
 PLATELETS_STRING = "प्लेटलेट्स";
 ADDRESS_MAP_TITLE = "पता";
-TOAST_LOGIN_MESSAGE = "Logging";
+TOAST_LOGIN_MESSAGE = "लॉगिन हो रहा है";
+
+BTN_YES = "हाँ";
+BTN_NO = "नहीं";
+TOAST_SELECT_LANGUAGE_MESSAGE = "भाषा चुनिए";
+REQUEST_PENDING = "आपका निवेदन अभी जारी है.";
+PERSONAL_APPEAL = "अपनी अपील यहाँ लिखें";
+
+
+
+
+
+

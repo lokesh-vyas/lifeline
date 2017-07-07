@@ -32,6 +32,7 @@ class RequestView: UIViewController,UITextViewDelegate
     @IBOutlet weak var btnWhatYouNeed: UIButton!
     @IBOutlet weak var imgSocialShare: UIImageView!
     @IBOutlet var scrollViewRequest: UIScrollView!
+
     
     //MARK:- String
     var datetostring = String()
@@ -67,6 +68,28 @@ class RequestView: UIViewController,UITextViewDelegate
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         self.navigationController?.completelyTransparentBar()
         self.txtViewPersonalAppeal.delegate = self
+        self.txtViewPersonalAppeal.textColor = UIColor.lightGray
+        self.txtViewPersonalAppeal.text = MultiLanguage.getLanguageUsingKey("PERSONAL_APPEAL")
+    }
+    
+    //MARK:- TextView Placeholder Appear/Disappear
+    func textViewDidBeginEditing(_ textView: UITextView)
+    {
+        if textView.textColor == UIColor.lightGray
+        {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+        
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView)
+    {
+        if textView.text.isEmpty
+        {
+            textView.text = MultiLanguage.getLanguageUsingKey("PERSONAL_APPEAL")
+            textView.textColor = UIColor.lightGray
+        }
     }
     
     //MARK:- Keyboard Appear/Diappear
@@ -353,6 +376,17 @@ extension RequestView:UITextFieldDelegate
             hospitalListView.delegate = self
             let navController = UINavigationController(rootViewController: hospitalListView)
             self.navigationController?.present(navController, animated: true, completion: nil)
+        }
+        if self.txtFieldHospitalBloodBankAddress == textField || self.txtFieldHospitalBloodBankAddressCity == textField || self.txtFieldHospitalBloodBankAddressPINCode == textField || self.txtFieldHospitalBloodBankAddressLandMark == textField
+        {
+            if RequestViewModel.SharedInstance.Latitude == nil
+            {
+                textField.resignFirstResponder()
+                self.view.makeToast(MultiLanguage.getLanguageUsingKey("Please select location from map"), duration: 2.0, position: .bottom)
+            }
+            else{
+                textField.becomeFirstResponder()
+            }
         }
     }
     func textFieldDidEndEditing(_ textField: UITextField) {

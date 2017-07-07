@@ -70,7 +70,7 @@ class MyDonorView: UIViewController {
         else{
             self.tableViewDonor.isHidden = true
             self.lblInternetIssueMessage.isHidden = false
-            self.lblInternetIssueMessage.text = MultiLanguage.getLanguageUsingKey("NO_ONE_ACCEPT")
+            self.lblInternetIssueMessage.text = MultiLanguage.getLanguageUsingKey("REQUEST_PENDING")
         }
     }
     //MARK:- FetchDataFromDonarDetail

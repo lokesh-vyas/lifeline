@@ -84,7 +84,7 @@ class ProfileView: UIViewController
         self.txtEmailID.text! = profileData.EmailId
         self.txtContactNumber.text! = profileData.ContactNumber
         self.txtAge.text! = profileData.Age
-        
+
         if profileData.DateofBirth != ""
         {
             ProfileViewModel.SharedInstance.DOBstring = profileData.DateofBirth

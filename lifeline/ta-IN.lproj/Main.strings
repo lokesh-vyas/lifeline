@@ -1,6 +1,6 @@
 
 /* Class = "UIButton"; normalTitle = "When you need"; ObjectID = "0Bx-83-oKh"; */
-"0Bx-83-oKh.normalTitle" = "உனக்கு தேவை";
+"0Bx-83-oKh.normalTitle" = "உனக்கு தேவை*";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "0Nt-hg-fuj"; */
 "0Nt-hg-fuj.text" = "லேபிள்";
@@ -12,7 +12,7 @@
 "lM7-GP-6kO.title" = "நன்கொடை";
 
 /* Class = "UILabel"; text = "Language"; ObjectID = "u3p-5p-Lik"; */
-"u3p-5p-Lik.text" = "மொழி";
+"u3p-5p-Lik.text" = "மொழியைத் தேர்வு செய்க";
 
 /* Class = "UILabel"; text = "Working Hours :"; ObjectID = "1wB-2C-LKb"; */
 "1wB-2C-LKb.text" = "வேலை நேரங்கள் :";
@@ -30,7 +30,7 @@
 "2nl-QR-EZ3.placeholder" = "முகவரி ";
 
 /* Class = "UILabel"; text = "FAQ"; ObjectID = "2om-Tk-ufr"; */
-"2om-Tk-ufr.text" = "அடிக்கடி கேட்கப்படும் கேள்விகள்";
+"2om-Tk-ufr.text" = "FAQ";
 
 /* Class = "UILabel"; text = "Message"; ObjectID = "35J-bo-gCo"; */
 "35J-bo-gCo.text" = "செய்தி";
@@ -57,7 +57,7 @@
 "7uz-ZI-071.normalTitle" = "ரத்து";
 
 /* Class = "UILabel"; text = "To Date"; ObjectID = "8FA-h0-4jo"; */
-"8FA-h0-4jo.text" = "நாள் வரை";
+"8FA-h0-4jo.text" = "தேதி வரை             ";
 
 /* Class = "UINavigationItem"; title = "Change Password"; ObjectID = "8Pz-1O-1kv"; */
 "8Pz-1O-1kv.title" = "கடவுச்சொல்லை மாற்று";
@@ -263,7 +263,7 @@
 "UFu-Km-CcU.normalTitle" = "என் கோரிக்கைகள்";
 
 /* Class = "UIButton"; normalTitle = "What you need"; ObjectID = "UM5-pu-tKE"; */
-"UM5-pu-tKE.normalTitle" = "உங்களுக்கு என்ன தேவை";
+"UM5-pu-tKE.normalTitle" = "உங்களுக்கு என்ன தேவை*";
 
 /* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "Uj6-bI-PvC"; */
 "Uj6-bI-PvC.normalTitle" = "ரத்து";
@@ -398,7 +398,7 @@
 "jIe-BE-q2Q.text" = "Head";
 
 /* Class = "UILabel"; text = "To Date              :"; ObjectID = "jMu-Vq-gas"; */
-"jMu-Vq-gas.text" = "தேதி வரை             :";
+"jMu-Vq-gas.text" = "தேதி வரை :";
 
 /* Class = "UITextField"; placeholder = "Contact Number*"; ObjectID = "jV1-E5-yHu"; */
 "jV1-E5-yHu.placeholder" = "தொடர்பு எண்*";
@@ -467,7 +467,7 @@
 "tQk-hY-1dr.placeholder" = "முகவரி";
 
 /* Class = "UINavigationItem"; title = "FAQ"; ObjectID = "tdl-L4-1Ps"; */
-"tdl-L4-1Ps.title" = "அடிக்கடி கேட்கப்படும் கேள்விகள்";
+"tdl-L4-1Ps.title" = "FAQ";
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "u0B-7p-dQR"; */
 "u0B-7p-dQR.placeholder" = "கடவுச்சொல்";
@@ -503,13 +503,13 @@
 "viO-4Q-oHF.normalTitle" = "நன்கொடை உறுதி";
 
 /* Class = "UIButton"; normalTitle = "Blood Group"; ObjectID = "vzg-tf-OZl"; */
-"vzg-tf-OZl.normalTitle" = "இரத்த வகை";
+"vzg-tf-OZl.normalTitle" = "இரத்த வகை*";
 
 /* Class = "UITextField"; placeholder = "Doctor Name*"; ObjectID = "wG5-tu-clk"; */
 "wG5-tu-clk.placeholder" = "மருத்துவர் பெயர்*";
 
 /* Class = "UIButton"; normalTitle = "Units"; ObjectID = "wge-wf-c4a"; */
-"wge-wf-c4a.normalTitle" = "அலகுகள்";
+"wge-wf-c4a.normalTitle" = "அலகுகள்*";
 
 /* Class = "UILabel"; text = "Campaigns"; ObjectID = "woo-lf-VrF"; */
 "woo-lf-VrF.text" = "முகாம்கள்";
@@ -521,7 +521,7 @@
 "xHr-n6-ZSI.text" = "நேரம்";
 
 /* Class = "UILabel"; text = "From Date         :"; ObjectID = "yI3-Yb-2I7"; */
-"yI3-Yb-2I7.text" = "தேதி முதல்         :";
+"yI3-Yb-2I7.text" = "தேதி முதல் :";
 
 /* Class = "UITextField"; placeholder = "Confirm Password"; ObjectID = "yq2-Bx-1oS"; */
 "yq2-Bx-1oS.placeholder" = "கடவுச்சொல்லை உறுதிப்படுத்துக";
