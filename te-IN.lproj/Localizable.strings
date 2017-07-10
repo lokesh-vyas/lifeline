@@ -164,4 +164,15 @@ BLOOD_STRING = "రక్తం";
 PLASMA_STRING = "ప్లాస్మా";
 PLATELETS_STRING = "రక్తఫలకికలు";
 ADDRESS_MAP_TITLE = "చిరునామా";
-TOAST_LOGIN_MESSAGE = "Logging";
+TOAST_LOGIN_MESSAGE = "లాగింగ్";
+
+BTN_YES = "అవును";
+BTN_NO = "తోబుట్టువుల";
+TOAST_SELECT_LANGUAGE_MESSAGE = "భాషను ఎంచుకోండి";
+REQUEST_PENDING = "మీ అభ్యర్థన పెండింగ్లో ఉంది.";
+PERSONAL_APPEAL = "ನಿಮ್ಮ ಮನವಿಯನ್ನು ಇಲ್ಲಿ ಬರೆಯಿರಿ";
+
+
+
+
+

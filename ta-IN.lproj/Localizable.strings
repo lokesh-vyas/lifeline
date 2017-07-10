@@ -162,12 +162,13 @@ BLOOD_STRING = "இரத்த";
 PLASMA_STRING = "குருதி நீர்";
 PLATELETS_STRING = "தட்டுக்கள்";
 ADDRESS_MAP_TITLE = "முகவரி";
-TOAST_LOGIN_MESSAGE = "Logging";
+TOAST_LOGIN_MESSAGE = "பதிவு";
 
-
-
-
-
+BTN_YES = "ஆமாம்";
+BTN_NO = "இல்லை";
+TOAST_SELECT_LANGUAGE_MESSAGE = "மொழியைத் தேர்ந்தெடுக்கவும்";
+REQUEST_PENDING = "உங்கள் கோரிக்கை நிலுவையில் உள்ளது.";
+PERSONAL_APPEAL = "இங்கே உங்கள் மேல்முறையீடு எழுதவும்";
 
 
 
