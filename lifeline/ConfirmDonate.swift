@@ -205,7 +205,7 @@ class ConfirmDonate: UIViewController {
             if self.lblFromDate.text != nil
             {
                 let workingHours:String = MarkerData.SharedInstance.markerData["WorkingHours"] as! String
-                let fullNameArr : [String] = workingHours.components(separatedBy: MultiLanguage.getLanguageUsingKey("CALANDER_TO"))
+                let fullNameArr : [String] = workingHours.components(separatedBy: "To")
                 var fromTime: String? = fullNameArr[0]
                 var toTimeO: String? = fullNameArr[1]
                 if fromTime == nil

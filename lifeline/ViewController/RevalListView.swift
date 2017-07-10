@@ -24,8 +24,11 @@ class RevalListView: UIViewController
             menuArray = ["myProfile","share","Language","FAQ"]
         }
         // Do any additional setup after loading the view.
+        
     }
 }
+
+
 extension RevalListView:UITableViewDelegate,UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

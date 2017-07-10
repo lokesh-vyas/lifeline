@@ -26,7 +26,7 @@ class SingleTon {
     var sMarkers : JSON = []
     var appendedMarkers = [Dictionary<String,Any>]()
     var cameFromFilterChecks: Bool?
-    
+
     class var SharedInstance : SingleTon {
         struct Shared {
             static let Instance = SingleTon()
