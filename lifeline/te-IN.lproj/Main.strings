@@ -147,7 +147,7 @@
 "Hgh-HU-kW1.placeholder" = "కొత్త పాస్వర్డ్*";
 
 /* Class = "UILabel"; text = "Contact Number"; ObjectID = "Ik9-ja-k21"; */
-"Ik9-ja-k21.text" = "సంప్రదింపు ఫోన్ సంఖ్య";
+"Ik9-ja-k21.text" = "ఫోను నంబరు";
 
 /* Class = "UILabel"; text = " "; ObjectID = "IsI-4Y-E47"; */
 "IsI-4Y-E47.text" = " ";
@@ -477,7 +477,7 @@
 "uJv-fu-AYf.text" = "దానం";
 
 /* Class = "UILabel"; text = "Contact Number"; ObjectID = "utE-4g-TxJ"; */
-"utE-4g-TxJ.text" = "సంప్రదింపు ఫోన్ సంఖ్య*";
+"utE-4g-TxJ.text" = "ఫోను నంబరు";
 
 /* Class = "UITextField"; placeholder = "Old Password*"; ObjectID = "vDw-ek-qUe"; */
 "vDw-ek-qUe.placeholder" = "ఓల్డ్ పాస్వర్డ్ *";

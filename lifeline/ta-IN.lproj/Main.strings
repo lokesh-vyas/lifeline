@@ -416,7 +416,7 @@
 "l0k-7O-tPJ.text" = " ";
 
 /* Class = "UILabel"; text = "No. of Units"; ObjectID = "l2p-Og-5MD"; */
-"l2p-Og-5MD.text" = "அலகுகளின் எண்ணிக்கை";
+"l2p-Og-5MD.text" = "மொத்த அலகுகள்";
 
 /* Class = "UILabel"; text = "address"; ObjectID = "laf-ll-1Ab"; */
 "laf-ll-1Ab.text" = "முகவரி";
