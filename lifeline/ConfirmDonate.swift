@@ -72,6 +72,7 @@ class ConfirmDonate: UIViewController {
             ConfirmDonateInteractor.sharedInstance.getCompaignDetails(urlString: URLList.GET_CAMPAGIN_DETAILS.rawValue, params: bodyGetCampDetails)
             
         }
+        
         let tapRec = UITapGestureRecognizer(target: self, action: #selector(ConfirmDonate.lblCallTapped(_:)))
         lblContactNumber.addGestureRecognizer(tapRec)
         lblContactNumber.isUserInteractionEnabled = true
@@ -255,9 +256,8 @@ class ConfirmDonate: UIViewController {
         {
             lblContactNumber.text = strContact
         }
-        
-       // lblContactNumber.text = MarkerData.SharedInstance.markerData["ContactNumber"] as! String?
-        lblEmailID.text = MarkerData.SharedInstance.markerData["Email"] as! String?
+        // lblContactNumber.text = MarkerData.SharedInstance.markerData["ContactNumber"] as! String?
+        lblEmailID.text =  MarkerData.SharedInstance.markerData["Email"] as! String?
         lblFromDate.text = MarkerData.SharedInstance.markerData["FromDate"] as! String?
         lblToDate.text = MarkerData.SharedInstance.markerData["ToDate"] as! String?
         lblAddress.text = (MarkerData.SharedInstance.markerData["AddressLine"] as! String?)?.replacingOccurrences(of: "\n", with: ", ").appending(MarkerData.SharedInstance.markerData["City"] as! String).appending(" - ").appending(MarkerData.SharedInstance.markerData["PINCode"] as! String)
