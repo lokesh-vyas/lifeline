@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class ProfileView: UIViewController
 {
@@ -175,6 +176,7 @@ class ProfileView: UIViewController
     }
     //MARK:- DateOfBirthAction
     @IBAction func DOBAction(_ sender: Any) {
+        
         self.view.endEditing(true)
         let viewCalendar: CalendarView = self.storyboard?.instantiateViewController(withIdentifier: "CalendarView") as! CalendarView
         let dateFormatter = DateFormatter()
@@ -452,16 +454,9 @@ extension ProfileView:UITextFieldDelegate
         return true;
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        
-        /*let data = UserDefaults.standard.object(forKey: "ProfileData")
-         if data != nil {
-         let profileData:ProfileData = NSKeyedUnarchiver.unarchiveObject(with: data as! Data) as! ProfileData
-         UserDefaults.standard.set(true, forKey: "SuccessProfileRegistration")*/
-        if txtAge.text != textField.text
-        {
-            btnDOBOutlet.setTitle("DOB", for: .normal)
-        }
+    @available(iOS 10.0, *)
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+        self.btnDOBOutlet.setTitle("DOB", for: .normal)
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
