@@ -167,10 +167,10 @@ ADDRESS_MAP_TITLE = "చిరునామా";
 TOAST_LOGIN_MESSAGE = "లాగింగ్";
 
 BTN_YES = "అవును";
-BTN_NO = "తోబుట్టువుల";
+BTN_NO = "కాదు";
 TOAST_SELECT_LANGUAGE_MESSAGE = "భాషను ఎంచుకోండి";
-REQUEST_PENDING = "మీ అభ్యర్థన పెండింగ్లో ఉంది.";
-PERSONAL_APPEAL = "ನಿಮ್ಮ ಮನವಿಯನ್ನು ಇಲ್ಲಿ ಬರೆಯಿರಿ";
+REQUEST_PENDING = "మీ అభ్యర్థన ఇంకా ఎవరూ స్వీకరించలేదు.";
+PERSONAL_APPEAL = "వ్యక్తిగత అభ్యర్ధన";
 
 
 
