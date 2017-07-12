@@ -84,7 +84,7 @@ class ProfileView: UIViewController
         self.txtEmailID.text! = profileData.EmailId
         self.txtContactNumber.text! = profileData.ContactNumber
         self.txtAge.text! = profileData.Age
-
+        
         if profileData.DateofBirth != ""
         {
             ProfileViewModel.SharedInstance.DOBstring = profileData.DateofBirth
@@ -448,7 +448,20 @@ extension ProfileView:UITextFieldDelegate
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        
         return true;
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+        /*let data = UserDefaults.standard.object(forKey: "ProfileData")
+         if data != nil {
+         let profileData:ProfileData = NSKeyedUnarchiver.unarchiveObject(with: data as! Data) as! ProfileData
+         UserDefaults.standard.set(true, forKey: "SuccessProfileRegistration")*/
+        if txtAge.text != textField.text
+        {
+            btnDOBOutlet.setTitle("DOB", for: .normal)
+        }
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
