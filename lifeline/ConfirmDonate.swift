@@ -83,7 +83,7 @@ class ConfirmDonate: UIViewController {
     
     func lblCallTapped(_ sender: UITapGestureRecognizer)
     {
-        let phoneNumber: String
+       /* let phoneNumber: String
         let formatedNumber: String
         if(MarkerData.SharedInstance.markerData["ContactNumber"] != nil)
         {
@@ -105,16 +105,25 @@ class ConfirmDonate: UIViewController {
             } else {
                 UIApplication.shared.openURL(url as URL)
             }
+        }*/
+        
+        if let url = URL(string: "tel://\(self.lblContactNumber.text!)") {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url as URL)
+            }
         }
     }
     
     func lblEmailTapped(_ sender: UITapGestureRecognizer)
     {
-        let emailAddress = MarkerData.SharedInstance.markerData["Email"]
+        // let emailAddress = MarkerData.SharedInstance.markerData["Email"]
+        let emailAddress = lblEmailID.text
         if MFMailComposeViewController.canSendMail() {
             let mailVC = MFMailComposeViewController()
             mailVC.mailComposeDelegate = self
-            mailVC.setToRecipients([emailAddress as! String])
+            mailVC.setToRecipients([emailAddress!])
             mailVC.setSubject("")
             mailVC.setMessageBody("", isHTML: true)
             self.present(mailVC, animated: true, completion: nil)

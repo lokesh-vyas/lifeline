@@ -171,9 +171,9 @@ BTN_NO = "No";
 TOAST_SELECT_LANGUAGE_MESSAGE = "Select Language";
 REQUEST_PENDING = "Your request is pending.";
 PERSONAL_APPEAL = "Write your appeal here";
-
-
-
+SELECT_LOCATION_STRING  = "Please select location from map";
+DATE_STRING = "DOB";
+REQUIREMENT_STRING = "Requirement for";
 
 
 

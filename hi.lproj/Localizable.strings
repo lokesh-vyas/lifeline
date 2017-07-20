@@ -164,9 +164,9 @@ BTN_NO = "नहीं";
 TOAST_SELECT_LANGUAGE_MESSAGE = "भाषा चुनिए";
 REQUEST_PENDING = "आपका निवेदन अभी जारी है.";
 PERSONAL_APPEAL = "अपनी अपील यहाँ लिखें";
-
-
-
+SELECT_LOCATION_STRING  = "कृपया मैप से स्थान का चयन करें";
+DATE_STRING = " जन्म तारीख";
+REQUIREMENT_STRING = "आवश्यकता के लिए";
 
 
 
