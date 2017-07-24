@@ -169,9 +169,9 @@ BTN_NO = "No";
 TOAST_SELECT_LANGUAGE_MESSAGE = "Select Language";
 REQUEST_PENDING = "ನಿಮ್ಮ ವಿನಂತಿಯು ಬಾಕಿ ಉಳಿದಿದೆ.";
 PERSONAL_APPEAL = "ఇక్కడ మీ అప్పీల్ వ్రాయండి";
-
-
-
+SELECT_LOCATION_STRING  = "ದಯವಿಟ್ಟು ನಕ್ಷೆಯಿಂದ ಸ್ಥಳವನ್ನು ಆಯ್ಕೆಮಾಡಿ";
+DATE_STRING = "ಜನ್ಮ ದಿನಾಂಕ";
+REQUIREMENT_STRING = "ಅವಶ್ಯಕತೆ";
 
 
 

@@ -172,4 +172,14 @@ BTN_NO = "కాదు";
 TOAST_SELECT_LANGUAGE_MESSAGE = "భాషను ఎంచుకోండి";
 REQUEST_PENDING = "మీ అభ్యర్థన ఇంకా ఎవరూ స్వీకరించలేదు.";
 PERSONAL_APPEAL = "వ్యక్తిగత అభ్యర్ధన";
+SELECT_LOCATION_STRING  = "దయచేసి మ్యాప్ నుండి స్థానాన్ని ఎంచుకోండి";
+DATE_STRING = "పుట్టిన తేది";
+REQUIREMENT_STRING = "అవసరం";
+
+
+
+
+
+
+
 
