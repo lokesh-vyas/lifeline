@@ -24,7 +24,6 @@ class HomeView: UIViewController {
         super.viewDidLoad()
         self.navigationController?.completelyTransparentBar()
        //MARK - Reval View Button
-        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         let deviceRegister = UserDefaults.standard.bool(forKey: "DeviceRegister")
         if deviceRegister == false
         {
@@ -43,8 +42,6 @@ class HomeView: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(HomeView.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
     }
-    
-    
     
     //MARK:- Device Registration
     func DeviceRegistrationForServer(DeviceToken:String)

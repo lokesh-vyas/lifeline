@@ -9,6 +9,7 @@
 import UIKit
 import SwiftyJSON
 import MessageUI
+import Foundation
 
 class ConfirmDonate: UIViewController {
 
@@ -34,7 +35,7 @@ class ConfirmDonate: UIViewController {
     var toDateCamp:NSDate?
     var checkForString = String()
     var textShareArray = [String]()
-    
+    var textAddress = String()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.completelyTransparentBar()
@@ -138,13 +139,11 @@ class ConfirmDonate: UIViewController {
     //MARK:- btnShareTapped
     @IBAction func btnShareTapped(_ sender: Any)
     {
-        
         let textShareLink = MultiLanguage.getLanguageUsingKey("REQUEST_SHARE_TITLE_MESSAGE")
         let textToIOS = "iOS:- https://goo.gl/XJl5a7"
         let textToAndroid = "Android:- https://goo.gl/PUorhE"
-        
         if let myWebsite = NSURL(string: "https://goo.gl/XJl5a7") {
-            let objectsToShare = [MultiLanguage.getLanguageUsingKey("REQUEST_CAMP_VOLUNTEER_SHARE_MESSAGE"),textShareArray[0],textShareArray[1],textShareArray[2],textShareArray[3],textShareLink,textToIOS,textToAndroid, myWebsite] as [Any]
+            let objectsToShare = [MultiLanguage.getLanguageUsingKey("REQUEST_CAMP_VOLUNTEER_SHARE_MESSAGE"),textShareArray[0],textShareArray[1],textShareArray[2],textShareArray[3],textAddress,textShareLink,textToIOS,textToAndroid,myWebsite] as [Any]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
             
             //New Excluded Activities Code
@@ -176,9 +175,6 @@ class ConfirmDonate: UIViewController {
     }
 
     @IBAction func btnConfirmDonateTapped(_ sender: Any) {
-        
-        
-        
         //MARK:- Below Age 18
         let data = UserDefaults.standard.object(forKey: "ProfileData")
         if data != nil {
@@ -328,6 +324,10 @@ extension ConfirmDonate : ConfirmDonateProtocol {
         lblName.text = MarkerData.SharedInstance.APNResponse["Name"] as! String?
         self.textShareArray.insert("\(MultiLanguage.getLanguageUsingKey("HOSPITAL_CONTACT_NAME_LBL")) : \(lblName.text!)", at: 0)
         
+        let addressLat = (String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["Latitude"]))
+        let addressLong = (String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["Longitude"]))
+        //self.textAddress = String(format: "Address:- http://maps.google.com/?saddr=%1.6f,%1.6f", addressLat as! CVarArg, addressLong as! CVarArg)
+        self.textAddress = "https://maps.google.com/?q=@\(addressLat),\(addressLong)"
         let strContact = String(describing: MarkerData.SharedInstance.APNResponse["ContactNumber"]!)
         if strContact == "null"
         {

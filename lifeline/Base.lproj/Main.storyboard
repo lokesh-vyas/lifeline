@@ -1882,7 +1882,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Campaign Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OR7-mt-Ovx">
-                                <rect key="frame" x="104.5" y="454" width="166" height="23"/>
+                                <rect key="frame" x="105" y="454" width="166" height="23"/>
                                 <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -3060,7 +3060,7 @@
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hospital/Blood Bank Info" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xaa-Dv-hpJ">
-                                                        <rect key="frame" x="47" y="5" width="255" height="25"/>
+                                                        <rect key="frame" x="47" y="5" width="293" height="25"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="25" id="sNt-cU-MAy"/>
                                                         </constraints>
@@ -3071,7 +3071,7 @@
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="1RH-6n-PdG" secondAttribute="bottom" constant="2" id="1ZZ-Gr-Xtd"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Xaa-Dv-hpJ" secondAttribute="trailing" constant="58" id="6bd-Zj-A4T"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Xaa-Dv-hpJ" secondAttribute="trailing" constant="20" id="6bd-Zj-A4T"/>
                                                     <constraint firstItem="Xaa-Dv-hpJ" firstAttribute="leading" secondItem="1RH-6n-PdG" secondAttribute="trailing" constant="15" id="RWi-6U-4Kd"/>
                                                     <constraint firstItem="1RH-6n-PdG" firstAttribute="top" secondItem="FYg-PM-k6H" secondAttribute="top" constant="5" id="ow6-ph-Bq8"/>
                                                     <constraint firstItem="1RH-6n-PdG" firstAttribute="leading" secondItem="FYg-PM-k6H" secondAttribute="leading" constant="2" id="rPL-dz-W6C"/>
@@ -3674,7 +3674,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="41"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Head" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKz-ok-arv">
-                                                <rect key="frame" x="14" y="8" width="293" height="25"/>
+                                                <rect key="frame" x="1" y="8" width="318" height="25"/>
                                                 <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="20"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -3684,8 +3684,8 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="41" id="OPX-nm-00v"/>
                                             <constraint firstItem="AKz-ok-arv" firstAttribute="top" secondItem="2p8-ZF-R7a" secondAttribute="top" constant="8" id="RDE-P4-ZJy"/>
-                                            <constraint firstItem="AKz-ok-arv" firstAttribute="leading" secondItem="2p8-ZF-R7a" secondAttribute="leading" constant="14" id="Tv0-Qw-SD6"/>
-                                            <constraint firstAttribute="trailing" secondItem="AKz-ok-arv" secondAttribute="trailing" constant="13" id="sdB-am-wL5"/>
+                                            <constraint firstItem="AKz-ok-arv" firstAttribute="leading" secondItem="2p8-ZF-R7a" secondAttribute="leading" constant="1" id="Tv0-Qw-SD6"/>
+                                            <constraint firstAttribute="trailing" secondItem="AKz-ok-arv" secondAttribute="trailing" constant="1" id="sdB-am-wL5"/>
                                             <constraint firstAttribute="bottom" secondItem="AKz-ok-arv" secondAttribute="bottom" constant="8" id="zP3-Bc-Coa"/>
                                         </constraints>
                                     </view>
@@ -3794,7 +3794,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="41"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Head" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jIe-BE-q2Q">
-                                                <rect key="frame" x="14" y="6" width="293" height="29"/>
+                                                <rect key="frame" x="1" y="6" width="318" height="29"/>
                                                 <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="20"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -3804,8 +3804,8 @@
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="jIe-BE-q2Q" secondAttribute="bottom" constant="6" id="7xr-5q-CzG"/>
                                             <constraint firstItem="jIe-BE-q2Q" firstAttribute="top" secondItem="NxS-Gz-wQi" secondAttribute="top" constant="6" id="GPJ-kj-Xe7"/>
-                                            <constraint firstItem="jIe-BE-q2Q" firstAttribute="leading" secondItem="NxS-Gz-wQi" secondAttribute="leading" constant="14" id="RGk-eH-0Fx"/>
-                                            <constraint firstAttribute="trailing" secondItem="jIe-BE-q2Q" secondAttribute="trailing" constant="13" id="nG1-Rv-cal"/>
+                                            <constraint firstItem="jIe-BE-q2Q" firstAttribute="leading" secondItem="NxS-Gz-wQi" secondAttribute="leading" constant="1" id="RGk-eH-0Fx"/>
+                                            <constraint firstAttribute="trailing" secondItem="jIe-BE-q2Q" secondAttribute="trailing" constant="1" id="nG1-Rv-cal"/>
                                             <constraint firstAttribute="height" constant="41" id="w3e-jS-b8c"/>
                                         </constraints>
                                     </view>
@@ -4355,7 +4355,7 @@
                                                 <rect key="frame" x="8" y="184" width="360" height="48"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="goq-ur-qEv">
-                                                        <rect key="frame" x="5" y="3" width="152" height="40"/>
+                                                        <rect key="frame" x="5" y="3" width="136.5" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="eit-bi-u7R"/>
                                                         </constraints>
@@ -4369,17 +4369,17 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vdd-cH-bQd">
-                                                        <rect key="frame" x="164" y="14" width="25" height="21"/>
+                                                        <rect key="frame" x="142.5" y="14" width="70" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="97D-e4-Cmj"/>
-                                                            <constraint firstAttribute="width" constant="25" id="eR9-6Z-dtO"/>
+                                                            <constraint firstAttribute="width" constant="70" id="eR9-6Z-dtO"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="17"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Age*" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KjB-od-Qw9" customClass="FloatLabelTextField" customModule="lifeline" customModuleProvider="target">
-                                                        <rect key="frame" x="198" y="3" width="152" height="40"/>
+                                                        <rect key="frame" x="213.5" y="3" width="136.5" height="40"/>
                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="5bm-WN-lYf"/>
@@ -4399,7 +4399,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="KjB-od-Qw9" secondAttribute="trailing" constant="10" id="AXB-PG-U4b"/>
                                                     <constraint firstAttribute="bottom" secondItem="KjB-od-Qw9" secondAttribute="bottom" constant="5" id="XZL-b7-Tqd"/>
-                                                    <constraint firstItem="vdd-cH-bQd" firstAttribute="leading" secondItem="goq-ur-qEv" secondAttribute="trailing" constant="7" id="aBj-qE-4dU"/>
+                                                    <constraint firstItem="vdd-cH-bQd" firstAttribute="leading" secondItem="goq-ur-qEv" secondAttribute="trailing" constant="1" id="aBj-qE-4dU"/>
                                                     <constraint firstItem="KjB-od-Qw9" firstAttribute="width" secondItem="goq-ur-qEv" secondAttribute="width" id="bOl-eD-Nk1"/>
                                                     <constraint firstItem="KjB-od-Qw9" firstAttribute="top" secondItem="GJi-3n-4VN" secondAttribute="top" constant="3" id="eTR-de-WDC"/>
                                                     <constraint firstAttribute="bottom" secondItem="goq-ur-qEv" secondAttribute="bottom" constant="5" id="oVz-Jx-fkG"/>
@@ -4408,7 +4408,7 @@
                                                     <constraint firstItem="goq-ur-qEv" firstAttribute="leading" secondItem="GJi-3n-4VN" secondAttribute="leading" constant="5" id="v3w-fK-JXq"/>
                                                     <constraint firstItem="goq-ur-qEv" firstAttribute="leading" secondItem="GJi-3n-4VN" secondAttribute="leading" constant="5" id="vgY-Rc-r9k"/>
                                                     <constraint firstItem="vdd-cH-bQd" firstAttribute="top" secondItem="GJi-3n-4VN" secondAttribute="top" constant="14" id="w1e-fv-LT6"/>
-                                                    <constraint firstItem="KjB-od-Qw9" firstAttribute="leading" secondItem="vdd-cH-bQd" secondAttribute="trailing" constant="9" id="x46-L9-Ccw"/>
+                                                    <constraint firstItem="KjB-od-Qw9" firstAttribute="leading" secondItem="vdd-cH-bQd" secondAttribute="trailing" constant="1" id="x46-L9-Ccw"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -4951,6 +4951,6 @@
         <image name="watsapp_logo.png" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ktf-Z0-2mE"/>
+        <segue reference="juJ-9u-Oey"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -184,6 +184,7 @@
 		252B7AE91ED8104C00A900D7 /* MultipleLanguageStringClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleLanguageStringClass.swift; sourceTree = "<group>"; };
 		2538978F1EE5470400B8AFB3 /* LanguageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageVC.swift; sourceTree = "<group>"; };
 		253897931EE578C100B8AFB3 /* LanguageTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageTableCell.swift; sourceTree = "<group>"; };
+		25B8EFFA1F29F65000D08C6B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		65CFD1F97B4EDC4D89096216 /* Pods-lifelineUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lifelineUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-lifelineUITests/Pods-lifelineUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		661F3C5D1E7673B9008E7E34 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		66316B7F1E53132500114055 /* HospitalListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HospitalListView.swift; path = ViewController/HospitalListView.swift; sourceTree = "<group>"; };
@@ -1308,6 +1309,7 @@
 				66A0EC7D1EE292820019C5FB /* ta-IN */,
 				66A0EC801EE292940019C5FB /* kn-IN */,
 				66A0EC831EE292C90019C5FB /* te-IN */,
+				25B8EFFA1F29F65000D08C6B /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
