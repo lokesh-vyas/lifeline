@@ -1,15 +1,15 @@
 
 /* Class = "UIButton"; normalTitle = "When you need"; ObjectID = "0Bx-83-oKh"; */
-"0Bx-83-oKh.normalTitle" = "உனக்கு தேவை*";
+"0Bx-83-oKh.normalTitle" = "என்ன தேவை*";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "0Nt-hg-fuj"; */
-"0Nt-hg-fuj.text" = "லேபிள்";
+"0Nt-hg-fuj.text" = "Label";
 
 /* Class = "UINavigationItem"; title = "Address "; ObjectID = "1vm-L7-Vjy"; */
 "1vm-L7-Vjy.title" = "முகவரி";
 
 /* Class = "UINavigationItem"; title = "Donate "; ObjectID = "lM7-GP-6kO"; */
-"lM7-GP-6kO.title" = "நன்கொடை";
+"lM7-GP-6kO.title" = "இரத்த தானம்";
 
 /* Class = "UILabel"; text = "Language"; ObjectID = "u3p-5p-Lik"; */
 "u3p-5p-Lik.text" = "மொழியைத் தேர்வு செய்க";
@@ -24,7 +24,7 @@
 "2Fv-t2-4b5.text" = "தனிப்பட்ட கோரிக்கைகள்";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "2Yj-1M-3mA"; */
-"2Yj-1M-3mA.normalTitle" = "பொத்தானை";
+"2Yj-1M-3mA.normalTitle" = "Button";
 
 /* Class = "UITextField"; placeholder = "Address"; ObjectID = "2nl-QR-EZ3"; */
 "2nl-QR-EZ3.placeholder" = "முகவரி ";
@@ -48,7 +48,7 @@
 "6VC-6O-oIt.text" = "நோயாளி பெயர்";
 
 /* Class = "UIButton"; normalTitle = "Donate"; ObjectID = "6cw-Xz-M53"; */
-"6cw-Xz-M53.normalTitle" = "நன்கொடை";
+"6cw-Xz-M53.normalTitle" = "இரத்த தானம்";
 
 /* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "7gk-dR-1wU"; */
 "7gk-dR-1wU.normalTitle" = "ரத்து";
@@ -93,7 +93,7 @@
 "BqE-jc-byJ.text" = "நேரம்";
 
 /* Class = "UIButton"; normalTitle = "Last Donation Date"; ObjectID = "CAv-8s-OLv"; */
-"CAv-8s-OLv.normalTitle" = "கடைசி நன்கொடை தேதி";
+"CAv-8s-OLv.normalTitle" = "கடைசியாக செய்த தேதி";
 
 /* Class = "UITextField"; placeholder = "Email*"; ObjectID = "Cll-De-sAw"; */
 "Cll-De-sAw.placeholder" = "மின்னஞ்சல்*";
@@ -105,7 +105,7 @@
 "D4e-lB-xrM.normalTitle" = "விண்ணப்பிக்கவும்";
 
 /* Class = "UIButton"; normalTitle = "Blood Inventory"; ObjectID = "D9f-Wt-ZS6"; */
-"D9f-Wt-ZS6.normalTitle" = "இரத்தக் கண்டுபிடிப்பு";
+"D9f-Wt-ZS6.normalTitle" = "இரத்தக் சேமிப்பு ";
 
 /* Class = "UIButton"; normalTitle = "SIGN IN"; ObjectID = "DAs-6u-mNw"; */
 "DAs-6u-mNw.normalTitle" = "உள்நுழைக";
@@ -117,7 +117,7 @@
 "DRM-VO-3LS.title" = "இரத்த சேமிப்பு";
 
 /* Class = "UILabel"; text = "Voluntary Donation"; ObjectID = "E8d-f5-n2I"; */
-"E8d-f5-n2I.text" = "தன்னார்வ நன்கொடை";
+"E8d-f5-n2I.text" = "தன்னார்வ ரத்த தானம்";
 
 /* Class = "UILabel"; text = "Work Address  (Optional)"; ObjectID = "E9s-kv-u2m"; */
 "E9s-kv-u2m.text" = "வேலை முகவரி (விருப்பம்)";
@@ -135,13 +135,13 @@
 "Gm4-XE-bkz.normalTitle" = "புதிய பதிவு";
 
 /* Class = "UILabel"; text = "Close Request"; ObjectID = "Gmm-PG-Hax"; */
-"Gmm-PG-Hax.text" = "கோரிக்கை மூடு";
+"Gmm-PG-Hax.text" = "வேண்டுகோள் ஏகப்படவில்லை";
 
 /* Class = "UIButton"; normalTitle = "SIGN IN"; ObjectID = "GnG-F8-xUN"; */
 "GnG-F8-xUN.normalTitle" = "உள்நுழைக";
 
 /* Class = "UIButton"; normalTitle = "Donate"; ObjectID = "H4i-eI-eki"; */
-"H4i-eI-eki.normalTitle" = "நன்கொடை";
+"H4i-eI-eki.normalTitle" = "இரத்த தானம்";
 
 /* Class = "UIButton"; normalTitle = "SIGN UP"; ObjectID = "HF2-FN-LfL"; */
 "HF2-FN-LfL.normalTitle" = "புதிய பதிவு";
@@ -178,7 +178,7 @@
 "JUb-lS-sY1.text" = "மருத்துவமனைகள்";
 
 /* Class = "UITextField"; placeholder = "Hospital / Bloodbank Name*"; ObjectID = "KSd-oU-hqN"; */
-"KSd-oU-hqN.placeholder" = "மருத்துவமனை / இரத்த வங்கி பெயர்*";
+"KSd-oU-hqN.placeholder" = "மருத்துவமனை/இரத்த வங்கி பெயர்*";
 
 /* Class = "UITextField"; placeholder = "Age*"; ObjectID = "KjB-od-Qw9"; */
 "KjB-od-Qw9.placeholder" = "வயது*";
@@ -191,10 +191,10 @@
 சமர்ப்பி";
 
 /* Class = "UITextField"; placeholder = "Contact Person*"; ObjectID = "Nch-d1-2WF"; */
-"Nch-d1-2WF.placeholder" = "தொடர்பு கொள்ள *";
+"Nch-d1-2WF.placeholder" = "தொடர்பு கொள்ள*";
 
 /* Class = "UIButton"; normalTitle = "Donate"; ObjectID = "Ni4-4p-kcZ"; */
-"Ni4-4p-kcZ.normalTitle" = "நன்கொடை";
+"Ni4-4p-kcZ.normalTitle" = "இரத்த தானம்";
 
 /* Class = "UILabel"; text = " "; ObjectID = "O0g-bA-DYy"; */
 "O0g-bA-DYy.text" = " ";
@@ -203,10 +203,10 @@
 "OD0-K7-jld.text" = " ";
 
 /* Class = "UILabel"; text = "Hospital/Blood Bank"; ObjectID = "OEe-sP-tQY"; */
-"OEe-sP-tQY.text" = "மருத்துவமனை / இரத்த வங்கி";
+"OEe-sP-tQY.text" = "மருத்துவமனை/இரத்த வங்கி";
 
 /* Class = "UIButton"; normalTitle = "Confirm Donate"; ObjectID = "OQa-en-FfI"; */
-"OQa-en-FfI.normalTitle" = "நன்கொடை உறுதி";
+"OQa-en-FfI.normalTitle" = "உறுதி செய்யவும்";//"இரத்த தானம் செய்வதை உறுதி செய்யவும்";
 
 /* Class = "UILabel"; text = "Campaign Description"; ObjectID = "OR7-mt-Ovx"; */
 "OR7-mt-Ovx.text" = "முகாம் விவரம்";
@@ -218,7 +218,7 @@
 "Q6n-tx-iAA.normalTitle" = "உள்நுழைக";
 
 /* Class = "UILabel"; text = "Donated"; ObjectID = "QBc-dm-Fkm"; */
-"QBc-dm-Fkm.text" = "நன்கொடையாக";
+"QBc-dm-Fkm.text" = "இரத்த தானம் செய்யப்பட்டது";
 
 /* Class = "UITextField"; placeholder = "City*"; ObjectID = "QIu-Tl-LdC"; */
 "QIu-Tl-LdC.placeholder" = "நகரம்*";
@@ -230,7 +230,7 @@
 "Qh4-My-GGa.normalTitle" = "ரத்து";
 
 /* Class = "UILabel"; text = "DONATE"; ObjectID = "Qk8-jp-aa4"; */
-"Qk8-jp-aa4.text" = "நன்கொடை";
+"Qk8-jp-aa4.text" = "இரத்த தானம்";
 
 /* Class = "UILabel"; text = "Health Info"; ObjectID = "Rcv-Mk-3Cg"; */
 "Rcv-Mk-3Cg.text" = "சுகாதார தகவல்";
@@ -254,7 +254,7 @@
 "TiA-e2-DmS.text" = " ";
 
 /* Class = "UILabel"; text = "needDescription"; ObjectID = "Tyk-Ao-mcV"; */
-"Tyk-Ao-mcV.text" = "விளக்கம் ";
+"Tyk-Ao-mcV.text" = "கோரிக்கை விளக்கம் தேவை ";
 
 /* Class = "UILabel"; text = "N/A"; ObjectID = "Tym-tX-1v1"; */
 "Tym-tX-1v1.text" = "N/A";
@@ -263,7 +263,7 @@
 "UFu-Km-CcU.normalTitle" = "என் கோரிக்கைகள்";
 
 /* Class = "UIButton"; normalTitle = "What you need"; ObjectID = "UM5-pu-tKE"; */
-"UM5-pu-tKE.normalTitle" = "உங்களுக்கு என்ன தேவை*";
+"UM5-pu-tKE.normalTitle" = "என்ன தேவை*";
 
 /* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "Uj6-bI-PvC"; */
 "Uj6-bI-PvC.normalTitle" = "ரத்து";
@@ -278,7 +278,7 @@
 "VF5-aL-b92.text" = "நாள் முதல்";
 
 /* Class = "UILabel"; text = "Hospital/Blood Bank"; ObjectID = "W8n-35-N6l"; */
-"W8n-35-N6l.text" = "மருத்துவமனை / இரத்த வங்கி";
+"W8n-35-N6l.text" = "மருத்துவமனை/இரத்த வங்கி";
 
 /* Class = "UILabel"; text = "Hospital Address"; ObjectID = "W8x-Pd-mOF"; */
 "W8x-Pd-mOF.text" = "மருத்துவமனை முகவரி";
@@ -290,10 +290,10 @@
 "XBO-H5-byp.text" = " ";
 
 /* Class = "UILabel"; text = "No requirement in your location"; ObjectID = "XUm-28-Fwo"; */
-"XUm-28-Fwo.text" = "உங்கள் இருப்பிடத்தின் தேவையும் இல்லை";
+"XUm-28-Fwo.text" = "உங்கள் இருப்பிடத்தில் எந்த இரத்த கோரிக்கைகளும் இல்லை";
 
 /* Class = "UILabel"; text = "Hospital/Blood Bank Info"; ObjectID = "Xaa-Dv-hpJ"; */
-"Xaa-Dv-hpJ.text" = "மருத்துவமனை / இரத்த வங்கி தகவல்";
+"Xaa-Dv-hpJ.text" = "மருத்துவமனை/இரத்த வங்கி தகவல்";
 
 /* Class = "UITextField"; placeholder = "Landmark"; ObjectID = "Y6Z-28-wV2"; */
 "Y6Z-28-wV2.placeholder" = "தனித்துவமான";
@@ -308,13 +308,13 @@
 "ZST-Tc-Ni8.text" = "முகவரி";
 
 /* Class = "UINavigationItem"; title = "Confirm Donate"; ObjectID = "aGP-BK-U8w"; */
-"aGP-BK-U8w.title" = "நன்கொடை உறுதி";
+"aGP-BK-U8w.title" = "உறுதி செய்யவும்";
 
 /* Class = "UINavigationItem"; title = "Donor Details"; ObjectID = "auf-Zv-hCk"; */
-"auf-Zv-hCk.title" = "நன்கொடை விவரங்கள்";
+"auf-Zv-hCk.title" = "தானம் செய்தவரின் விவரம்";
 
 /* Class = "UILabel"; text = "Hospital/Blood Bank Name"; ObjectID = "cAV-nA-hJs"; */
-"cAV-nA-hJs.text" = "மருத்துவமனை / இரத்த வங்கி பெயர்";
+"cAV-nA-hJs.text" = "மருத்துவமனை/இரத்த வங்கி பெயர்";
 
 /* Class = "UILabel"; text = "Name"; ObjectID = "cbi-hR-bof"; */
 "cbi-hR-bof.text" = "பெயர்";
@@ -326,7 +326,7 @@
 "cq5-If-EwU.text" = "நன்றி குறிப்பு";
 
 /* Class = "UITextField"; placeholder = "Contact Number(Blood Bank/Hospital)*"; ObjectID = "cwc-9E-9b3"; */
-"cwc-9E-9b3.placeholder" = "தொடர்பு எண் (இரத்த வங்கி / மருத்துவமனை)*";
+"cwc-9E-9b3.placeholder" = "தொடர்பு எண்(இரத்த வங்கி/மருத்துவமனை)*";
 
 /* Class = "UILabel"; text = " "; ObjectID = "dXV-5z-WbE"; */
 "dXV-5z-WbE.text" = " ";
@@ -356,7 +356,7 @@
 "goq-ur-qEv.normalTitle" = "பிறந்த தேதி";
 
 /* Class = "UISearchBar"; placeholder = "Blood Donate Places"; ObjectID = "heb-vv-Zvc"; */
-"heb-vv-Zvc.placeholder" = "இரத்த நன்கொடை இடங்கள்";
+"heb-vv-Zvc.placeholder" = "இரத்த தானம் இடங்கள்";
 
 /* Class = "UISearchBar"; heb-vv-Zvc.scopeButtonTitles[0] = "Title"; ObjectID = "heb-vv-Zvc"; */
 "heb-vv-Zvc.scopeButtonTitles[0]" = "Title";
@@ -389,7 +389,7 @@
 "jAv-YE-uO9.text" = "தொடர்பு கொள்ள";
 
 /* Class = "UILabel"; text = "When Required"; ObjectID = "jBk-fl-514"; */
-"jBk-fl-514.text" = "உனக்கு தேவை";
+"jBk-fl-514.text" = "எப்பொழுது தேவை";
 
 /* Class = "UILabel"; text = "There are multiple individual requests in this hospital"; ObjectID = "jEF-3d-76Y"; */
 "jEF-3d-76Y.text" = "இந்த மருத்துவமனையில் பல தனிப்பட்ட கோரிக்கைகளும் உள்ளன";
@@ -407,7 +407,7 @@
 "jqt-3W-bJF.text" = "தேதி வரை ";
 
 /* Class = "UINavigationItem"; title = "Donated Places List"; ObjectID = "jxV-yA-Awc"; */
-"jxV-yA-Awc.title" = "நன்கொடை இடங்கள் பட்டியல்";
+"jxV-yA-Awc.title" = "இரத்த தானம் செய்யும் இடங்களின் பட்டியல்";
 
 /* Class = "UINavigationItem"; title = "Sign Up"; ObjectID = "kYE-Md-EnF"; */
 "kYE-Md-EnF.title" = "பதிவு செய்யவும்";
@@ -431,10 +431,10 @@
 "mXs-5D-obm.placeholder" = "தொடர்பு எண்*";
 
 /* Class = "UINavigationItem"; title = "Hospital/Blood Bank Info "; ObjectID = "mtX-SS-qfM"; */
-"mtX-SS-qfM.title" = "மருத்துவமனை / இரத்த வங்கி தகவல் ";
+"mtX-SS-qfM.title" = "மருத்துவமனை/இரத்த வங்கி தகவல்";
 
 /* Class = "UILabel"; text = "Confirm Donate"; ObjectID = "nt4-Vr-tDg"; */
-"nt4-Vr-tDg.text" = "நன்கொடை உறுதி";
+"nt4-Vr-tDg.text" = "உறுதி செய்யவும்";
 
 /* Class = "UILabel"; text = "Patient Information"; ObjectID = "oXl-dv-G7c"; */
 "oXl-dv-G7c.text" = "நோயாளி தகவல்";
@@ -476,7 +476,7 @@
 "uFL-BT-pmS.text" = "தனிப்பட்ட தகவல்";
 
 /* Class = "UILabel"; text = "Donate"; ObjectID = "uJv-fu-AYf"; */
-"uJv-fu-AYf.text" = "நன்கொடை";
+"uJv-fu-AYf.text" = "இரத்த தானம்";
 
 /* Class = "UILabel"; text = "Contact Number"; ObjectID = "utE-4g-TxJ"; */
 "utE-4g-TxJ.text" = "தொடர்பு எண்";
@@ -500,7 +500,7 @@
 "vdd-cH-bQd.text" = "அல்லது";
 
 /* Class = "UIButton"; normalTitle = "Confirm Donate"; ObjectID = "viO-4Q-oHF"; */
-"viO-4Q-oHF.normalTitle" = "நன்கொடை உறுதி";
+"viO-4Q-oHF.normalTitle" = "உறுதி செய்யவும்";
 
 /* Class = "UIButton"; normalTitle = "Blood Group"; ObjectID = "vzg-tf-OZl"; */
 "vzg-tf-OZl.normalTitle" = "இரத்த வகை*";
@@ -528,3 +528,10 @@
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "yz5-DD-wbp"; */
 "yz5-DD-wbp.text" = "Title";
+
+/* Class = "UILabel"; text = "Choose Language "; ObjectID = "u3p-5p-Lik"; */
+"u3p-5p-Lik.text" = "மொழியைத் தேர்வு செய்க ";
+
+/* Class = "UINavigationItem"; title = "Select Language"; ObjectID = "pGZ-xa-ljc"; */
+"pGZ-xa-ljc.title" = "மொழியைத் தேர்ந்தெடுங்கள்";
+
