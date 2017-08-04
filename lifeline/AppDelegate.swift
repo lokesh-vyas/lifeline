@@ -254,12 +254,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         if userINFO["gcm.notification.Type"].string != nil
         {   type = userINFO["gcm.notification.Type"].string!
+            print("type = \(type)")
         } else {
             type = String(describing: userINFO["gcm.notification.Type"].int)
+            print("type = \(type)")
         }
         
         if userINFO["Type"].string != nil {
             type = userINFO["Type"].string!
+            print("type = \(type)")
         }
         
         if (type == "2")
@@ -268,7 +271,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             IDFetchString = "gcm.notification.RequestID"
             titleInDict = userINFO["aps"]["alert"]["title"].string!
             messageInDict = userINFO["aps"]["alert"]["body"].string!
-            
         }else if(type == "4")
         {
             //For Camp and Thank you for after confirm camp request

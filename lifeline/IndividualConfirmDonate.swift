@@ -90,7 +90,7 @@ class IndividualConfirmDonate: UIViewController {
         let textToAndroid = "Android:- https://goo.gl/PUorhE"
         
         if let myWebsite = NSURL(string: "https://goo.gl/XJl5a7") {
-            let objectsToShare = [MultiLanguage.getLanguageUsingKey("REQUEST_VOLUNTEER_SHARE_MESSAGE"),textShareArray[0],textShareArray[1],textShareArray[2],textShareArray[3],textShareArray[4],textAddress,textShareLink,textToIOS,textToAndroid, myWebsite] as [Any]
+            let objectsToShare = [MultiLanguage.getLanguageUsingKey("REQUEST_VOLUNTEER_SHARE_MESSAGE"),textShareArray[0],textShareArray[1],textShareArray[2],textShareArray[3],textShareArray[4],textShareLink,textToIOS,textToAndroid,textAddress, myWebsite] as [Any]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
             
             //New Excluded Activities Code
@@ -177,9 +177,9 @@ extension IndividualConfirmDonate : IndividualRequestDetailsProtocol {
         self.lblPatientName.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["PatientName"])
         self.lblContactPerson.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["ContactPerson"])
         
-        let addressLat = (String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["Latitude"]))
-        let addressLong = (String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["Longitude"]))
-        self.textAddress = "https://maps.google.com/?q=@\(addressLat),\(addressLong)"
+        let addressLat = (String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["Latitude"]))
+        let addressLong = (String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["Longitude"]))
+        self.textAddress = "Location:- https://maps.google.com/?q=@\(addressLat),\(addressLong)"
         
         self.textShareArray.insert("\(MultiLanguage.getLanguageUsingKey("HOSPITAL_CONTACT_NAME_LBL")) : \(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["ContactPerson"]))", at: 3)
         
