@@ -98,6 +98,7 @@ extension HospitalListView:UITableViewDelegate,UITableViewDataSource
         let hopitalSearchDict = searchFilterArray[indexPath.row]
         cell?.lblHospitalName.text = hopitalSearchDict["Name"].string
         cell?.lblCityName.text = hopitalSearchDict["AddressLine"].string
+        cell?.lblCampDate.isHidden = true
         return cell!
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat

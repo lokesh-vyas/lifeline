@@ -13,8 +13,6 @@ import GooglePlacePicker
 import CoreLocation
 import SwiftyJSON
 
-
-
 class DonateView: UIViewController {
     
     var camera : GMSCameraPosition?
@@ -77,8 +75,7 @@ class DonateView: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        
-        btnListofMarkers.isHidden = true
+        //btnListofMarkers.isHidden = true
         self.navigationController?.completelyTransparentBarForDonate()
         
         //For Result VC
@@ -782,6 +779,20 @@ extension DonateView : DonateViewProtocol {
                     tempDict["Name"] = jDict[i]["Name"]
                     tempDict["WorkingHours"] = jDict[i]["WorkingHours"]
                     tempDict["TypeOfOrg"] = jDict[i]["TypeOfOrg"]
+                    
+                    if String(describing: jDict[i]["FromDate"]).characters.count > 10 {
+                        let trimDate = String(describing: jDict[i]["FromDate"]).substring(to: 10)
+                        tempDict["FromDate"] = trimDate
+                    }else {
+                        tempDict["FromDate"] = String(describing: jDict[i]["FromDate"])
+                    }
+                    
+                    if String(describing: jDict[i]["ToDate"]).characters.count > 10 {
+                        let trimDate = String(describing: jDict[i]["ToDate"]).substring(to: 10)
+                        tempDict["ToDate"] = trimDate
+                    } else {
+                        tempDict["ToDate"] = String(describing: jDict[i]["ToDate"])
+                    }
                     tempDict["Individuals"] = jDict[i]["IndividualDetails"]
                     appendsListMarkers.append(tempDict)
                     

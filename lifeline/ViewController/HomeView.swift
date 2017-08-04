@@ -65,6 +65,11 @@ class HomeView: UIViewController {
         self.navigationController?.pushViewController(donateView!, animated: true)
 
     }
+    
+    
+    @IBAction func BtnNotificationTapped(_ sender: Any) {
+    }
+    
 //MARK:- RequestAction
     @IBAction func RequestAction(_ sender: Any)
     {
