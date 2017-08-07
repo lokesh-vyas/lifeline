@@ -520,6 +520,78 @@
 			name = MyDonorCell;
 			sourceTree = "<group>";
 		};
+		665719A81F38448800717A53 /* Donate Group */ = {
+			isa = PBXGroup;
+			children = (
+				66C4E6891E373FEF00526C1D /* Donate */,
+			);
+			name = "Donate Group";
+			sourceTree = "<group>";
+		};
+		665719A91F38449F00717A53 /* Request Group */ = {
+			isa = PBXGroup;
+			children = (
+				66316B7E1E53130000114055 /* Hospital List View */,
+				66C4E68C1E37401100526C1D /* RequestView */,
+			);
+			name = "Request Group";
+			sourceTree = "<group>";
+		};
+		665719AA1F3844BB00717A53 /* Profile Group */ = {
+			isa = PBXGroup;
+			children = (
+				66C4E6861E372AB900526C1D /* ChangePassword */,
+				66C4E67A1E37251300526C1D /* ProfileView */,
+				66EA8E211E2760A000646797 /* Sign Up View */,
+				66EA8DE41E24BD3B00646797 /* LoginView  */,
+			);
+			name = "Profile Group";
+			sourceTree = "<group>";
+		};
+		665719AB1F3844DC00717A53 /* My Request Group */ = {
+			isa = PBXGroup;
+			children = (
+				66C4E68F1E37403100526C1D /* MyRequestView */,
+			);
+			name = "My Request Group";
+			sourceTree = "<group>";
+		};
+		665719AC1F3844FB00717A53 /* Map & Home & Noti */ = {
+			isa = PBXGroup;
+			children = (
+				66DE4EBF1E71680E00145346 /* NotificationView */,
+				66C4E67B1E37252600526C1D /* HomeView */,
+				ED1118A21E63ED94003EA467 /*  Map Address */,
+			);
+			name = "Map & Home & Noti";
+			sourceTree = "<group>";
+		};
+		665719AD1F38454000717A53 /* Reval Group */ = {
+			isa = PBXGroup;
+			children = (
+				665719AE1F38455900717A53 /* Language View */,
+				66C4E6831E372A9300526C1D /* FAQ */,
+				66C4E6801E37270B00526C1D /* RevalListView */,
+			);
+			name = "Reval Group";
+			sourceTree = "<group>";
+		};
+		665719AE1F38455900717A53 /* Language View */ = {
+			isa = PBXGroup;
+			children = (
+				2538978F1EE5470400B8AFB3 /* LanguageVC.swift */,
+			);
+			name = "Language View";
+			sourceTree = "<group>";
+		};
+		665719AF1F3845D900717A53 /* Marker List View */ = {
+			isa = PBXGroup;
+			children = (
+				18569D281E8D045C007B78DC /* MarkersListView.swift */,
+			);
+			name = "Marker List View";
+			sourceTree = "<group>";
+		};
 		66C4E67A1E37251300526C1D /* ProfileView */ = {
 			isa = PBXGroup;
 			children = (
@@ -572,7 +644,7 @@
 				18F3AD721E8A88CF0086274E /* Multiple Requests */,
 				18F3AD6F1E8A88220086274E /* ConfirmDonate */,
 				18F3AD6A1E8A86900086274E /* FinalDonate */,
-				18569D281E8D045C007B78DC /* MarkersListView.swift */,
+				665719AF1F3845D900717A53 /* Marker List View */,
 			);
 			name = Donate;
 			sourceTree = "<group>";
@@ -689,20 +761,12 @@
 		66EA8D641E1F6F8900646797 /* All ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				66DE4EBF1E71680E00145346 /* NotificationView */,
-				66C4E67B1E37252600526C1D /* HomeView */,
-				66C4E6891E373FEF00526C1D /* Donate */,
-				66C4E68C1E37401100526C1D /* RequestView */,
-				ED1118A21E63ED94003EA467 /*  Map Address */,
-				66C4E68F1E37403100526C1D /* MyRequestView */,
-				66C4E6861E372AB900526C1D /* ChangePassword */,
-				66C4E6831E372A9300526C1D /* FAQ */,
-				66C4E67A1E37251300526C1D /* ProfileView */,
-				66EA8E211E2760A000646797 /* Sign Up View */,
-				66C4E6801E37270B00526C1D /* RevalListView */,
-				66EA8DE41E24BD3B00646797 /* LoginView  */,
-				66316B7E1E53130000114055 /* Hospital List View */,
-				2538978F1EE5470400B8AFB3 /* LanguageVC.swift */,
+				665719AC1F3844FB00717A53 /* Map & Home & Noti */,
+				665719AA1F3844BB00717A53 /* Profile Group */,
+				665719A81F38448800717A53 /* Donate Group */,
+				665719AB1F3844DC00717A53 /* My Request Group */,
+				665719A91F38449F00717A53 /* Request Group */,
+				665719AD1F38454000717A53 /* Reval Group */,
 				25B8EFFD1F2F517500D08C6B /* MyNotificationView.swift */,
 			);
 			name = "All ViewController";

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -45,7 +45,6 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.1035346239" green="0.46723966230000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="u6A-ya-n9O" secondAttribute="trailing" constant="6" id="LI8-yk-YsU"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="26" id="N0D-yV-5Ts"/>
@@ -76,7 +75,6 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.1035346239" green="0.46723966230000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="dkX-Nz-F0d" secondAttribute="bottom" constant="3" id="5JY-yv-2nf"/>
                                     <constraint firstItem="dkX-Nz-F0d" firstAttribute="leading" secondItem="7Ui-6T-Uh6" secondAttribute="trailing" constant="7" id="7i6-qQ-gEV"/>
@@ -107,7 +105,6 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.1035346239" green="0.46723966230000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="xf5-BM-bIq" firstAttribute="top" secondItem="CcG-bf-SYa" secondAttribute="top" constant="3" id="0GA-KW-itB"/>
                                     <constraint firstItem="xf5-BM-bIq" firstAttribute="leading" secondItem="CcG-bf-SYa" secondAttribute="leading" constant="5" id="GGu-sI-T7Q"/>
@@ -126,7 +123,6 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Cuy-Sb-9xA" firstAttribute="leading" secondItem="LCH-3J-wgT" secondAttribute="leading" id="0pZ-mv-rWG"/>
                             <constraint firstItem="YNg-kh-LB6" firstAttribute="top" secondItem="kEr-zu-vnU" secondAttribute="bottom" constant="4" id="2cI-Hz-814"/>
@@ -160,6 +156,7 @@
                     <constraint firstItem="LCH-3J-wgT" firstAttribute="top" secondItem="Yfq-F8-RLN" secondAttribute="top" constant="5" id="x5i-VK-83t"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="lblTimeForHospital" destination="u6A-ya-n9O" id="AKi-wk-CJF"/>
                 <outlet property="lblTimingForCamp" destination="dkX-Nz-F0d" id="9m3-4n-pkj"/>

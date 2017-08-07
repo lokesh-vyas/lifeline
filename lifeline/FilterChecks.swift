@@ -149,10 +149,10 @@ class FilterChecks: UIViewController {
             print("+++ appended Marker Data is \(SingleTon.SharedInstance.appendedMarkers)+++")
             dismiss(animated: true, completion: nil)
         } else {
-        
             let temp = self.storyboard?.instantiateViewController(withIdentifier: "DonateView") as! DonateView
             let naC = UINavigationController(rootViewController: temp)
             present(naC, animated: true, completion: nil)
+
         }
         
         

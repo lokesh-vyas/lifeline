@@ -66,7 +66,9 @@ class DonateView: UIViewController {
         {
             self.openSettingsForDisableMap()
         }
-        NotificationCenter.default.addObserver(self, selector: #selector(DonateView.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
+        
+        //NotificationCenter.default.addObserver(self, selector: #selector(DonateView.bloodDonatingMarkers(responseData: "")), name: NSNotification.Name(rawValue: "DataFilter"), object: nil)
         //        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
     }
     
