@@ -21,6 +21,7 @@ class IndividualConfirmDonate: UIViewController {
     @IBOutlet weak var lblAddress: UILabel!
     @IBOutlet weak var lblPersonalAppeal: UILabel!
     var textShareArray = [String]()
+    var textAddress = String()
     
     var iID = String()
     override func viewDidLoad() {
@@ -28,7 +29,7 @@ class IndividualConfirmDonate: UIViewController {
          NotificationCenter.default.addObserver(self, selector: #selector(IndividualConfirmDonate.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
         self.navigationController?.completelyTransparentBar()
         IndividualConfirmDonateInteractor.sharedInstance.delegate = self
-        HudBar.sharedInstance.showHudWithMessage(message: "Loading...", view: self.view)
+        HudBar.sharedInstance.showHudWithMessage(message: MultiLanguage.getLanguageUsingKey("TOAST_LOADING_MESSAGE"), view: self.view)
 
         //MARK:- Either coming from APN or Back
         if MarkerData.SharedInstance.isIndividualAPN == false {
@@ -47,24 +48,7 @@ class IndividualConfirmDonate: UIViewController {
     
     func lblCallTapped(_ sender: UITapGestureRecognizer)
     {
-        let button =  sender.view?.tag
-        let phoneNumber: String
-        let formatedNumber: String
-        if(MarkerData.SharedInstance.IndividualsArray[button!]["CContactNumber"] != nil)
-        {
-            phoneNumber = String(describing: MarkerData.SharedInstance.IndividualsArray[button!]["CContactNumber"])
-            print("Requester phone number is : \(phoneNumber)")
-            formatedNumber = phoneNumber.components(separatedBy: NSCharacterSet.decimalDigits.inverted).joined(separator: "")
-            print("calling \(formatedNumber)")
-        }
-        else
-        {
-            phoneNumber = (MarkerData.SharedInstance.IndividualsArray[button!]["CContactNumber"] as! String)
-            print("Requester phone number is : \(phoneNumber)")
-            formatedNumber = phoneNumber.components(separatedBy: NSCharacterSet.decimalDigits.inverted).joined(separator: "")
-            print("calling \(formatedNumber)")
-        }
-        if let url = URL(string: "tel://\(formatedNumber)") {
+                if let url = URL(string: "tel://\(self.lblContactNumber.text!)") {
             if #available(iOS 10, *) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             } else {
@@ -106,7 +90,7 @@ class IndividualConfirmDonate: UIViewController {
         let textToAndroid = "Android:- https://goo.gl/PUorhE"
         
         if let myWebsite = NSURL(string: "https://goo.gl/XJl5a7") {
-            let objectsToShare = [MultiLanguage.getLanguageUsingKey("REQUEST_VOLUNTEER_SHARE_MESSAGE"),textShareArray[0],textShareArray[1],textShareArray[2],textShareArray[3],textShareArray[4],textShareLink,textToIOS,textToAndroid, myWebsite] as [Any]
+            let objectsToShare = [MultiLanguage.getLanguageUsingKey("REQUEST_VOLUNTEER_SHARE_MESSAGE"),textShareArray[0],textShareArray[1],textShareArray[2],textShareArray[3],textShareArray[4],textShareLink,textToIOS,textToAndroid,textAddress, myWebsite] as [Any]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
             
             //New Excluded Activities Code
@@ -121,9 +105,9 @@ class IndividualConfirmDonate: UIViewController {
         if data != nil {
             let profileData = NSKeyedUnarchiver.unarchiveObject(with: data as! Data) as! ProfileData
             if Int(profileData.Age)! < 18 {
-                let alert = UIAlertController(title: "Warning", message: "You are not eligible for donating blood as your age is below 18. If you still want to continue, please select OK to continue.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {action in self.toiConfirmDonateSubmit()}))
-                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: nil))
+                let alert = UIAlertController(title: MultiLanguage.getLanguageUsingKey("TOAST_WARNIG"), message: MultiLanguage.getLanguageUsingKey("AGE_WARNING_MESSAGE"), preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: MultiLanguage.getLanguageUsingKey("BTN_OK"), style: UIAlertActionStyle.default, handler: {action in self.toiConfirmDonateSubmit()}))
+                alert.addAction(UIAlertAction(title: MultiLanguage.getLanguageUsingKey("BTN_CANCEL"), style: UIAlertActionStyle.destructive, handler: nil))
                 present(alert, animated: true, completion: nil)
             } else {
                 self.toiConfirmDonateSubmit()
@@ -165,8 +149,21 @@ extension IndividualConfirmDonate : IndividualRequestDetailsProtocol {
         
         MarkerData.SharedInstance.isAPNCamp = false
         MarkerData.SharedInstance.APNResponse = jsonArray["GetRequestDetailsResponse"]["ResponseDetails"].dictionaryObject!
+        var lblTitle = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["WhatNeeded"])
+        if lblTitle == "Blood"
+        {
+            lblTitle = MultiLanguage.getLanguageUsingKey("BLOOD_STRING")
+        }
+        else if lblTitle == "Plasma"
+        {
+            lblTitle = MultiLanguage.getLanguageUsingKey("PLASMA_STRING")
+        }
+        else
+        {
+            lblTitle = MultiLanguage.getLanguageUsingKey("PLATELETS_STRING")
+        }
         
-        self.lblWhoRequested.text = "\(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["WhatNeeded"])) Requirement for \(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["BloodGroup"]))"
+        self.lblWhoRequested.text = "\(lblTitle) \(MultiLanguage.getLanguageUsingKey("REQUIREMENT_STRING")) \(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["BloodGroup"]))"
         
         self.textShareArray.insert("\(MultiLanguage.getLanguageUsingKey("BLOOD_GROUP")) : \(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["BloodGroup"]))", at: 0)
          self.textShareArray.insert("\(MultiLanguage.getLanguageUsingKey("BLOOD_REQUIREMENT")) : \(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["WhatNeeded"]))", at: 1)
@@ -179,6 +176,10 @@ extension IndividualConfirmDonate : IndividualRequestDetailsProtocol {
         self.lblDoctorName.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["DoctorName"])
         self.lblPatientName.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["PatientName"])
         self.lblContactPerson.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["ContactPerson"])
+        
+        let addressLat = (String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["Latitude"]))
+        let addressLong = (String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["Longitude"]))
+        self.textAddress = "Location:- https://maps.google.com/?q=@\(addressLat),\(addressLong)"
         
         self.textShareArray.insert("\(MultiLanguage.getLanguageUsingKey("HOSPITAL_CONTACT_NAME_LBL")) : \(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["ContactPerson"]))", at: 3)
         

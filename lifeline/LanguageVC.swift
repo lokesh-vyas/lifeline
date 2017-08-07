@@ -106,7 +106,7 @@ extension LanguageVC : UITableViewDataSource {
         cell.subTitle?.text = langaugeSubtitle[indexPath.row]
         cell.accessoryType = UITableViewCellAccessoryType.none
         if indexPath.row == indexOfSelectedLangauge {
-            cell.accessoryType = UITableViewCellAccessoryType.checkmark
+        cell.accessoryType = UITableViewCellAccessoryType.checkmark
         }
         return cell
     }
@@ -118,21 +118,18 @@ extension LanguageVC: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         let cell = self.tableObj.cellForRow(at: indexPath) as! LanguageTableCell
-        cell.accessoryType = UITableViewCellAccessoryType.checkmark
-        
-        let alert = UIAlertController(title: MultiLanguage.getLanguageUsingKey("TOAST_ALERT_MESSAGE"), message: MultiLanguage.getLanguageUsingKey("LANGUAGE_CHANGE_ALERT"), preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: MultiLanguage.getLanguageUsingKey("BTN_OK"), style: UIAlertActionStyle.default, handler:
+        let alert = UIAlertController(title: MultiLanguage.getLanguageUsingKey("TOAST_SELECT_LANGUAGE_MESSAGE"), message: MultiLanguage.getLanguageUsingKey("LANGUAGE_CHANGE_ALERT"), preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: MultiLanguage.getLanguageUsingKey("BTN_YES"), style: UIAlertActionStyle.default, handler:
             { _ in    HudBar.sharedInstance.showHudWithMessage(message:MultiLanguage.getLanguageUsingKey("TOAST_LOADING_MESSAGE"), view: self.view)
-
                 self.langaugeSelectFromTable(indexPath: indexPath.row)
+                self.tableReloadData()
         }))
-        alert.addAction(UIAlertAction(title: MultiLanguage.getLanguageUsingKey("BTN_CANCEL"), style: UIAlertActionStyle.default, handler: {
+        alert.addAction(UIAlertAction(title: MultiLanguage.getLanguageUsingKey("BTN_NO"), style: UIAlertActionStyle.default, handler: {
             _ in
             self.tableReloadData()
         }))
         self.present(alert, animated: true, completion: nil)
     }
-    
     public func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath)
     {
         let cell = self.tableObj.cellForRow(at: indexPath) as! LanguageTableCell

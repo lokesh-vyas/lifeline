@@ -24,7 +24,6 @@ class HomeView: UIViewController {
         super.viewDidLoad()
         self.navigationController?.completelyTransparentBar()
        //MARK - Reval View Button
-        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         let deviceRegister = UserDefaults.standard.bool(forKey: "DeviceRegister")
         if deviceRegister == false
         {
@@ -44,15 +43,13 @@ class HomeView: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(HomeView.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
     }
     
-    
-    
     //MARK:- Device Registration
     func DeviceRegistrationForServer(DeviceToken:String)
     {
         let LoginID:String = UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!
         let customer : Dictionary = ["DeviceDetailsRequest":["DeviceDetails":["LoginID":LoginID,"DeviceToken":DeviceToken,"OSType":"IOS"]]]
         
-        HudBar.sharedInstance.showHudWithMessage(message: "Please wait..", view: self.view)
+        HudBar.sharedInstance.showHudWithMessage(message: MultiLanguage.getLanguageUsingKey("Please wait.."), view: self.view)
         ProfileViewInteractor.SharedInstance.delegateProfile = self
         ProfileViewInteractor.SharedInstance.MyDeviceRegistration(params: customer)
 
@@ -68,6 +65,11 @@ class HomeView: UIViewController {
         self.navigationController?.pushViewController(donateView!, animated: true)
 
     }
+    
+    
+    @IBAction func BtnNotificationTapped(_ sender: Any) {
+    }
+    
 //MARK:- RequestAction
     @IBAction func RequestAction(_ sender: Any)
     {
@@ -123,7 +125,7 @@ extension HomeView:ProtocolRegisterProfile
         }else{
             UserDefaults.standard.set(false, forKey: "DeviceRegister")
             HudBar.sharedInstance.hideHudFormView(view: self.view)
-            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: "Failed to Update", view: self.view)
+            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: MultiLanguage.getLanguageUsingKey("ERROR_PROFILE_UPDATE"), view: self.view)
         }
     }
     func failedRegisterProfile(Response:String)

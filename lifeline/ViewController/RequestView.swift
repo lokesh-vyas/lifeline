@@ -33,6 +33,7 @@ class RequestView: UIViewController,UITextViewDelegate
     @IBOutlet weak var imgSocialShare: UIImageView!
     @IBOutlet var scrollViewRequest: UIScrollView!
     
+    
     //MARK:- String
     var datetostring = String()
     var isDoctorName = Bool()
@@ -67,6 +68,28 @@ class RequestView: UIViewController,UITextViewDelegate
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         self.navigationController?.completelyTransparentBar()
         self.txtViewPersonalAppeal.delegate = self
+        self.txtViewPersonalAppeal.textColor = UIColor.lightGray
+        self.txtViewPersonalAppeal.text = MultiLanguage.getLanguageUsingKey("PERSONAL_APPEAL")
+    }
+    
+    //MARK:- TextView Placeholder Appear/Disappear
+    func textViewDidBeginEditing(_ textView: UITextView)
+    {
+        if textView.textColor == UIColor.lightGray
+        {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+        
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView)
+    {
+        if textView.text.isEmpty
+        {
+            textView.text = MultiLanguage.getLanguageUsingKey("PERSONAL_APPEAL")
+            textView.textColor = UIColor.lightGray
+        }
     }
     
     //MARK:- Keyboard Appear/Diappear
@@ -239,7 +262,23 @@ class RequestView: UIViewController,UITextViewDelegate
             HudBar.sharedInstance.showHudWithMessage(message: MultiLanguage.getLanguageUsingKey("TOAST_SUBMIT_MESSAGE"), view: self.view)
             RequestInterator.SharedInstance.delegateRequestBlood = self
             let CentreID = RequestViewModel.SharedInstance.CentreID
-           
+            
+            if txtViewPersonalAppeal.text == MultiLanguage.getLanguageUsingKey("PERSONAL_APPEAL")
+            {
+                txtViewPersonalAppeal.text = "N/A"
+            }
+            if btnWhatYouNeed.currentTitle == MultiLanguage.getLanguageUsingKey("BLOOD_STRING")
+            {
+                RequestViewModel.SharedInstance.WhatYouNeed = "Blood"
+            }
+            else if btnWhatYouNeed.currentTitle == MultiLanguage.getLanguageUsingKey("PLASMA_STRING")
+            {
+                RequestViewModel.SharedInstance.WhatYouNeed = "Plasma"
+            }
+            else
+            {
+                RequestViewModel.SharedInstance.WhatYouNeed = "Platelets"
+            }
             RequestInterator.SharedInstance.requesBlood(LoginId: LoginID,bloodgroup: RequestViewModel.SharedInstance.BloodGroup!,whatyouneed: RequestViewModel.SharedInstance.WhatYouNeed!,whenyouneed: Util.SharedInstance.dateChangeForServerForProfile(dateString: RequestViewModel.SharedInstance.WhenYouNeed!),Units: RequestViewModel.SharedInstance.BloodUnit!,patientname: txtFieldPatientName.text!,contactperson: txtFieldContactPerson.text!,contactnumber: txtFieldContactNumber.text!,doctorname:txtFieldDoctorName.text!,doctorcontactnumber:"9999999999",doctoremailID: "",centerID:CentreID,centername: self.txtFieldHospitalBloodBankName.text!,centercontactnumber:txtFieldHospitalBloodBankContactNumber.text!,centeraddress: txtFieldHospitalBloodBankAddress.text!,City: txtFieldHospitalBloodBankAddressCity.text!,State: "",
                                                         Landmark: txtFieldHospitalBloodBankAddressLandMark.text!,Latitude: RequestViewModel.SharedInstance.Latitude!,Longitude: RequestViewModel.SharedInstance.Longitude!,Pincode: txtFieldHospitalBloodBankAddressPINCode.text!,Country: "",personalappeal: txtViewPersonalAppeal.text!,Sharedinsocialmedia:"0")
         }
@@ -342,11 +381,18 @@ extension RequestView:ProtocolRequestView
 extension RequestView:UITextFieldDelegate
 {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        //txtFieldHospitalBloodBankAddress.resignFirstResponder()
         textField.resignFirstResponder()
         return true
     }
     func textFieldDidBeginEditing(_ textField: UITextField)
     {
+      
+        if textField == txtFieldHospitalBloodBankAddress {
+//            self.view.endEditing(true)
+            print("Textfield_Hospital_Blood_Bank_Address")
+        }
+        
         if self.txtFieldHospitalBloodBankName == textField
         {
             let hospitalListView = self.storyboard!.instantiateViewController(withIdentifier: "HospitalListView") as! HospitalListView
@@ -354,7 +400,18 @@ extension RequestView:UITextFieldDelegate
             let navController = UINavigationController(rootViewController: hospitalListView)
             self.navigationController?.present(navController, animated: true, completion: nil)
         }
+        if self.txtFieldHospitalBloodBankAddress == textField || self.txtFieldHospitalBloodBankAddressCity == textField || self.txtFieldHospitalBloodBankAddressPINCode == textField || self.txtFieldHospitalBloodBankAddressLandMark == textField
+        {
+            if RequestViewModel.SharedInstance.Latitude == nil {
+                self.view.endEditing(true)
+                self.view.makeToast(MultiLanguage.getLanguageUsingKey("SELECT_LOCATION_STRING"), duration: 2.0, position: .bottom)
+            }
+            else{
+//                textField.becomeFirstResponder()
+            }
+        }
     }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         if textField.text?.characters.count == 0 {
@@ -448,6 +505,12 @@ extension RequestView:UITextFieldDelegate
         return true;
     }
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        
+        
+        if textField == txtFieldHospitalBloodBankAddress {
+            self.view.endEditing(true)
+               self.view.makeToast(MultiLanguage.getLanguageUsingKey("SELECT_LOCATION_STRING"), duration: 2.0, position: .bottom)
+        }
         return true;
     }
 }

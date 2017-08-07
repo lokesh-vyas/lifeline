@@ -1,7 +1,7 @@
 
 /* Class = "UIButton"; normalTitle = "When you need"; ObjectID = "0Bx-83-oKh"; */
 
-"0Bx-83-oKh.normalTitle" = "आपको कब चाहिए";
+"0Bx-83-oKh.normalTitle" = "आपको कब आवश्यकता है*";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "0Nt-hg-fuj"; */
 "0Nt-hg-fuj.text" = "Label";
@@ -10,7 +10,7 @@
 "1vm-L7-Vjy.title" = "पता";
 
 /* Class = "UINavigationItem"; title = "Donate "; ObjectID = "lM7-GP-6kO"; */
-"lM7-GP-6kO.title" = "दान करे";
+"lM7-GP-6kO.title" = "दान करें";
 
 /* Class = "UILabel"; text = "Working Hours :"; ObjectID = "1wB-2C-LKb"; */
 "1wB-2C-LKb.text" = "कार्यकाल :";
@@ -46,19 +46,22 @@
 "6VC-6O-oIt.text" = "मरीज का नाम";
 
 /* Class = "UIButton"; normalTitle = "Donate"; ObjectID = "6cw-Xz-M53"; */
-"6cw-Xz-M53.normalTitle" = "दान करे";
+"6cw-Xz-M53.normalTitle" = "दान करें";
 
 /* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "7gk-dR-1wU"; */
-"7gk-dR-1wU.normalTitle" = "रद्द करे";
+"7gk-dR-1wU.normalTitle" = "रद्द करें";
 
 /* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "7uz-ZI-071"; */
-"7uz-ZI-071.normalTitle" = "रद्द करे";
+"7uz-ZI-071.normalTitle" = "रद्द करें";
 
 /* Class = "UILabel"; text = "To Date"; ObjectID = "8FA-h0-4jo"; */
 "8FA-h0-4jo.text" = "तारीख तक";
 
 /* Class = "UINavigationItem"; title = "Change Password"; ObjectID = "8Pz-1O-1kv"; */
 "8Pz-1O-1kv.title" = "पासवर्ड बदलें";
+
+/* Class = "UINavigationItem"; title = "Select Language"; ObjectID = "pGZ-xa-ljc"; */
+"pGZ-xa-ljc.title" = "भाषा चुनिए";
 
 /* Class = "UILabel"; text = "userName"; ObjectID = "92y-gV-Xnm"; */
 "92y-gV-Xnm.text" = "यूजर का नाम";
@@ -85,7 +88,7 @@
 "BTI-r6-nqP.text" = "व्यक्तिगत अपील";
 
 /* Class = "UILabel"; text = "Comment"; ObjectID = "Bk6-th-Ic9"; */
-"Bk6-th-Ic9.text" = "टिपण्णी";
+"Bk6-th-Ic9.text" = "टिप्पणी";
 
 /* Class = "UILabel"; text = "Timing"; ObjectID = "BqE-jc-byJ"; */
 "BqE-jc-byJ.text" = "समय";
@@ -97,7 +100,7 @@
 "Cll-De-sAw.placeholder" = "ईमेल*";
 
 /* Class = "UINavigationItem"; title = "My Request"; ObjectID = "D36-gX-8Vb"; */
-"D36-gX-8Vb.title" = "मेरे अनुरोध";
+"D36-gX-8Vb.title" = "मेरे निवेदन";
 
 /* Class = "UIButton"; normalTitle = "Apply"; ObjectID = "D4e-lB-xrM"; */
 "D4e-lB-xrM.normalTitle" = "लागू करें";
@@ -124,25 +127,25 @@
 "EoX-cx-AJD.title" = "निवेदन";
 
 /* Class = "UIButton"; normalTitle = "Tap to view"; ObjectID = "EqE-Gg-hmB"; */
-"EqE-Gg-hmB.normalTitle" = "देखने के लिए टैप करें";
+"EqE-Gg-hmB.normalTitle" = "देखने के लिए स्पर्श करें";
 
 /* Class = "UILabel"; text = "Share"; ObjectID = "G7a-Fz-IGm"; */
-"G7a-Fz-IGm.text" = "प्रसार करे";
+"G7a-Fz-IGm.text" = "प्रसार करें";
 
 /* Class = "UILabel"; text = "Language"; ObjectID = "u3p-5p-Lik"; */
-"u3p-5p-Lik.text" = "भाषा";
+"u3p-5p-Lik.text" = "भाषा चुनें";
 
 /* Class = "UIButton"; normalTitle = "SIGN UP"; ObjectID = "Gm4-XE-bkz"; */
 "Gm4-XE-bkz.normalTitle" = "साइन अप करें";
 
 /* Class = "UILabel"; text = "Close Request"; ObjectID = "Gmm-PG-Hax"; */
-"Gmm-PG-Hax.text" = "अनुरोध बंद करें";
+"Gmm-PG-Hax.text" = "निवेदन बंद करें";
 
 /* Class = "UIButton"; normalTitle = "SIGN IN"; ObjectID = "GnG-F8-xUN"; */
 "GnG-F8-xUN.normalTitle" = "साइन इन करें";
 
 /* Class = "UIButton"; normalTitle = "Donate"; ObjectID = "H4i-eI-eki"; */
-"H4i-eI-eki.normalTitle" = "दान करे";
+"H4i-eI-eki.normalTitle" = "दान करें";
 /* Class = "UIButton"; normalTitle = "SIGN UP"; ObjectID = "HF2-FN-LfL"; */
 "HF2-FN-LfL.normalTitle" = "साइन अप करें";
 
@@ -150,7 +153,7 @@
 "Hgh-HU-kW1.placeholder" = "नया पासवर्ड*";
 
 /* Class = "UILabel"; text = "Contact Number"; ObjectID = "Ik9-ja-k21"; */
-"Ik9-ja-k21.text" = "संपर्क संख्या";
+"Ik9-ja-k21.text" = "फ़ोन नंबर";
 
 /* Class = "UILabel"; text = " "; ObjectID = "IsI-4Y-E47"; */
 "IsI-4Y-E47.text" = " ";
@@ -171,13 +174,13 @@
 "JOk-4K-2zk.placeholder" = "शहर";
 
 /* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "JRh-y7-vX9"; */
-"JRh-y7-vX9.normalTitle" = "जमा करें";
+"JRh-y7-vX9.normalTitle" = "सबमिट करें";
 
 /* Class = "UILabel"; text = "Hospitals"; ObjectID = "JUb-lS-sY1"; */
 "JUb-lS-sY1.text" = "अस्पताल";
 
 /* Class = "UITextField"; placeholder = "Hospital / Bloodbank Name*"; ObjectID = "KSd-oU-hqN"; */
-"KSd-oU-hqN.placeholder" = "अस्पताल / रक्तबैंक का नाम*";
+"KSd-oU-hqN.placeholder" = "अस्पताल / ब्लड बैंक का नाम*";
 
 /* Class = "UITextField"; placeholder = "Age*"; ObjectID = "KjB-od-Qw9"; */
 "KjB-od-Qw9.placeholder" = "उम्र*";
@@ -186,10 +189,10 @@
 "Me7-Uk-S17.normalTitle" = "Button";
 
 /* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "Mkw-2o-jrh"; */
-"Mkw-2o-jrh.normalTitle" = "जमा करें";
+"Mkw-2o-jrh.normalTitle" = "सबमिट करें";
 
 /* Class = "UITextField"; placeholder = "Contact Person*"; ObjectID = "Nch-d1-2WF"; */
-"Nch-d1-2WF.placeholder" = "संपर्क व्यक्ति*";
+"Nch-d1-2WF.placeholder" = "संपर्कर्त्ता*";
 
 /* Class = "UIButton"; normalTitle = "Donate"; ObjectID = "Ni4-4p-kcZ"; */
 "Ni4-4p-kcZ.normalTitle" = "दान करें";
@@ -201,13 +204,13 @@
 "OD0-K7-jld.text" = " ";
 
 /* Class = "UILabel"; text = "Hospital/Blood Bank"; ObjectID = "OEe-sP-tQY"; */
-"OEe-sP-tQY.text" = "अस्पताल / रक्त बैंक";
+"OEe-sP-tQY.text" = "अस्पताल / ब्लड बैंक";
 
 /* Class = "UIButton"; normalTitle = "Confirm Donate"; ObjectID = "OQa-en-FfI"; */
 "OQa-en-FfI.normalTitle" = "दान की पुष्टि करें";
 
 /* Class = "UILabel"; text = "Campaign Description"; ObjectID = "OR7-mt-Ovx"; */
-"OR7-mt-Ovx.text" = "अभियान का विवरण";
+"OR7-mt-Ovx.text" = "शिविर का विवरण";
 
 /* Class = "UIButton"; normalTitle = "SIGN UP"; ObjectID = "Pbd-zn-Mcw"; */
 "Pbd-zn-Mcw.normalTitle" = "साइन अप करें";
@@ -222,10 +225,10 @@
 "QIu-Tl-LdC.placeholder" = "शहर*";
 
 /* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "QQi-U1-6Ua"; */
-"QQi-U1-6Ua.normalTitle" = "रद्द करे";
+"QQi-U1-6Ua.normalTitle" = "रद्द करें";
 
 /* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "Qh4-My-GGa"; */
-"Qh4-My-GGa.normalTitle" = "रद्द करे";
+"Qh4-My-GGa.normalTitle" = "रद्द करें";
 
 /* Class = "UILabel"; text = "DONATE"; ObjectID = "Qk8-jp-aa4"; */
 "Qk8-jp-aa4.text" = "दान करें";
@@ -246,7 +249,7 @@
 "TDP-kr-M3g.text" = "मेरी प्रोफाइल";
 
 /* Class = "UILabel"; text = "Request Information"; ObjectID = "TIM-UO-sld"; */
-"TIM-UO-sld.text" = "जानकारी के लिए आग्रह";
+"TIM-UO-sld.text" = "जानकारी के लिए निवेदन";
 
 /* Class = "UILabel"; text = " "; ObjectID = "TiA-e2-DmS"; */
 "TiA-e2-DmS.text" = " ";
@@ -258,13 +261,13 @@
 "Tym-tX-1v1.text" = "N/A";
 
 /* Class = "UIButton"; normalTitle = "My Requests"; ObjectID = "UFu-Km-CcU"; */
-"UFu-Km-CcU.normalTitle" = "मेरे अनुरोध";
+"UFu-Km-CcU.normalTitle" = "मेरे निवेदन";
 
 /* Class = "UIButton"; normalTitle = "What you need"; ObjectID = "UM5-pu-tKE"; */
-"UM5-pu-tKE.normalTitle" = "आपको क्या चाहिए";
+"UM5-pu-tKE.normalTitle" = "आपकी आवश्यकता*";
 
 /* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "Uj6-bI-PvC"; */
-"Uj6-bI-PvC.normalTitle" = "रद्द करे";
+"Uj6-bI-PvC.normalTitle" = "रद्द करें";
 
 /* Class = "UITextField"; placeholder = "Email"; ObjectID = "Upk-Lo-0c5"; */
 "Upk-Lo-0c5.placeholder" = "ईमेल";
@@ -276,7 +279,7 @@
 "VF5-aL-b92.text" = "तारीख से";
 
 /* Class = "UILabel"; text = "Hospital/Blood Bank"; ObjectID = "W8n-35-N6l"; */
-"W8n-35-N6l.text" = "अस्पताल / रक्त बैंक";
+"W8n-35-N6l.text" = "अस्पताल/ब्लड बैंक";
 
 /* Class = "UILabel"; text = "Hospital Address"; ObjectID = "W8x-Pd-mOF"; */
 "W8x-Pd-mOF.text" = "अस्पताल का पता";
@@ -291,16 +294,16 @@
 "XUm-28-Fwo.text" = "आपके स्थान पर कोई निवेदन प्राप्त नहीं हुआ";
 
 /* Class = "UILabel"; text = "Hospital/Blood Bank Info"; ObjectID = "Xaa-Dv-hpJ"; */
-"Xaa-Dv-hpJ.text" = "अस्पताल / रक्त बैंक जानकारी";
+"Xaa-Dv-hpJ.text" = "अस्पताल / ब्लड बैंक जानकारी";
 
 /* Class = "UITextField"; placeholder = "Landmark"; ObjectID = "Y6Z-28-wV2"; */
-"Y6Z-28-wV2.placeholder" = "लैंडमार्क";
+"Y6Z-28-wV2.placeholder" = "सीमा चिन्ह";
 
 /* Class = "UITextField"; placeholder = "Confirm Password*"; ObjectID = "Yaj-Vs-nPP"; */
 "Yaj-Vs-nPP.placeholder" = "पासवर्ड की पुष्टि कीजिये*";
 
 /* Class = "UILabel"; text = "contactNumber"; ObjectID = "ZAi-um-MfB"; */
-"ZAi-um-MfB.text" = "संपर्क संख्या";
+"ZAi-um-MfB.text" = "फ़ोन नंबर";
 
 /* Class = "UILabel"; text = "Address"; ObjectID = "ZST-Tc-Ni8"; */
 "ZST-Tc-Ni8.text" = "पता";
@@ -312,7 +315,7 @@
 "auf-Zv-hCk.title" = "दाता विवरण";
 
 /* Class = "UILabel"; text = "Hospital/Blood Bank Name"; ObjectID = "cAV-nA-hJs"; */
-"cAV-nA-hJs.text" = "अस्पताल / रक्त बैंक का नाम";
+"cAV-nA-hJs.text" = "अस्पताल / ब्लड बैंक का नाम";
 
 /* Class = "UILabel"; text = "Name"; ObjectID = "cbi-hR-bof"; */
 "cbi-hR-bof.text" = "नाम";
@@ -324,7 +327,7 @@
 "cq5-If-EwU.text" = "धन्यवाद पत्र";
 
 /* Class = "UITextField"; placeholder = "Contact Number(Blood Bank/Hospital)*"; ObjectID = "cwc-9E-9b3"; */
-"cwc-9E-9b3.placeholder" = "संपर्क नंबर (रक्त बैंक / अस्पताल)*";
+"cwc-9E-9b3.placeholder" = "फ़ोन नंबर (ब्लड बैंक / अस्पताल)*";
 
 /* Class = "UILabel"; text = " "; ObjectID = "dXV-5z-WbE"; */
 "dXV-5z-WbE.text" = " ";
@@ -333,19 +336,19 @@
 "die-8M-tBC.placeholder" = "नाम*";
 
 /* Class = "UINavigationItem"; title = "Request Details"; ObjectID = "ePk-OR-ple"; */
-"ePk-OR-ple.title" = "विवरण के लिए अनुरोध";
+"ePk-OR-ple.title" = "विवरण के लिए निवेदन";
 
 /* Class = "UIButton"; normalTitle = "Blood Group"; ObjectID = "f03-Z4-oCC"; */
 "f03-Z4-oCC.normalTitle" = "रक्त समूह";
 
 /* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "fLi-vY-ryN"; */
-"fLi-vY-ryN.normalTitle" = "रद्द करे";
+"fLi-vY-ryN.normalTitle" = "रद्द करें";
 
 /* Class = "UIButton"; normalTitle = "Done"; ObjectID = "gQR-am-OWB"; */
-"gQR-am-OWB.normalTitle" = "हो गया";
+"gQR-am-OWB.normalTitle" = "चयन करें";
 
 /* Class = "UILabel"; text = "Post Request on Social Media"; ObjectID = "gii-AP-mNZ"; */
-"gii-AP-mNZ.text" = "सामाजिक मीडिया पर अपना निवेदन पोस्ट करें ";
+"gii-AP-mNZ.text" = "सोशल मीडिया पर अपना निवेदन पोस्ट करें ";
 
 /* Class = "UILabel"; text = "Email ID"; ObjectID = "gop-6F-5D2"; */
 "gop-6F-5D2.text" = "ईमेल आईडी";
@@ -363,7 +366,7 @@
 "heb-vv-Zvc.scopeButtonTitles[1]" = "Title";
 
 /* Class = "UIButton"; normalTitle = "Done"; ObjectID = "hff-MS-SWd"; */
-"hff-MS-SWd.normalTitle" = "हो गया";
+"hff-MS-SWd.normalTitle" = "चयन करें";
 
 /* Class = "UILabel"; text = " "; ObjectID = "hgD-lh-SM4"; */
 "hgD-lh-SM4.text" = " ";
@@ -372,7 +375,7 @@
 "hjG-3h-KT4.normalTitle" = "पासवर्ड भूल गए?";
 
 /* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "hmq-e0-7Ay"; */
-"hmq-e0-7Ay.normalTitle" = "जमा करें";
+"hmq-e0-7Ay.normalTitle" = "सबमिट करें";
 
 /* Class = "UILabel"; text = "Doctor Name"; ObjectID = "iO2-Uh-7Rn"; */
 "iO2-Uh-7Rn.text" = "डॉक्टर का नाम";
@@ -384,10 +387,10 @@
 "idj-bd-OTX.placeholder" = "पासवर्ड";
 
 /* Class = "UILabel"; text = "Contact Person"; ObjectID = "jAv-YE-uO9"; */
-"jAv-YE-uO9.text" = "संपर्क व्यक्ति";
+"jAv-YE-uO9.text" = "संपर्कर्त्ता";
 
 /* Class = "UILabel"; text = "When Required"; ObjectID = "jBk-fl-514"; */
-"jBk-fl-514.text" = "कब ज़रूरत है";
+"jBk-fl-514.text" = "कब आवश्यकता है?";
 
 /* Class = "UILabel"; text = "There are multiple individual requests in this hospital"; ObjectID = "jEF-3d-76Y"; */
 "jEF-3d-76Y.text" = "इस अस्पताल में कई व्यक्तिगत निवेदन हैं";
@@ -396,10 +399,10 @@
 "jIe-BE-q2Q.text" = "Head";
 
 /* Class = "UILabel"; text = "To Date              :"; ObjectID = "jMu-Vq-gas"; */
-"jMu-Vq-gas.text" = "तारीख तक              :";
+"jMu-Vq-gas.text" = "तारीख तक:";
 
 /* Class = "UITextField"; placeholder = "Contact Number*"; ObjectID = "jV1-E5-yHu"; */
-"jV1-E5-yHu.placeholder" = "संपर्क संख्या*";
+"jV1-E5-yHu.placeholder" = "फ़ोन नंबर*";
 
 /* Class = "UILabel"; text = "toDate"; ObjectID = "jqt-3W-bJF"; */
 "jqt-3W-bJF.text" = "तारीख तक";
@@ -426,10 +429,10 @@
 "lgb-no-rP5.title" = "लॉग इन करें";
 
 /* Class = "UITextField"; placeholder = "Contact Number*"; ObjectID = "mXs-5D-obm"; */
-"mXs-5D-obm.placeholder" = "संपर्क संख्या*";
+"mXs-5D-obm.placeholder" = "फ़ोन नंबर*";
 
 /* Class = "UINavigationItem"; title = "Hospital/Blood Bank Info "; ObjectID = "mtX-SS-qfM"; */
-"mtX-SS-qfM.title" = "अस्पताल / रक्त बैंक जानकारी ";
+"mtX-SS-qfM.title" = "अस्पताल / ब्लड बैंक जानकारी ";
 
 /* Class = "UILabel"; text = "Confirm Donate"; ObjectID = "nt4-Vr-tDg"; */
 "nt4-Vr-tDg.text" = "दान की पुष्टि करें";
@@ -450,7 +453,7 @@
 "qK6-Zx-BAo.normalTitle" = "Button";
 
 /* Class = "UIButton"; normalTitle = "Blood Inventory"; ObjectID = "ryY-FP-aGJ"; */
-"ryY-FP-aGJ.normalTitle" = "रक्त इन्वेंटरी";
+"ryY-FP-aGJ.normalTitle" = "रक्त की सूची";
 
 /* Class = "UINavigationItem"; title = "LifeLine"; ObjectID = "sIG-5i-UxH"; */
 "sIG-5i-UxH.title" = "LifeLine";
@@ -477,7 +480,7 @@
 "uJv-fu-AYf.text" = "दान करें";
 
 /* Class = "UILabel"; text = "Contact Number"; ObjectID = "utE-4g-TxJ"; */
-"utE-4g-TxJ.text" = "संपर्क संख्या";
+"utE-4g-TxJ.text" = "फ़ोन नंबर";
 
 /* Class = "UITextField"; placeholder = "Old Password*"; ObjectID = "vDw-ek-qUe"; */
 "vDw-ek-qUe.placeholder" = "पुराना पासवर्ड*";
@@ -501,16 +504,16 @@
 "viO-4Q-oHF.normalTitle" = "दान की पुष्टि करें";
 
 /* Class = "UIButton"; normalTitle = "Blood Group"; ObjectID = "vzg-tf-OZl"; */
-"vzg-tf-OZl.normalTitle" = "रक्त समूह";
+"vzg-tf-OZl.normalTitle" = "रक्त समूह*";
 
 /* Class = "UITextField"; placeholder = "Doctor Name*"; ObjectID = "wG5-tu-clk"; */
 "wG5-tu-clk.placeholder" = "डॉक्टर का नाम*";
 
 /* Class = "UIButton"; normalTitle = "Units"; ObjectID = "wge-wf-c4a"; */
-"wge-wf-c4a.normalTitle" = "यूनिट्स";
+"wge-wf-c4a.normalTitle" = "यूनिट्स*";
 
 /* Class = "UILabel"; text = "Campaigns"; ObjectID = "woo-lf-VrF"; */
-"woo-lf-VrF.text" = "अभियान";
+"woo-lf-VrF.text" = "शिविर";
 
 /* Class = "UIButton"; normalTitle = "Preferred Date & Time"; ObjectID = "x6V-Bx-RGk"; */
 "x6V-Bx-RGk.normalTitle" = "अपनी तारीख और समय चुनें";

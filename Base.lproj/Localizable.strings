@@ -158,9 +158,23 @@ BLOOD_GROUP = "Blood Group";
 BLOOD_REQUIREMENT = "Requirement";
 REQUEST_CAMP_VOLUNTEER_SHARE_MESSAGE = "A blood donation camp has been created on LifeLine. Please volunteer to donate blood or share this within your circle. Here are the details:";
 SEARCH_LOCATION = "You searched this Location";
-LANGUAGE_CHANGE_ALERT = "Are you sure you want to change LifeLine language";
+LANGUAGE_CHANGE_ALERT = "Are you sure you want to change LifeLine language?";
 CALANDER_TO = "To";
 BLOOD_STRING = "Blood";
 PLASMA_STRING = "Plasma";
 PLATELETS_STRING = "Platelets";
+ADDRESS_MAP_TITLE = "Address";
+TOAST_LOGIN_MESSAGE = "Logging";
+
+BTN_YES = "Yes";
+BTN_NO = "No";
+TOAST_SELECT_LANGUAGE_MESSAGE = "Select Language";
+REQUEST_PENDING = "Your request is pending.";
+PERSONAL_APPEAL = "Write your appeal here";
+SELECT_LOCATION_STRING  = "Please select location from map";
+DATE_STRING = "DOB";
+REQUIREMENT_STRING = "Requirement for";
+
+
+
 

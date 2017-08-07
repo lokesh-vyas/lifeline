@@ -294,4 +294,14 @@ extension UIView {
         }
     }
 }
+// MARK:- Geadient Color
+extension UIView {
+    func addGradientWithColor(color: UIColor) {
+        let gradient = CAGradientLayer()
+        gradient.frame = self.bounds
+        gradient.colors = [UIColor.white.cgColor, color.cgColor]
+        
+        self.layer.insertSublayer(gradient, at: 0)
+    }
+}
 
