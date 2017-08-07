@@ -91,12 +91,17 @@ extension MarkersListView : UITableViewDataSource {
             cell = nib[0] as? DonateListCell
             print("cell = \(String(describing: cell))")
         }
+    
         if is_Searching == true
         {
             if SingleTon.SharedInstance.isCheckedIndividual || SingleTon.SharedInstance.isCheckedHospital || SingleTon.SharedInstance.isCheckedCamp {
                 
                 if filtered[indexPath.row]["TypeOfOrg"] == "1" {
+                 
                     if String(describing: filtered[indexPath.row]["Individuals"]) == "null" && SingleTon.SharedInstance.isCheckedHospital {
+                        // Hospital
+                        cell?.viewBackground.addGradientWithColor(color: Util.SharedInstance.hexStringToUIColor(hex: "804000"))
+                        cell?.viewBottomForColor.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "804000")
                         cell?.lblUserName.text = String(describing: filtered[indexPath.row]["Name"])
                         cell?.lblTimeForHospital.text = String(describing: filtered[indexPath.row]["WorkingHours"])
 
@@ -104,6 +109,9 @@ extension MarkersListView : UITableViewDataSource {
                     SingleTon.SharedInstance.hospitalsOnList.arrayObject?.append(temp)
                     }
                     else if String(describing: filtered[indexPath.row]["Individuals"]) != "null" && SingleTon.SharedInstance.isCheckedIndividual {
+                        // Individual
+                        cell?.viewBackground.addGradientWithColor(color: Util.SharedInstance.hexStringToUIColor(hex: "B60B16"))
+                        cell?.viewBottomForColor.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "B60B16")
                         cell?.lblUserName.text = String(describing: filtered[indexPath.row]["Name"])
                         cell?.lblTimeForHospital.text = String(describing: filtered[indexPath.row]["WorkingHours"])
                     
@@ -114,7 +122,9 @@ extension MarkersListView : UITableViewDataSource {
                     }
                     
                 } else if filtered[indexPath.row]["TypeOfOrg"] == "2" && SingleTon.SharedInstance.isCheckedCamp  {
-                    
+                      //CAMP
+                    cell?.viewBackground.addGradientWithColor(color: Util.SharedInstance.hexStringToUIColor(hex: "35CE11"))
+                    cell?.viewBottomForColor.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "35CE11")
           
                     cell?.lblTimingForCamp.text = ("\(String(describing: filtered[indexPath.row]["FromDate"])) TO  \(String(describing: filtered[indexPath.row]["ToDate"]))")
 
@@ -133,6 +143,10 @@ extension MarkersListView : UITableViewDataSource {
         
          if listMarkers[indexPath.row]["TypeOfOrg"].int == 1 {
             if String(describing: listMarkers[indexPath.row]["Individuals"]) == "null" && SingleTon.SharedInstance.isCheckedHospital {
+                // Hospital
+                cell?.viewBackground.addGradientWithColor(color: Util.SharedInstance.hexStringToUIColor(hex: "804000"))
+                cell?.viewBottomForColor.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "804000")
+                
                 cell?.lblUserName.text = String(describing: listMarkers[indexPath.row]["Name"])
                 cell?.lblTimeForHospital.text = String(describing: listMarkers[indexPath.row]["WorkingHours"])
                
@@ -141,6 +155,9 @@ extension MarkersListView : UITableViewDataSource {
                 SingleTon.SharedInstance.sMarkers.arrayObject?.append(temp)
             }
             else if String(describing: listMarkers[indexPath.row]["Individuals"]) != "null" && SingleTon.SharedInstance.isCheckedIndividual {
+                //Individual
+                cell?.viewBackground.addGradientWithColor(color: Util.SharedInstance.hexStringToUIColor(hex: "B60B16"))
+                cell?.viewBottomForColor.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "B60B16")
                 cell?.lblUserName.text = String(describing: listMarkers[indexPath.row]["Name"])
                 cell?.lblTimeForHospital.text = String(describing: listMarkers[indexPath.row]["WorkingHours"])
                 
@@ -150,7 +167,9 @@ extension MarkersListView : UITableViewDataSource {
             }
             
         } else if listMarkers[indexPath.row]["TypeOfOrg"].int == 2 && SingleTon.SharedInstance.isCheckedCamp  {
-            
+            //CAMP
+            cell?.viewBackground.addGradientWithColor(color: Util.SharedInstance.hexStringToUIColor(hex: "35CE11"))
+            cell?.viewBottomForColor.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "35CE11")
             
             
             cell?.lblTimingForCamp.text = ("\(Util.SharedInstance.showingDateToUser(dateString: String(describing: listMarkers[indexPath.row]["FromDate"]))) TO  \(Util.SharedInstance.showingDateToUser(dateString: String(describing: listMarkers[indexPath.row]["ToDate"])))")
