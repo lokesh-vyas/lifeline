@@ -91,8 +91,7 @@ extension MarkersListView : UITableViewDataSource {
             cell = nib[0] as? DonateListCell
             print("cell = \(String(describing: cell))")
         }
-        cell?.viewBackground.addGradientWithColor(color: Util.SharedInstance.hexStringToUIColor(hex: "804000"))
-        cell?.viewBottomForColor.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "804000")
+        
     
         if is_Searching == true
         {
