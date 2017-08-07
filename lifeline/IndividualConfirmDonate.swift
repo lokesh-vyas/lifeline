@@ -47,24 +47,7 @@ class IndividualConfirmDonate: UIViewController {
     
     func lblCallTapped(_ sender: UITapGestureRecognizer)
     {
-        let button =  sender.view?.tag
-        let phoneNumber: String
-        let formatedNumber: String
-        if(MarkerData.SharedInstance.IndividualsArray[button!]["CContactNumber"] != nil)
-        {
-            phoneNumber = String(describing: MarkerData.SharedInstance.IndividualsArray[button!]["CContactNumber"])
-            print("Requester phone number is : \(phoneNumber)")
-            formatedNumber = phoneNumber.components(separatedBy: NSCharacterSet.decimalDigits.inverted).joined(separator: "")
-            print("calling \(formatedNumber)")
-        }
-        else
-        {
-            phoneNumber = (MarkerData.SharedInstance.IndividualsArray[button!]["CContactNumber"] as! String)
-            print("Requester phone number is : \(phoneNumber)")
-            formatedNumber = phoneNumber.components(separatedBy: NSCharacterSet.decimalDigits.inverted).joined(separator: "")
-            print("calling \(formatedNumber)")
-        }
-        if let url = URL(string: "tel://\(formatedNumber)") {
+                if let url = URL(string: "tel://\(self.lblContactNumber.text!)") {
             if #available(iOS 10, *) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             } else {
@@ -165,8 +148,21 @@ extension IndividualConfirmDonate : IndividualRequestDetailsProtocol {
         
         MarkerData.SharedInstance.isAPNCamp = false
         MarkerData.SharedInstance.APNResponse = jsonArray["GetRequestDetailsResponse"]["ResponseDetails"].dictionaryObject!
+        var lblTitle = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["WhatNeeded"])
+        if lblTitle == "Blood"
+        {
+            lblTitle = MultiLanguage.getLanguageUsingKey("BLOOD_STRING")
+        }
+        else if lblTitle == "Plasma"
+        {
+            lblTitle = MultiLanguage.getLanguageUsingKey("PLASMA_STRING")
+        }
+        else
+        {
+            lblTitle = MultiLanguage.getLanguageUsingKey("PLATELETS_STRING")
+        }
         
-        self.lblWhoRequested.text = "\(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["WhatNeeded"])) Requirement for \(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["BloodGroup"]))"
+        self.lblWhoRequested.text = "\(lblTitle) \(MultiLanguage.getLanguageUsingKey("REQUIREMENT_STRING")) \(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["BloodGroup"]))"
         
         self.textShareArray.insert("\(MultiLanguage.getLanguageUsingKey("BLOOD_GROUP")) : \(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["BloodGroup"]))", at: 0)
          self.textShareArray.insert("\(MultiLanguage.getLanguageUsingKey("BLOOD_REQUIREMENT")) : \(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["WhatNeeded"]))", at: 1)

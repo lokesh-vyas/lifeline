@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class ProfileView: UIViewController
 {
@@ -25,7 +26,8 @@ class ProfileView: UIViewController
     @IBOutlet var btnDOBOutlet: UIButton!
     @IBOutlet weak var btnBloodGroup: UIButton!
     @IBOutlet weak var btnLastDonationDate: UIButton!
-    
+    var tempBool : Bool = false
+    var tempStr : String?
     let bloodGroupArray = ["O+","O-","A+","A-","B+","B-","AB+","AB-"]
     
     //MARK:- viewWillAppear
@@ -175,6 +177,7 @@ class ProfileView: UIViewController
     }
     //MARK:- DateOfBirthAction
     @IBAction func DOBAction(_ sender: Any) {
+        
         self.view.endEditing(true)
         let viewCalendar: CalendarView = self.storyboard?.instantiateViewController(withIdentifier: "CalendarView") as! CalendarView
         let dateFormatter = DateFormatter()
@@ -265,6 +268,7 @@ class ProfileView: UIViewController
                 return
             }
         }
+        
         if (txtName.text?.characters.count)! < 1 || (txtEmailID.text?.characters.count)! < 1 || (txtContactNumber.text?.characters.count)! < 1 || (txtAge.text?.characters.count)! < 1
         {
             self.view.makeToast(MultiLanguage.getLanguageUsingKey("ERROR_ALL_MANDATORY_NEW_FIELDS"), duration: 2.0, position: .bottom)
@@ -320,8 +324,13 @@ class ProfileView: UIViewController
             {
                 ProfileViewModel.SharedInstance.homeLong = "0"
             }
-            
-            let profileData = ProfileData(Name: self.txtName.text!, EmailID: self.txtEmailID.text!, ContactNumber: self.txtContactNumber.text!, DateOfBirth: ProfileViewModel.SharedInstance.DOBstring!, Age: self.txtAge.text!, BloodGroup: ProfileViewModel.SharedInstance.BloodGroup!, LastDonationDate: ProfileViewModel.SharedInstance.LastDonationStrin!, HomeAddressLine: self.txtHomeAddressLine.text!, HomeAddressCity: self.txtHomeAddressCity.text!, HomeAddressPINCode: self.txtHomeAddressPINCode.text!, HomeAddressLatitude: ProfileViewModel.SharedInstance.homeLat, HomeAddressLongitude: ProfileViewModel.SharedInstance.homeLong, WorkAddressLine: self.txtWorkAddressLine.text!, WorkAddressCity: self.txtWorkAddressCity.text!, WorkAddressPINCode: self.txtWorkAddressPINCode.text!, WorkAddressLatitude: ProfileViewModel.SharedInstance.workLat, WorkAddressLongitude: ProfileViewModel.SharedInstance.workLong)
+            if tempBool {
+                ProfileViewModel.SharedInstance.DOBstring = ""
+                tempStr = ""
+            } else {
+                 tempStr = ProfileViewModel.SharedInstance.DOBstring!
+            }
+            let profileData = ProfileData(Name: self.txtName.text!, EmailID: self.txtEmailID.text!, ContactNumber: self.txtContactNumber.text!, DateOfBirth: tempStr!, Age: self.txtAge.text!, BloodGroup: ProfileViewModel.SharedInstance.BloodGroup!, LastDonationDate: ProfileViewModel.SharedInstance.LastDonationStrin!, HomeAddressLine: self.txtHomeAddressLine.text!, HomeAddressCity: self.txtHomeAddressCity.text!, HomeAddressPINCode: self.txtHomeAddressPINCode.text!, HomeAddressLatitude: ProfileViewModel.SharedInstance.homeLat, HomeAddressLongitude: ProfileViewModel.SharedInstance.homeLong, WorkAddressLine: self.txtWorkAddressLine.text!, WorkAddressCity: self.txtWorkAddressCity.text!, WorkAddressPINCode: self.txtWorkAddressPINCode.text!, WorkAddressLatitude: ProfileViewModel.SharedInstance.workLat, WorkAddressLongitude: ProfileViewModel.SharedInstance.workLong)
             
             let data = NSKeyedArchiver.archivedData(withRootObject: profileData)
             UserDefaults.standard.set(data, forKey: "ProfileData")
@@ -448,13 +457,27 @@ extension ProfileView:UITextFieldDelegate
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        
         return true;
+    }
+    
+    func OnTextChange()
+    {
+        //ProfileViewModel.SharedInstance.DOBstring = ""
+        self.btnDOBOutlet.setTitle(MultiLanguage.getLanguageUsingKey("DATE_STRING"), for: .normal)
+        tempBool = true
+        
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.addTarget(self, action: #selector(OnTextChange), for: .editingChanged)
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
     {
         let str = textField.text! as NSString
         let typedString = str.replacingCharacters(in: range, with: string)
+        
         if typedString.characters.count > 0 {
             
             switch textField {
@@ -538,9 +561,14 @@ extension ProfileView:ProtocolCalendar
     {
         if CheckString == MultiLanguage.getLanguageUsingKey("DATE_OF_BIRTH")
         {
-            ProfileViewModel.SharedInstance.DOBstring = valueSent
-            self.txtAge.text = Util.SharedInstance.calcAge(birthday: ProfileViewModel.SharedInstance.DOBstring!)
-            btnDOBOutlet.setTitle(valueSent, for: .normal)
+            if tempBool {
+                btnDOBOutlet.setTitle("", for: .normal)
+                ProfileViewModel.SharedInstance.DOBstring = ""
+            } else {
+                ProfileViewModel.SharedInstance.DOBstring = valueSent
+                self.txtAge.text = Util.SharedInstance.calcAge(birthday: ProfileViewModel.SharedInstance.DOBstring!)
+                btnDOBOutlet.setTitle(valueSent, for: .normal)
+            }
         }
         else if CheckString == MultiLanguage.getLanguageUsingKey("LAST_DONATION_DATE")
         {
@@ -646,7 +674,7 @@ extension ProfileView:MyAddressFormat
 {
     func SuccessMyAddressFormat(AddressResponse: AddressString,checkBool:Bool)
     {
-        if checkBool == true
+        if checkBool == true 
         {
             self.txtHomeAddressLine.text! = AddressResponse.addressString
             self.txtHomeAddressCity.text! = AddressResponse.City

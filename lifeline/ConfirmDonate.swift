@@ -72,6 +72,7 @@ class ConfirmDonate: UIViewController {
             ConfirmDonateInteractor.sharedInstance.getCompaignDetails(urlString: URLList.GET_CAMPAGIN_DETAILS.rawValue, params: bodyGetCampDetails)
             
         }
+        
         let tapRec = UITapGestureRecognizer(target: self, action: #selector(ConfirmDonate.lblCallTapped(_:)))
         lblContactNumber.addGestureRecognizer(tapRec)
         lblContactNumber.isUserInteractionEnabled = true
@@ -82,7 +83,7 @@ class ConfirmDonate: UIViewController {
     
     func lblCallTapped(_ sender: UITapGestureRecognizer)
     {
-        let phoneNumber: String
+       /* let phoneNumber: String
         let formatedNumber: String
         if(MarkerData.SharedInstance.markerData["ContactNumber"] != nil)
         {
@@ -104,16 +105,25 @@ class ConfirmDonate: UIViewController {
             } else {
                 UIApplication.shared.openURL(url as URL)
             }
+        }*/
+        
+        if let url = URL(string: "tel://\(self.lblContactNumber.text!)") {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url as URL)
+            }
         }
     }
     
     func lblEmailTapped(_ sender: UITapGestureRecognizer)
     {
-        let emailAddress = MarkerData.SharedInstance.markerData["Email"]
+        // let emailAddress = MarkerData.SharedInstance.markerData["Email"]
+        let emailAddress = lblEmailID.text
         if MFMailComposeViewController.canSendMail() {
             let mailVC = MFMailComposeViewController()
             mailVC.mailComposeDelegate = self
-            mailVC.setToRecipients([emailAddress as! String])
+            mailVC.setToRecipients([emailAddress!])
             mailVC.setSubject("")
             mailVC.setMessageBody("", isHTML: true)
             self.present(mailVC, animated: true, completion: nil)
@@ -205,7 +215,7 @@ class ConfirmDonate: UIViewController {
             if self.lblFromDate.text != nil
             {
                 let workingHours:String = MarkerData.SharedInstance.markerData["WorkingHours"] as! String
-                let fullNameArr : [String] = workingHours.components(separatedBy: MultiLanguage.getLanguageUsingKey("CALANDER_TO"))
+                let fullNameArr : [String] = workingHours.components(separatedBy: "To")
                 var fromTime: String? = fullNameArr[0]
                 var toTimeO: String? = fullNameArr[1]
                 if fromTime == nil
@@ -255,9 +265,8 @@ class ConfirmDonate: UIViewController {
         {
             lblContactNumber.text = strContact
         }
-        
-       // lblContactNumber.text = MarkerData.SharedInstance.markerData["ContactNumber"] as! String?
-        lblEmailID.text = MarkerData.SharedInstance.markerData["Email"] as! String?
+        // lblContactNumber.text = MarkerData.SharedInstance.markerData["ContactNumber"] as! String?
+        lblEmailID.text =  MarkerData.SharedInstance.markerData["Email"] as! String?
         lblFromDate.text = MarkerData.SharedInstance.markerData["FromDate"] as! String?
         lblToDate.text = MarkerData.SharedInstance.markerData["ToDate"] as! String?
         lblAddress.text = (MarkerData.SharedInstance.markerData["AddressLine"] as! String?)?.replacingOccurrences(of: "\n", with: ", ").appending(MarkerData.SharedInstance.markerData["City"] as! String).appending(" - ").appending(MarkerData.SharedInstance.markerData["PINCode"] as! String)

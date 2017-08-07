@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     var window: UIWindow?
     let gcmMessageIDKey = "523732833608"
     var myLocManager = CLLocationManager()
- 
+    
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
     {
@@ -92,7 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                     // Notifications not allowed
                 }
             }
-
+            
             FIRMessaging.messaging().remoteMessageDelegate = self
             
         } else {
@@ -310,7 +310,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         let deadlineTime = DispatchTime.now() + .milliseconds(500)
         
         DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute:
-        {
+            {
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PushNotification"), object:myDict)
         })
     }

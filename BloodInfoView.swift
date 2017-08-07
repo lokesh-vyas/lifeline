@@ -61,4 +61,9 @@ extension BloodInfoView : UIPickerViewDataSource,UIPickerViewDelegate
         pickercheck = self.pickerArray[row]
         
     }
+    
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat
+    {
+        return 40
+    }
 }

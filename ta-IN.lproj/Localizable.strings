@@ -131,14 +131,14 @@ REQUEST_CLOSED = "உங்கள் கோரிக்கை மூடப்
 
 NO_ONE_ACCEPT = "உங்கள் கோரிக்கை ஏற்கப்படவில்லை";
 
-MAIL_TITLE = "லைவ்லைன் - இரத்த தானம் உறுதிப்படுத்தல்";
+MAIL_TITLE = "Lifeline - இரத்த தானம் உறுதிப்படுத்தல்";
 MAIL_SEND_CANCEL = "மின்னஞ்சல் அனுப்ப முடியவில்லை";
 MAIL_CANCEL_MESSAGE = "உங்கள் சாதனம் மின்னஞ்சலை அனுப்ப முடியவில்லை. மின்னஞ்சல் உள்ளமைவை சரிபார்த்து மீண்டும் முயற்சிக்கவும்.";
 
-MAIL_CANCEL = "லைவ்லைன் மின்னஞ்சல் ரத்து செய்யப்பட்டது";
-MAIL_IN_DRAFT =  "வரைவு கோப்புறையில் லைவ்லைன் அஞ்சல் சேமிக்கப்பட்ட செய்தி";
-MAIL_SENT_SUCCESSFULLY = "லைவ்லைன் அஞ்சல் அனுப்பப்பட்டது";
-MAIL-FAILED = "லைவ்லைன் அஞ்சல் தோல்வி";
+MAIL_CANCEL = "Lifeline மின்னஞ்சல் ரத்து செய்யப்பட்டது";
+MAIL_IN_DRAFT =  "வரைவு கோப்புறையில் Lifeline அஞ்சல் சேமிக்கப்பட்ட செய்தி";
+MAIL_SENT_SUCCESSFULLY = "Lifeline அஞ்சல் அனுப்பப்பட்டது";
+MAIL-FAILED = "Lifeline அஞ்சல் தோல்வி";
 
 /* NEW STRINGS */
 
@@ -162,15 +162,16 @@ BLOOD_STRING = "இரத்த";
 PLASMA_STRING = "குருதி நீர்";
 PLATELETS_STRING = "தட்டுக்கள்";
 ADDRESS_MAP_TITLE = "முகவரி";
-TOAST_LOGIN_MESSAGE = "Logging";
+TOAST_LOGIN_MESSAGE = "பதிவு";
 
-
-
-
-
-
-
-
+BTN_YES = "ஆமாம்";
+BTN_NO = "இல்லை";
+TOAST_SELECT_LANGUAGE_MESSAGE = "மொழியைத் தேர்ந்தெடுக்கவும்";
+REQUEST_PENDING = "உங்கள் கோரிக்கை நிலுவையில் உள்ளது.";
+PERSONAL_APPEAL = "இங்கே உங்கள் மேல்முறையீடு எழுதவும்";
+SELECT_LOCATION_STRING  = "வரைபடத்திலிருந்து இருப்பிடத்தைத் தேர்ந்தெடுக்கவும்";
+DATE_STRING = "பிறந்த தேதி";
+REQUIREMENT_STRING = "தேவை";
 
 
 
