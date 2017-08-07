@@ -124,7 +124,7 @@ class ShowHospitalInMapView: UIViewController
         mapView.isMyLocationEnabled = true
         mapView.delegate = self
         view = mapView
-        
+        mapView.accessibilityLanguage = "en"
         mapView.isBuildingsEnabled = true
         mapView.settings.compassButton = true
         mapView.settings.indoorPicker = true
@@ -239,11 +239,19 @@ extension ShowHospitalInMapView : GMSMapViewDelegate {
 
             if let address = response!.firstResult()
             {
+                print("This is my Address \(address)")
+                print("This is my Address's first line \(address.lines![0])")
+                print("This is my Address's Second line \(address.lines![1])")
                 self.addressFormat.MessageAddressString = ("\(address.lines![0]) \(address.lines![1])")
                 self.addressFormat.addressString = address.lines![0]
                 if address.locality != nil
                 {
-                     self.addressFormat.City = address.locality!
+                   //  self.addressFormat.City = address.locality!
+                    var delimeter = ","
+                    var newStr = address.lines![1]
+                    var seperatedCity = newStr.components(separatedBy: delimeter)
+                    self.addressFormat.City = seperatedCity[0]
+                    //self.addressFormat.City =  address.lines![1]
                 }
                 if address.postalCode != nil
                 {

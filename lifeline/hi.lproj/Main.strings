@@ -60,6 +60,9 @@
 /* Class = "UINavigationItem"; title = "Change Password"; ObjectID = "8Pz-1O-1kv"; */
 "8Pz-1O-1kv.title" = "पासवर्ड बदलें";
 
+/* Class = "UINavigationItem"; title = "Select Language"; ObjectID = "pGZ-xa-ljc"; */
+"pGZ-xa-ljc.title" = "भाषा चुनिए";
+
 /* Class = "UILabel"; text = "userName"; ObjectID = "92y-gV-Xnm"; */
 "92y-gV-Xnm.text" = "यूजर का नाम";
 

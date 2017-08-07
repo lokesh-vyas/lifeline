@@ -11,6 +11,7 @@ import UIKit
 class HospitalListCell: UITableViewCell {
     @IBOutlet weak var lblHospitalName: UILabel!
 
+    @IBOutlet weak var lblCampDate: UILabel!
     @IBOutlet weak var lblCityName: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()

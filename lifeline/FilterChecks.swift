@@ -10,10 +10,6 @@ import UIKit
 import CoreLocation
 import SwiftyJSON
 
-//protocol filterMarkersProtocol {
-//    func didSuccessFilters(sender: FilterChecks)
-//}
-
 class SingleTon {
     
     var isCheckedIndividual = true
@@ -26,7 +22,9 @@ class SingleTon {
     var sMarkers : JSON = []
     var appendedMarkers = [Dictionary<String,Any>]()
     var cameFromFilterChecks: Bool?
-
+    var individualsOnList : JSON = []
+    var hospitalsOnList: JSON = []
+    var compaignOnList: JSON = []
     class var SharedInstance : SingleTon {
         struct Shared {
             static let Instance = SingleTon()
@@ -42,9 +40,10 @@ class FilterChecks: UIViewController {
     @IBOutlet weak var btnCheckboxCamp: UIButton!
     @IBOutlet weak var subViewFilter: UIView!
     
-//    var delegate : filterMarkersProtocol?
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        SingleTon.SharedInstance.appendedMarkers = []
         if !(SingleTon.SharedInstance.isCheckedIndividual) {
             btnCheckboxIndividual.setImage(UIImage(named : "Unchecked Checkbox-32.png"), for: .normal)
         }
@@ -99,50 +98,56 @@ class FilterChecks: UIViewController {
         if SingleTon.SharedInstance.cameFromMarkersList! {
             
             var tempDict = [String : Any]()
+            
             var jDict = SingleTon.SharedInstance.sMarkers//["Data"]
             
-//            SingleTon.SharedInstance.sMarkers = []
+            SingleTon.SharedInstance.sMarkers = []
             
             for (i, _) in jDict.enumerated() {
                 
+                if SingleTon.SharedInstance.isCheckedIndividual || SingleTon.SharedInstance.isCheckedHospital || SingleTon.SharedInstance.isCheckedCamp {
                 if jDict[i]["TypeOfOrg"].int == 1 {
                     if String(describing: jDict[i]["Individuals"]) != "null" && SingleTon.SharedInstance.isCheckedIndividual { // Individuals
                         
+                        tempDict["TypeOfOrg"] = jDict[i]["TypeOfOrg"]
                         tempDict["Name"] = jDict[i]["Name"]
                         tempDict["WorkingHours"] = jDict[i]["WorkingHours"]
                         SingleTon.SharedInstance.appendedMarkers.append(tempDict)
+                    }
+                    else if String(describing: jDict[i]["Individuals"]) == "null" && SingleTon.SharedInstance.isCheckedHospital
+                    { // Hospital
                         
-                    } else if String(describing: jDict[i]["Individuals"]) == "null" && SingleTon.SharedInstance.isCheckedHospital { // Hospital
-                        
+                        tempDict["TypeOfOrg"] = jDict[i]["TypeOfOrg"]
                         tempDict["Name"] = jDict[i]["Name"]
                         tempDict["WorkingHours"] = jDict[i]["WorkingHours"]
                         SingleTon.SharedInstance.appendedMarkers.append(tempDict)
-                        
-//                        SingleTon.SharedInstance.appendedMarkers.arrayValue.append(tempDict)
                     }
                     
                 } else if jDict[i]["TypeOfOrg"].int == 2 && SingleTon.SharedInstance.isCheckedCamp { // Camps
                     
+                    tempDict["FromDate"] = jDict[i]["FromDate"]
+                    tempDict["ToDate"] = jDict[i]["ToDate"]
+                    tempDict["TypeOfOrg"] = jDict[i]["TypeOfOrg"]
                     tempDict["Name"] = jDict[i]["Name"]
                     tempDict["WorkingHours"] = jDict[i]["WorkingHours"]
                     SingleTon.SharedInstance.appendedMarkers.append(tempDict)
+                    }
                 }
                 if !SingleTon.SharedInstance.isCheckedIndividual && !SingleTon.SharedInstance.isCheckedHospital && !SingleTon.SharedInstance.isCheckedCamp {
                     SingleTon.SharedInstance.sMarkers = []
+                    SingleTon.SharedInstance.appendedMarkers = []
                     SingleTon.SharedInstance.sMarkers.arrayObject?.removeAll()
                     SingleTon.SharedInstance.noMarkers = true
-
                 }
-                    
                 else {
                     
                     SingleTon.SharedInstance.noMarkers = false
                 }
-            }
-           
+                }
+           //SingleTon.SharedInstance.sMarkers = SingleTon.SharedInstance.appendedMarkers
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+            print("+++ appended Marker Data is \(SingleTon.SharedInstance.appendedMarkers)+++")
             dismiss(animated: true, completion: nil)
-            
-            
         } else {
             let temp = self.storyboard?.instantiateViewController(withIdentifier: "DonateView") as! DonateView
             let naC = UINavigationController(rootViewController: temp)
@@ -152,8 +157,6 @@ class FilterChecks: UIViewController {
         
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
-        
-        
      }
    
     @IBAction func btnCancelTapped(_ sender: Any) {

@@ -118,7 +118,6 @@ extension LanguageVC: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         let cell = self.tableObj.cellForRow(at: indexPath) as! LanguageTableCell
-        //cell.accessoryType = UITableViewCellAccessoryType.checkmark
         let alert = UIAlertController(title: MultiLanguage.getLanguageUsingKey("TOAST_SELECT_LANGUAGE_MESSAGE"), message: MultiLanguage.getLanguageUsingKey("LANGUAGE_CHANGE_ALERT"), preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: MultiLanguage.getLanguageUsingKey("BTN_YES"), style: UIAlertActionStyle.default, handler:
             { _ in    HudBar.sharedInstance.showHudWithMessage(message:MultiLanguage.getLanguageUsingKey("TOAST_LOADING_MESSAGE"), view: self.view)
