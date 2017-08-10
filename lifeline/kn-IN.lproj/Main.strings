@@ -195,7 +195,7 @@
 "OD0-K7-jld.text" = " ";
 
 /* Class = "UILabel"; text = "Hospital/Blood Bank"; ObjectID = "OEe-sP-tQY"; */
-"OEe-sP-tQY.text" = "ಆಸ್ಪತ್ರೆ / ರಕ್ತ ಬ್ಯಾಂಕ್";
+"OEe-sP-tQY.text" = "ರಕ್ತದಾನ ಕ್ಯಾಂಪ್";
 
 /* Class = "UIButton"; normalTitle = "Confirm Donate"; ObjectID = "OQa-en-FfI"; */
 "OQa-en-FfI.normalTitle" = "ದಾನ ದೃಢೀಕರಿಸಿ";
