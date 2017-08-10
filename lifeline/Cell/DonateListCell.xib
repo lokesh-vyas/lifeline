@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -133,6 +133,7 @@
                             <constraint firstItem="YNg-kh-LB6" firstAttribute="leading" secondItem="LCH-3J-wgT" secondAttribute="leading" id="PR9-Od-A4S"/>
                             <constraint firstAttribute="trailing" secondItem="Cuy-Sb-9xA" secondAttribute="trailing" id="QkI-Yd-kbe"/>
                             <constraint firstAttribute="bottom" secondItem="YNg-kh-LB6" secondAttribute="bottom" id="VSl-5p-tlN"/>
+                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="93" id="XAI-wb-bsy"/>
                             <constraint firstAttribute="trailing" secondItem="YNg-kh-LB6" secondAttribute="trailing" id="Zrv-LO-jnt"/>
                             <constraint firstItem="CcG-bf-SYa" firstAttribute="top" secondItem="LCH-3J-wgT" secondAttribute="top" id="eIr-2x-J7B"/>
                             <constraint firstAttribute="trailing" secondItem="CcG-bf-SYa" secondAttribute="trailing" id="ehT-NY-Pyk"/>
@@ -158,6 +159,8 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
+                <outlet property="constraintForHeightCamp" destination="LGW-LS-pbu" id="nhI-Gp-TMS"/>
+                <outlet property="imgDropForTiming" destination="XkB-Ei-FHB" id="qkm-3p-tCq"/>
                 <outlet property="lblTimeForHospital" destination="u6A-ya-n9O" id="AKi-wk-CJF"/>
                 <outlet property="lblTimingForCamp" destination="dkX-Nz-F0d" id="9m3-4n-pkj"/>
                 <outlet property="lblUserName" destination="mcy-eY-Dkx" id="XUK-TN-exa"/>

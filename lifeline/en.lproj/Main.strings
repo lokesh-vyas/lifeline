@@ -198,7 +198,7 @@
 "OD0-K7-jld.text" = " ";
 
 /* Class = "UILabel"; text = "Hospital/Blood Bank"; ObjectID = "OEe-sP-tQY"; */
-"OEe-sP-tQY.text" = "Hospital/Blood Bank";
+"OEe-sP-tQY.text" = "Blood donation Camp";
 
 /* Class = "UIButton"; normalTitle = "Confirm Donate"; ObjectID = "OQa-en-FfI"; */
 "OQa-en-FfI.normalTitle" = "Confirm Donate";

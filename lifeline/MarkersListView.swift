@@ -9,26 +9,95 @@
 import UIKit
 import SwiftyJSON
 
+class MarkerListModel
+{
+    var name : String = ""
+    var id : String = ""
+    var typeOfOrg : String = ""
+    var address : String? = nil
+    var contactNumber : String? = ""
+    var emailAddress : String? = nil
+    var descriptionForIndi : String? = nil
+    var workingHours: String? = nil
+    var CampTimeDuration : String? = nil
+    var addresssId : String = ""
+    var city: String = ""
+    var pinCode : String = ""
+    var state : String = ""
+    var country : String = ""
+    var landMark : String = ""
+}
+
 class MarkersListView: UIViewController {
 
     @IBOutlet weak var tblView : UITableView!
     @IBOutlet weak var searchBar : UISearchBar!
     @IBOutlet weak var lblNoRequirement : UILabel!
     var listMarkers : JSON!
+    var listDetailArray = [MarkerListModel]()
     var searchController : UISearchController!
     var myContent = [String]()
-    var filtered : JSON!
+    var filtered = [MarkerListModel]()
     var is_Searching: Bool!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         is_Searching = false
-        SingleTon.SharedInstance.hospitalsOnList.arrayObject?.removeAll()
-        SingleTon.SharedInstance.individualsOnList.arrayObject?.removeAll()
-        SingleTon.SharedInstance.compaignOnList.arrayObject?.removeAll()
        //FIXME:- No need of listMarkers
        listMarkers = SingleTon.SharedInstance.sMarkers
+        
+        for i in 0..<listMarkers.count
+        {
+            var marker = listMarkers[i]
+            print(marker)
+            let markerDetails = MarkerListModel()
+            if marker["TypeOfOrg"] == 2
+            {
+                markerDetails.name = String(describing: marker["Name"])
+                markerDetails.workingHours = String(describing: marker["WorkingHours"])
+                markerDetails.typeOfOrg = "2"
+                markerDetails.id = String(describing: marker["ID"])
+                markerDetails.CampTimeDuration = "\(Util.SharedInstance.showingDateToUser(dateString: String(describing: marker["FromDate"]))) TO \(Util.SharedInstance.showingDateToUser(dateString: String(describing: marker["ToDate"])))"
+                markerDetails.contactNumber = String(describing: marker["ContactNumber"])
+                markerDetails.city = String(describing: marker["City"])
+                markerDetails.pinCode = String(describing: marker["PINCode"])
+                markerDetails.state = String(describing: marker["Country"])
+                markerDetails.landMark = String(describing: marker["LandMark"])
+        
+                listDetailArray.append(markerDetails)
+            }else{
+                markerDetails.name = String(describing: marker["Name"])
+                markerDetails.workingHours = String(describing: marker["WorkingHours"])
+                markerDetails.id = String(describing: marker["ID"])
+                markerDetails.typeOfOrg = "1"
+                listDetailArray.append(markerDetails)
+                if marker["Individuals"] != "null"
+                {
+                   
+                    var indvidualArray = marker["Individuals"]["Individuals"]
+                    
+                    if ((indvidualArray as? JSON)?.dictionary) != nil {
+                        indvidualArray = JSON.init(arrayLiteral: indvidualArray)
+                    }
+                        for j in 0..<indvidualArray.count
+                        {
+                            var IndiMarker = indvidualArray[j]
+                            let IndiMarkerDetails = MarkerListModel()
+                            IndiMarkerDetails.name = String(describing: IndiMarker["UserName"])
+                            IndiMarkerDetails.id =  String(describing: IndiMarker["CID"])
+                            IndiMarkerDetails.typeOfOrg = "3"
+                            IndiMarkerDetails.workingHours = String(describing: IndiMarker["WorkingHours"])
+                            IndiMarkerDetails.descriptionForIndi = String(describing: IndiMarker["CName"])
+                        
+                            listDetailArray.append(IndiMarkerDetails)
+                        }
+                }
+              }
+        }
+        self.tblView.reloadData()
+        print(listDetailArray.count)
+        print(listMarkers)
         self.navigationController?.completelyTransparentBar()
         tblView.contentInset = UIEdgeInsetsMake(-35, 0.0, +195, 0.0)
         if SingleTon.SharedInstance.noMarkers == true {
@@ -38,7 +107,7 @@ class MarkersListView: UIViewController {
             lblNoRequirement.text = ""
         }
         NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
-        filtered = []
+       // filtered = []
     }
     
     func loadList(notification: NSNotification){
@@ -78,7 +147,7 @@ extension MarkersListView : UITableViewDataSource {
         }
         else
         {
-            return listMarkers.count
+            return listDetailArray.count
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -91,96 +160,90 @@ extension MarkersListView : UITableViewDataSource {
             cell = nib[0] as? DonateListCell
             print("cell = \(String(describing: cell))")
         }
-        
-    
+        cell?.constraintForHeightCamp.constant = 0
+        UIView.animate(withDuration: Double(0.1), animations: {
+            self.view.layoutIfNeeded()
+        })
         if is_Searching == true
         {
-            if SingleTon.SharedInstance.isCheckedIndividual || SingleTon.SharedInstance.isCheckedHospital || SingleTon.SharedInstance.isCheckedCamp {
-                
-                if filtered[indexPath.row]["TypeOfOrg"] == "1" {
-                 
-                    if String(describing: filtered[indexPath.row]["Individuals"]) == "null" && SingleTon.SharedInstance.isCheckedHospital {
+                let listMaekerForShow = filtered[indexPath.row]
+                print(listMaekerForShow.typeOfOrg)
+            
+                cell?.viewBackground.backgroundColor = UIColor.clear
+                cell?.viewBottomForColor.backgroundColor = UIColor.clear
+                cell?.viewBackground.addGradientWithColor(color: UIColor.clear)
+                cell?.viewBottomForColor.addGradientWithColor(color: UIColor.clear)
+                if listMaekerForShow.typeOfOrg == "1" {
                         // Hospital
-                        cell?.viewBackground.addGradientWithColor(color: Util.SharedInstance.hexStringToUIColor(hex: "804000"))
-                        cell?.viewBottomForColor.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "804000")
-                        cell?.lblUserName.text = String(describing: filtered[indexPath.row]["Name"])
-                        cell?.lblTimeForHospital.text = String(describing: filtered[indexPath.row]["WorkingHours"])
-
-                        let temp = "\(["Name" : String(describing: filtered[indexPath.row]["Name"]), "WorkingHours" : String(describing: filtered[indexPath.row]["WorkingHours"])])"
-                    SingleTon.SharedInstance.hospitalsOnList.arrayObject?.append(temp)
-                    }
-                    else if String(describing: filtered[indexPath.row]["Individuals"]) != "null" && SingleTon.SharedInstance.isCheckedIndividual {
-                        // Individual
-                        cell?.viewBackground.addGradientWithColor(color: Util.SharedInstance.hexStringToUIColor(hex: "B60B16"))
-                        cell?.viewBottomForColor.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "B60B16")
-                        cell?.lblUserName.text = String(describing: filtered[indexPath.row]["Name"])
-                        cell?.lblTimeForHospital.text = String(describing: filtered[indexPath.row]["WorkingHours"])
                     
-                        
-                        let temp = "\(["Name" : String(describing: filtered[indexPath.row]["Name"]), "WorkingHours" : String(describing: filtered[indexPath.row]["WorkingHours"])])"
-                        
-                        SingleTon.SharedInstance.individualsOnList.arrayObject?.append(temp)
+                    cell?.viewBackground.addGradientWithColor(color: Util.SharedInstance.hexStringToUIColor(hex: "804000"))
+                    cell?.viewBottomForColor.addGradientWithColor(color: Util.SharedInstance.hexStringToUIColor(hex: "804000"))
+                    cell?.lblUserName.text = listMaekerForShow.name
+                    cell?.lblTimingForCamp.text = ""
+                    cell?.imgDropForTiming.image = UIImage(named: "timer")
+                    cell?.viewCamp.isHidden = true
                     }
-                    
-                } else if filtered[indexPath.row]["TypeOfOrg"] == "2" && SingleTon.SharedInstance.isCheckedCamp  {
-                      //CAMP
+                else if listMaekerForShow.typeOfOrg == "2" {
+                        // Camp
                     cell?.viewBackground.addGradientWithColor(color: Util.SharedInstance.hexStringToUIColor(hex: "35CE11"))
-                    cell?.viewBottomForColor.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "35CE11")
-          
-                    cell?.lblTimingForCamp.text = ("\(String(describing: filtered[indexPath.row]["FromDate"])) TO  \(String(describing: filtered[indexPath.row]["ToDate"]))")
-
-                    cell?.lblUserName.text = String(describing: filtered[indexPath.row]["Name"])
-                    cell?.lblTimeForHospital.text = String(describing: filtered[indexPath.row]["WorkingHours"])
-                    let temp = "\(["Name" : String(describing: filtered[indexPath.row]["Name"]), "WorkingHours" : String(describing: filtered[indexPath.row]["WorkingHours"])])"
-                    SingleTon.SharedInstance.compaignOnList.arrayObject?.append(temp)
-                } }
-            else {
-            }
-
+                    cell?.viewBottomForColor.addGradientWithColor(color: Util.SharedInstance.hexStringToUIColor(hex: "35CE11"))
+                    cell?.lblUserName.text = listMaekerForShow.name
+                    cell?.lblTimingForCamp.text = listMaekerForShow.CampTimeDuration
+                    cell?.viewCamp.isHidden = false
+                    cell?.imgDropForTiming.image = UIImage(named: "timer")
+                    cell?.lblTimeForHospital.text = listMaekerForShow.workingHours
+                }
+                else if listMaekerForShow.typeOfOrg == "3" {
+                      //Individual
+                    cell?.viewBackground.addGradientWithColor(color: Util.SharedInstance.hexStringToUIColor(hex: "B60B16"))
+                    cell?.viewBottomForColor.addGradientWithColor(color: Util.SharedInstance.hexStringToUIColor(hex: "B60B16"))
+                    cell?.lblUserName.text = listMaekerForShow.name
+                    cell?.lblTimingForCamp.text = ""
+                    cell?.viewCamp.isHidden = true
+                    cell?.imgDropForTiming.image = UIImage(named: "drop_black")
+                    cell?.lblTimeForHospital.text = listMaekerForShow.descriptionForIndi
+                }
         }
         else
         {
-        if SingleTon.SharedInstance.isCheckedIndividual || SingleTon.SharedInstance.isCheckedHospital || SingleTon.SharedInstance.isCheckedCamp {
-        
-         if listMarkers[indexPath.row]["TypeOfOrg"].int == 1 {
-            if String(describing: listMarkers[indexPath.row]["Individuals"]) == "null" && SingleTon.SharedInstance.isCheckedHospital {
-                // Hospital
+           
+            let listMaekerForShow = listDetailArray[indexPath.row]
+            print(listMaekerForShow.typeOfOrg)
+           
+            cell?.viewBackground.backgroundColor = UIColor.clear
+            cell?.viewBottomForColor.backgroundColor = UIColor.clear
+            cell?.viewBackground.addGradientWithColor(color: UIColor.clear)
+            cell?.viewBottomForColor.addGradientWithColor(color: UIColor.clear)
+            if listMaekerForShow.typeOfOrg == "1"
+            {
                 cell?.viewBackground.addGradientWithColor(color: Util.SharedInstance.hexStringToUIColor(hex: "804000"))
-                cell?.viewBottomForColor.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "804000")
+                cell?.viewBottomForColor.addGradientWithColor(color: Util.SharedInstance.hexStringToUIColor(hex: "804000"))
+                cell?.lblUserName.text = listMaekerForShow.name
+                cell?.lblTimingForCamp.text = ""
+                cell?.imgDropForTiming.image = UIImage(named: "timer")
+                cell?.viewCamp.isHidden = true
                 
-                cell?.lblUserName.text = String(describing: listMarkers[indexPath.row]["Name"])
-                cell?.lblTimeForHospital.text = String(describing: listMarkers[indexPath.row]["WorkingHours"])
-               
-                let temp = ["Name" : String(describing: listMarkers[indexPath.row]["Name"]), "WorkingHours" : String(describing: listMarkers[indexPath.row]["WorkingHours"]), "TypeOfOrg" : String(describing: listMarkers[indexPath.row]["TypeOfOrg"])]
-                
-                SingleTon.SharedInstance.sMarkers.arrayObject?.append(temp)
-            }
-            else if String(describing: listMarkers[indexPath.row]["Individuals"]) != "null" && SingleTon.SharedInstance.isCheckedIndividual {
-                //Individual
+                cell?.lblTimeForHospital.text = listMaekerForShow.workingHours
+            }else if(listMaekerForShow.typeOfOrg == "2")
+            {
+                cell?.viewBackground.addGradientWithColor(color: Util.SharedInstance.hexStringToUIColor(hex: "35CE11"))
+                cell?.viewBottomForColor.addGradientWithColor(color: Util.SharedInstance.hexStringToUIColor(hex: "35CE11"))
+                cell?.lblUserName.text = listMaekerForShow.name
+                cell?.lblTimingForCamp.text = listMaekerForShow.CampTimeDuration
+                cell?.viewCamp.isHidden = false
+                cell?.imgDropForTiming.image = UIImage(named: "timer")
+                cell?.lblTimeForHospital.text = listMaekerForShow.workingHours
+            }else if(listMaekerForShow.typeOfOrg == "3")
+            {
                 cell?.viewBackground.addGradientWithColor(color: Util.SharedInstance.hexStringToUIColor(hex: "B60B16"))
-                cell?.viewBottomForColor.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "B60B16")
-                cell?.lblUserName.text = String(describing: listMarkers[indexPath.row]["Name"])
-                cell?.lblTimeForHospital.text = String(describing: listMarkers[indexPath.row]["WorkingHours"])
-                
-                let temp = ["Name" : String(describing: listMarkers[indexPath.row]["Name"]), "WorkingHours" : String(describing: listMarkers[indexPath.row]["WorkingHours"]), "TypeOfOrg" : String(describing: listMarkers[indexPath.row]["TypeOfOrg"])]
-                
-                SingleTon.SharedInstance.sMarkers.arrayObject?.append(temp)
+                cell?.viewBottomForColor.addGradientWithColor(color: Util.SharedInstance.hexStringToUIColor(hex: "B60B16"))
+                cell?.lblUserName.text = listMaekerForShow.name
+                cell?.lblTimingForCamp.text = ""
+                cell?.viewCamp.isHidden = true
+                cell?.imgDropForTiming.image = UIImage(named: "drop_black")
+                cell?.lblTimeForHospital.text = listMaekerForShow.descriptionForIndi
             }
             
-        } else if listMarkers[indexPath.row]["TypeOfOrg"].int == 2 && SingleTon.SharedInstance.isCheckedCamp  {
-            //CAMP
-            cell?.viewBackground.addGradientWithColor(color: Util.SharedInstance.hexStringToUIColor(hex: "35CE11"))
-            cell?.viewBottomForColor.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "35CE11")
-            
-            
-            cell?.lblTimingForCamp.text = ("\(Util.SharedInstance.showingDateToUser(dateString: String(describing: listMarkers[indexPath.row]["FromDate"]))) TO  \(Util.SharedInstance.showingDateToUser(dateString: String(describing: listMarkers[indexPath.row]["ToDate"])))")
-            cell?.lblUserName.text = String(describing: listMarkers[indexPath.row]["Name"])
-            cell?.lblTimeForHospital.text = String(describing: listMarkers[indexPath.row]["WorkingHours"])
-            let temp = ["Name" : String(describing: listMarkers[indexPath.row]["Name"]), "WorkingHours" : String(describing: listMarkers[indexPath.row]["WorkingHours"]), "FromDate" : String(describing: listMarkers[indexPath.row]["FromDate"]), "ToDate" : String(describing: listMarkers[indexPath.row]["ToDate"]), "TypeOfOrg" : String(describing: listMarkers[indexPath.row]["TypeOfOrg"])]
-            SingleTon.SharedInstance.sMarkers.arrayObject?.append(temp)
-            } }
-        else {
-        }
         }
         return cell!
     }
@@ -219,13 +282,18 @@ extension MarkersListView : UISearchBarDelegate {
         else
         {
             is_Searching = true
-            for i in 0 ..< listMarkers.count
+            for i in 0 ..< listDetailArray.count
             {
-                var currentString = String(describing: listMarkers[i]["Name"])
+                var currentString = String(describing: listDetailArray[i].name)
+                let searchDetails = MarkerListModel()
                 if currentString.lowercased().contains(searchText.lowercased()) {
-                    let temp = ["Name" : String(describing: listMarkers[i]["Name"]), "WorkingHours" : String(describing: listMarkers[i]["WorkingHours"]), "TypeOfOrg" : String(describing: listMarkers[i]["TypeOfOrg"]), "FromDate" : String(describing: listMarkers[i]["FromDate"]), "ToDate" : String(describing: listMarkers[i]["ToDate"])]
-                    filtered.arrayObject?.append(temp)
-                }
+                    searchDetails.name = String(describing: listDetailArray[i].name)
+                    searchDetails.workingHours = String(describing: listDetailArray[i].workingHours)
+                    searchDetails.typeOfOrg = String(describing: listDetailArray[i].typeOfOrg)
+                    searchDetails.id = String(describing: listDetailArray[i].id)
+                    searchDetails.CampTimeDuration = String(describing: listDetailArray[i].CampTimeDuration)
+                    searchDetails.descriptionForIndi = String(describing: listDetailArray[i].descriptionForIndi)
+                    filtered.append(searchDetails)
             }
           print(filtered)
           
@@ -236,4 +304,5 @@ extension MarkersListView : UISearchBarDelegate {
     {
         dismiss(animated: true, completion: nil)
     }
+}
 }

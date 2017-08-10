@@ -30,6 +30,7 @@
 		18C6883D1E62ECDB0026453C /* MarkerNotIndividualDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C6883C1E62ECDB0026453C /* MarkerNotIndividualDetails.swift */; };
 		18F3AD691E8A66B10086274E /* List-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F3AD681E8A66B10086274E /* List-32.png */; };
 		18F8ECB41E84EAE00071C0A0 /* BloodInventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F8ECB31E84EAE00071C0A0 /* BloodInventory.swift */; };
+		250310501F3B16AE00C077FD /* timer.png in Resources */ = {isa = PBXBuildFile; fileRef = 2503104F1F3B16AE00C077FD /* timer.png */; };
 		252B7AEA1ED8104C00A900D7 /* MultipleLanguageStringClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252B7AE91ED8104C00A900D7 /* MultipleLanguageStringClass.swift */; };
 		253897901EE5470400B8AFB3 /* LanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2538978F1EE5470400B8AFB3 /* LanguageVC.swift */; };
 		253897941EE578C100B8AFB3 /* LanguageTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253897931EE578C100B8AFB3 /* LanguageTableCell.swift */; };
@@ -185,6 +186,7 @@
 		18F8ECB31E84EAE00071C0A0 /* BloodInventory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BloodInventory.swift; sourceTree = "<group>"; };
 		19B74CD6720B8FE1E0D554ED /* Pods-lifelineUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lifelineUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-lifelineUITests/Pods-lifelineUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1A7713EA892985CA8991C0DE /* Pods_lifelineTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lifelineTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2503104F1F3B16AE00C077FD /* timer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timer.png; sourceTree = "<group>"; };
 		252B7AE91ED8104C00A900D7 /* MultipleLanguageStringClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleLanguageStringClass.swift; sourceTree = "<group>"; };
 		2538978F1EE5470400B8AFB3 /* LanguageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageVC.swift; sourceTree = "<group>"; };
 		253897931EE578C100B8AFB3 /* LanguageTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageTableCell.swift; sourceTree = "<group>"; };
@@ -826,6 +828,7 @@
 				18F3AD681E8A66B10086274E /* List-32.png */,
 				18C04FCB1E86CD43000B15EA /* Unchecked Checkbox-32.png */,
 				18C04FC41E8540ED000B15EA /* Filter50.png */,
+				2503104F1F3B16AE00C077FD /* timer.png */,
 				18C04FC61E8541B8000B15EA /* Filter32.png */,
 				663D6FEC1E7003B900EB2CD8 /* HOME_SCREEN_F.png */,
 				663D6FED1E7003B900EB2CD8 /* HOME_SCREEN_G.png */,
@@ -1081,6 +1084,7 @@
 				66EA8E141E275A4000646797 /* delete_icon.png in Resources */,
 				66BE28C61EE9319B0012E4FD /* Filter Filled.png in Resources */,
 				66C578271E37799F00B235F4 /* segoeuib.ttf in Resources */,
+				250310501F3B16AE00C077FD /* timer.png in Resources */,
 				66EA8DFB1E2517C400646797 /* LifeLine_icon.png in Resources */,
 				663D6FEE1E7003B900EB2CD8 /* HOME_SCREEN_03.png in Resources */,
 				66EA8E131E275A4000646797 /* contact.png in Resources */,

@@ -203,7 +203,7 @@
 "OD0-K7-jld.text" = " ";
 
 /* Class = "UILabel"; text = "Hospital/Blood Bank"; ObjectID = "OEe-sP-tQY"; */
-"OEe-sP-tQY.text" = "மருத்துவமனை/இரத்த வங்கி";
+"OEe-sP-tQY.text" = "இரத்த தான முகாம்";
 
 /* Class = "UIButton"; normalTitle = "Confirm Donate"; ObjectID = "OQa-en-FfI"; */
 "OQa-en-FfI.normalTitle" = "உறுதி செய்யவும்";//"இரத்த தானம் செய்வதை உறுதி செய்யவும்";
