@@ -1,6 +1,6 @@
 
 /* Class = "UIButton"; normalTitle = "When you need"; ObjectID = "0Bx-83-oKh"; */
-"0Bx-83-oKh.normalTitle" = "என்ன தேவை*";
+"0Bx-83-oKh.normalTitle" = "எப்பொழுது தேவை*";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "0Nt-hg-fuj"; */
 "0Nt-hg-fuj.text" = "Label";
@@ -54,7 +54,7 @@
 "7gk-dR-1wU.normalTitle" = "ரத்து";
 
 /* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "7uz-ZI-071"; */
-"7uz-ZI-071.normalTitle" = "ரத்து";
+"7uz-ZI-071.normalTitle" = "அகற்று";
 
 /* Class = "UILabel"; text = "To Date"; ObjectID = "8FA-h0-4jo"; */
 "8FA-h0-4jo.text" = "தேதி வரை             ";
@@ -206,7 +206,7 @@
 "OEe-sP-tQY.text" = "இரத்த தான முகாம்";
 
 /* Class = "UIButton"; normalTitle = "Confirm Donate"; ObjectID = "OQa-en-FfI"; */
-"OQa-en-FfI.normalTitle" = "உறுதி செய்யவும்";//"இரத்த தானம் செய்வதை உறுதி செய்யவும்";
+"OQa-en-FfI.normalTitle" = "இரத்த தானம் உறுதி";//"இரத்த தானம் செய்வதை உறுதி செய்யவும்";
 
 /* Class = "UILabel"; text = "Campaign Description"; ObjectID = "OR7-mt-Ovx"; */
 "OR7-mt-Ovx.text" = "முகாம் விவரம்";
@@ -248,7 +248,7 @@
 "TDP-kr-M3g.text" = "என் சுயவிவரம்";
 
 /* Class = "UILabel"; text = "Request Information"; ObjectID = "TIM-UO-sld"; */
-"TIM-UO-sld.text" = "தகவல் வேண்டுகோள்";
+"TIM-UO-sld.text" = "கோரிக்கை விவரங்கள்";
 
 /* Class = "UILabel"; text = " "; ObjectID = "TiA-e2-DmS"; */
 "TiA-e2-DmS.text" = " ";
@@ -266,7 +266,7 @@
 "UM5-pu-tKE.normalTitle" = "என்ன தேவை*";
 
 /* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "Uj6-bI-PvC"; */
-"Uj6-bI-PvC.normalTitle" = "ரத்து";
+"Uj6-bI-PvC.normalTitle" = "அகற்று";
 
 /* Class = "UITextField"; placeholder = "Email"; ObjectID = "Upk-Lo-0c5"; */
 "Upk-Lo-0c5.placeholder" = "மின்னஞ்சல்";
@@ -308,7 +308,7 @@
 "ZST-Tc-Ni8.text" = "முகவரி";
 
 /* Class = "UINavigationItem"; title = "Confirm Donate"; ObjectID = "aGP-BK-U8w"; */
-"aGP-BK-U8w.title" = "உறுதி செய்யவும்";
+"aGP-BK-U8w.title" = "இரத்த தானம் உறுதி";
 
 /* Class = "UINavigationItem"; title = "Donor Details"; ObjectID = "auf-Zv-hCk"; */
 "auf-Zv-hCk.title" = "தானம் செய்தவரின் விவரம்";
@@ -416,7 +416,7 @@
 "l0k-7O-tPJ.text" = " ";
 
 /* Class = "UILabel"; text = "No. of Units"; ObjectID = "l2p-Og-5MD"; */
-"l2p-Og-5MD.text" = "மொத்த அலகுகள்";
+"l2p-Og-5MD.text" = "மொத்த அளவுகள்";
 
 /* Class = "UILabel"; text = "address"; ObjectID = "laf-ll-1Ab"; */
 "laf-ll-1Ab.text" = "முகவரி";
@@ -434,7 +434,7 @@
 "mtX-SS-qfM.title" = "மருத்துவமனை/இரத்த வங்கி தகவல்";
 
 /* Class = "UILabel"; text = "Confirm Donate"; ObjectID = "nt4-Vr-tDg"; */
-"nt4-Vr-tDg.text" = "உறுதி செய்யவும்";
+"nt4-Vr-tDg.text" = "இரத்த தானம் உறுதி";
 
 /* Class = "UILabel"; text = "Patient Information"; ObjectID = "oXl-dv-G7c"; */
 "oXl-dv-G7c.text" = "நோயாளி தகவல்";
@@ -452,7 +452,7 @@
 "qK6-Zx-BAo.normalTitle" = "Button";
 
 /* Class = "UIButton"; normalTitle = "Blood Inventory"; ObjectID = "ryY-FP-aGJ"; */
-"ryY-FP-aGJ.normalTitle" = "இரத்த சேமிப்பு";
+"ryY-FP-aGJ.normalTitle" = "இரத்தக் கணக்கெடுப்பு";
 
 /* Class = "UINavigationItem"; title = "LifeLine"; ObjectID = "sIG-5i-UxH"; */
 "sIG-5i-UxH.title" = "LifeLine";
@@ -500,7 +500,7 @@
 "vdd-cH-bQd.text" = "அல்லது";
 
 /* Class = "UIButton"; normalTitle = "Confirm Donate"; ObjectID = "viO-4Q-oHF"; */
-"viO-4Q-oHF.normalTitle" = "உறுதி செய்யவும்";
+"viO-4Q-oHF.normalTitle" = "இரத்த தானம் உறுதி";
 
 /* Class = "UIButton"; normalTitle = "Blood Group"; ObjectID = "vzg-tf-OZl"; */
 "vzg-tf-OZl.normalTitle" = "இரத்த வகை*";
@@ -509,7 +509,7 @@
 "wG5-tu-clk.placeholder" = "மருத்துவர் பெயர்*";
 
 /* Class = "UIButton"; normalTitle = "Units"; ObjectID = "wge-wf-c4a"; */
-"wge-wf-c4a.normalTitle" = "அலகுகள்*";
+"wge-wf-c4a.normalTitle" = "அளவுகள்*";
 
 /* Class = "UILabel"; text = "Campaigns"; ObjectID = "woo-lf-VrF"; */
 "woo-lf-VrF.text" = "முகாம்கள்";
@@ -530,8 +530,7 @@
 "yz5-DD-wbp.text" = "Title";
 
 /* Class = "UILabel"; text = "Choose Language "; ObjectID = "u3p-5p-Lik"; */
-"u3p-5p-Lik.text" = "மொழியைத் தேர்வு செய்க ";
+"u3p-5p-Lik.text" = "மொழியைத் தேர்வு ";
 
 /* Class = "UINavigationItem"; title = "Select Language"; ObjectID = "pGZ-xa-ljc"; */
-"pGZ-xa-ljc.title" = "மொழியைத் தேர்ந்தெடுங்கள்";
-
+"pGZ-xa-ljc.title" = "மொழியைத் தேர்ந்தெடுக்கவும்";

@@ -80,7 +80,6 @@ class RequestView: UIViewController,UITextViewDelegate
             textView.text = nil
             textView.textColor = UIColor.black
         }
-        
     }
     
     func textViewDidEndEditing(_ textView: UITextView)
@@ -90,6 +89,16 @@ class RequestView: UIViewController,UITextViewDelegate
             textView.text = MultiLanguage.getLanguageUsingKey("PERSONAL_APPEAL")
             textView.textColor = UIColor.lightGray
         }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool
+    {
+        if text == "\n"
+        {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
     }
     
     //MARK:- Keyboard Appear/Diappear

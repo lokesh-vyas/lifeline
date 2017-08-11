@@ -27,6 +27,15 @@ class MarkerListModel
     var country : String = ""
     var landMark : String = ""
 }
+class IndividualMarkerData
+{
+    var name : String = ""
+    var id : String = ""
+    var typeOfOrg : String = ""
+    var contactNumber : String? = ""
+    var emailAddress : String? = nil
+    var descriptionForIndi : String? = nil
+}
 
 class MarkersListView: UIViewController {
 
@@ -71,6 +80,11 @@ class MarkersListView: UIViewController {
                 markerDetails.workingHours = String(describing: marker["WorkingHours"])
                 markerDetails.id = String(describing: marker["ID"])
                 markerDetails.typeOfOrg = "1"
+                markerDetails.contactNumber = String(describing: marker["ContactNumber"])
+                markerDetails.city = String(describing: marker["City"])
+                markerDetails.pinCode = String(describing: marker["PINCode"])
+                markerDetails.state = String(describing: marker["Country"])
+                markerDetails.landMark = String(describing: marker["LandMark"])
                 listDetailArray.append(markerDetails)
                 if marker["Individuals"] != "null"
                 {
@@ -259,8 +273,7 @@ extension MarkersListView : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let cnfDonate = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmDonate") as! ConfirmDonate
-        let tempDictionary = JSON.init(dictionaryLiteral: ("Data",listMarkers))
-       // MarkerData.SharedInstance.markerData = tempDictionary["Data"].arrayObject
+        //MarkerData.SharedInstance.markerData = ["Data" : listDetailArray[indexPath.row]]
         let navigationControllerStack = UINavigationController(rootViewController: cnfDonate)
         self.present(navigationControllerStack, animated: true, completion: nil)
         

@@ -51,7 +51,7 @@
 "7gk-dR-1wU.normalTitle" = "రద్దు";
 
 /* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "7uz-ZI-071"; */
-"7uz-ZI-071.normalTitle" = "రద్దు";
+"7uz-ZI-071.normalTitle" = "తొలగించు";
 
 /* Class = "UILabel"; text = "To Date"; ObjectID = "8FA-h0-4jo"; */
 "8FA-h0-4jo.text" = "తేదీ";
@@ -261,7 +261,7 @@
 "UM5-pu-tKE.normalTitle" = "మీకు ఏమ్ కావాలి";
 
 /* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "Uj6-bI-PvC"; */
-"Uj6-bI-PvC.normalTitle" = "రద్దు";
+"Uj6-bI-PvC.normalTitle" = "తొలగించు";
 
 /* Class = "UITextField"; placeholder = "Email"; ObjectID = "Upk-Lo-0c5"; */
 "Upk-Lo-0c5.placeholder" = "ఇమెయిల్";

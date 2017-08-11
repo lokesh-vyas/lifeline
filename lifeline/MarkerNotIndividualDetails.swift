@@ -49,6 +49,7 @@ class MarkerNotIndividualDetails: UIViewController {
         lblHead.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#0dd670")
         btnDonate.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#0dd670")
         viewMarkerDetails.layer.borderColor = Util.SharedInstance.hexStringToUIColor(hex: "#0dd670").cgColor
+        lblHead.text = MultiLanguage.getLanguageUsingKey("CAMP_HEADER")
 
         } else {
             
@@ -63,6 +64,7 @@ class MarkerNotIndividualDetails: UIViewController {
             ToDate.isHidden = true
             lblFromDate.isHidden = true
             lblToDate.isHidden = true
+            lblHead.text = MultiLanguage.getLanguageUsingKey("HOSPITAL_HEADER")
             
         }
     }

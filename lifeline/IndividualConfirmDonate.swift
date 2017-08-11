@@ -16,13 +16,13 @@ class IndividualConfirmDonate: UIViewController {
     @IBOutlet weak var lblNoOfUnits: UILabel!
     @IBOutlet weak var lblPatientName: UILabel!
     @IBOutlet weak var lblContactPerson: UILabel!
-    @IBOutlet weak var lblContactNumber: UILabel!
     @IBOutlet weak var lblDoctorName: UILabel!
     @IBOutlet weak var lblAddress: UILabel!
     @IBOutlet weak var lblPersonalAppeal: UILabel!
+    @IBOutlet weak var lblContactNumber: UnderlinedLabel!
     var textShareArray = [String]()
     var textAddress = String()
-    
+
     var iID = String()
     override func viewDidLoad() {
         super.viewDidLoad()
