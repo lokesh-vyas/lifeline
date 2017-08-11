@@ -48,7 +48,7 @@
 "7gk-dR-1wU.normalTitle" = "Cancel";
 
 /* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "7uz-ZI-071"; */
-"7uz-ZI-071.normalTitle" = "Cancel";
+"7uz-ZI-071.normalTitle" = "Clear";
 
 /* Class = "UILabel"; text = "To Date"; ObjectID = "8FA-h0-4jo"; */
 "8FA-h0-4jo.text" = "To Date";
@@ -243,7 +243,7 @@
 "TDP-kr-M3g.text" = "My Profile";
 
 /* Class = "UILabel"; text = "Request Information"; ObjectID = "TIM-UO-sld"; */
-"TIM-UO-sld.text" = "Request Information";
+"TIM-UO-sld.text" = "Request Details";
 
 /* Class = "UILabel"; text = " "; ObjectID = "TiA-e2-DmS"; */
 "TiA-e2-DmS.text" = " ";
@@ -261,7 +261,7 @@
 "UM5-pu-tKE.normalTitle" = "What you need*";
 
 /* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "Uj6-bI-PvC"; */
-"Uj6-bI-PvC.normalTitle" = "Cancel";
+"Uj6-bI-PvC.normalTitle" = "Clear";
 
 /* Class = "UITextField"; placeholder = "Email"; ObjectID = "Upk-Lo-0c5"; */
 "Upk-Lo-0c5.placeholder" = "Email";

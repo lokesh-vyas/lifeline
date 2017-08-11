@@ -14,7 +14,6 @@ import Foundation
 class ConfirmDonate: UIViewController {
 
     @IBOutlet weak var lblName: UILabel!
-    @IBOutlet weak var lblContactNumber: UILabel!
     @IBOutlet weak var lblWorkingHours: UILabel!
     @IBOutlet weak var lblAddress: UILabel!
     @IBOutlet weak var btnConfirmDonate: UIButton!
@@ -28,6 +27,7 @@ class ConfirmDonate: UIViewController {
     @IBOutlet weak var lblCampDescription: UILabel!
     @IBOutlet weak var HospitalName: UILabel!
     
+    @IBOutlet weak var lblContactNumber: UnderlinedLabel!
     @IBOutlet var BarBtnHome: UIBarButtonItem!
     @IBOutlet var btnShare: UIBarButtonItem!
     var ID = String()
@@ -77,9 +77,9 @@ class ConfirmDonate: UIViewController {
         let tapRec = UITapGestureRecognizer(target: self, action: #selector(ConfirmDonate.lblCallTapped(_:)))
         lblContactNumber.addGestureRecognizer(tapRec)
         lblContactNumber.isUserInteractionEnabled = true
-        let tapEmailRec = UITapGestureRecognizer(target: self, action: #selector(ConfirmDonate.lblEmailTapped(_:)))
+        /*let tapEmailRec = UITapGestureRecognizer(target: self, action: #selector(ConfirmDonate.lblEmailTapped(_:)))
         lblEmailID.addGestureRecognizer(tapEmailRec)
-        lblEmailID.isUserInteractionEnabled = true
+        lblEmailID.isUserInteractionEnabled = true*/
     }
     
     func lblCallTapped(_ sender: UITapGestureRecognizer)
@@ -93,7 +93,7 @@ class ConfirmDonate: UIViewController {
         }
     }
     
-    func lblEmailTapped(_ sender: UITapGestureRecognizer)
+    /*func lblEmailTapped(_ sender: UITapGestureRecognizer)
     {
         let emailAddress = lblEmailID.text
         if MFMailComposeViewController.canSendMail() {
@@ -109,7 +109,7 @@ class ConfirmDonate: UIViewController {
             alert.addAction(UIAlertAction(title: MultiLanguage.getLanguageUsingKey("BTN_OK"), style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
-    }
+    }*/
     
     //MARK:- btnShareTapped
     @IBAction func btnShareTapped(_ sender: Any)

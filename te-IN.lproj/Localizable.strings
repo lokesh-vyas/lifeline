@@ -175,7 +175,8 @@ PERSONAL_APPEAL = "వ్యక్తిగత అభ్యర్ధన";
 SELECT_LOCATION_STRING  = "దయచేసి మ్యాప్ నుండి స్థానాన్ని ఎంచుకోండి";
 DATE_STRING = "పుట్టిన తేది";
 REQUIREMENT_STRING = "అవసరం";
-
+CAMP_HEADER = "బ్లడ్ డొనేషన్ క్యాంప్";
+HOSPITAL_HEADER = "రక్త దానం క్యాంప్";
 
 
 

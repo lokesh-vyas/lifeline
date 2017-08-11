@@ -26,6 +26,7 @@ class ProfileView: UIViewController
     @IBOutlet var btnDOBOutlet: UIButton!
     @IBOutlet weak var btnBloodGroup: UIButton!
     @IBOutlet weak var btnLastDonationDate: UIButton!
+    @IBOutlet weak var btnSubmit: UIButton!
     var tempBool : Bool = false
     var tempStr : String?
     let bloodGroupArray = ["O+","O-","A+","A-","B+","B-","AB+","AB-"]
@@ -45,6 +46,7 @@ class ProfileView: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        btnSubmit.setTitle(MultiLanguage.getLanguageUsingKey("BTN_SUBMIT"), for: .normal)
         let data = UserDefaults.standard.object(forKey: "ProfileData")
         if data != nil {
             let profileData:ProfileData = NSKeyedUnarchiver.unarchiveObject(with: data as! Data) as! ProfileData
@@ -92,6 +94,7 @@ class ProfileView: UIViewController
             ProfileViewModel.SharedInstance.DOBstring = profileData.DateofBirth
             btnDOBOutlet.setTitle(profileData.DateofBirth, for: .normal)
         }
+        
         if profileData.BloodGroup != ""
         {
             ProfileViewModel.SharedInstance.BloodGroup = profileData.BloodGroup
@@ -561,14 +564,15 @@ extension ProfileView:ProtocolCalendar
     {
         if CheckString == MultiLanguage.getLanguageUsingKey("DATE_OF_BIRTH")
         {
-            if tempBool {
-                btnDOBOutlet.setTitle("", for: .normal)
-                ProfileViewModel.SharedInstance.DOBstring = ""
-            } else {
+            //if tempBool {
+                //btnDOBOutlet.setTitle("", for: .normal)
+                //ProfileViewModel.SharedInstance.DOBstring = ""
+            //} else {
                 ProfileViewModel.SharedInstance.DOBstring = valueSent
                 self.txtAge.text = Util.SharedInstance.calcAge(birthday: ProfileViewModel.SharedInstance.DOBstring!)
                 btnDOBOutlet.setTitle(valueSent, for: .normal)
-            }
+                txtAge.removeErrorLine()
+            //}
         }
         else if CheckString == MultiLanguage.getLanguageUsingKey("LAST_DONATION_DATE")
         {

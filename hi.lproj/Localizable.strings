@@ -167,6 +167,7 @@ PERSONAL_APPEAL = "अपनी अपील यहाँ लिखें";
 SELECT_LOCATION_STRING  = "कृपया मैप से स्थान का चयन करें";
 DATE_STRING = " जन्म तारीख";
 REQUIREMENT_STRING = "आवश्यकता के लिए";
-
+CAMP_HEADER = "रक्तदान शिविर";
+HOSPITAL_HEADER = "अस्पताल/ब्लड बैंक";
 
 

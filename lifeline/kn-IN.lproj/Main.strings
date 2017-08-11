@@ -48,7 +48,7 @@
 "7gk-dR-1wU.normalTitle" = "ರದ್ದು";
 
 /* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "7uz-ZI-071"; */
-"7uz-ZI-071.normalTitle" = "ರದ್ದು";
+"7uz-ZI-071.normalTitle" = "ಅಳಿಸಿ";
 
 /* Class = "UILabel"; text = "To Date"; ObjectID = "8FA-h0-4jo"; */
 "8FA-h0-4jo.text" = "ದಿನಾಂಕಕ್ಕೆ";
@@ -258,7 +258,7 @@
 "UM5-pu-tKE.normalTitle" = "ನಿಮಗೆ ಬೇಕಾದದು*";
 
 /* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "Uj6-bI-PvC"; */
-"Uj6-bI-PvC.normalTitle" = "ರದ್ದುಮಾಡಿ";
+"Uj6-bI-PvC.normalTitle" = "ಅಳಿಸಿ";
 
 /* Class = "UITextField"; placeholder = "Email"; ObjectID = "Upk-Lo-0c5"; */
 "Upk-Lo-0c5.placeholder" = "ಇಮೇಲ್";
