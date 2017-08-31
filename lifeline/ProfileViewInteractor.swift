@@ -135,7 +135,7 @@ class ProfileViewInteractor
     func serverDataInProfileData(JSONResponse:JSON)
     {
         let jsonDict = JSONResponse["GetProfileResponse"]["GetProfileResponseDetails"]
-        
+        print("Profile All Data : \(jsonDict)")
         let contactNumber:String
         var age:String
         let HomeLatitude:String

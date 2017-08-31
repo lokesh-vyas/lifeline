@@ -16,10 +16,11 @@ class NotificationView: UIViewController {
     @IBOutlet weak var btnView: UIButton!
     @IBOutlet weak var btnCancel: UIButton!
     var UserJSON:Dictionary<String, Any> = Dictionary<String, Any>()
-    
+    var NotificationList : [Dictionary<String, Any>] = []
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
         if (UserJSON["Type"] as? String == "1")
         {
             //for welcome notification & Request Status Update
@@ -28,6 +29,25 @@ class NotificationView: UIViewController {
         }
         self.lblTitleText.text = UserJSON["Title"] as? String
         self.lblMessageText.text = UserJSON["Message"] as? String
+        
+        let storeDataFetch = UserDefaults.standard.object(forKey: "AllNotification")
+        if storeDataFetch != nil {
+           NotificationList  = storeDataFetch as! [Dictionary<String, Any>]
+        }
+        
+        var tempDict = [String:Any]()
+        tempDict["Title"] = UserJSON["Title"] as! String
+        tempDict["Message"] = UserJSON["Message"] as! String
+        tempDict["Type"] = UserJSON["Type"] as! String
+        tempDict["Id"] = UserJSON["ID"] as? String
+        tempDict["Status"] = "0"
+        tempDict["ExpireDate"] = UserJSON["WhenNeeded"] ?? UserJSON["EndDate"]
+        //tempDict["EndDate"] = UserJSON["EndDate"]
+        NotificationList.append(tempDict)
+        
+        UserDefaults.standard.set(NotificationList, forKey: "AllNotification")
+        NotificationCenter.default.removeObserver("PushNotificationReloadData")
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PushNotificationReloadData"), object:nil)
     }
     
     @IBAction func btnCancelTapped(_ sender: Any)
@@ -36,6 +56,9 @@ class NotificationView: UIViewController {
     }
     @IBAction func btnViewTapped(_ sender: Any)
     {
+        print(NotificationList.count)
+        NotificationList[NotificationList.count - 1]["Status"] = "1"
+        UserDefaults.standard.set(NotificationList, forKey: "AllNotification")
         if (UserJSON["Type"] as? String == "2")
         {
             //After accecpt request
@@ -46,6 +69,7 @@ class NotificationView: UIViewController {
             
         } else if(UserJSON["Type"] as? String == "4" || UserJSON["Type"] as? String == "12") //camp
         {
+
             //For Camp and Thank you for after confirm camp request
             let confirmDonate:ConfirmDonate = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmDonate") as! ConfirmDonate
             confirmDonate.ID = UserJSON["ID"] as! String
@@ -54,6 +78,7 @@ class NotificationView: UIViewController {
             
         } else if(UserJSON["Type"] as? String == "3" || UserJSON["Type"] as? String == "11") //Indi
         {
+            
             //for individual request notificaton
             let indconfirmDonate:IndividualConfirmDonate = self.storyboard?.instantiateViewController(withIdentifier: "IndividualConfirmDonate") as! IndividualConfirmDonate
             indconfirmDonate.iID = UserJSON["ID"] as! String

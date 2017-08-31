@@ -20,6 +20,7 @@ class MarkerData
     var CommentLines : String?
     var isIndividualAPN : Bool?
     var isNotIndividualAPN : Bool?
+    var requestStatus : String?
     
     class var SharedInstance : MarkerData {
         struct shared {

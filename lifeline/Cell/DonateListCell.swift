@@ -17,9 +17,9 @@ class DonateListCell: UITableViewCell {
     @IBOutlet weak var viewBottomForColor: UIView!
     
     @IBOutlet weak var imgDropForTiming: UIImageView!
-    
     @IBOutlet weak var constraintForHeightCamp: NSLayoutConstraint!
     
+    @IBOutlet weak var constraintForHeightHospital: NSLayoutConstraint!
     @IBOutlet weak var lblUserName: UILabel!
     @IBOutlet weak var lblTimingForCamp: UILabel!
     @IBOutlet weak var lblTimeForHospital: UILabel!

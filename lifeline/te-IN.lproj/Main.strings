@@ -26,8 +26,14 @@
 /* Class = "UITextField"; placeholder = "Address"; ObjectID = "2nl-QR-EZ3"; */
 "2nl-QR-EZ3.placeholder" = "చిరునామా";
 
-/* Class = "UILabel"; text = "FAQ"; ObjectID = "2om-Tk-ufr"; */
-"2om-Tk-ufr.text" = "FAQ";
+/* Class = "UILabel"; text = "FAQ"; ObjectID = "2om-Tk-ufr"; 
+"2om-Tk-ufr.text" = "FAQ"; */
+
+/* Class = "UILabel"; text = "FAQ"; ObjectID = "BhS-up-8a6"; */
+"BhS-up-8a6.text" = "FAQ";
+
+/* Class = "UILabel"; text = "Notification"; ObjectID = "4Pf-r9-aWa"; */
+"4Pf-r9-aWa.text" = "ప్రకటనలు";
 
 /* Class = "UILabel"; text = "Message"; ObjectID = "35J-bo-gCo"; */
 "35J-bo-gCo.text" = "సందేశం";
@@ -405,7 +411,7 @@
 "jqt-3W-bJF.text" = "తేదీ కు:";
 
 /* Class = "UINavigationItem"; title = "Donated Places List"; ObjectID = "jxV-yA-Awc"; */
-"jxV-yA-Awc.title" = "విరాళమిచ్చిన స్థలాల జాబితా:";
+"jxV-yA-Awc.title" = "దానం";
 
 /* Class = "UINavigationItem"; title = "Sign Up"; ObjectID = "kYE-Md-EnF"; */
 "kYE-Md-EnF.title" = "సభ్యత్వం కోసం నమోదు చేయండి";

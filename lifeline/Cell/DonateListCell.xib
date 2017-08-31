@@ -78,7 +78,7 @@
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="dkX-Nz-F0d" secondAttribute="bottom" constant="3" id="5JY-yv-2nf"/>
                                     <constraint firstItem="dkX-Nz-F0d" firstAttribute="leading" secondItem="7Ui-6T-Uh6" secondAttribute="trailing" constant="7" id="7i6-qQ-gEV"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="26" id="LGW-LS-pbu"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="999" constant="26" id="LGW-LS-pbu"/>
                                     <constraint firstAttribute="trailing" secondItem="dkX-Nz-F0d" secondAttribute="trailing" constant="6" id="nxb-fn-FvR"/>
                                     <constraint firstItem="dkX-Nz-F0d" firstAttribute="top" secondItem="Cuy-Sb-9xA" secondAttribute="top" constant="3" id="tdK-CZ-MDi"/>
                                     <constraint firstItem="7Ui-6T-Uh6" firstAttribute="leading" secondItem="Cuy-Sb-9xA" secondAttribute="leading" constant="5" id="uuX-iS-SMT"/>
@@ -160,6 +160,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="constraintForHeightCamp" destination="LGW-LS-pbu" id="nhI-Gp-TMS"/>
+                <outlet property="constraintForHeightHospital" destination="Bs2-vi-nSQ" id="7ZK-eR-bPF"/>
                 <outlet property="imgDropForTiming" destination="XkB-Ei-FHB" id="qkm-3p-tCq"/>
                 <outlet property="lblTimeForHospital" destination="u6A-ya-n9O" id="AKi-wk-CJF"/>
                 <outlet property="lblTimingForCamp" destination="dkX-Nz-F0d" id="9m3-4n-pkj"/>
