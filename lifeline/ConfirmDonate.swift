@@ -20,12 +20,12 @@ class ConfirmDonate: UIViewController {
     @IBOutlet weak var Email: UILabel!
     @IBOutlet weak var FromDate: UILabel!
     @IBOutlet weak var ToDate: UILabel!
-    @IBOutlet weak var lblEmailID: UILabel!
     @IBOutlet weak var lblFromDate: UILabel!
     @IBOutlet weak var lblToDate: UILabel!
     @IBOutlet weak var VolunteerDetails: UILabel!
     @IBOutlet weak var lblCampDescription: UILabel!
     @IBOutlet weak var HospitalName: UILabel!
+    @IBOutlet weak var lblEmailID: UnderlinedLabel!
     
     @IBOutlet weak var lblContactNumber: UnderlinedLabel!
     @IBOutlet var BarBtnHome: UIBarButtonItem!
@@ -77,9 +77,9 @@ class ConfirmDonate: UIViewController {
         let tapRec = UITapGestureRecognizer(target: self, action: #selector(ConfirmDonate.lblCallTapped(_:)))
         lblContactNumber.addGestureRecognizer(tapRec)
         lblContactNumber.isUserInteractionEnabled = true
-        /*let tapEmailRec = UITapGestureRecognizer(target: self, action: #selector(ConfirmDonate.lblEmailTapped(_:)))
+        let tapEmailRec = UITapGestureRecognizer(target: self, action: #selector(ConfirmDonate.lblEmailTapped(_:)))
         lblEmailID.addGestureRecognizer(tapEmailRec)
-        lblEmailID.isUserInteractionEnabled = true*/
+        lblEmailID.isUserInteractionEnabled = true
     }
     
     func lblCallTapped(_ sender: UITapGestureRecognizer)
@@ -93,14 +93,14 @@ class ConfirmDonate: UIViewController {
         }
     }
     
-    /*func lblEmailTapped(_ sender: UITapGestureRecognizer)
+    func lblEmailTapped(_ sender: UITapGestureRecognizer)
     {
         let emailAddress = lblEmailID.text
         if MFMailComposeViewController.canSendMail() {
             let mailVC = MFMailComposeViewController()
             mailVC.mailComposeDelegate = self
             mailVC.setToRecipients([emailAddress!])
-            mailVC.setSubject("")
+            mailVC.setSubject(MultiLanguage.getLanguageUsingKey("MAIL_TITLE_FOR_CAMP"))
             mailVC.setMessageBody("", isHTML: true)
             self.present(mailVC, animated: true, completion: nil)
         }
@@ -109,7 +109,7 @@ class ConfirmDonate: UIViewController {
             alert.addAction(UIAlertAction(title: MultiLanguage.getLanguageUsingKey("BTN_OK"), style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
-    }*/
+    }
     
     //MARK:- btnShareTapped
     @IBAction func btnShareTapped(_ sender: Any)
@@ -301,7 +301,6 @@ extension ConfirmDonate : ConfirmDonateProtocol {
         
         let addressLat = (String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["Latitude"]))
         let addressLong = (String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["Longitude"]))
-        //self.textAddress = String(format: "Address:- http://maps.google.com/?saddr=%1.6f,%1.6f", addressLat as! CVarArg, addressLong as! CVarArg)
         self.textAddress = "Location:- https://maps.google.com/?q=@\(addressLat),\(addressLong)"
         let strContact = String(describing: MarkerData.SharedInstance.APNResponse["ContactNumber"]!)
         if strContact == "null"
@@ -343,11 +342,11 @@ extension ConfirmDonate : getVolunteerProtocol {
     func didSuccessGetVolunteerDetails(jsonArray: JSON) {
         //TODO:- true= comment & preferred date false= no vol
         print("*****didSuccessGetVolunteerDetails******", jsonArray)
-        
         if jsonArray["GetVolunteerListsReponse"]["ResponseDetails"]["StatusCode"] == 1 {
             
             MarkerData.SharedInstance.PreferredDateTime = nil
             MarkerData.SharedInstance.CommentLines = nil
+            MarkerData.SharedInstance.requestStatus = String(describing: jsonArray["GetVolunteerListsReponse"]["ResponseDetails"]["StatusCode"])
             
         } else {
             let tempStr = String(describing: jsonArray["GetVolunteerListsReponse"]["ResponseDetails"]["PreferredDateTime"])

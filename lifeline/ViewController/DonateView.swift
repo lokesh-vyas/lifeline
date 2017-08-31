@@ -77,7 +77,7 @@ class DonateView: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        btnListofMarkers.isHidden = true
+        //btnListofMarkers.isHidden = true
         self.navigationController?.completelyTransparentBarForDonate()
         
         //For Result VC
@@ -765,21 +765,30 @@ extension DonateView : DonateViewProtocol {
                         tempDict["TypeOfOrg"] = jDict[i]["TypeOfOrg"]
                         tempDict["Individuals"] = jDict[i]["IndividualDetails"]
                         tempDict["CID"] = jDict[i]["CID"]
-                        
-                        /*tempDict["UserName"] = jDict[i]["IndividualDetails"]["Individuals"]["UserName"]
-                        print("User = \(tempDict["UserName"])")
-                        tempDict["CName"] = jDict[i]["IndividualDetails"]["Individuals"]["CName"]
-                        for (i, _) in jDict[i]["IndividualDetails"]["Individuals"].enumerated()
-                        {
-                            print("Donate Screen \(jDict[i]["IndividualDetails"]["Individuals"])")
-                            tempDict["CEmail"] = String(describing: jDict[i]["IndividualDetails"]["CEmail"])
-                            tempDict["CContactNumber"] = String(describing: jDict[i]["IndividualDetails"]["CContactNumber"])
-                            tempDict["CID"] = String(describing: jDict[i]["IndividualDetails"]["CID"])
-                            tempDict["UserName"] = String(describing: jDict[i]["IndividualDetails"]["UserName"])
-                            tempDict["CTypeOfOrg"] = String(describing: jDict[i]["IndividualDetails"]["CTypeOfOrg"])
-                            tempDict["CName"] = String(describing: jDict[i]["IndividualDetails"]["CName"])
-                            print(tempDict["CName"])
-                        }*/
+                        var mDict = JSON.init(dictionaryLiteral: ("Index", myJSON[i]["BloodRequirementRequest"]["BloodRequirementDetails"]))
+                        tempDict["LoginID"] = mDict[i]["LoginID"]
+                        tempDict["BloodGroup"] = mDict[i]["BloodGroup"]
+                        tempDict["DonationType"] = mDict[i]["DonationType"]
+                        tempDict["WhenNeeded"] = mDict[i]["WhenNeeded"]
+                        tempDict["NumUnits"] = mDict[i]["NumUnits"]
+                        tempDict["PatientName"] = mDict[i]["PatientName"]
+                        tempDict["ContactPerson"] = mDict[i]["ContactPerson"]
+                        tempDict["ContactNumber"] = mDict[i]["ContactNumber"]
+                        tempDict["DoctorName"] = mDict[i]["DoctorName"]
+                        tempDict["DoctorContact"] = mDict[i]["DoctorContact"]
+                        tempDict["DoctorEmailID"] = mDict[i]["DoctorEmailID"]
+                        tempDict["CenterID"] = mDict[i]["CenterID"]
+                        tempDict["CollectionCentreName"] = mDict[i]["CollectionCentreName"]
+                        tempDict["AddressLine"] = mDict[i]["AddressLine"]
+                        tempDict["City"] = mDict[i]["City"]
+                        tempDict["State"] = mDict[i]["State"]
+                        tempDict["LandMark"] = mDict[i]["LandMark"]
+                        tempDict["Latitude"] = mDict[i]["Latitude"]
+                        tempDict["Longitude"] = mDict[i]["Longitude"]
+                        tempDict["PINCode"] = mDict[i]["PINCode"]
+                        tempDict["Country"] = mDict[i]["Country"]
+                        tempDict["PersonalAppeal"] = mDict[i]["PersonalAppeal"]
+                        tempDict["SharedInSocialMedia"] = mDict[i]["SharedInSocialMedia"]
                        appendsListMarkers.append(tempDict)
                         
                     } else if String(describing: jDict[i]["IndividualDetails"]) == "null" && SingleTon.SharedInstance.isCheckedHospital { // Hospital
@@ -787,16 +796,19 @@ extension DonateView : DonateViewProtocol {
                         tempDict["Name"] = jDict[i]["Name"]
                         tempDict["WorkingHours"] = jDict[i]["WorkingHours"]
                         tempDict["TypeOfOrg"] = jDict[i]["TypeOfOrg"]
-                        tempDict["Individuals"] = jDict[i]["IndividualDetails"]
+                        //tempDict["Individuals"] = jDict[i]["IndividualDetails"]
                         tempDict["ID"] = jDict[i]["ID"]
                         tempDict["ContactNumber"] = jDict[i]["ContactNumber"]
                         tempDict["Email"] = jDict[i]["Email"]
                         tempDict["AddressId"] = jDict[i]["AddressId"]
+                        tempDict["AddressLine"] = jDict[i]["AddressLine"]
                         tempDict["City"] = jDict[i]["City"]
                         tempDict["PINCode"] = jDict[i]["PINCode"]
                         tempDict["State"] = jDict[i]["State"]
                         tempDict["Country"] = jDict[i]["Country"]
                         tempDict["LandMark"] = jDict[i]["LandMark"]
+                        tempDict["Latitude"] = jDict[i]["Latitude"]
+                        tempDict["Longitude"] = jDict[i]["Longitude"]
                         
                         appendsListMarkers.append(tempDict)
                     }
@@ -810,11 +822,14 @@ extension DonateView : DonateViewProtocol {
                     tempDict["ContactNumber"] = jDict[i]["ContactNumber"]
                     tempDict["Email"] = jDict[i]["Email"]
                     tempDict["AddressId"] = jDict[i]["AddressId"]
+                    tempDict["AddressLine"] = jDict[i]["AddressLine"]
                     tempDict["City"] = jDict[i]["City"]
                     tempDict["PINCode"] = jDict[i]["PINCode"]
                     tempDict["State"] = jDict[i]["State"]
                     tempDict["Country"] = jDict[i]["Country"]
                     tempDict["LandMark"] = jDict[i]["LandMark"]
+                    tempDict["Latitude"] = jDict[i]["Latitude"]
+                    tempDict["Longitude"] = jDict[i]["Longitude"]
                     if String(describing: jDict[i]["FromDate"]).characters.count > 10 {
                         let trimDate = String(describing: jDict[i]["FromDate"]).substring(to: 10)
                         tempDict["FromDate"] = trimDate
@@ -835,7 +850,7 @@ extension DonateView : DonateViewProtocol {
                 }
                 SingleTon.SharedInstance.noMarkers = false
         }
-            self.bloodDonatingMarkers(responseData: myJSON)
+            self.bloodDonatingMarkers(responseData: myJSON) 
         
     }
     

@@ -177,10 +177,7 @@ DATE_STRING = "పుట్టిన తేది";
 REQUIREMENT_STRING = "అవసరం";
 CAMP_HEADER = "బ్లడ్ డొనేషన్ క్యాంప్";
 HOSPITAL_HEADER = "రక్త దానం క్యాంప్";
-
-
-
-
+MAIL_TITLE_FOR_CAMP = "LifeLine బ్లడ్ క్యాంప్";
 
 
 

@@ -29,8 +29,14 @@
 /* Class = "UITextField"; placeholder = "Address"; ObjectID = "2nl-QR-EZ3"; */
 "2nl-QR-EZ3.placeholder" = "முகவரி ";
 
-/* Class = "UILabel"; text = "FAQ"; ObjectID = "2om-Tk-ufr"; */
-"2om-Tk-ufr.text" = "FAQ";
+/* Class = "UILabel"; text = "FAQ"; ObjectID = "2om-Tk-ufr";
+"2om-Tk-ufr.text" = "FAQ"; */
+
+/* Class = "UILabel"; text = "FAQ"; ObjectID = "BhS-up-8a6"; */
+"BhS-up-8a6.text" = "FAQ";
+
+/* Class = "UILabel"; text = "Notification"; ObjectID = "4Pf-r9-aWa"; */
+"4Pf-r9-aWa.text" = "அறிவிப்புகள்";
 
 /* Class = "UILabel"; text = "Message"; ObjectID = "35J-bo-gCo"; */
 "35J-bo-gCo.text" = "செய்தி";
@@ -407,7 +413,7 @@
 "jqt-3W-bJF.text" = "தேதி வரை ";
 
 /* Class = "UINavigationItem"; title = "Donated Places List"; ObjectID = "jxV-yA-Awc"; */
-"jxV-yA-Awc.title" = "இரத்த தானம் செய்யும் இடங்களின் பட்டியல்";
+"jxV-yA-Awc.title" = "இரத்ததானம்";
 
 /* Class = "UINavigationItem"; title = "Sign Up"; ObjectID = "kYE-Md-EnF"; */
 "kYE-Md-EnF.title" = "பதிவு செய்யவும்";

@@ -123,7 +123,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     // [START receive_message]
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any])
     {
-        self.notificationViewMessageForIdentify(userINFO: JSON(userInfo))
+       // self.notificationViewMessageForIdentify(userINFO: JSON(userInfo))
     }
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
@@ -131,7 +131,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
         }
-        self.notificationViewMessageForIdentify(userINFO: JSON(userInfo))
+            self.notificationViewMessageForIdentify(userINFO: JSON(userInfo))
+        
         completionHandler(UIBackgroundFetchResult.newData)
     }
     func tokenRefreshNotification(_ notification: Notification) {
@@ -326,7 +327,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void)
     {
-        self.notificationViewMessageForIdentify(userINFO: JSON(response.notification.request.content.userInfo))
+     //   self.notificationViewMessageForIdentify(userINFO: JSON(response.notification.request.content.userInfo))
         completionHandler()
     }
 }

@@ -54,6 +54,12 @@ class HomeView: UIViewController {
         ProfileViewInteractor.SharedInstance.MyDeviceRegistration(params: customer)
 
     }
+    
+    /*@IBAction func BtnNotificationTapped(_ sender: Any) {
+        let notificationView = self.storyboard?.instantiateViewController(withIdentifier: "MyNotificationView")
+        self.navigationController?.pushViewController(notificationView!, animated: true)
+    }*/
+    
 //MARK:- DonateAction
     @IBAction func DonateAction(_ sender: Any)
     {
@@ -64,10 +70,6 @@ class HomeView: UIViewController {
         let donateView = self.storyboard?.instantiateViewController(withIdentifier: "DonateView")
         self.navigationController?.pushViewController(donateView!, animated: true)
 
-    }
-    
-    
-    @IBAction func BtnNotificationTapped(_ sender: Any) {
     }
     
 //MARK:- RequestAction
