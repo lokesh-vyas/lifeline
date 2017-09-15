@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NotificationCell" rowHeight="88" id="yZ9-YL-dlP" customClass="NotificationCell" customModule="lifeline" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" indentationWidth="10" reuseIdentifier="NotificationCell" rowHeight="88" id="yZ9-YL-dlP" customClass="NotificationCell" customModule="lifeline" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yZ9-YL-dlP" id="I6N-nK-PMF">
@@ -87,6 +87,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="VFM-b5-6L1" secondAttribute="bottom" constant="7.5" id="2c7-wh-uBz"/>
                     <constraint firstAttribute="trailing" secondItem="VFM-b5-6L1" secondAttribute="trailing" constant="8" id="4iW-SK-ZGv"/>
@@ -101,6 +102,7 @@
                 <outlet property="PendingImage" destination="crI-gM-XZe" id="vUv-IM-zDf"/>
                 <outlet property="lblNotificationDescription" destination="s7Z-sa-u9p" id="8dU-eO-FWB"/>
                 <outlet property="lblNotificationTitle" destination="5PU-OC-TmX" id="YW7-gu-pWG"/>
+                <outlet property="viewBackground" destination="VFM-b5-6L1" id="5L9-u6-BzH"/>
             </connections>
             <point key="canvasLocation" x="2.5" y="56"/>
         </tableViewCell>

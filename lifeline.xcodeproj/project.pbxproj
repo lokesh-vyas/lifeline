@@ -31,6 +31,9 @@
 		18F3AD691E8A66B10086274E /* List-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F3AD681E8A66B10086274E /* List-32.png */; };
 		18F8ECB41E84EAE00071C0A0 /* BloodInventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F8ECB31E84EAE00071C0A0 /* BloodInventory.swift */; };
 		250310501F3B16AE00C077FD /* timer.png in Resources */ = {isa = PBXBuildFile; fileRef = 2503104F1F3B16AE00C077FD /* timer.png */; };
+		251993C11F5E7EA000E9BFC2 /* GreenBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 251993C01F5E7EA000E9BFC2 /* GreenBar.png */; };
+		251993C31F5E7EA700E9BFC2 /* RedBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 251993C21F5E7EA700E9BFC2 /* RedBar.png */; };
+		251993C51F5E7EAD00E9BFC2 /* BrownBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 251993C41F5E7EAD00E9BFC2 /* BrownBar.png */; };
 		252B7AEA1ED8104C00A900D7 /* MultipleLanguageStringClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252B7AE91ED8104C00A900D7 /* MultipleLanguageStringClass.swift */; };
 		253897901EE5470400B8AFB3 /* LanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2538978F1EE5470400B8AFB3 /* LanguageVC.swift */; };
 		253897941EE578C100B8AFB3 /* LanguageTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253897931EE578C100B8AFB3 /* LanguageTableCell.swift */; };
@@ -191,6 +194,9 @@
 		19B74CD6720B8FE1E0D554ED /* Pods-lifelineUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lifelineUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-lifelineUITests/Pods-lifelineUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1A7713EA892985CA8991C0DE /* Pods_lifelineTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lifelineTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2503104F1F3B16AE00C077FD /* timer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timer.png; sourceTree = "<group>"; };
+		251993C01F5E7EA000E9BFC2 /* GreenBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreenBar.png; sourceTree = "<group>"; };
+		251993C21F5E7EA700E9BFC2 /* RedBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedBar.png; sourceTree = "<group>"; };
+		251993C41F5E7EAD00E9BFC2 /* BrownBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BrownBar.png; sourceTree = "<group>"; };
 		252B7AE91ED8104C00A900D7 /* MultipleLanguageStringClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleLanguageStringClass.swift; sourceTree = "<group>"; };
 		2538978F1EE5470400B8AFB3 /* LanguageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageVC.swift; sourceTree = "<group>"; };
 		253897931EE578C100B8AFB3 /* LanguageTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageTableCell.swift; sourceTree = "<group>"; };
@@ -847,6 +853,9 @@
 		66EA8E001E275A4000646797 /* Image For Support */ = {
 			isa = PBXGroup;
 			children = (
+				251993C01F5E7EA000E9BFC2 /* GreenBar.png */,
+				251993C21F5E7EA700E9BFC2 /* RedBar.png */,
+				251993C41F5E7EAD00E9BFC2 /* BrownBar.png */,
 				663D6FEB1E7003B900EB2CD8 /* HOME_SCREEN_03.png */,
 				66BE28C51EE9319B0012E4FD /* Filter Filled.png */,
 				18C04FCA1E86CD43000B15EA /* Checked Checkbox 2-32.png */,
@@ -1112,6 +1121,7 @@
 				66EA8E141E275A4000646797 /* delete_icon.png in Resources */,
 				66BE28C61EE9319B0012E4FD /* Filter Filled.png in Resources */,
 				66C578271E37799F00B235F4 /* segoeuib.ttf in Resources */,
+				251993C31F5E7EA700E9BFC2 /* RedBar.png in Resources */,
 				250310501F3B16AE00C077FD /* timer.png in Resources */,
 				66EA8DFB1E2517C400646797 /* LifeLine_icon.png in Resources */,
 				663D6FEE1E7003B900EB2CD8 /* HOME_SCREEN_03.png in Resources */,
@@ -1131,6 +1141,7 @@
 				6633E90A1E88F7F50008C730 /* InventoryTableCell.xib in Resources */,
 				18F3AD691E8A66B10086274E /* List-32.png in Resources */,
 				25B8F0031F34A23100D08C6B /* DonateListCell.xib in Resources */,
+				251993C11F5E7EA000E9BFC2 /* GreenBar.png in Resources */,
 				66EA8D681E1F700200646797 /* GoogleService-Info.plist in Resources */,
 				66EA8E121E275A4000646797 /* chat_bubble.png in Resources */,
 				66EA8D3C1E1F6B4300646797 /* Assets.xcassets in Resources */,
@@ -1148,6 +1159,7 @@
 				663D6FF01E7003B900EB2CD8 /* HOME_SCREEN_G.png in Resources */,
 				66EA8D3A1E1F6B4300646797 /* Main.storyboard in Resources */,
 				66C5782B1E37799F00B235F4 /* segoeuiz.ttf in Resources */,
+				251993C51F5E7EAD00E9BFC2 /* BrownBar.png in Resources */,
 				66EA8E1A1E275A4000646797 /* message.png in Resources */,
 				18C04FC51E8540ED000B15EA /* Filter50.png in Resources */,
 				25C057BF1F4C37BD002A8107 /* pendingColored.png in Resources */,

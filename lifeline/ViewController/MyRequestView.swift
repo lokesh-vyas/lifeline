@@ -77,6 +77,8 @@ extension MyRequestView:UITableViewDelegate,UITableViewDataSource
     {
         if MyRequestArray.count < 1 {
             tableRequestView.isHidden = true
+            lblInternetIssue.isHidden = false
+            lblInternetIssue.text = MultiLanguage.getLanguageUsingKey("NO_REQUEST_FOUND")
         }
         lblInternetIssue.isHidden = true
         tableRequestView.isHidden = false

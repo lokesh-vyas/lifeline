@@ -60,7 +60,7 @@ class ProfileViewInteractor
     {
         let builder = APIBuilder.sharedInstance.buildGetProfileData(userID: LoginID)
         
-        NetworkManager.sharedInstance.serviceCallForPOST(url: builder.URL, method: builder.method, parameters: builder.makeParams(),sucess:
+        NetworkManager.sharedInstance.serviceCallForPOST(url: URLList.LIFELINE_Get_Profile.rawValue, method: builder.method, parameters: builder.makeParams(),sucess:
             {
                 (JSONResponse) -> Void in
                 if(JSONResponse["GetProfileResponse"]["GetProfileResponseDetails"]["StatusCode"].int == 0)
