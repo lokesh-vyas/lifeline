@@ -22,8 +22,6 @@ import FirebaseMessaging
 
 @UIApplicationMain
 
-
-
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
     
     var window: UIWindow?
@@ -33,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
     {
+        UIApplication.shared.applicationIconBadgeNumber = 0
         // for language selection
         Localizer.DoTheMagic()
         
@@ -84,7 +83,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             center.requestAuthorization(options: options) {
                 (granted, error) in
                 if !granted {
-                    print("Something went wrong")
                 }
             }
             center.getNotificationSettings { (settings) in
@@ -108,7 +106,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         return true
     }
-    
     //MARK:- Location Manager
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -247,11 +244,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func notificationViewMessageForIdentify(userINFO:JSON)
     {
+        print(userINFO)
         var type:String!
         var ID:String!
         var titleInDict = ""
         var messageInDict = ""
         var IDFetchString:String!
+        var expireeDate:String!
         
         if userINFO["gcm.notification.Type"].string != nil
         {   type = userINFO["gcm.notification.Type"].string!
@@ -278,6 +277,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             IDFetchString = "gcm.notification.CampaignID"
             titleInDict = userINFO["aps"]["alert"]["title"].string!
             messageInDict = userINFO["aps"]["alert"]["body"].string!
+            expireeDate = userINFO["gcm.notification.EndDate"].string
             
         }else if(type == "3")
         {
@@ -285,6 +285,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             IDFetchString = "gcm.notification.RequestID"
             titleInDict = userINFO["aps"]["alert"]["title"].string!
             messageInDict = userINFO["aps"]["alert"]["body"].string!
+            expireeDate = userINFO["gcm.notification.WhenNeeded"].string
+            
         } else if(type == "11" || type == "12") {
             
             IDFetchString = String(describing: userINFO["ID"])
@@ -308,7 +310,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             messageInDict = userINFO["aps"]["alert"]["body"].string!
         }
         
-        let myDict = ["Title" : "\(titleInDict)", "Message" : "\(messageInDict)", "Type" : type!,"ID" : ID]
+        let myDict = ["Title" : "\(titleInDict)", "Message" : "\(messageInDict)", "Type" : type!,"ID" : ID,"ExpireeDate" : expireeDate]
         
         let deadlineTime = DispatchTime.now() + .milliseconds(500)
         

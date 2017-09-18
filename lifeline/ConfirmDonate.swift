@@ -349,7 +349,7 @@ extension ConfirmDonate : getVolunteerProtocol {
             MarkerData.SharedInstance.requestStatus = String(describing: jsonArray["GetVolunteerListsReponse"]["ResponseDetails"]["StatusCode"])
             
         } else {
-            let tempStr = String(describing: jsonArray["GetVolunteerListsReponse"]["ResponseDetails"]["PreferredDateTime"])
+            let tempStr = String(describing: jsonArray["GetVolunteerListsReponse"]["/"]["PreferredDateTime"])
             MarkerData.SharedInstance.PreferredDateTime = Util.SharedInstance.dateChangeForUser(dateString: tempStr)
             MarkerData.SharedInstance.CommentLines = String(describing: jsonArray["GetVolunteerListsReponse"]["ResponseDetails"]["Comment"])
             

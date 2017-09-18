@@ -9,6 +9,8 @@
 import UIKit
 
 class NotificationCell: UITableViewCell {
+    
+    @IBOutlet weak var viewBackground: UIView!
 
     @IBOutlet weak var lblNotificationTitle: UILabel!
     

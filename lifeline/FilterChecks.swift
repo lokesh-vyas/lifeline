@@ -25,7 +25,7 @@ class SingleTon {
     var individualsOnList : JSON = []
     var hospitalsOnList: JSON = []
     var compaignOnList: JSON = []
-
+    //var badgeCount = Int()
     
     class var SharedInstance : SingleTon {
         struct Shared {

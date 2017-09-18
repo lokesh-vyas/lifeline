@@ -319,3 +319,22 @@ class UnderlinedLabel: UILabel {
     }
 }
 
+extension UIColor
+{
+    public class var myRedColor: UIColor
+    {
+        return UIColor(red: 182.0, green: 11.0, blue: 22.0, alpha: 1.0)
+    }
+    
+    public class var myGreenColor: UIColor
+    {
+        return UIColor(red: 53.0, green: 206.0, blue: 17.0, alpha: 1.0)
+
+    }
+    
+    public class var myBrownColor: UIColor
+    {
+        return UIColor(red: 128.0, green: 64.0, blue: 0.0, alpha: 1.0)
+    }
+    
+}

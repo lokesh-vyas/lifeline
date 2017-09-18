@@ -83,7 +83,6 @@ class ProfileView: UIViewController
     //MARK:- Show Data On view
     func showDataOnView(profileData:ProfileData)
     {
-        UserDefaults.standard.set(true, forKey: "SuccessProfileRegistration")
         self.txtName.text! = profileData.Name
         self.txtEmailID.text! = profileData.EmailId
         self.txtContactNumber.text! = profileData.ContactNumber

@@ -47,6 +47,7 @@ class MarkerListModel
     var SharedInSocialMedia : String = ""
     var CTypeOfOrg : String = ""
     var individualDetails : String = ""
+    
 }
 class IndividualMarkerData
 {
@@ -70,6 +71,8 @@ class MarkersListView: UIViewController {
     var filtered = [MarkerListModel]()
     var is_Searching: Bool!
     
+   var listMaekerForShow = MarkerListModel()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -149,9 +152,10 @@ class MarkersListView: UIViewController {
                 }
 }
         }
-        self.tblView.reloadData()
+        self.tblView.performSelector(onMainThread: #selector(self.tblView.reloadData), with: nil, waitUntilDone: true)
         print(listDetailArray.count)
         print(listMarkers)
+        print(listDetailArray)
         self.navigationController?.completelyTransparentBar()
         tblView.contentInset = UIEdgeInsetsMake(-35, 0.0, +195, 0.0)
         if SingleTon.SharedInstance.noMarkers == true {
@@ -161,21 +165,22 @@ class MarkersListView: UIViewController {
             lblNoRequirement.text = ""
         }
         NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
-       // filtered = []
     }
     
     func loadList(notification: NSNotification){
         listMarkers = []
         listMarkers = JSON(SingleTon.SharedInstance.appendedMarkers) 
         print("when table reloads :\(listMarkers)^^^")
-        self.tblView.reloadData()
-        print("table is reloaded")
+            self.tblView.performSelector(onMainThread: #selector(self.tblView.reloadData), with: nil, waitUntilDone: true)
+            print("table is reloaded")
     }
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.tblView.performSelector(onMainThread: #selector(self.tblView.reloadData), with: nil, waitUntilDone: true)
+    }
     @IBAction func btnCancelTapped(_ sender: Any) {
         
-        //dismiss(animated: true, completion: nil)
         let temp = self.storyboard?.instantiateViewController(withIdentifier: "DonateView") as! DonateView
         let naC = UINavigationController(rootViewController: temp)
         present(naC, animated: true, completion: nil)
@@ -189,6 +194,7 @@ class MarkersListView: UIViewController {
         present(temp, animated: true, completion: nil)
     }
 }
+
 extension MarkersListView : UITableViewDataSource {
     
     
@@ -212,6 +218,8 @@ extension MarkersListView : UITableViewDataSource {
         
         let cellIdentifier:String = "DonateListCell"
         var cell:DonateListCell? = tblView.dequeueReusableCell(withIdentifier: cellIdentifier) as? DonateListCell
+        
+        
         if (cell == nil)
         {
             var nib:Array = Bundle.main.loadNibNamed("DonateListCell", owner: self, options: nil)!
@@ -223,15 +231,10 @@ extension MarkersListView : UITableViewDataSource {
                 let listMaekerForShow = filtered[indexPath.row]
                 print(listMaekerForShow.typeOfOrg)
         
-                cell?.viewBackground.backgroundColor = UIColor.clear
-                cell?.viewBottomForColor.backgroundColor = UIColor.clear
-                cell?.viewBackground.addGradientWithColor(color: UIColor.clear)
-                cell?.viewBottomForColor.addGradientWithColor(color: UIColor.clear)
                 if listMaekerForShow.typeOfOrg == "1" {
                         // Hospital
-                    
-                    cell?.viewBackground.addGradientWithColor(color: Util.SharedInstance.hexStringToUIColor(hex: "804000"))
-                    cell?.viewBottomForColor.addGradientWithColor(color: Util.SharedInstance.hexStringToUIColor(hex: "804000"))
+                  
+                    cell?.viewBackground.backgroundColor = UIColor(patternImage: UIImage(named: "BrownBar.png")!)
                     cell?.lblUserName.text = listMaekerForShow.name
                     cell?.lblTimingForCamp.text = ""
                     cell?.imgDropForTiming.image = UIImage(named: "timer")
@@ -239,8 +242,8 @@ extension MarkersListView : UITableViewDataSource {
                     }
                 else if listMaekerForShow.typeOfOrg == "2" {
                         // Camp
-                    cell?.viewBackground.addGradientWithColor(color: Util.SharedInstance.hexStringToUIColor(hex: "35CE11"))
-                    cell?.viewBottomForColor.addGradientWithColor(color: Util.SharedInstance.hexStringToUIColor(hex: "35CE11"))
+                   
+                    cell?.viewBackground.backgroundColor = UIColor(patternImage: UIImage(named: "GreenBar.png")!)
                     cell?.lblUserName.text = listMaekerForShow.name
                     cell?.lblTimingForCamp.text = listMaekerForShow.CampTimeDuration
                     cell?.viewCamp.isHidden = false
@@ -249,8 +252,8 @@ extension MarkersListView : UITableViewDataSource {
                 }
                 else if listMaekerForShow.typeOfOrg == "3" {
                       //Individual
-                    cell?.viewBackground.addGradientWithColor(color: Util.SharedInstance.hexStringToUIColor(hex: "B60B16"))
-                    cell?.viewBottomForColor.addGradientWithColor(color: Util.SharedInstance.hexStringToUIColor(hex: "B60B16"))
+                   
+                    cell?.viewBackground.backgroundColor = UIColor(patternImage: UIImage(named: "RedBar.png")!)
                     cell?.lblUserName.text = listMaekerForShow.name
                     cell?.lblTimingForCamp.text = ""
                     cell?.viewCamp.isHidden = true
@@ -260,30 +263,24 @@ extension MarkersListView : UITableViewDataSource {
         }
         else
         {
-           
-            let listMaekerForShow = listDetailArray[indexPath.row]
+            listMaekerForShow = listDetailArray[indexPath.row]
             print(listMaekerForShow.typeOfOrg)
-
-            cell?.viewBackground.backgroundColor = UIColor.clear
-            cell?.viewBottomForColor.backgroundColor = UIColor.clear
-            cell?.viewBackground.addGradientWithColor(color: UIColor.clear)
-            cell?.viewBottomForColor.addGradientWithColor(color: UIColor.clear)
             cell?.viewBackground.backgroundColor = nil
             cell?.viewBottomForColor.backgroundColor = nil
             if listMaekerForShow.typeOfOrg == "1"  // Hospital
             {
-                cell?.viewBackground.addGradientWithColor(color: Util.SharedInstance.hexStringToUIColor(hex: "804000"))
-                cell?.viewBottomForColor.addGradientWithColor(color: Util.SharedInstance.hexStringToUIColor(hex: "804000"))
+                cell?.viewBackground.backgroundColor = UIColor(patternImage: UIImage(named: "BrownBar.png")!)
                 cell?.lblUserName.text = listMaekerForShow.name
                 cell?.lblTimingForCamp.text = ""
                 cell?.imgDropForTiming.image = UIImage(named: "timer")
                 cell?.viewCamp.isHidden = true
-                //cell?.constraintForHeightCamp.isActive = true
+                
                 self.view.layoutIfNeeded()
                 UIView.animate(withDuration: Double(0.1), animations: {
                     DispatchQueue.main.async {
-                    cell?.constraintForHeightCamp.constant = 0
-                    cell?.constraintForHeightCamp.priority = 999
+                        
+//                    cell?.constraintForHeightCamp.constant = 0
+//                    cell?.constraintForHeightCamp.priority = 999
                         self.view.updateConstraints()
                     self.view.setNeedsUpdateConstraints()
                         self.view.layoutIfNeeded()} })
@@ -291,8 +288,8 @@ extension MarkersListView : UITableViewDataSource {
                 cell?.lblTimeForHospital.text = listMaekerForShow.workingHours
             }else if(listMaekerForShow.typeOfOrg == "2")  // Camp
             {
-                cell?.viewBackground.addGradientWithColor(color: Util.SharedInstance.hexStringToUIColor(hex: "35CE11"))
-                cell?.viewBottomForColor.addGradientWithColor(color: Util.SharedInstance.hexStringToUIColor(hex: "35CE11"))
+                
+                cell?.viewBackground.backgroundColor = UIColor(patternImage: UIImage(named: "GreenBar.png")!)
                 cell?.lblUserName.text = listMaekerForShow.name
                 cell?.lblTimingForCamp.text = listMaekerForShow.CampTimeDuration
                 cell?.viewCamp.isHidden = false
@@ -302,16 +299,15 @@ extension MarkersListView : UITableViewDataSource {
                 self.view.layoutIfNeeded()
                 UIView.animate(withDuration: Double(0.1), animations: {
                     DispatchQueue.main.async {
-                    cell?.constraintForHeightCamp.constant = 26
-                    cell?.constraintForHeightCamp.priority = 250
+//                    cell?.constraintForHeightCamp.constant = 26
+//                    cell?.constraintForHeightCamp.priority = 250
                         self.view.updateConstraints()
                     self.view.setNeedsUpdateConstraints()
                         self.view.layoutIfNeeded()} })
                     
             }else if(listMaekerForShow.typeOfOrg == "3")  //Individual
             {
-                cell?.viewBackground.addGradientWithColor(color: Util.SharedInstance.hexStringToUIColor(hex: "B60B16"))
-                cell?.viewBottomForColor.addGradientWithColor(color: Util.SharedInstance.hexStringToUIColor(hex: "B60B16"))
+               cell?.viewBackground.backgroundColor = UIColor(patternImage: UIImage(named: "RedBar.png")!)
                 cell?.lblUserName.text = listMaekerForShow.name
                 cell?.lblTimingForCamp.text = ""
                 cell?.viewCamp.isHidden = true
@@ -321,8 +317,8 @@ extension MarkersListView : UITableViewDataSource {
                 self.view.layoutIfNeeded()
                 UIView.animate(withDuration: Double(0.1), animations: {
                     DispatchQueue.main.async {
-                    cell?.constraintForHeightCamp.constant = 0
-                    cell?.constraintForHeightCamp.priority = 999
+//                    cell?.constraintForHeightCamp.constant = 0
+//                    cell?.constraintForHeightCamp.priority = 999
                         self.view.updateConstraints()
                     self.view.setNeedsUpdateConstraints()
                         self.view.layoutIfNeeded()} })
@@ -343,6 +339,9 @@ extension MarkersListView : UITableViewDelegate {
         
         let TypeOfOrg = listDetailArray[indexPath.row].typeOfOrg
         var navigationControllerStack = UINavigationController()
+        
+        
+        
         if TypeOfOrg == "2"
         {
             let cnfDonate = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmDonate") as! ConfirmDonate
@@ -373,6 +372,7 @@ extension MarkersListView : UITableViewDelegate {
             
         else if TypeOfOrg == "1"
         {
+            
             let cnfDonate = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmDonate") as! ConfirmDonate
             MarkerData.SharedInstance.markerData["Name"] = listDetailArray[indexPath.row].name
             MarkerData.SharedInstance.markerData["ID"] = listDetailArray[indexPath.row].id
@@ -394,6 +394,8 @@ extension MarkersListView : UITableViewDelegate {
         }
         else if TypeOfOrg == "3"
         {
+
+            
             let indiCnfDonate = self.storyboard?.instantiateViewController(withIdentifier: "IndividualConfirmDonate") as! IndividualConfirmDonate
             MarkerData.SharedInstance.markerData["Name"] = listDetailArray[indexPath.row].name
             MarkerData.SharedInstance.markerData["ID"] = listDetailArray[indexPath.row].id
@@ -446,7 +448,8 @@ extension MarkersListView : UISearchBarDelegate {
         if (searchBar.text?.isEmpty)!
         {
             is_Searching = false
-            self.tblView.reloadData()
+            
+            self.tblView.performSelector(onMainThread: #selector(self.tblView.reloadData), with: nil, waitUntilDone: true)
         }
         else
         {
@@ -472,11 +475,12 @@ extension MarkersListView : UISearchBarDelegate {
                         searchDetails.descriptionForIndi = d
                     }
                     filtered.append(searchDetails)
+                    
                 }}
           print(filtered)
           
         }
-            self.tblView.reloadData()
+            self.tblView.performSelector(onMainThread: #selector(self.tblView.reloadData), with: nil, waitUntilDone: true)
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar)
     {

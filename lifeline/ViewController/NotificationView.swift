@@ -29,20 +29,35 @@ class NotificationView: UIViewController {
         }
         self.lblTitleText.text = UserJSON["Title"] as? String
         self.lblMessageText.text = UserJSON["Message"] as? String
-        
         let storeDataFetch = UserDefaults.standard.object(forKey: "AllNotification")
         if storeDataFetch != nil {
            NotificationList  = storeDataFetch as! [Dictionary<String, Any>]
         }
-        
         var tempDict = [String:Any]()
         tempDict["Title"] = UserJSON["Title"] as! String
         tempDict["Message"] = UserJSON["Message"] as! String
         tempDict["Type"] = UserJSON["Type"] as! String
         tempDict["Id"] = UserJSON["ID"] as? String
         tempDict["Status"] = "0"
-        tempDict["ExpireDate"] = UserJSON["WhenNeeded"] ?? UserJSON["EndDate"]
-        //tempDict["EndDate"] = UserJSON["EndDate"]
+        tempDict["Is_Read"] = "0"
+        tempDict["is_Tapped"] = "0"
+        
+        if(tempDict["Type"] as? String == "3" || tempDict["Type"] as? String == "11") //indi
+        {
+            tempDict["ExpireDate"] = UserJSON["ExpireeDate"]
+        }
+        else if (tempDict["Type"] as? String == "4" || tempDict["Type"] as? String == "12") //camp
+        {
+            tempDict["ExpireDate"] = UserJSON["ExpireeDate"]
+        }
+        else  // Other Notifications
+        {
+            let dateString: Date = Date()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let currentDate = dateFormatter.string(from: dateString)
+            tempDict["ExpireDate"] = currentDate
+        }
         NotificationList.append(tempDict)
         
         UserDefaults.standard.set(NotificationList, forKey: "AllNotification")

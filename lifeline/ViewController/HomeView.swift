@@ -14,6 +14,9 @@ import UserNotifications
 class HomeView: UIViewController {
     //MARK:- IBOutlet
     @IBOutlet weak var revalMenuButton: UIBarButtonItem!
+    var NotificationList : [Dictionary<String, Any>] = []
+    var badgeCount = Int()
+    let label = UILabel(frame: CGRect(x: 14, y: -7, width: 18, height: 18))
     //MARK:- viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -41,7 +44,62 @@ class HomeView: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(HomeView.shareAppURLTapped), name: NSNotification.Name(rawValue: "ShareApplicationURL"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(HomeView.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
+        
+       /* self.showBadge()
+        // button
+        let rightButton = UIButton(frame: CGRect(x: 0, y: 0, width: 25, height: 22))
+        rightButton.setBackgroundImage(UIImage(named: "notification"), for: .normal)
+        rightButton.addTarget(self, action: #selector(BtnNotificationTapped), for: .touchUpInside)
+        rightButton.addSubview(label)
+        
+        // Bar button item
+        let rightBarButtomItem = UIBarButtonItem(customView: rightButton)
+        
+        navigationItem.rightBarButtonItem = rightBarButtomItem*/
     }
+    
+    /*func showBadge()
+    {
+        let storeDataFetch = UserDefaults.standard.object(forKey: "AllNotification")
+        if storeDataFetch != nil {
+            NotificationList  = storeDataFetch as! [Dictionary<String, Any>]
+        }
+        for i in 0..<NotificationList.count
+        {
+            if (NotificationList[i]["Is_Read"] as! String == "0")
+            {
+                badgeCount = badgeCount + 1
+            }
+            else if (NotificationList[i]["Is_Read"] as! String == "1")
+            {
+                badgeCount = badgeCount - 1
+            }
+        }
+        
+        //MARK:- Notifications Count
+        label.layer.borderColor = UIColor.clear.cgColor
+        label.layer.borderWidth = 2
+        label.layer.cornerRadius = label.bounds.size.height / 2
+        label.textAlignment = .center
+        label.layer.masksToBounds = true
+        label.font = UIFont(name: "HelveticaNeue-Bold", size: 12)
+        label.textColor = .white
+        label.backgroundColor = .red
+        if badgeCount <= 0
+        {
+            label.isHidden = true
+        }
+        else
+        {
+            label.text = String(describing: badgeCount)
+        }
+    }
+    
+    func BtnNotificationTapped() {
+        print("Notification Button Tapped")
+        let notificationView = self.storyboard?.instantiateViewController(withIdentifier: "MyNotificationView")
+        self.navigationController?.pushViewController(notificationView!, animated: true)
+    }*/
     
     //MARK:- Device Registration
     func DeviceRegistrationForServer(DeviceToken:String)
@@ -54,11 +112,6 @@ class HomeView: UIViewController {
         ProfileViewInteractor.SharedInstance.MyDeviceRegistration(params: customer)
 
     }
-    
-    /*@IBAction func BtnNotificationTapped(_ sender: Any) {
-        let notificationView = self.storyboard?.instantiateViewController(withIdentifier: "MyNotificationView")
-        self.navigationController?.pushViewController(notificationView!, animated: true)
-    }*/
     
 //MARK:- DonateAction
     @IBAction func DonateAction(_ sender: Any)
@@ -89,7 +142,7 @@ class HomeView: UIViewController {
     func PushNotificationView(_ notification: NSNotification)
     {
         let dict = notification.object as! Dictionary<String, Any>
-       
+        
         let notificationView:NotificationView = self.storyboard?.instantiateViewController(withIdentifier: "NotificationView") as! NotificationView
         notificationView.UserJSON = dict
         notificationView.modalPresentationStyle = .overCurrentContext
@@ -110,7 +163,15 @@ class HomeView: UIViewController {
             
             //New Excluded Activities Code
             activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
-            self.present(activityVC, animated: true, completion: nil)
+                    
+                    if UIDevice.current.userInterfaceIdiom == .pad
+                    {
+                        if activityVC.responds(to: #selector(getter: UIViewController.popoverPresentationController))
+                        {
+                            activityVC.popoverPresentationController?.sourceView = self.view
+                        }
+                    }
+                    self.present(activityVC, animated: true, completion: nil)
         }
     }
 }

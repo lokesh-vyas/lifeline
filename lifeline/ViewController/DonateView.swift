@@ -39,7 +39,6 @@ class DonateView: UIViewController {
     var loader : Bool?
     var InternetIssue : Bool?
     var appendsListMarkers : [Dictionary<String, Any>] = []
-    
     var currentLat : CLLocationDegrees!
     var currentLong : CLLocationDegrees!
     
@@ -251,26 +250,25 @@ class DonateView: UIViewController {
                     
                 }
                 
-            } else if dataArray[i]["TypeOfOrg"] == 2 && SingleTon.SharedInstance.isCheckedCamp {
-                
-                rLatitude = dataArray[i]["Latitude"].doubleValue
-                rLongitude = dataArray[i]["Longitude"].doubleValue
-                rLocation = CLLocation.init(latitude: CLLocationDegrees(rLatitude!), longitude: CLLocationDegrees(rLongitude!))
-                rCoordinates = rLocation?.coordinate
-                let myMarker3 = GMSMarker()
-                myMarker3.position = rCoordinates!
-                myMarker3.userData = dataArray[i]
-                myMarker3.icon = UIImage(named: "Camp_icon")!
-                myMarker3.map = mapView
-                view = mapView
+            }
+            else if dataArray[i]["TypeOfOrg"] == 2 && SingleTon.SharedInstance.isCheckedCamp
+            {
+                    rLatitude = dataArray[i]["Latitude"].doubleValue
+                    rLongitude = dataArray[i]["Longitude"].doubleValue
+                    rLocation = CLLocation.init(latitude: CLLocationDegrees(rLatitude!), longitude: CLLocationDegrees(rLongitude!))
+                    rCoordinates = rLocation?.coordinate
+                    let myMarker3 = GMSMarker()
+                    myMarker3.position = rCoordinates!
+                    myMarker3.userData = dataArray[i]
+                    myMarker3.icon = UIImage(named: "Camp_icon")!
+                    myMarker3.map = mapView
+                    view = mapView
             }
         }
         mapView.delegate = self
         HudBar.sharedInstance.hideHudFormView(view: self.view)
         
     }
-    
-    
 }
 
 extension DonateView : CLLocationManagerDelegate {

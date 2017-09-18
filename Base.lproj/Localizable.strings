@@ -177,5 +177,5 @@ REQUIREMENT_STRING = "Requirement for";
 CAMP_HEADER = "Blood Donation Camp";
 HOSPITAL_HEADER = "Hospital/BloodBank";
 MAIL_TITLE_FOR_CAMP = "LifeLine Blood Camp";
-
+NO_NOTIFICATIONS = "No Notifications";
 
