@@ -35,8 +35,12 @@
 		251993C31F5E7EA700E9BFC2 /* RedBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 251993C21F5E7EA700E9BFC2 /* RedBar.png */; };
 		251993C51F5E7EAD00E9BFC2 /* BrownBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 251993C41F5E7EAD00E9BFC2 /* BrownBar.png */; };
 		252B7AEA1ED8104C00A900D7 /* MultipleLanguageStringClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252B7AE91ED8104C00A900D7 /* MultipleLanguageStringClass.swift */; };
+		25328B5E1F8B5A7100741B43 /* MyDonationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25328B5D1F8B5A7100741B43 /* MyDonationCell.xib */; };
+		25328B611F8B5B2000741B43 /* MyDonationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25328B601F8B5B2000741B43 /* MyDonationCell.swift */; };
 		253897901EE5470400B8AFB3 /* LanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2538978F1EE5470400B8AFB3 /* LanguageVC.swift */; };
 		253897941EE578C100B8AFB3 /* LanguageTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253897931EE578C100B8AFB3 /* LanguageTableCell.swift */; };
+		25B8467F1F8DE42E002AF4B4 /* MasterRequestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B8467E1F8DE42E002AF4B4 /* MasterRequestVC.swift */; };
+		25B846811F8DEC3E002AF4B4 /* MyDonationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B846801F8DEC3E002AF4B4 /* MyDonationView.swift */; };
 		25B8EFFC1F2F40CA00D08C6B /* Notification_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 25B8EFFB1F2F40CA00D08C6B /* Notification_image.png */; };
 		25B8EFFE1F2F517500D08C6B /* MyNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B8EFFD1F2F517500D08C6B /* MyNotificationView.swift */; };
 		25B8F0011F34A1EA00D08C6B /* DonateListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B8F0001F34A1E500D08C6B /* DonateListCell.swift */; };
@@ -198,8 +202,14 @@
 		251993C21F5E7EA700E9BFC2 /* RedBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedBar.png; sourceTree = "<group>"; };
 		251993C41F5E7EAD00E9BFC2 /* BrownBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BrownBar.png; sourceTree = "<group>"; };
 		252B7AE91ED8104C00A900D7 /* MultipleLanguageStringClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleLanguageStringClass.swift; sourceTree = "<group>"; };
+		25328B5D1F8B5A7100741B43 /* MyDonationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyDonationCell.xib; sourceTree = "<group>"; };
+		25328B601F8B5B2000741B43 /* MyDonationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDonationCell.swift; sourceTree = "<group>"; };
 		2538978F1EE5470400B8AFB3 /* LanguageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageVC.swift; sourceTree = "<group>"; };
 		253897931EE578C100B8AFB3 /* LanguageTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageTableCell.swift; sourceTree = "<group>"; };
+		2550468A1F90D7D300A83C2F /* address_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = address_icon.png; path = ../../../../../Downloads/address_icon.png; sourceTree = "<group>"; };
+		2550468B1F90D7FC00A83C2F /* address_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = address_icon.png; path = ../../../../../Downloads/address_icon.png; sourceTree = "<group>"; };
+		25B8467E1F8DE42E002AF4B4 /* MasterRequestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterRequestVC.swift; sourceTree = "<group>"; };
+		25B846801F8DEC3E002AF4B4 /* MyDonationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDonationView.swift; sourceTree = "<group>"; };
 		25B8EFFA1F29F65000D08C6B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		25B8EFFB1F2F40CA00D08C6B /* Notification_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Notification_image.png; sourceTree = "<group>"; };
 		25B8EFFD1F2F517500D08C6B /* MyNotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNotificationView.swift; sourceTree = "<group>"; };
@@ -425,6 +435,15 @@
 			name = "Multiple Requests";
 			sourceTree = "<group>";
 		};
+		25328B5F1F8B5A9200741B43 /* MyDonationCell */ = {
+			isa = PBXGroup;
+			children = (
+				25328B5D1F8B5A7100741B43 /* MyDonationCell.xib */,
+				25328B601F8B5B2000741B43 /* MyDonationCell.swift */,
+			);
+			name = MyDonationCell;
+			sourceTree = "<group>";
+		};
 		25B8EFFF1F34A19B00D08C6B /* DonateListCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -471,6 +490,7 @@
 		66316B811E54555E00114055 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				25328B5F1F8B5A9200741B43 /* MyDonationCell */,
 				25C057B21F470686002A8107 /* NotificationCell */,
 				25B8EFFF1F34A19B00D08C6B /* DonateListCell */,
 				6633E9081E88F7AF0008C730 /* InventoryTableCell */,
@@ -695,6 +715,8 @@
 		66C4E68F1E37403100526C1D /* MyRequestView */ = {
 			isa = PBXGroup;
 			children = (
+				25B8467E1F8DE42E002AF4B4 /* MasterRequestVC.swift */,
+				25B846801F8DEC3E002AF4B4 /* MyDonationView.swift */,
 				66C4E6901E37404C00526C1D /* MyRequestView.swift */,
 				665111C01E63F9D700A6AFAA /* MyRequestInteractor.swift */,
 				665111BA1E61B67200A6AFAA /* MyRequestClose */,
@@ -863,6 +885,7 @@
 				18F3AD681E8A66B10086274E /* List-32.png */,
 				18C04FCB1E86CD43000B15EA /* Unchecked Checkbox-32.png */,
 				18C04FC41E8540ED000B15EA /* Filter50.png */,
+				2550468A1F90D7D300A83C2F /* address_icon.png */,
 				2503104F1F3B16AE00C077FD /* timer.png */,
 				18C04FC61E8541B8000B15EA /* Filter32.png */,
 				663D6FEC1E7003B900EB2CD8 /* HOME_SCREEN_F.png */,
@@ -877,6 +900,7 @@
 				66EA8E041E275A4000646797 /* delete_icon.png */,
 				66EA8E051E275A4000646797 /* drop_black.png */,
 				66EA8E061E275A4000646797 /* drop_red.png */,
+				2550468B1F90D7FC00A83C2F /* address_icon.png */,
 				66EA8E071E275A4000646797 /* e-mail-envelope.png */,
 				66EA8E081E275A4000646797 /* error-sign.png */,
 				66EA8E091E275A4000646797 /* errorimage.png */,
@@ -1111,6 +1135,7 @@
 				66EA8E1B1E275A4000646797 /* password_noti.png in Resources */,
 				66C5782C1E37799F00B235F4 /* seguili.ttf in Resources */,
 				663D6FEF1E7003B900EB2CD8 /* HOME_SCREEN_F.png in Resources */,
+				25328B5E1F8B5A7100741B43 /* MyDonationCell.xib in Resources */,
 				66C5782A1E37799F00B235F4 /* segoeuisl.ttf in Resources */,
 				665111B91E61826D00A6AFAA /* MyRequestCell.xib in Resources */,
 				66EA8E111E275A4000646797 /* calendar_clock.png in Resources */,
@@ -1356,6 +1381,7 @@
 				1830CE891E6567CE005BBC19 /* ConfirmDonate.swift in Sources */,
 				183A1D9B1E66D2AC0048DC65 /* MarkerData.swift in Sources */,
 				66EA8E341E27AF0900646797 /* SignUpApi.swift in Sources */,
+				25B8467F1F8DE42E002AF4B4 /* MasterRequestVC.swift in Sources */,
 				253897941EE578C100B8AFB3 /* LanguageTableCell.swift in Sources */,
 				66EA8E2C1E27947400646797 /* NetworkManager.swift in Sources */,
 				66EA8E281E277D0400646797 /* Util.swift in Sources */,
@@ -1371,6 +1397,7 @@
 				66316B841E5572B800114055 /* HospitalListInteractor.swift in Sources */,
 				66C4E6821E37273100526C1D /* RevalListView.swift in Sources */,
 				66C4E68B1E37400B00526C1D /* DonateView.swift in Sources */,
+				25B846811F8DEC3E002AF4B4 /* MyDonationView.swift in Sources */,
 				6633E90C1E88F89F0008C730 /* InventoryTableCell.swift in Sources */,
 				1841C6B51E698B39006F14B2 /* IndividualConfirmDonateInteractor.swift in Sources */,
 				66EA8E2E1E27A36900646797 /* SignUpInteractor.swift in Sources */,
@@ -1384,6 +1411,7 @@
 				18324D381E5D6E030043B204 /* DonateInteractor.swift in Sources */,
 				EDE9AE941E5C35CE0031BCB0 /* BloodInfoView.swift in Sources */,
 				66C4E67F1E3725A300526C1D /* ProfileView.swift in Sources */,
+				25328B611F8B5B2000741B43 /* MyDonationCell.swift in Sources */,
 				ED11189F1E61983F003EA467 /* ShowHospitalInMapView.swift in Sources */,
 				252B7AEA1ED8104C00A900D7 /* MultipleLanguageStringClass.swift in Sources */,
 				25B8F0011F34A1EA00D08C6B /* DonateListCell.swift in Sources */,

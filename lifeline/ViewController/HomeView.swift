@@ -13,7 +13,11 @@ import UserNotifications
 
 class HomeView: UIViewController {
     //MARK:- IBOutlet
+    
+    @IBOutlet weak var lblDonate: UILabel!
+    @IBOutlet weak var lblRequest: UILabel!
     @IBOutlet weak var revalMenuButton: UIBarButtonItem!
+    
     var NotificationList : [Dictionary<String, Any>] = []
     var badgeCount = Int()
     let label = UILabel(frame: CGRect(x: 14, y: -7, width: 18, height: 18))
@@ -44,6 +48,14 @@ class HomeView: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(HomeView.shareAppURLTapped), name: NSNotification.Name(rawValue: "ShareApplicationURL"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(HomeView.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
+        
+        let tapRec = UITapGestureRecognizer(target: self, action: #selector(HomeView.lblDonateTapped(_:)))
+        lblDonate.addGestureRecognizer(tapRec)
+        lblDonate.isUserInteractionEnabled = true
+        
+        let tapRec1 = UITapGestureRecognizer(target: self, action: #selector(HomeView.lblRequestTapped(_:)))
+        lblRequest.addGestureRecognizer(tapRec1)
+        lblRequest.isUserInteractionEnabled = true
         
        /* self.showBadge()
         // button
@@ -101,6 +113,22 @@ class HomeView: UIViewController {
         self.navigationController?.pushViewController(notificationView!, animated: true)
     }*/
     
+    func lblDonateTapped(_ sender: UITapGestureRecognizer)
+    {
+        SingleTon.SharedInstance.isCheckedIndividual = true
+        SingleTon.SharedInstance.isCheckedHospital = true
+        SingleTon.SharedInstance.isCheckedCamp = true
+        
+        let donateView = self.storyboard?.instantiateViewController(withIdentifier: "DonateView")
+        self.navigationController?.pushViewController(donateView!, animated: true)
+    }
+
+    func lblRequestTapped(_ sender: UITapGestureRecognizer)
+    {
+        let requestView = self.storyboard?.instantiateViewController(withIdentifier: "RequestView")
+        self.navigationController?.pushViewController(requestView!, animated: true)
+    }
+    
     //MARK:- Device Registration
     func DeviceRegistrationForServer(DeviceToken:String)
     {
@@ -135,7 +163,7 @@ class HomeView: UIViewController {
 //MARK:- MyRequestAction
     @IBAction func MyRequestAction(_ sender: Any)
     {
-        let requestView = self.storyboard?.instantiateViewController(withIdentifier: "MyRequestView")
+        let requestView = self.storyboard?.instantiateViewController(withIdentifier: "MasterRequestVC")
         self.navigationController?.pushViewController(requestView!, animated: true)
     }
     //MARK:- PushNotificationView

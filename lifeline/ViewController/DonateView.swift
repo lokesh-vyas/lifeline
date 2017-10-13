@@ -751,6 +751,7 @@ extension DonateView : DonateViewProtocol {
             if jDict["ToDate"].exists() {
                 jDict =  [jDict]
             }
+        
             appendsListMarkers.removeAll()
             
             for (i, _) in jDict.enumerated() {
