@@ -15,8 +15,10 @@ class MyRequestView: UIViewController {
     @IBOutlet weak var tableRequestView: UITableView!
     var MyRequestArray = Array<JSON>()
     //MARK:- viewDidLoad
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        //self.navigationItem.hidesBackButton = true
         self.navigationController?.completelyTransparentBar()
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         tableRequestView.contentInset = UIEdgeInsetsMake(-35, 0.0, -20, 0.0)
@@ -46,6 +48,7 @@ class MyRequestView: UIViewController {
         let SWRevealView = self.storyboard!.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
         self.navigationController?.present(SWRevealView, animated: true, completion: nil)
     }
+    
 }
 //MARK:- TableViewDelegate
 extension MyRequestView:UITableViewDelegate,UITableViewDataSource
@@ -86,37 +89,36 @@ extension MyRequestView:UITableViewDelegate,UITableViewDataSource
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        var cell:MyRequestCell? = tableRequestView.dequeueReusableCell(withIdentifier: "MyRequestCell") as? MyRequestCell
-        if cell == nil
-        {
-            let nib:Array = Bundle.main.loadNibNamed("MyRequestCell", owner: self, options: nil)!
-            cell = nib[0] as? MyRequestCell
-        }
-        let myRequestDetail = MyRequestArray[indexPath.row]
-        cell?.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "ffffff")
-        cell?.lblPatientName.text = myRequestDetail["PatientName"].string
-        cell?.lblBloodGroup.text = myRequestDetail["BloodGroup"].string
-        cell?.lblRequestDate.text = Util.SharedInstance.dateChangeForInternal(dateString: myRequestDetail["RequestedOn"].string!)
-        
-        if myRequestDetail["Status"].string == "Close"
-        {
-            cell?.viewColorForStatus.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#35ce11")
-            cell?.btnCloseRequest.isHidden = true
-            cell?.viewCloseButtonRequest.isHidden = true
-        }
-        else
-        {
-            cell?.viewColorForStatus.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#ffa800")
-            cell?.btnCloseRequest.isHidden = false
-            cell?.viewCloseButtonRequest.isHidden = false
-        }
-        
-        cell?.btnCloseRequest.tag = indexPath.row
-        cell?.btnCloseRequest.addTarget(self, action: #selector(MyRequestView.btnCloseTapped(sender:)), for: .touchUpInside)
-        cell?.btnViewDonars.tag = indexPath.row
-        cell?.btnViewDonars.addTarget(self, action: #selector(MyRequestView.btnDonorViewTapped(sender:)), for: .touchUpInside)
-        
-        return cell!
+                var cell:MyRequestCell? = tableRequestView.dequeueReusableCell(withIdentifier: "MyRequestCell") as? MyRequestCell
+                if cell == nil
+                {
+                    let nib:Array = Bundle.main.loadNibNamed("MyRequestCell", owner: self, options: nil)!
+                    cell = nib[0] as? MyRequestCell
+                }
+                let myRequestDetail = MyRequestArray[indexPath.row]
+                cell?.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "ffffff")
+                cell?.lblPatientName.text = myRequestDetail["PatientName"].string
+                cell?.lblBloodGroup.text = myRequestDetail["BloodGroup"].string
+                cell?.lblRequestDate.text = Util.SharedInstance.dateChangeForInternal(dateString: myRequestDetail["RequestedOn"].string!)
+                
+                if myRequestDetail["Status"].string == "Close"
+                {
+                    cell?.viewColorForStatus.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#35ce11")
+                    cell?.btnCloseRequest.isHidden = true
+                    cell?.viewCloseButtonRequest.isHidden = true
+                }
+                else
+                {
+                    cell?.viewColorForStatus.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#ffa800")
+                    cell?.btnCloseRequest.isHidden = false
+                    cell?.viewCloseButtonRequest.isHidden = false
+                }
+                
+                cell?.btnCloseRequest.tag = indexPath.row
+                cell?.btnCloseRequest.addTarget(self, action: #selector(MyRequestView.btnCloseTapped(sender:)), for: .touchUpInside)
+                cell?.btnViewDonars.tag = indexPath.row
+                cell?.btnViewDonars.addTarget(self, action: #selector(MyRequestView.btnDonorViewTapped(sender:)), for: .touchUpInside)
+                return cell!
     }
 }
 //MARK:- MyRequestProtocol

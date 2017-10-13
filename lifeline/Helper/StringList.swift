@@ -100,6 +100,5 @@ public enum URLList:String
     case LIFELINE_Get_Profile             = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.GetProfile"
     case LIFELINE_Get_VolunteerList       = "http://demo.frontman.isteer.com:8284/services/GetVolunteerList"
     case LIFELINE_Get_Inventory           = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.GetInventory"
-    
-    
+    case MY_DONATION                      = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.MyDonation"
 }

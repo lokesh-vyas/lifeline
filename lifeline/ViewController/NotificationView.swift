@@ -29,7 +29,7 @@ class NotificationView: UIViewController {
         }
         self.lblTitleText.text = UserJSON["Title"] as? String
         self.lblMessageText.text = UserJSON["Message"] as? String
-        let storeDataFetch = UserDefaults.standard.object(forKey: "AllNotification")
+       /* let storeDataFetch = UserDefaults.standard.object(forKey: "AllNotification")
         if storeDataFetch != nil {
            NotificationList  = storeDataFetch as! [Dictionary<String, Any>]
         }
@@ -60,7 +60,7 @@ class NotificationView: UIViewController {
         }
         NotificationList.append(tempDict)
         
-        UserDefaults.standard.set(NotificationList, forKey: "AllNotification")
+        UserDefaults.standard.set(NotificationList, forKey: "AllNotification")*/
         NotificationCenter.default.removeObserver("PushNotificationReloadData")
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PushNotificationReloadData"), object:nil)
     }
@@ -71,9 +71,9 @@ class NotificationView: UIViewController {
     }
     @IBAction func btnViewTapped(_ sender: Any)
     {
-        print(NotificationList.count)
+       /* print(NotificationList.count)
         NotificationList[NotificationList.count - 1]["Status"] = "1"
-        UserDefaults.standard.set(NotificationList, forKey: "AllNotification")
+        UserDefaults.standard.set(NotificationList, forKey: "AllNotification")*/
         if (UserJSON["Type"] as? String == "2")
         {
             //After accecpt request
