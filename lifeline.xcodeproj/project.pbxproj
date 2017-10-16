@@ -39,6 +39,7 @@
 		25328B611F8B5B2000741B43 /* MyDonationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25328B601F8B5B2000741B43 /* MyDonationCell.swift */; };
 		253897901EE5470400B8AFB3 /* LanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2538978F1EE5470400B8AFB3 /* LanguageVC.swift */; };
 		253897941EE578C100B8AFB3 /* LanguageTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253897931EE578C100B8AFB3 /* LanguageTableCell.swift */; };
+		2550468E1F94ED9C00A83C2F /* address_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2550468D1F94ED9900A83C2F /* address_icon.png */; };
 		25B8467F1F8DE42E002AF4B4 /* MasterRequestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B8467E1F8DE42E002AF4B4 /* MasterRequestVC.swift */; };
 		25B846811F8DEC3E002AF4B4 /* MyDonationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B846801F8DEC3E002AF4B4 /* MyDonationView.swift */; };
 		25B8EFFC1F2F40CA00D08C6B /* Notification_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 25B8EFFB1F2F40CA00D08C6B /* Notification_image.png */; };
@@ -206,8 +207,7 @@
 		25328B601F8B5B2000741B43 /* MyDonationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDonationCell.swift; sourceTree = "<group>"; };
 		2538978F1EE5470400B8AFB3 /* LanguageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageVC.swift; sourceTree = "<group>"; };
 		253897931EE578C100B8AFB3 /* LanguageTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageTableCell.swift; sourceTree = "<group>"; };
-		2550468A1F90D7D300A83C2F /* address_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = address_icon.png; path = ../../../../../Downloads/address_icon.png; sourceTree = "<group>"; };
-		2550468B1F90D7FC00A83C2F /* address_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = address_icon.png; path = ../../../../../Downloads/address_icon.png; sourceTree = "<group>"; };
+		2550468D1F94ED9900A83C2F /* address_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = address_icon.png; sourceTree = "<group>"; };
 		25B8467E1F8DE42E002AF4B4 /* MasterRequestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterRequestVC.swift; sourceTree = "<group>"; };
 		25B846801F8DEC3E002AF4B4 /* MyDonationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDonationView.swift; sourceTree = "<group>"; };
 		25B8EFFA1F29F65000D08C6B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
@@ -876,6 +876,7 @@
 			isa = PBXGroup;
 			children = (
 				251993C01F5E7EA000E9BFC2 /* GreenBar.png */,
+				2550468D1F94ED9900A83C2F /* address_icon.png */,
 				251993C21F5E7EA700E9BFC2 /* RedBar.png */,
 				251993C41F5E7EAD00E9BFC2 /* BrownBar.png */,
 				663D6FEB1E7003B900EB2CD8 /* HOME_SCREEN_03.png */,
@@ -885,7 +886,6 @@
 				18F3AD681E8A66B10086274E /* List-32.png */,
 				18C04FCB1E86CD43000B15EA /* Unchecked Checkbox-32.png */,
 				18C04FC41E8540ED000B15EA /* Filter50.png */,
-				2550468A1F90D7D300A83C2F /* address_icon.png */,
 				2503104F1F3B16AE00C077FD /* timer.png */,
 				18C04FC61E8541B8000B15EA /* Filter32.png */,
 				663D6FEC1E7003B900EB2CD8 /* HOME_SCREEN_F.png */,
@@ -900,7 +900,6 @@
 				66EA8E041E275A4000646797 /* delete_icon.png */,
 				66EA8E051E275A4000646797 /* drop_black.png */,
 				66EA8E061E275A4000646797 /* drop_red.png */,
-				2550468B1F90D7FC00A83C2F /* address_icon.png */,
 				66EA8E071E275A4000646797 /* e-mail-envelope.png */,
 				66EA8E081E275A4000646797 /* error-sign.png */,
 				66EA8E091E275A4000646797 /* errorimage.png */,
@@ -1161,6 +1160,7 @@
 				6633E9111E8908680008C730 /* InventoryCell.xib in Resources */,
 				66EA8E1C1E275A4000646797 /* person.png in Resources */,
 				18C04FCD1E86CD43000B15EA /* Unchecked Checkbox-32.png in Resources */,
+				2550468E1F94ED9C00A83C2F /* address_icon.png in Resources */,
 				66EA8E161E275A4000646797 /* drop_red.png in Resources */,
 				663F67621EDFF27900D5C49E /* Localizable.strings in Resources */,
 				6633E90A1E88F7F50008C730 /* InventoryTableCell.xib in Resources */,
@@ -1541,6 +1541,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1585,6 +1586,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};

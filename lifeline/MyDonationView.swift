@@ -53,17 +53,18 @@ extension MyDonationView : UITableViewDelegate,UITableViewDataSource
             cell = nib[0] as? MyDonationCell
         }
         let myDonationDetail = myDonationArray[indexPath.row]
-        if String(describing : myDonationDetail["RequestDetails"]) != "null"
+        if String(describing : myDonationDetail["RequestDetails"]) != "null"   // Indi Cell
         {
             
             cell?.lblName.text = myDonationDetail["RequestDetails"]["RequestDetail"]["PatientName"].string
             cell?.lblBloodGroup.text = myDonationDetail["RequestDetails"]["RequestDetail"]["bloodgroup"].string
             cell?.lblRequestDate.text = Util.SharedInstance.dateChangeForGetProfileDOB(dateString: myDonationDetail["RequestDetails"]["RequestDetail"]["WhenNeeded"].string!)
+            cell?.imgBloodGroup.image = UIImage(named: "drop_black.png")
         }
-        else if String(describing : myDonationDetail["CampDetails"]) != "null"
+        else if String(describing : myDonationDetail["CampDetails"]) != "null"  // Camp Details
         {
             cell?.lblName.text = myDonationDetail["CampDetails"]["CampDetail"]["Name"].string
-            //cell?.imgBloodGroup.image = UIImage(named: "address_icon")
+            cell?.imgBloodGroup.image = UIImage(named: "address_icon.png")
             cell?.lblBloodGroup.text = myDonationDetail["CampDetails"]["CampDetail"]["City"].string
             cell?.lblRequestDate.text = "\(Util.SharedInstance.dateChangeForInternal(dateString: myDonationDetail["CampDetails"]["CampDetail"]["FromDate"].string!)) TO \(Util.SharedInstance.dateChangeForInternal(dateString:  myDonationDetail["CampDetails"]["CampDetail"]["FromDate"].string!))"
         }

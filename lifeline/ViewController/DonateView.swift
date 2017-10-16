@@ -511,7 +511,8 @@ extension DonateView : DonateViewProtocol {
     func successDonateSources(jsonArray: JSON) {
         
         // ListofMarkers
-        btnListofMarkers.setImage(UIImage(named : "List-32"), for: .normal)
+        //List-32
+        btnListofMarkers.setImage(UIImage(named : "List_icon"), for: .normal)
         
         btnListofMarkers.backgroundColor = UIColor.white
         btnListofMarkers.cornerRadius = 27.5

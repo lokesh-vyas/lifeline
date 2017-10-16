@@ -9,6 +9,9 @@
 /* Class = "UINavigationItem"; title = "Address"; ObjectID = "1vm-L7-Vjy"; */
 "1vm-L7-Vjy.title" = "पता";
 
+/* Class = "UINavigationItem"; title = "Address"; ObjectID = "mKU-Xi-pJj"; */
+"mKU-Xi-pJj.title" = "History";
+
 /* Class = "UINavigationItem"; title = "Donate "; ObjectID = "lM7-GP-6kO"; */
 "lM7-GP-6kO.title" = "दान करें";
 
@@ -267,7 +270,7 @@
 "Tym-tX-1v1.text" = "N/A";
 
 /* Class = "UIButton"; normalTitle = "My Requests"; ObjectID = "UFu-Km-CcU"; */
-"UFu-Km-CcU.normalTitle" = "मेरे निवेदन";
+"UFu-Km-CcU.normalTitle" = "निवेदन";
 
 /* Class = "UIButton"; normalTitle = "What you need"; ObjectID = "UM5-pu-tKE"; */
 "UM5-pu-tKE.normalTitle" = "आपकी आवश्यकता*";
@@ -363,7 +366,7 @@
 "goq-ur-qEv.normalTitle" = "जन्मतिथि";
 
 /* Class = "UISearchBar"; placeholder = "Blood Donate Places"; ObjectID = "heb-vv-Zvc"; */
-"heb-vv-Zvc.placeholder" = "रक्तदान करने के स्थान";
+"heb-vv-Zvc.placeholder" = "यहाँ ढूँढे";
 
 /* Class = "UISearchBar"; heb-vv-Zvc.scopeButtonTitles[0] = "Title"; ObjectID = "heb-vv-Zvc"; */
 "heb-vv-Zvc.scopeButtonTitles[0]" = "Title";

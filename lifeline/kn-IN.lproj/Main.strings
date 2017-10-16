@@ -258,7 +258,7 @@
 "Tym-tX-1v1.text" = "N/A";
 
 /* Class = "UIButton"; normalTitle = "My Requests"; ObjectID = "UFu-Km-CcU"; */
-"UFu-Km-CcU.normalTitle" = "ನನ್ನ ವಿನಂತಿಗಳು";
+"UFu-Km-CcU.normalTitle" = "ವಿನಂತಿಗಳು";
 
 /* Class = "UIButton"; normalTitle = "What you need"; ObjectID = "UM5-pu-tKE"; */
 "UM5-pu-tKE.normalTitle" = "ನಿಮಗೆ ಬೇಕಾದದು*";
@@ -354,7 +354,7 @@
 "goq-ur-qEv.normalTitle" = "ಹುಟ್ತಿದ ದಿನ";
 
 /* Class = "UISearchBar"; placeholder = "Blood Donate Places"; ObjectID = "heb-vv-Zvc"; */
-"heb-vv-Zvc.placeholder" = "ಬ್ಲಡ್ ದಾನ ಸ್ಥಳಗಳು";
+"heb-vv-Zvc.placeholder" = "ಇಲ್ಲಿ ಹುಡುಕಿ";
 
 /* Class = "UISearchBar"; heb-vv-Zvc.scopeButtonTitles[0] = "Title"; ObjectID = "heb-vv-Zvc"; */
 "heb-vv-Zvc.scopeButtonTitles[0]" = "Title";
@@ -535,3 +535,6 @@
 
 /* Class = "UINavigationItem"; title = "Donate "; ObjectID = "lM7-GP-6kO"; */
 "lM7-GP-6kO.title" = "ದಾನ";
+
+/* Class = "UINavigationItem"; title = "Address"; ObjectID = "mKU-Xi-pJj"; */
+"mKU-Xi-pJj.title" = "History";

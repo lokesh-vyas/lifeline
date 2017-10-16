@@ -149,7 +149,7 @@
                 <outlet property="viewCloseButtonRequest" destination="buy-lQ-a15" id="buC-qx-GlA"/>
                 <outlet property="viewColorForStatus" destination="XUq-WC-Zou" id="lRO-WW-b9a"/>
             </connections>
-            <point key="canvasLocation" x="212" y="225"/>
+            <point key="canvasLocation" x="211.5" y="225"/>
         </tableViewCell>
     </objects>
     <resources>
