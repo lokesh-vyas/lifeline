@@ -178,4 +178,5 @@ CAMP_HEADER = "இரத்த நன்கொடை முகாம்";
 HOSPITAL_HEADER = "மருத்துவமனை/இரத்த வங்கி";
 MAIL_TITLE_FOR_CAMP = "LifeLine இரத்த முகாம்";
 NO_NOTIFICATIONS = "அறிவிப்புகள் இல்லை";
-
+MY_REQUEST = "எனது வேண்டுகோள்";
+MY_DONATION = "என் நன்கொடை";

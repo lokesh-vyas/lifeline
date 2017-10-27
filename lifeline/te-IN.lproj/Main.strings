@@ -261,7 +261,7 @@
 "Tym-tX-1v1.text" = "N/A";
 
 /* Class = "UIButton"; normalTitle = "My Requests"; ObjectID = "UFu-Km-CcU"; */
-"UFu-Km-CcU.normalTitle" = "మా అభ్యర్థనలు";
+"UFu-Km-CcU.normalTitle" = "అభ్యర్థనలు";
 
 /* Class = "UIButton"; normalTitle = "What you need"; ObjectID = "UM5-pu-tKE"; */
 "UM5-pu-tKE.normalTitle" = "మీకు ఏమ్ కావాలి";
@@ -360,7 +360,7 @@
 "goq-ur-qEv.normalTitle" = "పుట్టిన తేది";
 
 /* Class = "UISearchBar"; placeholder = "Blood Donate Places"; ObjectID = "heb-vv-Zvc"; */
-"heb-vv-Zvc.placeholder" = "రక్తం దానం స్థలాలు";
+"heb-vv-Zvc.placeholder" = "ఇక్కడ శోధించండి";
 
 /* Class = "UISearchBar"; heb-vv-Zvc.scopeButtonTitles[0] = "Title"; ObjectID = "heb-vv-Zvc"; */
 "heb-vv-Zvc.scopeButtonTitles[0]" = "టైటిల్";
@@ -535,3 +535,6 @@
 
 /* Class = "UINavigationItem"; title = "Select Language"; ObjectID = "pGZ-xa-ljc"; */
 "pGZ-xa-ljc.title" = "భాషను ఎంచుకోండి";
+
+/* Class = "UINavigationItem"; title = "Address"; ObjectID = "mKU-Xi-pJj"; */
+"mKU-Xi-pJj.title" = "History";

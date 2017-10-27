@@ -266,7 +266,7 @@
 "Tym-tX-1v1.text" = "N/A";
 
 /* Class = "UIButton"; normalTitle = "My Requests"; ObjectID = "UFu-Km-CcU"; */
-"UFu-Km-CcU.normalTitle" = "என் கோரிக்கைகள்";
+"UFu-Km-CcU.normalTitle" = "கோரிக்கைகள்";
 
 /* Class = "UIButton"; normalTitle = "What you need"; ObjectID = "UM5-pu-tKE"; */
 "UM5-pu-tKE.normalTitle" = "என்ன தேவை*";
@@ -362,7 +362,7 @@
 "goq-ur-qEv.normalTitle" = "பிறந்த தேதி";
 
 /* Class = "UISearchBar"; placeholder = "Blood Donate Places"; ObjectID = "heb-vv-Zvc"; */
-"heb-vv-Zvc.placeholder" = "இரத்த தானம் இடங்கள்";
+"heb-vv-Zvc.placeholder" = "இங்கே தேடுங்கள்";
 
 /* Class = "UISearchBar"; heb-vv-Zvc.scopeButtonTitles[0] = "Title"; ObjectID = "heb-vv-Zvc"; */
 "heb-vv-Zvc.scopeButtonTitles[0]" = "Title";
@@ -528,6 +528,9 @@
 
 /* Class = "UILabel"; text = "From Date         :"; ObjectID = "yI3-Yb-2I7"; */
 "yI3-Yb-2I7.text" = "தேதி முதல் :";
+
+/* Class = "UINavigationItem"; title = "Address"; ObjectID = "mKU-Xi-pJj"; */
+"mKU-Xi-pJj.title" = "History";
 
 /* Class = "UITextField"; placeholder = "Confirm Password"; ObjectID = "yq2-Bx-1oS"; */
 "yq2-Bx-1oS.placeholder" = "கடவுச்சொல்லை உறுதிப்படுத்துக";

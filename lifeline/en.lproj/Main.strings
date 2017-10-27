@@ -261,7 +261,7 @@
 "Tym-tX-1v1.text" = "N/A";
 
 /* Class = "UIButton"; normalTitle = "My Requests"; ObjectID = "UFu-Km-CcU"; */
-"UFu-Km-CcU.normalTitle" = "My Requests";
+"UFu-Km-CcU.normalTitle" = "Requests";
 
 /* Class = "UIButton"; normalTitle = "What you need*"; ObjectID = "UM5-pu-tKE"; */
 "UM5-pu-tKE.normalTitle" = "What you need*";
@@ -360,7 +360,7 @@
 "goq-ur-qEv.normalTitle" = "DOB";
 
 /* Class = "UISearchBar"; placeholder = "Blood Donate Places"; ObjectID = "heb-vv-Zvc"; */
-"heb-vv-Zvc.placeholder" = "Blood Donate Places";
+"heb-vv-Zvc.placeholder" = "Search here";
 
 /* Class = "UISearchBar"; heb-vv-Zvc.scopeButtonTitles[0] = "Title"; ObjectID = "heb-vv-Zvc"; */
 "heb-vv-Zvc.scopeButtonTitles[0]" = "Title";
@@ -541,3 +541,6 @@
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "yz5-DD-wbp"; */
 "yz5-DD-wbp.text" = "Title";
+
+/* Class = "UINavigationItem"; title = "Address"; ObjectID = "mKU-Xi-pJj"; */
+"mKU-Xi-pJj.title" = "History";

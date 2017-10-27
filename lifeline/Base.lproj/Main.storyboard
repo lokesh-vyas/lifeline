@@ -1427,9 +1427,9 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Inner_bg" translatesAutoresizingMaskIntoConstraints="NO" id="jkX-hM-UMw">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2gT-qA-vjQ">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" allowsSelection="NO" rowHeight="100" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="2gT-qA-vjQ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="21Y-Hs-Hu9" id="mYy-md-Fxk"/>
                                     <outlet property="delegate" destination="21Y-Hs-Hu9" id="II4-Fk-j6M"/>
@@ -1546,7 +1546,7 @@
                                     <action selector="btnSearchTapped:" destination="It2-WR-duq" id="Kjn-mj-1eX"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem image="Filter Filled.png" id="Yrs-Dm-N3W">
+                            <barButtonItem image="Filter_icon" id="Yrs-Dm-N3W">
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="btnFilterTapped:" destination="It2-WR-duq" id="Cw5-Ya-4xP"/>
@@ -2051,7 +2051,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Campaign Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OR7-mt-Ovx">
-                                <rect key="frame" x="103" y="463" width="169.5" height="20"/>
+                                <rect key="frame" x="103.5" y="463" width="169.5" height="20"/>
                                 <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -4174,7 +4174,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Inner_bg" translatesAutoresizingMaskIntoConstraints="NO" id="xfm-xV-3r7">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <searchBar contentMode="redraw" barStyle="black" placeholder="Blood Donate Places" translatesAutoresizingMaskIntoConstraints="NO" id="heb-vv-Zvc">
+                            <searchBar contentMode="redraw" barStyle="black" placeholder="Search here" translatesAutoresizingMaskIntoConstraints="NO" id="heb-vv-Zvc">
                                 <rect key="frame" x="0.0" y="64" width="375" height="56"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4222,13 +4222,13 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Donate" id="jxV-yA-Awc">
-                        <barButtonItem key="leftBarButtonItem" image="Filter Filled.png" id="2J8-oL-11k">
+                        <barButtonItem key="leftBarButtonItem" image="Filter_icon" id="2J8-oL-11k">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="btnFilterTapped:" destination="ERS-Wp-jb2" id="ePX-84-RzV"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="Point Objects-32.png" id="gfl-7s-vCE">
+                        <barButtonItem key="rightBarButtonItem" image="Location_Map_icon" id="gfl-7s-vCE">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="btnCancelTapped:" destination="ERS-Wp-jb2" id="hvg-lh-KAu"/>
@@ -5182,7 +5182,7 @@
         <image name="Checked Checkbox 2-32.png" width="32" height="32"/>
         <image name="Doctor_info" width="15" height="15"/>
         <image name="Drops" width="12" height="37"/>
-        <image name="Filter Filled.png" width="25" height="25"/>
+        <image name="Filter_icon" width="22" height="22"/>
         <image name="HOME_SCREEN_03.png" width="799" height="73"/>
         <image name="HOME_SCREEN_F.png" width="495" height="100"/>
         <image name="HOME_SCREEN_G.png" width="497" height="100"/>
@@ -5194,12 +5194,12 @@
         <image name="Individual_icon" width="24" height="37"/>
         <image name="Inner_bg" width="356" height="633"/>
         <image name="Inner_btn" width="122" height="28"/>
+        <image name="Location_Map_icon" width="30" height="30"/>
         <image name="Login_Logo" width="159" height="226"/>
         <image name="Login_bg" width="540" height="960"/>
         <image name="Map_icon" width="26" height="26"/>
         <image name="Menu_icon" width="23" height="15"/>
         <image name="Personal_info" width="15" height="15"/>
-        <image name="Point Objects-32.png" width="32" height="32"/>
         <image name="donateImage" width="91" height="91"/>
         <image name="facebook_btn_icon" width="55" height="63"/>
         <image name="person.png" width="48" height="48"/>

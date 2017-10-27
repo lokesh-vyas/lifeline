@@ -40,7 +40,8 @@ class MasterRequestVC: UIViewController {
         super.viewDidLoad()
         let font = UIFont.boldSystemFont(ofSize: 15)
         segmentObj.setTitleTextAttributes([NSFontAttributeName: font], for: .normal)
-        
+        segmentObj.setTitle(MultiLanguage.getLanguageUsingKey("My Request"), forSegmentAt: 0)
+        segmentObj.setTitle(MultiLanguage.getLanguageUsingKey("My Donation"), forSegmentAt: 1)
         segmentObj.selectedSegmentIndex = TabIndex.firstChildTab.rawValue
         displayCurrentTab(TabIndex.firstChildTab.rawValue)
     }
