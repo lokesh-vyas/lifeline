@@ -16,7 +16,7 @@ class MyDonationView: UIViewController {
     var myDonationArray = Array<JSON>()
     override func viewDidLoad() {
         super.viewDidLoad()
-        tblView.contentInset = UIEdgeInsetsMake(-35, +195, 0, 0.0)
+        tblView.contentInset = UIEdgeInsetsMake(-35, 0.0, -20, 0.0)
         tblView.isHidden = true
         lblNoRecordFound.isHidden = true
         self.MyDonationServiceCall()
@@ -33,8 +33,10 @@ class MyDonationView: UIViewController {
 }
 extension MyDonationView : UITableViewDelegate,UITableViewDataSource
 {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if myDonationArray.count < 1 {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        if myDonationArray.count < 1
+        {
             tblView.isHidden = true
             lblNoRecordFound.isHidden = false
             lblNoRecordFound.text = MultiLanguage.getLanguageUsingKey("NO_REQUEST_FOUND")
@@ -44,7 +46,8 @@ extension MyDonationView : UITableViewDelegate,UITableViewDataSource
         return myDonationArray.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
         
         var cell:MyDonationCell? = tblView.dequeueReusableCell(withIdentifier: "MyDonationCell") as? MyDonationCell
         if cell == nil
@@ -97,6 +100,7 @@ extension MyDonationView : UITableViewDelegate,UITableViewDataSource
     }
 }
 
+
 //MARK:- MyRequestProtocol
 extension MyDonationView:MyRequestProtocol
 {
@@ -112,10 +116,12 @@ extension MyDonationView:MyRequestProtocol
             {
                 dataArray = JSON.init(arrayLiteral: dataArray)
             }
-            if let temp = dataArray.array {
+            if let temp = dataArray.array
+            {
                 myDonationArray = temp
                 
-            } else {
+            } else
+            {
                 self.tblView.isHidden = true
                 self.lblNoRecordFound.isHidden = false
                 self.lblNoRecordFound.text = MultiLanguage.getLanguageUsingKey("TOAST_ACCESS_SERVER_WARNING")

@@ -181,9 +181,10 @@ class MarkersListView: UIViewController {
     }
     @IBAction func btnCancelTapped(_ sender: Any) {
         
-        let temp = self.storyboard?.instantiateViewController(withIdentifier: "DonateView") as! DonateView
+        /*let temp = self.storyboard?.instantiateViewController(withIdentifier: "DonateView") as! DonateView
         let naC = UINavigationController(rootViewController: temp)
-        present(naC, animated: true, completion: nil)
+        present(naC, animated: true, completion: nil)*/
+        self.dismiss(animated: true, completion: nil)
     }
     @IBAction func btnFilterTapped(_ sender: Any) {
         

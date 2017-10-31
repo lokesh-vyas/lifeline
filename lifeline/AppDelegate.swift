@@ -264,7 +264,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             type = userINFO["Type"].string!
             print("type = \(type)")
         }
-        
+        // Type = 1 for welcome notification
         if (type == "2")
         {
             //After accecpt request
@@ -288,7 +288,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             expireeDate = userINFO["gcm.notification.WhenNeeded"].string
             
         } else if(type == "11" || type == "12") {
-            
+            // Local Notification after accept request
             IDFetchString = String(describing: userINFO["ID"])
             titleInDict = String(describing: userINFO["Title"])
             messageInDict = String(describing: userINFO["Body"])

@@ -18,7 +18,6 @@ class MyNotificationView: UIViewController {
         self.navigationController?.completelyTransparentBar()
         NotificationTblView.contentInset = UIEdgeInsetsMake(-35, 0.0, 0, 0.0)
         NotificationCenter.default.addObserver(self, selector: #selector(MyNotificationView.PushNotificationViewReloadData), name: NSNotification.Name(rawValue: "PushNotificationReloadData"), object: nil)
-    
         NoNewNotifications.isHidden = true
         NotificationTblView.isHidden = true
         

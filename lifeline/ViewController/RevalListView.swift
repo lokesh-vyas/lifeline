@@ -31,6 +31,8 @@ class RevalListView: UIViewController
 }
 
 
+
+
 extension RevalListView:UITableViewDelegate,UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -39,6 +41,7 @@ extension RevalListView:UITableViewDelegate,UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellString = menuArray[indexPath.row]
         let cell:UITableViewCell = (self.menuTableView.dequeueReusableCell(withIdentifier: cellString )! as UITableViewCell)
+        
         
         return cell
     }
