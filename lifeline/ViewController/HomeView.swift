@@ -192,7 +192,7 @@ class HomeView: UIViewController {
             //New Excluded Activities Code
             activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
                     
-                    if UIDevice.current.userInterfaceIdiom == .pad
+                   if UIDevice.current.userInterfaceIdiom == .pad
                     {
                         if activityVC.responds(to: #selector(getter: UIViewController.popoverPresentationController))
                         {

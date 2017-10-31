@@ -30,7 +30,7 @@ class DonateView: UIViewController {
     var rLongitude    : CLLocationDegrees?
     var rLocation     : CLLocation?
     var rCoordinates  : CLLocationCoordinate2D?
-    var dataArray     : JSON!
+   
     var viewWarning   = UIView()
     var labelWarning  = UILabel()
     let imageWarning  = UIImageView()
@@ -49,7 +49,7 @@ class DonateView: UIViewController {
         loader = true
         InternetIssue = true
         
-         count = count + 1
+        count = count + 1
         
         if CLLocationManager.locationServicesEnabled()
         {
@@ -66,9 +66,15 @@ class DonateView: UIViewController {
             self.openSettingsForDisableMap()
         }
         NotificationCenter.default.addObserver(self, selector: #selector(PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
-        
-        //NotificationCenter.default.addObserver(self, selector: #selector(DonateView.bloodDonatingMarkers(responseData: "")), name: NSNotification.Name(rawValue: "DataFilter"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(DonateView.reloadData), name: NSNotification.Name(rawValue: "DataFilter"), object: nil)
         //        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+    }
+    func reloadData()
+    {
+        HudBar.sharedInstance.showHudWithMessage(message: MultiLanguage.getLanguageUsingKey("TOAST_LOADING_MESSAGE"), view: self.view)
+        self.mapView.clear()
+        let downwards = GMSCameraUpdate.scrollBy(x: 0.1, y: 0.1)
+        self.mapView.animate(with: downwards)
     }
     
     //MARK:- viewWillAppear
@@ -87,7 +93,6 @@ class DonateView: UIViewController {
         self.definesPresentationContext = true
         searchController?.hidesNavigationBarDuringPresentation = false
         DonateInteractor.sharedInstance.delegate = self
-        
     }
     //MARK:- GoToInCurrentLoction
     func goToInCurrentLoction()
@@ -120,7 +125,7 @@ class DonateView: UIViewController {
         let alertController = UIAlertController (title: MultiLanguage.getLanguageUsingKey("LOCATION_TITLE_WARNING"), message: MultiLanguage.getLanguageUsingKey("LOCATION_MESSAGE_WARNING"), preferredStyle: .alert)
         
         let settingsAction = UIAlertAction(title: MultiLanguage.getLanguageUsingKey("TOAST_SETTING_TITLE"), style: .default) { (_) -> Void in
-           
+            
             guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
                 return
             }
@@ -136,7 +141,7 @@ class DonateView: UIViewController {
             }
         }
         alertController.addAction(settingsAction)
-
+        
         let cancelAction = UIAlertAction(title: MultiLanguage.getLanguageUsingKey("BTN_CANCEL"), style: .default, handler: nil)
         alertController.addAction(cancelAction)
         
@@ -215,7 +220,6 @@ class DonateView: UIViewController {
         if ((dataArray as? JSON)?.dictionary) != nil {
             dataArray = JSON.init(arrayLiteral: dataArray)
         }
-        
         for (i, _) in dataArray.enumerated() {
             
             if dataArray[i]["TypeOfOrg"] == 1  {
@@ -224,7 +228,7 @@ class DonateView: UIViewController {
                     self.rLatitude = dataArray[i]["Latitude"].doubleValue
                     self.rLongitude = dataArray[i]["Longitude"].doubleValue
                     self.rLocation = CLLocation.init(latitude:
-                    CLLocationDegrees(self.rLatitude!), longitude: CLLocationDegrees(self.rLongitude!))
+                        CLLocationDegrees(self.rLatitude!), longitude: CLLocationDegrees(self.rLongitude!))
                     self.rCoordinates = self.rLocation?.coordinate
                     let myMarker1 = GMSMarker()
                     myMarker1.position = self.rCoordinates!
@@ -253,16 +257,16 @@ class DonateView: UIViewController {
             }
             else if dataArray[i]["TypeOfOrg"] == 2 && SingleTon.SharedInstance.isCheckedCamp
             {
-                    rLatitude = dataArray[i]["Latitude"].doubleValue
-                    rLongitude = dataArray[i]["Longitude"].doubleValue
-                    rLocation = CLLocation.init(latitude: CLLocationDegrees(rLatitude!), longitude: CLLocationDegrees(rLongitude!))
-                    rCoordinates = rLocation?.coordinate
-                    let myMarker3 = GMSMarker()
-                    myMarker3.position = rCoordinates!
-                    myMarker3.userData = dataArray[i]
-                    myMarker3.icon = UIImage(named: "Camp_icon")!
-                    myMarker3.map = mapView
-                    view = mapView
+                rLatitude = dataArray[i]["Latitude"].doubleValue
+                rLongitude = dataArray[i]["Longitude"].doubleValue
+                rLocation = CLLocation.init(latitude: CLLocationDegrees(rLatitude!), longitude: CLLocationDegrees(rLongitude!))
+                rCoordinates = rLocation?.coordinate
+                let myMarker3 = GMSMarker()
+                myMarker3.position = rCoordinates!
+                myMarker3.userData = dataArray[i]
+                myMarker3.icon = UIImage(named: "Camp_icon")!
+                myMarker3.map = mapView
+                view = mapView
             }
         }
         mapView.delegate = self
@@ -344,7 +348,7 @@ extension DonateView : GMSMapViewDelegate {
     }
     
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
-    
+        
         print("I am in idle state...")
         
         
@@ -361,7 +365,7 @@ extension DonateView : GMSMapViewDelegate {
         self.fetchBloodRequestToDonate()
     }
     
-   
+    
     public func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         
         lastEventDate = Date()
@@ -717,107 +721,66 @@ extension DonateView : DonateViewProtocol {
             
         } else { // when we get marekrs (also when we find another markers through 'No requirements' places)
             
-             countsForMarkers(myJSON: jsonArray)
-//            viewWarning.removeFromSuperview()
-//            SingleTon.SharedInstance.noMarkers = false
-//            var tempDict = [String : Any]()
-//            var jDict = JSON.init(dictionaryLiteral: ("Index", jsonArray["BloodRequestSearchResponse"]["BloodRequestDetails"]))
-//            jDict = jDict["Index"]
-//            
-//            if jDict["ToDate"].exists() {
-//                jDict =  [jDict]
-//            }
-//            appendsListMarkers.removeAll()
-//            
-//            for (i, _) in jDict.enumerated() {
-//                tempDict["Name"] = jDict[i]["Name"]
-//                tempDict["WorkingHours"] = jDict[i]["WorkingHours"]
-//                tempDict["TypeOfOrg"] = jDict[i]["TypeOfOrg"]
-//                tempDict["Individuals"] = jDict[i]["IndividualDetails"]
-//                //print("Here is my Info \(String(describing: tempDict["Individuals"]))")
-//                appendsListMarkers.append(tempDict)
-//            }
-//            self.bloodDonatingMarkers(responseData: jsonArray)
+            countsForMarkers(myJSON: jsonArray)
         }
     }
     
     func countsForMarkers(myJSON : JSON) {
         
-         // when we get marekrs (also when we find another markers through 'No requirements' places)
-            viewWarning.removeFromSuperview()
-            var tempDict = [String : Any]()
-            var jDict = JSON.init(dictionaryLiteral: ("Index", myJSON["BloodRequestSearchResponse"]["BloodRequestDetails"]))
-            jDict = jDict["Index"]
-            
-            if jDict["ToDate"].exists() {
-                jDict =  [jDict]
-            }
+        // when we get marekrs (also when we find another markers through 'No requirements' places)
+        viewWarning.removeFromSuperview()
+        var tempDict = [String : Any]()
+        var jDict = JSON.init(dictionaryLiteral: ("Index", myJSON["BloodRequestSearchResponse"]["BloodRequestDetails"]))
+        jDict = jDict["Index"]
         
-            appendsListMarkers.removeAll()
+        if jDict["ToDate"].exists() {
+            jDict =  [jDict]
+        }
+        
+        appendsListMarkers.removeAll()
+        
+        for (i, _) in jDict.enumerated() {
             
-            for (i, _) in jDict.enumerated() {
-                
-                if jDict[i]["TypeOfOrg"].int == 1 {
-                    if String(describing: jDict[i]["IndividualDetails"]) != "null" && SingleTon.SharedInstance.isCheckedIndividual { // Individuals
-                        
-                        tempDict["Name"] = jDict[i]["Name"]
-                        tempDict["WorkingHours"] = jDict[i]["WorkingHours"]
-                        tempDict["TypeOfOrg"] = jDict[i]["TypeOfOrg"]
-                        tempDict["Individuals"] = jDict[i]["IndividualDetails"]
-                        tempDict["CID"] = jDict[i]["CID"]
-                        var mDict = JSON.init(dictionaryLiteral: ("Index", myJSON[i]["BloodRequirementRequest"]["BloodRequirementDetails"]))
-                        tempDict["LoginID"] = mDict[i]["LoginID"]
-                        tempDict["BloodGroup"] = mDict[i]["BloodGroup"]
-                        tempDict["DonationType"] = mDict[i]["DonationType"]
-                        tempDict["WhenNeeded"] = mDict[i]["WhenNeeded"]
-                        tempDict["NumUnits"] = mDict[i]["NumUnits"]
-                        tempDict["PatientName"] = mDict[i]["PatientName"]
-                        tempDict["ContactPerson"] = mDict[i]["ContactPerson"]
-                        tempDict["ContactNumber"] = mDict[i]["ContactNumber"]
-                        tempDict["DoctorName"] = mDict[i]["DoctorName"]
-                        tempDict["DoctorContact"] = mDict[i]["DoctorContact"]
-                        tempDict["DoctorEmailID"] = mDict[i]["DoctorEmailID"]
-                        tempDict["CenterID"] = mDict[i]["CenterID"]
-                        tempDict["CollectionCentreName"] = mDict[i]["CollectionCentreName"]
-                        tempDict["AddressLine"] = mDict[i]["AddressLine"]
-                        tempDict["City"] = mDict[i]["City"]
-                        tempDict["State"] = mDict[i]["State"]
-                        tempDict["LandMark"] = mDict[i]["LandMark"]
-                        tempDict["Latitude"] = mDict[i]["Latitude"]
-                        tempDict["Longitude"] = mDict[i]["Longitude"]
-                        tempDict["PINCode"] = mDict[i]["PINCode"]
-                        tempDict["Country"] = mDict[i]["Country"]
-                        tempDict["PersonalAppeal"] = mDict[i]["PersonalAppeal"]
-                        tempDict["SharedInSocialMedia"] = mDict[i]["SharedInSocialMedia"]
-                       appendsListMarkers.append(tempDict)
-                        
-                    } else if String(describing: jDict[i]["IndividualDetails"]) == "null" && SingleTon.SharedInstance.isCheckedHospital { // Hospital
-                        
-                        tempDict["Name"] = jDict[i]["Name"]
-                        tempDict["WorkingHours"] = jDict[i]["WorkingHours"]
-                        tempDict["TypeOfOrg"] = jDict[i]["TypeOfOrg"]
-                        //tempDict["Individuals"] = jDict[i]["IndividualDetails"]
-                        tempDict["ID"] = jDict[i]["ID"]
-                        tempDict["ContactNumber"] = jDict[i]["ContactNumber"]
-                        tempDict["Email"] = jDict[i]["Email"]
-                        tempDict["AddressId"] = jDict[i]["AddressId"]
-                        tempDict["AddressLine"] = jDict[i]["AddressLine"]
-                        tempDict["City"] = jDict[i]["City"]
-                        tempDict["PINCode"] = jDict[i]["PINCode"]
-                        tempDict["State"] = jDict[i]["State"]
-                        tempDict["Country"] = jDict[i]["Country"]
-                        tempDict["LandMark"] = jDict[i]["LandMark"]
-                        tempDict["Latitude"] = jDict[i]["Latitude"]
-                        tempDict["Longitude"] = jDict[i]["Longitude"]
-                        
-                        appendsListMarkers.append(tempDict)
-                    }
-                    
-                } else if jDict[i]["TypeOfOrg"].int == 2 && SingleTon.SharedInstance.isCheckedCamp { // Camps
+            if jDict[i]["TypeOfOrg"].int == 1 {
+                if String(describing: jDict[i]["IndividualDetails"]) != "null" && SingleTon.SharedInstance.isCheckedIndividual { // Individuals
                     
                     tempDict["Name"] = jDict[i]["Name"]
                     tempDict["WorkingHours"] = jDict[i]["WorkingHours"]
                     tempDict["TypeOfOrg"] = jDict[i]["TypeOfOrg"]
+                    tempDict["Individuals"] = jDict[i]["IndividualDetails"]
+                    tempDict["CID"] = jDict[i]["CID"]
+                    var mDict = JSON.init(dictionaryLiteral: ("Index", myJSON[i]["BloodRequirementRequest"]["BloodRequirementDetails"]))
+                    tempDict["LoginID"] = mDict[i]["LoginID"]
+                    tempDict["BloodGroup"] = mDict[i]["BloodGroup"]
+                    tempDict["DonationType"] = mDict[i]["DonationType"]
+                    tempDict["WhenNeeded"] = mDict[i]["WhenNeeded"]
+                    tempDict["NumUnits"] = mDict[i]["NumUnits"]
+                    tempDict["PatientName"] = mDict[i]["PatientName"]
+                    tempDict["ContactPerson"] = mDict[i]["ContactPerson"]
+                    tempDict["ContactNumber"] = mDict[i]["ContactNumber"]
+                    tempDict["DoctorName"] = mDict[i]["DoctorName"]
+                    tempDict["DoctorContact"] = mDict[i]["DoctorContact"]
+                    tempDict["DoctorEmailID"] = mDict[i]["DoctorEmailID"]
+                    tempDict["CenterID"] = mDict[i]["CenterID"]
+                    tempDict["CollectionCentreName"] = mDict[i]["CollectionCentreName"]
+                    tempDict["AddressLine"] = mDict[i]["AddressLine"]
+                    tempDict["City"] = mDict[i]["City"]
+                    tempDict["State"] = mDict[i]["State"]
+                    tempDict["LandMark"] = mDict[i]["LandMark"]
+                    tempDict["Latitude"] = mDict[i]["Latitude"]
+                    tempDict["Longitude"] = mDict[i]["Longitude"]
+                    tempDict["PINCode"] = mDict[i]["PINCode"]
+                    tempDict["Country"] = mDict[i]["Country"]
+                    tempDict["PersonalAppeal"] = mDict[i]["PersonalAppeal"]
+                    tempDict["SharedInSocialMedia"] = mDict[i]["SharedInSocialMedia"]
+                    appendsListMarkers.append(tempDict)
+                    
+                } else if String(describing: jDict[i]["IndividualDetails"]) == "null" && SingleTon.SharedInstance.isCheckedHospital { // Hospital
+                    
+                    tempDict["Name"] = jDict[i]["Name"]
+                    tempDict["WorkingHours"] = jDict[i]["WorkingHours"]
+                    tempDict["TypeOfOrg"] = jDict[i]["TypeOfOrg"]
+                    //tempDict["Individuals"] = jDict[i]["IndividualDetails"]
                     tempDict["ID"] = jDict[i]["ID"]
                     tempDict["ContactNumber"] = jDict[i]["ContactNumber"]
                     tempDict["Email"] = jDict[i]["Email"]
@@ -830,36 +793,56 @@ extension DonateView : DonateViewProtocol {
                     tempDict["LandMark"] = jDict[i]["LandMark"]
                     tempDict["Latitude"] = jDict[i]["Latitude"]
                     tempDict["Longitude"] = jDict[i]["Longitude"]
-                    if String(describing: jDict[i]["FromDate"]).characters.count > 10 {
-                        let trimDate = String(describing: jDict[i]["FromDate"]).substring(to: 10)
-                        tempDict["FromDate"] = trimDate
-                    }else {
-                        tempDict["FromDate"] = String(describing: jDict[i]["FromDate"])
-                    }
-                    if String(describing: jDict[i]["ToDate"]).characters.count > 10 {
-                        let trimDate = String(describing: jDict[i]["ToDate"]).substring(to: 10)
-                        tempDict["ToDate"] = trimDate
-                    } else {
-                        tempDict["ToDate"] = String(describing: jDict[i]["ToDate"])
-                    }
-                    tempDict["Individuals"] = jDict[i]["IndividualDetails"]
-                    appendsListMarkers.append(tempDict)
                     
-                } else {
-                    SingleTon.SharedInstance.noMarkers = true
+                    appendsListMarkers.append(tempDict)
                 }
-                SingleTon.SharedInstance.noMarkers = false
+                
+            } else if jDict[i]["TypeOfOrg"].int == 2 && SingleTon.SharedInstance.isCheckedCamp { // Camps
+                
+                tempDict["Name"] = jDict[i]["Name"]
+                tempDict["WorkingHours"] = jDict[i]["WorkingHours"]
+                tempDict["TypeOfOrg"] = jDict[i]["TypeOfOrg"]
+                tempDict["ID"] = jDict[i]["ID"]
+                tempDict["ContactNumber"] = jDict[i]["ContactNumber"]
+                tempDict["Email"] = jDict[i]["Email"]
+                tempDict["AddressId"] = jDict[i]["AddressId"]
+                tempDict["AddressLine"] = jDict[i]["AddressLine"]
+                tempDict["City"] = jDict[i]["City"]
+                tempDict["PINCode"] = jDict[i]["PINCode"]
+                tempDict["State"] = jDict[i]["State"]
+                tempDict["Country"] = jDict[i]["Country"]
+                tempDict["LandMark"] = jDict[i]["LandMark"]
+                tempDict["Latitude"] = jDict[i]["Latitude"]
+                tempDict["Longitude"] = jDict[i]["Longitude"]
+                if String(describing: jDict[i]["FromDate"]).characters.count > 10 {
+                    let trimDate = String(describing: jDict[i]["FromDate"]).substring(to: 10)
+                    tempDict["FromDate"] = trimDate
+                }else {
+                    tempDict["FromDate"] = String(describing: jDict[i]["FromDate"])
+                }
+                if String(describing: jDict[i]["ToDate"]).characters.count > 10 {
+                    let trimDate = String(describing: jDict[i]["ToDate"]).substring(to: 10)
+                    tempDict["ToDate"] = trimDate
+                } else {
+                    tempDict["ToDate"] = String(describing: jDict[i]["ToDate"])
+                }
+                tempDict["Individuals"] = jDict[i]["IndividualDetails"]
+                appendsListMarkers.append(tempDict)
+                
+            } else {
+                SingleTon.SharedInstance.noMarkers = true
+            }
+            SingleTon.SharedInstance.noMarkers = false
         }
-            self.bloodDonatingMarkers(responseData: myJSON) 
+        self.bloodDonatingMarkers(responseData: myJSON)
         
     }
-    
     
     //MARK:- List Button action
     func btnListClicked() {
         
         let lists = self.storyboard?.instantiateViewController(withIdentifier: "MarkersListView") as! MarkersListView
-//        lists.listMarker2 = JSON.init(dictionaryLiteral: ("Data",appendsListMarkers))
+        //        lists.listMarker2 = JSON.init(dictionaryLiteral: ("Data",appendsListMarkers))
         let tempDictionary = JSON.init(dictionaryLiteral: ("Data",appendsListMarkers))
         SingleTon.SharedInstance.sMarkers = tempDictionary["Data"]
         
@@ -873,7 +856,7 @@ extension DonateView : DonateViewProtocol {
         if Response == "NoInternet" {
             if InternetIssue == true {
                 InternetIssue = false
-               self.view.makeToast(MultiLanguage.getLanguageUsingKey("TOAST_NO_INTERNET_WARNING"), duration: 3.0, position: .bottom)
+                self.view.makeToast(MultiLanguage.getLanguageUsingKey("TOAST_NO_INTERNET_WARNING"), duration: 3.0, position: .bottom)
             }
         }else
         {
