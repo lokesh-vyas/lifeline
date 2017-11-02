@@ -47,7 +47,7 @@ class MarkerListModel
     var SharedInSocialMedia : String = ""
     var CTypeOfOrg : String = ""
     var individualDetails : String = ""
-    
+    var hospitalName : String = ""
 }
 class IndividualMarkerData
 {
@@ -64,19 +64,23 @@ class MarkersListView: UIViewController {
     @IBOutlet weak var tblView : UITableView!
     @IBOutlet weak var searchBar : UISearchBar!
     @IBOutlet weak var lblNoRequirement : UILabel!
+    @IBOutlet weak var tblVIewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var btnSearch: UIBarButtonItem!
     var listMarkers : JSON!
     var listDetailArray = [MarkerListModel]()
     var searchController : UISearchController!
     var myContent = [String]()
     var filtered = [MarkerListModel]()
     var is_Searching: Bool!
-    
-   var listMaekerForShow = MarkerListModel()
+    var listMaekerForShow = MarkerListModel()
+    let btnListofMarkers = UIButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         is_Searching = false
+        self.searchBar.isHidden = true
+        self.tblVIewTopConstraint.constant = 0
+        
        //FIXME:- No need of listMarkers
        listMarkers = SingleTon.SharedInstance.sMarkers
         for i in 0..<listMarkers.count
@@ -146,7 +150,8 @@ class MarkersListView: UIViewController {
                             IndiMarkerDetails.CTypeOfOrg = "3"
                             IndiMarkerDetails.workingHours = String(describing: IndiMarker["WorkingHours"])
                             IndiMarkerDetails.descriptionForIndi = String(describing: IndiMarker["CName"])
-                        
+                            IndiMarkerDetails.hospitalName = String(describing: marker["Name"])
+
                             listDetailArray.append(IndiMarkerDetails)
                         }
                 }
@@ -160,13 +165,15 @@ class MarkersListView: UIViewController {
         tblView.contentInset = UIEdgeInsetsMake(-35, 0.0, +195, 0.0)
         if SingleTon.SharedInstance.noMarkers == true {
             tblView.isHidden = true
+            btnSearch.isEnabled = false
         } else {
             tblView.isHidden = false
             lblNoRequirement.text = ""
+            btnListofMarkers.isHidden = false
+            btnSearch.isEnabled = true
         }
         NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
     }
-    
     func loadList(notification: NSNotification){
         listMarkers = []
         listMarkers = JSON(SingleTon.SharedInstance.appendedMarkers) 
@@ -174,17 +181,22 @@ class MarkersListView: UIViewController {
             self.tblView.performSelector(onMainThread: #selector(self.tblView.reloadData), with: nil, waitUntilDone: true)
             print("table is reloaded")
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.tblView.performSelector(onMainThread: #selector(self.tblView.reloadData), with: nil, waitUntilDone: true)
     }
-    @IBAction func btnCancelTapped(_ sender: Any) {
-        
-        /*let temp = self.storyboard?.instantiateViewController(withIdentifier: "DonateView") as! DonateView
-        let naC = UINavigationController(rootViewController: temp)
-        present(naC, animated: true, completion: nil)*/
+    
+    //MARK:- List Button action
+    @IBAction func btnListClicked(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+     @IBAction func btnSearchTapped(_ sender: Any) {
+        self.searchBar.isHidden = false
+        self.tblVIewTopConstraint.constant = 56
+    }
+    @IBAction func btnBackTapped(_ sender: Any) {
+        let SWRevealView = self.storyboard!.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
+        self.navigationController?.present(SWRevealView, animated: true, completion: nil)
     }
     @IBAction func btnFilterTapped(_ sender: Any) {
         
@@ -197,7 +209,6 @@ class MarkersListView: UIViewController {
 }
 
 extension MarkersListView : UITableViewDataSource {
-    
     
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -219,7 +230,6 @@ extension MarkersListView : UITableViewDataSource {
         
         let cellIdentifier:String = "DonateListCell"
         var cell:DonateListCell? = tblView.dequeueReusableCell(withIdentifier: cellIdentifier) as? DonateListCell
-        
         
         if (cell == nil)
         {
@@ -256,8 +266,8 @@ extension MarkersListView : UITableViewDataSource {
                    
                     cell?.viewBackground.backgroundColor = UIColor(patternImage: UIImage(named: "RedBar.png")!)
                     cell?.lblUserName.text = listMaekerForShow.name
-                    cell?.lblTimingForCamp.text = ""
-                    cell?.viewCamp.isHidden = true
+                    cell?.lblTimingForCamp.text = listMaekerForShow.hospitalName
+                    cell?.viewCamp.isHidden = false
                     cell?.imgDropForTiming.image = UIImage(named: "drop_black")
                     cell?.lblTimeForHospital.text = listMaekerForShow.descriptionForIndi
                 }
@@ -275,7 +285,6 @@ extension MarkersListView : UITableViewDataSource {
                 cell?.lblTimingForCamp.text = ""
                 cell?.imgDropForTiming.image = UIImage(named: "timer")
                 cell?.viewCamp.isHidden = true
-                
                 self.view.layoutIfNeeded()
                 UIView.animate(withDuration: Double(0.1), animations: {
                     DispatchQueue.main.async {
@@ -310,19 +319,19 @@ extension MarkersListView : UITableViewDataSource {
             {
                cell?.viewBackground.backgroundColor = UIColor(patternImage: UIImage(named: "RedBar.png")!)
                 cell?.lblUserName.text = listMaekerForShow.name
-                cell?.lblTimingForCamp.text = ""
-                cell?.viewCamp.isHidden = true
+                cell?.lblTimingForCamp.text = listMaekerForShow.hospitalName
+                cell?.viewCamp.isHidden = false
                 cell?.imgDropForTiming.image = UIImage(named: "drop_black")
                 cell?.lblTimeForHospital.text = listMaekerForShow.descriptionForIndi
                 //cell?.constraintForHeightCamp.isActive = true
-                self.view.layoutIfNeeded()
+             /*   self.view.layoutIfNeeded()
                 UIView.animate(withDuration: Double(0.1), animations: {
                     DispatchQueue.main.async {
 //                    cell?.constraintForHeightCamp.constant = 0
 //                    cell?.constraintForHeightCamp.priority = 999
                         self.view.updateConstraints()
                     self.view.setNeedsUpdateConstraints()
-                        self.view.layoutIfNeeded()} })
+                        self.view.layoutIfNeeded()} })*/
             }
         }
         return cell!
@@ -340,9 +349,6 @@ extension MarkersListView : UITableViewDelegate {
         
         let TypeOfOrg = listDetailArray[indexPath.row].typeOfOrg
         var navigationControllerStack = UINavigationController()
-        
-        
-        
         if TypeOfOrg == "2"
         {
             let cnfDonate = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmDonate") as! ConfirmDonate
@@ -373,7 +379,6 @@ extension MarkersListView : UITableViewDelegate {
             
         else if TypeOfOrg == "1"
         {
-            
             let cnfDonate = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmDonate") as! ConfirmDonate
             MarkerData.SharedInstance.markerData["Name"] = listDetailArray[indexPath.row].name
             MarkerData.SharedInstance.markerData["ID"] = listDetailArray[indexPath.row].id
@@ -395,8 +400,6 @@ extension MarkersListView : UITableViewDelegate {
         }
         else if TypeOfOrg == "3"
         {
-
-            
             let indiCnfDonate = self.storyboard?.instantiateViewController(withIdentifier: "IndividualConfirmDonate") as! IndividualConfirmDonate
             MarkerData.SharedInstance.markerData["Name"] = listDetailArray[indexPath.row].name
             MarkerData.SharedInstance.markerData["ID"] = listDetailArray[indexPath.row].id

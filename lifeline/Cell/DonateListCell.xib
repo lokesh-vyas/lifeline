@@ -26,20 +26,20 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LCH-3J-wgT">
                         <rect key="frame" x="8" y="5" width="385" height="93"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kEr-zu-vnU">
-                                <rect key="frame" x="0.0" y="58" width="385" height="26"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CcG-bf-SYa">
+                                <rect key="frame" x="0.0" y="0.0" width="385" height="26"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drop_black.png" translatesAutoresizingMaskIntoConstraints="NO" id="XkB-Ei-FHB">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.png" translatesAutoresizingMaskIntoConstraints="NO" id="xf5-BM-bIq">
                                         <rect key="frame" x="5" y="3" width="20" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="20" id="g4U-ee-kfH"/>
-                                            <constraint firstAttribute="height" constant="20" id="vmc-z7-8f8"/>
+                                            <constraint firstAttribute="height" constant="20" id="Ric-Gs-EZj"/>
+                                            <constraint firstAttribute="width" constant="20" id="irB-eS-FEV"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u6A-ya-n9O">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcy-eY-Dkx">
                                         <rect key="frame" x="32" y="3" width="347" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="Bs2-vi-nSQ"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="evn-5g-cte"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="14"/>
                                         <nil key="textColor"/>
@@ -47,13 +47,13 @@
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="u6A-ya-n9O" secondAttribute="trailing" constant="6" id="LI8-yk-YsU"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="26" id="N0D-yV-5Ts"/>
-                                    <constraint firstItem="u6A-ya-n9O" firstAttribute="top" secondItem="kEr-zu-vnU" secondAttribute="top" constant="3" id="OTz-Wa-7w5"/>
-                                    <constraint firstAttribute="bottom" secondItem="u6A-ya-n9O" secondAttribute="bottom" constant="3" id="ZWm-w6-ept"/>
-                                    <constraint firstItem="XkB-Ei-FHB" firstAttribute="leading" secondItem="kEr-zu-vnU" secondAttribute="leading" constant="5" id="ah4-m1-zrk"/>
-                                    <constraint firstItem="u6A-ya-n9O" firstAttribute="leading" secondItem="XkB-Ei-FHB" secondAttribute="trailing" constant="7" id="d5g-Ur-T9S"/>
-                                    <constraint firstItem="XkB-Ei-FHB" firstAttribute="top" secondItem="kEr-zu-vnU" secondAttribute="top" constant="3" id="en3-zd-okP"/>
+                                    <constraint firstItem="xf5-BM-bIq" firstAttribute="top" secondItem="CcG-bf-SYa" secondAttribute="top" constant="3" id="0GA-KW-itB"/>
+                                    <constraint firstItem="xf5-BM-bIq" firstAttribute="leading" secondItem="CcG-bf-SYa" secondAttribute="leading" constant="5" id="GGu-sI-T7Q"/>
+                                    <constraint firstItem="mcy-eY-Dkx" firstAttribute="top" secondItem="CcG-bf-SYa" secondAttribute="top" constant="3" id="K85-Qi-AH8"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="26" id="Ocf-wP-Duz"/>
+                                    <constraint firstAttribute="trailing" secondItem="mcy-eY-Dkx" secondAttribute="trailing" constant="6" id="fWB-P5-128"/>
+                                    <constraint firstItem="mcy-eY-Dkx" firstAttribute="leading" secondItem="xf5-BM-bIq" secondAttribute="trailing" constant="7" id="hce-7C-LO6"/>
+                                    <constraint firstAttribute="bottom" secondItem="mcy-eY-Dkx" secondAttribute="bottom" constant="3" id="nOD-Kn-PST"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cuy-Sb-9xA">
@@ -86,20 +86,20 @@
                                     <constraint firstItem="7Ui-6T-Uh6" firstAttribute="top" secondItem="Cuy-Sb-9xA" secondAttribute="top" constant="3" id="waa-As-jzV"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CcG-bf-SYa">
-                                <rect key="frame" x="0.0" y="0.0" width="385" height="26"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kEr-zu-vnU">
+                                <rect key="frame" x="0.0" y="58" width="385" height="26"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.png" translatesAutoresizingMaskIntoConstraints="NO" id="xf5-BM-bIq">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drop_black.png" translatesAutoresizingMaskIntoConstraints="NO" id="XkB-Ei-FHB">
                                         <rect key="frame" x="5" y="3" width="20" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="Ric-Gs-EZj"/>
-                                            <constraint firstAttribute="width" constant="20" id="irB-eS-FEV"/>
+                                            <constraint firstAttribute="width" constant="20" id="g4U-ee-kfH"/>
+                                            <constraint firstAttribute="height" constant="20" id="vmc-z7-8f8"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcy-eY-Dkx">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u6A-ya-n9O">
                                         <rect key="frame" x="32" y="3" width="347" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="evn-5g-cte"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="Bs2-vi-nSQ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="14"/>
                                         <nil key="textColor"/>
@@ -107,13 +107,13 @@
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="xf5-BM-bIq" firstAttribute="top" secondItem="CcG-bf-SYa" secondAttribute="top" constant="3" id="0GA-KW-itB"/>
-                                    <constraint firstItem="xf5-BM-bIq" firstAttribute="leading" secondItem="CcG-bf-SYa" secondAttribute="leading" constant="5" id="GGu-sI-T7Q"/>
-                                    <constraint firstItem="mcy-eY-Dkx" firstAttribute="top" secondItem="CcG-bf-SYa" secondAttribute="top" constant="3" id="K85-Qi-AH8"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="26" id="Ocf-wP-Duz"/>
-                                    <constraint firstAttribute="trailing" secondItem="mcy-eY-Dkx" secondAttribute="trailing" constant="6" id="fWB-P5-128"/>
-                                    <constraint firstItem="mcy-eY-Dkx" firstAttribute="leading" secondItem="xf5-BM-bIq" secondAttribute="trailing" constant="7" id="hce-7C-LO6"/>
-                                    <constraint firstAttribute="bottom" secondItem="mcy-eY-Dkx" secondAttribute="bottom" constant="3" id="nOD-Kn-PST"/>
+                                    <constraint firstAttribute="trailing" secondItem="u6A-ya-n9O" secondAttribute="trailing" constant="6" id="LI8-yk-YsU"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="26" id="N0D-yV-5Ts"/>
+                                    <constraint firstItem="u6A-ya-n9O" firstAttribute="top" secondItem="kEr-zu-vnU" secondAttribute="top" constant="3" id="OTz-Wa-7w5"/>
+                                    <constraint firstAttribute="bottom" secondItem="u6A-ya-n9O" secondAttribute="bottom" constant="3" id="ZWm-w6-ept"/>
+                                    <constraint firstItem="XkB-Ei-FHB" firstAttribute="leading" secondItem="kEr-zu-vnU" secondAttribute="leading" constant="5" id="ah4-m1-zrk"/>
+                                    <constraint firstItem="u6A-ya-n9O" firstAttribute="leading" secondItem="XkB-Ei-FHB" secondAttribute="trailing" constant="7" id="d5g-Ur-T9S"/>
+                                    <constraint firstItem="XkB-Ei-FHB" firstAttribute="top" secondItem="kEr-zu-vnU" secondAttribute="top" constant="3" id="en3-zd-okP"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YNg-kh-LB6">
