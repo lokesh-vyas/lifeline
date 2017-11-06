@@ -27,7 +27,6 @@ class MyRequestView: UIViewController {
         self.MyRequestServiceCall()
         
         NotificationCenter.default.addObserver(self, selector: #selector(MyRequestView.MyRequestServiceCall), name: NSNotification.Name(rawValue: "MyRequestServiceCallUpdate"), object: nil)
-        // Do any additional setup after loading the view.
     }
     //MARK:- MyRequestServiceCall
     func MyRequestServiceCall()
@@ -76,6 +75,18 @@ extension MyRequestView:UITableViewDelegate,UITableViewDataSource
         donorView.MyStringForCheck = "MyRequest"
         self.navigationController?.pushViewController(donorView, animated: true)
     }
+   /* func viewCloseTapped(sender:UIView)
+    {
+        let buttonRow = sender.tag
+        let myRequestDetail = MyRequestArray[buttonRow]
+        let requestViewClose:MyRequestClose = self.storyboard?.instantiateViewController(withIdentifier: "MyRequestClose") as! MyRequestClose
+        requestViewClose.MyRequestCloseJSON = myRequestDetail
+        requestViewClose.StringForCheckView = "MyRequest"
+        requestViewClose.modalPresentationStyle = .overCurrentContext
+        requestViewClose.modalTransitionStyle = .coverVertical
+        requestViewClose.view.backgroundColor = UIColor.clear
+        self.present(requestViewClose, animated: true, completion: nil)
+    }*/
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         if MyRequestArray.count < 1 {
@@ -87,6 +98,14 @@ extension MyRequestView:UITableViewDelegate,UITableViewDataSource
         tableRequestView.isHidden = false
         return MyRequestArray.count
     }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return UITableViewAutomaticDimension
+    }
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return UITableViewAutomaticDimension
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
                 var cell:MyRequestCell? = tableRequestView.dequeueReusableCell(withIdentifier: "MyRequestCell") as? MyRequestCell
@@ -96,24 +115,41 @@ extension MyRequestView:UITableViewDelegate,UITableViewDataSource
                     cell = nib[0] as? MyRequestCell
                 }
                 let myRequestDetail = MyRequestArray[indexPath.row]
+                if (myRequestDetail["DonorsDetails"].dictionary != nil) {
+                    var myRequestArray = myRequestDetail["DonorsDetails"]
+                    if (myRequestArray.dictionary) != nil {
+                        myRequestArray = JSON.init(arrayLiteral: myRequestArray)
+                    }
+                    if myRequestArray.count > 0 {
+                        cell?.lblDonorCount.text = "\(myRequestArray.count) Donors"
+                    }
+                    else {
+                        cell?.lblDonorCount.text = "No Donors"
+                    }
+                }
                 cell?.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "ffffff")
                 cell?.lblPatientName.text = myRequestDetail["PatientName"].string
                 cell?.lblBloodGroup.text = myRequestDetail["BloodGroup"].string
                 cell?.lblRequestDate.text = Util.SharedInstance.dateChangeForInternal(dateString: myRequestDetail["RequestedOn"].string!)
-                
                 if myRequestDetail["Status"].string == "Close"
                 {
-                    cell?.viewColorForStatus.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#35ce11")
+                    //cell?.viewColorForStatus.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#35ce11")
                     cell?.btnCloseRequest.isHidden = true
-                    cell?.viewCloseButtonRequest.isHidden = true
+                   // cell?.viewCloseButtonRequest.isHidden = true
+                    cell?.viewClose.isHidden = true
                 }
                 else
                 {
-                    cell?.viewColorForStatus.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#ffa800")
+                   // cell?.viewColorForStatus.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#ffa800")
                     cell?.btnCloseRequest.isHidden = false
-                    cell?.viewCloseButtonRequest.isHidden = false
+                   // cell?.viewCloseButtonRequest.isHidden = false
+                    cell?.viewClose.isHidden = false
                 }
-                
+        
+               /* cell?.viewClose.tag = indexPath.row
+                let tapRec = UITapGestureRecognizer(target: self, action: #selector(viewCloseTapped(sender:)))
+                cell?.viewClose.addGestureRecognizer(tapRec)
+                cell?.viewClose.isUserInteractionEnabled = true*/
                 cell?.btnCloseRequest.tag = indexPath.row
                 cell?.btnCloseRequest.addTarget(self, action: #selector(MyRequestView.btnCloseTapped(sender:)), for: .touchUpInside)
                 cell?.btnViewDonars.tag = indexPath.row

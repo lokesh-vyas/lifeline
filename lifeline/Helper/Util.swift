@@ -66,7 +66,8 @@ class Util
         let date = dateFormatter.date(from: dateString)
         
         dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0) as TimeZone!
-        dateFormatter.dateFormat = "dd/MM/yyyy"
+       // dateFormatter.dateFormat = "dd/MM/yyyy"
+        dateFormatter.dateFormat = "dd MMM yyyy"
         let stringFromDate = dateFormatter.string(from: date!)
         return stringFromDate
     }
