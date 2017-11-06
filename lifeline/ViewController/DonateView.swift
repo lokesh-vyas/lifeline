@@ -41,16 +41,15 @@ class DonateView: UIViewController {
     var appendsListMarkers : [Dictionary<String, Any>] = []
     var currentLat : CLLocationDegrees!
     var currentLong : CLLocationDegrees!
-    
+    var isMove : Bool?
     var count : Int = 0
     //MARK:- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         loader = true
         InternetIssue = true
-        
         count = count + 1
-        
+        isMove = false
         if CLLocationManager.locationServicesEnabled()
         {
             switch(CLLocationManager.authorizationStatus()) {
@@ -119,6 +118,62 @@ class DonateView: UIViewController {
         mapView.settings.compassButton = true
         mapView.settings.indoorPicker = true
     }
+    
+    func btnSearchAreaAdded()
+    {
+        btnListofMarkers.backgroundColor = UIColor.white
+        btnListofMarkers.setTitleColor(UIColor.blue, for: UIControlState.normal)
+        btnListofMarkers.setTitle("SEARCH THIS AREA", for: UIControlState.normal)
+        btnListofMarkers.titleLabel?.font = UIFont(name: "System Bold", size: 13)
+        btnListofMarkers.addTarget(self, action:#selector(DonateView.btnSearchAreaTapped), for: .touchUpInside)
+        btnListofMarkers.translatesAutoresizingMaskIntoConstraints = false
+        self.mapView.addSubview(btnListofMarkers)
+        self.view = self.mapView
+        
+        //Height
+        let listHeightConstraint = NSLayoutConstraint(
+            item: btnListofMarkers,
+            attribute: NSLayoutAttribute.height,
+            relatedBy: NSLayoutRelation.equal,
+            toItem: nil,
+            attribute: NSLayoutAttribute.notAnAttribute,
+            multiplier: 1,
+            constant: 40)
+        
+        //Width
+        let listWidthConstraint = NSLayoutConstraint(
+            item: btnListofMarkers,
+            attribute: NSLayoutAttribute.width,
+            relatedBy: NSLayoutRelation.equal,
+            toItem: nil,
+            attribute: NSLayoutAttribute.notAnAttribute,
+            multiplier: 1,
+            constant: 170)
+        
+        //Trailing
+        let listTrailingConstraint = NSLayoutConstraint(
+            item: btnListofMarkers,
+            attribute: NSLayoutAttribute.trailing,
+            relatedBy: NSLayoutRelation.equal,
+            toItem: view,
+            attribute: NSLayoutAttribute.trailing,
+            multiplier: 1,
+            constant: -110)
+        
+        //Top
+        let listTopConstraint = NSLayoutConstraint(
+            item: btnListofMarkers,
+            attribute: NSLayoutAttribute.top,
+            relatedBy: NSLayoutRelation.equal,
+            toItem: view,
+            attribute: NSLayoutAttribute.top,
+            multiplier: 1,
+            constant: 70)
+        
+        //List
+        self.view.addConstraints([listHeightConstraint, listWidthConstraint, listTrailingConstraint, listTopConstraint])
+    }
+    
     //MARK:- openSettingsForDisableMap
     func openSettingsForDisableMap()
     {
@@ -156,12 +211,21 @@ class DonateView: UIViewController {
         
         let notificationView:NotificationView = self.storyboard?.instantiateViewController(withIdentifier: "NotificationView") as! NotificationView
         notificationView.UserJSON = dict
-        notificationView.modalPresentationStyle = .overCurrentContext
+        notificationView.modalPresentationStyle = .currentContext
         notificationView.modalTransitionStyle = .coverVertical
         notificationView.view.backgroundColor = UIColor.clear
         self.present(notificationView, animated: true, completion: nil)
     }
     
+    @IBAction func btnListTapped(_ sender: Any) {
+        let lists = self.storyboard?.instantiateViewController(withIdentifier: "MarkersListView") as! MarkersListView
+        let tempDictionary = JSON.init(dictionaryLiteral: ("Data",appendsListMarkers))
+        SingleTon.SharedInstance.sMarkers = tempDictionary["Data"]
+        lists.modalPresentationStyle = .currentContext
+        lists.modalTransitionStyle = .crossDissolve
+        let nav = UINavigationController(rootViewController: lists)
+        self.navigationController?.present(nav, animated: true, completion: nil)
+    }
     //MARK:- backButton
     @IBAction func backButton(_ sender: Any) {
         let SWRevealView = self.storyboard!.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
@@ -211,6 +275,20 @@ class DonateView: UIViewController {
                 ]]]
         DonateInteractor.sharedInstance.findingDonateSources(urlString: URLList.BLOOD_REQUEST_SEARCH.rawValue, params: reqBody)
         
+    }
+    
+    func btnSearchAreaTapped() {
+        let visibleRegion = mapView.projection.visibleRegion()
+        let mapBounds = GMSCoordinateBounds.init(region: visibleRegion)
+        let NorthWest = CLLocationCoordinate2DMake(mapBounds.northEast.latitude, mapBounds.southWest.longitude)
+        let SouthEast = CLLocationCoordinate2DMake(mapBounds.southWest.latitude, mapBounds.northEast.longitude)
+        SouthLatitude = SouthEast.latitude
+        NorthLatitude = NorthWest.latitude
+        WestLongitude = NorthWest.longitude
+        EastLongitude = SouthEast.longitude
+        self.fetchBloodRequestToDonate()
+        isMove = true
+        self.btnListofMarkers.isHidden = true
     }
     
     //MARK:- Hospital/Individual/Campaign Markers
@@ -277,8 +355,6 @@ class DonateView: UIViewController {
 
 extension DonateView : CLLocationManagerDelegate {
     
-    
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         print("MyLatitude :\((manager.location?.coordinate.latitude)!) and MyLongitude : \((manager.location?.coordinate.longitude)!)")
@@ -294,29 +370,16 @@ extension DonateView : CLLocationManagerDelegate {
             print("<=\(currentLat) & \(currentLong)=>")
         }
     }
-    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error in CLM delegate:", error.localizedDescription)
     }
-    
 }
 
 extension DonateView : GMSMapViewDelegate {
     
-    
-    //FIXME:- removable methods
-    public func mapViewDidStartTileRendering(_ mapView: GMSMapView) {
-        
-    }
-    public func mapViewDidFinishTileRendering(_ mapView: GMSMapView) {
-        
-        
-    }
-    
-    
+    //MARK:- didChange
     public func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition)
     {
-        
         if loader == true {
             HudBar.sharedInstance.showHudWithMessage(message: MultiLanguage.getLanguageUsingKey("TOAST_LOADING_MESSAGE"), view: self.view)
         }
@@ -333,39 +396,50 @@ extension DonateView : GMSMapViewDelegate {
         
         lastEventDate = Date()
         
-        let visibleRegion = mapView.projection.visibleRegion()
-        let mapBounds = GMSCoordinateBounds.init(region: visibleRegion)
-        let NorthWest = CLLocationCoordinate2DMake(mapBounds.northEast.latitude, mapBounds.southWest.longitude)
-        let SouthEast = CLLocationCoordinate2DMake(mapBounds.southWest.latitude, mapBounds.northEast.longitude)
+//        let visibleRegion = mapView.projection.visibleRegion()
+//        let mapBounds = GMSCoordinateBounds.init(region: visibleRegion)
+//        let NorthWest = CLLocationCoordinate2DMake(mapBounds.northEast.latitude, mapBounds.southWest.longitude)
+//        let SouthEast = CLLocationCoordinate2DMake(mapBounds.southWest.latitude, mapBounds.northEast.longitude)
+//
+//        SouthLatitude = SouthEast.latitude
+//        NorthLatitude = NorthWest.latitude
+//        WestLongitude = NorthWest.longitude
+//        EastLongitude = SouthEast.longitude
+//
+//        self.fetchBloodRequestToDonate()
+          loader = false
+
         
-        SouthLatitude = SouthEast.latitude
-        NorthLatitude = NorthWest.latitude
-        WestLongitude = NorthWest.longitude
-        EastLongitude = SouthEast.longitude
-        
-        self.fetchBloodRequestToDonate()
-        loader = false
     }
     
+    //MARK:- idleAt
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         
-        print("I am in idle state...")
-        
-        
-        let visibleRegion = mapView.projection.visibleRegion()
-        let mapBounds = GMSCoordinateBounds.init(region: visibleRegion)
-        let NorthWest = CLLocationCoordinate2DMake(mapBounds.northEast.latitude, mapBounds.southWest.longitude)
-        let SouthEast = CLLocationCoordinate2DMake(mapBounds.southWest.latitude, mapBounds.northEast.longitude)
-        
-        SouthLatitude = SouthEast.latitude
-        NorthLatitude = NorthWest.latitude
-        WestLongitude = NorthWest.longitude
-        EastLongitude = SouthEast.longitude
-        
-        self.fetchBloodRequestToDonate()
+        if !isMove!
+        {
+            print("I am in idle state...")
+            
+            let visibleRegion = mapView.projection.visibleRegion()
+            let mapBounds = GMSCoordinateBounds.init(region: visibleRegion)
+            let NorthWest = CLLocationCoordinate2DMake(mapBounds.northEast.latitude, mapBounds.southWest.longitude)
+            let SouthEast = CLLocationCoordinate2DMake(mapBounds.southWest.latitude, mapBounds.northEast.longitude)
+            
+            SouthLatitude = SouthEast.latitude
+            NorthLatitude = NorthWest.latitude
+            WestLongitude = NorthWest.longitude
+            EastLongitude = SouthEast.longitude
+            
+            self.fetchBloodRequestToDonate()
+            isMove = true
+        }
+        else
+        {
+            self.btnListofMarkers.isHidden = false
+            self.btnSearchAreaAdded()
+        }
     }
     
-    
+    //MARK:- didTap
     public func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         
         lastEventDate = Date()
@@ -514,70 +588,11 @@ extension DonateView : GMSAutocompleteResultsViewControllerDelegate {
 extension DonateView : DonateViewProtocol {
     func successDonateSources(jsonArray: JSON) {
         
-        // ListofMarkers
-        //List-32
-        btnListofMarkers.setImage(UIImage(named : "List_icon"), for: .normal)
-        
-        btnListofMarkers.backgroundColor = UIColor.white
-        btnListofMarkers.cornerRadius = 27.5
-        btnListofMarkers.layer.shadowColor = UIColor.red.cgColor
-        btnListofMarkers.layer.shadowRadius = 5.0
-        
-        btnListofMarkers.addTarget(self, action:#selector(self.btnListClicked), for: .touchUpInside)
-        btnListofMarkers.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.mapView.addSubview(btnListofMarkers)
-        self.view = self.mapView
-        
-        //ListAutolayout
-        //Height
-        let listHeightConstraint = NSLayoutConstraint(
-            item: btnListofMarkers,
-            attribute: NSLayoutAttribute.height,
-            relatedBy: NSLayoutRelation.equal,
-            toItem: nil,
-            attribute: NSLayoutAttribute.notAnAttribute,
-            multiplier: 1,
-            constant: 55)
-        
-        //Width
-        let listWidthConstraint = NSLayoutConstraint(
-            item: btnListofMarkers,
-            attribute: NSLayoutAttribute.width,
-            relatedBy: NSLayoutRelation.equal,
-            toItem: nil,
-            attribute: NSLayoutAttribute.notAnAttribute,
-            multiplier: 1,
-            constant: 55)
-        
-        //Trailing
-        let listTrailingConstraint = NSLayoutConstraint(
-            item: btnListofMarkers,
-            attribute: NSLayoutAttribute.trailing,
-            relatedBy: NSLayoutRelation.equal,
-            toItem: view,
-            attribute: NSLayoutAttribute.trailing,
-            multiplier: 1,
-            constant: -10)
-        
-        //Vertical Space
-        let listVerticalSpaceConstraint = NSLayoutConstraint(
-            item: btnListofMarkers,
-            attribute: NSLayoutAttribute.bottom,
-            relatedBy: NSLayoutRelation.equal,
-            toItem: view,
-            attribute: NSLayoutAttribute.bottom,
-            multiplier: 1,
-            constant: -75)
-        
-        //List
-        self.view.addConstraints([listHeightConstraint, listWidthConstraint, listTrailingConstraint, listVerticalSpaceConstraint])
-        
         //MARK:- Availability of Markers
         if jsonArray["BloodRequestSearchResponse"] == JSON.null || jsonArray["BloodRequestSearchResponse"]["BloodRequestSearchResponseDetails"]["StatusCode"] == 1 {
             
             HudBar.sharedInstance.hideHudFormView(view: self.view)
-            
+
             //viewWarning
             viewWarning.backgroundColor = UIColor.white
             viewWarning.translatesAutoresizingMaskIntoConstraints = false
@@ -839,16 +854,17 @@ extension DonateView : DonateViewProtocol {
     }
     
     //MARK:- List Button action
-    func btnListClicked() {
+    /*func btnListClicked() {
         
         let lists = self.storyboard?.instantiateViewController(withIdentifier: "MarkersListView") as! MarkersListView
         //        lists.listMarker2 = JSON.init(dictionaryLiteral: ("Data",appendsListMarkers))
         let tempDictionary = JSON.init(dictionaryLiteral: ("Data",appendsListMarkers))
         SingleTon.SharedInstance.sMarkers = tempDictionary["Data"]
-        
+        lists.modalPresentationStyle = .currentContext
+        lists.modalTransitionStyle = .crossDissolve
         let nav = UINavigationController(rootViewController: lists)
         self.navigationController?.present(nav, animated: true, completion: nil)
-    }
+    }*/
     
     
     func failedDonateSources(Response:String) {

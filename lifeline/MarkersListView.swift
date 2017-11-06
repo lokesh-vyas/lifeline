@@ -488,7 +488,10 @@ extension MarkersListView : UISearchBarDelegate {
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar)
     {
-        dismiss(animated: true, completion: nil)
+          self.searchBar.endEditing(true)
+          self.searchBar.resignFirstResponder()
+          self.searchBar.isHidden = true
+          self.tblVIewTopConstraint.constant = 0
     }
 }
 
