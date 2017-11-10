@@ -16,7 +16,7 @@ class MyDonationView: UIViewController {
     var myDonationArray = Array<JSON>()
     override func viewDidLoad() {
         super.viewDidLoad()
-        tblView.contentInset = UIEdgeInsetsMake(-35, 0.0, -20, 0.0)
+        tblView.contentInset = UIEdgeInsetsMake(-30, 0.0, -20, 0.0)
         tblView.isHidden = true
         lblNoRecordFound.isHidden = true
         self.MyDonationServiceCall()
@@ -55,21 +55,27 @@ extension MyDonationView : UITableViewDelegate,UITableViewDataSource
             let nib:Array = Bundle.main.loadNibNamed("MyDonationCell", owner: self, options: nil)!
             cell = nib[0] as? MyDonationCell
         }
+        cell?.viewBackground.completelyTransparentView()
         let myDonationDetail = myDonationArray[indexPath.row]
         if String(describing : myDonationDetail["RequestDetails"]) != "null"   // Indi Cell
         {
-            
             cell?.lblName.text = myDonationDetail["RequestDetails"]["RequestDetail"]["PatientName"].string
             cell?.lblBloodGroup.text = myDonationDetail["RequestDetails"]["RequestDetail"]["bloodgroup"].string
             cell?.lblRequestDate.text = Util.SharedInstance.dateChangeForGetProfileDOB(dateString: myDonationDetail["RequestDetails"]["RequestDetail"]["WhenNeeded"].string!)
             cell?.imgBloodGroup.image = UIImage(named: "drop_black.png")
+            cell?.imgCamp.image = UIImage(named: "Individual_Single_icon")
+            cell?.lblCampHeightConstraint.constant = 0
+            cell?.lblCamp.text = ""
         }
         else if String(describing : myDonationDetail["CampDetails"]) != "null"  // Camp Details
         {
             cell?.lblName.text = myDonationDetail["CampDetails"]["CampDetail"]["Name"].string
-            cell?.imgBloodGroup.image = UIImage(named: "address_icon.png")
+            cell?.imgBloodGroup.image = UIImage(named: "address_icon_black.png")
             cell?.lblBloodGroup.text = myDonationDetail["CampDetails"]["CampDetail"]["City"].string
             cell?.lblRequestDate.text = "\(Util.SharedInstance.dateChangeForInternal(dateString: myDonationDetail["CampDetails"]["CampDetail"]["FromDate"].string!)) TO \(Util.SharedInstance.dateChangeForInternal(dateString:  myDonationDetail["CampDetails"]["CampDetail"]["FromDate"].string!))"
+            cell?.imgCamp.image = UIImage(named: "Camp_Single_icon")
+            cell?.lblCampHeightConstraint.constant = 21
+            cell?.lblCamp.text = "Camp"
         }
         return cell!
     }
@@ -99,8 +105,6 @@ extension MyDonationView : UITableViewDelegate,UITableViewDataSource
         }
     }
 }
-
-
 //MARK:- MyRequestProtocol
 extension MyDonationView:MyRequestProtocol
 {

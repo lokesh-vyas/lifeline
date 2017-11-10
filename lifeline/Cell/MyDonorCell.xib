@@ -123,7 +123,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="watsapp_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="a60-91-ne8">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="a60-91-ne8">
                                 <rect key="frame" x="0.0" y="3" width="25" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="a60-91-ne8" secondAttribute="height" multiplier="5:4" id="o5b-2R-7aA"/>
@@ -131,7 +131,7 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VKx-DD-HMN">
                                 <rect key="frame" x="246" y="3" width="25" height="20"/>
-                                <state key="normal" backgroundImage="watsapp_logo.png"/>
+                                <state key="normal" backgroundImage="phone_icon.png"/>
                             </button>
                         </subviews>
                         <constraints>
@@ -261,6 +261,6 @@
         <image name="list_menu" width="64" height="91"/>
         <image name="message.png" width="48" height="48"/>
         <image name="person.png" width="48" height="48"/>
-        <image name="watsapp_logo.png" width="48" height="48"/>
+        <image name="phone_icon.png" width="48" height="48"/>
     </resources>
 </document>
