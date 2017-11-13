@@ -74,7 +74,7 @@ class MarkersListView: UIViewController {
     var is_Searching: Bool!
     var listMaekerForShow = MarkerListModel()
     let btnListofMarkers = UIButton()
-
+    var phoneCall = String()
     override func viewDidLoad() {
         super.viewDidLoad()
         is_Searching = false
@@ -128,7 +128,8 @@ class MarkersListView: UIViewController {
                 markerDetails.addresssId = String(describing: marker["AddressId"])
                 markerDetails.latitude = String(describing: marker["Latitude"])
                 markerDetails.longitude = String(describing: marker["Longitude"])
-                
+                print("Hospital Contact Number is = \(String(describing: markerDetails.contactNumber))")
+                    
                 listDetailArray.append(markerDetails)
                 }
                 if String(describing: marker["Individuals"]) != "null" && SingleTon.SharedInstance.isCheckedIndividual
@@ -151,7 +152,7 @@ class MarkersListView: UIViewController {
                             IndiMarkerDetails.workingHours = String(describing: IndiMarker["WorkingHours"])
                             IndiMarkerDetails.descriptionForIndi = String(describing: IndiMarker["CName"])
                             IndiMarkerDetails.hospitalName = String(describing: marker["Name"])
-
+                            IndiMarkerDetails.contactNumber = String(describing: marker["CContactNumber"])
                             listDetailArray.append(IndiMarkerDetails)
                         }
                 }
@@ -206,10 +207,24 @@ class MarkersListView: UIViewController {
         temp.view.backgroundColor = UIColor.clear
         present(temp, animated: true, completion: nil)
     }
+    //MARK: btnCallTapped
+    func btnCallTapped(sender:UIButton)
+    {
+        print(self.phoneCall)
+        if let url = URL(string: "tel://\(self.phoneCall)") {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url as URL)
+            }
+        }
+        else {
+            print("call failed")
+        }
+    }
 }
 
 extension MarkersListView : UITableViewDataSource {
-    
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
      print("Total items in LisView = \(listMarkers.count)")
@@ -244,43 +259,51 @@ extension MarkersListView : UITableViewDataSource {
         
                 if listMaekerForShow.typeOfOrg == "1" {
                         // Hospital
-                  
-                    cell?.viewBackground.backgroundColor = UIColor(patternImage: UIImage(named: "BrownBar.png")!)
+                    
+                    cell?.viewBottomForColor.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#b60b16")
                     cell?.lblUserName.text = listMaekerForShow.name
                     cell?.lblTimingForCamp.text = ""
                     cell?.imgDropForTiming.image = UIImage(named: "timer")
                     cell?.viewCamp.isHidden = true
+                    self.phoneCall = listMaekerForShow.contactNumber!
+                    cell?.btnCall.tag = indexPath.row
+                    cell?.btnCall.addTarget(self, action: #selector(MarkersListView.btnCallTapped(sender:)), for: .touchUpInside)
                     }
                 else if listMaekerForShow.typeOfOrg == "2" {
                         // Camp
-                   
-                    cell?.viewBackground.backgroundColor = UIColor(patternImage: UIImage(named: "GreenBar.png")!)
+               
+                    cell?.viewBottomForColor.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#b6800b")
                     cell?.lblUserName.text = listMaekerForShow.name
                     cell?.lblTimingForCamp.text = listMaekerForShow.CampTimeDuration
                     cell?.viewCamp.isHidden = false
                     cell?.imgDropForTiming.image = UIImage(named: "timer")
                     cell?.lblTimeForHospital.text = listMaekerForShow.workingHours
+                    self.phoneCall = listMaekerForShow.contactNumber!
+                    cell?.btnCall.tag = indexPath.row
+                    cell?.btnCall.addTarget(self, action: #selector(MarkersListView.btnCallTapped(sender:)), for: .touchUpInside)
                 }
                 else if listMaekerForShow.typeOfOrg == "3" {
                       //Individual
-                   
-                    cell?.viewBackground.backgroundColor = UIColor(patternImage: UIImage(named: "RedBar.png")!)
+                  
+                    cell?.viewBottomForColor.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#0dd670")
                     cell?.lblUserName.text = listMaekerForShow.name
                     cell?.lblTimingForCamp.text = listMaekerForShow.hospitalName
                     cell?.viewCamp.isHidden = false
                     cell?.imgDropForTiming.image = UIImage(named: "drop_black")
                     cell?.lblTimeForHospital.text = listMaekerForShow.descriptionForIndi
+                    self.phoneCall = listMaekerForShow.contactNumber!
+                    cell?.btnCall.tag = indexPath.row
+                    cell?.btnCall.addTarget(self, action: #selector(MarkersListView.btnCallTapped(sender:)), for: .touchUpInside)
                 }
         }
         else
         {
             listMaekerForShow = listDetailArray[indexPath.row]
+            print("Hospital Contact Number = \(String(describing: listMaekerForShow.contactNumber))")
             print(listMaekerForShow.typeOfOrg)
-            cell?.viewBackground.backgroundColor = nil
-            cell?.viewBottomForColor.backgroundColor = nil
             if listMaekerForShow.typeOfOrg == "1"  // Hospital
             {
-                cell?.viewBackground.backgroundColor = UIColor(patternImage: UIImage(named: "BrownBar.png")!)
+                cell?.viewBottomForColor.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#b60b16")
                 cell?.lblUserName.text = listMaekerForShow.name
                 cell?.lblTimingForCamp.text = ""
                 cell?.imgDropForTiming.image = UIImage(named: "timer")
@@ -296,10 +319,12 @@ extension MarkersListView : UITableViewDataSource {
                         self.view.layoutIfNeeded()} })
                 
                 cell?.lblTimeForHospital.text = listMaekerForShow.workingHours
+                self.phoneCall = listMaekerForShow.contactNumber!
+                cell?.btnCall.tag = indexPath.row
+                cell?.btnCall.addTarget(self, action: #selector(MarkersListView.btnCallTapped(sender:)), for: .touchUpInside)
             }else if(listMaekerForShow.typeOfOrg == "2")  // Camp
             {
-                
-                cell?.viewBackground.backgroundColor = UIColor(patternImage: UIImage(named: "GreenBar.png")!)
+                cell?.viewBottomForColor.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#b6800b")
                 cell?.lblUserName.text = listMaekerForShow.name
                 cell?.lblTimingForCamp.text = listMaekerForShow.CampTimeDuration
                 cell?.viewCamp.isHidden = false
@@ -314,10 +339,13 @@ extension MarkersListView : UITableViewDataSource {
                         self.view.updateConstraints()
                     self.view.setNeedsUpdateConstraints()
                         self.view.layoutIfNeeded()} })
+                self.phoneCall = listMaekerForShow.contactNumber!
+                cell?.btnCall.tag = indexPath.row
+                cell?.btnCall.addTarget(self, action: #selector(MarkersListView.btnCallTapped(sender:)), for: .touchUpInside)
                     
             }else if(listMaekerForShow.typeOfOrg == "3")  //Individual
             {
-               cell?.viewBackground.backgroundColor = UIColor(patternImage: UIImage(named: "RedBar.png")!)
+                cell?.viewBottomForColor.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#0dd670")
                 cell?.lblUserName.text = listMaekerForShow.name
                 cell?.lblTimingForCamp.text = listMaekerForShow.hospitalName
                 cell?.viewCamp.isHidden = false
@@ -332,6 +360,9 @@ extension MarkersListView : UITableViewDataSource {
                         self.view.updateConstraints()
                     self.view.setNeedsUpdateConstraints()
                         self.view.layoutIfNeeded()} })*/
+                self.phoneCall = listMaekerForShow.contactNumber!
+                cell?.btnCall.tag = indexPath.row
+                cell?.btnCall.addTarget(self, action: #selector(MarkersListView.btnCallTapped(sender:)), for: .touchUpInside)
             }
         }
         return cell!
@@ -460,7 +491,7 @@ extension MarkersListView : UISearchBarDelegate {
             is_Searching = true
             for i in 0 ..< listDetailArray.count
             {
-                var currentString = String(describing: listDetailArray[i].name)
+                let currentString = String(describing: listDetailArray[i].name)
                 let searchDetails = MarkerListModel()
                 if currentString.lowercased().contains(searchText.lowercased()) {
                     searchDetails.name = String(describing: listDetailArray[i].name)

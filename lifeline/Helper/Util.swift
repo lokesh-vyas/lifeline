@@ -54,7 +54,7 @@ class Util
         let date = dateFormatter.date(from: dateString)
         
         dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0) as TimeZone!
-        dateFormatter.dateFormat = "dd/MM/yyyy"
+        dateFormatter.dateFormat = "dd MMM yyyy"
         let stringFromDate = dateFormatter.string(from: date!)
         return stringFromDate
     }
@@ -66,7 +66,8 @@ class Util
         let date = dateFormatter.date(from: dateString)
         
         dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0) as TimeZone!
-        dateFormatter.dateFormat = "dd/MM/yyyy"
+       // dateFormatter.dateFormat = "dd/MM/yyyy"
+        dateFormatter.dateFormat = "dd MMM yyyy"
         let stringFromDate = dateFormatter.string(from: date!)
         return stringFromDate
     }
@@ -337,4 +338,10 @@ extension UIColor
         return UIColor(red: 128.0, green: 64.0, blue: 0.0, alpha: 1.0)
     }
     
+}
+
+extension UIView{
+    func completelyTransparentView(){
+        self.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+    }
 }

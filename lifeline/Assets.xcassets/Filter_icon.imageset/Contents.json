@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "iphone",
-      "filename" : "Filter3x-2.png",
+      "filename" : "filter_button.png",
       "scale" : "1x"
     },
     {
       "idiom" : "iphone",
-      "filename" : "Filter3x-1.png",
+      "filename" : "filter_button-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "iphone",
-      "filename" : "Filter3x.png",
+      "filename" : "filter_button-2.png",
       "scale" : "3x"
     },
     {

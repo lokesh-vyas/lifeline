@@ -14,20 +14,19 @@ class MyRequestView: UIViewController {
     @IBOutlet weak var lblInternetIssue: UILabel!
     @IBOutlet weak var tableRequestView: UITableView!
     var MyRequestArray = Array<JSON>()
+    var MyDonorsArray = Array<JSON>()
     //MARK:- viewDidLoad
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.navigationItem.hidesBackButton = true
         self.navigationController?.completelyTransparentBar()
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        tableRequestView.contentInset = UIEdgeInsetsMake(-35, 0.0, -20, 0.0)
+        tableRequestView.contentInset = UIEdgeInsetsMake(-30, 0.0, -20, 0.0)
+        
         tableRequestView.isHidden = true
         lblInternetIssue.isHidden = true
         self.MyRequestServiceCall()
         
         NotificationCenter.default.addObserver(self, selector: #selector(MyRequestView.MyRequestServiceCall), name: NSNotification.Name(rawValue: "MyRequestServiceCallUpdate"), object: nil)
-        // Do any additional setup after loading the view.
     }
     //MARK:- MyRequestServiceCall
     func MyRequestServiceCall()
@@ -76,6 +75,18 @@ extension MyRequestView:UITableViewDelegate,UITableViewDataSource
         donorView.MyStringForCheck = "MyRequest"
         self.navigationController?.pushViewController(donorView, animated: true)
     }
+    func viewCloseTapped(_ sender: UITapGestureRecognizer)
+    {
+        let button = sender.view?.tag
+        let myRequestDetail = MyRequestArray[button!]
+        let requestViewClose:MyRequestClose = self.storyboard?.instantiateViewController(withIdentifier: "MyRequestClose") as! MyRequestClose
+        requestViewClose.MyRequestCloseJSON = myRequestDetail
+        requestViewClose.StringForCheckView = "MyRequest"
+        requestViewClose.modalPresentationStyle = .overCurrentContext
+        requestViewClose.modalTransitionStyle = .coverVertical
+        requestViewClose.view.backgroundColor = UIColor.clear
+        self.present(requestViewClose, animated: true, completion: nil)
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         if MyRequestArray.count < 1 {
@@ -87,6 +98,14 @@ extension MyRequestView:UITableViewDelegate,UITableViewDataSource
         tableRequestView.isHidden = false
         return MyRequestArray.count
     }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return UITableViewAutomaticDimension
+    }
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return UITableViewAutomaticDimension
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
                 var cell:MyRequestCell? = tableRequestView.dequeueReusableCell(withIdentifier: "MyRequestCell") as? MyRequestCell
@@ -95,27 +114,41 @@ extension MyRequestView:UITableViewDelegate,UITableViewDataSource
                     let nib:Array = Bundle.main.loadNibNamed("MyRequestCell", owner: self, options: nil)!
                     cell = nib[0] as? MyRequestCell
                 }
+                cell?.viewBackground.completelyTransparentView()
                 let myRequestDetail = MyRequestArray[indexPath.row]
-                cell?.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "ffffff")
+        if (myRequestDetail["DonorsDetails"].dictionary != nil)
+        {
+            var MyDonorsArray1 = myRequestDetail["DonorsDetails"]["DonorDetails"]
+            if (MyDonorsArray1.dictionary) != nil
+            {
+                MyDonorsArray1 = JSON.init(arrayLiteral: MyDonorsArray1)
+            }
+            if MyDonorsArray1.count > 0 {
+                cell?.lblDonorCount.text = "\(MyDonorsArray1.count) Donors"
+            }
+            else {
+                cell?.lblDonorCount.text = "No Donors"
+            }
+        }
+        else
+        {
+            cell?.lblDonorCount.text = "No Donors"
+        }
                 cell?.lblPatientName.text = myRequestDetail["PatientName"].string
                 cell?.lblBloodGroup.text = myRequestDetail["BloodGroup"].string
                 cell?.lblRequestDate.text = Util.SharedInstance.dateChangeForInternal(dateString: myRequestDetail["RequestedOn"].string!)
-                
                 if myRequestDetail["Status"].string == "Close"
                 {
-                    cell?.viewColorForStatus.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#35ce11")
                     cell?.btnCloseRequest.isHidden = true
-                    cell?.viewCloseButtonRequest.isHidden = true
                 }
                 else
                 {
-                    cell?.viewColorForStatus.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#ffa800")
                     cell?.btnCloseRequest.isHidden = false
-                    cell?.viewCloseButtonRequest.isHidden = false
                 }
-                
+        
                 cell?.btnCloseRequest.tag = indexPath.row
                 cell?.btnCloseRequest.addTarget(self, action: #selector(MyRequestView.btnCloseTapped(sender:)), for: .touchUpInside)
+        
                 cell?.btnViewDonars.tag = indexPath.row
                 cell?.btnViewDonars.addTarget(self, action: #selector(MyRequestView.btnDonorViewTapped(sender:)), for: .touchUpInside)
                 return cell!
@@ -146,7 +179,7 @@ extension MyRequestView:MyRequestProtocol
                 //Here we found nil
                 return
             }
-            self.tableRequestView.reloadData()
+            self.tableRequestView.performSelector(onMainThread: #selector(self.tableRequestView.reloadData), with: nil, waitUntilDone: true)
         }
         else
         {
@@ -154,7 +187,6 @@ extension MyRequestView:MyRequestProtocol
             self.lblInternetIssue.isHidden = false
             self.lblInternetIssue.text = MultiLanguage.getLanguageUsingKey("NO_REQUEST_FOUND")
         }
-        
     }
     func FailMyRequest(Response:String)
     {

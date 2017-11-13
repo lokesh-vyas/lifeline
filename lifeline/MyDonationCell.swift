@@ -9,11 +9,15 @@
 import UIKit
 
 class MyDonationCell: UITableViewCell {
-
+    @IBOutlet weak var lblCampHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblBloodGroup: UILabel!
     @IBOutlet weak var lblRequestDate: UILabel!
     @IBOutlet weak var imgBloodGroup: UIImageView!
+    @IBOutlet weak var imgCamp: UIImageView!
+    @IBOutlet weak var lblCamp: UILabel!
+    @IBOutlet weak var viewBackground: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

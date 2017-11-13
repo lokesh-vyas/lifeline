@@ -13,12 +13,13 @@ class DonateListCell: UITableViewCell {
     @IBOutlet weak var viewUser: UIView!
     @IBOutlet weak var viewCamp: UIView!
     @IBOutlet weak var viewHospital: UIView!
-    @IBOutlet weak var viewBackground: UIView!
+//    @IBOutlet weak var viewBackground: UIView!
+    @IBOutlet weak var btnCall: UIButton!
     @IBOutlet weak var viewBottomForColor: UIView!
-    
     @IBOutlet weak var imgDropForTiming: UIImageView!
     @IBOutlet weak var constraintForHeightCamp: NSLayoutConstraint!
-    
+    @IBOutlet weak var contactNumber: UIButton!
+    @IBOutlet weak var viewContact: UIView!
     @IBOutlet weak var constraintForHeightHospital: NSLayoutConstraint!
     @IBOutlet weak var lblUserName: UILabel!
     @IBOutlet weak var lblTimingForCamp: UILabel!
