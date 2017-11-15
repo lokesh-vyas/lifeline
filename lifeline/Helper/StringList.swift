@@ -11,8 +11,8 @@ import Foundation
 //MARK:- URL LIST
 public enum URLList:String
 {
-    //MARK:- Production URL's
-//      case TrustHostProd = "api.lifeline.services"
+//   // MARK:- Production URL's
+//    case TrustHostProd = "api.lifeline.services"
 //    case ACCESS      =               "http://api.lifeline.services/services/AccessV1.1"
 //    case BLOOD_REQUEST_SEARCH  =     "http://api.lifeline.services/services/BloodRequestSearchV1.1"
 //    case CONFIRM_DONATE      =       "http://api.lifeline.services/services/ConfirmDonateV1.1"
@@ -33,28 +33,28 @@ public enum URLList:String
 //    case GET_CAMPAGIN_DETAILS   =    "http://api.lifeline.services/services/GetCampaignDetailsV1.1"
 //    case LIFELINE_Get_VolunteerList       = "http://api.lifeline.services/services/GetVolunteerListV1.1"
 //    case LIFELINE_Get_Inventory           = "http://api.lifeline.services/services/GetInventoryV1.1"
-//    
-    //MARK:- Staging URL's For Production
- //   case TrustHostProd = "staging.lifeline.services"
-  //  case ACCESS      =               "http://staging.lifeline.services/services/AccessV1.1"
-   // case BLOOD_REQUEST_SEARCH  =     "http://staging.lifeline.services/services/BloodRequestSearchV1.1"
- //   case CONFIRM_DONATE      =       "http://staging.lifeline.services/services/ConfirmDonateV1.1"
-  //  case GET_REQUEST_DETAILS   =     "http://staging.lifeline.services/services/GetRequestDetailsV1.1"
-  //  case BLOOD_REQUIREMENT     =     "http://staging.lifeline.services/services/BloodRequirementV1.1"
-  //  case GET_COLLECTION_CENTRE_LIST = "http://staging.lifeline.services/services/GetCollectionCentersListV1.1"
-  //  case PROFILE_REGISTRATION   =    "http://staging.lifeline.services/services/v1.2/ProfileRegistration"
-  //  case MY_REQUESTS           =     "http://staging.lifeline.services/services/MyRequestsV1.1"
-   // case REQUEST_STATUS_UPDATE  =     "http://staging.lifeline.services/services/RequestStatusUpdateV1.1"
-   // case  Device_Token_Reg     =     "http://staging.lifeline.services/services/DeviceDetailsV1.1"
-   // case LIFELINE_Get_Profile = "http://staging.lifeline.services/services/v1.2/GetProfile"
-  //  case LIFELINE_Custom_Sign_Up = "https://staging.lifeline.services/services/v1.2/CustomSignUp"
-   // case LIFELINE_Change_Password =  "https://staging.lifeline.services/services/ChangePasswordV1.1"
-   // case LIFELINE_UserIDAvilableityCheck = "https://staging.lifeline.services/services/UserIDAvilableityCheckV1.1"
-   // case LIFELINE_ForgetPassword = "https://staging.lifeline.services/services/ForgetPasswordV1.1"
-   // case LIFELINE_CustomLogin = "https://staging.lifeline.services/services/v1.2/CustomLogin"
-   // case GET_CAMPAGIN_DETAILS   =    "http://staging.lifeline.services/services/GetCampaignDetailsV1.1"
-   // case LIFELINE_Get_VolunteerList       = "http://staging.lifeline.services/services/GetVolunteerListV1.1"
-   // case LIFELINE_Get_Inventory           = "http://staging.lifeline.services/services/GetInventoryV1.1"
+
+//    MARK:- Staging URL's For Production
+//    case TrustHostProd = "staging.lifeline.services"
+//    case ACCESS      =               "http://staging.lifeline.services/services/AccessV1.1"
+//    case BLOOD_REQUEST_SEARCH  =     "http://staging.lifeline.services/services/BloodRequestSearchV1.1"
+//    case CONFIRM_DONATE      =       "http://staging.lifeline.services/services/ConfirmDonateV1.1"
+//    case GET_REQUEST_DETAILS   =     "http://staging.lifeline.services/services/GetRequestDetailsV1.1"
+//    case BLOOD_REQUIREMENT     =     "http://staging.lifeline.services/services/BloodRequirementV1.1"
+//    case GET_COLLECTION_CENTRE_LIST = "http://staging.lifeline.services/services/GetCollectionCentersListV1.1"
+//    case PROFILE_REGISTRATION   =    "http://staging.lifeline.services/services/v1.2/ProfileRegistration"
+//    case MY_REQUESTS           =     "http://staging.lifeline.services/services/MyRequestsV1.1"
+//    case REQUEST_STATUS_UPDATE  =     "http://staging.lifeline.services/services/RequestStatusUpdateV1.1"
+//    case  Device_Token_Reg     =     "http://staging.lifeline.services/services/DeviceDetailsV1.1"
+//    case LIFELINE_Get_Profile = "http://staging.lifeline.services/services/v1.2/GetProfile"
+//    case LIFELINE_Custom_Sign_Up = "https://staging.lifeline.services/services/v1.2/CustomSignUp"
+//    case LIFELINE_Change_Password =  "https://staging.lifeline.services/services/ChangePasswordV1.1"
+//    case LIFELINE_UserIDAvilableityCheck = "https://staging.lifeline.services/services/UserIDAvilableityCheckV1.1"
+//    case LIFELINE_ForgetPassword = "https://staging.lifeline.services/services/ForgetPasswordV1.1"
+//    case LIFELINE_CustomLogin = "https://staging.lifeline.services/services/v1.2/CustomLogin"
+//    case GET_CAMPAGIN_DETAILS   =    "http://staging.lifeline.services/services/GetCampaignDetailsV1.1"
+//    case LIFELINE_Get_VolunteerList       = "http://staging.lifeline.services/services/GetVolunteerListV1.1"
+//    case LIFELINE_Get_Inventory           = "http://staging.lifeline.services/services/GetInventoryV1.1"
     
     
      //MARK:- Development URL's
@@ -78,7 +78,7 @@ public enum URLList:String
 //    case LIFELINE_Get_Profile             = "https://lifelineadmin-test.apigee.net/lifeline-dev/DEV-LifeLine.GetProfile"
 //    case LIFELINE_Get_VolunteerList       = "https://lifelineadmin-test.apigee.net/lifeline-dev/GetVolunteerList"
 //    case LIFELINE_Get_Inventory           = "https://lifelineadmin-test.apigee.net/lifeline-dev/DEV-LifeLine.GetInventory"
-    
+//    
 //    //MARK:- Development URL's
     case TrustHostProd = "demo.frontman.isteer.com"
     case ACCESS                           = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.Access"
@@ -100,6 +100,5 @@ public enum URLList:String
     case LIFELINE_Get_Profile             = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.GetProfile"
     case LIFELINE_Get_VolunteerList       = "http://demo.frontman.isteer.com:8284/services/GetVolunteerList"
     case LIFELINE_Get_Inventory           = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.GetInventory"
-    
-    
+    case MY_DONATION                      = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.MyDonation"
 }

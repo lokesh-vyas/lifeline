@@ -22,8 +22,6 @@ import FirebaseMessaging
 
 @UIApplicationMain
 
-
-
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
     
     var window: UIWindow?
@@ -33,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
     {
+        UIApplication.shared.applicationIconBadgeNumber = 0
         // for language selection
         Localizer.DoTheMagic()
         
@@ -84,7 +83,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             center.requestAuthorization(options: options) {
                 (granted, error) in
                 if !granted {
-                    print("Something went wrong")
                 }
             }
             center.getNotificationSettings { (settings) in
@@ -108,7 +106,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         return true
     }
-    
     //MARK:- Location Manager
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -123,7 +120,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     // [START receive_message]
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any])
     {
-        self.notificationViewMessageForIdentify(userINFO: JSON(userInfo))
+       // self.notificationViewMessageForIdentify(userINFO: JSON(userInfo))
     }
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
@@ -131,7 +128,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
         }
-        self.notificationViewMessageForIdentify(userINFO: JSON(userInfo))
+            self.notificationViewMessageForIdentify(userINFO: JSON(userInfo))
+        
         completionHandler(UIBackgroundFetchResult.newData)
     }
     func tokenRefreshNotification(_ notification: Notification) {
@@ -246,11 +244,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func notificationViewMessageForIdentify(userINFO:JSON)
     {
+        print(userINFO)
         var type:String!
         var ID:String!
         var titleInDict = ""
         var messageInDict = ""
         var IDFetchString:String!
+        var expireeDate:String!
         
         if userINFO["gcm.notification.Type"].string != nil
         {   type = userINFO["gcm.notification.Type"].string!
@@ -264,7 +264,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             type = userINFO["Type"].string!
             print("type = \(type)")
         }
-        
+        // Type = 1 for welcome notification
         if (type == "2")
         {
             //After accecpt request
@@ -277,6 +277,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             IDFetchString = "gcm.notification.CampaignID"
             titleInDict = userINFO["aps"]["alert"]["title"].string!
             messageInDict = userINFO["aps"]["alert"]["body"].string!
+            expireeDate = userINFO["gcm.notification.EndDate"].string
             
         }else if(type == "3")
         {
@@ -284,8 +285,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             IDFetchString = "gcm.notification.RequestID"
             titleInDict = userINFO["aps"]["alert"]["title"].string!
             messageInDict = userINFO["aps"]["alert"]["body"].string!
-        } else if(type == "11" || type == "12") {
+            expireeDate = userINFO["gcm.notification.WhenNeeded"].string
             
+        } else if(type == "11" || type == "12") {
+            // Local Notification after accept request
             IDFetchString = String(describing: userINFO["ID"])
             titleInDict = String(describing: userINFO["Title"])
             messageInDict = String(describing: userINFO["Body"])
@@ -307,7 +310,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             messageInDict = userINFO["aps"]["alert"]["body"].string!
         }
         
-        let myDict = ["Title" : "\(titleInDict)", "Message" : "\(messageInDict)", "Type" : type!,"ID" : ID]
+        let myDict = ["Title" : "\(titleInDict)", "Message" : "\(messageInDict)", "Type" : type!,"ID" : ID,"ExpireeDate" : expireeDate]
         
         let deadlineTime = DispatchTime.now() + .milliseconds(500)
         
@@ -326,7 +329,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void)
     {
-        self.notificationViewMessageForIdentify(userINFO: JSON(response.notification.request.content.userInfo))
+     //   self.notificationViewMessageForIdentify(userINFO: JSON(response.notification.request.content.userInfo))
         completionHandler()
     }
 }

@@ -30,7 +30,7 @@ class DonateView: UIViewController {
     var rLongitude    : CLLocationDegrees?
     var rLocation     : CLLocation?
     var rCoordinates  : CLLocationCoordinate2D?
-    var dataArray     : JSON!
+   
     var viewWarning   = UIView()
     var labelWarning  = UILabel()
     let imageWarning  = UIImageView()
@@ -39,19 +39,17 @@ class DonateView: UIViewController {
     var loader : Bool?
     var InternetIssue : Bool?
     var appendsListMarkers : [Dictionary<String, Any>] = []
-    
     var currentLat : CLLocationDegrees!
     var currentLong : CLLocationDegrees!
-    
+    var isMove : Bool?
     var count : Int = 0
     //MARK:- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         loader = true
         InternetIssue = true
-        
-         count = count + 1
-        
+        count = count + 1
+        isMove = false
         if CLLocationManager.locationServicesEnabled()
         {
             switch(CLLocationManager.authorizationStatus()) {
@@ -67,9 +65,15 @@ class DonateView: UIViewController {
             self.openSettingsForDisableMap()
         }
         NotificationCenter.default.addObserver(self, selector: #selector(PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
-        
-        //NotificationCenter.default.addObserver(self, selector: #selector(DonateView.bloodDonatingMarkers(responseData: "")), name: NSNotification.Name(rawValue: "DataFilter"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(DonateView.reloadData), name: NSNotification.Name(rawValue: "DataFilter"), object: nil)
         //        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+    }
+    func reloadData()
+    {
+        HudBar.sharedInstance.showHudWithMessage(message: MultiLanguage.getLanguageUsingKey("TOAST_LOADING_MESSAGE"), view: self.view)
+        self.mapView.clear()
+        let downwards = GMSCameraUpdate.scrollBy(x: 0.1, y: 0.1)
+        self.mapView.animate(with: downwards)
     }
     
     //MARK:- viewWillAppear
@@ -88,7 +92,6 @@ class DonateView: UIViewController {
         self.definesPresentationContext = true
         searchController?.hidesNavigationBarDuringPresentation = false
         DonateInteractor.sharedInstance.delegate = self
-        
     }
     //MARK:- GoToInCurrentLoction
     func goToInCurrentLoction()
@@ -115,13 +118,69 @@ class DonateView: UIViewController {
         mapView.settings.compassButton = true
         mapView.settings.indoorPicker = true
     }
+    
+    func btnSearchAreaAdded()
+    {
+        btnListofMarkers.backgroundColor = UIColor.white
+        btnListofMarkers.setTitleColor(UIColor.blue, for: UIControlState.normal)
+        btnListofMarkers.setTitle("SEARCH THIS AREA", for: UIControlState.normal)
+        btnListofMarkers.titleLabel?.font = UIFont(name: "System Bold", size: 13)
+        btnListofMarkers.addTarget(self, action:#selector(DonateView.btnSearchAreaTapped), for: .touchUpInside)
+        btnListofMarkers.translatesAutoresizingMaskIntoConstraints = false
+        self.mapView.addSubview(btnListofMarkers)
+        self.view = self.mapView
+        
+        //Height
+        let listHeightConstraint = NSLayoutConstraint(
+            item: btnListofMarkers,
+            attribute: NSLayoutAttribute.height,
+            relatedBy: NSLayoutRelation.equal,
+            toItem: nil,
+            attribute: NSLayoutAttribute.notAnAttribute,
+            multiplier: 1,
+            constant: 40)
+        
+        //Width
+        let listWidthConstraint = NSLayoutConstraint(
+            item: btnListofMarkers,
+            attribute: NSLayoutAttribute.width,
+            relatedBy: NSLayoutRelation.equal,
+            toItem: nil,
+            attribute: NSLayoutAttribute.notAnAttribute,
+            multiplier: 1,
+            constant: 170)
+        
+        //Trailing
+        let listTrailingConstraint = NSLayoutConstraint(
+            item: btnListofMarkers,
+            attribute: NSLayoutAttribute.trailing,
+            relatedBy: NSLayoutRelation.equal,
+            toItem: view,
+            attribute: NSLayoutAttribute.trailing,
+            multiplier: 1,
+            constant: -110)
+        
+        //Top
+        let listTopConstraint = NSLayoutConstraint(
+            item: btnListofMarkers,
+            attribute: NSLayoutAttribute.top,
+            relatedBy: NSLayoutRelation.equal,
+            toItem: view,
+            attribute: NSLayoutAttribute.top,
+            multiplier: 1,
+            constant: 70)
+        
+        //List
+        self.view.addConstraints([listHeightConstraint, listWidthConstraint, listTrailingConstraint, listTopConstraint])
+    }
+    
     //MARK:- openSettingsForDisableMap
     func openSettingsForDisableMap()
     {
         let alertController = UIAlertController (title: MultiLanguage.getLanguageUsingKey("LOCATION_TITLE_WARNING"), message: MultiLanguage.getLanguageUsingKey("LOCATION_MESSAGE_WARNING"), preferredStyle: .alert)
         
         let settingsAction = UIAlertAction(title: MultiLanguage.getLanguageUsingKey("TOAST_SETTING_TITLE"), style: .default) { (_) -> Void in
-           
+            
             guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
                 return
             }
@@ -137,7 +196,7 @@ class DonateView: UIViewController {
             }
         }
         alertController.addAction(settingsAction)
-
+        
         let cancelAction = UIAlertAction(title: MultiLanguage.getLanguageUsingKey("BTN_CANCEL"), style: .default, handler: nil)
         alertController.addAction(cancelAction)
         
@@ -152,12 +211,21 @@ class DonateView: UIViewController {
         
         let notificationView:NotificationView = self.storyboard?.instantiateViewController(withIdentifier: "NotificationView") as! NotificationView
         notificationView.UserJSON = dict
-        notificationView.modalPresentationStyle = .overCurrentContext
+        notificationView.modalPresentationStyle = .currentContext
         notificationView.modalTransitionStyle = .coverVertical
         notificationView.view.backgroundColor = UIColor.clear
         self.present(notificationView, animated: true, completion: nil)
     }
     
+    @IBAction func btnListTapped(_ sender: Any) {
+        let lists = self.storyboard?.instantiateViewController(withIdentifier: "MarkersListView") as! MarkersListView
+        let tempDictionary = JSON.init(dictionaryLiteral: ("Data",appendsListMarkers))
+        SingleTon.SharedInstance.sMarkers = tempDictionary["Data"]
+        lists.modalPresentationStyle = .currentContext
+        lists.modalTransitionStyle = .crossDissolve
+        let nav = UINavigationController(rootViewController: lists)
+        self.navigationController?.present(nav, animated: true, completion: nil)
+    }
     //MARK:- backButton
     @IBAction func backButton(_ sender: Any) {
         let SWRevealView = self.storyboard!.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
@@ -209,6 +277,20 @@ class DonateView: UIViewController {
         
     }
     
+    func btnSearchAreaTapped() {
+        let visibleRegion = mapView.projection.visibleRegion()
+        let mapBounds = GMSCoordinateBounds.init(region: visibleRegion)
+        let NorthWest = CLLocationCoordinate2DMake(mapBounds.northEast.latitude, mapBounds.southWest.longitude)
+        let SouthEast = CLLocationCoordinate2DMake(mapBounds.southWest.latitude, mapBounds.northEast.longitude)
+        SouthLatitude = SouthEast.latitude
+        NorthLatitude = NorthWest.latitude
+        WestLongitude = NorthWest.longitude
+        EastLongitude = SouthEast.longitude
+        self.fetchBloodRequestToDonate()
+        isMove = true
+        self.btnListofMarkers.isHidden = true
+    }
+    
     //MARK:- Hospital/Individual/Campaign Markers
     func bloodDonatingMarkers(responseData : JSON) {
         
@@ -216,7 +298,6 @@ class DonateView: UIViewController {
         if ((dataArray as? JSON)?.dictionary) != nil {
             dataArray = JSON.init(arrayLiteral: dataArray)
         }
-        
         for (i, _) in dataArray.enumerated() {
             
             if dataArray[i]["TypeOfOrg"] == 1  {
@@ -225,7 +306,7 @@ class DonateView: UIViewController {
                     self.rLatitude = dataArray[i]["Latitude"].doubleValue
                     self.rLongitude = dataArray[i]["Longitude"].doubleValue
                     self.rLocation = CLLocation.init(latitude:
-                    CLLocationDegrees(self.rLatitude!), longitude: CLLocationDegrees(self.rLongitude!))
+                        CLLocationDegrees(self.rLatitude!), longitude: CLLocationDegrees(self.rLongitude!))
                     self.rCoordinates = self.rLocation?.coordinate
                     let myMarker1 = GMSMarker()
                     myMarker1.position = self.rCoordinates!
@@ -251,8 +332,9 @@ class DonateView: UIViewController {
                     
                 }
                 
-            } else if dataArray[i]["TypeOfOrg"] == 2 && SingleTon.SharedInstance.isCheckedCamp {
-                
+            }
+            else if dataArray[i]["TypeOfOrg"] == 2 && SingleTon.SharedInstance.isCheckedCamp
+            {
                 rLatitude = dataArray[i]["Latitude"].doubleValue
                 rLongitude = dataArray[i]["Longitude"].doubleValue
                 rLocation = CLLocation.init(latitude: CLLocationDegrees(rLatitude!), longitude: CLLocationDegrees(rLongitude!))
@@ -269,13 +351,9 @@ class DonateView: UIViewController {
         HudBar.sharedInstance.hideHudFormView(view: self.view)
         
     }
-    
-    
 }
 
 extension DonateView : CLLocationManagerDelegate {
-    
-    
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
@@ -292,29 +370,16 @@ extension DonateView : CLLocationManagerDelegate {
             print("<=\(currentLat) & \(currentLong)=>")
         }
     }
-    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error in CLM delegate:", error.localizedDescription)
     }
-    
 }
 
 extension DonateView : GMSMapViewDelegate {
     
-    
-    //FIXME:- removable methods
-    public func mapViewDidStartTileRendering(_ mapView: GMSMapView) {
-        
-    }
-    public func mapViewDidFinishTileRendering(_ mapView: GMSMapView) {
-        
-        
-    }
-    
-    
+    //MARK:- didChange
     public func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition)
     {
-        
         if loader == true {
             HudBar.sharedInstance.showHudWithMessage(message: MultiLanguage.getLanguageUsingKey("TOAST_LOADING_MESSAGE"), view: self.view)
         }
@@ -331,39 +396,50 @@ extension DonateView : GMSMapViewDelegate {
         
         lastEventDate = Date()
         
-        let visibleRegion = mapView.projection.visibleRegion()
-        let mapBounds = GMSCoordinateBounds.init(region: visibleRegion)
-        let NorthWest = CLLocationCoordinate2DMake(mapBounds.northEast.latitude, mapBounds.southWest.longitude)
-        let SouthEast = CLLocationCoordinate2DMake(mapBounds.southWest.latitude, mapBounds.northEast.longitude)
+//        let visibleRegion = mapView.projection.visibleRegion()
+//        let mapBounds = GMSCoordinateBounds.init(region: visibleRegion)
+//        let NorthWest = CLLocationCoordinate2DMake(mapBounds.northEast.latitude, mapBounds.southWest.longitude)
+//        let SouthEast = CLLocationCoordinate2DMake(mapBounds.southWest.latitude, mapBounds.northEast.longitude)
+//
+//        SouthLatitude = SouthEast.latitude
+//        NorthLatitude = NorthWest.latitude
+//        WestLongitude = NorthWest.longitude
+//        EastLongitude = SouthEast.longitude
+//
+//        self.fetchBloodRequestToDonate()
+          loader = false
+
         
-        SouthLatitude = SouthEast.latitude
-        NorthLatitude = NorthWest.latitude
-        WestLongitude = NorthWest.longitude
-        EastLongitude = SouthEast.longitude
-        
-        self.fetchBloodRequestToDonate()
-        loader = false
     }
     
+    //MARK:- idleAt
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
-    
-        print("I am in idle state...")
         
-        
-        let visibleRegion = mapView.projection.visibleRegion()
-        let mapBounds = GMSCoordinateBounds.init(region: visibleRegion)
-        let NorthWest = CLLocationCoordinate2DMake(mapBounds.northEast.latitude, mapBounds.southWest.longitude)
-        let SouthEast = CLLocationCoordinate2DMake(mapBounds.southWest.latitude, mapBounds.northEast.longitude)
-        
-        SouthLatitude = SouthEast.latitude
-        NorthLatitude = NorthWest.latitude
-        WestLongitude = NorthWest.longitude
-        EastLongitude = SouthEast.longitude
-        
-        self.fetchBloodRequestToDonate()
+        if !isMove!
+        {
+            print("I am in idle state...")
+            
+            let visibleRegion = mapView.projection.visibleRegion()
+            let mapBounds = GMSCoordinateBounds.init(region: visibleRegion)
+            let NorthWest = CLLocationCoordinate2DMake(mapBounds.northEast.latitude, mapBounds.southWest.longitude)
+            let SouthEast = CLLocationCoordinate2DMake(mapBounds.southWest.latitude, mapBounds.northEast.longitude)
+            
+            SouthLatitude = SouthEast.latitude
+            NorthLatitude = NorthWest.latitude
+            WestLongitude = NorthWest.longitude
+            EastLongitude = SouthEast.longitude
+            
+            self.fetchBloodRequestToDonate()
+            isMove = true
+        }
+        else
+        {
+            self.btnListofMarkers.isHidden = false
+            self.btnSearchAreaAdded()
+        }
     }
     
-   
+    //MARK:- didTap
     public func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         
         lastEventDate = Date()
@@ -391,7 +467,6 @@ extension DonateView : GMSMapViewDelegate {
             }
             
         } else { // It is a Dictionary
-            
             var IuserDict = [String : Any]()
             IuserDict["CEmail"] = String(describing: jsonDict["IndividualDetails"]["Individuals"]["CEmail"])
             IuserDict["CContactNumber"] = String(describing: jsonDict["IndividualDetails"]["Individuals"]["CContactNumber"])
@@ -440,7 +515,7 @@ extension DonateView : GMSMapViewDelegate {
             self.navigationController?.present(markerDetails, animated: true, completion: nil)
             
         } else if (jsonDict["TypeOfOrg"] == 1 && jsonDict["IndividualDetails"] == JSON.null) || jsonDict["TypeOfOrg"] == 2 {
-            // Hospital or Campaign details
+            // Hospital  or Campaign details
             let markerDetails = self.storyboard?.instantiateViewController(withIdentifier: "MarkerNotIndividualDetails") as! MarkerNotIndividualDetails
             //  let nav = UINavigationController(rootViewController: markerDetails)
             MarkerData.SharedInstance.markerData = userDict
@@ -513,69 +588,11 @@ extension DonateView : GMSAutocompleteResultsViewControllerDelegate {
 extension DonateView : DonateViewProtocol {
     func successDonateSources(jsonArray: JSON) {
         
-        // ListofMarkers
-        btnListofMarkers.setImage(UIImage(named : "List-32"), for: .normal)
-        
-        btnListofMarkers.backgroundColor = UIColor.white
-        btnListofMarkers.cornerRadius = 27.5
-        btnListofMarkers.layer.shadowColor = UIColor.red.cgColor
-        btnListofMarkers.layer.shadowRadius = 5.0
-        
-        btnListofMarkers.addTarget(self, action:#selector(self.btnListClicked), for: .touchUpInside)
-        btnListofMarkers.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.mapView.addSubview(btnListofMarkers)
-        self.view = self.mapView
-        
-        //ListAutolayout
-        //Height
-        let listHeightConstraint = NSLayoutConstraint(
-            item: btnListofMarkers,
-            attribute: NSLayoutAttribute.height,
-            relatedBy: NSLayoutRelation.equal,
-            toItem: nil,
-            attribute: NSLayoutAttribute.notAnAttribute,
-            multiplier: 1,
-            constant: 55)
-        
-        //Width
-        let listWidthConstraint = NSLayoutConstraint(
-            item: btnListofMarkers,
-            attribute: NSLayoutAttribute.width,
-            relatedBy: NSLayoutRelation.equal,
-            toItem: nil,
-            attribute: NSLayoutAttribute.notAnAttribute,
-            multiplier: 1,
-            constant: 55)
-        
-        //Trailing
-        let listTrailingConstraint = NSLayoutConstraint(
-            item: btnListofMarkers,
-            attribute: NSLayoutAttribute.trailing,
-            relatedBy: NSLayoutRelation.equal,
-            toItem: view,
-            attribute: NSLayoutAttribute.trailing,
-            multiplier: 1,
-            constant: -10)
-        
-        //Vertical Space
-        let listVerticalSpaceConstraint = NSLayoutConstraint(
-            item: btnListofMarkers,
-            attribute: NSLayoutAttribute.bottom,
-            relatedBy: NSLayoutRelation.equal,
-            toItem: view,
-            attribute: NSLayoutAttribute.bottom,
-            multiplier: 1,
-            constant: -75)
-        
-        //List
-        self.view.addConstraints([listHeightConstraint, listWidthConstraint, listTrailingConstraint, listVerticalSpaceConstraint])
-        
         //MARK:- Availability of Markers
         if jsonArray["BloodRequestSearchResponse"] == JSON.null || jsonArray["BloodRequestSearchResponse"]["BloodRequestSearchResponseDetails"]["StatusCode"] == 1 {
             
             HudBar.sharedInstance.hideHudFormView(view: self.view)
-            
+
             //viewWarning
             viewWarning.backgroundColor = UIColor.white
             viewWarning.translatesAutoresizingMaskIntoConstraints = false
@@ -719,114 +736,136 @@ extension DonateView : DonateViewProtocol {
             
         } else { // when we get marekrs (also when we find another markers through 'No requirements' places)
             
-             countsForMarkers(myJSON: jsonArray)
-//            viewWarning.removeFromSuperview()
-//            SingleTon.SharedInstance.noMarkers = false
-//            var tempDict = [String : Any]()
-//            var jDict = JSON.init(dictionaryLiteral: ("Index", jsonArray["BloodRequestSearchResponse"]["BloodRequestDetails"]))
-//            jDict = jDict["Index"]
-//            
-//            if jDict["ToDate"].exists() {
-//                jDict =  [jDict]
-//            }
-//            appendsListMarkers.removeAll()
-//            
-//            for (i, _) in jDict.enumerated() {
-//                tempDict["Name"] = jDict[i]["Name"]
-//                tempDict["WorkingHours"] = jDict[i]["WorkingHours"]
-//                tempDict["TypeOfOrg"] = jDict[i]["TypeOfOrg"]
-//                tempDict["Individuals"] = jDict[i]["IndividualDetails"]
-//                //print("Here is my Info \(String(describing: tempDict["Individuals"]))")
-//                appendsListMarkers.append(tempDict)
-//            }
-//            self.bloodDonatingMarkers(responseData: jsonArray)
+            countsForMarkers(myJSON: jsonArray)
         }
     }
     
     func countsForMarkers(myJSON : JSON) {
         
-         // when we get marekrs (also when we find another markers through 'No requirements' places)
-            viewWarning.removeFromSuperview()
-            var tempDict = [String : Any]()
-            var jDict = JSON.init(dictionaryLiteral: ("Index", myJSON["BloodRequestSearchResponse"]["BloodRequestDetails"]))
-            jDict = jDict["Index"]
+        // when we get marekrs (also when we find another markers through 'No requirements' places)
+        viewWarning.removeFromSuperview()
+        var tempDict = [String : Any]()
+        var jDict = JSON.init(dictionaryLiteral: ("Index", myJSON["BloodRequestSearchResponse"]["BloodRequestDetails"]))
+        jDict = jDict["Index"]
+        
+        if jDict["ToDate"].exists() {
+            jDict =  [jDict]
+        }
+        
+        appendsListMarkers.removeAll()
+        
+        for (i, _) in jDict.enumerated() {
             
-            if jDict["ToDate"].exists() {
-                jDict =  [jDict]
-            }
-            appendsListMarkers.removeAll()
-            
-            for (i, _) in jDict.enumerated() {
-                
-                if jDict[i]["TypeOfOrg"].int == 1 {
-                    if String(describing: jDict[i]["IndividualDetails"]) != "null" && SingleTon.SharedInstance.isCheckedIndividual { // Individuals
-                        
-                        tempDict["Name"] = jDict[i]["Name"]
-                        tempDict["WorkingHours"] = jDict[i]["WorkingHours"]
-                        tempDict["TypeOfOrg"] = jDict[i]["TypeOfOrg"]
-                        tempDict["Individuals"] = jDict[i]["IndividualDetails"]
-                        appendsListMarkers.append(tempDict)
-                        
-                    } else if String(describing: jDict[i]["IndividualDetails"]) == "null" && SingleTon.SharedInstance.isCheckedHospital { // Hospital
-                        
-                        tempDict["Name"] = jDict[i]["Name"]
-                        tempDict["WorkingHours"] = jDict[i]["WorkingHours"]
-                        tempDict["TypeOfOrg"] = jDict[i]["TypeOfOrg"]
-                        tempDict["Individuals"] = jDict[i]["IndividualDetails"]
-                        appendsListMarkers.append(tempDict)
-                    }
-                    
-                } else if jDict[i]["TypeOfOrg"].int == 2 && SingleTon.SharedInstance.isCheckedCamp { // Camps
+            if jDict[i]["TypeOfOrg"].int == 1 {
+                if String(describing: jDict[i]["IndividualDetails"]) != "null" && SingleTon.SharedInstance.isCheckedIndividual { // Individuals
                     
                     tempDict["Name"] = jDict[i]["Name"]
                     tempDict["WorkingHours"] = jDict[i]["WorkingHours"]
                     tempDict["TypeOfOrg"] = jDict[i]["TypeOfOrg"]
-                    
-                    if String(describing: jDict[i]["FromDate"]).characters.count > 10 {
-                        let trimDate = String(describing: jDict[i]["FromDate"]).substring(to: 10)
-                        tempDict["FromDate"] = trimDate
-                    }else {
-                        tempDict["FromDate"] = String(describing: jDict[i]["FromDate"])
-                    }
-                    
-                    if String(describing: jDict[i]["ToDate"]).characters.count > 10 {
-                        let trimDate = String(describing: jDict[i]["ToDate"]).substring(to: 10)
-                        tempDict["ToDate"] = trimDate
-                    } else {
-                        tempDict["ToDate"] = String(describing: jDict[i]["ToDate"])
-                    }
                     tempDict["Individuals"] = jDict[i]["IndividualDetails"]
-                    appendsListMarkers.append(tempDict)
+                    tempDict["ID"] = jDict[i]["ID"]
+                    tempDict["ContactNumber1"] = jDict[i]["ContactNumber"]
+                    tempDict["Email"] = jDict[i]["Email"]
+                    tempDict["AddressId"] = jDict[i]["AddressId"]
+                    tempDict["AddressLine1"] = jDict[i]["AddressLine"]
+                    tempDict["City1"] = jDict[i]["City"]
+                    tempDict["PINCode1"] = jDict[i]["PINCode"]
+                    tempDict["State1"] = jDict[i]["State"]
+                    tempDict["Country1"] = jDict[i]["Country"]
+                    tempDict["LandMark1"] = jDict[i]["LandMark"]
+                    tempDict["Latitude1"] = jDict[i]["Latitude"]
+                    tempDict["Longitude1"] = jDict[i]["Longitude"]
                     
-                } else {
-                    SingleTon.SharedInstance.noMarkers = true
+                    var mDict = JSON.init(dictionaryLiteral: ("Index", myJSON[i]["BloodRequirementRequest"]["BloodRequirementDetails"]))
+                    tempDict["LoginID"] = mDict[i]["LoginID"]
+                    tempDict["BloodGroup"] = mDict[i]["BloodGroup"]
+                    tempDict["DonationType"] = mDict[i]["DonationType"]
+                    tempDict["WhenNeeded"] = mDict[i]["WhenNeeded"]
+                    tempDict["NumUnits"] = mDict[i]["NumUnits"]
+                    tempDict["PatientName"] = mDict[i]["PatientName"]
+                    tempDict["ContactPerson"] = mDict[i]["ContactPerson"]
+                    tempDict["ContactNumber"] = mDict[i]["ContactNumber"]
+                    tempDict["DoctorName"] = mDict[i]["DoctorName"]
+                    tempDict["DoctorContact"] = mDict[i]["DoctorContact"]
+                    tempDict["DoctorEmailID"] = mDict[i]["DoctorEmailID"]
+                    tempDict["CenterID"] = mDict[i]["CenterID"]
+                    tempDict["CollectionCentreName"] = mDict[i]["CollectionCentreName"]
+                    tempDict["AddressLine"] = mDict[i]["AddressLine"]
+                    tempDict["City"] = mDict[i]["City"]
+                    tempDict["State"] = mDict[i]["State"]
+                    tempDict["LandMark"] = mDict[i]["LandMark"]
+                    tempDict["Latitude"] = mDict[i]["Latitude"]
+                    tempDict["Longitude"] = mDict[i]["Longitude"]
+                    tempDict["PINCode"] = mDict[i]["PINCode"]
+                    tempDict["Country"] = mDict[i]["Country"]
+                    tempDict["PersonalAppeal"] = mDict[i]["PersonalAppeal"]
+                    tempDict["SharedInSocialMedia"] = mDict[i]["SharedInSocialMedia"]
+                    appendsListMarkers.append(tempDict)
+                } else if String(describing: jDict[i]["IndividualDetails"]) == "null" && SingleTon.SharedInstance.isCheckedHospital { // Hospital
+                    
+                    tempDict["Name"] = jDict[i]["Name"]
+                    tempDict["WorkingHours"] = jDict[i]["WorkingHours"]
+                    tempDict["TypeOfOrg"] = jDict[i]["TypeOfOrg"]
+                    tempDict["ID"] = jDict[i]["ID"]
+                    tempDict["ContactNumber"] = jDict[i]["ContactNumber"]
+                    tempDict["Email"] = jDict[i]["Email"]
+                    tempDict["AddressId"] = jDict[i]["AddressId"]
+                    tempDict["AddressLine"] = jDict[i]["AddressLine"]
+                    tempDict["City"] = jDict[i]["City"]
+                    tempDict["PINCode"] = jDict[i]["PINCode"]
+                    tempDict["State"] = jDict[i]["State"]
+                    tempDict["Country"] = jDict[i]["Country"]
+                    tempDict["LandMark"] = jDict[i]["LandMark"]
+                    tempDict["Latitude"] = jDict[i]["Latitude"]
+                    tempDict["Longitude"] = jDict[i]["Longitude"]
+                    appendsListMarkers.append(tempDict)
                 }
-                SingleTon.SharedInstance.noMarkers = false
+                
+            } else if jDict[i]["TypeOfOrg"].int == 2 && SingleTon.SharedInstance.isCheckedCamp { // Camps
+                
+                tempDict["Name"] = jDict[i]["Name"]
+                tempDict["WorkingHours"] = jDict[i]["WorkingHours"]
+                tempDict["TypeOfOrg"] = jDict[i]["TypeOfOrg"]
+                tempDict["ID"] = jDict[i]["ID"]
+                tempDict["ContactNumber"] = jDict[i]["ContactNumber"]
+                tempDict["Email"] = jDict[i]["Email"]
+                tempDict["AddressId"] = jDict[i]["AddressId"]
+                tempDict["AddressLine"] = jDict[i]["AddressLine"]
+                tempDict["City"] = jDict[i]["City"]
+                tempDict["PINCode"] = jDict[i]["PINCode"]
+                tempDict["State"] = jDict[i]["State"]
+                tempDict["Country"] = jDict[i]["Country"]
+                tempDict["LandMark"] = jDict[i]["LandMark"]
+                tempDict["Latitude"] = jDict[i]["Latitude"]
+                tempDict["Longitude"] = jDict[i]["Longitude"]
+                if String(describing: jDict[i]["FromDate"]).characters.count > 10 {
+                    let trimDate = String(describing: jDict[i]["FromDate"]).substring(to: 10)
+                    tempDict["FromDate"] = trimDate
+                }else {
+                    tempDict["FromDate"] = String(describing: jDict[i]["FromDate"])
+                }
+                if String(describing: jDict[i]["ToDate"]).characters.count > 10 {
+                    let trimDate = String(describing: jDict[i]["ToDate"]).substring(to: 10)
+                    tempDict["ToDate"] = trimDate
+                } else {
+                    tempDict["ToDate"] = String(describing: jDict[i]["ToDate"])
+                }
+                appendsListMarkers.append(tempDict)
+                
+            } else {
+                SingleTon.SharedInstance.noMarkers = true
+            }
+            SingleTon.SharedInstance.noMarkers = false
         }
-            self.bloodDonatingMarkers(responseData: myJSON)
+        self.bloodDonatingMarkers(responseData: myJSON)
         
     }
-    
-    
-    //MARK:- List Button action
-    func btnListClicked() {
-        
-        let lists = self.storyboard?.instantiateViewController(withIdentifier: "MarkersListView") as! MarkersListView
-//        lists.listMarker2 = JSON.init(dictionaryLiteral: ("Data",appendsListMarkers))
-        let tempDictionary = JSON.init(dictionaryLiteral: ("Data",appendsListMarkers))
-        SingleTon.SharedInstance.sMarkers = tempDictionary["Data"]
-        
-        let nav = UINavigationController(rootViewController: lists)
-        self.navigationController?.present(nav, animated: true, completion: nil)
-    }
-    
-    
     func failedDonateSources(Response:String) {
         HudBar.sharedInstance.hideHudFormView(view: self.view)
         if Response == "NoInternet" {
             if InternetIssue == true {
                 InternetIssue = false
-               self.view.makeToast(MultiLanguage.getLanguageUsingKey("TOAST_NO_INTERNET_WARNING"), duration: 3.0, position: .bottom)
+                self.view.makeToast(MultiLanguage.getLanguageUsingKey("TOAST_NO_INTERNET_WARNING"), duration: 3.0, position: .bottom)
             }
         }else
         {
@@ -837,12 +876,6 @@ extension DonateView : DonateViewProtocol {
         }
     }
 }
-
-//extension DonateView : filterMarkersProtocol {
-//    func didSuccessFilters(sender: FilterChecks) {
-//        //   TODO:-
-//    }
-//}
 
 extension String {
     func index(from: Int) -> Index {

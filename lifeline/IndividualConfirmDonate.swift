@@ -16,13 +16,14 @@ class IndividualConfirmDonate: UIViewController {
     @IBOutlet weak var lblNoOfUnits: UILabel!
     @IBOutlet weak var lblPatientName: UILabel!
     @IBOutlet weak var lblContactPerson: UILabel!
-    @IBOutlet weak var lblContactNumber: UILabel!
     @IBOutlet weak var lblDoctorName: UILabel!
     @IBOutlet weak var lblAddress: UILabel!
     @IBOutlet weak var lblPersonalAppeal: UILabel!
+    @IBOutlet weak var lblContactNumber: UnderlinedLabel!
+    @IBOutlet weak var lblHospitalName: UILabel!
     var textShareArray = [String]()
     var textAddress = String()
-    
+
     var iID = String()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -195,6 +196,8 @@ extension IndividualConfirmDonate : IndividualRequestDetailsProtocol {
         }
         
 //        self.lblContactNumber.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["ContactNumber"])
+        
+        self.lblHospitalName.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["CollectionCentreName"])
         
         self.lblAddress.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["AddressLine"]).replacingOccurrences(of: "\n", with: ",").appending(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["City"])).appending(" - ").appending(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["PINCode"]))
         

@@ -54,7 +54,7 @@ class Util
         let date = dateFormatter.date(from: dateString)
         
         dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0) as TimeZone!
-        dateFormatter.dateFormat = "dd/MM/yyyy"
+        dateFormatter.dateFormat = "dd MMM yyyy"
         let stringFromDate = dateFormatter.string(from: date!)
         return stringFromDate
     }
@@ -66,7 +66,8 @@ class Util
         let date = dateFormatter.date(from: dateString)
         
         dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0) as TimeZone!
-        dateFormatter.dateFormat = "dd/MM/yyyy"
+       // dateFormatter.dateFormat = "dd/MM/yyyy"
+        dateFormatter.dateFormat = "dd MMM yyyy"
         let stringFromDate = dateFormatter.string(from: date!)
         return stringFromDate
     }
@@ -305,3 +306,42 @@ extension UIView {
     }
 }
 
+class UnderlinedLabel: UILabel {
+    
+    override var text: String? {
+        didSet {
+            guard let text = text else { return }
+            let textRange = NSMakeRange(0, text.characters.count)
+            let attributedText = NSMutableAttributedString(string: text)
+            attributedText.addAttribute(NSUnderlineStyleAttributeName , value: NSUnderlineStyle.styleSingle.rawValue, range: textRange)
+            // Add other attributes if needed
+            self.attributedText = attributedText
+        }
+    }
+}
+
+extension UIColor
+{
+    public class var myRedColor: UIColor
+    {
+        return UIColor(red: 182.0, green: 11.0, blue: 22.0, alpha: 1.0)
+    }
+    
+    public class var myGreenColor: UIColor
+    {
+        return UIColor(red: 53.0, green: 206.0, blue: 17.0, alpha: 1.0)
+
+    }
+    
+    public class var myBrownColor: UIColor
+    {
+        return UIColor(red: 128.0, green: 64.0, blue: 0.0, alpha: 1.0)
+    }
+    
+}
+
+extension UIView{
+    func completelyTransparentView(){
+        self.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+    }
+}
