@@ -70,7 +70,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="VB0-sB-sCO"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="SegoeUI-Semibold" family="Segoe UI" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>

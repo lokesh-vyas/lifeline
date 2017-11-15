@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "iphone",
-      "filename" : "map_hospital_icon_single1.png",
+      "filename" : "map_hospital_icon_single-1x (1).png",
       "scale" : "1x"
     },
     {
       "idiom" : "iphone",
-      "filename" : "map_hospital_icon_single2.png",
+      "filename" : "map_hospital_icon_single-2x (1).png",
       "scale" : "2x"
     },
     {
       "idiom" : "iphone",
-      "filename" : "map_hospital_icon_single3.png",
+      "filename" : "map_hospital_icon_single3x (1).png",
       "scale" : "3x"
     },
     {
