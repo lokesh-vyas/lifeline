@@ -136,7 +136,7 @@ extension MyRequestView:UITableViewDelegate,UITableViewDataSource
         }
                 cell?.lblPatientName.text = myRequestDetail["PatientName"].string
                 cell?.lblBloodGroup.text = myRequestDetail["BloodGroup"].string
-                cell?.lblRequestDate.text = Util.SharedInstance.dateChangeForInternal(dateString: myRequestDetail["RequestedOn"].string!)
+                cell?.lblRequestDate.text = "Needed By \(Util.SharedInstance.dateChangeForGetProfileDOB(dateString: myRequestDetail["WhenNeeded"].string!))"
                 if myRequestDetail["Status"].string == "Close"
                 {
                     cell?.btnCloseRequest.isHidden = true

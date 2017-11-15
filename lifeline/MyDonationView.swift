@@ -45,10 +45,8 @@ extension MyDonationView : UITableViewDelegate,UITableViewDataSource
         tblView.isHidden = false
         return myDonationArray.count
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        
         var cell:MyDonationCell? = tblView.dequeueReusableCell(withIdentifier: "MyDonationCell") as? MyDonationCell
         if cell == nil
         {

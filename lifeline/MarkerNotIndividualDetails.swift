@@ -8,8 +8,6 @@
 
 import UIKit
 
-
-
 class MarkerNotIndividualDetails: UIViewController {
 
     @IBOutlet weak var lblHead: UILabel!
