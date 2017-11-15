@@ -116,24 +116,24 @@ extension MyRequestView:UITableViewDelegate,UITableViewDataSource
                 }
                 cell?.viewBackground.completelyTransparentView()
                 let myRequestDetail = MyRequestArray[indexPath.row]
-        if (myRequestDetail["DonorsDetails"].dictionary != nil)
-        {
-            var MyDonorsArray1 = myRequestDetail["DonorsDetails"]["DonorDetails"]
-            if (MyDonorsArray1.dictionary) != nil
-            {
-                MyDonorsArray1 = JSON.init(arrayLiteral: MyDonorsArray1)
-            }
-            if MyDonorsArray1.count > 0 {
-                cell?.lblDonorCount.text = "\(MyDonorsArray1.count) Donors"
-            }
-            else {
-                cell?.lblDonorCount.text = "No Donors"
-            }
-        }
-        else
-        {
-            cell?.lblDonorCount.text = "No Donors"
-        }
+                if (myRequestDetail["DonorsDetails"].dictionary != nil)
+                {
+                    var MyDonorsArray1 = myRequestDetail["DonorsDetails"]["DonorDetails"]
+                    if (MyDonorsArray1.dictionary) != nil
+                    {
+                        MyDonorsArray1 = JSON.init(arrayLiteral: MyDonorsArray1)
+                    }
+                    if MyDonorsArray1.count > 0 {
+                        cell?.lblDonorCount.text = "\(MyDonorsArray1.count) Donors"
+                    }
+                    else {
+                        cell?.lblDonorCount.text = "No Donors"
+                    }
+                }
+                else
+                {
+                    cell?.lblDonorCount.text = "No Donors"
+                }
                 cell?.lblPatientName.text = myRequestDetail["PatientName"].string
                 cell?.lblBloodGroup.text = myRequestDetail["BloodGroup"].string
                 cell?.lblRequestDate.text = "Needed By \(Util.SharedInstance.dateChangeForGetProfileDOB(dateString: myRequestDetail["WhenNeeded"].string!))"

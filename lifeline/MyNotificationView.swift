@@ -208,7 +208,6 @@ extension MyNotificationView : UITableViewDelegate, UITableViewDataSource
         {
             cell?.viewBackground.backgroundColor = UIColor.white
         }
-        
         if((NotificationList[indexPath.row]["Status"] as? String) == "0")
         {
             cell?.PendingImage.image = UIImage(named: "pendingColored")

@@ -121,7 +121,7 @@ class MarkersListView: UIViewController {
                 markerDetails.workingHours = String(describing: marker["WorkingHours"])
                 markerDetails.id = String(describing: marker["ID"])
                 markerDetails.typeOfOrg = "1"
-                markerDetails.contactNumber = String(describing: marker["ContactNumber1"])
+                markerDetails.contactNumber = String(describing: marker["ContactNumber"])
                 markerDetails.city = String(describing: marker["City"])
                 markerDetails.pinCode = String(describing: marker["PINCode"])
                 markerDetails.country = String(describing: marker["Country"])
@@ -415,7 +415,7 @@ extension MarkersListView : UITableViewDelegate {
             MarkerData.SharedInstance.markerData["Longitude"] = listDetailArray[indexPath.row].longitude
             MarkerData.SharedInstance.oneRequestOfDonate["CID"] = listDetailArray[indexPath.row].CID
             MarkerData.SharedInstance.isIndividualAPN = false
-            
+
             MarkerData.SharedInstance.markerData["LoginID"] = listDetailArray[indexPath.row].LoginID
             MarkerData.SharedInstance.markerData["BloodGroup"] = listDetailArray[indexPath.row].BloodGroup
             MarkerData.SharedInstance.markerData["DonationType"] = listDetailArray[indexPath.row].DonationType
@@ -435,7 +435,7 @@ extension MarkersListView : UITableViewDelegate {
             navigationControllerStack = UINavigationController(rootViewController: indiCnfDonate)
         }
         self.present(navigationControllerStack, animated: true, completion: nil)
-    }
+        }
 }
 extension MarkersListView : UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

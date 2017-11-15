@@ -138,7 +138,6 @@ extension MyDonationView:MyRequestProtocol
             self.lblNoRecordFound.isHidden = false
             self.lblNoRecordFound.text = MultiLanguage.getLanguageUsingKey("NO_REQUEST_FOUND")
         }
-        
     }
     func FailMyRequest(Response:String)
     {
