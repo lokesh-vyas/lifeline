@@ -32,5 +32,17 @@ class NotificationCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    var NotificationListData: MyNotificationModel?
+    {
+        didSet
+        {
+            lblNotificationTitle.text = NotificationListData?.Title
+            lblNotificationDescription.text = NotificationListData?.Message
+            if NotificationListData?.ReadStatus == "0" {
+                //Color
+            }else{
+                // Default color
+            }
+        }
+    }
 }
