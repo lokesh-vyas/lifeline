@@ -16,6 +16,7 @@ class MyNotificationView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("Testing")
         self.navigationController?.completelyTransparentBar()
         NotificationTblView.contentInset = UIEdgeInsetsMake(-35, 0.0, 0, 0.0)
         NoNewNotifications.isHidden = true
