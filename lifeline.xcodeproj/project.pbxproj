@@ -78,6 +78,7 @@
 		665111C31E6407F600A6AFAA /* MyRequestApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665111C21E6407F600A6AFAA /* MyRequestApi.swift */; };
 		665111C81E66E3FF00A6AFAA /* MyDonorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 665111C71E66E3FF00A6AFAA /* MyDonorCell.xib */; };
 		665111CA1E66E42600A6AFAA /* MyDonorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665111C91E66E42600A6AFAA /* MyDonorCell.swift */; };
+		66807A161FBC2DC9003D8FA7 /* MyNotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66807A151FBC2DC9003D8FA7 /* MyNotificationModel.swift */; };
 		66BE28C61EE9319B0012E4FD /* Filter Filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 66BE28C51EE9319B0012E4FD /* Filter Filled.png */; };
 		66C4E67D1E37258B00526C1D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C4E67C1E37258B00526C1D /* HomeView.swift */; };
 		66C4E67F1E3725A300526C1D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C4E67E1E3725A300526C1D /* ProfileView.swift */; };
@@ -255,6 +256,7 @@
 		665111C21E6407F600A6AFAA /* MyRequestApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRequestApi.swift; sourceTree = "<group>"; };
 		665111C71E66E3FF00A6AFAA /* MyDonorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyDonorCell.xib; path = Cell/MyDonorCell.xib; sourceTree = "<group>"; };
 		665111C91E66E42600A6AFAA /* MyDonorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyDonorCell.swift; path = Cell/MyDonorCell.swift; sourceTree = "<group>"; };
+		66807A151FBC2DC9003D8FA7 /* MyNotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNotificationModel.swift; sourceTree = "<group>"; };
 		66A0EC7A1EE292650019C5FB /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/Main.strings; sourceTree = "<group>"; };
 		66A0EC7B1EE292670019C5FB /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		66A0EC7C1EE292690019C5FB /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -473,6 +475,7 @@
 			isa = PBXGroup;
 			children = (
 				25B8EFFD1F2F517500D08C6B /* MyNotificationView.swift */,
+				66807A151FBC2DC9003D8FA7 /* MyNotificationModel.swift */,
 			);
 			name = Notifications;
 			sourceTree = "<group>";
@@ -1369,6 +1372,7 @@
 				66EA8DF91E2510A300646797 /* HudBar.swift in Sources */,
 				66316B8B1E557D4200114055 /* HospitalListCell.swift in Sources */,
 				665111C11E63F9D700A6AFAA /* MyRequestInteractor.swift in Sources */,
+				66807A161FBC2DC9003D8FA7 /* MyNotificationModel.swift in Sources */,
 				6633E90F1E8907A00008C730 /* InventoryCell.swift in Sources */,
 				66C4E68E1E37402B00526C1D /* RequestView.swift in Sources */,
 				EDE9AEAF1E5FECCC0031BCB0 /* RequestViewInteractor.swift in Sources */,
