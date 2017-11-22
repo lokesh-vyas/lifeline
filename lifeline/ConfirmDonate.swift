@@ -342,19 +342,18 @@ extension ConfirmDonate : getVolunteerProtocol {
     func didSuccessGetVolunteerDetails(jsonArray: JSON) {
         //TODO:- true= comment & preferred date false= no vol
         print("*****didSuccessGetVolunteerDetails******", jsonArray)
-        if jsonArray["GetVolunteerListsReponse"]["ResponseDetails"]["StatusCode"] == 1 {
+            if jsonArray["GetVolunteerListsReponse"]["ResponseDetails"]["StatusCode"] == 1 {
             
             MarkerData.SharedInstance.PreferredDateTime = nil
             MarkerData.SharedInstance.CommentLines = nil
             MarkerData.SharedInstance.requestStatus = String(describing: jsonArray["GetVolunteerListsReponse"]["ResponseDetails"]["StatusCode"])
             
         } else {
-            let tempStr = String(describing: jsonArray["GetVolunteerListsReponse"]["/"]["PreferredDateTime"])
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("ALREADY_VOLUNTEERED"), duration: 3.0, position: .bottom)
+            let tempStr = String(describing: jsonArray["GetVolunteerListsReponse"]["ResponseDetails"]["PreferredDateTime"])
             MarkerData.SharedInstance.PreferredDateTime = Util.SharedInstance.dateChangeForUser(dateString: tempStr)
             MarkerData.SharedInstance.CommentLines = String(describing: jsonArray["GetVolunteerListsReponse"]["ResponseDetails"]["Comment"])
-            
         }
-        
         let alertConfirm = self.storyboard?.instantiateViewController(withIdentifier: "AlertConfirmDonate") as! AlertConfirmDonate
         alertConfirm.checkForDate = checkForString
         if fromDateCamp != nil
@@ -398,7 +397,6 @@ extension ConfirmDonate : MFMailComposeViewControllerDelegate,MFMessageComposeVi
         }
         controller.dismiss(animated: true, completion: nil)
     }
-    
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         self.dismiss(animated: true, completion: nil)
     }

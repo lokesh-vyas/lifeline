@@ -44,19 +44,22 @@ class MarkerNotIndividualDetails: UIViewController {
         lblToDate.isHidden = false
         lblFromDate.text = Util.SharedInstance.showingDateToUser(dateString: (MarkerData.SharedInstance.markerData["FromDate"] as! String?)!)
         lblToDate.text = Util.SharedInstance.showingDateToUser(dateString: (MarkerData.SharedInstance.markerData["ToDate"] as! String?)!)
-        lblHead.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#0dd670")
-        btnDonate.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#0dd670")
-        viewMarkerDetails.layer.borderColor = Util.SharedInstance.hexStringToUIColor(hex: "#0dd670").cgColor
+        lblHead.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#b6800b")
+        btnDonate.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#b6800b")
+        viewMarkerDetails.layer.borderColor = Util.SharedInstance.hexStringToUIColor(hex: "#b6800b").cgColor
         lblHead.text = MultiLanguage.getLanguageUsingKey("CAMP_HEADER")
 
         } else {
             
+            // green individual
+            // brown camp
+            // red hospital
             //FIXME:- Ho color #b6800b
             btnBloodInventory.isHidden = false
             viewUnderLine.isHidden = false
-            lblHead.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#b6800b")
-            btnDonate.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#b6800b")
-            viewMarkerDetails.layer.borderColor = Util.SharedInstance.hexStringToUIColor(hex: "#b6800b").cgColor
+            lblHead.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#b60b16")
+            btnDonate.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#b60b16")
+            viewMarkerDetails.layer.borderColor = Util.SharedInstance.hexStringToUIColor(hex: "#b60b16").cgColor
             
             FromDate.isHidden = true
             ToDate.isHidden = true

@@ -409,8 +409,25 @@
                                             <segue destination="VXc-D5-0vM" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="c5b-7z-CGK"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="changePassword" id="Sgh-nD-R2A">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Notifications" id="ZMu-P7-C6o">
                                         <rect key="frame" x="0.0" y="115.5" width="375" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZMu-P7-C6o" id="Rbk-hz-0Jv">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DnE-7x-JRj">
+                                                    <rect key="frame" x="21" y="14" width="224" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="changePassword" id="Sgh-nD-R2A">
+                                        <rect key="frame" x="0.0" y="175.5" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Sgh-nD-R2A" id="hcB-c7-0Iq">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
@@ -430,7 +447,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="share" id="iep-fD-ryd">
-                                        <rect key="frame" x="0.0" y="175.5" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="235.5" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iep-fD-ryd" id="cYw-u1-mhw">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
@@ -450,7 +467,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Language" id="XVe-l8-jhe">
-                                        <rect key="frame" x="0.0" y="235.5" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="295.5" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XVe-l8-jhe" id="dwW-M7-cRD">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
@@ -467,7 +484,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FAQ" id="kJh-mV-21V">
-                                        <rect key="frame" x="0.0" y="295.5" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="355.5" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kJh-mV-21V" id="nEe-Go-caQ">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
@@ -572,7 +589,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <view autoresizesSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hKG-lO-mXS">
-                                <rect key="frame" x="10" y="77" width="360" height="147"/>
+                                <rect key="frame" x="10" y="97" width="360" height="147"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Old Password*" minimumFontSize="43" translatesAutoresizingMaskIntoConstraints="NO" id="vDw-ek-qUe" customClass="FloatLabelTextField" customModule="lifeline" customModuleProvider="target">
                                         <rect key="frame" x="8" y="6" width="343" height="40"/>
@@ -642,7 +659,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vRK-Fp-j6c">
-                                <rect key="frame" x="16" y="226" width="343" height="53"/>
+                                <rect key="frame" x="16" y="246" width="343" height="53"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="53" id="Vwy-Ai-tea"/>
                                 </constraints>
@@ -1056,6 +1073,12 @@
                         <barButtonItem key="leftBarButtonItem" image="Menu_icon" id="sNs-C3-mAo">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="notification" id="ULx-5k-JBa">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="btnNotificationTapped:" destination="VOH-mg-Prj" id="t2h-9z-njP"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -1095,8 +1118,8 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <outlet property="dataSource" destination="1Zq-Cu-oid" id="Kbk-hn-bXK"/>
-                                    <outlet property="delegate" destination="1Zq-Cu-oid" id="BiO-0q-vQk"/>
+                                    <outlet property="dataSource" destination="1Zq-Cu-oid" id="94H-qD-Lsq"/>
+                                    <outlet property="delegate" destination="1Zq-Cu-oid" id="X2p-P4-l8j"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -1126,12 +1149,12 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <connections>
                         <outlet property="NoNewNotifications" destination="5h7-dt-yJp" id="Ick-77-iLM"/>
-                        <outlet property="NotificationTblView" destination="mgH-5s-rd7" id="rbr-50-aGs"/>
+                        <outlet property="NotificationTblView" destination="mgH-5s-rd7" id="mPs-gV-LOb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WaH-0W-rvN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4401" y="-187"/>
+            <point key="canvasLocation" x="4218" y="-286"/>
         </scene>
         <!--My Request Close-->
         <scene sceneID="INg-j7-LEa">
@@ -2058,7 +2081,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Campaign Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OR7-mt-Ovx">
-                                <rect key="frame" x="103" y="463" width="169.5" height="20"/>
+                                <rect key="frame" x="103.5" y="463" width="169.5" height="20"/>
                                 <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -2357,7 +2380,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hospital/Blood Bank" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8n-35-N6l">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="35"/>
-                                        <color key="backgroundColor" red="0.71372549019607845" green="0.043137254901960784" blue="0.086274509803921567" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.050980392156862744" green="0.83921568627450982" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="YOO-lU-0FZ"/>
                                         </constraints>
@@ -2391,7 +2414,7 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6cw-Xz-M53">
                                         <rect key="frame" x="50" y="92" width="200" height="30"/>
-                                        <color key="backgroundColor" red="0.71372549019607845" green="0.043137254901960784" blue="0.086274509803921567" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.050980392156862744" green="0.83921568627450982" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Donate">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -2406,7 +2429,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EqE-Gg-hmB">
                                         <rect key="frame" x="50" y="215" width="200" height="30"/>
-                                        <color key="backgroundColor" red="0.71372549019607845" green="0.043137254901960784" blue="0.086274509803921567" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.050980392156862744" green="0.83921568627450982" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="fNi-lK-9vz"/>
                                         </constraints>
@@ -2478,7 +2501,7 @@
                                         <real key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.71372549019607845" green="0.043137254901960784" blue="0.086274509803921567" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.050980392156862744" green="0.83921568627450982" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -4817,7 +4840,7 @@
                                                             <constraint firstAttribute="width" constant="30" id="7yO-uS-tun"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home Address (Optional)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIu-Bx-mgj">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIu-Bx-mgj">
                                                         <rect key="frame" x="51" y="5" width="300" height="25"/>
                                                         <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="17"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4954,7 +4977,7 @@
                                                             <constraint firstAttribute="width" constant="30" id="mTE-1p-EIr"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Work Address  (Optional)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E9s-kv-u2m">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Office Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E9s-kv-u2m">
                                                         <rect key="frame" x="51" y="5" width="300" height="25"/>
                                                         <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="17"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -5180,7 +5203,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eni-lO-lUC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3556" y="-1039.4302848575712"/>
+            <point key="canvasLocation" x="3735" y="-1039"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yeE-Rd-Hb6">
@@ -20327,12 +20350,13 @@ AA3LbAANy3EADct5AA3LfAANy44ADcuRAA3LlgAAAAAAAAQBAAAAAAAAAEEAAAAAAAAAAAAAAAAADcuY
 A
 </mutableData>
         </image>
+        <image name="notification" width="24" height="24"/>
         <image name="person.png" width="48" height="48"/>
         <image name="personal_Appeal" width="16" height="16"/>
         <image name="phone_icon.png" width="48" height="48"/>
         <image name="requestImage" width="91" height="91"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="juJ-9u-Oey"/>
+        <segue reference="Ktf-Z0-2mE"/>
     </inferredMetricsTieBreakers>
 </document>

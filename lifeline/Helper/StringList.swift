@@ -103,5 +103,5 @@ public enum URLList:String
     case MY_DONATION                      = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.MyDonation"
     case LIFELINE_GET_NOTIFICATIONS       = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.GetNotifications"
     case LIFELINE_DELETE_NOTIFICATION     = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.DeleteNotification"
-    case LIFELINE_UPDATE_NOTIFICATON      = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.DEV-LifeLine.UpdateNotification"
+    case LIFELINE_UPDATE_NOTIFICATON      = "http://demo.frontman.isteer.com:8284/services/DEV-LifeLine.UpdateNotification"
 }

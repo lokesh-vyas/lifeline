@@ -181,4 +181,6 @@ MAIL_TITLE_FOR_CAMP = "LifeLine బ్లడ్ క్యాంప్";
 NO_NOTIFICATIONS = "నోటిఫికేషన్లు లేవు";
 MY_REQUEST = "మా అభ్యర్థన";
 MY_DONATION = "నా విరాళం";
-
+ALREADY_VOLUNTEERED = "మీరు ఇప్పటికే స్వచ్ఛందంగా మీ వివరాలు సవరించవచ్చు";
+DELETE_TITLE = "నోటిఫికేషన్ను తొలగించండి";
+DELETE_MESSAGE = "మీరు ఖచ్చితంగా ఈ నోటిఫికేషన్ను తొలగించాలనుకుంటున్నారా?";

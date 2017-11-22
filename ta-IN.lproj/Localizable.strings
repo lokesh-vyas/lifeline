@@ -180,3 +180,6 @@ MAIL_TITLE_FOR_CAMP = "LifeLine இரத்த முகாம்";
 NO_NOTIFICATIONS = "அறிவிப்புகள் இல்லை";
 MY_REQUEST = "எனது வேண்டுகோள்";
 MY_DONATION = "என் நன்கொடை";
+ALREADY_VOLUNTEERED = "உங்கள் விவரங்களை நீங்கள் திருத்தலாம் ஏற்கனவே நீங்கள் முன்வந்துள்ளன";
+DELETE_TITLE = "அறிவிப்பை நீக்கு";
+DELETE_MESSAGE = "இந்த அறிவிப்பை நிச்சயமாக நீக்க விரும்புகிறீர்களா?";

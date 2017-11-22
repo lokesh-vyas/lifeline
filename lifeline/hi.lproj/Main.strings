@@ -130,7 +130,7 @@
 "E8d-f5-n2I.text" = "स्वैच्छिक दान";
 
 /* Class = "UILabel"; text = "Work Address  (Optional)"; ObjectID = "E9s-kv-u2m"; */
-"E9s-kv-u2m.text" = "कार्यालय का पता (वैकल्पिक)";
+"E9s-kv-u2m.text" = "कार्यालय का पता";
 
 /* Class = "UINavigationItem"; title = "Requests"; ObjectID = "EoX-cx-AJD"; */
 "EoX-cx-AJD.title" = "निवेदन";
@@ -468,7 +468,7 @@
 "sIG-5i-UxH.title" = "LifeLine";
 
 /* Class = "UILabel"; text = "Home Address (Optional)"; ObjectID = "sIu-Bx-mgj"; */
-"sIu-Bx-mgj.text" = "घर का पता (वैकल्पिक)";
+"sIu-Bx-mgj.text" = "घर का पता";
 
 /* Class = "UILabel"; text = " "; ObjectID = "sSJ-hn-iGc"; */
 "sSJ-hn-iGc.text" = " ";
@@ -538,3 +538,10 @@
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "yz5-DD-wbp"; */
 "yz5-DD-wbp.text" = "Title";
+
+/* Class = "UILabel"; text = "Notification"; ObjectID = "DnE-7x-JRj"; */
+"DnE-7x-JRj.text" = "सूचनाएं";
+
+/* Class = "UINavigationItem"; title = "Address"; ObjectID = "DnF-yV-0kX"; */
+"DnF-yV-0kX.title" = "सूचनाएं";
+

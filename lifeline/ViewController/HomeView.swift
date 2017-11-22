@@ -113,6 +113,12 @@ class HomeView: UIViewController {
         self.navigationController?.pushViewController(notificationView!, animated: true)
     }*/
     
+    @IBAction func btnNotificationTapped(_ sender: Any) {
+        print("Notification Button Tapped")
+        let notificationView = self.storyboard?.instantiateViewController(withIdentifier: "MyNotificationView")
+        self.navigationController?.pushViewController(notificationView!, animated: true)
+    }
+    
     func lblDonateTapped(_ sender: UITapGestureRecognizer)
     {
         SingleTon.SharedInstance.isCheckedIndividual = true

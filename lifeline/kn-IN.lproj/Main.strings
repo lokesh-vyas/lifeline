@@ -120,7 +120,7 @@
 "E8d-f5-n2I.text" = "ಸ್ವಯಂಪ್ರೇರಿತ ಧಾನ ";
 
 /* Class = "UILabel"; text = "Work Address  (Optional)"; ObjectID = "E9s-kv-u2m"; */
-"E9s-kv-u2m.text" = "ಕೆಲಸದ ವಿಳಾಸ (ಐಚ್ಛಿಕ)";
+"E9s-kv-u2m.text" = "ಕೆಲಸದ ವಿಳಾಸ";
 
 /* Class = "UINavigationItem"; title = "Requests"; ObjectID = "EoX-cx-AJD"; */
 "EoX-cx-AJD.title" = "ವಿನಂತಿಗಳು";
@@ -456,7 +456,7 @@
 "sIG-5i-UxH.title" = "LifeLine";
 
 /* Class = "UILabel"; text = "Home Address (Optional)"; ObjectID = "sIu-Bx-mgj"; */
-"sIu-Bx-mgj.text" = "ಮುಖಪುಟ ವಿಳಾಸ (ಐಚ್ಛಿಕ)";
+"sIu-Bx-mgj.text" = "ಮುಖಪುಟ ವಿಳಾಸ";
 
 /* Class = "UILabel"; text = " "; ObjectID = "sSJ-hn-iGc"; */
 "sSJ-hn-iGc.text" = " ";
@@ -538,3 +538,9 @@
 
 /* Class = "UINavigationItem"; title = "Address"; ObjectID = "mKU-Xi-pJj"; */
 "mKU-Xi-pJj.title" = "History";
+
+/* Class = "UILabel"; text = "Notification"; ObjectID = "DnE-7x-JRj"; */
+"DnE-7x-JRj.text" = "ಅಧಿಸೂಚನೆಗಳು";
+
+/* Class = "UINavigationItem"; title = "Address"; ObjectID = "DnF-yV-0kX"; */
+"DnF-yV-0kX.title" = "ಅಧಿಸೂಚನೆಗಳು";

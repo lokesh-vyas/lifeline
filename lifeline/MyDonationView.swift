@@ -20,6 +20,7 @@ class MyDonationView: UIViewController {
         tblView.isHidden = true
         lblNoRecordFound.isHidden = true
         self.MyDonationServiceCall()
+        NotificationCenter.default.addObserver(self, selector: #selector(PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
     }
     //MARK:- MyRequestServiceCall
     func MyDonationServiceCall()
@@ -29,6 +30,18 @@ class MyDonationView: UIViewController {
         HudBar.sharedInstance.showHudWithMessage(message: MultiLanguage.getLanguageUsingKey("TOAST_LOADING_MESSAGE"), view: self.view)
         MyRequestInteractor.SharedInstance.delegate = self
         MyRequestInteractor.SharedInstance.MyDonationServiceCall(loginID: LoginID)
+    }
+    //MARK:- PushNotificationView
+    func PushNotificationView(_ notification: NSNotification)
+    {
+        let dict = notification.object as! Dictionary<String, Any>
+        
+        let notificationView:NotificationView = self.storyboard?.instantiateViewController(withIdentifier: "NotificationView") as! NotificationView
+        notificationView.UserJSON = dict
+        notificationView.modalPresentationStyle = .currentContext
+        notificationView.modalTransitionStyle = .coverVertical
+        notificationView.view.backgroundColor = UIColor.clear
+        self.present(notificationView, animated: true, completion: nil)
     }
 }
 extension MyDonationView : UITableViewDelegate,UITableViewDataSource

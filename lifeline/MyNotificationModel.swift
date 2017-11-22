@@ -14,14 +14,15 @@ protocol NotificationUpdateProtocol {
    func didFail()
 }
 class MyNotificationModel{
-    var NotifcationId : String?
-    var ReadStatus : String?
+    var NotificationId : Int?
+    var ReadStatus : Int?
     var Message : String?
-    var NotificationType : String?
+    var NotificationType : Int?
     var Title : String?
-    var CampaignID : String?
-    var RequestID : String?
-    var DonationID : String?
+    var CampaignID : Int?
+    var RequestID : Int?
+    var DonationID : Int?
+    var sendOnTime : String?
 }
 
 class MyNotificationViewModel{
@@ -37,40 +38,52 @@ class MyNotificationViewModel{
     func MyNotificationServerCall(){
         let reqBody : Dictionary =
             ["LoginID" : "\(UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!)"]
-        NetworkManager.sharedInstance.serviceCallForPOST(url: URLList.LIFELINE_GET_NOTIFICATIONS.rawValue, method: "POST", parameters: reqBody,sucess:
-            {
-                (JSONResponse) -> Void in
-                if((JSONResponse["notifications"]["notification"].array?.count)! > 0)
+        NetworkManager.sharedInstance.serviceCallForPOST(url: URLList.LIFELINE_GET_NOTIFICATIONS.rawValue, method: "POST", parameters: reqBody,sucess: { (JSONResponse) -> Void in
+            
+                if(JSONResponse["notifications"]) == JSON.null
                 {
-                     self.MyNotifiactionData(JSONResponse: JSONResponse)
+                    self.delegate?.didFail()
                 }
                 else
                 {
-                     self.delegate?.didFail()
+                    var notificationArray = JSONResponse["notifications"]["notification"]
+                    if ((notificationArray as? JSON)?.dictionary) != nil {
+                        notificationArray = JSON.init(arrayLiteral: notificationArray)
+                    }
+                    if((notificationArray.array?.count)! > 0)
+                    {
+                        for i in 0..<notificationArray.count
+                        {
+                            let notificationlistmodel = MyNotificationModel()
+                            let Dict = notificationArray[i].dictionaryValue
+                            print("My Notification Data = \(Dict)")
+                            notificationlistmodel.Message = Dict["Message"]?.string
+                            notificationlistmodel.Title = Dict["Title"]?.string
+                            notificationlistmodel.NotificationId = Dict["notificationid"]?.int
+                            notificationlistmodel.ReadStatus = Dict["ReadStatus"]?.int
+                            notificationlistmodel.NotificationType = Dict["Type"]?.int
+                            notificationlistmodel.CampaignID = Dict["CampaignID"]?.int
+                            notificationlistmodel.RequestID = Dict["RequestID"]?.int
+                            notificationlistmodel.DonationID = Dict["DonationID"]?.int
+                            self.NotificationList.append(notificationlistmodel)
+                        }
+                        self.delegate?.didSucess()
+                    }
+                    else
+                    {
+                        self.delegate?.didFail()
+                    }
                 }
         }, failure:
             { (Response) -> Void in
+                print("Here in failure....")
                 self.delegate?.didFail()
         })
     }
-    func MyNotifiactionData(JSONResponse : JSON)  {
-        for i in 0..<JSONResponse["notifications"]["notification"].count
-        {
-            let notificationlistmodel = MyNotificationModel()
-            let Dict = JSONResponse["userData"]["schedule_list"][i].dictionaryValue
-            notificationlistmodel.Message = Dict["Message"]?.string
-            notificationlistmodel.Title = Dict["Title"]?.string
-            notificationlistmodel.NotifcationId = Dict["notificationid"]?.string
-            notificationlistmodel.ReadStatus = Dict["ReadStatus"]?.string
-            
-             self.NotificationList.append(notificationlistmodel)
-        }
-         self.delegate?.didSucess()
-    }
     //MARK:- Get Update Notification
-    func MyNotificatonUpdate(NotificationId: String) {
+    func MyNotificatonUpdate(NotificationId: Int) {
         let reqBody : Dictionary =
-            ["UpdateNotification":["NotificationId" : NotificationId,"ReadStatus":"1"]]
+            ["UpdateNotification":["NotificationId" : NotificationId,"ReadStatus": 1 ]]
         NetworkManager.sharedInstance.serviceCallForPOST(url: URLList.LIFELINE_UPDATE_NOTIFICATON.rawValue, method: "POST", parameters: reqBody,sucess:
             {
                 (JSONResponse) -> Void in
@@ -88,7 +101,7 @@ class MyNotificationViewModel{
         })
     }
     //MARK:- DELETE Notification
-    func MyNotificationDelete(NotificationId: String) {
+    func MyNotificationDelete(NotificationId: Int) {
         let reqBody : Dictionary =
             ["DeleteNotification":["NotificationId" : NotificationId]]
         NetworkManager.sharedInstance.serviceCallForPOST(url: URLList.LIFELINE_DELETE_NOTIFICATION.rawValue, method: "POST", parameters: reqBody,sucess:

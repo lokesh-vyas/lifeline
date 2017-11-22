@@ -44,6 +44,7 @@ class Util
         let dateObj = dateFormatter.date(from: dateString)
         
         dateFormatter.dateFormat = "dd/MM/yyyy"
+        
         return dateFormatter.string(from: dateObj!)
     }
     //MARK:- date Chenge for DateofBirth for Profile
@@ -66,7 +67,7 @@ class Util
         let date = dateFormatter.date(from: dateString)
         
         dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0) as TimeZone!
-       // dateFormatter.dateFormat = "dd/MM/yyyy"
+        //dateFormatter.dateFormat = "dd/MM/yyyy"
         dateFormatter.dateFormat = "dd MMM yyyy"
         let stringFromDate = dateFormatter.string(from: date!)
         return stringFromDate
@@ -95,6 +96,7 @@ class Util
         
         dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0) as TimeZone!
         dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
+        //dateFormatter.dateFormat = "dd MMM yyyy"
         return dateFormatter.string(from: dateObj!)
     }
     
@@ -105,7 +107,8 @@ class Util
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let dateObj = dateFormatter.date(from: dateString)
         
-        dateFormatter.dateFormat = "dd/MM/yyyy"
+        //dateFormatter.dateFormat = "dd/MM/yyyy"
+        dateFormatter.dateFormat = "dd MMM yyyy"
         return dateFormatter.string(from: dateObj!)
     }
     
