@@ -183,3 +183,4 @@ MY_DONATION = "My Donation";
 ALREADY_VOLUNTEERED = "You have already volunteered you can edit your details";
 DELETE_TITLE = "Delete Notification";
 DELETE_MESSAGE = "Are you sure you want to delete this notification?";
+DONATION_CONFIRMED = "Donation Confirmed Successfully.";

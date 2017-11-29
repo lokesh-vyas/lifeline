@@ -106,8 +106,6 @@ class AlertConfirmDonate: UIViewController {
       
         if preferredDateTime != nil {
             HudBar.sharedInstance.showHudWithMessage(message: MultiLanguage.getLanguageUsingKey("TOAST_SUBMIT_MESSAGE"), view: self.view)
-            
-            
             let TypeOfOrg:String
             if MarkerData.SharedInstance.isIndividualAPN == false || MarkerData.SharedInstance.isNotIndividualAPN == false {
                 IDtoBeSent = String(describing: (MarkerData.SharedInstance.oneRequestOfDonate["CID"] != nil) ? (MarkerData.SharedInstance.oneRequestOfDonate["CID"])! : (MarkerData.SharedInstance.markerData["ID"]!))
@@ -230,11 +228,11 @@ extension AlertConfirmDonate : AlertConfirmDonateProtocol {
         let when = DispatchTime.now() + .seconds(2)
         DispatchQueue.main.asyncAfter(deadline: when, execute: {
             let SWRevealView = self.storyboard!.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "DonationConfirmed"), object: nil)
             self.present(SWRevealView, animated: true, completion: nil)
             HudBar.sharedInstance.hideHudFormView(view: self.view)
         }
         )
-        
     }
     func failedConfirmDonate(Response:String) {
         HudBar.sharedInstance.hideHudFormView(view: self.view)
@@ -261,10 +259,6 @@ extension AlertConfirmDonate : ProtocolCalendar {
         MarkerData.SharedInstance.CommentLines = txtViewComment.text
         
         preferredDateTime = (MarkerData.SharedInstance.PreferredDateTime != nil) ? Util.SharedInstance.preferredDateToCamp(selectedDate: MarkerData.SharedInstance.PreferredDateTime!) : dateForCamp
-        
-        
-        
-        
     }
     func FailureProtocolCalendar(valueSent: String) {
         print("CALENDAR is FAILED")

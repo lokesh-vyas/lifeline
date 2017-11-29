@@ -202,8 +202,6 @@ class ConfirmDonate: UIViewController {
                 
                 fromDateCamp = Util.SharedInstance.dateChangeForFromDateInCamp(dateString: fromDateWithTime) as NSDate
                 toDateCamp = Util.SharedInstance.dateChangeForFromDateInCamp(dateString: toDateWithTime) as NSDate
-            
-                
             }else
             {
                 checkForString = "CenterID"
@@ -218,7 +216,8 @@ class ConfirmDonate: UIViewController {
         let volDict = ["GetVolunteerListRequest": [
             "RequestDetails": [
                 "LoginID" : "\(UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!)",
-                "\(whichID)":"\(idValue)"
+                "\(whichID)":"\(idValue)",
+                "TypeOfOrg" : MarkerData.SharedInstance.markerData["TypeOfOrg"]
             ]]]
         ConfirmDonateInteractor.sharedInstance.delegateV = self
         ConfirmDonateInteractor.sharedInstance.getVolunteerDetails(urlString: URLList.LIFELINE_Get_VolunteerList.rawValue, params: volDict)
@@ -317,7 +316,7 @@ extension ConfirmDonate : ConfirmDonateProtocol {
         self.textShareArray.insert("\(MultiLanguage.getLanguageUsingKey("HOSPITAL_WORKING_HOURS")) : \(lblWorkingHours.text!)", at: 2)
         
         lblFromDate.text = Util.SharedInstance.showingDateToUser(dateString: (String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["FromDate"]).characters.count > 10 ?  String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["FromDate"]).substring(to: 10):String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["FromDate"])))
-        lblToDate.text = Util.SharedInstance.showingDateToUser(dateString: (String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["ToDate"]).characters.count > 10 ?  String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["ToDate"]).substring(to: 10):String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["ToDate"])))
+    lblToDate.text = Util.SharedInstance.showingDateToUser(dateString: (String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["ToDate"]).characters.count > 10 ?  String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["ToDate"]).substring(to: 10):String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["ToDate"])))
         
         self.textShareArray.insert("\(MultiLanguage.getLanguageUsingKey("HOSPITAL_NEEDED_BY")) : \(lblToDate.text!)", at: 3)
 
@@ -354,6 +353,8 @@ extension ConfirmDonate : getVolunteerProtocol {
             MarkerData.SharedInstance.PreferredDateTime = Util.SharedInstance.dateChangeForUser(dateString: tempStr)
             MarkerData.SharedInstance.CommentLines = String(describing: jsonArray["GetVolunteerListsReponse"]["ResponseDetails"]["Comment"])
         }
+        MarkerData.SharedInstance.isNotIndividualAPN = false
+        MarkerData.SharedInstance.markerData["TypeOfOrg"] = "2"
         let alertConfirm = self.storyboard?.instantiateViewController(withIdentifier: "AlertConfirmDonate") as! AlertConfirmDonate
         alertConfirm.checkForDate = checkForString
         if fromDateCamp != nil

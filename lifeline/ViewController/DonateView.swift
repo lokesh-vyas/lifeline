@@ -314,11 +314,9 @@ class DonateView: UIViewController {
                     myMarker1.icon = UIImage(named: "Hospital_icon")!
                     myMarker1.map = self.mapView
                     self.view = self.mapView
-                    
-                    
                 } else if dataArray[i]["IndividualDetails"] != JSON.null && SingleTon.SharedInstance.isCheckedIndividual {
                     
-                    //                    print("Indi",dataArray)
+                    // print("Indi",dataArray)
                     self.rLatitude = dataArray[i]["Latitude"].doubleValue
                     self.rLongitude = dataArray[i]["Longitude"].doubleValue
                     self.rLocation = CLLocation.init(latitude: CLLocationDegrees(self.rLatitude!), longitude: CLLocationDegrees(self.rLongitude!))
@@ -329,9 +327,7 @@ class DonateView: UIViewController {
                     myMarker2.icon = UIImage(named: "Individual_icon")!
                     myMarker2.map = self.mapView
                     self.view = self.mapView
-                    
                 }
-                
             }
             else if dataArray[i]["TypeOfOrg"] == 2 && SingleTon.SharedInstance.isCheckedCamp
             {

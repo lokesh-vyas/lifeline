@@ -104,6 +104,9 @@ extension MyDonationView : UITableViewDelegate,UITableViewDataSource
         {
             let indconfirmDonate:IndividualConfirmDonate = self.storyboard?.instantiateViewController(withIdentifier: "IndividualConfirmDonate") as! IndividualConfirmDonate
             indconfirmDonate.iID = String(describing : myDonationArray[indexPath.row]["RequestDetails"]["RequestDetail"]["RequestID"])
+            MarkerData.SharedInstance.oneRequestOfDonate["CID"] = String(describing : myDonationArray[indexPath.row]["RequestDetails"]["RequestDetail"]["RequestID"])
+            MarkerData.SharedInstance.oneRequestOfDonate["CTypeOfOrg"] = "3"
+            MarkerData.SharedInstance.isIndividualAPN = false
             let rootView:UINavigationController = UINavigationController(rootViewController: indconfirmDonate)
             self.present(rootView, animated: true, completion: nil)
         }
@@ -111,6 +114,7 @@ extension MyDonationView : UITableViewDelegate,UITableViewDataSource
         {
             let confirmDonate:ConfirmDonate = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmDonate") as! ConfirmDonate
             confirmDonate.ID = String(describing : myDonationArray[indexPath.row]["CampDetails"]["CampDetail"]["CampaignID"])
+             MarkerData.SharedInstance.markerData["ID"] = String(describing : myDonationArray[indexPath.row]["CampDetails"]["CampDetail"]["CampaignID"])
             let rootView:UINavigationController = UINavigationController(rootViewController: confirmDonate)
             self.present(rootView, animated: true, completion: nil)
         }

@@ -301,6 +301,7 @@ extension LoginView : ProtocolGetProfile
     func failedGetProfile(success: Bool)
     {
         HudBar.sharedInstance.hideHudFormView(view: self.view)
+        print("failed")
         if success == false
         {
             let profileView: ProfileView = (self.storyboard?.instantiateViewController(withIdentifier: "ProfileView") as? ProfileView)!

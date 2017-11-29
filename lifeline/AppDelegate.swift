@@ -89,7 +89,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                     // Notifications not allowed
                 }
             }
-            
             FIRMessaging.messaging().remoteMessageDelegate = self
             
         } else {
@@ -288,7 +287,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             titleInDict = userINFO["aps"]["alert"]["title"].string!
             messageInDict = userINFO["aps"]["alert"]["body"].string!
             expireeDate = userINFO["gcm.notification.EndDate"].string
-            
         }
         else if(type == "3")
         {

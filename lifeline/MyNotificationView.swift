@@ -144,6 +144,7 @@ extension MyNotificationView : UITableViewDelegate, UITableViewDataSource
             MyNotificationViewModel.SharedInstance.MyNotificatonUpdate(NotificationId: myNotificationId!)
             let confirmDonate:ConfirmDonate = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmDonate") as! ConfirmDonate
             confirmDonate.ID = String(describing: MyNotificationViewModel.SharedInstance.NotificationList[indexPath.row].CampaignID!)
+            MarkerData.SharedInstance.markerData["ID"] = String(describing:MyNotificationViewModel.SharedInstance.NotificationList[indexPath.row].CampaignID!)
             let rootView:UINavigationController = UINavigationController(rootViewController: confirmDonate)
             self.present(rootView, animated: true, completion: nil)
             
@@ -155,6 +156,9 @@ extension MyNotificationView : UITableViewDelegate, UITableViewDataSource
             MyNotificationViewModel.SharedInstance.MyNotificatonUpdate(NotificationId: myNotificationId!)
             let indconfirmDonate:IndividualConfirmDonate = self.storyboard?.instantiateViewController(withIdentifier: "IndividualConfirmDonate") as! IndividualConfirmDonate
             indconfirmDonate.iID = String(describing: MyNotificationViewModel.SharedInstance.NotificationList[indexPath.row].RequestID!)
+            MarkerData.SharedInstance.oneRequestOfDonate["CID"] = String(describing: MyNotificationViewModel.SharedInstance.NotificationList[indexPath.row].RequestID!)
+             MarkerData.SharedInstance.oneRequestOfDonate["CTypeOfOrg"] = "3"
+            MarkerData.SharedInstance.isIndividualAPN = false
             let rootView:UINavigationController = UINavigationController(rootViewController: indconfirmDonate)
             self.present(rootView, animated: true, completion: nil)
         } else if(MyNotificationViewModel.SharedInstance.NotificationList[indexPath.row].NotificationType == 6)
@@ -202,5 +206,6 @@ extension MyNotificationView : NotificationUpdateProtocol{
          self.NotificationTblView.isHidden = true
          self.NoNewNotifications.isHidden = false
          NoNewNotifications.text = MultiLanguage.getLanguageUsingKey("NO_NOTIFICATIONS")
+         
     }
 }

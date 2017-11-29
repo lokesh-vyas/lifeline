@@ -20,7 +20,6 @@ class NotificationView: UIViewController {
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
         if (UserJSON["Type"] as? String == "1" || UserJSON["Type"] as? String == "5" || UserJSON["Type"] as? String == "6" || UserJSON["Type"] as? Int == 1 || UserJSON["Type"] as? Int == 5 || UserJSON["Type"] as? Int == 6)
         {
             //for welcome notification & Request Status Update
@@ -87,6 +86,7 @@ class NotificationView: UIViewController {
             //For Camp request notificaton
             let confirmDonate:ConfirmDonate = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmDonate") as! ConfirmDonate
             confirmDonate.ID = UserJSON["ID"] as! String
+            MarkerData.SharedInstance.markerData["ID"] = UserJSON["ID"] as! String
             let rootView:UINavigationController = UINavigationController(rootViewController: confirmDonate)
             self.present(rootView, animated: true, completion: nil)
             
@@ -95,6 +95,9 @@ class NotificationView: UIViewController {
             //for individual request notificaton
             let indconfirmDonate:IndividualConfirmDonate = self.storyboard?.instantiateViewController(withIdentifier: "IndividualConfirmDonate") as! IndividualConfirmDonate
             indconfirmDonate.iID = UserJSON["ID"] as! String
+            MarkerData.SharedInstance.oneRequestOfDonate["CID"] = UserJSON["ID"] as! String
+            MarkerData.SharedInstance.oneRequestOfDonate["CTypeOfOrg"] = UserJSON["TypeOfOrg"] as? String
+            MarkerData.SharedInstance.isIndividualAPN = false
             let rootView:UINavigationController = UINavigationController(rootViewController: indconfirmDonate)
             self.present(rootView, animated: true, completion: nil)
             
