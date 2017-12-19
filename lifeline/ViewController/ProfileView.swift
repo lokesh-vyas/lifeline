@@ -30,7 +30,8 @@ class ProfileView: UIViewController
     var tempBool : Bool = false
     var tempStr : String?
     let bloodGroupArray = ["O+","O-","A+","A-","B+","B-","AB+","AB-"]
-    
+    var name : String?
+    var emailID : String?
     //MARK:- viewWillAppear
     override func viewWillAppear(_ animated: Bool)
     {

@@ -134,7 +134,11 @@ class LoginView: UIViewController
                     UserDefaults.standard.set(response.dictionaryValue?["id"], forKey: StringList.LifeLine_User_ID.rawValue)
                     UserDefaults.standard.set(response.dictionaryValue?["name"], forKey: StringList.LifeLine_User_Name.rawValue)
                     UserDefaults.standard.set(response.dictionaryValue?["email"], forKey: StringList.LifeLine_User_Email.rawValue)
-                    self.goToProfileView()
+                    ProfileViewInteractor.SharedInstance.delegate = self
+                    let LoginId:String = UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!
+                    HudBar.sharedInstance.showHudWithMessage(message: MultiLanguage.getLanguageUsingKey("TOAST_PLEASE_WAIT"), view: self.view)
+                    ProfileViewInteractor.SharedInstance.checkGetProfileData(LoginID: LoginId)
+                    //self.goToProfileView()     //FIXME :-  call get profile delegte
                     
                 case .failed(let error):
                     print("Graph Request Failed: \(error)")
@@ -196,7 +200,11 @@ extension LoginView:GIDSignInUIDelegate,GIDSignInDelegate
             UserDefaults.standard.set(user.userID, forKey: StringList.LifeLine_User_ID.rawValue)
             UserDefaults.standard.set(user.profile.name, forKey: StringList.LifeLine_User_Name.rawValue)
             UserDefaults.standard.set(user.profile.email, forKey: StringList.LifeLine_User_Email.rawValue)
-            self.goToProfileView()
+            ProfileViewInteractor.SharedInstance.delegate = self
+            let LoginId:String = UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!
+            HudBar.sharedInstance.showHudWithMessage(message: MultiLanguage.getLanguageUsingKey("TOAST_PLEASE_WAIT"), view: self.view)
+            ProfileViewInteractor.SharedInstance.checkGetProfileData(LoginID: LoginId)
+            //self.goToProfileView()   // call get profile delegte
         }
     }
     
@@ -235,13 +243,23 @@ extension LoginView : customLoginProtocol
     {
         if success == true
         {
-             UserDefaults.standard.set("Internal", forKey: "LoginInformation")
+            UserDefaults.standard.set("Internal", forKey: "LoginInformation")
             HudBar.sharedInstance.hideHudFormView(view: self.view)
             HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: MultiLanguage.getLanguageUsingKey("SUCESS_LOGIN_MESSAGE"), view: self.view)
             let deadlineTime = DispatchTime.now() + .seconds(2)
             DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute:
             {
-                 self.goToProfileView()
+                ProfileViewInteractor.SharedInstance.delegate = self
+                let LoginId:String = UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!
+                HudBar.sharedInstance.showHudWithMessage(message: MultiLanguage.getLanguageUsingKey("TOAST_PLEASE_WAIT"), view: self.view)
+                ProfileViewInteractor.SharedInstance.checkGetProfileData(LoginID: LoginId) //Pass Login ID from UserDefault
+                 // both line in above success delegate call
+                //self.goToProfileView()
+                // if - you have data - go for main view and set this key as a true "SuccessProfileRegistration"
+                
+               
+                // else - go to profile view
+                
             })
         }
         else
@@ -258,6 +276,46 @@ extension LoginView : customLoginProtocol
         }else
         {
             self.view.makeToast(MultiLanguage.getLanguageUsingKey("TOAST_ACCESS_SERVER_WARNING"), duration: 3.0, position: .bottom)
+        }
+    }
+}
+//MARK:- ProtocolBloodInfo
+extension LoginView : ProtocolGetProfile
+{
+    func succesfullyGetProfile(success: Bool)
+    {
+        HudBar.sharedInstance.hideHudFormView(view: self.view)
+        if success == true
+        {
+            UserDefaults.standard.set(true, forKey: "SuccessProfileRegistration")
+            let SWRevealView = self.storyboard!.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
+            self.navigationController?.present(SWRevealView, animated: true, completion: nil)
+        }
+        else
+        {
+            let profileView: ProfileView = (self.storyboard?.instantiateViewController(withIdentifier: "ProfileView") as? ProfileView)!
+            let navBar = UINavigationController(rootViewController: profileView)
+            self.present(navBar, animated: true, completion: nil)
+        }
+    }
+    func failedGetProfile(success: Bool)
+    {
+        HudBar.sharedInstance.hideHudFormView(view: self.view)
+        print("failed")
+        if success == false
+        {
+            let profileView: ProfileView = (self.storyboard?.instantiateViewController(withIdentifier: "ProfileView") as? ProfileView)!
+            let navBar = UINavigationController(rootViewController: profileView)
+            self.present(navBar, animated: true, completion: nil)
+        }else if (success == true)
+        {
+            UserDefaults.standard.removeObject(forKey: StringList.LifeLine_User_Name.rawValue)
+            UserDefaults.standard.removeObject(forKey: StringList.LifeLine_User_Email.rawValue)
+            UserDefaults.standard.removeObject(forKey: StringList.LifeLine_User_ID.rawValue)
+            UserDefaults.standard.set(true, forKey: "BloodBankUser")
+            let loginView:LoginView = self.storyboard?.instantiateViewController(withIdentifier: "LoginView") as! LoginView
+            let navBar = UINavigationController(rootViewController: loginView)
+            self.present(navBar, animated: true, completion: nil)
         }
     }
 }

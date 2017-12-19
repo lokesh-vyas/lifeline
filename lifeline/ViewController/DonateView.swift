@@ -314,11 +314,9 @@ class DonateView: UIViewController {
                     myMarker1.icon = UIImage(named: "Hospital_icon")!
                     myMarker1.map = self.mapView
                     self.view = self.mapView
-                    
-                    
                 } else if dataArray[i]["IndividualDetails"] != JSON.null && SingleTon.SharedInstance.isCheckedIndividual {
                     
-                    //                    print("Indi",dataArray)
+                    // print("Indi",dataArray)
                     self.rLatitude = dataArray[i]["Latitude"].doubleValue
                     self.rLongitude = dataArray[i]["Longitude"].doubleValue
                     self.rLocation = CLLocation.init(latitude: CLLocationDegrees(self.rLatitude!), longitude: CLLocationDegrees(self.rLongitude!))
@@ -329,9 +327,7 @@ class DonateView: UIViewController {
                     myMarker2.icon = UIImage(named: "Individual_icon")!
                     myMarker2.map = self.mapView
                     self.view = self.mapView
-                    
                 }
-                
             }
             else if dataArray[i]["TypeOfOrg"] == 2 && SingleTon.SharedInstance.isCheckedCamp
             {
@@ -764,43 +760,45 @@ extension DonateView : DonateViewProtocol {
                     tempDict["TypeOfOrg"] = jDict[i]["TypeOfOrg"]
                     tempDict["Individuals"] = jDict[i]["IndividualDetails"]
                     tempDict["ID"] = jDict[i]["ID"]
-                    tempDict["ContactNumber1"] = jDict[i]["ContactNumber"]
-                    tempDict["Email"] = jDict[i]["Email"]
-                    tempDict["AddressId"] = jDict[i]["AddressId"]
-                    tempDict["AddressLine1"] = jDict[i]["AddressLine"]
-                    tempDict["City1"] = jDict[i]["City"]
-                    tempDict["PINCode1"] = jDict[i]["PINCode"]
-                    tempDict["State1"] = jDict[i]["State"]
-                    tempDict["Country1"] = jDict[i]["Country"]
-                    tempDict["LandMark1"] = jDict[i]["LandMark"]
-                    tempDict["Latitude1"] = jDict[i]["Latitude"]
-                    tempDict["Longitude1"] = jDict[i]["Longitude"]
+                    tempDict["ContactNumber"] = jDict[i]["ContactNumber"]
+//                    tempDict["ContactNumber"] = jDict[i]["ContactNumber"]
+//                    tempDict["Email"] = jDict[i]["Email"]
+//                    tempDict["AddressId"] = jDict[i]["AddressId"]
+//                    tempDict["AddressLine"] = jDict[i]["AddressLine"]
+//                    tempDict["City"] = jDict[i]["City"]
+//                    tempDict["PINCode"] = jDict[i]["PINCode"]
+//                    tempDict["State"] = jDict[i]["State"]
+//                    tempDict["Country"] = jDict[i]["Country"]
+//                    tempDict["LandMark"] = jDict[i]["LandMark"]
+//                    tempDict["Latitude"] = jDict[i]["Latitude"]
+//                    tempDict["Longitude"] = jDict[i]["Longitude"]
                     
-                    var mDict = JSON.init(dictionaryLiteral: ("Index", myJSON[i]["BloodRequirementRequest"]["BloodRequirementDetails"]))
-                    tempDict["LoginID"] = mDict[i]["LoginID"]
-                    tempDict["BloodGroup"] = mDict[i]["BloodGroup"]
-                    tempDict["DonationType"] = mDict[i]["DonationType"]
-                    tempDict["WhenNeeded"] = mDict[i]["WhenNeeded"]
-                    tempDict["NumUnits"] = mDict[i]["NumUnits"]
-                    tempDict["PatientName"] = mDict[i]["PatientName"]
-                    tempDict["ContactPerson"] = mDict[i]["ContactPerson"]
-                    tempDict["ContactNumber"] = mDict[i]["ContactNumber"]
-                    tempDict["DoctorName"] = mDict[i]["DoctorName"]
-                    tempDict["DoctorContact"] = mDict[i]["DoctorContact"]
-                    tempDict["DoctorEmailID"] = mDict[i]["DoctorEmailID"]
-                    tempDict["CenterID"] = mDict[i]["CenterID"]
-                    tempDict["CollectionCentreName"] = mDict[i]["CollectionCentreName"]
-                    tempDict["AddressLine"] = mDict[i]["AddressLine"]
-                    tempDict["City"] = mDict[i]["City"]
-                    tempDict["State"] = mDict[i]["State"]
-                    tempDict["LandMark"] = mDict[i]["LandMark"]
-                    tempDict["Latitude"] = mDict[i]["Latitude"]
-                    tempDict["Longitude"] = mDict[i]["Longitude"]
-                    tempDict["PINCode"] = mDict[i]["PINCode"]
-                    tempDict["Country"] = mDict[i]["Country"]
-                    tempDict["PersonalAppeal"] = mDict[i]["PersonalAppeal"]
-                    tempDict["SharedInSocialMedia"] = mDict[i]["SharedInSocialMedia"]
+//                    var mDict = JSON.init(dictionaryLiteral: ("Index", myJSON[i]["BloodRequirementRequest"]["BloodRequirementDetails"]))
+//                    tempDict["LoginID"] = mDict[i]["LoginID"]
+//                    tempDict["BloodGroup"] = mDict[i]["BloodGroup"]
+//                    tempDict["DonationType"] = mDict[i]["DonationType"]
+//                    tempDict["WhenNeeded"] = mDict[i]["WhenNeeded"]
+//                    tempDict["NumUnits"] = mDict[i]["NumUnits"]
+//                    tempDict["PatientName"] = mDict[i]["PatientName"]
+//                    tempDict["ContactPerson"] = mDict[i]["ContactPerson"]
+//                    tempDict["ContactNumber"] = mDict[i]["ContactNumber"]
+//                    tempDict["DoctorName"] = mDict[i]["DoctorName"]
+//                    tempDict["DoctorContact"] = mDict[i]["DoctorContact"]
+//                    tempDict["DoctorEmailID"] = mDict[i]["DoctorEmailID"]
+//                    tempDict["CenterID"] = mDict[i]["CenterID"]
+//                    tempDict["CollectionCentreName"] = mDict[i]["CollectionCentreName"]
+//                    tempDict["AddressLine"] = mDict[i]["AddressLine"]
+//                    tempDict["City"] = mDict[i]["City"]
+//                    tempDict["State"] = mDict[i]["State"]
+//                    tempDict["LandMark"] = mDict[i]["LandMark"]
+//                    tempDict["Latitude"] = mDict[i]["Latitude"]
+//                    tempDict["Longitude"] = mDict[i]["Longitude"]
+//                    tempDict["PINCode"] = mDict[i]["PINCode"]
+//                    tempDict["Country"] = mDict[i]["Country"]
+//                    tempDict["PersonalAppeal"] = mDict[i]["PersonalAppeal"]
+//                    tempDict["SharedInSocialMedia"] = mDict[i]["SharedInSocialMedia"]
                     appendsListMarkers.append(tempDict)
+                    
                 } else if String(describing: jDict[i]["IndividualDetails"]) == "null" && SingleTon.SharedInstance.isCheckedHospital { // Hospital
                     
                     tempDict["Name"] = jDict[i]["Name"]

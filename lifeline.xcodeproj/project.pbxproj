@@ -31,16 +31,25 @@
 		18F3AD691E8A66B10086274E /* List-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F3AD681E8A66B10086274E /* List-32.png */; };
 		18F8ECB41E84EAE00071C0A0 /* BloodInventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F8ECB31E84EAE00071C0A0 /* BloodInventory.swift */; };
 		250310501F3B16AE00C077FD /* timer.png in Resources */ = {isa = PBXBuildFile; fileRef = 2503104F1F3B16AE00C077FD /* timer.png */; };
+		2517F20C1FCE9AD2007CE4D3 /* community.png in Resources */ = {isa = PBXBuildFile; fileRef = 2517F20B1FCE9AAD007CE4D3 /* community.png */; };
+		2517F2111FCEB9EA007CE4D3 /* myCommunityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2517F2101FCEB9EA007CE4D3 /* myCommunityCell.swift */; };
+		2517F2151FCED4E6007CE4D3 /* MyCommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2517F2141FCED4E6007CE4D3 /* MyCommunityView.swift */; };
 		251993C11F5E7EA000E9BFC2 /* GreenBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 251993C01F5E7EA000E9BFC2 /* GreenBar.png */; };
 		251993C31F5E7EA700E9BFC2 /* RedBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 251993C21F5E7EA700E9BFC2 /* RedBar.png */; };
 		251993C51F5E7EAD00E9BFC2 /* BrownBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 251993C41F5E7EAD00E9BFC2 /* BrownBar.png */; };
 		252B7AEA1ED8104C00A900D7 /* MultipleLanguageStringClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252B7AE91ED8104C00A900D7 /* MultipleLanguageStringClass.swift */; };
 		25328B5E1F8B5A7100741B43 /* MyDonationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25328B5D1F8B5A7100741B43 /* MyDonationCell.xib */; };
 		25328B611F8B5B2000741B43 /* MyDonationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25328B601F8B5B2000741B43 /* MyDonationCell.swift */; };
+		2532FBBD1FCFDA8E00DB5E69 /* radiobutton-unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 2532FBBC1FCFD9E400DB5E69 /* radiobutton-unchecked.png */; };
+		2532FBBE1FCFDA9200DB5E69 /* radio_checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 2532FBBB1FCFD9CB00DB5E69 /* radio_checked.png */; };
 		253897901EE5470400B8AFB3 /* LanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2538978F1EE5470400B8AFB3 /* LanguageVC.swift */; };
 		253897941EE578C100B8AFB3 /* LanguageTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253897931EE578C100B8AFB3 /* LanguageTableCell.swift */; };
 		254B39CD1FB4436800EFAB57 /* phone_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A2902A1FB43FDF005BFED2 /* phone_icon.png */; };
 		2550468E1F94ED9C00A83C2F /* address_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2550468D1F94ED9900A83C2F /* address_icon.png */; };
+		256645E01FCFF02A002CC4A6 /* CreateCommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256645DF1FCFF02A002CC4A6 /* CreateCommunityView.swift */; };
+		256645E21FD00DD0002CC4A6 /* Edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 256645E11FD00DC7002CC4A6 /* Edit.png */; };
+		256645E41FD024B1002CC4A6 /* InviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256645E31FD024B1002CC4A6 /* InviteView.swift */; };
+		2578A86C1FC2E27D004D555A /* delete_black_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2578A86B1FC2E243004D555A /* delete_black_icon.png */; };
 		25A290241FB434B9005BFED2 /* drop_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A290231FB432C9005BFED2 /* drop_black.png */; };
 		25A290251FB434D2005BFED2 /* done.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A290211FB429B5005BFED2 /* done.png */; };
 		25A290261FB434D7005BFED2 /* pendingColored.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A290221FB42A6A005BFED2 /* pendingColored.png */; };
@@ -203,15 +212,25 @@
 		19B74CD6720B8FE1E0D554ED /* Pods-lifelineUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lifelineUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-lifelineUITests/Pods-lifelineUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1A7713EA892985CA8991C0DE /* Pods_lifelineTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lifelineTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2503104F1F3B16AE00C077FD /* timer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timer.png; sourceTree = "<group>"; };
+		2517F20B1FCE9AAD007CE4D3 /* community.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = community.png; sourceTree = "<group>"; };
+		2517F2101FCEB9EA007CE4D3 /* myCommunityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myCommunityCell.swift; sourceTree = "<group>"; };
+		2517F2141FCED4E6007CE4D3 /* MyCommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCommunityView.swift; sourceTree = "<group>"; };
 		251993C01F5E7EA000E9BFC2 /* GreenBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreenBar.png; sourceTree = "<group>"; };
 		251993C21F5E7EA700E9BFC2 /* RedBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedBar.png; sourceTree = "<group>"; };
 		251993C41F5E7EAD00E9BFC2 /* BrownBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BrownBar.png; sourceTree = "<group>"; };
 		252B7AE91ED8104C00A900D7 /* MultipleLanguageStringClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleLanguageStringClass.swift; sourceTree = "<group>"; };
 		25328B5D1F8B5A7100741B43 /* MyDonationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyDonationCell.xib; sourceTree = "<group>"; };
 		25328B601F8B5B2000741B43 /* MyDonationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDonationCell.swift; sourceTree = "<group>"; };
+		2532FBBB1FCFD9CB00DB5E69 /* radio_checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio_checked.png; sourceTree = "<group>"; };
+		2532FBBC1FCFD9E400DB5E69 /* radiobutton-unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radiobutton-unchecked.png"; sourceTree = "<group>"; };
 		2538978F1EE5470400B8AFB3 /* LanguageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageVC.swift; sourceTree = "<group>"; };
 		253897931EE578C100B8AFB3 /* LanguageTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageTableCell.swift; sourceTree = "<group>"; };
+		25488D381FD15C7600B70C0A /* myCommunity.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = myCommunity.xib; sourceTree = "<group>"; };
 		2550468D1F94ED9900A83C2F /* address_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = address_icon.png; sourceTree = "<group>"; };
+		256645DF1FCFF02A002CC4A6 /* CreateCommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCommunityView.swift; sourceTree = "<group>"; };
+		256645E11FD00DC7002CC4A6 /* Edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Edit.png; sourceTree = "<group>"; };
+		256645E31FD024B1002CC4A6 /* InviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteView.swift; sourceTree = "<group>"; };
+		2578A86B1FC2E243004D555A /* delete_black_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete_black_icon.png; sourceTree = "<group>"; };
 		25A2901F1FB428FA005BFED2 /* address_icon_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = address_icon_black.png; sourceTree = "<group>"; };
 		25A290211FB429B5005BFED2 /* done.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = done.png; sourceTree = "<group>"; };
 		25A290221FB42A6A005BFED2 /* pendingColored.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pendingColored.png; sourceTree = "<group>"; };
@@ -444,6 +463,25 @@
 			name = "Multiple Requests";
 			sourceTree = "<group>";
 		};
+		2517F20F1FCEB99E007CE4D3 /* MyCommunityCell */ = {
+			isa = PBXGroup;
+			children = (
+				25488D381FD15C7600B70C0A /* myCommunity.xib */,
+				2517F2101FCEB9EA007CE4D3 /* myCommunityCell.swift */,
+			);
+			name = MyCommunityCell;
+			sourceTree = "<group>";
+		};
+		2517F2161FCED50F007CE4D3 /* Community */ = {
+			isa = PBXGroup;
+			children = (
+				2517F2141FCED4E6007CE4D3 /* MyCommunityView.swift */,
+				256645DF1FCFF02A002CC4A6 /* CreateCommunityView.swift */,
+				256645E31FD024B1002CC4A6 /* InviteView.swift */,
+			);
+			name = Community;
+			sourceTree = "<group>";
+		};
 		25328B5F1F8B5A9200741B43 /* MyDonationCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -500,6 +538,7 @@
 		66316B811E54555E00114055 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				2517F20F1FCEB99E007CE4D3 /* MyCommunityCell */,
 				25328B5F1F8B5A9200741B43 /* MyDonationCell */,
 				25C057B21F470686002A8107 /* NotificationCell */,
 				25B8EFFF1F34A19B00D08C6B /* DonateListCell */,
@@ -834,6 +873,7 @@
 				665719AB1F3844DC00717A53 /* My Request Group */,
 				665719A91F38449F00717A53 /* Request Group */,
 				665719AD1F38454000717A53 /* Reval Group */,
+				2517F2161FCED50F007CE4D3 /* Community */,
 			);
 			name = "All ViewController";
 			sourceTree = "<group>";
@@ -885,7 +925,12 @@
 		66EA8E001E275A4000646797 /* Image For Support */ = {
 			isa = PBXGroup;
 			children = (
+				2578A86B1FC2E243004D555A /* delete_black_icon.png */,
 				25A290221FB42A6A005BFED2 /* pendingColored.png */,
+				2532FBBC1FCFD9E400DB5E69 /* radiobutton-unchecked.png */,
+				2517F20B1FCE9AAD007CE4D3 /* community.png */,
+				2532FBBB1FCFD9CB00DB5E69 /* radio_checked.png */,
+				256645E11FD00DC7002CC4A6 /* Edit.png */,
 				25A290211FB429B5005BFED2 /* done.png */,
 				25A290231FB432C9005BFED2 /* drop_black.png */,
 				251993C01F5E7EA000E9BFC2 /* GreenBar.png */,
@@ -1174,11 +1219,13 @@
 				25A290291FB4370F005BFED2 /* arrow_right.png in Resources */,
 				6633E9111E8908680008C730 /* InventoryCell.xib in Resources */,
 				66EA8E1C1E275A4000646797 /* person.png in Resources */,
+				256645E21FD00DD0002CC4A6 /* Edit.png in Resources */,
 				25A290271FB434DC005BFED2 /* address_icon_black.png in Resources */,
 				18C04FCD1E86CD43000B15EA /* Unchecked Checkbox-32.png in Resources */,
 				2550468E1F94ED9C00A83C2F /* address_icon.png in Resources */,
 				66EA8E161E275A4000646797 /* drop_red.png in Resources */,
 				663F67621EDFF27900D5C49E /* Localizable.strings in Resources */,
+				2517F20C1FCE9AD2007CE4D3 /* community.png in Resources */,
 				6633E90A1E88F7F50008C730 /* InventoryTableCell.xib in Resources */,
 				18F3AD691E8A66B10086274E /* List-32.png in Resources */,
 				25A290261FB434D7005BFED2 /* pendingColored.png in Resources */,
@@ -1196,6 +1243,9 @@
 				66EA8E1F1E275A4000646797 /* user_noti.png in Resources */,
 				18C04FC71E8541B8000B15EA /* Filter32.png in Resources */,
 				66C5782F1E37799F00B235F4 /* seguisli.ttf in Resources */,
+				2532FBBE1FCFDA9200DB5E69 /* radio_checked.png in Resources */,
+				2578A86C1FC2E27D004D555A /* delete_black_icon.png in Resources */,
+				2532FBBD1FCFDA8E00DB5E69 /* radiobutton-unchecked.png in Resources */,
 				66EA8E171E275A4000646797 /* e-mail-envelope.png in Resources */,
 				663D6FF01E7003B900EB2CD8 /* HOME_SCREEN_G.png in Resources */,
 				25A290251FB434D2005BFED2 /* done.png in Resources */,
@@ -1387,7 +1437,9 @@
 				665111CA1E66E42600A6AFAA /* MyDonorCell.swift in Sources */,
 				25C057B41F4706E1002A8107 /* NotificationCell.swift in Sources */,
 				66C4E6881E372AD900526C1D /* ChangePasswordView.swift in Sources */,
+				256645E41FD024B1002CC4A6 /* InviteView.swift in Sources */,
 				253897901EE5470400B8AFB3 /* LanguageVC.swift in Sources */,
+				2517F2111FCEB9EA007CE4D3 /* myCommunityCell.swift in Sources */,
 				66EA8E261E2772D300646797 /* FloatLabelTextField-2.swift in Sources */,
 				25B8EFFE1F2F517500D08C6B /* MyNotificationView.swift in Sources */,
 				66DE4EC11E71683000145346 /* NotificationView.swift in Sources */,
@@ -1396,6 +1448,7 @@
 				665111B71E61824500A6AFAA /* MyRequestCell.swift in Sources */,
 				18569D291E8D045C007B78DC /* MarkersListView.swift in Sources */,
 				665111BC1E61B69D00A6AFAA /* MyRequestClose.swift in Sources */,
+				256645E01FCFF02A002CC4A6 /* CreateCommunityView.swift in Sources */,
 				1830CE891E6567CE005BBC19 /* ConfirmDonate.swift in Sources */,
 				183A1D9B1E66D2AC0048DC65 /* MarkerData.swift in Sources */,
 				66EA8E341E27AF0900646797 /* SignUpApi.swift in Sources */,
@@ -1405,6 +1458,7 @@
 				66EA8E281E277D0400646797 /* Util.swift in Sources */,
 				66EA8DFD1E26611300646797 /* StringList.swift in Sources */,
 				1830CE8D1E6568BC005BBC19 /* IndividualConfirmDonate.swift in Sources */,
+				2517F2151FCED4E6007CE4D3 /* MyCommunityView.swift in Sources */,
 				18C6883B1E62ECBB0026453C /* MarkerIndividualDetails.swift in Sources */,
 				1830CE8B1E6567FE005BBC19 /* AlertConfirmDonate.swift in Sources */,
 				18F8ECB41E84EAE00071C0A0 /* BloodInventory.swift in Sources */,

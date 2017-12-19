@@ -123,7 +123,7 @@
 "E8d-f5-n2I.text" = "స్వచ్ఛంద విరాళం";
 
 /* Class = "UILabel"; text = "Work Address  (Optional)"; ObjectID = "E9s-kv-u2m"; */
-"E9s-kv-u2m.text" = "కార్యాలయ చిరునామా (ఐచ్ఛికం)";
+"E9s-kv-u2m.text" = "కార్యాలయ చిరునామా";
 
 /* Class = "UINavigationItem"; title = "Requests"; ObjectID = "EoX-cx-AJD"; */
 "EoX-cx-AJD.title" = "అభ్యర్థనలు";
@@ -462,7 +462,7 @@
 "sIG-5i-UxH.title" = "LifeLine";
 
 /* Class = "UILabel"; text = "Home Address (Optional)"; ObjectID = "sIu-Bx-mgj"; */
-"sIu-Bx-mgj.text" = "ఇంటి చిరునామా (ఐచ్ఛికం)";
+"sIu-Bx-mgj.text" = "ఇంటి చిరునామా";
 
 /* Class = "UILabel"; text = " "; ObjectID = "sSJ-hn-iGc"; */
 "sSJ-hn-iGc.text" = " ";
@@ -538,3 +538,9 @@
 
 /* Class = "UINavigationItem"; title = "Address"; ObjectID = "mKU-Xi-pJj"; */
 "mKU-Xi-pJj.title" = "History";
+
+/* Class = "UILabel"; text = "Notification"; ObjectID = "DnE-7x-JRj"; */
+"DnE-7x-JRj.text" = "ప్రకటనలు";
+
+/* Class = "UINavigationItem"; title = "Address"; ObjectID = "DnF-yV-0kX"; */
+"DnF-yV-0kX.title" = "ప్రకటనలు";
