@@ -96,7 +96,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             application.registerUserNotificationSettings(settings)
         }
         
-        
         application.registerForRemoteNotifications()
         
         // [END register_for_notifications]

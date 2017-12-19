@@ -36,6 +36,7 @@ class ConfirmDonate: UIViewController {
     var checkForString = String()
     var textShareArray = [String]()
     var textAddress = String()
+    var workingHours = String()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.completelyTransparentBar()
@@ -71,7 +72,6 @@ class ConfirmDonate: UIViewController {
             
             //MARK:- GET COMPAIGN DETAILS
             ConfirmDonateInteractor.sharedInstance.getCompaignDetails(urlString: URLList.GET_CAMPAGIN_DETAILS.rawValue, params: bodyGetCampDetails)
-            
         }
         
         let tapRec = UITapGestureRecognizer(target: self, action: #selector(ConfirmDonate.lblCallTapped(_:)))
@@ -139,8 +139,6 @@ class ConfirmDonate: UIViewController {
         notificationView.view.backgroundColor = UIColor.clear
         self.present(notificationView, animated: true, completion: nil)
     }
-    
-    
     @IBAction func btnBackTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -185,7 +183,8 @@ class ConfirmDonate: UIViewController {
             checkForString = "Campaign"
             if self.lblFromDate.text != nil
             {
-                let workingHours:String = MarkerData.SharedInstance.markerData["WorkingHours"] as! String
+                //let workingHours:String = MarkerData.SharedInstance.markerData["WorkingHours"] as! String
+                let workingHours:String = self.workingHours
                 let fullNameArr : [String] = workingHours.components(separatedBy: "To")
                 var fromTime: String? = fullNameArr[0]
                 var toTimeO: String? = fullNameArr[1]
@@ -312,6 +311,7 @@ extension ConfirmDonate : ConfirmDonateProtocol {
             self.textShareArray.insert("\(MultiLanguage.getLanguageUsingKey("HOSPITAL_CONTACT_NUMBER_LBL")) : \(strContact)", at: 1)
         }
         lblWorkingHours.text = MarkerData.SharedInstance.APNResponse["WorkingHours"] as! String?
+        self.workingHours = lblWorkingHours.text!
         
         self.textShareArray.insert("\(MultiLanguage.getLanguageUsingKey("HOSPITAL_WORKING_HOURS")) : \(lblWorkingHours.text!)", at: 2)
         
@@ -346,7 +346,6 @@ extension ConfirmDonate : getVolunteerProtocol {
             MarkerData.SharedInstance.PreferredDateTime = nil
             MarkerData.SharedInstance.CommentLines = nil
             MarkerData.SharedInstance.requestStatus = String(describing: jsonArray["GetVolunteerListsReponse"]["ResponseDetails"]["StatusCode"])
-            
         } else {
             self.view.makeToast(MultiLanguage.getLanguageUsingKey("ALREADY_VOLUNTEERED"), duration: 3.0, position: .bottom)
             let tempStr = String(describing: jsonArray["GetVolunteerListsReponse"]["ResponseDetails"]["PreferredDateTime"])

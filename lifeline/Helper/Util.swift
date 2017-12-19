@@ -26,6 +26,7 @@ class Util
         dateFormatter.dateFormat = "yyyy-MM-dd"
         return dateFormatter.string(from: dateObj!)
     }
+    
     //MARK:- Current Date For Server
     func currentDateChangeForServer() -> String
     {
@@ -55,6 +56,18 @@ class Util
         let date = dateFormatter.date(from: dateString)
         
         dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0) as TimeZone!
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        let stringFromDate = dateFormatter.string(from: date!)
+        return stringFromDate
+    }
+    //MARK:- date Change for myRequestView
+    func dateChangeForGetRequestDOB(dateString:String) -> String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd+HH:mm"
+        let date = dateFormatter.date(from: dateString)
+        
+        //dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0) as TimeZone!
         dateFormatter.dateFormat = "dd MMM yyyy"
         let stringFromDate = dateFormatter.string(from: date!)
         return stringFromDate
@@ -68,6 +81,18 @@ class Util
         
         dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0) as TimeZone!
         //dateFormatter.dateFormat = "dd/MM/yyyy"
+        dateFormatter.dateFormat = "dd MMM yyyy"
+        let stringFromDate = dateFormatter.string(from: date!)
+        return stringFromDate
+    }
+    
+    //MARK:- date Chenge for server
+    func dateChangeForMyDonation(dateString:String) -> String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let date = dateFormatter.date(from: dateString)
+        
         dateFormatter.dateFormat = "dd MMM yyyy"
         let stringFromDate = dateFormatter.string(from: date!)
         return stringFromDate
@@ -346,5 +371,13 @@ extension UIColor
 extension UIView{
     func completelyTransparentView(){
         self.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+    }
+}
+
+extension UIImageView {
+    
+    func setRounded() {
+        self.layer.cornerRadius = (self.frame.width / 2) 
+        self.layer.masksToBounds = true
     }
 }

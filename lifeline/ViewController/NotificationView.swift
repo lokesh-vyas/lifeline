@@ -20,6 +20,7 @@ class NotificationView: UIViewController {
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        print("Notification arrived !!!")
         if (UserJSON["Type"] as? String == "1" || UserJSON["Type"] as? String == "5" || UserJSON["Type"] as? String == "6" || UserJSON["Type"] as? Int == 1 || UserJSON["Type"] as? Int == 5 || UserJSON["Type"] as? Int == 6)
         {
             //for welcome notification & Request Status Update
@@ -63,8 +64,6 @@ class NotificationView: UIViewController {
         NotificationCenter.default.removeObserver("PushNotificationReloadData")
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PushNotificationReloadData"), object:nil)
     }
-    
-    
     @IBAction func btnCancelTapped(_ sender: Any)
     {
         self.dismiss(animated: true, completion: nil)

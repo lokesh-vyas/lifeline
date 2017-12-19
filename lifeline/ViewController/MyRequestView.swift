@@ -47,7 +47,6 @@ class MyRequestView: UIViewController {
         let SWRevealView = self.storyboard!.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
         self.navigationController?.present(SWRevealView, animated: true, completion: nil)
     }
-    
 }
 //MARK:- TableViewDelegate
 extension MyRequestView:UITableViewDelegate,UITableViewDataSource
@@ -136,7 +135,7 @@ extension MyRequestView:UITableViewDelegate,UITableViewDataSource
                 }
                 cell?.lblPatientName.text = myRequestDetail["PatientName"].string
                 cell?.lblBloodGroup.text = myRequestDetail["BloodGroup"].string
-                cell?.lblRequestDate.text = "Needed By \(Util.SharedInstance.dateChangeForGetProfileDOB(dateString: myRequestDetail["WhenNeeded"].string!))"
+                cell?.lblRequestDate.text = "Needed By \(Util.SharedInstance.dateChangeForGetRequestDOB(dateString: myRequestDetail["WhenNeeded"].string!))"
                 if myRequestDetail["Status"].string == "Close"
                 {
                     cell?.btnCloseRequest.isHidden = true

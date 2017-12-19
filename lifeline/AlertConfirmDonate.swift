@@ -29,7 +29,7 @@ class AlertConfirmDonate: UIViewController {
     var toDate:NSDate?
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(AlertConfirmDonate.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
+       // NotificationCenter.default.addObserver(self, selector: #selector(AlertConfirmDonate.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
         
         //FIXME:- preferred date
         AlertConfirmDonateInteractor.sharedInstance.delegate = self
@@ -227,6 +227,7 @@ extension AlertConfirmDonate : AlertConfirmDonateProtocol {
         self.view.makeToast(MultiLanguage.getLanguageUsingKey("SUCESS_SUBMIT_REQUEST"))
         let when = DispatchTime.now() + .seconds(2)
         DispatchQueue.main.asyncAfter(deadline: when, execute: {
+            print("Home Page")
             let SWRevealView = self.storyboard!.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "DonationConfirmed"), object: nil)
             self.present(SWRevealView, animated: true, completion: nil)

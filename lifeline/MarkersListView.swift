@@ -50,6 +50,7 @@ class MarkerListModel
     var hospitalName : String = ""
     var fromDate : String? = nil
     var toDate : String? = nil
+    var individualContactNumber: String? = ""
 }
 class IndividualMarkerData
 {
@@ -132,8 +133,7 @@ class MarkersListView: UIViewController {
                 markerDetails.addresssId = String(describing: marker["AddressId"])
                 markerDetails.latitude = String(describing: marker["Latitude"])
                 markerDetails.longitude = String(describing: marker["Longitude"])
-                print("Hospital Contact Number is = \(String(describing: markerDetails.contactNumber))")
-                    
+                
                 listDetailArray.append(markerDetails)
                 }
                 if String(describing: marker["Individuals"]) != "null" && SingleTon.SharedInstance.isCheckedIndividual
@@ -155,7 +155,7 @@ class MarkersListView: UIViewController {
                             IndiMarkerDetails.workingHours = String(describing: IndiMarker["WorkingHours"])
                             IndiMarkerDetails.descriptionForIndi = String(describing: IndiMarker["CName"])
                             IndiMarkerDetails.hospitalName = String(describing: marker["Name"])
-                            IndiMarkerDetails.contactNumber = String(describing: marker["CContactNumber"])
+                            IndiMarkerDetails.individualContactNumber = String(describing: IndiMarker["CContactNumber"])
                             listDetailArray.append(IndiMarkerDetails)
                         }
                 }
@@ -213,8 +213,17 @@ class MarkersListView: UIViewController {
     //MARK: btnCallTapped
     func btnCallTapped(sender:UIButton)
     {
-        print(self.phoneCall)
-        if let url = URL(string: "tel://\(self.phoneCall)") {
+        //print(self.phoneCall)
+        let buttonRow = sender.tag
+        var PhoneNumber:String = ""
+        if listDetailArray[buttonRow].contactNumber! != "" {
+            PhoneNumber = listDetailArray[buttonRow].contactNumber!
+        }
+        else if listDetailArray[buttonRow].individualContactNumber! != "" {
+            PhoneNumber = listDetailArray[buttonRow].individualContactNumber!
+        }
+        print("My Latest phone number = \(PhoneNumber )")
+        if let url = URL(string: "tel://\(String(describing: PhoneNumber))") {
             if #available(iOS 10, *) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             } else {
@@ -290,7 +299,7 @@ extension MarkersListView : UITableViewDataSource {
                     cell?.lblTimingForCamp.text = listMaekerForShow.hospitalName
                     cell?.imgDropForTiming.image = UIImage(named: "drop_black")
                     cell?.lblTimeForHospital.text = listMaekerForShow.descriptionForIndi
-                    self.phoneCall = listMaekerForShow.contactNumber!
+                    self.phoneCall = listMaekerForShow.individualContactNumber!
                     cell?.btnCall.tag = indexPath.row
                     cell?.btnCall.addTarget(self, action: #selector(MarkersListView.btnCallTapped(sender:)), for: .touchUpInside)
                     cell?.imgCamp.image = UIImage(named: "Individual_Single_icon")
@@ -306,17 +315,19 @@ extension MarkersListView : UITableViewDataSource {
                 cell?.lblTimingForCamp.text = ""
                 cell?.imgDropForTiming.image = UIImage(named: "timer")
                 cell?.lblTimeForHospital.text = listMaekerForShow.workingHours
-                self.phoneCall = listMaekerForShow.contactNumber!
+                //self.phoneCall = listMaekerForShow.contactNumber!
                 cell?.btnCall.tag = indexPath.row
                 cell?.btnCall.addTarget(self, action: #selector(MarkersListView.btnCallTapped(sender:)), for: .touchUpInside)
                 cell?.imgCamp.image = UIImage(named: "Hospital_Single_icon")
+                print("My Hospital contact is = \(self.phoneCall)")
+                print("Hospital contact is = \(listMaekerForShow.contactNumber!)")
             }else if(listMaekerForShow.typeOfOrg == "2")  // Camp
             {
                 cell?.lblUserName.text = listMaekerForShow.name
                 cell?.lblTimingForCamp.text = listMaekerForShow.CampTimeDuration
                 cell?.imgDropForTiming.image = UIImage(named: "timer")
                 cell?.lblTimeForHospital.text = listMaekerForShow.workingHours
-                self.phoneCall = listMaekerForShow.contactNumber!
+                //self.phoneCall = listMaekerForShow.contactNumber!
                 cell?.btnCall.tag = indexPath.row
                 cell?.btnCall.addTarget(self, action: #selector(MarkersListView.btnCallTapped(sender:)), for: .touchUpInside)
                 cell?.imgCamp.image = UIImage(named: "Camp_Single_icon")
@@ -327,10 +338,12 @@ extension MarkersListView : UITableViewDataSource {
                 cell?.lblTimingForCamp.text = listMaekerForShow.hospitalName
                 cell?.imgDropForTiming.image = UIImage(named: "drop_black")
                 cell?.lblTimeForHospital.text = listMaekerForShow.descriptionForIndi
-                self.phoneCall = listMaekerForShow.ContactNumber
+               // self.phoneCall = listMaekerForShow.individualContactNumber!
                 cell?.btnCall.tag = indexPath.row
                 cell?.btnCall.addTarget(self, action: #selector(MarkersListView.btnCallTapped(sender:)), for: .touchUpInside)
+                
                 cell?.imgCamp.image = UIImage(named: "Individual_Single_icon")
+                print("Individual contact is = \(listMaekerForShow.individualContactNumber!)")
             }
         }
         return cell!
@@ -399,39 +412,43 @@ extension MarkersListView : UITableViewDelegate {
         else if TypeOfOrg == "3"
         {
             let indiCnfDonate = self.storyboard?.instantiateViewController(withIdentifier: "IndividualConfirmDonate") as! IndividualConfirmDonate
-            MarkerData.SharedInstance.markerData["Name"] = listDetailArray[indexPath.row].name
-            MarkerData.SharedInstance.markerData["ID"] = listDetailArray[indexPath.row].id
-            MarkerData.SharedInstance.markerData["TypeOfOrg"] = listDetailArray[indexPath.row].typeOfOrg
-            MarkerData.SharedInstance.markerData["ContactNumber"] = listDetailArray[indexPath.row].contactNumber
-            MarkerData.SharedInstance.markerData["Email"] = listDetailArray[indexPath.row].emailAddress
-            MarkerData.SharedInstance.markerData["WorkingHours"] = listDetailArray[indexPath.row].workingHours
-            MarkerData.SharedInstance.markerData["City"] = listDetailArray[indexPath.row].city
-            MarkerData.SharedInstance.markerData["PINCode"] = listDetailArray[indexPath.row].pinCode
-            MarkerData.SharedInstance.markerData["Country"] = listDetailArray[indexPath.row].country
-            MarkerData.SharedInstance.markerData["LandMark"] = listDetailArray[indexPath.row].landMark
-            MarkerData.SharedInstance.markerData["AddressLine"] = listDetailArray[indexPath.row].addressLine
-            MarkerData.SharedInstance.markerData["AddressId"] = listDetailArray[indexPath.row].addresssId
-            MarkerData.SharedInstance.markerData["Latitude"] = listDetailArray[indexPath.row].latitude
-            MarkerData.SharedInstance.markerData["Longitude"] = listDetailArray[indexPath.row].longitude
+            indiCnfDonate.iID = listDetailArray[indexPath.row].CID!
             MarkerData.SharedInstance.oneRequestOfDonate["CID"] = listDetailArray[indexPath.row].CID
+            MarkerData.SharedInstance.oneRequestOfDonate["CTypeOfOrg"] = listDetailArray[indexPath.row].typeOfOrg
             MarkerData.SharedInstance.isIndividualAPN = false
-
-            MarkerData.SharedInstance.markerData["LoginID"] = listDetailArray[indexPath.row].LoginID
-            MarkerData.SharedInstance.markerData["BloodGroup"] = listDetailArray[indexPath.row].BloodGroup
-            MarkerData.SharedInstance.markerData["DonationType"] = listDetailArray[indexPath.row].DonationType
-            MarkerData.SharedInstance.markerData["WhenNeeded"] = listDetailArray[indexPath.row].WhenNeeded
-            MarkerData.SharedInstance.markerData["NumUnits"] = listDetailArray[indexPath.row].NumUnits
-            MarkerData.SharedInstance.markerData["PatientName"] = listDetailArray[indexPath.row].PatientName
-            MarkerData.SharedInstance.markerData["ContactPerson"] = listDetailArray[indexPath.row].ContactPerson
-            MarkerData.SharedInstance.markerData["ContactNumber"] = listDetailArray[indexPath.row].ContactNumber
-            MarkerData.SharedInstance.markerData["DoctorName"] = listDetailArray[indexPath.row].DoctorName
-            MarkerData.SharedInstance.markerData["DoctorContact"] = listDetailArray[indexPath.row].DoctorContact
-            MarkerData.SharedInstance.markerData["DoctorEmailID"] = listDetailArray[indexPath.row].DoctorEmailID
-            MarkerData.SharedInstance.markerData["CenterID"] = listDetailArray[indexPath.row].CenterID
-            MarkerData.SharedInstance.markerData["CollectionCentreName"] = listDetailArray[indexPath.row].CollectionCentreName
-            MarkerData.SharedInstance.markerData["PersonalAppeal"] = listDetailArray[indexPath.row].PersonalAppeal
-            MarkerData.SharedInstance.oneRequestOfDonate["SharedInSocialMedia"] = listDetailArray[indexPath.row].SharedInSocialMedia
-            MarkerData.SharedInstance.oneRequestOfDonate["CTypeOfOrg"] = listDetailArray[indexPath.row].CTypeOfOrg
+//            MarkerData.SharedInstance.markerData["Name"] = listDetailArray[indexPath.row].name
+//            MarkerData.SharedInstance.markerData["ID"] = listDetailArray[indexPath.row].id
+//            MarkerData.SharedInstance.markerData["TypeOfOrg"] = listDetailArray[indexPath.row].typeOfOrg
+//            MarkerData.SharedInstance.markerData["ContactNumber"] = listDetailArray[indexPath.row].contactNumber
+//            MarkerData.SharedInstance.markerData["Email"] = listDetailArray[indexPath.row].emailAddress
+//            MarkerData.SharedInstance.markerData["WorkingHours"] = listDetailArray[indexPath.row].workingHours
+//            MarkerData.SharedInstance.markerData["City"] = listDetailArray[indexPath.row].city
+//            MarkerData.SharedInstance.markerData["PINCode"] = listDetailArray[indexPath.row].pinCode
+//            MarkerData.SharedInstance.markerData["Country"] = listDetailArray[indexPath.row].country
+//            MarkerData.SharedInstance.markerData["LandMark"] = listDetailArray[indexPath.row].landMark
+//            MarkerData.SharedInstance.markerData["AddressLine"] = listDetailArray[indexPath.row].addressLine
+//            MarkerData.SharedInstance.markerData["AddressId"] = listDetailArray[indexPath.row].addresssId
+//            MarkerData.SharedInstance.markerData["Latitude"] = listDetailArray[indexPath.row].latitude
+//            MarkerData.SharedInstance.markerData["Longitude"] = listDetailArray[indexPath.row].longitude
+//            MarkerData.SharedInstance.oneRequestOfDonate["CID"] = listDetailArray[indexPath.row].CID
+//            MarkerData.SharedInstance.isIndividualAPN = false
+//
+//            MarkerData.SharedInstance.markerData["LoginID"] = listDetailArray[indexPath.row].LoginID
+//            MarkerData.SharedInstance.markerData["BloodGroup"] = listDetailArray[indexPath.row].BloodGroup
+//            MarkerData.SharedInstance.markerData["DonationType"] = listDetailArray[indexPath.row].DonationType
+//            MarkerData.SharedInstance.markerData["WhenNeeded"] = listDetailArray[indexPath.row].WhenNeeded
+//            MarkerData.SharedInstance.markerData["NumUnits"] = listDetailArray[indexPath.row].NumUnits
+//            MarkerData.SharedInstance.markerData["PatientName"] = listDetailArray[indexPath.row].PatientName
+//            MarkerData.SharedInstance.markerData["ContactPerson"] = listDetailArray[indexPath.row].ContactPerson
+//            MarkerData.SharedInstance.markerData["ContactNumber"] = listDetailArray[indexPath.row].ContactNumber
+//            MarkerData.SharedInstance.markerData["DoctorName"] = listDetailArray[indexPath.row].DoctorName
+//            MarkerData.SharedInstance.markerData["DoctorContact"] = listDetailArray[indexPath.row].DoctorContact
+//            MarkerData.SharedInstance.markerData["DoctorEmailID"] = listDetailArray[indexPath.row].DoctorEmailID
+//            MarkerData.SharedInstance.markerData["CenterID"] = listDetailArray[indexPath.row].CenterID
+//            MarkerData.SharedInstance.markerData["CollectionCentreName"] = listDetailArray[indexPath.row].CollectionCentreName
+//            MarkerData.SharedInstance.markerData["PersonalAppeal"] = listDetailArray[indexPath.row].PersonalAppeal
+//            MarkerData.SharedInstance.oneRequestOfDonate["SharedInSocialMedia"] = listDetailArray[indexPath.row].SharedInSocialMedia
+//            MarkerData.SharedInstance.oneRequestOfDonate["CTypeOfOrg"] = listDetailArray[indexPath.row].CTypeOfOrg
             navigationControllerStack = UINavigationController(rootViewController: indiCnfDonate)
         }
         self.present(navigationControllerStack, animated: true, completion: nil)
@@ -474,10 +491,8 @@ extension MarkersListView : UISearchBarDelegate {
                         searchDetails.descriptionForIndi = d
                     }
                     filtered.append(searchDetails)
-                    
                 }}
           print(filtered)
-          
         }
             self.tblView.performSelector(onMainThread: #selector(self.tblView.reloadData), with: nil, waitUntilDone: true)
     }
