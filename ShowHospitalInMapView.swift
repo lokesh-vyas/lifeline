@@ -12,7 +12,6 @@ import GooglePlaces
 import GooglePlacePicker
 import CoreLocation
 
-
 //MARK:- MyRequestProtocol
 protocol MyAddressFormat
 {

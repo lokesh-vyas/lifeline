@@ -105,7 +105,7 @@ class LoginView: UIViewController
     @IBAction func btnFacrbookTapped(_ sender: Any) {
         HudBar.sharedInstance.showHudWithMessage(message: MultiLanguage.getLanguageUsingKey("TOAST_LOGIN_IN"), view: self.view)
         let loginManager = LoginManager()
-        loginManager.logIn([.publicProfile], viewController: self)
+        loginManager.logIn(readPermissions: [.publicProfile], viewController: self)
         {
             loginResult in
             switch loginResult {
