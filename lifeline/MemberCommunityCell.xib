@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="segoeui.ttf">
+            <string>SegoeUI</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MemberCommunityCell" rowHeight="46" id="4KB-BD-pzk" customClass="MemberCommunityCell" customModule="lifeline" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4KB-BD-pzk" id="ckk-Re-6uv">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s3G-7g-Eb2">
+                        <rect key="frame" x="5" y="5" width="365" height="36"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lld-uv-CmE">
+                                <rect key="frame" x="8" y="7" width="225" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="Vc2-gM-Pc3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gxg-s7-Xok">
+                                <rect key="frame" x="235" y="7" width="58" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="gjj-qI-Ilz"/>
+                                    <constraint firstAttribute="width" constant="58" id="yfk-I5-JU3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="12"/>
+                                <state key="normal" title="Accept" backgroundImage="Button_image">
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="igW-S8-XzK">
+                                <rect key="frame" x="299" y="7" width="58" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="5cn-kG-Rmc"/>
+                                    <constraint firstAttribute="width" constant="58" id="JVc-KH-3Av"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="12"/>
+                                <state key="normal" title="Reject" backgroundImage="Button_image">
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="igW-S8-XzK" firstAttribute="leading" secondItem="lld-uv-CmE" secondAttribute="trailing" constant="66" id="AXq-PP-dRC"/>
+                            <constraint firstAttribute="bottom" secondItem="lld-uv-CmE" secondAttribute="bottom" constant="4" id="BIz-o9-52x"/>
+                            <constraint firstItem="igW-S8-XzK" firstAttribute="leading" secondItem="Gxg-s7-Xok" secondAttribute="trailing" constant="6" id="L7x-KH-ioj"/>
+                            <constraint firstItem="lld-uv-CmE" firstAttribute="leading" secondItem="s3G-7g-Eb2" secondAttribute="leading" constant="8" id="Ubi-Vp-JgB"/>
+                            <constraint firstItem="igW-S8-XzK" firstAttribute="top" secondItem="s3G-7g-Eb2" secondAttribute="top" constant="7" id="YeQ-vA-eLe"/>
+                            <constraint firstAttribute="trailing" secondItem="igW-S8-XzK" secondAttribute="trailing" constant="8" id="c0W-BU-fHe"/>
+                            <constraint firstItem="Gxg-s7-Xok" firstAttribute="leading" secondItem="lld-uv-CmE" secondAttribute="trailing" constant="2" id="gv2-YU-M7m"/>
+                            <constraint firstItem="Gxg-s7-Xok" firstAttribute="top" secondItem="s3G-7g-Eb2" secondAttribute="top" constant="7" id="t78-jA-cGP"/>
+                            <constraint firstItem="lld-uv-CmE" firstAttribute="top" secondItem="s3G-7g-Eb2" secondAttribute="top" constant="7" id="wSo-i9-ir1"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="s3G-7g-Eb2" firstAttribute="top" secondItem="ckk-Re-6uv" secondAttribute="top" constant="5" id="ApH-g6-vhT"/>
+                    <constraint firstAttribute="bottom" secondItem="s3G-7g-Eb2" secondAttribute="bottom" constant="2.5" id="FiN-wm-nW5"/>
+                    <constraint firstItem="s3G-7g-Eb2" firstAttribute="leading" secondItem="ckk-Re-6uv" secondAttribute="leading" constant="5" id="fWx-g7-ys3"/>
+                    <constraint firstAttribute="trailing" secondItem="s3G-7g-Eb2" secondAttribute="trailing" constant="5" id="lf5-cl-kTV"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="btnAccept" destination="Gxg-s7-Xok" id="5gh-mU-PQY"/>
+                <outlet property="btnReject" destination="igW-S8-XzK" id="Lbh-Ft-EGt"/>
+                <outlet property="constraintForHorizontalSpace" destination="AXq-PP-dRC" id="3TF-zb-G3a"/>
+                <outlet property="lblName" destination="lld-uv-CmE" id="Nlq-9z-Uth"/>
+                <outlet property="viewBackGround" destination="s3G-7g-Eb2" id="OUK-U8-jhR"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="157"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Button_image" width="265" height="43"/>
+    </resources>
+</document>

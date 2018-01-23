@@ -1,44 +1,38 @@
 //
-//  MyCommunityView.swift
+//  AllCommunitiesView.swift
 //  lifeline
 //
-//  Created by Anjali on 29/11/17.
+//  Created by Anjali on 28/12/17.
 //  Copyright © 2017 iSteer. All rights reserved.
 //
 
 import UIKit
 import SwiftyJSON
 
-class MyCommunityView: UIViewController {
-    
+class AllCommunitiesView: UIViewController {
+    @IBOutlet weak var tblAllCommunity: UITableView!
     @IBOutlet weak var lblNoCommunity: UILabel!
-    @IBOutlet weak var tblCommunity: UITableView!
-    var name = String()           // Not using
-    var communityId = Int()       // Local varible
-    var phone = String()          //not using
-    var cLoginId = String()       // local Varible
-    
+    var name = String()
+    var communityId = Int()
+    var phone = String()
+    var loginId = String()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.completelyTransparentBar()
-        tblCommunity.contentInset = UIEdgeInsetsMake(-30, 0.0, -20, 0.0)
+        tblAllCommunity.contentInset = UIEdgeInsetsMake(-30, 0.0, -20, 0.0)
+        tblAllCommunity.isHidden = true
         lblNoCommunity.isHidden = true
-        tblCommunity.isHidden = true
         HudBar.sharedInstance.showHudWithMessage(message: MultiLanguage.getLanguageUsingKey("TOAST_LOADING_MESSAGE"), view: self.view)
-        getCommunityViewModel.SharedInstance.delegate = self
+        getCommunityViewModel.SharedInstance.delegate = self 
         getCommunityViewModel.SharedInstance.getCommunityList.removeAll()
-        getCommunityViewModel.SharedInstance.getMyCommunityServerCall()
+        getCommunityViewModel.SharedInstance.getAllCommunityServerCall()
         NotificationCenter.default.addObserver(self, selector: #selector(PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
     }
     func reloadData() {
-        self.tblCommunity.reloadData()
+        self.tblAllCommunity.reloadData()
     }
     @IBAction func btnBackTapped(_ sender: Any) {
-        let SWRevealView = self.storyboard!.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
-        self.navigationController?.present(SWRevealView, animated: true, completion: nil)
-    }
-    @IBAction func btnExploreTapped(_ sender: Any) {
-        let storyObj = self.storyboard?.instantiateViewController(withIdentifier: "AllCommunitiesView")
+        let storyObj = self.storyboard?.instantiateViewController(withIdentifier: "MyCommunityView")
         let nav = UINavigationController(rootViewController: storyObj!)
         self.present(nav, animated: true, completion: nil)
     }
@@ -48,7 +42,7 @@ class MyCommunityView: UIViewController {
         self.present(nav, animated: true, completion: nil)
     }
     @IBAction func btnInvitesTapped(_ sender: Any) {
-        SingleTon.SharedInstance.cameFromMyCommunity = true
+        SingleTon.SharedInstance.cameFromMyCommunity = false
         let storyObj = self.storyboard?.instantiateViewController(withIdentifier: "InviteView")
         let nav = UINavigationController(rootViewController: storyObj!)
         self.present(nav, animated: true, completion: nil)
@@ -63,41 +57,41 @@ class MyCommunityView: UIViewController {
         notificationView.view.backgroundColor = UIColor.clear
         self.present(notificationView, animated: true, completion: nil)
     }
-    func btnLeaveTapped(sender : UIButton) {
-        print("Successfully Left")
-        self.communityId = getCommunityViewModel.SharedInstance.getCommunityList[sender.tag].CommunityId!
-        self.cLoginId = String(describing: getCommunityViewModel.SharedInstance.getCommunityList[sender.tag].LoginId!)
-        UpdateCommunityMemberModel.SharedInstance.delegate = self 
-        UpdateCommunityMemberModel.SharedInstance.UpdateCommunityMember(loginId: self.cLoginId, communityId: self.communityId, isActive: 0)
-        //getCommunityViewModel.SharedInstance.getCommunityList.remove(at: sender.tag)s
+    func btnJoinTapped(sender : UIButton) {
+        print("Successfully Joined")
+        sender.setTitle("Following", for: .normal)
+        RequestCommunityViewModel.SharedInstance.delegate = self as? requestCommunityProtocol
+        RequestCommunityViewModel.SharedInstance.RequestCommunity(name: name, communityId: communityId, loginId: self.loginId)
     }
 }
-
-//MARK:- TabelView Delegate
-extension MyCommunityView: UITableViewDelegate, UITableViewDataSource {
+extension AllCommunitiesView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if getCommunityViewModel.SharedInstance.getCommunityList.count < 1 {
-            tblCommunity.isHidden = true
-            lblNoCommunity.isHidden = false
-            lblNoCommunity.text = "You are not member of any community."
+            self.tblAllCommunity.isHidden = true
+            self.lblNoCommunity.isHidden = false
+            self.lblNoCommunity.text = "Currently No Community Available."
         }
-        lblNoCommunity.isHidden = true
-        tblCommunity.isHidden = false
+        self.tblAllCommunity.isHidden = false
+        self.lblNoCommunity.isHidden = true
         return getCommunityViewModel.SharedInstance.getCommunityList.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier:String = "myCommunityCell"
-        var cell:myCommunityCell? = tblCommunity.dequeueReusableCell(withIdentifier: cellIdentifier) as? myCommunityCell
+        var cell:myCommunityCell? = tblAllCommunity.dequeueReusableCell(withIdentifier: cellIdentifier) as? myCommunityCell
         if (cell == nil)
         {
             var nib:Array = Bundle.main.loadNibNamed("myCommunityCell", owner: self, options: nil)!
             cell = nib[0] as? myCommunityCell
             print("cell = \(String(describing: cell))")
         }
-        cell?.btnFollow.setTitle("Leave", for: .normal)
-        //MARK:- Leave Community
+        //MARK:- JOIN COMMUNITY
+        self.communityId = getCommunityViewModel.SharedInstance.getCommunityList[indexPath.row].CommunityId!
+        self.name = getCommunityViewModel.SharedInstance.getCommunityList[indexPath.row].Name!
+        self.loginId = getCommunityViewModel.SharedInstance.getCommunityList[indexPath.row].LoginId!
         cell?.btnFollow.tag = indexPath.row
-        cell?.btnFollow.addTarget(self, action: #selector(btnLeaveTapped(sender:)), for: .touchUpInside)
+        cell?.btnFollow.addTarget(self, action: #selector(AllCommunitiesView.btnJoinTapped(sender:)), for: .touchUpInside)
+        
+        //cell?.ProfilePic.setRounded()
         cell?.communityBackgroundView.completelyTransparentView()
         cell?.lblGroupTitle.text = getCommunityViewModel.SharedInstance.getCommunityList[indexPath.row].Name
         cell?.lblGroupDescription.text = getCommunityViewModel.SharedInstance.getCommunityList[indexPath.row].Description
@@ -126,9 +120,9 @@ extension MyCommunityView: UITableViewDelegate, UITableViewDataSource {
         return UITableViewAutomaticDimension
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-         let communityView:CommunityDetailView = self.storyboard?.instantiateViewController(withIdentifier: "CommunityDetailView") as! CommunityDetailView
-         communityView.CommunityJSON["Name"] = getCommunityViewModel.SharedInstance.getCommunityList[indexPath.row].Name
-         communityView.CommunityJSON["Description"] = getCommunityViewModel.SharedInstance.getCommunityList[indexPath.row].Description
+        let communityView:CommunityDetailView = self.storyboard?.instantiateViewController(withIdentifier: "CommunityDetailView") as! CommunityDetailView
+        communityView.CommunityJSON["Name"] = getCommunityViewModel.SharedInstance.getCommunityList[indexPath.row].Name
+        communityView.CommunityJSON["Description"] = getCommunityViewModel.SharedInstance.getCommunityList[indexPath.row].Description
         communityView.CommunityJSON["Type"] = getCommunityViewModel.SharedInstance.getCommunityList[indexPath.row].type
         let communityContact =  String(describing: getCommunityViewModel.SharedInstance.getCommunityList[indexPath.row].phone)
         if communityContact == "null"
@@ -145,55 +139,51 @@ extension MyCommunityView: UITableViewDelegate, UITableViewDataSource {
         self.present(rootView, animated: true, completion: nil)
     }
 }
-
-extension MyCommunityView : getCommunityProtocol{
+extension AllCommunitiesView : getCommunityProtocol{
     func didSucess(){
         HudBar.sharedInstance.hideHudFormView(view: self.view)
-        if getCommunityViewModel.SharedInstance.getCommunityList.count <= 0
-        {
-            self.tblCommunity.isHidden = true
+        if getCommunityViewModel.SharedInstance.getCommunityList.count <= 0 {
+            self.tblAllCommunity.isHidden = true
             self.lblNoCommunity.isHidden = false
-            self.lblNoCommunity.text = "You are not member of any community"
+            self.lblNoCommunity.text = "Currently No Community Available."
         }
-        else
-        {
-            self.tblCommunity.isHidden = false
+        else {
             self.lblNoCommunity.isHidden = true
-            self.tblCommunity.reloadData()
+            self.tblAllCommunity.isHidden = false
+            self.tblAllCommunity.reloadData()
         }
     }
     func didFail(){
         HudBar.sharedInstance.hideHudFormView(view: self.view)
-        self.tblCommunity.isHidden = true
-        self.lblNoCommunity.isHidden = false
-        self.lblNoCommunity.text = "You are not member of any community."
+        self.tblAllCommunity.isHidden = true
     }
 }
-extension MyCommunityView: updateCommunityMemberProtocol {
-    func didSuccess(StatusCode: Int) {
-        if StatusCode == 0 {
-            self.view.makeToast("Requested Details Updated Successfully.", duration: 3.0, position: .bottom)
-            if getCommunityViewModel.SharedInstance.getCommunityList.count <= 0
-            {
-                self.tblCommunity.isHidden = true
-                self.lblNoCommunity.isHidden = false
-                self.lblNoCommunity.text = "You are not member of any community."
-            }
-            else
-            {
-                self.tblCommunity.isHidden = false
-                self.lblNoCommunity.isHidden = true
-                self.tblCommunity.reloadData()
-            }
-        }else if StatusCode == 1 {
-            self.view.makeToast("There is no member on this Community.", duration: 3.0, position: .bottom)
-        }
-    }
-    func didFail(Response: String) {
+
+extension AllCommunitiesView: requestCommunityProtocol {
+    func didfail(Response: String) {
         if Response == "NoInternet" {
             self.view.makeToast(MultiLanguage.getLanguageUsingKey("TOAST_NO_INTERNET_WARNING"), duration: 3.0, position: .bottom)
         }else {
             self.view.makeToast(MultiLanguage.getLanguageUsingKey("TOAST_ACCESS_SERVER_WARNING"), duration: 3.0, position: .bottom)
+        }
+    }
+    func didSuccess(StatusCode: Int) {
+        if StatusCode == 0 {
+            self.view.makeToast("Successfully Joined to the Community.", duration: 3.0, position: .bottom)
+            if getCommunityViewModel.SharedInstance.getCommunityList.count <= 0
+            {
+                self.tblAllCommunity.isHidden = true
+                self.lblNoCommunity.isHidden = false
+                self.lblNoCommunity.text = "Currently No Community Available."
+            }
+            else
+            {
+                self.lblNoCommunity.isHidden = true
+                self.tblAllCommunity.isHidden = false
+                self.tblAllCommunity.reloadData()
+            }
+        }else if StatusCode == 1 {
+            self.view.makeToast("You are already member of this Community.", duration: 3.0, position: .bottom)
         }
     }
 }

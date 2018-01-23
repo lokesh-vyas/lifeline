@@ -347,7 +347,6 @@ class UnderlinedLabel: UILabel {
         }
     }
 }
-
 extension UIColor
 {
     public class var myRedColor: UIColor
@@ -377,7 +376,25 @@ extension UIView{
 extension UIImageView {
     
     func setRounded() {
-        self.layer.cornerRadius = (self.frame.width / 2) 
+        self.layer.cornerRadius = (self.frame.width / 2)
         self.layer.masksToBounds = true
+    }
+}
+
+class CheckBox: UIButton {
+    // Images
+    let checkedImage = UIImage(named: "radio_checked")! as UIImage
+    let uncheckedImage = UIImage(named: "radio_unchecked")! as UIImage
+    
+    // Bool property
+    var isChecked: Bool = false {
+        didSet{
+            if isChecked == true {
+                self.setImage(checkedImage, for: UIControlState.normal)
+            } else {
+                self.setImage(uncheckedImage, for: UIControlState.normal)
+            }
+            isChecked = false
+        }
     }
 }

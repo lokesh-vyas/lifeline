@@ -76,10 +76,7 @@ class MarkerNotIndividualDetails: UIViewController {
         let navigationControllerStack = UINavigationController(rootViewController: cnfDonate)
         self.present(navigationControllerStack, animated: true, completion: nil)
         // self.navigationController?.pushViewController(navigationControllerStack, animated: true)
-        
         MarkerData.SharedInstance.isNotIndividualAPN = false
-
-
     }
     
     @IBAction func btnBloodInventoryTapped(_ sender: Any) {

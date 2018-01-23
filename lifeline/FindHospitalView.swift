@@ -1,34 +1,19 @@
 //
-//  ShowHospitalInMapView.swift
+//  FindHospitalView.swift
 //  lifeline
 //
-//  Created by AppleMacBook on 25/02/17.
+//  Created by Anjali on 21/12/17.
 //  Copyright © 2017 iSteer. All rights reserved.
 //
 
 import UIKit
-import GoogleMaps
 import GooglePlaces
+import GoogleMaps
 import GooglePlacePicker
 import CoreLocation
 
-//MARK:- MyRequestProtocol
-protocol MyAddressFormat
-{
-    func SuccessMyAddressFormat(AddressResponse: AddressString,checkBool:Bool)
-}
-class AddressString
-{
-    var MessageAddressString :String = ""
-    var addressString :String = ""
-    var City:String = ""
-    var PINCode:String = ""
-    var latitude:String = ""
-    var longitude:String = ""
-}
-
-class ShowHospitalInMapView: UIViewController
-{
+class FindHospitalView: UIViewController {
+    
     var locationManager = CLLocationManager()
     var placesClient : GMSPlacesClient?
     var camera : GMSCameraPosition?
@@ -41,8 +26,7 @@ class ShowHospitalInMapView: UIViewController
     var delegate:MyAddressFormat?
     var checkBool:Bool?
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.completelyTransparentBar()
         self.navigationItem.title = MultiLanguage.getLanguageUsingKey("ADDRESS_MAP_TITLE")
@@ -56,13 +40,14 @@ class ShowHospitalInMapView: UIViewController
             default:
                 self.openSettingsForDisableMap()
             }
+            self.getPlacePickerView()
         } else
         {
             self.openSettingsForDisableMap()
         }
-        
+        self.getPlacePickerView()
     }
-    //MARK:- goToInCurrentLoction
+    
     func goToInCurrentLoction()
     {
         CLLocationManager.locationServicesEnabled()
@@ -78,6 +63,36 @@ class ShowHospitalInMapView: UIViewController
         {
             self.currentLoctionSearch()
         }
+    }
+    func currentLoctionSearch()
+    {
+        HudBar.sharedInstance.hideHudFormView(view: self.view)
+        CLLocationManager.locationServicesEnabled()
+        locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() == true {
+            locationManager.delegate = self
+            locationManager.startUpdatingLocation()
+        }
+        camera = GMSCameraPosition.camera(withLatitude: SingleTon.SharedInstance.currentLatitude, longitude: SingleTon.SharedInstance.currentLongitude, zoom :15.0)
+        
+        mapView = GMSMapView.map(withFrame: .zero, camera:camera!)
+        placesClient = GMSPlacesClient.shared()
+        mapView.settings.myLocationButton = true
+        mapView.isMyLocationEnabled = true
+        mapView.delegate = self as? GMSMapViewDelegate
+        view = mapView
+        mapView.accessibilityLanguage = "en"
+        mapView.isBuildingsEnabled = true
+        mapView.settings.compassButton = true
+        mapView.settings.indoorPicker = true
+    }
+    func getPlacePickerView() {
+        
+        let config = GMSPlacePickerConfig(viewport: nil)
+        let placePicker = GMSPlacePickerViewController(config: config)
+        placePicker.delegate = self
+        present(placePicker, animated: true, completion: nil)
     }
     //MARK:- openSettingsForDisableMap
     func openSettingsForDisableMap()
@@ -106,36 +121,13 @@ class ShowHospitalInMapView: UIViewController
         
         present(alertController, animated: true, completion: nil)
     }
-    func currentLoctionSearch()
-    {
-        HudBar.sharedInstance.hideHudFormView(view: self.view)
-        CLLocationManager.locationServicesEnabled()
-        locationManager.requestWhenInUseAuthorization()
-        
-        if CLLocationManager.locationServicesEnabled() == true {
-            locationManager.delegate = self
-            locationManager.startUpdatingLocation()
-        }
-            camera = GMSCameraPosition.camera(withLatitude: SingleTon.SharedInstance.currentLatitude, longitude: SingleTon.SharedInstance.currentLongitude, zoom :15.0)
-        
-        mapView = GMSMapView.map(withFrame: .zero, camera:camera!)
-        placesClient = GMSPlacesClient.shared()
-        mapView.settings.myLocationButton = true
-        mapView.isMyLocationEnabled = true
-        mapView.delegate = self
-        view = mapView
-        mapView.accessibilityLanguage = "en"
-        mapView.isBuildingsEnabled = true
-        mapView.settings.compassButton = true
-        mapView.settings.indoorPicker = true
-    }
     func SearchWithString(AdressString:String)
     {
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(AdressString, completionHandler: {(placemarks, error) -> Void in
             if((error) != nil){
                 print("Error of map", error!)
-                self.currentLoctionSearch()
+                //self.currentLoctionSearch()
             }
             if let placemark = placemarks?.first {
                 self.coordinates = placemark.location!.coordinate
@@ -152,7 +144,7 @@ class ShowHospitalInMapView: UIViewController
         marker.position = coordinates!
         marker.icon = UIImage(named: "Current_icon")
         marker.map = mapView
-        mapView.delegate = self
+        mapView.delegate = self as? GMSMapViewDelegate
         camera = GMSCameraPosition.camera(withLatitude: (coordinates?.latitude)!, longitude: (coordinates?.longitude)!, zoom: 15.0)
         mapView.camera = camera!
         mapView.settings.myLocationButton = true
@@ -164,32 +156,15 @@ class ShowHospitalInMapView: UIViewController
         mapView.settings.indoorPicker = true
     }
     
-    @IBAction func btnSearchTapped(_ sender: Any)
-    {
-        let autocompleteController = GMSAutocompleteViewController()
-        autocompleteController.delegate = self
-        present(autocompleteController, animated: true, completion: nil)
-    }
-    @IBAction func btnbackTapped(_ sender: Any) {
+    @IBAction func btnBackTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-}
-extension ShowHospitalInMapView : CLLocationManagerDelegate {
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        if manager.location?.coordinate.latitude != nil || manager.location?.coordinate.latitude != 0 {
-            manager.stopUpdatingLocation()
-            print("Updation Stopped !!")
-        }
+    @IBAction func btnSearchTapped(_ sender: Any) {
+        self.getPlacePickerView()
     }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Error in CLM delegate:", error.localizedDescription)
-    }
-    
 }
-extension ShowHospitalInMapView: GMSAutocompleteViewControllerDelegate {
+extension FindHospitalView: GMSAutocompleteViewControllerDelegate {
     
     // Handle the user's selection.
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
@@ -217,68 +192,33 @@ extension ShowHospitalInMapView: GMSAutocompleteViewControllerDelegate {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
 }
-extension ShowHospitalInMapView : GMSMapViewDelegate {
 
-    public func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition){
-    }
-    public func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
-    }
-    public func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        return false
-    }
-    public func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D)
-    {
-        let geocoder = GMSGeocoder()
-        geocoder.reverseGeocodeCoordinate(coordinate) { response , error in
-
-            //Add this line
-            if response == nil
-            {
-                return
-            }
-
-            if let address = response!.firstResult()
-            {
-                print("This is my Address \(address)")
-                print("This is my Address's first line \(address.lines![0])")
-                print("This is my Address's Second line \(address.lines![1])")
-                self.addressFormat.MessageAddressString = ("\(address.lines![0]) \(address.lines![1])")
-                self.addressFormat.addressString = address.lines![0]
-                if address.locality != nil
-                {
-                   //  self.addressFormat.City = address.locality!
-                    var delimeter = ","
-                    var newStr = address.lines![1]
-                    var seperatedCity = newStr.components(separatedBy: delimeter)
-                    self.addressFormat.City = seperatedCity[0]
-                    //self.addressFormat.City =  address.lines![1]
-                }
-                if address.postalCode != nil
-                {
-                    self.addressFormat.PINCode = address.postalCode!
-                }
-                self.addressFormat.latitude = String(address.coordinate.latitude)
-                self.addressFormat.longitude = String(address.coordinate.longitude)
-
-                let alert = UIAlertController(title: MultiLanguage.getLanguageUsingKey("BTN_SELECT_ADDRESS"), message: self.addressFormat.MessageAddressString, preferredStyle: .alert)
-
-                let saveAction = UIAlertAction(title: MultiLanguage.getLanguageUsingKey("BTN_SELECT"), style: .default, handler:
-                    {
-                        alert -> Void in
-                        if self.checkBool == nil
-                        {
-                            self.checkBool = true
-                        }
-                        self.delegate?.SuccessMyAddressFormat(AddressResponse: self.addressFormat,checkBool: self.checkBool!)
-                        self.dismiss(animated: true, completion: nil)
-                })
-
-                alert.addAction(UIAlertAction(title: MultiLanguage.getLanguageUsingKey("BTN_CANCEL"), style: UIAlertActionStyle.destructive, handler: nil))
-
-                alert.addAction(saveAction)
-
-                self.present(alert, animated: true, completion: nil)
-            }
+extension FindHospitalView : CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        if manager.location?.coordinate.latitude != nil || manager.location?.coordinate.latitude != 0 {
+            manager.stopUpdatingLocation()
+            print("Updation Stopped !!")
         }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Error in CLM delegate:", error.localizedDescription)
+    }
+    
+}
+
+extension FindHospitalView : GMSPlacePickerViewControllerDelegate
+{
+    // GMSPlacePickerViewControllerDelegate and implement this code.
+    func placePicker(_ viewController: GMSPlacePickerViewController, didPick place: GMSPlace) {
+        print("inside didpick condition")
+        viewController.dismiss(animated: true, completion: nil)
+    }
+    
+    func placePickerDidCancel(_ viewController: GMSPlacePickerViewController) {
+        print("inside cancel fuction")
+        viewController.dismiss(animated: true, completion: nil)
     }
 }

@@ -25,6 +25,7 @@ class SingleTon {
     var individualsOnList : JSON = []
     var hospitalsOnList: JSON = []
     var compaignOnList: JSON = []
+    var cameFromMyCommunity: Bool?
     //var badgeCount = Int()
     
     class var SharedInstance : SingleTon {

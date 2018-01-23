@@ -274,9 +274,7 @@ class DonateView: UIViewController {
                     "maxLon" : "\(EastLongitude!)"
                 ]]]
         DonateInteractor.sharedInstance.findingDonateSources(urlString: URLList.BLOOD_REQUEST_SEARCH.rawValue, params: reqBody)
-        
     }
-    
     func btnSearchAreaTapped() {
         let visibleRegion = mapView.projection.visibleRegion()
         let mapBounds = GMSCoordinateBounds.init(region: visibleRegion)
@@ -345,10 +343,8 @@ class DonateView: UIViewController {
         }
         mapView.delegate = self
         HudBar.sharedInstance.hideHudFormView(view: self.view)
-        
     }
 }
-
 extension DonateView : CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -404,10 +400,7 @@ extension DonateView : GMSMapViewDelegate {
 //
 //        self.fetchBloodRequestToDonate()
           loader = false
-
-        
     }
-    
     //MARK:- idleAt
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         
