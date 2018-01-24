@@ -24,6 +24,7 @@ class MyNotificationModel{
     var DonationID : String?
 }
 
+
 class MyNotificationViewModel{
     static var SharedInstance: MyNotificationViewModel {
         struct Shared {
