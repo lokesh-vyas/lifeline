@@ -61,7 +61,6 @@ class IndividualMarkerData
     var emailAddress : String? = nil
     var descriptionForIndi : String? = nil
 }
-
 class MarkersListView: UIViewController {
 
     @IBOutlet weak var tblView : UITableView!
@@ -163,6 +162,7 @@ class MarkersListView: UIViewController {
         }
         self.tblView.performSelector(onMainThread: #selector(self.tblView.reloadData), with: nil, waitUntilDone: true)
         print(listDetailArray.count)
+        
         print(listMarkers)
         print(listDetailArray)
         self.navigationController?.completelyTransparentBar()
@@ -272,7 +272,6 @@ extension MarkersListView : UITableViewDataSource {
         
                 if listMaekerForShow.typeOfOrg == "1" {
                         // Hospital
-
                     cell?.lblUserName.text = listMaekerForShow.name
                     cell?.lblTimingForCamp.text = ""
                     cell?.imgDropForTiming.image = UIImage(named: "timer")
@@ -341,7 +340,6 @@ extension MarkersListView : UITableViewDataSource {
                // self.phoneCall = listMaekerForShow.individualContactNumber!
                 cell?.btnCall.tag = indexPath.row
                 cell?.btnCall.addTarget(self, action: #selector(MarkersListView.btnCallTapped(sender:)), for: .touchUpInside)
-                
                 cell?.imgCamp.image = UIImage(named: "Individual_Single_icon")
                 print("Individual contact is = \(listMaekerForShow.individualContactNumber!)")
             }
@@ -464,7 +462,6 @@ extension MarkersListView : UISearchBarDelegate {
         if (searchBar.text?.isEmpty)!
         {
             is_Searching = false
-            
             self.tblView.performSelector(onMainThread: #selector(self.tblView.reloadData), with: nil, waitUntilDone: true)
         }
         else

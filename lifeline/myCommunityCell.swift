@@ -9,7 +9,7 @@
 import UIKit
 
 class myCommunityCell: UITableViewCell {
-    
+    //FIXME:- USE ME FOR SHOWING DATA NOT TABLE
     @IBOutlet weak var ProfilePic: UIImageView!
     @IBOutlet weak var communityBackgroundView: UIView!
     @IBOutlet weak var lblGroupTitle: UILabel!

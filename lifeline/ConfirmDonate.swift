@@ -374,7 +374,6 @@ extension ConfirmDonate : getVolunteerProtocol {
             self.view.makeToast(MultiLanguage.getLanguageUsingKey("TOAST_ACCESS_SERVER_WARNING"), duration: 3.0, position: .bottom)
         }    }
 }
-
 extension ConfirmDonate : MFMailComposeViewControllerDelegate,MFMessageComposeViewControllerDelegate
 {
     // MARK: MFMailComposeViewControllerDelegate Method

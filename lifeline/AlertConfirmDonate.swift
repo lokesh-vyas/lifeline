@@ -11,7 +11,6 @@ import SwiftyJSON
 import Toast_Swift
 import UserNotifications
 
-
 class AlertConfirmDonate: UIViewController {
     
     @IBOutlet weak var txtViewComment: UITextView!
@@ -74,11 +73,6 @@ class AlertConfirmDonate: UIViewController {
         super.viewWillDisappear(true)
         NotificationCenter.default.removeObserver(self)
     }
-    
-    
-    
-    
-    
     @IBAction func btnPreferredDateTapped(_ sender: Any) {
         
         let preferredDateAlert: CalendarView = self.storyboard?.instantiateViewController(withIdentifier: "CalendarView") as! CalendarView

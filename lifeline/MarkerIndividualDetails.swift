@@ -38,18 +38,14 @@ class MarkerIndividualDetails: UIViewController {
         let requestedTable = self.storyboard?.instantiateViewController(withIdentifier: "RequestedByIndividuals") as! RequestedByIndividuals
         let navBar = UINavigationController.init(rootViewController:requestedTable)
         self.present(navBar, animated: true, completion: nil)
-        
         MarkerData.SharedInstance.isIndividualAPN = false
-        
     }
-   
     @IBAction func btnBloodInventoryTapped(_ sender: Any) {
         let bloodInventory = self.storyboard?.instantiateViewController(withIdentifier: "BloodInventory") as! BloodInventory
         let navBar = UINavigationController.init(rootViewController:bloodInventory)
         self.present(navBar, animated: true, completion: nil)
     }
 }
-
 extension MarkerIndividualDetails : UIGestureRecognizerDelegate {
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
@@ -57,7 +53,6 @@ extension MarkerIndividualDetails : UIGestureRecognizerDelegate {
         if (touch.view?.isDescendant(of: viewMarkerDetails))! {
             return true
         }
-        
         dismiss(animated: true, completion: nil)
         return false
     }

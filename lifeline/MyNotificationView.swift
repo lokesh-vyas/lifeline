@@ -14,7 +14,6 @@ class MyNotificationView: UIViewController {
     @IBOutlet weak var NotificationTblView: UITableView!
     @IBOutlet weak var NoNewNotifications: UILabel!
     var notificationId: Int?
-    var loader : Bool?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.completelyTransparentBar()
@@ -65,7 +64,6 @@ extension MyNotificationView : UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        
         if MyNotificationViewModel.SharedInstance.NotificationList.count < 1 {
             NotificationTblView.isHidden = true
             NoNewNotifications.isHidden = false
