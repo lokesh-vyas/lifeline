@@ -121,7 +121,8 @@ class IndividualConfirmDonate: UIViewController {
         let volunteerBody = ["GetVolunteerListRequest": [
             "RequestDetails": [
                 "LoginID" : "\(UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!)",
-                "RequestID" : iID
+                "RequestID" : iID,
+                "TypeOfOrg" : MarkerData.SharedInstance.markerData["TypeOfOrg"]
             ]]]
         
         ConfirmDonateInteractor.sharedInstance.delegateV = self
@@ -226,19 +227,17 @@ extension IndividualConfirmDonate : getVolunteerProtocol {
             MarkerData.SharedInstance.CommentLines = nil
             
         }else{
+            self.view.makeToast(MultiLanguage.getLanguageUsingKey("ALREADY_VOLUNTEERED"), duration: 3.0, position: .bottom)
             let tempStr = String(describing: jsonArray["GetVolunteerListsReponse"]["ResponseDetails"]["PreferredDateTime"])
             MarkerData.SharedInstance.PreferredDateTime = Util.SharedInstance.dateChangeForUser(dateString: tempStr)
             MarkerData.SharedInstance.CommentLines = String(describing: jsonArray["GetVolunteerListsReponse"]["ResponseDetails"]["Comment"])
         }
-        
         let alertConfirm = self.storyboard?.instantiateViewController(withIdentifier: "AlertConfirmDonate") as! AlertConfirmDonate
         alertConfirm.checkForDate = "Request"
 
         alertConfirm.modalPresentationStyle = .overCurrentContext
         alertConfirm.view.backgroundColor = UIColor.clear
         present(alertConfirm, animated: true, completion: nil)
-        
-        
     }
     
     func didFailGetVolunteerDetails(Response:String) {

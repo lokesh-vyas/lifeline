@@ -32,8 +32,7 @@ class RequestView: UIViewController,UITextViewDelegate
     @IBOutlet weak var btnWhatYouNeed: UIButton!
     @IBOutlet weak var imgSocialShare: UIImageView!
     @IBOutlet var scrollViewRequest: UIScrollView!
-    
-    
+
     //MARK:- String
     var datetostring = String()
     var isDoctorName = Bool()
@@ -408,7 +407,7 @@ extension RequestView:UITextFieldDelegate
                     self.view.makeToast(MultiLanguage.getLanguageUsingKey("SELECT_LOCATION_STRING"), duration: 2.0, position: .bottom)
                 }
                 else{
-                    //                textField.becomeFirstResponder()
+                    //textField.becomeFirstResponder()
                 }
             }
         }
@@ -421,7 +420,6 @@ extension RequestView:UITextFieldDelegate
             self.navigationController?.present(navController, animated: true, completion: nil)
         }
     }
-    
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         if textField.text?.characters.count == 0 {

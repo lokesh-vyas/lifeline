@@ -10,7 +10,6 @@ import UIKit
 
 class ChangePasswordView: UIViewController {
     @IBOutlet weak var txtOldPassword: FloatLabelTextField!
-    
     @IBOutlet weak var txtConfirmPassword: FloatLabelTextField!
     @IBOutlet weak var txtNewPassword: FloatLabelTextField!
     var Password : Bool?

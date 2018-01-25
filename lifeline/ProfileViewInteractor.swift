@@ -66,15 +66,23 @@ class ProfileViewInteractor
                 if(JSONResponse["GetProfileResponse"]["GetProfileResponseDetails"]["StatusCode"].int == 0)
                 {
                     let jsonDict = JSONResponse["GetProfileResponse"]["GetProfileResponseDetails"]
-                    if jsonDict["RoleName"].string != nil
+                    if jsonDict != JSON.null
                     {
-                        if (jsonDict["RoleName"].string == "BloodBank")
+                        if jsonDict["RoleName"].string != nil
                         {
-                            self.delegate?.failedGetProfile(success: true)
-                            return
+                            if (jsonDict["RoleName"].string == "BloodBank")
+                            {
+                                self.delegate?.failedGetProfile(success: true)
+                                return
+                            }
                         }
+                        self.serverDataInProfileData(JSONResponse: JSONResponse)
+                        self.delegate?.succesfullyGetProfile(success: true)
                     }
-                    self.serverDataInProfileData(JSONResponse: JSONResponse)
+                    else
+                    {
+                        self.delegate?.succesfullyGetProfile(success: false)
+                    }
                 }
                 else
                 {
@@ -82,6 +90,7 @@ class ProfileViewInteractor
                 }
         }, failure:
             { _ in
+                print("Here in Failure")
                 self.delegate?.failedGetProfile(success: false)
         })
     }

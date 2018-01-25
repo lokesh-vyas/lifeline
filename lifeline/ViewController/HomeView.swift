@@ -47,6 +47,7 @@ class HomeView: UIViewController {
         }
         NotificationCenter.default.addObserver(self, selector: #selector(HomeView.shareAppURLTapped), name: NSNotification.Name(rawValue: "ShareApplicationURL"), object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(HomeView.donationConfirmed), name: NSNotification.Name(rawValue: "DonationConfirmed"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(HomeView.PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
         
         let tapRec = UITapGestureRecognizer(target: self, action: #selector(HomeView.lblDonateTapped(_:)))
@@ -56,7 +57,6 @@ class HomeView: UIViewController {
         let tapRec1 = UITapGestureRecognizer(target: self, action: #selector(HomeView.lblRequestTapped(_:)))
         lblRequest.addGestureRecognizer(tapRec1)
         lblRequest.isUserInteractionEnabled = true
-        
        /* self.showBadge()
         // button
         let rightButton = UIButton(frame: CGRect(x: 0, y: 0, width: 25, height: 22))
@@ -112,6 +112,12 @@ class HomeView: UIViewController {
         let notificationView = self.storyboard?.instantiateViewController(withIdentifier: "MyNotificationView")
         self.navigationController?.pushViewController(notificationView!, animated: true)
     }*/
+    
+    @IBAction func btnNotificationTapped(_ sender: Any) {
+        print("Notification Button Tapped")
+        let notificationView = self.storyboard?.instantiateViewController(withIdentifier: "MyNotificationView")
+        self.navigationController?.pushViewController(notificationView!, animated: true)
+    }
     
     func lblDonateTapped(_ sender: UITapGestureRecognizer)
     {
@@ -178,6 +184,13 @@ class HomeView: UIViewController {
         notificationView.view.backgroundColor = UIColor.clear
         self.present(notificationView, animated: true, completion: nil)
     }
+    
+    func donationConfirmed()
+    {
+        print("My Success")
+        self.view.makeToast(MultiLanguage.getLanguageUsingKey("DONATION_CONFIRMED"), duration: 15.0, position: .bottom)
+    }
+    
     //MARK:- Share Application URL With Activity
     func shareAppURLTapped()
     {
@@ -187,7 +200,7 @@ class HomeView: UIViewController {
         
         if let myWebsite = NSURL(string: "https://goo.gl/XJl5a7") {
             let objectsToShare = [textToShare,textToIOS,textToAndroid, myWebsite] as [Any]
-            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            let activityVC =    UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
             
             //New Excluded Activities Code
             activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
@@ -198,8 +211,8 @@ class HomeView: UIViewController {
                         {
                             activityVC.popoverPresentationController?.sourceView = self.view
                         }
-                    }
-                    self.present(activityVC, animated: true, completion: nil)
+                   }
+                self.present(activityVC, animated: true, completion: nil)
         }
     }
 }

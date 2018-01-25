@@ -120,7 +120,7 @@
 "E8d-f5-n2I.text" = "Voluntary Donation";
 
 /* Class = "UILabel"; text = "Work Address  (Optional)"; ObjectID = "E9s-kv-u2m"; */
-"E9s-kv-u2m.text" = "Work Address  (Optional)";
+"E9s-kv-u2m.text" = "Office Address";
 
 /* Class = "UINavigationItem"; title = "Requests"; ObjectID = "EoX-cx-AJD"; */
 "EoX-cx-AJD.title" = "Requests";
@@ -468,7 +468,7 @@
 "sIG-5i-UxH.title" = "LifeLine";
 
 /* Class = "UILabel"; text = "Home Address (Optional)"; ObjectID = "sIu-Bx-mgj"; */
-"sIu-Bx-mgj.text" = "Home Address (Optional)";
+"sIu-Bx-mgj.text" = "Home Address";
 
 /* Class = "UILabel"; text = " "; ObjectID = "sSJ-hn-iGc"; */
 "sSJ-hn-iGc.text" = " ";
@@ -544,3 +544,9 @@
 
 /* Class = "UINavigationItem"; title = "Address"; ObjectID = "mKU-Xi-pJj"; */
 "mKU-Xi-pJj.title" = "History";
+
+/* Class = "UILabel"; text = "Notification"; ObjectID = "DnE-7x-JRj"; */
+"DnE-7x-JRj.text" = "Notifications";
+
+/* Class = "UINavigationItem"; title = "Address"; ObjectID = "DnF-yV-0kX"; */
+"DnF-yV-0kX.title" = "Notifications";

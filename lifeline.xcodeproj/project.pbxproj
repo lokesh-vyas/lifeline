@@ -31,6 +31,7 @@
 		18F3AD691E8A66B10086274E /* List-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F3AD681E8A66B10086274E /* List-32.png */; };
 		18F8ECB41E84EAE00071C0A0 /* BloodInventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F8ECB31E84EAE00071C0A0 /* BloodInventory.swift */; };
 		250310501F3B16AE00C077FD /* timer.png in Resources */ = {isa = PBXBuildFile; fileRef = 2503104F1F3B16AE00C077FD /* timer.png */; };
+		2517F20C1FCE9AD2007CE4D3 /* community.png in Resources */ = {isa = PBXBuildFile; fileRef = 2517F20B1FCE9AAD007CE4D3 /* community.png */; };
 		251993C11F5E7EA000E9BFC2 /* GreenBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 251993C01F5E7EA000E9BFC2 /* GreenBar.png */; };
 		251993C31F5E7EA700E9BFC2 /* RedBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 251993C21F5E7EA700E9BFC2 /* RedBar.png */; };
 		251993C51F5E7EAD00E9BFC2 /* BrownBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 251993C41F5E7EAD00E9BFC2 /* BrownBar.png */; };
@@ -40,7 +41,11 @@
 		253897901EE5470400B8AFB3 /* LanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2538978F1EE5470400B8AFB3 /* LanguageVC.swift */; };
 		253897941EE578C100B8AFB3 /* LanguageTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253897931EE578C100B8AFB3 /* LanguageTableCell.swift */; };
 		254B39CD1FB4436800EFAB57 /* phone_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A2902A1FB43FDF005BFED2 /* phone_icon.png */; };
+		254DEBDB200372B600106ABC /* edit_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 254DEBDA200372B600106ABC /* edit_white.png */; };
 		2550468E1F94ED9C00A83C2F /* address_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2550468D1F94ED9900A83C2F /* address_icon.png */; };
+		256645E21FD00DD0002CC4A6 /* Edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 256645E11FD00DC7002CC4A6 /* Edit.png */; };
+		2578A86C1FC2E27D004D555A /* delete_black_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2578A86B1FC2E243004D555A /* delete_black_icon.png */; };
+		2592A7DF1FEBE9D0007F42B5 /* FindHospitalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2592A7DE1FEBE9D0007F42B5 /* FindHospitalView.swift */; };
 		25A290241FB434B9005BFED2 /* drop_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A290231FB432C9005BFED2 /* drop_black.png */; };
 		25A290251FB434D2005BFED2 /* done.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A290211FB429B5005BFED2 /* done.png */; };
 		25A290261FB434D7005BFED2 /* pendingColored.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A290221FB42A6A005BFED2 /* pendingColored.png */; };
@@ -203,6 +208,7 @@
 		19B74CD6720B8FE1E0D554ED /* Pods-lifelineUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lifelineUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-lifelineUITests/Pods-lifelineUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1A7713EA892985CA8991C0DE /* Pods_lifelineTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lifelineTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2503104F1F3B16AE00C077FD /* timer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timer.png; sourceTree = "<group>"; };
+		2517F20B1FCE9AAD007CE4D3 /* community.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = community.png; sourceTree = "<group>"; };
 		251993C01F5E7EA000E9BFC2 /* GreenBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreenBar.png; sourceTree = "<group>"; };
 		251993C21F5E7EA700E9BFC2 /* RedBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedBar.png; sourceTree = "<group>"; };
 		251993C41F5E7EAD00E9BFC2 /* BrownBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BrownBar.png; sourceTree = "<group>"; };
@@ -211,7 +217,11 @@
 		25328B601F8B5B2000741B43 /* MyDonationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDonationCell.swift; sourceTree = "<group>"; };
 		2538978F1EE5470400B8AFB3 /* LanguageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageVC.swift; sourceTree = "<group>"; };
 		253897931EE578C100B8AFB3 /* LanguageTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageTableCell.swift; sourceTree = "<group>"; };
+		254DEBDA200372B600106ABC /* edit_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit_white.png; sourceTree = "<group>"; };
 		2550468D1F94ED9900A83C2F /* address_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = address_icon.png; sourceTree = "<group>"; };
+		256645E11FD00DC7002CC4A6 /* Edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Edit.png; sourceTree = "<group>"; };
+		2578A86B1FC2E243004D555A /* delete_black_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete_black_icon.png; sourceTree = "<group>"; };
+		2592A7DE1FEBE9D0007F42B5 /* FindHospitalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindHospitalView.swift; sourceTree = "<group>"; };
 		25A2901F1FB428FA005BFED2 /* address_icon_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = address_icon_black.png; sourceTree = "<group>"; };
 		25A290211FB429B5005BFED2 /* done.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = done.png; sourceTree = "<group>"; };
 		25A290221FB42A6A005BFED2 /* pendingColored.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pendingColored.png; sourceTree = "<group>"; };
@@ -885,7 +895,11 @@
 		66EA8E001E275A4000646797 /* Image For Support */ = {
 			isa = PBXGroup;
 			children = (
+				254DEBDA200372B600106ABC /* edit_white.png */,
+				2578A86B1FC2E243004D555A /* delete_black_icon.png */,
 				25A290221FB42A6A005BFED2 /* pendingColored.png */,
+				2517F20B1FCE9AAD007CE4D3 /* community.png */,
+				256645E11FD00DC7002CC4A6 /* Edit.png */,
 				25A290211FB429B5005BFED2 /* done.png */,
 				25A290231FB432C9005BFED2 /* drop_black.png */,
 				251993C01F5E7EA000E9BFC2 /* GreenBar.png */,
@@ -1011,6 +1025,7 @@
 			isa = PBXGroup;
 			children = (
 				ED11189E1E61983F003EA467 /* ShowHospitalInMapView.swift */,
+				2592A7DE1FEBE9D0007F42B5 /* FindHospitalView.swift */,
 			);
 			name = " Map Address";
 			sourceTree = "<group>";
@@ -1157,6 +1172,7 @@
 				665111C81E66E3FF00A6AFAA /* MyDonorCell.xib in Resources */,
 				66C5782E1E37799F00B235F4 /* seguisbi.ttf in Resources */,
 				66EA8E141E275A4000646797 /* delete_icon.png in Resources */,
+				254DEBDB200372B600106ABC /* edit_white.png in Resources */,
 				66BE28C61EE9319B0012E4FD /* Filter Filled.png in Resources */,
 				66C578271E37799F00B235F4 /* segoeuib.ttf in Resources */,
 				251993C31F5E7EA700E9BFC2 /* RedBar.png in Resources */,
@@ -1174,11 +1190,13 @@
 				25A290291FB4370F005BFED2 /* arrow_right.png in Resources */,
 				6633E9111E8908680008C730 /* InventoryCell.xib in Resources */,
 				66EA8E1C1E275A4000646797 /* person.png in Resources */,
+				256645E21FD00DD0002CC4A6 /* Edit.png in Resources */,
 				25A290271FB434DC005BFED2 /* address_icon_black.png in Resources */,
 				18C04FCD1E86CD43000B15EA /* Unchecked Checkbox-32.png in Resources */,
 				2550468E1F94ED9C00A83C2F /* address_icon.png in Resources */,
 				66EA8E161E275A4000646797 /* drop_red.png in Resources */,
 				663F67621EDFF27900D5C49E /* Localizable.strings in Resources */,
+				2517F20C1FCE9AD2007CE4D3 /* community.png in Resources */,
 				6633E90A1E88F7F50008C730 /* InventoryTableCell.xib in Resources */,
 				18F3AD691E8A66B10086274E /* List-32.png in Resources */,
 				25A290261FB434D7005BFED2 /* pendingColored.png in Resources */,
@@ -1196,6 +1214,7 @@
 				66EA8E1F1E275A4000646797 /* user_noti.png in Resources */,
 				18C04FC71E8541B8000B15EA /* Filter32.png in Resources */,
 				66C5782F1E37799F00B235F4 /* seguisli.ttf in Resources */,
+				2578A86C1FC2E27D004D555A /* delete_black_icon.png in Resources */,
 				66EA8E171E275A4000646797 /* e-mail-envelope.png in Resources */,
 				663D6FF01E7003B900EB2CD8 /* HOME_SCREEN_G.png in Resources */,
 				25A290251FB434D2005BFED2 /* done.png in Resources */,
@@ -1262,9 +1281,36 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-lifeline/Pods-lifeline-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/APESuperHUD/APESuperHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/APESuperHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1277,13 +1323,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-lifelineTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		36B16FC17ABE0919F461D547 /* [CP] Embed Pods Frameworks */ = {
@@ -1322,13 +1371,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-lifeline-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9D20F5EAE907225BD5714693 /* [CP] Check Pods Manifest.lock */ = {
@@ -1337,13 +1389,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-lifelineUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BAE5330AC3598A8A0F7CD6B2 /* [CP] Copy Pods Resources */ = {
@@ -1352,9 +1407,18 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-lifeline/Pods-lifeline-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlacePicker/Frameworks/GooglePlacePicker.framework/Resources/GooglePlacePicker.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlacePicker.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1418,6 +1482,7 @@
 				25B846811F8DEC3E002AF4B4 /* MyDonationView.swift in Sources */,
 				6633E90C1E88F89F0008C730 /* InventoryTableCell.swift in Sources */,
 				1841C6B51E698B39006F14B2 /* IndividualConfirmDonateInteractor.swift in Sources */,
+				2592A7DF1FEBE9D0007F42B5 /* FindHospitalView.swift in Sources */,
 				66EA8E2E1E27A36900646797 /* SignUpInteractor.swift in Sources */,
 				18C04FC91E85450C000B15EA /* FilterChecks.swift in Sources */,
 				66C4E6851E372AAA00526C1D /* FAQView.swift in Sources */,

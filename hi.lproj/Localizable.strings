@@ -173,3 +173,7 @@ MAIL_TITLE_FOR_CAMP = "LifeLine रक्त कैंप";
 NO_NOTIFICATIONS = "कोई सूचनाएं नहीं";
 MY_REQUEST = "मेरे निवेदन";
 MY_DONATION = "मेरे दान";
+ALREADY_VOLUNTEERED = "आप पहले से ही वालंटियर कर चुके है, आप अपनी जानकारी बदल सकते है";
+DELETE_TITLE = "सूचना हटाएं";
+DELETE_MESSAGE = "क्या आप वाकई इस सूचना को हटाना चाहते हैं?";
+DONATION_CONFIRMED = "दान की सफलतापूर्वक पुष्टि हो गयी है";

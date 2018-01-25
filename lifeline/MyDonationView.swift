@@ -20,6 +20,7 @@ class MyDonationView: UIViewController {
         tblView.isHidden = true
         lblNoRecordFound.isHidden = true
         self.MyDonationServiceCall()
+        NotificationCenter.default.addObserver(self, selector: #selector(PushNotificationView(_:)), name: NSNotification.Name(rawValue: "PushNotification"), object: nil)
     }
     //MARK:- MyRequestServiceCall
     func MyDonationServiceCall()
@@ -29,6 +30,18 @@ class MyDonationView: UIViewController {
         HudBar.sharedInstance.showHudWithMessage(message: MultiLanguage.getLanguageUsingKey("TOAST_LOADING_MESSAGE"), view: self.view)
         MyRequestInteractor.SharedInstance.delegate = self
         MyRequestInteractor.SharedInstance.MyDonationServiceCall(loginID: LoginID)
+    }
+    //MARK:- PushNotificationView
+    func PushNotificationView(_ notification: NSNotification)
+    {
+        let dict = notification.object as! Dictionary<String, Any>
+        
+        let notificationView:NotificationView = self.storyboard?.instantiateViewController(withIdentifier: "NotificationView") as! NotificationView
+        notificationView.UserJSON = dict
+        notificationView.modalPresentationStyle = .currentContext
+        notificationView.modalTransitionStyle = .coverVertical
+        notificationView.view.backgroundColor = UIColor.clear
+        self.present(notificationView, animated: true, completion: nil)
     }
 }
 extension MyDonationView : UITableViewDelegate,UITableViewDataSource
@@ -59,7 +72,7 @@ extension MyDonationView : UITableViewDelegate,UITableViewDataSource
         {
             cell?.lblName.text = myDonationDetail["RequestDetails"]["RequestDetail"]["PatientName"].string
             cell?.lblBloodGroup.text = myDonationDetail["RequestDetails"]["RequestDetail"]["bloodgroup"].string
-            cell?.lblRequestDate.text = Util.SharedInstance.dateChangeForGetProfileDOB(dateString: myDonationDetail["RequestDetails"]["RequestDetail"]["WhenNeeded"].string!)
+            cell?.lblRequestDate.text = Util.SharedInstance.dateChangeForGetRequestDOB(dateString: myDonationDetail["RequestDetails"]["RequestDetail"]["WhenNeeded"].string!)
             cell?.imgBloodGroup.image = UIImage(named: "drop_black.png")
             cell?.imgCamp.image = UIImage(named: "Individual_Single_icon")
             cell?.lblCampHeightConstraint.constant = 0
@@ -67,10 +80,11 @@ extension MyDonationView : UITableViewDelegate,UITableViewDataSource
         }
         else if String(describing : myDonationDetail["CampDetails"]) != "null"  // Camp Details
         {
+            print("Camp Deatils : \(String(describing : myDonationDetail["CampDetails"]))")
             cell?.lblName.text = myDonationDetail["CampDetails"]["CampDetail"]["Name"].string
             cell?.imgBloodGroup.image = UIImage(named: "address_icon_black.png")
             cell?.lblBloodGroup.text = myDonationDetail["CampDetails"]["CampDetail"]["City"].string
-            cell?.lblRequestDate.text = "\(Util.SharedInstance.dateChangeForInternal(dateString: myDonationDetail["CampDetails"]["CampDetail"]["FromDate"].string!)) TO \(Util.SharedInstance.dateChangeForInternal(dateString:  myDonationDetail["CampDetails"]["CampDetail"]["FromDate"].string!))"
+            cell?.lblRequestDate.text = "\(Util.SharedInstance.dateChangeForMyDonation(dateString: myDonationDetail["CampDetails"]["CampDetail"]["FromDate"].string!)) TO \(Util.SharedInstance.dateChangeForMyDonation(dateString:  myDonationDetail["CampDetails"]["CampDetail"]["ToDate"].string!))"
             cell?.imgCamp.image = UIImage(named: "Camp_Single_icon")
             cell?.lblCampHeightConstraint.constant = 21
             cell?.lblCamp.text = "Camp"
@@ -91,6 +105,9 @@ extension MyDonationView : UITableViewDelegate,UITableViewDataSource
         {
             let indconfirmDonate:IndividualConfirmDonate = self.storyboard?.instantiateViewController(withIdentifier: "IndividualConfirmDonate") as! IndividualConfirmDonate
             indconfirmDonate.iID = String(describing : myDonationArray[indexPath.row]["RequestDetails"]["RequestDetail"]["RequestID"])
+            MarkerData.SharedInstance.oneRequestOfDonate["CID"] = String(describing : myDonationArray[indexPath.row]["RequestDetails"]["RequestDetail"]["RequestID"])
+            MarkerData.SharedInstance.oneRequestOfDonate["CTypeOfOrg"] = "3"
+            MarkerData.SharedInstance.isIndividualAPN = false
             let rootView:UINavigationController = UINavigationController(rootViewController: indconfirmDonate)
             self.present(rootView, animated: true, completion: nil)
         }
@@ -98,6 +115,7 @@ extension MyDonationView : UITableViewDelegate,UITableViewDataSource
         {
             let confirmDonate:ConfirmDonate = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmDonate") as! ConfirmDonate
             confirmDonate.ID = String(describing : myDonationArray[indexPath.row]["CampDetails"]["CampDetail"]["CampaignID"])
+            MarkerData.SharedInstance.markerData["ID"] = String(describing : myDonationArray[indexPath.row]["CampDetails"]["CampDetail"]["CampaignID"])
             let rootView:UINavigationController = UINavigationController(rootViewController: confirmDonate)
             self.present(rootView, animated: true, completion: nil)
         }
@@ -138,7 +156,6 @@ extension MyDonationView:MyRequestProtocol
             self.lblNoRecordFound.isHidden = false
             self.lblNoRecordFound.text = MultiLanguage.getLanguageUsingKey("NO_REQUEST_FOUND")
         }
-        
     }
     func FailMyRequest(Response:String)
     {

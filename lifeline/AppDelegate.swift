@@ -49,8 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         GGLContext.sharedInstance().configureWithError(&configureError)
         
         assert(configureError == nil, "Error configuring Google services: \(String(describing: configureError))")
-        self.checkForViewControllers()
-        
+       
         GMSServices.provideAPIKey("AIzaSyANI0kErKaaeku5vY_pNlGCG7a6LUIhlq8")
         GMSPlacesClient.provideAPIKey("AIzaSyANI0kErKaaeku5vY_pNlGCG7a6LUIhlq8")
         //create the notificationCenter
@@ -90,7 +89,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                     // Notifications not allowed
                 }
             }
-            
             FIRMessaging.messaging().remoteMessageDelegate = self
             
         } else {
@@ -98,11 +96,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             application.registerUserNotificationSettings(settings)
         }
         
-        
         application.registerForRemoteNotifications()
         
         // [END register_for_notifications]
         FIRApp.configure()
+        
+        //MARK:- calling for viewcontroller
+        self.checkForViewControllers()
         
         return true
     }
@@ -273,13 +273,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             messageInDict = userINFO["aps"]["alert"]["body"].string!
         }else if(type == "4")
         {
-            //For Camp and Thank you for after confirm camp request
+            //For Camp request notificaton
             IDFetchString = "gcm.notification.CampaignID"
             titleInDict = userINFO["aps"]["alert"]["title"].string!
             messageInDict = userINFO["aps"]["alert"]["body"].string!
             expireeDate = userINFO["gcm.notification.EndDate"].string
             
-        }else if(type == "3")
+        }else if(type == "6")
+        {
+            //For Thank You notificaton after accept Camp request
+            IDFetchString = "gcm.notification.CampaignID"
+            titleInDict = userINFO["aps"]["alert"]["title"].string!
+            messageInDict = userINFO["aps"]["alert"]["body"].string!
+            expireeDate = userINFO["gcm.notification.EndDate"].string
+        }
+        else if(type == "3")
         {
             //for individual request notificaton
             IDFetchString = "gcm.notification.RequestID"
@@ -287,8 +295,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             messageInDict = userINFO["aps"]["alert"]["body"].string!
             expireeDate = userINFO["gcm.notification.WhenNeeded"].string
             
-        } else if(type == "11" || type == "12") {
-            // Local Notification after accept request
+        } else if(type == "5") {  // previously type was 11 and 12 (type == "11" || type == "12")
+            // Local Notification after accept request / Thank you note
             IDFetchString = String(describing: userINFO["ID"])
             titleInDict = String(describing: userINFO["Title"])
             messageInDict = String(describing: userINFO["Body"])

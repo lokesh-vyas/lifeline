@@ -120,11 +120,9 @@ class SignUpInteractor
                 print(JSONResponse)
                 if(JSONResponse["CustomLoginResponse"]["CustomLoginResponseDetails"]["StatusCode"].int == 0)
                 {
-                    self.delegateLogin?.successCustomLogin(success: true)
                     let autoID:String = JSONResponse["CustomLoginResponse"]["CustomLoginResponseDetails"]["AutoID"].string!
-                    print(autoID)
                     UserDefaults.standard.set(autoID, forKey: StringList.LifeLine_User_ID.rawValue)
-                    
+                    self.delegateLogin?.successCustomLogin(success: true)
                 }
                 else
                 {
