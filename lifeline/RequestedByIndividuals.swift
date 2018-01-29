@@ -124,11 +124,9 @@ class CustomCellRequestDetails: UITableViewCell {
     
     @IBOutlet weak var lblNeedDescription: UILabel!
     @IBOutlet weak var lblUserName: UILabel!
-    @IBOutlet weak var lblContactNumber: UnderlinedLabel!
-   
+    @IBOutlet weak var lblContactNumber: UILabel!
     @IBOutlet weak var btnDonate: UIButton!
     @IBAction func btnDonateTapped(_ sender: Any) {
-    
         
         
 //        let IndConfirmDonate = self.storyboard?.instantiateViewController(withIdentifier: "IndividualConfirmDonate") as! IndividualConfirmDonate

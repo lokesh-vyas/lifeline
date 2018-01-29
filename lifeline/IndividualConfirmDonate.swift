@@ -16,14 +16,13 @@ class IndividualConfirmDonate: UIViewController {
     @IBOutlet weak var lblNoOfUnits: UILabel!
     @IBOutlet weak var lblPatientName: UILabel!
     @IBOutlet weak var lblContactPerson: UILabel!
+    @IBOutlet weak var lblContactNumber: UILabel!
     @IBOutlet weak var lblDoctorName: UILabel!
     @IBOutlet weak var lblAddress: UILabel!
     @IBOutlet weak var lblPersonalAppeal: UILabel!
-    @IBOutlet weak var lblContactNumber: UnderlinedLabel!
-    @IBOutlet weak var lblHospitalName: UILabel!
     var textShareArray = [String]()
     var textAddress = String()
-
+    
     var iID = String()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,8 +120,7 @@ class IndividualConfirmDonate: UIViewController {
         let volunteerBody = ["GetVolunteerListRequest": [
             "RequestDetails": [
                 "LoginID" : "\(UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!)",
-                "RequestID" : iID,
-                "TypeOfOrg" : MarkerData.SharedInstance.markerData["TypeOfOrg"]
+                "RequestID" : iID
             ]]]
         
         ConfirmDonateInteractor.sharedInstance.delegateV = self
@@ -198,8 +196,6 @@ extension IndividualConfirmDonate : IndividualRequestDetailsProtocol {
         
 //        self.lblContactNumber.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["ContactNumber"])
         
-        self.lblHospitalName.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["CollectionCentreName"])
-        
         self.lblAddress.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["AddressLine"]).replacingOccurrences(of: "\n", with: ",").appending(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["City"])).appending(" - ").appending(String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["PINCode"]))
         
         self.lblPersonalAppeal.text = String(describing: jsonArray["GetRequestDetailsResponse"]["ResponseDetails"]["PersonalAppeal"])
@@ -227,17 +223,19 @@ extension IndividualConfirmDonate : getVolunteerProtocol {
             MarkerData.SharedInstance.CommentLines = nil
             
         }else{
-            self.view.makeToast(MultiLanguage.getLanguageUsingKey("ALREADY_VOLUNTEERED"), duration: 3.0, position: .bottom)
             let tempStr = String(describing: jsonArray["GetVolunteerListsReponse"]["ResponseDetails"]["PreferredDateTime"])
             MarkerData.SharedInstance.PreferredDateTime = Util.SharedInstance.dateChangeForUser(dateString: tempStr)
             MarkerData.SharedInstance.CommentLines = String(describing: jsonArray["GetVolunteerListsReponse"]["ResponseDetails"]["Comment"])
         }
+        
         let alertConfirm = self.storyboard?.instantiateViewController(withIdentifier: "AlertConfirmDonate") as! AlertConfirmDonate
         alertConfirm.checkForDate = "Request"
 
         alertConfirm.modalPresentationStyle = .overCurrentContext
         alertConfirm.view.backgroundColor = UIColor.clear
         present(alertConfirm, animated: true, completion: nil)
+        
+        
     }
     
     func didFailGetVolunteerDetails(Response:String) {

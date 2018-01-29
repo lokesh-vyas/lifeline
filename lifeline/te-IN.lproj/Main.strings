@@ -1,6 +1,6 @@
 
 /* Class = "UIButton"; normalTitle = "When you need"; ObjectID = "0Bx-83-oKh"; */
-"ceP-hR-pYF.normalTitle" = "మీకు అవసరమైనప్పుడు*"; //
+"0Bx-83-oKh.normalTitle" = "మీకు అవసరమైనప్పుడు"; //
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "0Nt-hg-fuj"; */
 "0Nt-hg-fuj.text" = "లేబుల్";
@@ -26,14 +26,8 @@
 /* Class = "UITextField"; placeholder = "Address"; ObjectID = "2nl-QR-EZ3"; */
 "2nl-QR-EZ3.placeholder" = "చిరునామా";
 
-/* Class = "UILabel"; text = "FAQ"; ObjectID = "2om-Tk-ufr";
- "2om-Tk-ufr.text" = "FAQ"; */
-
-/* Class = "UILabel"; text = "FAQ"; ObjectID = "BhS-up-8a6"; */
-"BhS-up-8a6.text" = "FAQ";
-
-/* Class = "UILabel"; text = "Notification"; ObjectID = "4Pf-r9-aWa"; */
-"4Pf-r9-aWa.text" = "ప్రకటనలు";
+/* Class = "UILabel"; text = "FAQ"; ObjectID = "2om-Tk-ufr"; */
+"2om-Tk-ufr.text" = "FAQ";
 
 /* Class = "UILabel"; text = "Message"; ObjectID = "35J-bo-gCo"; */
 "35J-bo-gCo.text" = "సందేశం";
@@ -57,7 +51,7 @@
 "7gk-dR-1wU.normalTitle" = "రద్దు";
 
 /* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "7uz-ZI-071"; */
-"7uz-ZI-071.normalTitle" = "తొలగించు";
+"7uz-ZI-071.normalTitle" = "రద్దు";
 
 /* Class = "UILabel"; text = "To Date"; ObjectID = "8FA-h0-4jo"; */
 "8FA-h0-4jo.text" = "తేదీ";
@@ -88,9 +82,6 @@
 
 /* Class = "UILabel"; text = "Personal Appeal"; ObjectID = "BTI-r6-nqP"; */
 "BTI-r6-nqP.text" = "వ్యక్తిగత అభ్యర్ధన";
-
-/* Class = "UILabel"; text = "Personal Appeal"; ObjectID = "BTI-r6-nqP"; */
-"t4e-xi-uT4.text" = "వ్యక్తిగత అభ్యర్ధన";
 
 /* Class = "UILabel"; text = "Comment"; ObjectID = "Bk6-th-Ic9"; */
 "Bk6-th-Ic9.text" = "వ్యాఖ్య";
@@ -126,7 +117,7 @@
 "E8d-f5-n2I.text" = "స్వచ్ఛంద విరాళం";
 
 /* Class = "UILabel"; text = "Work Address  (Optional)"; ObjectID = "E9s-kv-u2m"; */
-"E9s-kv-u2m.text" = "కార్యాలయ చిరునామా";
+"E9s-kv-u2m.text" = "కార్యాలయ చిరునామా (ఐచ్ఛికం)";
 
 /* Class = "UINavigationItem"; title = "Requests"; ObjectID = "EoX-cx-AJD"; */
 "EoX-cx-AJD.title" = "అభ్యర్థనలు";
@@ -183,7 +174,7 @@
 "JUb-lS-sY1.text" = "హాస్పిటల్స్";
 
 /* Class = "UITextField"; placeholder = "Hospital / Bloodbank Name*"; ObjectID = "KSd-oU-hqN"; */
-"Hsd-ec-ODI.placeholder" = "హాస్పిటల్ / బ్లడ్బ్యాంక్ పేరు *";
+"KSd-oU-hqN.placeholder" = "హాస్పిటల్ / బ్లడ్బ్యాంక్ పేరు *";
 
 /* Class = "UITextField"; placeholder = "Age*"; ObjectID = "KjB-od-Qw9"; */
 "KjB-od-Qw9.placeholder" = "వయస్సు *";
@@ -195,7 +186,7 @@
 "Mkw-2o-jrh.normalTitle" = "సమర్పించండి";
 
 /* Class = "UITextField"; placeholder = "Contact Person*"; ObjectID = "Nch-d1-2WF"; */
-"Zxf-zn-4Og.placeholder" = "సంప్రదించవలసిన వ్యక్తి*";
+"Nch-d1-2WF.placeholder" = "సంప్రదించవలసిన వ్యక్తి";
 
 /* Class = "UIButton"; normalTitle = "Donate"; ObjectID = "Ni4-4p-kcZ"; */
 "Ni4-4p-kcZ.normalTitle" = "దానం";
@@ -207,7 +198,7 @@
 "OD0-K7-jld.text" = " ";
 
 /* Class = "UILabel"; text = "Hospital/Blood Bank"; ObjectID = "OEe-sP-tQY"; */
-"OEe-sP-tQY.text" = "రక్త దానం క్యాంప్";
+"OEe-sP-tQY.text" = "హాస్పిటల్ / బ్లడ్ బ్యాంక్";
 
 /* Class = "UIButton"; normalTitle = "Confirm Donate"; ObjectID = "OQa-en-FfI"; */
 "OQa-en-FfI.normalTitle" = "ధృవీకరించండి";
@@ -225,16 +216,13 @@
 "QBc-dm-Fkm.text" = "దానం";
 
 /* Class = "UITextField"; placeholder = "City*"; ObjectID = "QIu-Tl-LdC"; */
-"Tcw-g0-RdN.placeholder" = "నగరం*";
+"QIu-Tl-LdC.placeholder" = "నగరం*";
 
 /* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "QQi-U1-6Ua"; */
 "QQi-U1-6Ua.normalTitle" = "రద్దు";
 
 /* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "Qh4-My-GGa"; */
 "Qh4-My-GGa.normalTitle" = "రద్దు";
-
-/* Class = "UITextField"; placeholder = "PIN Code"; ObjectID = "5d1-LB-2PY"; */
-"ydk-rB-cVb.placeholder" = "ಪಿನ್ ಕೋಡ್";
 
 /* Class = "UILabel"; text = "DONATE"; ObjectID = "Qk8-jp-aa4"; */
 "Qk8-jp-aa4.text" = "దానం";
@@ -255,7 +243,7 @@
 "TDP-kr-M3g.text" = "మా ప్రొఫైల్";
 
 /* Class = "UILabel"; text = "Request Information"; ObjectID = "TIM-UO-sld"; */
-"18F-Eu-VJg.text" = "సమాచారం అభ్యర్థించండి";
+"TIM-UO-sld.text" = "సమాచారం అభ్యర్థించండి";
 
 /* Class = "UILabel"; text = " "; ObjectID = "TiA-e2-DmS"; */
 "TiA-e2-DmS.text" = " ";
@@ -267,13 +255,13 @@
 "Tym-tX-1v1.text" = "N/A";
 
 /* Class = "UIButton"; normalTitle = "My Requests"; ObjectID = "UFu-Km-CcU"; */
-"UFu-Km-CcU.normalTitle" = "అభ్యర్థనలు";
+"UFu-Km-CcU.normalTitle" = "మా అభ్యర్థనలు";
 
 /* Class = "UIButton"; normalTitle = "What you need"; ObjectID = "UM5-pu-tKE"; */
-"2RK-gI-Dew.normalTitle" = "మీకు ఏమ్ కావాలి*";
+"UM5-pu-tKE.normalTitle" = "మీకు ఏమ్ కావాలి";
 
 /* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "Uj6-bI-PvC"; */
-"Uj6-bI-PvC.normalTitle" = "తొలగించు";
+"Uj6-bI-PvC.normalTitle" = "రద్దు";
 
 /* Class = "UITextField"; placeholder = "Email"; ObjectID = "Upk-Lo-0c5"; */
 "Upk-Lo-0c5.placeholder" = "ఇమెయిల్";
@@ -288,10 +276,10 @@
 "W8n-35-N6l.text" = "హాస్పిటల్ / బ్లడ్ బ్యాంక్";
 
 /* Class = "UILabel"; text = "Hospital Address"; ObjectID = "W8x-Pd-mOF"; */
-"qm5-1X-lsJ.text" = "హాస్పిటల్ చిరునామా";
+"W8x-Pd-mOF.text" = "హాస్పిటల్ చిరునామా";
 
 /* Class = "UITextField"; placeholder = "Address*"; ObjectID = "WcT-Xy-gA4"; */
-"eSG-2H-vI1.placeholder" = "చిరునామా *";
+"WcT-Xy-gA4.placeholder" = "చిరునామా *";
 
 /* Class = "UILabel"; text = " "; ObjectID = "XBO-H5-byp"; */
 "XBO-H5-byp.text" = " ";
@@ -300,10 +288,10 @@
 "XUm-28-Fwo.text" = "మీ స్థానం లో అవసరం లేదు";
 
 /* Class = "UILabel"; text = "Hospital/Blood Bank Info"; ObjectID = "Xaa-Dv-hpJ"; */
-"yGn-NC-CJe.text" = "హాస్పిటల్ / బ్లడ్ బ్యాంకు సమాచారం";
+"Xaa-Dv-hpJ.text" = "హాస్పిటల్ / బ్లడ్ బ్యాంకు సమాచారం";
 
 /* Class = "UITextField"; placeholder = "Landmark"; ObjectID = "Y6Z-28-wV2"; */
-"BJe-zX-WTe.placeholder" = "మైలురాయి";
+"Y6Z-28-wV2.placeholder" = "మైలురాయి";
 
 /* Class = "UITextField"; placeholder = "Confirm Password*"; ObjectID = "Yaj-Vs-nPP"; */
 "Yaj-Vs-nPP.placeholder" = "పాస్వర్డ్ను నిర్ధారించండి *";
@@ -333,7 +321,7 @@
 "cq5-If-EwU.text" = "కృతజ్ఞతా పత్రం ";
 
 /* Class = "UITextField"; placeholder = "Contact Number(Blood Bank/Hospital)*"; ObjectID = "cwc-9E-9b3"; */
-"0JA-QY-cnI.placeholder" = "సంప్రదింపు ఫోన్ సంఖ్య(బ్లడ్బ్యాంక్/హాస్పిటల్)*";
+"cwc-9E-9b3.placeholder" = "సంప్రదింపు ఫోన్ సంఖ్య (బ్లడ్ బ్యాంక్ / హాస్పిటల్) *";
 
 /* Class = "UILabel"; text = " "; ObjectID = "dXV-5z-WbE"; */
 "dXV-5z-WbE.text" = " ";
@@ -357,7 +345,7 @@
 "u3p-5p-Lik.text" = "భాష";
 
 /* Class = "UILabel"; text = "Post Request on Social Media"; ObjectID = "gii-AP-mNZ"; */
-"gHY-Is-iKa.text" = "సోషల్ మీడియాలో పోస్ట్ అభ్యర్ధన";
+"gii-AP-mNZ.text" = "సోషల్ మీడియాలో పోస్ట్ అభ్యర్ధన";
 
 /* Class = "UILabel"; text = "Email ID"; ObjectID = "gop-6F-5D2"; */
 "gop-6F-5D2.text" = "ఇమెయిల్ ఐడి";
@@ -366,7 +354,7 @@
 "goq-ur-qEv.normalTitle" = "పుట్టిన తేది";
 
 /* Class = "UISearchBar"; placeholder = "Blood Donate Places"; ObjectID = "heb-vv-Zvc"; */
-"heb-vv-Zvc.placeholder" = "ఇక్కడ శోధించండి";
+"heb-vv-Zvc.placeholder" = "రక్తం దానం స్థలాలు";
 
 /* Class = "UISearchBar"; heb-vv-Zvc.scopeButtonTitles[0] = "Title"; ObjectID = "heb-vv-Zvc"; */
 "heb-vv-Zvc.scopeButtonTitles[0]" = "టైటిల్";
@@ -386,14 +374,11 @@
 /* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "hmq-e0-7Ay"; */
 "hmq-e0-7Ay.normalTitle" = "సమర్పించండి";
 
-/* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "hmq-e0-7Ay"; */
-"ncG-Ct-HVx.normalTitle" = "సమర్పించండి";
-
 /* Class = "UILabel"; text = "Doctor Name"; ObjectID = "iO2-Uh-7Rn"; */
 "iO2-Uh-7Rn.text" = "డాక్టర్ పేరు";
 
 /* Class = "UITextField"; placeholder = "Patient Name*"; ObjectID = "iUe-dH-BLt"; */
-"4l2-8I-hFs.placeholder" = "రోగి పేరు *";
+"iUe-dH-BLt.placeholder" = "రోగి పేరు *";
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "idj-bd-OTX"; */
 "idj-bd-OTX.placeholder" = "పాస్వర్డ్";
@@ -414,16 +399,13 @@
 "jMu-Vq-gas.text" = "తేదీ కు:";
 
 /* Class = "UITextField"; placeholder = "Contact Number*"; ObjectID = "jV1-E5-yHu"; */
-"jV1-E5-yHu.placeholder" = "సంప్రదింపు ఫోన్ సంఖ్య*";
-
-/* Class = "UITextField"; placeholder = "Contact Number*"; ObjectID = "jV1-E5-yHu"; */
-"9vu-xS-nDx.placeholder" = "సంప్రదింపు ఫోన్ సంఖ్య ";
+"jV1-E5-yHu.placeholder" = "సంప్రదింపు ఫోన్ సంఖ్య ";
 
 /* Class = "UILabel"; text = "toDate"; ObjectID = "jqt-3W-bJF"; */
 "jqt-3W-bJF.text" = "తేదీ కు:";
 
 /* Class = "UINavigationItem"; title = "Donated Places List"; ObjectID = "jxV-yA-Awc"; */
-"jxV-yA-Awc.title" = "దానం";
+"jxV-yA-Awc.title" = "విరాళమిచ్చిన స్థలాల జాబితా:";
 
 /* Class = "UINavigationItem"; title = "Sign Up"; ObjectID = "kYE-Md-EnF"; */
 "kYE-Md-EnF.title" = "సభ్యత్వం కోసం నమోదు చేయండి";
@@ -453,10 +435,10 @@
 "nt4-Vr-tDg.text" = "ధృవీకరించండి";
 
 /* Class = "UILabel"; text = "Patient Information"; ObjectID = "oXl-dv-G7c"; */
-"hoN-A8-be8.text" = "రోగి సమాచారం";
+"oXl-dv-G7c.text" = "రోగి సమాచారం";
 
 /* Class = "UINavigationItem"; title = "Request"; ObjectID = "p7U-2F-YDD"; */
-"4bK-Xv-ZIb.title" = "అభ్యర్థన";
+"p7U-2F-YDD.title" = "అభ్యర్థన";
 
 /* Class = "UILabel"; text = " "; ObjectID = "pgT-Ly-1Xi"; */
 "pgT-Ly-1Xi.text" = " ";
@@ -474,7 +456,7 @@
 "sIG-5i-UxH.title" = "LifeLine";
 
 /* Class = "UILabel"; text = "Home Address (Optional)"; ObjectID = "sIu-Bx-mgj"; */
-"sIu-Bx-mgj.text" = "ఇంటి చిరునామా";
+"sIu-Bx-mgj.text" = "ఇంటి చిరునామా (ఐచ్ఛికం)";
 
 /* Class = "UILabel"; text = " "; ObjectID = "sSJ-hn-iGc"; */
 "sSJ-hn-iGc.text" = " ";
@@ -519,13 +501,13 @@
 "viO-4Q-oHF.normalTitle" = "ధృవీకరించండి";
 
 /* Class = "UIButton"; normalTitle = "Blood Group"; ObjectID = "vzg-tf-OZl"; */
-"HpA-vy-Jvx.normalTitle" = "రక్తపు గ్రూపు*";
+"vzg-tf-OZl.normalTitle" = "రక్తపు గ్రూపు";
 
 /* Class = "UITextField"; placeholder = "Doctor Name*"; ObjectID = "wG5-tu-clk"; */
-"AsR-c5-hA7.placeholder" = "డాక్టర్ పేరు *";
+"wG5-tu-clk.placeholder" = "డాక్టర్ పేరు *";
 
 /* Class = "UIButton"; normalTitle = "Units"; ObjectID = "wge-wf-c4a"; */
-"VdP-Qg-PKb.normalTitle" = "యూనిట్లు*";
+"wge-wf-c4a.normalTitle" = "యూనిట్లు";
 
 /* Class = "UILabel"; text = "Campaigns"; ObjectID = "woo-lf-VrF"; */
 "woo-lf-VrF.text" = "ప్రచారాలు";
@@ -547,12 +529,3 @@
 
 /* Class = "UINavigationItem"; title = "Select Language"; ObjectID = "pGZ-xa-ljc"; */
 "pGZ-xa-ljc.title" = "భాషను ఎంచుకోండి";
-
-/* Class = "UINavigationItem"; title = "Address"; ObjectID = "mKU-Xi-pJj"; */
-"mKU-Xi-pJj.title" = "అభ్యర్థన";
-
-/* Class = "UILabel"; text = "Notification"; ObjectID = "DnE-7x-JRj"; */
-"DnE-7x-JRj.text" = "ప్రకటనలు";
-
-/* Class = "UINavigationItem"; title = "Address"; ObjectID = "DnF-yV-0kX"; */
-"DnF-yV-0kX.title" = "ప్రకటనలు";

@@ -53,12 +53,14 @@ class BackgroundMapViewController: UIViewController, CAAnimationDelegate {
     // Start animating the map when it becomes visible.
     startAnimatingMap()
 
-    // Restart the animation whenever the 'reduce motion' setting changes. This will allow the
-    // animation code to adjust for the setting. See the implementation of startAnimating() for
-    // more details.
-    let notificationName = NSNotification.Name.UIAccessibilityReduceMotionStatusDidChange
-    reduceMotionChanged = NotificationObserver(name: notificationName, target: self,
-                                               action: type(of: self).restartAnimation)
+    if #available(iOS 8.0, *) {
+      // Restart the animation whenever the 'reduce motion' setting changes. This will allow the
+      // animation code to adjust for the setting. See the implementation of startAnimating() for
+      // more details.
+      let notificationName = NSNotification.Name.UIAccessibilityReduceMotionStatusDidChange
+      reduceMotionChanged = NotificationObserver(name: notificationName, target: self,
+                                                 action: type(of: self).restartAnimation)
+    }
 
     if #available(iOS 9.0, *) {
       // Much like 'reduce motion', detect changes in 'lower power mode' and restart the animation.
@@ -104,9 +106,11 @@ class BackgroundMapViewController: UIViewController, CAAnimationDelegate {
   }
 
   private func startAnimatingMap() {
-    // If 'reduce motion' is enabled, don't start the animation.
-    if UIAccessibilityIsReduceMotionEnabled() {
-      return
+    if #available(iOS 8.0, *) {
+      // If 'reduce motion' is enabled, don't start the animation.
+      if UIAccessibilityIsReduceMotionEnabled() {
+        return
+      }
     }
 
     if #available(iOS 9.0, *) {

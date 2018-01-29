@@ -16,6 +16,7 @@ protocol HospitalListProtocol
 }
 class HospitalListModel
 {
+ 
     var CentreID:String = ""
     var HospitalName:String? = nil
     var HospitalContactNumber:Int? = nil

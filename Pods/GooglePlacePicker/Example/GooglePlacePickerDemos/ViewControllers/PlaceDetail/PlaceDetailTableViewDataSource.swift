@@ -44,6 +44,15 @@ class PlaceDetailTableViewDataSource: NSObject, UITableViewDataSource, UITableVi
   private let noneText = NSLocalizedString("PlaceDetails.MissingValue",
                                            comment: "The value of a property which is missing")
   private let tableView: UITableView
+  // Additional margin padding to use during layout. This is 0 for iOS versions 8.0 and above, while
+  // on iOS 7 this needs to be hardcoded to 8 to ensure the correct layout.
+  private let additionalMarginPadding: CGFloat = {
+    if #available(iOS 8.0, *) {
+      return 0
+    } else {
+      return 8
+    }
+  }()
 
   var compactHeader = false {
     didSet {
@@ -192,7 +201,22 @@ class PlaceDetailTableViewDataSource: NSObject, UITableViewDataSource, UITableVi
       return compactHeader ? 0 : 20
     }
     else {
+      if #available(iOS 8.0, *) {
+        return UITableViewAutomaticDimension
+      } else {
+        // This means that on iOS 7 we only get the first line of text.
+        return 55
+      }
+    }
+  }
+
+  /// Only needed for iOS 7, explodes if this is not provided.
+  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    if #available(iOS 8.0, *) {
       return UITableViewAutomaticDimension
+    } else {
+      // This means that on iOS 7 we only get the first line of text.
+      return 65
     }
   }
 
@@ -247,10 +271,10 @@ class PlaceDetailTableViewDataSource: NSObject, UITableViewDataSource, UITableVi
     if offsetNavigationTitle {
       // If so offset it by at most 36 pixels, relative to how much we've scrolled past 160px.
       let offset = max(0, min(36, tableView.contentOffset.y - 160))
-      header.leadingConstraint.constant = offset
+      header.leadingConstraint.constant = offset + additionalMarginPadding
     } else {
       // Otherwise don't offset.
-      header.leadingConstraint.constant = 0
+      header.leadingConstraint.constant = additionalMarginPadding
     }
 
     // Update the compact status.
