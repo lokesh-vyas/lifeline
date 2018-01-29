@@ -144,7 +144,7 @@ extension MyDonationView:MyRequestProtocol
             {
                 self.tblView.isHidden = true
                 self.lblNoRecordFound.isHidden = false
-                self.lblNoRecordFound.text = MultiLanguage.getLanguageUsingKey("TOAST_ACCESS_SERVER_WARNING")
+                self.lblNoRecordFound.text = MultiLanguage.getLanguageUsingKey("NO_DONATION_FOUND")
                 //Here we found nil
                 return
             }
@@ -154,7 +154,7 @@ extension MyDonationView:MyRequestProtocol
         {
             self.tblView.isHidden = true
             self.lblNoRecordFound.isHidden = false
-            self.lblNoRecordFound.text = MultiLanguage.getLanguageUsingKey("NO_REQUEST_FOUND")
+            self.lblNoRecordFound.text = MultiLanguage.getLanguageUsingKey("NO_DONATION_FOUND")
         }
     }
     func FailMyRequest(Response:String)
