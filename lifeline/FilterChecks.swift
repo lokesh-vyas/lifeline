@@ -25,6 +25,9 @@ class SingleTon {
     var individualsOnList : JSON = []
     var hospitalsOnList: JSON = []
     var compaignOnList: JSON = []
+    var cameFromMyCommunity: Bool?
+    //var badgeCount = Int()
+    
     class var SharedInstance : SingleTon {
         struct Shared {
             static let Instance = SingleTon()
@@ -43,7 +46,7 @@ class FilterChecks: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        SingleTon.SharedInstance.appendedMarkers = []
+        //SingleTon.SharedInstance.appendedMarkers = []
         if !(SingleTon.SharedInstance.isCheckedIndividual) {
             btnCheckboxIndividual.setImage(UIImage(named : "Unchecked Checkbox-32.png"), for: .normal)
         }
@@ -86,9 +89,6 @@ class FilterChecks: UIViewController {
             SingleTon.SharedInstance.isCheckedCamp = true
         }
     }
-    
-    
-    
     @IBAction func btnApplyTapped(_ sender: Any) {
         
         //TODO:-
@@ -96,66 +96,14 @@ class FilterChecks: UIViewController {
         print("Apply Tapped..!!")
         
         if SingleTon.SharedInstance.cameFromMarkersList! {
-            
-            var tempDict = [String : Any]()
-            
-            var jDict = SingleTon.SharedInstance.sMarkers//["Data"]
-            
-            SingleTon.SharedInstance.sMarkers = []
-            
-            for (i, _) in jDict.enumerated() {
-                
-                if SingleTon.SharedInstance.isCheckedIndividual || SingleTon.SharedInstance.isCheckedHospital || SingleTon.SharedInstance.isCheckedCamp {
-                if jDict[i]["TypeOfOrg"].int == 1 {
-                    if String(describing: jDict[i]["Individuals"]) != "null" && SingleTon.SharedInstance.isCheckedIndividual { // Individuals
-                        
-                        tempDict["TypeOfOrg"] = jDict[i]["TypeOfOrg"]
-                        tempDict["Name"] = jDict[i]["Name"]
-                        tempDict["WorkingHours"] = jDict[i]["WorkingHours"]
-                        SingleTon.SharedInstance.appendedMarkers.append(tempDict)
-                    }
-                    else if String(describing: jDict[i]["Individuals"]) == "null" && SingleTon.SharedInstance.isCheckedHospital
-                    { // Hospital
-                        
-                        tempDict["TypeOfOrg"] = jDict[i]["TypeOfOrg"]
-                        tempDict["Name"] = jDict[i]["Name"]
-                        tempDict["WorkingHours"] = jDict[i]["WorkingHours"]
-                        SingleTon.SharedInstance.appendedMarkers.append(tempDict)
-                    }
-                    
-                } else if jDict[i]["TypeOfOrg"].int == 2 && SingleTon.SharedInstance.isCheckedCamp { // Camps
-                    
-                    tempDict["FromDate"] = jDict[i]["FromDate"]
-                    tempDict["ToDate"] = jDict[i]["ToDate"]
-                    tempDict["TypeOfOrg"] = jDict[i]["TypeOfOrg"]
-                    tempDict["Name"] = jDict[i]["Name"]
-                    tempDict["WorkingHours"] = jDict[i]["WorkingHours"]
-                    SingleTon.SharedInstance.appendedMarkers.append(tempDict)
-                    }
-                }
-                if !SingleTon.SharedInstance.isCheckedIndividual && !SingleTon.SharedInstance.isCheckedHospital && !SingleTon.SharedInstance.isCheckedCamp {
-                    SingleTon.SharedInstance.sMarkers = []
-                    SingleTon.SharedInstance.appendedMarkers = []
-                    SingleTon.SharedInstance.sMarkers.arrayObject?.removeAll()
-                    SingleTon.SharedInstance.noMarkers = true
-                }
-                else {
-                    
-                    SingleTon.SharedInstance.noMarkers = false
-                }
-                }
-           //SingleTon.SharedInstance.sMarkers = SingleTon.SharedInstance.appendedMarkers
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
-            print("+++ appended Marker Data is \(SingleTon.SharedInstance.appendedMarkers)+++")
-            dismiss(animated: true, completion: nil)
-        } else {
-            let temp = self.storyboard?.instantiateViewController(withIdentifier: "DonateView") as! DonateView
+            let temp = self.storyboard?.instantiateViewController(withIdentifier: "MarkersListView") as! MarkersListView
             let naC = UINavigationController(rootViewController: temp)
             present(naC, animated: true, completion: nil)
-
+            
+        } else {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "DataFilter"), object: nil)
+            dismiss(animated: true, completion: nil)
         }
-        
-        
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
      }
    

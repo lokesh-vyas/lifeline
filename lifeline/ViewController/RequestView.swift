@@ -32,8 +32,7 @@ class RequestView: UIViewController,UITextViewDelegate
     @IBOutlet weak var btnWhatYouNeed: UIButton!
     @IBOutlet weak var imgSocialShare: UIImageView!
     @IBOutlet var scrollViewRequest: UIScrollView!
-    
-    
+
     //MARK:- String
     var datetostring = String()
     var isDoctorName = Bool()
@@ -70,6 +69,7 @@ class RequestView: UIViewController,UITextViewDelegate
         self.txtViewPersonalAppeal.delegate = self
         self.txtViewPersonalAppeal.textColor = UIColor.lightGray
         self.txtViewPersonalAppeal.text = MultiLanguage.getLanguageUsingKey("PERSONAL_APPEAL")
+        RequestViewModel.SharedInstance.Latitude = nil
     }
     
     //MARK:- TextView Placeholder Appear/Disappear
@@ -80,7 +80,6 @@ class RequestView: UIViewController,UITextViewDelegate
             textView.text = nil
             textView.textColor = UIColor.black
         }
-        
     }
     
     func textViewDidEndEditing(_ textView: UITextView)
@@ -90,6 +89,16 @@ class RequestView: UIViewController,UITextViewDelegate
             textView.text = MultiLanguage.getLanguageUsingKey("PERSONAL_APPEAL")
             textView.textColor = UIColor.lightGray
         }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool
+    {
+        if text == "\n"
+        {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
     }
     
     //MARK:- Keyboard Appear/Diappear
@@ -185,7 +194,7 @@ class RequestView: UIViewController,UITextViewDelegate
     @IBAction func switchShareTapped(_ sender: Any)
     {
         if switchForAppeal.isOn {
-            txtViewPersonalAppeal.isEditable = false
+            txtViewPersonalAppeal.isEditable = true
             switchForAppeal.setOn(false, animated:true)
         } else {
             txtViewPersonalAppeal.isEditable = true
@@ -391,6 +400,16 @@ extension RequestView:UITextFieldDelegate
         if textField == txtFieldHospitalBloodBankAddress {
 //            self.view.endEditing(true)
             print("Textfield_Hospital_Blood_Bank_Address")
+            if self.txtFieldHospitalBloodBankAddress == textField || self.txtFieldHospitalBloodBankAddressCity == textField || self.txtFieldHospitalBloodBankAddressPINCode == textField || self.txtFieldHospitalBloodBankAddressLandMark == textField
+            {
+                if RequestViewModel.SharedInstance.Latitude == nil {
+                    self.view.endEditing(true)
+                    self.view.makeToast(MultiLanguage.getLanguageUsingKey("SELECT_LOCATION_STRING"), duration: 2.0, position: .bottom)
+                }
+                else{
+                    //textField.becomeFirstResponder()
+                }
+            }
         }
         
         if self.txtFieldHospitalBloodBankName == textField
@@ -400,18 +419,7 @@ extension RequestView:UITextFieldDelegate
             let navController = UINavigationController(rootViewController: hospitalListView)
             self.navigationController?.present(navController, animated: true, completion: nil)
         }
-        if self.txtFieldHospitalBloodBankAddress == textField || self.txtFieldHospitalBloodBankAddressCity == textField || self.txtFieldHospitalBloodBankAddressPINCode == textField || self.txtFieldHospitalBloodBankAddressLandMark == textField
-        {
-            if RequestViewModel.SharedInstance.Latitude == nil {
-                self.view.endEditing(true)
-                self.view.makeToast(MultiLanguage.getLanguageUsingKey("SELECT_LOCATION_STRING"), duration: 2.0, position: .bottom)
-            }
-            else{
-//                textField.becomeFirstResponder()
-            }
-        }
     }
-    
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         if textField.text?.characters.count == 0 {
@@ -505,7 +513,6 @@ extension RequestView:UITextFieldDelegate
         return true;
     }
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        
         
         if textField == txtFieldHospitalBloodBankAddress {
             self.view.endEditing(true)

@@ -167,6 +167,14 @@ PERSONAL_APPEAL = "अपनी अपील यहाँ लिखें";
 SELECT_LOCATION_STRING  = "कृपया मैप से स्थान का चयन करें";
 DATE_STRING = " जन्म तारीख";
 REQUIREMENT_STRING = "आवश्यकता के लिए";
-
-
-
+CAMP_HEADER = "रक्तदान शिविर";
+HOSPITAL_HEADER = "अस्पताल/ब्लड बैंक";
+MAIL_TITLE_FOR_CAMP = "LifeLine रक्त कैंप";
+NO_NOTIFICATIONS = "कोई सूचनाएं नहीं";
+MY_REQUEST = "मेरे निवेदन";
+MY_DONATION = "मेरे दान";
+ALREADY_VOLUNTEERED = "आप पहले से ही वालंटियर कर चुके है, आप अपनी जानकारी बदल सकते है";
+DELETE_TITLE = "सूचना हटाएं";
+DELETE_MESSAGE = "क्या आप वाकई इस सूचना को हटाना चाहते हैं?";
+DONATION_CONFIRMED = "दान की सफलतापूर्वक पुष्टि हो गयी है";
+SEARCH_AREA = "इस क्षेत्र की खोज करें";

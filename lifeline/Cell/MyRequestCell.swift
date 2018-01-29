@@ -10,13 +10,15 @@ import UIKit
 
 class MyRequestCell: UITableViewCell {
 
+    @IBOutlet weak var viewBackground: UIView!
     @IBOutlet weak var lblPatientName: UILabel!
     @IBOutlet weak var lblBloodGroup: UILabel!
     @IBOutlet weak var lblRequestDate: UILabel!
     @IBOutlet weak var btnCloseRequest: UIButton!
     @IBOutlet weak var btnViewDonars: UIButton!
-    @IBOutlet weak var viewColorForStatus: UIView!
-    @IBOutlet weak var viewCloseButtonRequest: UIImageView!
+    @IBOutlet weak var lblDonorCount: UILabel!
+    @IBOutlet weak var viewDonorCount: UIView!
+    @IBOutlet weak var viewClose: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

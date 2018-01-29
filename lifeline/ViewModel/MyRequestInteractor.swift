@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyJSON
+import Alamofire
 
 //MARK:- MyRequestProtocol
 protocol MyRequestProtocol
@@ -45,6 +46,30 @@ class MyRequestInteractor
                 self.delegate?.FailMyRequest(Response:Response)
         })
     }
+    
+    //MARK:- MyDonationServiceCall
+    func MyDonationServiceCall(loginID:String)
+    {
+        let URL = URLList.MY_DONATION.rawValue
+        let LoginID:String = UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!
+        let parameters : Dictionary = ["MyDonationRequest":["RequestDetails":["LoginID":LoginID]]]
+        NetworkManager.sharedInstance.serviceCallForPOST(url: URL, method: "POST", parameters: parameters,sucess:
+            {
+                (JSONResponse) -> Void in
+                if(JSONResponse["MyRequestsResponse"] != "NULL")
+                {
+                    self.delegate?.SuccessMyRequest(JSONResponse: JSONResponse,Sucess:true)
+                }
+                else
+                {
+                    self.delegate?.SuccessMyRequest(JSONResponse: JSONResponse,Sucess:false)
+                }
+        }, failure:
+            { (Response) -> Void in
+                self.delegate?.FailMyRequest(Response:Response)
+        })
+    }
+    
     //MARK:- MyRequestClose
     func MyRequestClose(params:Dictionary<String,Any>)
     {

@@ -12,7 +12,6 @@ import GooglePlaces
 import GooglePlacePicker
 import CoreLocation
 
-
 //MARK:- MyRequestProtocol
 protocol MyAddressFormat
 {
@@ -45,7 +44,7 @@ class ShowHospitalInMapView: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-          self.navigationController?.completelyTransparentBar()
+        self.navigationController?.completelyTransparentBar()
         self.navigationItem.title = MultiLanguage.getLanguageUsingKey("ADDRESS_MAP_TITLE")
         if CLLocationManager.locationServicesEnabled()
         {
@@ -61,6 +60,7 @@ class ShowHospitalInMapView: UIViewController
         {
             self.openSettingsForDisableMap()
         }
+        
     }
     //MARK:- goToInCurrentLoction
     func goToInCurrentLoction()
@@ -218,7 +218,7 @@ extension ShowHospitalInMapView: GMSAutocompleteViewControllerDelegate {
     }
 }
 extension ShowHospitalInMapView : GMSMapViewDelegate {
-    
+
     public func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition){
     }
     public func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
@@ -230,7 +230,7 @@ extension ShowHospitalInMapView : GMSMapViewDelegate {
     {
         let geocoder = GMSGeocoder()
         geocoder.reverseGeocodeCoordinate(coordinate) { response , error in
-            
+
             //Add this line
             if response == nil
             {
@@ -259,9 +259,9 @@ extension ShowHospitalInMapView : GMSMapViewDelegate {
                 }
                 self.addressFormat.latitude = String(address.coordinate.latitude)
                 self.addressFormat.longitude = String(address.coordinate.longitude)
-                
+
                 let alert = UIAlertController(title: MultiLanguage.getLanguageUsingKey("BTN_SELECT_ADDRESS"), message: self.addressFormat.MessageAddressString, preferredStyle: .alert)
-                
+
                 let saveAction = UIAlertAction(title: MultiLanguage.getLanguageUsingKey("BTN_SELECT"), style: .default, handler:
                     {
                         alert -> Void in
@@ -272,15 +272,13 @@ extension ShowHospitalInMapView : GMSMapViewDelegate {
                         self.delegate?.SuccessMyAddressFormat(AddressResponse: self.addressFormat,checkBool: self.checkBool!)
                         self.dismiss(animated: true, completion: nil)
                 })
-                
+
                 alert.addAction(UIAlertAction(title: MultiLanguage.getLanguageUsingKey("BTN_CANCEL"), style: UIAlertActionStyle.destructive, handler: nil))
-                
+
                 alert.addAction(saveAction)
-                
+
                 self.present(alert, animated: true, completion: nil)
-                
             }
         }
     }
 }
-
