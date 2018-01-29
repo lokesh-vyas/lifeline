@@ -22,7 +22,7 @@ public enum URLList:String
     case PROFILE_REGISTRATION             = "http://api.lifeline.services/services/v1.2/ProfileRegistration"
     case MY_REQUESTS                      = "http://api.lifeline.services/services/MyRequestsV1.1"
     case REQUEST_STATUS_UPDATE            = "http://api.lifeline.services/services/RequestStatusUpdateV1.1"
-    case Device_Token_Reg                = "http://api.lifeline.services/services/DeviceDetailsV1.1"
+    case Device_Token_Reg                 = "http://api.lifeline.services/services/DeviceDetailsV1.1"
     case LIFELINE_Get_Profile             = "http://api.lifeline.services/services/v1.2/GetProfile"
     case LIFELINE_Custom_Sign_Up          = "https://api.lifeline.services/services/v1.2/CustomSignUp"
     case LIFELINE_Change_Password         = "https://api.lifeline.services/services/ChangePasswordV1.1"

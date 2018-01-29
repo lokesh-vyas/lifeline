@@ -26,6 +26,7 @@ TOAST_SETTING_TITLE = "ಸೆಟ್ಟಿಂಗ್ಗಳು";
 TOAST_LOADING_MESSAGE = "ಲೋಡ್ ಆಗುತ್ತಿದೆ...";
 TOAST_SUBMIT_MESSAGE = "ಸಲ್ಲಿಸಲಾಗುತ್ತಿದೆ...";
 TOAST_ALERT_MESSAGE = "ಎಚ್ಚರಿಕೆ";
+SEARCH_AREA = "ಈ ಪ್ರದೇಶವನ್ನು ಹುಡುಕಿ";
 
 TOAST_NO_INTERNET_WARNING = "ಇಂಟರ್ನೆಟ್ ಸಂಪರ್ಕವಿಲ್ಲ, ದಯವಿಟ್ಟು ನಿಮ್ಮ ಇಂಟರ್ನೆಟ್ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ";
 TOAST_ACCESS_SERVER_WARNING = "ಸರ್ವರ್ ಪ್ರವೇಶಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ, ದಯವಿಟ್ಟು ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ";
