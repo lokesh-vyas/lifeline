@@ -65,7 +65,9 @@ class MyDonorView: UIViewController {
                 myRequestArray = JSON.init(arrayLiteral: myRequestArray)
             }
             MyDonorDetailJSON = myRequestArray
-            self.tableViewDonor.reloadData()
+            print("My Donor Count = \(MyDonorDetailJSON.count)")
+            self.tableViewDonor.performSelector(onMainThread: #selector(self.tableViewDonor.reloadData), with: nil, waitUntilDone: true)
+            //self.tableViewDonor.reloadData()
         }
         else{
             self.tableViewDonor.isHidden = true
@@ -102,7 +104,7 @@ class MyDonorView: UIViewController {
 }
 extension MyDonorView:UITableViewDelegate,UITableViewDataSource
 {
-    //MARK: btnCloseTapped
+    //MARK: btnEmailTapped
     func btnEmailTapped(sender:UIButton)
     {
         let buttonRow = sender.tag
@@ -122,7 +124,7 @@ extension MyDonorView:UITableViewDelegate,UITableViewDataSource
             sendMailErrorAlert.show()
         }
     }
-    //MARK: btnCloseTapped
+    //MARK: btnCallTapped
     func btnCallTapped(sender:UIButton)
     {
         let buttonRow = sender.tag

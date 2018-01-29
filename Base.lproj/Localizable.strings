@@ -165,7 +165,7 @@ PLASMA_STRING = "Plasma";
 PLATELETS_STRING = "Platelets";
 ADDRESS_MAP_TITLE = "Address";
 TOAST_LOGIN_MESSAGE = "Logging";
-
+SEARCH_AREA = "SEARCH THIS AREA";
 BTN_YES = "Yes";
 BTN_NO = "No";
 TOAST_SELECT_LANGUAGE_MESSAGE = "Select Language";
@@ -174,7 +174,15 @@ PERSONAL_APPEAL = "Write your appeal here";
 SELECT_LOCATION_STRING  = "Please select location from map";
 DATE_STRING = "DOB";
 REQUIREMENT_STRING = "Requirement for";
-
-
-
-
+CAMP_HEADER = "Blood Donation Camp";
+HOSPITAL_HEADER = "Hospital/BloodBank";
+MAIL_TITLE_FOR_CAMP = "LifeLine Blood Camp";
+NO_NOTIFICATIONS = "No Notifications";
+MY_REQUEST = "My Request";
+MY_DONATION = "My Donation";
+ALREADY_VOLUNTEERED = "You have already volunteered you can edit your details";
+DELETE_TITLE = "Delete Notification";
+DELETE_MESSAGE = "Are you sure you want to delete this notification?";
+DONATION_CONFIRMED = "Donation Confirmed Successfully.";
+SEARCH_AREA = "Search This Area";
+NO_DONATION_FOUND = "No Donation Found";

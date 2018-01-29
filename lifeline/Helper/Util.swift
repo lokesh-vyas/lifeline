@@ -26,6 +26,7 @@ class Util
         dateFormatter.dateFormat = "yyyy-MM-dd"
         return dateFormatter.string(from: dateObj!)
     }
+    
     //MARK:- Current Date For Server
     func currentDateChangeForServer() -> String
     {
@@ -44,6 +45,7 @@ class Util
         let dateObj = dateFormatter.date(from: dateString)
         
         dateFormatter.dateFormat = "dd/MM/yyyy"
+        
         return dateFormatter.string(from: dateObj!)
     }
     //MARK:- date Chenge for DateofBirth for Profile
@@ -58,6 +60,18 @@ class Util
         let stringFromDate = dateFormatter.string(from: date!)
         return stringFromDate
     }
+    //MARK:- date Change for myRequestView
+    func dateChangeForGetRequestDOB(dateString:String) -> String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd+HH:mm"
+        let date = dateFormatter.date(from: dateString)
+        
+        //dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0) as TimeZone!
+        dateFormatter.dateFormat = "dd MMM yyyy"
+        let stringFromDate = dateFormatter.string(from: date!)
+        return stringFromDate
+    }
     //MARK:- date Chenge for server
     func dateChangeForInternal(dateString:String) -> String
     {
@@ -66,7 +80,20 @@ class Util
         let date = dateFormatter.date(from: dateString)
         
         dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0) as TimeZone!
-        dateFormatter.dateFormat = "dd/MM/yyyy"
+        //dateFormatter.dateFormat = "dd/MM/yyyy"
+        dateFormatter.dateFormat = "dd MMM yyyy"
+        let stringFromDate = dateFormatter.string(from: date!)
+        return stringFromDate
+    }
+    
+    //MARK:- date Chenge for server
+    func dateChangeForMyDonation(dateString:String) -> String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let date = dateFormatter.date(from: dateString)
+        
+        dateFormatter.dateFormat = "dd MMM yyyy"
         let stringFromDate = dateFormatter.string(from: date!)
         return stringFromDate
     }
@@ -94,6 +121,7 @@ class Util
         
         dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0) as TimeZone!
         dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
+        //dateFormatter.dateFormat = "dd MMM yyyy"
         return dateFormatter.string(from: dateObj!)
     }
     
@@ -104,7 +132,8 @@ class Util
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let dateObj = dateFormatter.date(from: dateString)
         
-        dateFormatter.dateFormat = "dd/MM/yyyy"
+        //dateFormatter.dateFormat = "dd/MM/yyyy"
+        dateFormatter.dateFormat = "dd MMM yyyy"
         return dateFormatter.string(from: dateObj!)
     }
     
@@ -305,3 +334,67 @@ extension UIView {
     }
 }
 
+class UnderlinedLabel: UILabel {
+    
+    override var text: String? {
+        didSet {
+            guard let text = text else { return }
+            let textRange = NSMakeRange(0, text.characters.count)
+            let attributedText = NSMutableAttributedString(string: text)
+            attributedText.addAttribute(NSUnderlineStyleAttributeName , value: NSUnderlineStyle.styleSingle.rawValue, range: textRange)
+            // Add other attributes if needed
+            self.attributedText = attributedText
+        }
+    }
+}
+extension UIColor
+{
+    public class var myRedColor: UIColor
+    {
+        return UIColor(red: 182.0, green: 11.0, blue: 22.0, alpha: 1.0)
+    }
+    
+    public class var myGreenColor: UIColor
+    {
+        return UIColor(red: 53.0, green: 206.0, blue: 17.0, alpha: 1.0)
+
+    }
+    
+    public class var myBrownColor: UIColor
+    {
+        return UIColor(red: 128.0, green: 64.0, blue: 0.0, alpha: 1.0)
+    }
+    
+}
+
+extension UIView{
+    func completelyTransparentView(){
+        self.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+    }
+}
+
+extension UIImageView {
+    
+    func setRounded() {
+        self.layer.cornerRadius = (self.frame.width / 2)
+        self.layer.masksToBounds = true
+    }
+}
+
+class CheckBox: UIButton {
+    // Images
+    let checkedImage = UIImage(named: "radio_checked")! as UIImage
+    let uncheckedImage = UIImage(named: "radio_unchecked")! as UIImage
+    
+    // Bool property
+    var isChecked: Bool = false {
+        didSet{
+            if isChecked == true {
+                self.setImage(checkedImage, for: UIControlState.normal)
+            } else {
+                self.setImage(uncheckedImage, for: UIControlState.normal)
+            }
+            isChecked = false
+        }
+    }
+}
