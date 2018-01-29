@@ -32,7 +32,6 @@ public enum URLList:String
     case GET_CAMPAGIN_DETAILS             = "http://api.lifeline.services/services/GetCampaignDetailsV1.1"
     case LIFELINE_Get_VolunteerList       = "http://api.lifeline.services/services/GetVolunteerListV1.1"
     case LIFELINE_Get_Inventory           = "http://api.lifeline.services/services/GetInventoryV1.1"
-
     case MY_DONATION                      = "http://api.lifeline.services/services/MyDonationV1.1"
     case LIFELINE_GET_NOTIFICATIONS       = "http://api.lifeline.services/services/GetNotificationsV1.1"
     case LIFELINE_DELETE_NOTIFICATION     = "http://api.lifeline.services/services/DeleteNotificationV1.1"
