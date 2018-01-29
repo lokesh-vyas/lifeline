@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,7 +21,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="147"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d6S-jK-KDb" id="mYA-pS-OwA">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="146.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="147"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6oA-gr-ztm">
@@ -123,7 +122,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="a60-91-ne8">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="watsapp_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="a60-91-ne8">
                                 <rect key="frame" x="0.0" y="3" width="25" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="a60-91-ne8" secondAttribute="height" multiplier="5:4" id="o5b-2R-7aA"/>
@@ -131,7 +130,7 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VKx-DD-HMN">
                                 <rect key="frame" x="246" y="3" width="25" height="20"/>
-                                <state key="normal" backgroundImage="phone_icon.png"/>
+                                <state key="normal" backgroundImage="watsapp_logo.png"/>
                             </button>
                         </subviews>
                         <constraints>
@@ -261,6 +260,6 @@
         <image name="list_menu" width="64" height="91"/>
         <image name="message.png" width="48" height="48"/>
         <image name="person.png" width="48" height="48"/>
-        <image name="phone_icon.png" width="48" height="48"/>
+        <image name="watsapp_logo.png" width="48" height="48"/>
     </resources>
 </document>

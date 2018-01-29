@@ -14,20 +14,20 @@ import Foundation
 class ConfirmDonate: UIViewController {
 
     @IBOutlet weak var lblName: UILabel!
+    @IBOutlet weak var lblContactNumber: UILabel!
     @IBOutlet weak var lblWorkingHours: UILabel!
     @IBOutlet weak var lblAddress: UILabel!
     @IBOutlet weak var btnConfirmDonate: UIButton!
     @IBOutlet weak var Email: UILabel!
     @IBOutlet weak var FromDate: UILabel!
     @IBOutlet weak var ToDate: UILabel!
+    @IBOutlet weak var lblEmailID: UILabel!
     @IBOutlet weak var lblFromDate: UILabel!
     @IBOutlet weak var lblToDate: UILabel!
     @IBOutlet weak var VolunteerDetails: UILabel!
     @IBOutlet weak var lblCampDescription: UILabel!
     @IBOutlet weak var HospitalName: UILabel!
-    @IBOutlet weak var lblEmailID: UnderlinedLabel!
     
-    @IBOutlet weak var lblContactNumber: UnderlinedLabel!
     @IBOutlet var BarBtnHome: UIBarButtonItem!
     @IBOutlet var btnShare: UIBarButtonItem!
     var ID = String()
@@ -36,7 +36,6 @@ class ConfirmDonate: UIViewController {
     var checkForString = String()
     var textShareArray = [String]()
     var textAddress = String()
-    var workingHours = String()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.completelyTransparentBar()
@@ -72,6 +71,7 @@ class ConfirmDonate: UIViewController {
             
             //MARK:- GET COMPAIGN DETAILS
             ConfirmDonateInteractor.sharedInstance.getCompaignDetails(urlString: URLList.GET_CAMPAGIN_DETAILS.rawValue, params: bodyGetCampDetails)
+            
         }
         
         let tapRec = UITapGestureRecognizer(target: self, action: #selector(ConfirmDonate.lblCallTapped(_:)))
@@ -100,7 +100,7 @@ class ConfirmDonate: UIViewController {
             let mailVC = MFMailComposeViewController()
             mailVC.mailComposeDelegate = self
             mailVC.setToRecipients([emailAddress!])
-            mailVC.setSubject(MultiLanguage.getLanguageUsingKey("MAIL_TITLE_FOR_CAMP"))
+            mailVC.setSubject("")
             mailVC.setMessageBody("", isHTML: true)
             self.present(mailVC, animated: true, completion: nil)
         }
@@ -139,6 +139,8 @@ class ConfirmDonate: UIViewController {
         notificationView.view.backgroundColor = UIColor.clear
         self.present(notificationView, animated: true, completion: nil)
     }
+    
+    
     @IBAction func btnBackTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -183,8 +185,7 @@ class ConfirmDonate: UIViewController {
             checkForString = "Campaign"
             if self.lblFromDate.text != nil
             {
-                //let workingHours:String = MarkerData.SharedInstance.markerData["WorkingHours"] as! String
-                let workingHours:String = self.workingHours
+                let workingHours:String = MarkerData.SharedInstance.markerData["WorkingHours"] as! String
                 let fullNameArr : [String] = workingHours.components(separatedBy: "To")
                 var fromTime: String? = fullNameArr[0]
                 var toTimeO: String? = fullNameArr[1]
@@ -201,6 +202,8 @@ class ConfirmDonate: UIViewController {
                 
                 fromDateCamp = Util.SharedInstance.dateChangeForFromDateInCamp(dateString: fromDateWithTime) as NSDate
                 toDateCamp = Util.SharedInstance.dateChangeForFromDateInCamp(dateString: toDateWithTime) as NSDate
+            
+                
             }else
             {
                 checkForString = "CenterID"
@@ -215,8 +218,7 @@ class ConfirmDonate: UIViewController {
         let volDict = ["GetVolunteerListRequest": [
             "RequestDetails": [
                 "LoginID" : "\(UserDefaults.standard.string(forKey: "LifeLine_User_Unique_ID")!)",
-                "\(whichID)":"\(idValue)",
-                "TypeOfOrg" : MarkerData.SharedInstance.markerData["TypeOfOrg"]
+                "\(whichID)":"\(idValue)"
             ]]]
         ConfirmDonateInteractor.sharedInstance.delegateV = self
         ConfirmDonateInteractor.sharedInstance.getVolunteerDetails(urlString: URLList.LIFELINE_Get_VolunteerList.rawValue, params: volDict)
@@ -299,6 +301,7 @@ extension ConfirmDonate : ConfirmDonateProtocol {
         
         let addressLat = (String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["Latitude"]))
         let addressLong = (String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["Longitude"]))
+        //self.textAddress = String(format: "Address:- http://maps.google.com/?saddr=%1.6f,%1.6f", addressLat as! CVarArg, addressLong as! CVarArg)
         self.textAddress = "Location:- https://maps.google.com/?q=@\(addressLat),\(addressLong)"
         let strContact = String(describing: MarkerData.SharedInstance.APNResponse["ContactNumber"]!)
         if strContact == "null"
@@ -311,12 +314,11 @@ extension ConfirmDonate : ConfirmDonateProtocol {
             self.textShareArray.insert("\(MultiLanguage.getLanguageUsingKey("HOSPITAL_CONTACT_NUMBER_LBL")) : \(strContact)", at: 1)
         }
         lblWorkingHours.text = MarkerData.SharedInstance.APNResponse["WorkingHours"] as! String?
-        self.workingHours = lblWorkingHours.text!
         
         self.textShareArray.insert("\(MultiLanguage.getLanguageUsingKey("HOSPITAL_WORKING_HOURS")) : \(lblWorkingHours.text!)", at: 2)
         
         lblFromDate.text = Util.SharedInstance.showingDateToUser(dateString: (String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["FromDate"]).characters.count > 10 ?  String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["FromDate"]).substring(to: 10):String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["FromDate"])))
-    lblToDate.text = Util.SharedInstance.showingDateToUser(dateString: (String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["ToDate"]).characters.count > 10 ?  String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["ToDate"]).substring(to: 10):String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["ToDate"])))
+        lblToDate.text = Util.SharedInstance.showingDateToUser(dateString: (String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["ToDate"]).characters.count > 10 ?  String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["ToDate"]).substring(to: 10):String(describing: jsonArray["CampaignDetailsResponse"]["ResponseDetails"]["ToDate"])))
         
         self.textShareArray.insert("\(MultiLanguage.getLanguageUsingKey("HOSPITAL_NEEDED_BY")) : \(lblToDate.text!)", at: 3)
 
@@ -341,19 +343,19 @@ extension ConfirmDonate : getVolunteerProtocol {
     func didSuccessGetVolunteerDetails(jsonArray: JSON) {
         //TODO:- true= comment & preferred date false= no vol
         print("*****didSuccessGetVolunteerDetails******", jsonArray)
-            if jsonArray["GetVolunteerListsReponse"]["ResponseDetails"]["StatusCode"] == 1 {
+        
+        if jsonArray["GetVolunteerListsReponse"]["ResponseDetails"]["StatusCode"] == 1 {
             
             MarkerData.SharedInstance.PreferredDateTime = nil
             MarkerData.SharedInstance.CommentLines = nil
-            MarkerData.SharedInstance.requestStatus = String(describing: jsonArray["GetVolunteerListsReponse"]["ResponseDetails"]["StatusCode"])
+            
         } else {
-            self.view.makeToast(MultiLanguage.getLanguageUsingKey("ALREADY_VOLUNTEERED"), duration: 3.0, position: .bottom)
             let tempStr = String(describing: jsonArray["GetVolunteerListsReponse"]["ResponseDetails"]["PreferredDateTime"])
             MarkerData.SharedInstance.PreferredDateTime = Util.SharedInstance.dateChangeForUser(dateString: tempStr)
             MarkerData.SharedInstance.CommentLines = String(describing: jsonArray["GetVolunteerListsReponse"]["ResponseDetails"]["Comment"])
+            
         }
-        MarkerData.SharedInstance.isNotIndividualAPN = false
-        MarkerData.SharedInstance.markerData["TypeOfOrg"] = "2"
+        
         let alertConfirm = self.storyboard?.instantiateViewController(withIdentifier: "AlertConfirmDonate") as! AlertConfirmDonate
         alertConfirm.checkForDate = checkForString
         if fromDateCamp != nil
@@ -374,6 +376,7 @@ extension ConfirmDonate : getVolunteerProtocol {
             self.view.makeToast(MultiLanguage.getLanguageUsingKey("TOAST_ACCESS_SERVER_WARNING"), duration: 3.0, position: .bottom)
         }    }
 }
+
 extension ConfirmDonate : MFMailComposeViewControllerDelegate,MFMessageComposeViewControllerDelegate
 {
     // MARK: MFMailComposeViewControllerDelegate Method
@@ -396,6 +399,7 @@ extension ConfirmDonate : MFMailComposeViewControllerDelegate,MFMessageComposeVi
         }
         controller.dismiss(animated: true, completion: nil)
     }
+    
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         self.dismiss(animated: true, completion: nil)
     }

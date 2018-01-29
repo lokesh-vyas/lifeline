@@ -21,8 +21,8 @@
 
 #import <GooglePlaces/GooglePlaces.h>
 
-@interface AutocompleteWithTextFieldController () <UITextFieldDelegate,
-                                                   GMSAutocompleteTableDataSourceDelegate>
+@interface AutocompleteWithTextFieldController ()<UITextFieldDelegate,
+                                                  GMSAutocompleteTableDataSourceDelegate>
 @end
 
 @implementation AutocompleteWithTextFieldController {
@@ -77,14 +77,13 @@
                                              options:0
                                              metrics:nil
                                                views:NSDictionaryOfVariableBindings(_searchField)]];
-  [NSLayoutConstraint constraintWithItem:_searchField
-                               attribute:NSLayoutAttributeTop
-                               relatedBy:NSLayoutRelationEqual
-                                  toItem:self.topLayoutGuide
-                               attribute:NSLayoutAttributeBottom
-                              multiplier:1
-                                constant:8]
-      .active = YES;
+  [self.view addConstraint:[NSLayoutConstraint constraintWithItem:_searchField
+                                                        attribute:NSLayoutAttributeTop
+                                                        relatedBy:NSLayoutRelationEqual
+                                                           toItem:self.topLayoutGuide
+                                                        attribute:NSLayoutAttributeBottom
+                                                       multiplier:1
+                                                         constant:8]];
 
   [self addResultViewBelow:_searchField];
 }

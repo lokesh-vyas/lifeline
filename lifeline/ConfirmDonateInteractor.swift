@@ -37,7 +37,6 @@ class ConfirmDonateInteractor {
                                                          sucess: {
                                                             (JSONResponse) -> Void in
                                                             self.delegate?.didSuccessGetCompaignDetails(jsonArray: JSONResponse)
-                                                            print("*****SUCCESS*****")
         },
                                                          failure: { (Response) -> Void in                                                            self.delegate?.didFailGetCompaignDetails(Response:Response)
         }

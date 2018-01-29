@@ -21,6 +21,7 @@ import UIKit
 class BaseContainerViewController: UIViewController {
   private var _actualTraitCollection: AnyObject? = nil
 
+  @available(iOS 8.0, *)
   /// Retrieve the most recent trait collection. This will usually be the same as |traitCollection|
   /// but will differ during trait transitions. During a trait transition |traitCollection| will
   /// still have the old value of the trait collection, whereas |actualTraitCollection| will store
@@ -42,6 +43,7 @@ class BaseContainerViewController: UIViewController {
     fatalError("init(coder:) has not been implemented")
   }
 
+  @available(iOS 8.0, *)
   /// Monitor for trait collection changes so |actualTraitCollection| can be kept up to date.
   override func willTransition(to newCollection: UITraitCollection,
                                with coordinator: UIViewControllerTransitionCoordinator) {

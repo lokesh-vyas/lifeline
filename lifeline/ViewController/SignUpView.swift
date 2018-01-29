@@ -94,6 +94,7 @@ class SignUpView: UIViewController
         } else {
             self.view.makeToast(MultiLanguage.getLanguageUsingKey("ERROR_INVALID_MAIL_ID"), duration: 2.0, position: .bottom)
         }
+        
     }
     @IBAction func btnSignInTapped(_ sender: Any)
     {
@@ -251,9 +252,10 @@ extension SignUpView : customLoginProtocol
         {
             UserDefaults.standard.set("Internal", forKey: "LoginInformation")
             HudBar.sharedInstance.hideHudFormView(view: self.view)
-            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message:
-                MultiLanguage.getLanguageUsingKey("SUCESS_LOGIN_MESSAGE"), view: self.view)
+            HudBar.sharedInstance.showHudWithLifeLineIconAndMessage(message: MultiLanguage.getLanguageUsingKey("SUCESS_LOGIN_MESSAGE"), view: self.view)
+            
             HudBar.sharedInstance.hideHudFormView(view: self.view)
+            
             let profileView = self.storyboard?.instantiateViewController(withIdentifier: "ProfileView")
             let navigationController = UINavigationController.init(rootViewController: profileView!)
             self.present(navigationController, animated: true, completion: nil)

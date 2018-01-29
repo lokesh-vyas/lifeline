@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 class MarkerNotIndividualDetails: UIViewController {
 
     @IBOutlet weak var lblHead: UILabel!
@@ -44,28 +46,23 @@ class MarkerNotIndividualDetails: UIViewController {
         lblToDate.isHidden = false
         lblFromDate.text = Util.SharedInstance.showingDateToUser(dateString: (MarkerData.SharedInstance.markerData["FromDate"] as! String?)!)
         lblToDate.text = Util.SharedInstance.showingDateToUser(dateString: (MarkerData.SharedInstance.markerData["ToDate"] as! String?)!)
-        lblHead.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#b6800b")
-        btnDonate.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#b6800b")
-        viewMarkerDetails.layer.borderColor = Util.SharedInstance.hexStringToUIColor(hex: "#b6800b").cgColor
-        lblHead.text = MultiLanguage.getLanguageUsingKey("CAMP_HEADER")
+        lblHead.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#0dd670")
+        btnDonate.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#0dd670")
+        viewMarkerDetails.layer.borderColor = Util.SharedInstance.hexStringToUIColor(hex: "#0dd670").cgColor
 
         } else {
             
-            // green individual
-            // brown camp
-            // red hospital
             //FIXME:- Ho color #b6800b
             btnBloodInventory.isHidden = false
             viewUnderLine.isHidden = false
-            lblHead.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#b60b16")
-            btnDonate.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#b60b16")
-            viewMarkerDetails.layer.borderColor = Util.SharedInstance.hexStringToUIColor(hex: "#b60b16").cgColor
+            lblHead.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#b6800b")
+            btnDonate.backgroundColor = Util.SharedInstance.hexStringToUIColor(hex: "#b6800b")
+            viewMarkerDetails.layer.borderColor = Util.SharedInstance.hexStringToUIColor(hex: "#b6800b").cgColor
             
             FromDate.isHidden = true
             ToDate.isHidden = true
             lblFromDate.isHidden = true
             lblToDate.isHidden = true
-            lblHead.text = MultiLanguage.getLanguageUsingKey("HOSPITAL_HEADER")
             
         }
     }
@@ -76,7 +73,10 @@ class MarkerNotIndividualDetails: UIViewController {
         let navigationControllerStack = UINavigationController(rootViewController: cnfDonate)
         self.present(navigationControllerStack, animated: true, completion: nil)
         // self.navigationController?.pushViewController(navigationControllerStack, animated: true)
+        
         MarkerData.SharedInstance.isNotIndividualAPN = false
+
+
     }
     
     @IBAction func btnBloodInventoryTapped(_ sender: Any) {

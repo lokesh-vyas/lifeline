@@ -60,29 +60,21 @@ class ProfileViewInteractor
     {
         let builder = APIBuilder.sharedInstance.buildGetProfileData(userID: LoginID)
         
-        NetworkManager.sharedInstance.serviceCallForPOST(url: URLList.LIFELINE_Get_Profile.rawValue, method: builder.method, parameters: builder.makeParams(),sucess:
+        NetworkManager.sharedInstance.serviceCallForPOST(url: builder.URL, method: builder.method, parameters: builder.makeParams(),sucess:
             {
                 (JSONResponse) -> Void in
                 if(JSONResponse["GetProfileResponse"]["GetProfileResponseDetails"]["StatusCode"].int == 0)
                 {
                     let jsonDict = JSONResponse["GetProfileResponse"]["GetProfileResponseDetails"]
-                    if jsonDict != JSON.null
+                    if jsonDict["RoleName"].string != nil
                     {
-                        if jsonDict["RoleName"].string != nil
+                        if (jsonDict["RoleName"].string == "BloodBank")
                         {
-                            if (jsonDict["RoleName"].string == "BloodBank")
-                            {
-                                self.delegate?.failedGetProfile(success: true)
-                                return
-                            }
+                            self.delegate?.failedGetProfile(success: true)
+                            return
                         }
-                        self.serverDataInProfileData(JSONResponse: JSONResponse)
-                        self.delegate?.succesfullyGetProfile(success: true)
                     }
-                    else
-                    {
-                        self.delegate?.succesfullyGetProfile(success: false)
-                    }
+                    self.serverDataInProfileData(JSONResponse: JSONResponse)
                 }
                 else
                 {
@@ -90,7 +82,6 @@ class ProfileViewInteractor
                 }
         }, failure:
             { _ in
-                print("Here in Failure")
                 self.delegate?.failedGetProfile(success: false)
         })
     }
@@ -144,7 +135,7 @@ class ProfileViewInteractor
     func serverDataInProfileData(JSONResponse:JSON)
     {
         let jsonDict = JSONResponse["GetProfileResponse"]["GetProfileResponseDetails"]
-        print("Profile All Data : \(jsonDict)")
+        
         let contactNumber:String
         var age:String
         let HomeLatitude:String
