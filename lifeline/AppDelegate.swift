@@ -64,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 
             }
         } else {
-            // Fallback on earlier versions
+            // Fallback 
         }
         
         // [START register_for_notifications]
